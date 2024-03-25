@@ -3,6 +3,8 @@ using System.Collections.Generic;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
+using System.Linq;
+
 
 namespace CasualA.Board
 {
@@ -39,6 +41,7 @@ namespace CasualA.Board
         private int initialCountdownTime = 0;
 
         public Slider progressBar;
+        public bool isBackward;
 
         private ParticleSystem particleSystem;
         private bool isLevelCompleted = false;
@@ -50,33 +53,36 @@ namespace CasualA.Board
 
         public void Num(int num)
         {
-            if (isCheckingInput && currentIndex < generatedNumbers.Count)
+            if (isCheckingInput == true)
             {
-                GameObject newImage = Digitcircle.transform.GetChild(currentIndex).gameObject;
-                TextMeshProUGUI textElement = newImage.GetComponentInChildren<TextMeshProUGUI>();
+
                 if (num == -1)
                 {
+
                     currentIndex = (currentIndex == 0) ? currentIndex : currentIndex - 1;
-                    newImage = Digitcircle.transform.GetChild(currentIndex).gameObject;
-                    textElement = newImage.GetComponentInChildren<TextMeshProUGUI>();
+                    GameObject newImage = Digitcircle.transform.GetChild(currentIndex).gameObject;
+                    TextMeshProUGUI textElement = newImage.GetComponentInChildren<TextMeshProUGUI>();
                     ChangeImageColor(newImage, Color.white);
                     textElement.text = "";
                     enteredNumbers.RemoveAt(currentIndex);
 
 
                 }
-                else
+                else if (num == -2)
                 {
+                    numpad.SetActive(false);
+                    bool isSuccess = IsListEqual(enteredNumbers, generatedNumbers);
+                    checkSuccesRate(isSuccess);
+                }
+                else if (currentIndex != generatedNumbers.Count)
+                {
+                    GameObject newImage = Digitcircle.transform.GetChild(currentIndex).gameObject;
+                    TextMeshProUGUI textElement = newImage.GetComponentInChildren<TextMeshProUGUI>();
                     textElement.text = num.ToString();
                     enteredNumbers.Add(num);
                     currentIndex++;
                     ChangeImageColor(newImage, Color.green);
-                    if (currentIndex == generatedNumbers.Count)
-                    {
-                        numpad.SetActive(false);
-                        bool isSuccess = IsListEqual(enteredNumbers, generatedNumbers);
-                        checkSuccesRate(isSuccess);
-                    }
+
                 }
 
 
@@ -162,10 +168,11 @@ namespace CasualA.Board
         }
         private IEnumerator CorrectValueChanger()
         {
+            isCheckingInput = false;
             yield return new WaitForSeconds(1);
             int minNumber = 1;
             int maxNumber = 9;
-            showingNumberObject.SetActive(true);
+            CreateElementsInDigitCircle(showingNumberCount);
 
             while (generatedNumbers.Count < showingNumberCount)
             {
@@ -182,15 +189,19 @@ namespace CasualA.Board
 
             while (currentIndex < generatedNumbers.Count)
             {
+                showingNumberObject.SetActive(true);
                 Text.text = generatedNumbers[currentIndex].ToString();
+                GameObject newImage = Digitcircle.transform.GetChild(currentIndex).gameObject;
+                ChangeImageColor(newImage, Color.green);
                 currentIndex++;
                 yield return new WaitForSeconds(1);
             }
 
             showingNumberObject.SetActive(false);
+            CheckBackward();
             StartCoroutine(ReadyToStart());
 
-        
+
 
         }
 
@@ -218,26 +229,44 @@ namespace CasualA.Board
 
         private IEnumerator ReadyToStart()
         {
+            isCheckingInput = true;
             int startCount = 2;
             countdownDisplay.gameObject.SetActive(true);
+            ResetDigitCircleColor();
             while (startCount > 0)
             {
                 countdownDisplay.text = startCount.ToString();
                 yield return new WaitForSeconds(1);
                 startCount--;
             }
-
+            if (isBackward)
+            {
+                StartCoroutine(ActivateRotation());
+                yield return new WaitForSeconds(1.5f);
+            }
             countdownDisplay.text = "Hazır Ol...";
             yield return new WaitForSeconds(1);
             countdownDisplay.gameObject.SetActive(false);
-            isCheckingInput = true;
-            numpad.SetActive(true);
-            CreateElementsInDigitCircle(generatedNumbers.Count);
+
+
+
             currentIndex = 0;
+            numpad.SetActive(true);
             isLevelCompleted = false;
             StartCoroutine(LevelTimeStart());
         }
 
+        private void ResetDigitCircleColor()
+        {
+            GameObject[] circles = Digitcircle.GetComponentsInChildren<Transform>(true)
+                .Where(t => t != Digitcircle.transform)
+                .Select(t => t.gameObject)
+                .ToArray();
+            foreach (GameObject circle in circles)
+            {
+                ChangeImageColor(circle, Color.white);
+            }
+        }
         private IEnumerator CountdownToStart()
         {
             numpad.SetActive(false);
@@ -259,7 +288,7 @@ namespace CasualA.Board
 
         private IEnumerator LevelTimeStart()
         {
-            levelTimeCountdown = showingNumberCount * 3;
+            levelTimeCountdown = (showingNumberCount * 3) + 2;
             levelTime.text = levelTimeCountdown.ToString();
             levelTime.gameObject.SetActive(true);
             while (levelTimeCountdown > 0)
@@ -272,14 +301,42 @@ namespace CasualA.Board
                     yield break; // Coroutine'i sonlandır
                 }
             }
+            numpad.SetActive(false);
+            Digitcircle.SetActive(false);
             levelTime.gameObject.SetActive(false);
             countdownDisplay.gameObject.SetActive(true);
             countdownDisplay.text = "Süre Doldu...";
             yield return new WaitForSeconds(1);
             countdownDisplay.gameObject.SetActive(false);
-            GameStartRules();
-            StartCoroutine(CountdownToStart());
+            checkSuccesRate(false);
         }
+
+        private void CheckBackward()
+        {
+            if (isBackward)
+            {
+                generatedNumbers.Reverse();
+            }
+        }
+
+
+        private IEnumerator ActivateRotation()
+        {
+            float rotationDuration = 1.5f;
+            float rotationTime = 0.0f;
+            Quaternion startRotation = Digitcircle.transform.rotation;
+            Quaternion targetRotation = Quaternion.Euler(0, 0, startRotation.eulerAngles.z + 180.0f);
+
+            while (rotationTime < rotationDuration)
+            {
+                rotationTime += Time.deltaTime;
+                Digitcircle.transform.rotation = Quaternion.Slerp(startRotation, targetRotation, rotationTime / rotationDuration);
+                yield return null;
+            }
+
+            Digitcircle.transform.rotation = startRotation;
+        }
+
     }
 
 
