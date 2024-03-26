@@ -14,13 +14,13 @@ namespace Utilities
     public class CartesianPoint
     {
         private int _xCoordinate;
-        private int _yCoordinate;
+        private int _zCoordinate;
         
         
-        public CartesianPoint(int x, int y)
+        public CartesianPoint(int x, int z)
         {
             _xCoordinate = x;
-            _yCoordinate = y;
+            _zCoordinate = z;
         }
 
         public int GetXCoordinate()
@@ -30,7 +30,7 @@ namespace Utilities
 
         public int GetYCoordinate()
         {
-            return _yCoordinate;
+            return _zCoordinate;
         }
     }
 }

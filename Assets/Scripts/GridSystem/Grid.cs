@@ -9,9 +9,9 @@ namespace GridSystem
         private CartesianPoint _point;
         private bool _isBlocked;
 
-        public void InitializeGrid(int xCoord, int yCoord)
+        public void InitializeGrid(int xCoord, int zCoord)
         {
-            _point = new CartesianPoint(xCoord, yCoord);
+            _point = new CartesianPoint(xCoord, zCoord);
         }
 
         public bool IsBlocked()

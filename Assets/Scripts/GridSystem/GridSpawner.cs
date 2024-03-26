@@ -15,15 +15,16 @@ namespace GridSystem
         {
             SpawnGrids();
         }
-
+        
+        [ContextMenu("Spawn grids")]
         private void SpawnGrids()
         {
-            for (int y = 0; y < height; y++)
+            for (int z = 0; z < height; z++)
             {
                 for (int x = 0; x < width; x++)
                 {
-                    var tempGrid = Instantiate(gridPrefab, new Vector3(x, y, 0), Quaternion.identity);
-                    tempGrid.InitializeGrid(x, y) ;
+                    var tempGrid = Instantiate(gridPrefab, new Vector3(x, 0, z), Quaternion.identity);
+                    tempGrid.InitializeGrid(x, z) ;
                 }
             }
         }
