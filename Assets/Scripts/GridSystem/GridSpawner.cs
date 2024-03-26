@@ -8,7 +8,7 @@ namespace GridSystem
     {
         [SerializeField] private int width;
         [SerializeField] private int height;
-
+        [SerializeField] private Transform gridParent;
         [SerializeField] private Grid gridPrefab;
 
         private void OnEnable()
@@ -24,7 +24,8 @@ namespace GridSystem
                 for (int x = 0; x < width; x++)
                 {
                     var tempGrid = Instantiate(gridPrefab, new Vector3(x, 0, z), Quaternion.identity);
-                    tempGrid.InitializeGrid(x, z) ;
+                    tempGrid.InitializeGrid(x, z);
+                    tempGrid.transform.SetParent(gridParent);
                 }
             }
         }
