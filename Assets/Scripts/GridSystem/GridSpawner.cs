@@ -16,7 +16,6 @@ namespace GridSystem
             SpawnGrids();
         }
         
-        [ContextMenu("Spawn grids")]
         private void SpawnGrids()
         {
             for (int z = 0; z < height; z++)

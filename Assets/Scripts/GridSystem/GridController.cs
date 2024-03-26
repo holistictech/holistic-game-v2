@@ -1,4 +1,5 @@
 using System;
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using Utilities;
@@ -25,32 +26,31 @@ namespace GridSystem
             return _board.GetLength(1);
         }
 
-        public void BlockCoordinates(CartesianPoint placedPoint, Size size)
+        public void BlockCoordinates(List<CartesianPoint> coordinates)
         {
-            try
+            foreach (var point in coordinates)
             {
-                if (placedPoint.GetXCoordinate() + size.Width >= GetWidth() ||
-                    placedPoint.GetYCoordinate() + size.Height >= GetHeight())
+                try
                 {
-                    throw new IndexOutOfRangeException("Placement coordinates exceed the board boundaries.");
-                }
-
-                for (int y = placedPoint.GetYCoordinate(); y < placedPoint.GetYCoordinate() + size.Height; y++)
-                {
-                    for (int x = placedPoint.GetXCoordinate(); x < placedPoint.GetXCoordinate() + size.Width; x++)
+                    if (IsPointInvalid(point))
                     {
-                        _board[x, y].SetIsBlocked(true);
+                        throw new IndexOutOfRangeException("Coordinate invalid: " + point);
                     }
+
+                    _board[point.GetXCoordinate(), point.GetYCoordinate()].SetIsBlocked(true);
                 }
-            }
-            catch (IndexOutOfRangeException ex)
-            {
-                Console.WriteLine($"Error: {ex.Message}");
-            }
-            catch (Exception ex)
-            {
-                Console.WriteLine($"Unexpected error: {ex.Message}");
+                catch (IndexOutOfRangeException ex)
+                {
+                    Console.WriteLine($"Error: {ex.Message}");
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine($"Unexpected error: {ex.Message}");
+                }
             }
         }
+        
+        private bool IsPointInvalid(CartesianPoint placedPoint) => 
+            placedPoint.GetXCoordinate() >= GetWidth() || placedPoint.GetYCoordinate() >= GetHeight();
     }
 }
