@@ -2,7 +2,12 @@ namespace Utilities
 {
     public class CommonFields
     {
-        
+        public enum InteractableType
+        {
+            Concrete = 0,
+            Barn,
+            Animal
+        }
     }
 
     public struct Size

@@ -3,10 +3,11 @@ using GridSystem;
 using Scriptables;
 using UnityEngine;
 using Utilities;
+using Grid = UnityEngine.Grid;
 
 namespace Interactables
 {
-    public abstract class InteractableObject : MonoBehaviour
+    public class InteractableObject : MonoBehaviour, ISpawnable
     {
         private GridController _gridController;
         private InteractableConfig _interactableConfig;
@@ -14,23 +15,32 @@ namespace Interactables
         protected GridController GridController => _gridController;
         protected InteractableConfig InteractableConfig => _interactableConfig;
 
-        protected InteractableObject(GridController gridController, InteractableConfig config)
+        public InteractableObject(GridController controller, InteractableConfig config)
         {
-            _gridController = gridController;
+            _gridController = controller;
             _interactableConfig = config;
         }
 
-        public abstract void BuildSelf(CartesianPoint desiredPoint);
+        public void InjectFields(GridController controller, InteractableConfig config)
+        {
+            _gridController = controller;
+            _interactableConfig = config;
+        }
 
-        protected virtual void BlockCoordinates(List<CartesianPoint> desiredPoints)
+        public virtual void BuildSelf(CartesianPoint desiredPoint)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void BlockCoordinates(List<CartesianPoint> desiredPoints)
         {
             _gridController.BlockCoordinates(desiredPoints);
         }
 
-        protected virtual List<CartesianPoint> CalculateCoordinatesForBlocking(CartesianPoint desiredPoint)
+        public virtual List<CartesianPoint> CalculateCoordinatesForBlocking(CartesianPoint desiredPoint)
         {
             List<CartesianPoint> points = new List<CartesianPoint>();
-            
+
             for (int y = desiredPoint.GetYCoordinate(); y < desiredPoint.GetYCoordinate() + _interactableConfig.Height; y++)
             {
                 for (int x = desiredPoint.GetXCoordinate(); x < desiredPoint.GetXCoordinate() + _interactableConfig.Width; x++)

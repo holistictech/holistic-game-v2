@@ -15,10 +15,10 @@ namespace Interactables
         public override void BuildSelf(CartesianPoint desiredPoint)
         {
             var points = CalculateCoordinatesForBlocking(desiredPoint);
-            base.BlockCoordinates(points);
+            BlockCoordinates(points);
         }
 
-        protected override List<CartesianPoint> CalculateCoordinatesForBlocking(CartesianPoint desiredPoint)
+        public override List<CartesianPoint> CalculateCoordinatesForBlocking(CartesianPoint desiredPoint)
         {
             List<CartesianPoint> corners = new List<CartesianPoint>();
             int width = InteractableConfig.Width;

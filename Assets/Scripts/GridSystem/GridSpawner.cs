@@ -11,6 +11,8 @@ namespace GridSystem
         [SerializeField] private Transform gridParent;
         [SerializeField] private Grid gridPrefab;
 
+        private GridController _gridController;
+
         private void OnEnable()
         {
             SpawnGrids();
@@ -18,6 +20,7 @@ namespace GridSystem
         
         private void SpawnGrids()
         {
+            Grid[,] board = new Grid[width, height];
             for (int z = 0; z < height; z++)
             {
                 for (int x = 0; x < width; x++)
@@ -25,8 +28,11 @@ namespace GridSystem
                     var tempGrid = Instantiate(gridPrefab, new Vector3(x, 0, z), Quaternion.identity);
                     tempGrid.InitializeGrid(x, z);
                     tempGrid.transform.SetParent(gridParent);
+                    board[x, z] = tempGrid;
                 }
             }
+
+            _gridController = new GridController(board);
         }
     }
 }

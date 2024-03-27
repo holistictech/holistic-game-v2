@@ -14,7 +14,7 @@ namespace Interactables
         public override void BuildSelf(CartesianPoint desiredPoint)
         {
             var points = base.CalculateCoordinatesForBlocking(desiredPoint);
-            base.BlockCoordinates(points);
+            BlockCoordinates(points);
         }
     }
 }

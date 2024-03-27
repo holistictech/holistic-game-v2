@@ -11,6 +11,11 @@ namespace GridSystem
     {
         private Grid[,] _board;
 
+        public GridController(Grid[,] board)
+        {
+            _board = board;
+        }
+
         public bool IsGridBlocked(CartesianPoint point)
         {
             return _board[point.GetXCoordinate(), point.GetYCoordinate()].IsBlocked();

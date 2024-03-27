@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: e9114aab29305a84e9f73b7912bd581e, type: 3}
-  m_Name: House
+  m_Name: WaterTank
   m_EditorClassIdentifier: 
-  Object: {fileID: 8060553834375802525, guid: b0934f87ca328ce4a8164659a4d38e9a, type: 3}
-  Width: 0
-  Height: 0
+  Object: {fileID: 3459737738180476191, guid: cacdc4d9171de9642a96b6a3cfc7f77d, type: 3}
+  Width: 4
+  Height: 4

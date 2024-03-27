@@ -7,6 +7,7 @@ namespace Scriptables
     public class InteractableConfig : ScriptableObject
     {
         public GameObject Object;
+        public CommonFields.InteractableType InteractableType;
         public int Width;
         public int Height;
     }
