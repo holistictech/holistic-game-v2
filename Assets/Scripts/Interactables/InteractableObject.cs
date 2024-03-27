@@ -4,6 +4,7 @@ using Scriptables;
 using UnityEngine;
 using Utilities;
 using Grid = UnityEngine.Grid;
+using static Utilities.CommonFields;
 
 namespace Interactables
 {
@@ -51,6 +52,11 @@ namespace Interactables
             }
 
             return points;
+        }
+
+        public InteractableType GetInteractableType()
+        {
+            return InteractableConfig.InteractableType;
         }
     }
 }
