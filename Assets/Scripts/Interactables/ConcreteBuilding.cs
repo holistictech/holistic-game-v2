@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using GridSystem;
 using Scriptables;
+using UnityEngine;
 using Utilities;
 
 namespace Interactables
@@ -15,6 +16,8 @@ namespace Interactables
         {
             var points = base.CalculateCoordinatesForBlocking(desiredPoint);
             BlockCoordinates(points);
+            base.BuildSelf(desiredPoint);
+            Debug.Log("in desired scope");
         }
     }
 }

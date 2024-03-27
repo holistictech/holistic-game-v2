@@ -13,11 +13,34 @@ namespace Spawners
 {
     public class InteractableSpawner : MonoBehaviour
     {
-        [SerializeField] private InteractableObject _spawnable;
+        [SerializeField] private GameObject _spawnable;
         [SerializeField] private Transform _objectParent;
         private GridController _gridController;
+
+        [SerializeField] private InteractableConfig _itemConfig;
+
+        private void OnEnable()
+        {
+            AddListeners();
+        }
+
+        private void OnDisable()
+        {
+            RemoveListeners();
+        }
         
-        
+        public void InjectLogicBoard(GridController controller)
+        {
+            _gridController = controller;
+        }
+
+        private void TestSpawn(Vector3 position)
+        {
+            var point = new CartesianPoint((int)position.x, (int)position.y);
+            SpawnSelectedInteractable(point, _itemConfig);
+        }
+
+
         public void SpawnSelectedInteractable(CartesianPoint desiredPoint, InteractableConfig itemConfig)
         {
             var spawnedInstance = InteractableFactory.SpawnInstance(_spawnable, itemConfig, _objectParent);
@@ -32,6 +55,18 @@ namespace Spawners
             {
                 Debug.LogError("Error while spawning building");
             }
+        }
+
+        private void AddListeners()
+        {
+            SwipeHandler.OnLocationSelected += TestSpawn;
+            //GridSpawner.OnGridReady += InjectLogicBoard;
+        }
+
+        private void RemoveListeners()
+        {
+            SwipeHandler.OnLocationSelected -= TestSpawn;
+            //GridSpawner.OnGridReady -= InjectLogicBoard;
         }
         
     }

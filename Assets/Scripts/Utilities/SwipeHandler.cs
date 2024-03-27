@@ -8,6 +8,8 @@ namespace Utilities
         [SerializeField] private float swipeThreshold;
 
         private Vector2 _swipeStartPosition;
+
+        public static event Action<Vector3> OnLocationSelected;
         private void Update()
         {
             if (Input.GetMouseButtonDown(0))
@@ -27,6 +29,7 @@ namespace Utilities
                     
                     Debug.Log("World position: " + worldPosition);
                     Debug.Log("Rounded position: " + roundedPosition);
+                    OnLocationSelected?.Invoke(roundedPosition);
                 }
             }
         }

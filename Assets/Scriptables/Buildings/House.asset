@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9114aab29305a84e9f73b7912bd581e, type: 3}
   m_Name: House
   m_EditorClassIdentifier: 
-  Object: {fileID: 8060553834375802525, guid: b0934f87ca328ce4a8164659a4d38e9a, type: 3}
+  Object: {fileID: 4300000, guid: f2c31290176037e49b8a0dad9a9a2662, type: 3}
+  InteractableType: 0
   Width: 7
   Height: 4

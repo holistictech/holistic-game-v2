@@ -16,6 +16,7 @@ namespace Interactables
         {
             var points = CalculateCoordinatesForBlocking(desiredPoint);
             BlockCoordinates(points);
+            base.BuildSelf(desiredPoint);
         }
 
         public override List<CartesianPoint> CalculateCoordinatesForBlocking(CartesianPoint desiredPoint)

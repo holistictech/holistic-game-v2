@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using GridSystem;
+using Interfaces;
 using Scriptables;
 using UnityEngine;
 using Utilities;
@@ -10,6 +11,7 @@ namespace Interactables
 {
     public class InteractableObject : MonoBehaviour, ISpawnable
     {
+        private MeshFilter _objectMeshFilter;
         private GridController _gridController;
         private InteractableConfig _interactableConfig;
         
@@ -30,7 +32,8 @@ namespace Interactables
 
         public virtual void BuildSelf(CartesianPoint desiredPoint)
         {
-            throw new System.NotImplementedException();
+            SetObjectMesh();
+            SetPosition(desiredPoint);
         }
 
         public void BlockCoordinates(List<CartesianPoint> desiredPoints)
@@ -50,13 +53,18 @@ namespace Interactables
                     points.Add(temp);
                 }
             }
-
             return points;
         }
 
-        public InteractableType GetInteractableType()
+        public void SetObjectMesh()
         {
-            return InteractableConfig.InteractableType;
+            _objectMeshFilter = GetComponent<MeshFilter>();
+            _objectMeshFilter.mesh = _interactableConfig.Object;
+        }
+
+        public void SetPosition(CartesianPoint point)
+        {
+            transform.position = new Vector3(point.GetXCoordinate(), 0, point.GetYCoordinate());
         }
     }
 }

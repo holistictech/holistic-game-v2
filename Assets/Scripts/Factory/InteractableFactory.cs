@@ -8,7 +8,7 @@ namespace Factory
 {
     public class InteractableFactory : MonoBehaviour
     {
-        public static GameObject SpawnInstance(InteractableObject baseObject, InteractableConfig config, Transform parent)
+        public static GameObject SpawnInstance(GameObject baseObject, InteractableConfig config, Transform parent)
         {
             GameObject instance = Instantiate(baseObject.gameObject, parent.position, Quaternion.identity);
             instance.transform.SetParent(parent);

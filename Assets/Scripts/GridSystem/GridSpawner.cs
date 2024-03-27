@@ -1,4 +1,5 @@
 using System;
+using Spawners;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -10,8 +11,11 @@ namespace GridSystem
         [SerializeField] private int height;
         [SerializeField] private Transform gridParent;
         [SerializeField] private Grid gridPrefab;
+        [SerializeField] private InteractableSpawner _spawner;
 
         private GridController _gridController;
+
+        public static event Action<GridController> OnGridReady;
 
         private void OnEnable()
         {
@@ -33,6 +37,13 @@ namespace GridSystem
             }
 
             _gridController = new GridController(board);
+            _spawner.InjectLogicBoard(_gridController);
+            //DistributeLogicBoard();
+        }
+
+        private void DistributeLogicBoard()
+        {
+            OnGridReady?.Invoke(_gridController);
         }
     }
 }
