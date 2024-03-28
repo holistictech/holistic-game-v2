@@ -32,6 +32,7 @@ namespace UI.Tasks
         private void EnableTaskPopup()
         {
             _taskPanel.gameObject.SetActive(true);
+            InstantiateTasks();
         }
 
         private void DisableTaskPopup()

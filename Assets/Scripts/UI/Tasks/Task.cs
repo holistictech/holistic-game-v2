@@ -1,18 +1,22 @@
-using System.Collections;
-using System.Collections.Generic;
+using Scriptables;
+using TMPro;
 using UnityEngine;
+using UnityEngine.UI;
 
-public class Task : MonoBehaviour
+namespace UI.Tasks
 {
-    // Start is called before the first frame update
-    void Start()
+    public class Task : MonoBehaviour
     {
-        
-    }
+        [SerializeField] private TextMeshProUGUI taskField;
+        [SerializeField] private TextMeshProUGUI targetField;
+        [SerializeField] private Button playButton;
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        private TaskConfig _taskConfig;
+        public void ConfigureUI(TaskConfig config)
+        {
+            _taskConfig = config;
+            taskField.text = config.Mission;
+            targetField.text = $"{config.Cost}";
+        }
     }
 }

@@ -2,6 +2,8 @@ namespace Utilities
 {
     public class CommonFields
     {
+        public const int DAILY_ACTIVITY_COUNT = 10;
+        
         public enum InteractableType
         {
             Concrete = 0,
