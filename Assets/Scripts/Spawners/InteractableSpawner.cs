@@ -46,7 +46,7 @@ namespace Spawners
             var spawnedInstance = InteractableFactory.SpawnInstance(_spawnable, itemConfig, _objectParent);
             var interactable = spawnedInstance.GetComponent<InteractableObject>();
 
-            if (interactable != null)
+            if (interactable != null && !_gridController.IsGridBlocked(desiredPoint))
             {
                 interactable.InjectFields(_gridController, itemConfig);
                 interactable.BuildSelf(desiredPoint);
