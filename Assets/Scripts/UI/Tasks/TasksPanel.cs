@@ -1,18 +1,24 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using Scriptables;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
+using Utilities;
 
 namespace UI.Tasks
 {
     public class TasksPanel : MonoBehaviour
     {
-        [Header("UI Attributes")]
-        [SerializeField] private GameObject _taskPanel;
-        [SerializeField] private Button _taskButton;
-        [SerializeField] private Button _closeButton;
-
+        [Header("UI Attributes")] 
+        [SerializeField] private RectTransform taskContent;
+        [SerializeField] private GameObject taskPanel;
+        [SerializeField] private Button taskButton;
+        [SerializeField] private Button closeButton;
+        
         [Header("Functionality")] 
-        [SerializeField] private Task _taskPrefab;
+        [SerializeField] private Task taskPrefab;
 
         private void OnEnable()
         {
@@ -26,30 +32,46 @@ namespace UI.Tasks
 
         private void InstantiateTasks()
         {
-            
+            List<TaskConfig> tasks = PlayerInventory.Instance.GetAvailableTasks();
+
+            foreach (var task in tasks)
+            {
+                var temp = Instantiate(taskPrefab, taskContent);
+                temp.ConfigureUI(task);
+            }
         }
 
         private void EnableTaskPopup()
         {
-            _taskPanel.gameObject.SetActive(true);
+            taskPanel.gameObject.SetActive(true);
             InstantiateTasks();
         }
 
         private void DisableTaskPopup()
         {
-            _taskPanel.gameObject.SetActive(false);
+            taskPanel.gameObject.SetActive(false);
+            DestroyTasks();
+        }
+
+        private void DestroyTasks()
+        {
+            var tasks = taskContent.GetComponentsInChildren<Task>().ToList();
+            foreach (var task in tasks)
+            {
+                Destroy(task.gameObject);
+            }
         }
 
         private void AddListeners()
         {
-            _taskButton.onClick.AddListener(EnableTaskPopup);
-            _closeButton.onClick.AddListener(DisableTaskPopup);
+            taskButton.onClick.AddListener(EnableTaskPopup);
+            closeButton.onClick.AddListener(DisableTaskPopup);
         }
 
         private void RemoveListeners()
         {
-            _taskButton.onClick.RemoveListener(EnableTaskPopup);
-            _closeButton.onClick.RemoveListener(DisableTaskPopup);
+            taskButton.onClick.RemoveListener(EnableTaskPopup);
+            closeButton.onClick.RemoveListener(DisableTaskPopup);
         }
     }
 }

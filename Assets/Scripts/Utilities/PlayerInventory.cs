@@ -1,12 +1,13 @@
+using System.Collections.Generic;
 using Scriptables;
 using UnityEngine;
 
 namespace Utilities
 {
-    public class PlayerInventory<T> : MonoBehaviour where T : MonoBehaviour
+    public class PlayerInventory : MonoBehaviour
     {
-        [SerializeField] private Level gameLevels;
-        private static T _instance;
+        [SerializeField] private Level[] gameLevels;
+        private static PlayerInventory _instance;
         
         private string CurrencyKey = "CurrencyKey";
         public int Currency { get; private set; }
@@ -20,18 +21,18 @@ namespace Utilities
         private string CurrentStageKey = "CurrentStage";
         public int CurrentStage { get; private set; }
 
-        public static T Instance
+        public static PlayerInventory Instance
         {
             get
             {
                 if (_instance == null)
                 {
-                    _instance = FindObjectOfType<T>();
+                    _instance = FindObjectOfType<PlayerInventory>();
 
                     if (_instance == null)
                     {
-                        GameObject singletonObject = new GameObject(typeof(T).Name);
-                        _instance = singletonObject.AddComponent<T>();
+                        GameObject singletonObject = new GameObject("PlayerInventory");
+                        _instance = singletonObject.AddComponent<PlayerInventory>();
                     }
                 }
 
@@ -47,7 +48,7 @@ namespace Utilities
                 return;
             }
 
-            _instance = this as T;
+            _instance = this;
             DontDestroyOnLoad(gameObject);
 
             Currency = PlayerSaveManager.GetPlayerAttribute(CurrencyKey, 0);
@@ -83,13 +84,19 @@ namespace Utilities
         public void ChangeCurrentStage(int stage)
         {
             CurrentStage = stage;
-            PlayerSaveManager.SavePlayerAttribute(CurrentLevel, CurrentLevelKey);
+            PlayerSaveManager.SavePlayerAttribute(CurrentStage, CurrentStageKey);
         }
 
         public void IncrementCurrentStage()
         {
             CurrentStage++;
             PlayerSaveManager.SavePlayerAttribute(CurrentStage, CurrentStageKey);
+        }
+
+        public List<TaskConfig> GetAvailableTasks()
+        {
+            var level = PlayerSaveManager.GetPlayerAttribute(CurrentLevelKey, 0);
+            return gameLevels[level].GetAvailableTasks();
         }
     }
 
