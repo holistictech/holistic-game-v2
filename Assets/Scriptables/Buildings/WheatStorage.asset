@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9114aab29305a84e9f73b7912bd581e, type: 3}
   m_Name: WheatStorage
   m_EditorClassIdentifier: 
-  Object: {fileID: 4300000, guid: b195844420e49664b9e5f6f7346c548e, type: 3}
+  ObjectMesh: {fileID: 4300000, guid: b195844420e49664b9e5f6f7346c548e, type: 3}
   InteractableType: 0
   Width: 7
   Height: 7

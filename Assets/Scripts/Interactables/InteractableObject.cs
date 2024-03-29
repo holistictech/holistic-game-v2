@@ -59,7 +59,7 @@ namespace Interactables
         public void SetObjectMesh()
         {
             _objectMeshFilter = GetComponent<MeshFilter>();
-            _objectMeshFilter.mesh = _interactableConfig.Object;
+            _objectMeshFilter.mesh = _interactableConfig.ObjectMesh;
         }
 
         public void SetPosition(CartesianPoint point)

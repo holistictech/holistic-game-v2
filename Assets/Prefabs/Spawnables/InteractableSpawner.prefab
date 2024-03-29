@@ -44,6 +44,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7be1104f4c1b04f498f85acddf792bce, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  _spawnable: {fileID: 4620610143639499007, guid: 9afdef2843d51ef45aa9031556d8f791, type: 3}
-  _objectParent: {fileID: 0}
-  _itemConfig: {fileID: 11400000, guid: f36a9929aea01b941bdfa295d7ca9bab, type: 2}
+  spawnable: {fileID: 4620610143639499007, guid: 9afdef2843d51ef45aa9031556d8f791, type: 3}
+  sketch: {fileID: 2037818187367105660, guid: 19dcf514b24c05f4696c290247219aec, type: 3}
+  objectParent: {fileID: 0}
+  swipeHandler: {fileID: 0}
+  itemConfig: {fileID: 11400000, guid: f36a9929aea01b941bdfa295d7ca9bab, type: 2}

@@ -4,8 +4,11 @@ using Factory;
 using GridSystem;
 using Interactables;
 using Scriptables;
+using UI;
+using UI.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Utilities;
 using static Utilities.CommonFields;
 
@@ -13,11 +16,16 @@ namespace Spawners
 {
     public class InteractableSpawner : MonoBehaviour
     {
-        [SerializeField] private GameObject _spawnable;
-        [SerializeField] private Transform _objectParent;
+        [SerializeField] private GameObject spawnable;
+        [SerializeField] private Sketch sketch;
+        [SerializeField] private Transform objectParent;
+        [SerializeField] private SwipeHandler swipeHandler;
         private GridController _gridController;
+        private InteractableConfig _currentConfig;
 
-        [SerializeField] private InteractableConfig _itemConfig;
+        [SerializeField] private InteractableConfig itemConfig;
+
+        public static event Action<Sketch> OnPositionChoiceNeeded;
 
         private void OnEnable()
         {
@@ -34,22 +42,42 @@ namespace Spawners
             _gridController = controller;
         }
 
-        private void TestSpawn(Vector3 position)
+        private void SpawnSketch(InteractableConfig config)
         {
-            var point = new CartesianPoint((int)position.x, (int)position.y);
-            SpawnSelectedInteractable(point, _itemConfig);
+            _currentConfig = config;
+            var mainCamera = Camera.main;
+            if (mainCamera != null)
+            {
+                var transform1 = mainCamera.transform;
+                Vector3 cameraPosition = transform1.position;
+                Vector3 cameraForward = transform1.forward;
+            
+                Vector3 middlePoint = cameraPosition + cameraForward * mainCamera.nearClipPlane;
+                var spawnedSketch = Instantiate(sketch, objectParent);
+                spawnedSketch.ConfigureObjectMesh(_currentConfig.ObjectMesh);
+                spawnedSketch.transform.position = new Vector3(middlePoint.x, 0, middlePoint.y);
+                swipeHandler.enabled = true;
+                OnPositionChoiceNeeded?.Invoke(spawnedSketch);
+            }
+        }
+
+        private void SpawnInteractable()
+        {
+            var finalPos = swipeHandler.GetFinalPosition();
+            SpawnSelectedInteractable(new CartesianPoint((int)finalPos.x, (int)finalPos.z), _currentConfig);
         }
 
 
         public void SpawnSelectedInteractable(CartesianPoint desiredPoint, InteractableConfig itemConfig)
         {
-            var spawnedInstance = InteractableFactory.SpawnInstance(_spawnable, itemConfig, _objectParent);
+            var spawnedInstance = InteractableFactory.SpawnInstance(spawnable, itemConfig, objectParent);
             var interactable = spawnedInstance.GetComponent<InteractableObject>();
 
             if (interactable != null && !_gridController.IsGridBlocked(desiredPoint))
             {
                 interactable.InjectFields(_gridController, itemConfig);
                 interactable.BuildSelf(desiredPoint);
+                swipeHandler.enabled = false;
             }
             else
             {
@@ -57,15 +85,24 @@ namespace Spawners
             }
         }
 
+        private void CancelPlacementProcess()
+        {
+            swipeHandler.enabled = false;
+        }
+
         private void AddListeners()
         {
-            SwipeHandler.OnLocationSelected += TestSpawn;
+            Task.OnTaskCompleted += SpawnSketch;
+            Sketch.OnPlacementConfirmed += SpawnInteractable;
+            Sketch.OnPlacementCancelled += CancelPlacementProcess;
             //GridSpawner.OnGridReady += InjectLogicBoard;
         }
 
         private void RemoveListeners()
         {
-            SwipeHandler.OnLocationSelected -= TestSpawn;
+            Task.OnTaskCompleted -= SpawnSketch;
+            Sketch.OnPlacementConfirmed -= SpawnInteractable;
+            Sketch.OnPlacementCancelled -= CancelPlacementProcess;
             //GridSpawner.OnGridReady -= InjectLogicBoard;
         }
         

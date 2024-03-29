@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 using Utilities;
 
 namespace Scriptables
@@ -6,7 +7,7 @@ namespace Scriptables
     [CreateAssetMenu(fileName = "Interactable", menuName = "Interactable/InteractableConfig")]
     public class InteractableConfig : ScriptableObject
     {
-        public Mesh Object;
+        public Mesh ObjectMesh;
         public CommonFields.InteractableType InteractableType;
         public int Width;
         public int Height;

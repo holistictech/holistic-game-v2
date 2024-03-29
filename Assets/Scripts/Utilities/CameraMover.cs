@@ -1,4 +1,7 @@
 using System;
+using Scriptables;
+using Spawners;
+using UI;
 using UnityEngine;
 using UnityEngine.Serialization;
 
@@ -14,6 +17,17 @@ namespace Utilities
         
         private Vector3 _touchStart;
         private bool _isSwiping;
+        private bool _isPlacing;
+
+        private void OnEnable()
+        {
+            AddListeners();
+        }
+
+        private void OnDisable()
+        {
+            RemoveListeners();
+        }
 
         private void Start()
         {
@@ -26,6 +40,7 @@ namespace Utilities
 
         private void Update()
         {
+            if (_isPlacing) return;
             if (Input.touchCount > 0)
             {
                 Touch touch = Input.GetTouch(0);
@@ -59,8 +74,31 @@ namespace Utilities
                     targetPosition.z = Mathf.Clamp(targetPosition.z, _minZ, _maxZ);
                     transform.position = targetPosition;
                 }
-                
             }
+        }
+
+        private void DisableCameraMovement(Sketch config)
+        {
+            _isPlacing = true;
+        }
+
+        private void EnableCameraMovement()
+        {
+            _isPlacing = false;
+        }
+
+        private void AddListeners()
+        {
+            Sketch.OnPlacementConfirmed += EnableCameraMovement;
+            Sketch.OnPlacementCancelled += EnableCameraMovement;
+            InteractableSpawner.OnPositionChoiceNeeded += DisableCameraMovement;
+        }
+
+        private void RemoveListeners()
+        {
+            Sketch.OnPlacementConfirmed -= EnableCameraMovement;
+            Sketch.OnPlacementCancelled -= EnableCameraMovement;
+            InteractableSpawner.OnPositionChoiceNeeded -= DisableCameraMovement;
         }
     }
 }

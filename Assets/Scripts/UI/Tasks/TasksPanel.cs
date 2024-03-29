@@ -47,7 +47,12 @@ namespace UI.Tasks
             InstantiateTasks();
         }
 
-        private void DisableTaskPopup()
+        public void DisableTasksPanel(InteractableConfig config)
+        {
+            DisableTaskPopup();
+        }
+
+        public void DisableTaskPopup()
         {
             taskPanel.gameObject.SetActive(false);
             DestroyTasks();
@@ -66,12 +71,14 @@ namespace UI.Tasks
         {
             taskButton.onClick.AddListener(EnableTaskPopup);
             closeButton.onClick.AddListener(DisableTaskPopup);
+            Task.OnTaskCompleted += DisableTasksPanel;
         }
 
         private void RemoveListeners()
         {
             taskButton.onClick.RemoveListener(EnableTaskPopup);
             closeButton.onClick.RemoveListener(DisableTaskPopup);
+            Task.OnTaskCompleted -= DisableTasksPanel;
         }
     }
 }

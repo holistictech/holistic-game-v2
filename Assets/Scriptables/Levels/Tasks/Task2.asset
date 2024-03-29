@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: Task2
   m_EditorClassIdentifier: 
   TaskSprite: {fileID: 0}
-  Mission: "\xC7\u0130ftlik evini in\u015Faa et"
+  Mission: "\xC7iftlik evini in\u015Faa et"
   Cost: 2
   RewardInteractable: {fileID: 11400000, guid: f36a9929aea01b941bdfa295d7ca9bab, type: 2}

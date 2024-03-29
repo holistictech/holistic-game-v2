@@ -636,7 +636,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   taskField: {fileID: 2397857085708157437}
   targetField: {fileID: 2397857085424042364}
-  playButton: {fileID: 2397857085542848272}
+  goButton: {fileID: 2397857085542848272}
+  buttonTextField: {fileID: 2397857086533434052}
+  taskPanelManager: {fileID: 3508583731487256687, guid: 8ae4fe136c60345409db2c2e34da5dbf, type: 3}
 --- !u!1 &2397857086533433914
 GameObject:
   m_ObjectHideFlags: 0
