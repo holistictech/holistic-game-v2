@@ -14,6 +14,11 @@ namespace Spans
         {
             return GetRandomSprites(currentRoundIndex);
         }
+
+        public override int GetRoundTime()
+        {
+            return currentRoundIndex * 3 + 2;
+        }
         
         private List<object> GetRandomSprites(int count)
         {

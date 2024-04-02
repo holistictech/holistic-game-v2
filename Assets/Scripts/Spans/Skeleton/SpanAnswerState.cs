@@ -1,23 +1,72 @@
-using Spans.Skeleton;
+using System.Collections;
+using Samples.Whisper;
 using UnityEngine;
+using UnityEngine.Serialization;
+using UnityEngine.UI;
 
-namespace Spans
+namespace Spans.Skeleton
 {
-    public class SpanAnswerState : ISpanState
+    public class SpanAnswerState : MonoBehaviour, ISpanState
     {
+        [SerializeField] private Whisper speechRecognition;
+        [SerializeField] private Button micButton;
+        [SerializeField] private Slider timerBar;
+        private SpanController _spanController;
+        private ISpanState _questionState;
+
+        private int _maxTime;
+        private Coroutine _timer;
         public void Enter(SpanController spanController)
         {
-            throw new System.NotImplementedException();
+            if (_spanController == null)
+            {
+                _spanController = spanController;
+                _questionState = _spanController.GetQuestionState();
+                _maxTime = _spanController.GetRoundTime();
+            }
+
+            AddListeners();
+            _timer = StartCoroutine(PlayTimer());
+        }
+
+        private IEnumerator PlayTimer()
+        {
+            timerBar.maxValue = _maxTime;
+            for (int i = _maxTime; i > 0; i--)
+            {
+                timerBar.value = i;
+                yield return new WaitForSeconds(1f);
+            }
         }
 
         public void Exit()
         {
-            throw new System.NotImplementedException();
+            RemoveListeners();
+
+            if (_timer != null)
+            {
+                StopCoroutine(_timer);
+            }
         }
 
         public void SwitchNextState()
         {
-            throw new System.NotImplementedException();
+            _spanController.SwitchState();
+        }
+
+        private void StartRecording()
+        {
+            
+        }
+
+        private void AddListeners()
+        {
+            micButton.onClick.AddListener(StartRecording);
+        }
+
+        private void RemoveListeners()
+        {
+            micButton.onClick.RemoveListener(StartRecording);
         }
     }
 }

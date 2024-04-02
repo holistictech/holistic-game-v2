@@ -11,7 +11,6 @@ namespace Spans.Skeleton
         [SerializeField] private TextMeshProUGUI getStarted;
         [SerializeField] private TextMeshProUGUI countdownField;
         [SerializeField] private TextMeshProUGUI getReady;
-        [SerializeField] private GameObject numPad;
 
         private SpanController _spanController;
         private Coroutine _countdown;
@@ -51,7 +50,6 @@ namespace Spans.Skeleton
             getReady.text = "Hazır Ol";
             getReady.DOFade(1, 2f).SetEase(Ease.Linear).OnComplete(() =>
             {
-                numPad.SetActive(true);
             });
         }
 

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -35,6 +36,16 @@ namespace Spans.Skeleton
         public virtual List<object> GetSpanObjects()
         {
             return new List<object>();
+        }
+
+        public ISpanState GetQuestionState()
+        {
+            return _states[1];
+        }
+
+        public virtual int GetRoundTime()
+        {
+            return 10;
         }
 
         public void IncrementRoundIndex()
