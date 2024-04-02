@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace Spans
 {
-    public class ForwardSpan : SpanController
+    public class ForwardSpanImageDescription : SpanController
     {
         
     }

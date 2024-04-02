@@ -68,8 +68,9 @@ namespace Samples.Whisper
                 FileData = new FileData() {Data = data, Name = "audio.wav"},
                 // File = Application.persistentDataPath + "/" + fileName,
                 Model = "whisper-1",
-                Language = "en"
+                Language = "tr"
             };
+            openai = new OpenAIApi("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");
             var res = await openai.CreateAudioTranscription(req);
 
             progressBar.fillAmount = 0;

@@ -5,7 +5,17 @@ namespace Spans
 {
     public class SpanGameEndState : ISpanState
     {
-        public void Handle(SpanController spanController)
+        public void Enter(SpanController spanController)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void Exit()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void SwitchNextState()
         {
             throw new System.NotImplementedException();
         }

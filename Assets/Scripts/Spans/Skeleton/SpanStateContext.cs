@@ -16,13 +16,14 @@ namespace Spans
 
         public void Transition()
         {
-            CurrentState.Handle(_spanController);
+            CurrentState.Enter(_spanController);
         }
 
         public void Transition(ISpanState state)
         {
+            CurrentState.Exit();
             CurrentState = state;
-            CurrentState.Handle(_spanController);
+            CurrentState.Enter(_spanController);
         }
     }
 }
