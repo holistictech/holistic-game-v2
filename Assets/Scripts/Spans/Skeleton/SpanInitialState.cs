@@ -2,21 +2,28 @@ using System.Collections;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Spans.Skeleton
 {
     public class SpanInitialState : MonoBehaviour, ISpanState
     {
-        [SerializeField] private TextMeshProUGUI getReady;
+        [SerializeField] private TextMeshProUGUI getStarted;
         [SerializeField] private TextMeshProUGUI countdownField;
+        [SerializeField] private TextMeshProUGUI getReady;
+        [SerializeField] private GameObject numPad;
 
         private SpanController _spanController;
         private Coroutine _countdown;
         public void Enter(SpanController spanController)
         {
-            FadeGetReady();
+            if (_spanController == null)
+            {
+                _spanController = spanController;
+                FadeGetReady();
+            } 
+            ConfigureUI();
             _countdown = StartCoroutine(PlayCountdown());
-            SwitchNextState();
         }
 
         public void Exit()
@@ -35,8 +42,17 @@ namespace Spans.Skeleton
 
         private void FadeGetReady()
         {
-            getReady.text = "Hazırlan";
-            getReady.DOFade(1, 0.5f).SetEase(Ease.OutBack);
+            getStarted.text = "Hadi Başlayalım";
+            getStarted.DOFade(1, 0.5f).SetEase(Ease.OutBack);
+        }
+        
+        private void ConfigureUI()
+        {
+            getReady.text = "Hazır Ol";
+            getReady.DOFade(1, 2f).SetEase(Ease.Linear).OnComplete(() =>
+            {
+                numPad.SetActive(true);
+            });
         }
 
         private IEnumerator PlayCountdown()
@@ -46,11 +62,12 @@ namespace Spans.Skeleton
                 countdownField.text = $"{i}";
                 yield return new WaitForSeconds(1f);
             }
+            SwitchNextState();
         }
 
         private void ResetFields()
         {
-            getReady.gameObject.SetActive(false);
+            getStarted.gameObject.SetActive(false);
             countdownField.gameObject.SetActive(false);
         }
     }

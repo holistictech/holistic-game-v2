@@ -3,10 +3,15 @@ using UnityEngine;
 
 namespace Spans.Skeleton
 {
-    public class SpanController : MonoBehaviour
+    public abstract class SpanController : MonoBehaviour
     {
         [SerializeField] private List<ISpanState> _states;
         protected SpanStateContext stateContext;
+        protected int currentRoundIndex;
+
+        protected int currentSuccessStreak;
+        protected int currentFailStreak;
+        private const int _neededStreakCount = 4;
         protected virtual void Start()
         {
             stateContext = new SpanStateContext(this);
@@ -25,6 +30,33 @@ namespace Spans.Skeleton
             {
                 stateContext.Transition(_states[1]);
             }
+        }
+        
+        public virtual List<object> GetSpanObjects()
+        {
+            return new List<object>();
+        }
+
+        public void IncrementRoundIndex()
+        {
+            currentRoundIndex++;
+        }
+
+        public void DecrementRoundIndex()
+        {
+            currentRoundIndex--;
+        }
+
+        public void IncrementSuccessStreak()
+        {
+            currentSuccessStreak++;
+            currentFailStreak = 0;
+        }
+
+        public void IncrementFailStreak()
+        {
+            currentFailStreak++;
+            currentSuccessStreak = 0;
         }
     }
 }
