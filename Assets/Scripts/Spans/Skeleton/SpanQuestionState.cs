@@ -57,6 +57,7 @@ namespace Spans.Skeleton
             {
                 var question = _spanObjects[_currentQuestionIndex];
                 questionBox.GetComponentInChildren<TextMeshProUGUI>().text = $"{question.GetQuestionItem()}";
+                questionBox.enabled = false;
                 _answers.Add(question.CorrectAnswer);
                 _currentQuestionIndex++;
                 yield return new WaitForSeconds(1f);
@@ -93,6 +94,9 @@ namespace Spans.Skeleton
             {
                 StopCoroutine(_displayingQuestions);
             }
+            
+            questionBox.enabled = true;
+            questionBox.GetComponentInChildren<TextMeshProUGUI>().text = "";
         }
 
         public void SwitchNextState()

@@ -13,6 +13,7 @@ namespace Spans.Skeleton
         [SerializeField] private Whisper speechRecognition;
         [SerializeField] private Button micButton;
         [SerializeField] private Button stopButton;
+        [SerializeField] private Button cancelButton;
         [SerializeField] private Slider timerBar;
         private SpanController _spanController;
 
@@ -74,15 +75,22 @@ namespace Spans.Skeleton
             SwitchNextState();
         }
 
+        private void StopTemporarily()
+        {
+            speechRecognition.EndRecording();
+        }
+
         private void AddListeners()
         {
             micButton.onClick.AddListener(StartRecording);
             stopButton.onClick.AddListener(StopRecording);
+            cancelButton.onClick.AddListener(StopTemporarily);
         }
 
         private void RemoveListeners()
         {
             micButton.onClick.RemoveAllListeners();
+            cancelButton.onClick.RemoveListener(StopTemporarily);
         }
     }
 }

@@ -41,13 +41,13 @@ namespace Spans.Skeleton
 
         private void FadeGetReady()
         {
-            getStarted.text = "Hadi Başlayalım";
+            getStarted.text = "HADİ BAŞLAYALIM";
             getStarted.DOFade(1, 0.5f).SetEase(Ease.OutBack);
         }
         
         private void ConfigureUI()
         {
-            getReady.text = "Hazır Ol";
+            getReady.text = "HAZIR OL";
             getReady.DOFade(1, 2f).SetEase(Ease.Linear).OnComplete(() =>
             {
             });
@@ -55,7 +55,7 @@ namespace Spans.Skeleton
 
         private IEnumerator PlayCountdown()
         {
-            for (int i = 3; i > 0; i--)
+            for (int i = 2; i >= 0; i--)
             {
                 countdownField.text = $"{i}";
                 yield return new WaitForSeconds(1f);
