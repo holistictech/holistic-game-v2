@@ -30,7 +30,7 @@ namespace Spans.Skeleton
         private void ShowQuestion()
         {
             _answers = new List<string>();
-            if (_currentQuestionIndex >= _spanObjects.Count)
+            if (_currentQuestionIndex + _spanController.GetRoundIndex() >= _spanObjects.Count)
             {
                 _spanObjects = _spanController.GetSpanObjects();
                 _currentQuestionIndex = 0;
