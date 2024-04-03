@@ -14,7 +14,7 @@ namespace Spans
         public override List<object> GetSpanObjects()
         {
             IncrementRoundIndex();
-            return GetRandomSprites(currentRoundIndex);
+            return GetRandomSprites();
         }
 
         public override int GetRoundTime()
@@ -22,7 +22,7 @@ namespace Spans
             return currentRoundIndex * 3 + 2;
         }
         
-        private List<object> GetRandomSprites(int count)
+        private List<object> GetRandomSprites()
         {
             List<object> shuffledSprites = new List<object>(spanSprites);
             for (int i = 0; i < shuffledSprites.Count; i++)
@@ -32,7 +32,7 @@ namespace Spans
             }
             
             List<object> selected = new List<object>();
-            for (int i = 0; i < count; i++)
+            for (int i = 0; i < currentRoundIndex; i++)
             {
                 selected.Add(shuffledSprites[i]);
             }

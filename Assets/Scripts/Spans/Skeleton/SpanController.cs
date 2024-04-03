@@ -63,12 +63,22 @@ namespace Spans.Skeleton
         {
             currentSuccessStreak++;
             currentFailStreak = 0;
+            if (currentSuccessStreak == _neededStreakCount)
+            {
+                IncrementRoundIndex();
+                currentSuccessStreak = 0;
+            }
         }
 
         public void IncrementFailStreak()
         {
             currentFailStreak++;
             currentSuccessStreak = 0;
+            if (currentFailStreak == _neededStreakCount)
+            {
+                IncrementRoundIndex();
+                currentFailStreak = 0;
+            }
         }
     }
 }
