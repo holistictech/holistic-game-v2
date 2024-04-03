@@ -74,7 +74,7 @@ namespace Samples.Whisper
             var res = await openai.CreateAudioTranscription(req);
 
             progressBar.fillAmount = 0;
-            message.text = res.Text;
+            message.text = res.Text; // Transcript message. Will be used widely for answer checking. 
             recordButton.enabled = true;
         }
 
