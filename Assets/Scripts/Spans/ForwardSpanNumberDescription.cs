@@ -8,7 +8,6 @@ namespace Spans
 {
     public class ForwardSpanNumberDescription : SpanController
     {
-        private List<object> _currentRoundQuestions;
 
         public override List<object> GetSpanObjects()
         {
@@ -39,7 +38,7 @@ namespace Spans
                 previousNumber = newNumber;
             }
 
-            _currentRoundQuestions = numbers;
+            currentSpanQuestions = numbers;
             return numbers;
         }
     }
