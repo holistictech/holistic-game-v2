@@ -19,10 +19,12 @@ namespace Spans
         private List<object> GenerateNonConsecutiveNumbers(int generateCount)
         {
             List<object> numbers = new List<object>();
+            HashSet<int> generatedNumbers = new HashSet<int>();
             System.Random random = new System.Random();
             
             int previousNumber = random.Next(1, 10);
             numbers.Add(previousNumber);
+            generatedNumbers.Add(previousNumber);
             
             while (numbers.Count < generateCount)
             {
@@ -31,7 +33,7 @@ namespace Spans
                 {
                     newNumber = random.Next(1, 10);
                 }
-                while (Mathf.Abs(newNumber - previousNumber) == 1);
+                while (Mathf.Abs(newNumber - previousNumber) == 1 || generatedNumbers.Contains(newNumber));
 
                 numbers.Add(newNumber);
                 previousNumber = newNumber;
