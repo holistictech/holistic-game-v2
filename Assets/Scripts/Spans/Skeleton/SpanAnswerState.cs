@@ -1,4 +1,6 @@
 using System.Collections;
+using System.Collections.Generic;
+using System.Linq;
 using Samples.Whisper;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -10,6 +12,7 @@ namespace Spans.Skeleton
     {
         [SerializeField] private Whisper speechRecognition;
         [SerializeField] private Button micButton;
+        [SerializeField] private Button stopButton;
         [SerializeField] private Slider timerBar;
         private SpanController _spanController;
         private ISpanState _questionState;
@@ -37,6 +40,8 @@ namespace Spans.Skeleton
                 timerBar.value = i;
                 yield return new WaitForSeconds(1f);
             }
+            
+            StopRecording();
         }
 
         public void Exit()
@@ -47,6 +52,8 @@ namespace Spans.Skeleton
             {
                 StopCoroutine(_timer);
             }
+            
+            RemoveListeners();
         }
 
         public void SwitchNextState()
@@ -57,16 +64,27 @@ namespace Spans.Skeleton
         private void StartRecording()
         {
             //@todo: for future development reference, composition may be used for different type of answer detection.
+            speechRecognition.StartRecording();
+            stopButton.onClick.AddListener(StopRecording);
+        }
+
+        private async void StopRecording()
+        {
+            string detectedAnswer = await speechRecognition.EndRecording();
+            List<string> answerList = detectedAnswer.Split(" ").ToList();
+            _spanController.SetDetectedAnswers(answerList);
+            SwitchNextState();
         }
 
         private void AddListeners()
         {
             micButton.onClick.AddListener(StartRecording);
+            stopButton.onClick.AddListener(StopRecording);
         }
 
         private void RemoveListeners()
         {
-            micButton.onClick.RemoveListener(StartRecording);
+            micButton.onClick.RemoveAllListeners();
         }
     }
 }

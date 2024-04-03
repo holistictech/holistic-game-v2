@@ -14,6 +14,8 @@ namespace Spans.Skeleton
         protected int currentSuccessStreak;
         protected int currentFailStreak;
         protected List<Question> currentSpanQuestions;
+        private List<string> _currentCorrectAnswers;
+        private List<string> _currentDetectedAnswers;
         private const int _neededStreakCount = 4;
         protected virtual void Start()
         {
@@ -55,6 +57,16 @@ namespace Spans.Skeleton
             return true;
         }
 
+        public void SetCorrectAnswers(List<string> corrects)
+        {
+            _currentCorrectAnswers = corrects;
+        }
+
+        public void SetDetectedAnswers(List<string> given)
+        {
+            _currentDetectedAnswers = given;
+        }
+        
         public ISpanState GetQuestionState()
         {
             return _states[1];

@@ -1,4 +1,6 @@
-﻿using OpenAI;
+﻿using System;
+using System.Threading.Tasks;
+using OpenAI;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -41,7 +43,7 @@ namespace Samples.Whisper
             PlayerPrefs.SetInt("user-mic-device-index", index);
         }
         
-        private void StartRecording()
+        public void StartRecording()
         {
             isRecording = true;
             recordButton.enabled = false;
@@ -53,7 +55,7 @@ namespace Samples.Whisper
             #endif
         }
 
-        private async void EndRecording()
+        public async Task<String> EndRecording()
         {
             message.text = "Transcripting...";
             
@@ -76,6 +78,8 @@ namespace Samples.Whisper
             progressBar.fillAmount = 0;
             message.text = res.Text; // Transcript message. Will be used widely for answer checking. 
             recordButton.enabled = true;
+
+            return res.Text;
         }
 
         private void Update()

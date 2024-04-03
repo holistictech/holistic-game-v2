@@ -97,6 +97,7 @@ namespace Spans.Skeleton
 
         public void SwitchNextState()
         {
+            _spanController.SetCorrectAnswers(_answers);
             _spanController.SwitchState();
         }
     }
