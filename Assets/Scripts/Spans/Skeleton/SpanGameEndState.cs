@@ -1,9 +1,8 @@
-using Spans.Skeleton;
 using UnityEngine;
 
-namespace Spans
+namespace Spans.Skeleton
 {
-    public class SpanGameEndState : ISpanState
+    public class SpanGameEndState : MonoBehaviour, ISpanState
     {
         public void Enter(SpanController spanController)
         {

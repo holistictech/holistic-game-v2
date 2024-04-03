@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Scriptables;
 using Scriptables.QuestionSystem;
 using UnityEngine;
 
@@ -7,7 +8,8 @@ namespace Spans.Skeleton
 {
     public abstract class SpanController : MonoBehaviour
     {
-        [SerializeField] private List<ISpanState> states;
+        [SerializeField] private StateHolder states;
+        private List<ISpanState> _stateList = new List<ISpanState>();
         protected SpanStateContext stateContext;
         protected int currentRoundIndex = 1;
 
@@ -17,26 +19,35 @@ namespace Spans.Skeleton
         private List<string> _currentCorrectAnswers;
         private List<string> _currentDetectedAnswers;
         private const int _neededStreakCount = 4;
+
         protected virtual void Start()
         {
             stateContext = new SpanStateContext(this);
-            stateContext.Transition(states[0]);
+            _stateList = new List<ISpanState>()
+            {
+                states.InitialState,
+                states.QuestionState,
+                states.AnswerState,
+                states.AnswerState,
+                states.GameEndState
+            };
+            stateContext.Transition(states.InitialState);
         }
 
         public void SwitchState()
         {
-            var index = states.IndexOf(stateContext.CurrentState);
-            if (index < states.Count - 1)
+            var index = _stateList.IndexOf(stateContext.CurrentState);
+            if (index < _stateList.Count - 1)
             {
-                ISpanState nextState = states[index];
+                ISpanState nextState = _stateList[index];
                 stateContext.Transition(nextState);
             }
             else
             {
-                stateContext.Transition(states[1]);// to turn back to question state.
+                stateContext.Transition(states.QuestionState); // to turn back to question state.
             }
         }
-        
+
         public virtual List<Question> GetSpanObjects()
         {
             return new List<Question>();
@@ -54,6 +65,7 @@ namespace Spans.Skeleton
                     return false;
                 }
             }
+
             IncrementSuccessStreak();
             return true;
         }
