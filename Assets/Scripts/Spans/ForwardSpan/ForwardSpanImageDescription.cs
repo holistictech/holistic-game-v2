@@ -10,7 +10,7 @@ namespace Spans.ForwardSpan
     {
         [SerializeField] private ImageQuestion[] spanSprites;
         
-        public override List<object> GetSpanObjects()
+        public override List<Question> GetSpanObjects()
         {
             IncrementRoundIndex();
             return GetRandomSprites();
@@ -21,16 +21,16 @@ namespace Spans.ForwardSpan
             return currentRoundIndex * 3 + 2;
         }
         
-        private List<object> GetRandomSprites()
+        private List<Question> GetRandomSprites()
         {
-            List<object> shuffledSprites = new List<object>(spanSprites);
+            List<Question> shuffledSprites = new List<Question>(spanSprites);
             for (int i = 0; i < shuffledSprites.Count; i++)
             {
                 int randomIndex = Random.Range(i, shuffledSprites.Count);
                 (shuffledSprites[i], shuffledSprites[randomIndex]) = (shuffledSprites[randomIndex], shuffledSprites[i]);
             }
             
-            List<object> selected = new List<object>();
+            List<Question> selected = new List<Question>();
             for (int i = 0; i < currentRoundIndex; i++)
             {
                 selected.Add(shuffledSprites[i]);

@@ -6,5 +6,9 @@ namespace Scriptables.QuestionSystem
     public class NumberQuestion : Question
     {
         public int Value;
+        public override object GetQuestionItem()
+        {
+            return Value;
+        }
     }
 }

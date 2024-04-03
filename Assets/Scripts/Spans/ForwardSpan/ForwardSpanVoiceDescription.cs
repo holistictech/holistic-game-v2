@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Scriptables.QuestionSystem;
 using Spans.Skeleton;
 using UnityEngine;
 
@@ -6,9 +7,9 @@ namespace Spans
 {
     public class ForwardSpanVoiceDescription : SpanController
     {
-        [SerializeField] private AudioClip[] clips;
+        [SerializeField] private ClipQuestion[] clips;
 
-        public override List<object> GetSpanObjects()
+        public override List<Question> GetSpanObjects()
         {
             return GetRandomClips();
         }
@@ -18,16 +19,16 @@ namespace Spans
             return currentRoundIndex * 3 + 2;
         }
 
-        private List<object> GetRandomClips()
+        private List<Question> GetRandomClips()
         {
-            List<object> shuffledSprites = new List<object>(clips);
+            List<Question> shuffledSprites = new List<Question>(clips);
             for (int i = 0; i < shuffledSprites.Count; i++)
             {
                 int randomIndex = Random.Range(i, shuffledSprites.Count);
                 (shuffledSprites[i], shuffledSprites[randomIndex]) = (shuffledSprites[randomIndex], shuffledSprites[i]);
             }
             
-            List<object> selected = new List<object>();
+            List<Question> selected = new List<Question>();
             for (int i = 0; i < currentRoundIndex; i++)
             {
                 selected.Add(shuffledSprites[i]);

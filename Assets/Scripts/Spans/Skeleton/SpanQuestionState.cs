@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Scriptables.QuestionSystem;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -13,9 +15,10 @@ namespace Spans.Skeleton
         [SerializeField] private Image questionBox;
         [SerializeField] private AudioSource audioSource; 
         private SpanController _spanController;
-        private List<object> _spanObjects;
+        private List<Question> _spanObjects;
 
         private int _currentQuestionIndex;
+        private Coroutine _displayingQuestions;
         public void Enter(SpanController spanController)
         {
             if (_spanController == null) _spanController = spanController;
@@ -34,40 +37,54 @@ namespace Spans.Skeleton
             var type = _spanObjects[0].GetType();
             if (type == typeof(int))
             {
-                ShowNumber();
+                _displayingQuestions = StartCoroutine(ShowNumbers());
             } else if (type == typeof(Sprite))
             {
-                ShowImage();
-                
+                _displayingQuestions = StartCoroutine(ShowImages());
             } else if (type == typeof(AudioClip))
             {
-                PlayClip();
+                _displayingQuestions = StartCoroutine(PlayClips());
             }
             
-            _currentQuestionIndex++;
             SwitchNextState();
         }
 
-        private void ShowNumber()
+        private IEnumerator ShowNumbers()
         {
-            //@todo: update these function such that 
-            //they show questions appropriate with currentRoundIndex
-            questionBox.GetComponentInChildren<TextMeshProUGUI>().text = $"{_spanObjects[_currentQuestionIndex]}";
+            for (int i = 0; i < _spanController.GetRoundIndex(); i++)
+            {
+                questionBox.GetComponentInChildren<TextMeshProUGUI>().text = $"{_spanObjects[_currentQuestionIndex].GetQuestionItem()}";
+                _currentQuestionIndex++;
+                yield return new WaitForSeconds(1f);
+            }
         }
 
-        private void ShowImage()
+        private IEnumerator ShowImages()
         {
-            questionBox.sprite = (Sprite)_spanObjects[_currentQuestionIndex];
+            for (int i = 0; i < _spanController.GetRoundIndex(); i++)
+            {
+                questionBox.sprite = (Sprite)_spanObjects[_currentQuestionIndex].GetQuestionItem();
+                _currentQuestionIndex++;
+                yield return new WaitForSeconds(1f);
+            }
         }
 
-        private void PlayClip()
+        private IEnumerator PlayClips()
         {
-            audioSource.Play((ulong)_spanObjects[_currentQuestionIndex]);
+            for (int i = 0; i < _spanController.GetRoundIndex(); i++)
+            {
+                audioSource.Play((ulong)_spanObjects[_currentQuestionIndex].GetQuestionItem());
+                _currentQuestionIndex++;
+                yield return new WaitForSeconds(1f);
+            }
         }
 
         public void Exit()
         {
-            throw new System.NotImplementedException();
+            if (_displayingQuestions != null)
+            {
+                StopCoroutine(_displayingQuestions);
+            }
         }
 
         public void SwitchNextState()

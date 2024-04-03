@@ -9,7 +9,7 @@ namespace Spans.ForwardSpan
     public class ForwardSpanNumberDescription : SpanController
     {
         [SerializeField] private NumberQuestion[] numbers;
-        public override List<object> GetSpanObjects()
+        public override List<Question> GetSpanObjects()
         {
             IncrementRoundIndex();
             return PickNumbers(currentRoundIndex);
@@ -20,9 +20,9 @@ namespace Spans.ForwardSpan
             return currentRoundIndex * 3;
         }
         
-        private List<object> PickNumbers(int count)
+        private List<Question> PickNumbers(int count)
         {
-            List<object> pickedNumbers = new List<object>();
+            List<Question> pickedNumbers = new List<Question>();
             HashSet<int> pickedIndices = new HashSet<int>();
             
             ShuffleArray(numbers);
@@ -31,13 +31,13 @@ namespace Spans.ForwardSpan
             {
                 if (!pickedIndices.Contains(i))
                 {
-                    pickedNumbers.Add(numbers[i].Value);
+                    pickedNumbers.Add(numbers[i]);
                     pickedIndices.Add(i);
 
                     int nextIndex = FindNextNonConsecutiveIndex(i, pickedIndices);
                     if (nextIndex != -1)
                     {
-                        pickedNumbers.Add(numbers[nextIndex].Value);
+                        pickedNumbers.Add(numbers[nextIndex]);
                         pickedIndices.Add(nextIndex);
                     }
                 }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using Scriptables.QuestionSystem;
 using UnityEngine;
 
 namespace Spans.Skeleton
@@ -12,7 +13,7 @@ namespace Spans.Skeleton
 
         protected int currentSuccessStreak;
         protected int currentFailStreak;
-        protected List<object> currentSpanQuestions;
+        protected List<Question> currentSpanQuestions;
         private const int _neededStreakCount = 4;
         protected virtual void Start()
         {
@@ -34,9 +35,9 @@ namespace Spans.Skeleton
             }
         }
         
-        public virtual List<object> GetSpanObjects()
+        public virtual List<Question> GetSpanObjects()
         {
-            return new List<object>();
+            return new List<Question>();
         }
 
         public ISpanState GetQuestionState()
@@ -47,6 +48,11 @@ namespace Spans.Skeleton
         public virtual int GetRoundTime()
         {
             return 10;
+        }
+
+        public int GetRoundIndex()
+        {
+            return currentRoundIndex;
         }
 
         public void IncrementRoundIndex()

@@ -10,5 +10,7 @@ namespace Scriptables.QuestionSystem
         {
             return CorrectAnswer;
         }
+
+        public abstract object GetQuestionItem();
     }
 }
