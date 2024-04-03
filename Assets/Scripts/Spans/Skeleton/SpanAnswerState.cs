@@ -56,7 +56,7 @@ namespace Spans.Skeleton
 
         private void StartRecording()
         {
-            
+            //@todo: for future development reference, composition may be used for different type of answer detection.
         }
 
         private void AddListeners()

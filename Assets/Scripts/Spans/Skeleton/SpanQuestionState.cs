@@ -27,8 +27,8 @@ namespace Spans.Skeleton
         {
             if (_currentQuestionIndex >= _spanObjects.Count)
             {
-                Debug.LogError("Something is not right in question state");
-                throw new IndexOutOfRangeException();
+                _spanObjects = _spanController.GetSpanObjects();
+                _currentQuestionIndex = 0;
             }
             
             var type = _spanObjects[0].GetType();
@@ -43,12 +43,15 @@ namespace Spans.Skeleton
             {
                 PlayClip();
             }
-
+            
+            _currentQuestionIndex++;
             SwitchNextState();
         }
 
         private void ShowNumber()
         {
+            //@todo: update these function such that 
+            //they show questions appropriate with currentRoundIndex
             questionBox.GetComponentInChildren<TextMeshProUGUI>().text = $"{_spanObjects[_currentQuestionIndex]}";
         }
 
