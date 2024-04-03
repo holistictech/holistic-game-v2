@@ -36,7 +36,7 @@ namespace Spans.Skeleton
                 _currentQuestionIndex = 0;
             }
             
-            var type = _spanObjects[0].GetType();
+            var type = _spanObjects[_currentQuestionIndex].GetType();
             if (type == typeof(int))
             {
                 _displayingQuestions = StartCoroutine(ShowNumbers());

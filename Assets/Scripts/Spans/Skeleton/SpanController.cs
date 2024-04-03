@@ -42,18 +42,19 @@ namespace Spans.Skeleton
             return new List<Question>();
         }
 
-        public bool IsAnswerCorrect(List<string> correctAnswers, List<string> givenAnswers)
+        public bool IsAnswerCorrect()
         {
             //@todo: change this with appropriate to game rules. 
             //maybe a comparator to check correctness percentage.
-            for (int i = 0; i < correctAnswers.Count; i++)
+            for (int i = 0; i < _currentCorrectAnswers.Count; i++)
             {
-                if (!correctAnswers[i].Equals(givenAnswers[i], StringComparison.OrdinalIgnoreCase))
+                if (!_currentCorrectAnswers[i].Equals(_currentDetectedAnswers[i], StringComparison.OrdinalIgnoreCase))
                 {
+                    IncrementFailStreak();
                     return false;
                 }
             }
-
+            IncrementSuccessStreak();
             return true;
         }
 
@@ -65,11 +66,6 @@ namespace Spans.Skeleton
         public void SetDetectedAnswers(List<string> given)
         {
             _currentDetectedAnswers = given;
-        }
-        
-        public ISpanState GetQuestionState()
-        {
-            return _states[1];
         }
 
         public virtual int GetRoundTime()

@@ -15,7 +15,6 @@ namespace Spans.Skeleton
         [SerializeField] private Button stopButton;
         [SerializeField] private Slider timerBar;
         private SpanController _spanController;
-        private ISpanState _questionState;
 
         private int _maxTime;
         private Coroutine _timer;
@@ -24,7 +23,6 @@ namespace Spans.Skeleton
             if (_spanController == null)
             {
                 _spanController = spanController;
-                _questionState = _spanController.GetQuestionState();
                 _maxTime = _spanController.GetRoundTime();
             }
 
