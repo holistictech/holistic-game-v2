@@ -12,6 +12,7 @@ namespace Spans.Skeleton
 
         protected int currentSuccessStreak;
         protected int currentFailStreak;
+        protected List<object> currentSpanQuestions;
         private const int _neededStreakCount = 4;
         protected virtual void Start()
         {
