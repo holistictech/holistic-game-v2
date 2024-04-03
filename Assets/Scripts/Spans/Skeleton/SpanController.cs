@@ -40,18 +40,19 @@ namespace Spans.Skeleton
             return new List<Question>();
         }
 
-        public bool IsAnswerContainsCorrect(string correct, string[] answers)
+        public bool IsAnswerCorrect(List<string> correctAnswers, List<string> givenAnswers)
         {
             //@todo: change this with appropriate to game rules. 
             //maybe a comparator to check correctness percentage.
-            foreach (var detectedWord in answers)
+            for (int i = 0; i < correctAnswers.Count; i++)
             {
-                if (detectedWord.Equals(correct, StringComparison.OrdinalIgnoreCase))
+                if (!correctAnswers[i].Equals(givenAnswers[i], StringComparison.OrdinalIgnoreCase))
                 {
-                    return true;
+                    return false;
                 }
             }
-            return false;
+
+            return true;
         }
 
         public ISpanState GetQuestionState()

@@ -18,6 +18,7 @@ namespace Spans.Skeleton
         private List<Question> _spanObjects;
 
         private int _currentQuestionIndex;
+        private List<string> _answers = new List<string>();
         private Coroutine _displayingQuestions;
         public void Enter(SpanController spanController)
         {
@@ -28,6 +29,7 @@ namespace Spans.Skeleton
 
         private void ShowQuestion()
         {
+            _answers = new List<string>();
             if (_currentQuestionIndex >= _spanObjects.Count)
             {
                 _spanObjects = _spanController.GetSpanObjects();
@@ -53,7 +55,9 @@ namespace Spans.Skeleton
         {
             for (int i = 0; i < _spanController.GetRoundIndex(); i++)
             {
-                questionBox.GetComponentInChildren<TextMeshProUGUI>().text = $"{_spanObjects[_currentQuestionIndex].GetQuestionItem()}";
+                var question = _spanObjects[_currentQuestionIndex];
+                questionBox.GetComponentInChildren<TextMeshProUGUI>().text = $"{question.GetQuestionItem()}";
+                _answers.Add(question.CorrectAnswer);
                 _currentQuestionIndex++;
                 yield return new WaitForSeconds(1f);
             }
@@ -63,7 +67,9 @@ namespace Spans.Skeleton
         {
             for (int i = 0; i < _spanController.GetRoundIndex(); i++)
             {
-                questionBox.sprite = (Sprite)_spanObjects[_currentQuestionIndex].GetQuestionItem();
+                var question = _spanObjects[_currentQuestionIndex];
+                questionBox.sprite = (Sprite)question.GetQuestionItem();
+                _answers.Add(question.CorrectAnswer);
                 _currentQuestionIndex++;
                 yield return new WaitForSeconds(1f);
             }
@@ -73,7 +79,9 @@ namespace Spans.Skeleton
         {
             for (int i = 0; i < _spanController.GetRoundIndex(); i++)
             {
-                audioSource.Play((ulong)_spanObjects[_currentQuestionIndex].GetQuestionItem());
+                var question = _spanObjects[_currentQuestionIndex];
+                audioSource.Play((ulong)question.GetQuestionItem());
+                _answers.Add(question.CorrectAnswer);
                 _currentQuestionIndex++;
                 yield return new WaitForSeconds(1f);
             }
