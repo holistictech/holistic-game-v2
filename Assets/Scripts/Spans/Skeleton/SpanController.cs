@@ -7,9 +7,9 @@ namespace Spans.Skeleton
 {
     public abstract class SpanController : MonoBehaviour
     {
-        [SerializeField] private List<ISpanState> _states;
+        [SerializeField] private List<ISpanState> states;
         protected SpanStateContext stateContext;
-        protected int currentRoundIndex;
+        protected int currentRoundIndex = 1;
 
         protected int currentSuccessStreak;
         protected int currentFailStreak;
@@ -20,20 +20,20 @@ namespace Spans.Skeleton
         protected virtual void Start()
         {
             stateContext = new SpanStateContext(this);
-            stateContext.Transition(_states[0]);
+            stateContext.Transition(states[0]);
         }
 
         public void SwitchState()
         {
-            var index = _states.IndexOf(stateContext.CurrentState);
-            if (index < _states.Count - 1)
+            var index = states.IndexOf(stateContext.CurrentState);
+            if (index < states.Count - 1)
             {
-                ISpanState nextState = _states[index];
+                ISpanState nextState = states[index];
                 stateContext.Transition(nextState);
             }
             else
             {
-                stateContext.Transition(_states[1]);
+                stateContext.Transition(states[1]);// to turn back to question state.
             }
         }
         
@@ -105,7 +105,7 @@ namespace Spans.Skeleton
             currentSuccessStreak = 0;
             if (currentFailStreak == _neededStreakCount)
             {
-                IncrementRoundIndex();
+                DecrementRoundIndex();
                 currentFailStreak = 0;
             }
         }

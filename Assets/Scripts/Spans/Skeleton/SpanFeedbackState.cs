@@ -3,7 +3,7 @@ using UnityEngine.UI;
 
 namespace Spans.Skeleton
 {
-    public class SpanFeedbackState : ISpanState
+    public class SpanFeedbackState : MonoBehaviour, ISpanState
     {
         [SerializeField] private ParticleSystem successEffect;
         [SerializeField] private ParticleSystem failEffect;
@@ -23,13 +23,16 @@ namespace Spans.Skeleton
             if (_spanController.IsAnswerCorrect())
             {
                 successEffect.Play();
-                //@todo: progress bar animation
+                progressBar.maxValue = _spanController.GetRoundIndex();
+                progressBar.value += progressBar.maxValue / 4;
             }
             else
             {
                 failEffect.Play();
-                //@todo: progress bar animation
+                progressBar.value = 0;
             }
+            
+            _spanController.SwitchState();
         }
 
         public void Exit()
