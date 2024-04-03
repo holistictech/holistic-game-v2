@@ -15,6 +15,11 @@ namespace Spans
             return GenerateNonConsecutiveNumbers(currentRoundIndex);
         }
         
+        public override int GetRoundTime()
+        {
+            return currentRoundIndex * 3;
+        }
+        
         private List<object> GenerateNonConsecutiveNumbers(int generateCount)
         {
             List<object> numbers = new List<object>();

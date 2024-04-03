@@ -12,6 +12,11 @@ namespace Spans
         {
             return GetRandomClips();
         }
+        
+        public override int GetRoundTime()
+        {
+            return currentRoundIndex * 3 + 2;
+        }
 
         private List<object> GetRandomClips()
         {

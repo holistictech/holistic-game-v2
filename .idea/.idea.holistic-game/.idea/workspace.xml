@@ -4,9 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d01f5fc-4a81-4ccb-94d7-a0f07bc2bc79" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/ForwardSpanNumberDescription.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/ForwardSpanNumberDescription.cs" afterDir="false" />
-    </list>
+    <list default="true" id="3d01f5fc-4a81-4ccb-94d7-a0f07bc2bc79" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -21,6 +19,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scriptables/TaskConfig.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Factory/InteractableFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interactables/ConcreteBuilding.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/ForwardSpanBelongingsDescription.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/ForwardSpanImageDescription.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/ForwardSpanNumberDescription.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/ForwardSpanVoiceDescription.cs" root0="FORCE_HIGHLIGHTING" />
@@ -119,7 +118,7 @@
       <workItem from="1711707646274" duration="9424000" />
       <workItem from="1711901622621" duration="1755000" />
       <workItem from="1711963083070" duration="7807000" />
-      <workItem from="1712092965641" duration="8204000" />
+      <workItem from="1712092965641" duration="8517000" />
     </task>
     <servers />
   </component>
