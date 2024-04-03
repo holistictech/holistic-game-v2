@@ -1,15 +1,14 @@
-using System;
 using System.Collections.Generic;
+using Scriptables.QuestionSystem;
 using Spans.Skeleton;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
-namespace Spans
+namespace Spans.ForwardSpan
 {
     public class ForwardSpanImageDescription : SpanController
     {
-        [SerializeField] private Sprite[] spanSprites;
+        [SerializeField] private ImageQuestion[] spanSprites;
         
         public override List<object> GetSpanObjects()
         {

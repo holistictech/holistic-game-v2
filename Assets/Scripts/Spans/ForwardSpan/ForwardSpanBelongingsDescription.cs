@@ -1,12 +1,13 @@
 using System.Collections.Generic;
+using Scriptables.QuestionSystem;
 using Spans.Skeleton;
 using UnityEngine;
 
-namespace Spans
+namespace Spans.ForwardSpan
 {
     public class ForwardSpanBelongingsDescription : SpanController
     {
-        [SerializeField] private AudioClip[] clips;
+        [SerializeField] private ClipQuestion[] clips;
         public override List<object> GetSpanObjects()
         {
             return GetRandomClips();
@@ -19,17 +20,17 @@ namespace Spans
 
         private List<object> GetRandomClips()
         {
-            List<object> shuffledSprites = new List<object>(clips);
-            for (int i = 0; i < shuffledSprites.Count; i++)
+            List<object> shuffledClips = new List<object>(clips);
+            for (int i = 0; i < shuffledClips.Count; i++)
             {
-                int randomIndex = Random.Range(i, shuffledSprites.Count);
-                (shuffledSprites[i], shuffledSprites[randomIndex]) = (shuffledSprites[randomIndex], shuffledSprites[i]);
+                int randomIndex = Random.Range(i, shuffledClips.Count);
+                (shuffledClips[i], shuffledClips[randomIndex]) = (shuffledClips[randomIndex], shuffledClips[i]);
             }
             
             List<object> selected = new List<object>();
             for (int i = 0; i < currentRoundIndex; i++)
             {
-                selected.Add(shuffledSprites[i]);
+                selected.Add(shuffledClips[i]);
             }
 
             currentSpanQuestions = selected;
