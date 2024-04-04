@@ -12,7 +12,7 @@ namespace Spans.ForwardSpan
         public override List<Question> GetSpanObjects()
         {
             IncrementRoundIndex();
-            return PickNumbers(currentRoundIndex);
+            return PickNumbers(fetchedQuestionCount);
         }
         
         public override int GetRoundTime()

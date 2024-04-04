@@ -18,5 +18,15 @@ namespace Spans.Skeleton
         {
             throw new System.NotImplementedException();
         }
+
+        public void EnableUIElements()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void DisableUIElements()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

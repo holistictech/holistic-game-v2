@@ -11,7 +11,8 @@ namespace Spans.Skeleton
         [SerializeField] private StateHolder states;
         private List<ISpanState> _stateList = new List<ISpanState>();
         protected SpanStateContext stateContext;
-        protected int currentRoundIndex = 1;
+        protected int currentRoundIndex = 0;
+        protected int fetchedQuestionCount = 9;
 
         protected int currentSuccessStreak;
         protected int currentFailStreak;
@@ -23,15 +24,16 @@ namespace Spans.Skeleton
         protected virtual void Start()
         {
             stateContext = new SpanStateContext(this);
-            _stateList = new List<ISpanState>()
+            /*_stateList = new List<ISpanState>()
             {
                 states.InitialState,
                 states.QuestionState,
                 states.AnswerState,
                 states.AnswerState,
                 states.GameEndState
-            };
-            stateContext.Transition(states.InitialState);
+            };*/
+            InstantiateGameStates();
+            stateContext.Transition(_stateList[0]);
         }
 
         public void SwitchState()
@@ -39,12 +41,12 @@ namespace Spans.Skeleton
             var index = _stateList.IndexOf(stateContext.CurrentState);
             if (index < _stateList.Count - 1)
             {
-                ISpanState nextState = _stateList[index];
+                ISpanState nextState = _stateList[index+1];
                 stateContext.Transition(nextState);
             }
             else
             {
-                stateContext.Transition(states.QuestionState); // to turn back to question state.
+                stateContext.Transition(_stateList[1]); // to turn back to question state.
             }
         }
 
@@ -119,6 +121,15 @@ namespace Spans.Skeleton
             {
                 DecrementRoundIndex();
                 currentFailStreak = 0;
+            }
+        }
+
+        private void InstantiateGameStates()
+        {
+            foreach (var state in states.StatePrefabs)
+            {
+                var temp = Instantiate(state, transform);
+                _stateList.Add(temp.GetComponent<ISpanState>());
             }
         }
     }

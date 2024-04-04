@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Threading.Tasks;
 using OpenAI;
+using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -11,7 +12,7 @@ namespace Samples.Whisper
         [SerializeField] private Button recordButton;
         [SerializeField] private Image progressBar;
         [SerializeField] private Text message;
-        [SerializeField] private Dropdown dropdown;
+        [SerializeField] private TMP_Dropdown dropdown;
         
         private readonly string fileName = "output.wav";
         private readonly int duration = 5;
@@ -23,7 +24,11 @@ namespace Samples.Whisper
 
         private void Start()
         {
-            #if UNITY_WEBGL && !UNITY_EDITOR
+            foreach (var device in Microphone.devices)
+            {
+                dropdown.options.Add(new TMP_Dropdown.OptionData(device));
+            }
+            /*#if UNITY_WEBGL && !UNITY_EDITOR
             dropdown.options.Add(new Dropdown.OptionData("Microphone not supported on WebGL"));
             #else
             foreach (var device in Microphone.devices)
@@ -35,7 +40,7 @@ namespace Samples.Whisper
             
             var index = PlayerPrefs.GetInt("user-mic-device-index");
             dropdown.SetValueWithoutNotify(index);
-            #endif
+            #endif*/
         }
 
         private void ChangeMicrophone(int index)
@@ -46,7 +51,7 @@ namespace Samples.Whisper
         public void StartRecording()
         {
             isRecording = true;
-            recordButton.enabled = false;
+            //recordButton.enabled = false;
 
             var index = PlayerPrefs.GetInt("user-mic-device-index");
             
@@ -57,7 +62,8 @@ namespace Samples.Whisper
 
         public async Task<String> EndRecording()
         {
-            message.text = "Transcripting...";
+            //message.text = "Transcripting...";
+            if (!isRecording) return "";
             
             #if !UNITY_WEBGL
             Microphone.End(null);
@@ -75,16 +81,16 @@ namespace Samples.Whisper
             openai = new OpenAIApi("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");
             var res = await openai.CreateAudioTranscription(req);
 
-            progressBar.fillAmount = 0;
-            message.text = res.Text; // Transcript message. Will be used widely for answer checking. 
-            recordButton.enabled = true;
+            //progressBar.fillAmount = 0;
+            //message.text = res.Text; // Transcript message. Will be used widely for answer checking. 
+            //recordButton.enabled = true;
 
             return res.Text;
         }
 
         private void Update()
         {
-            if (isRecording)
+            /*if (isRecording)
             {
                 time += Time.deltaTime;
                 progressBar.fillAmount = time / duration;
@@ -95,7 +101,7 @@ namespace Samples.Whisper
                     isRecording = false;
                     EndRecording();
                 }
-            }
+            }*/
         }
     }
 }

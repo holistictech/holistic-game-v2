@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4b70438f4df65f488a02ff4a534d3d6, type: 3}
   m_Name: 9
   m_EditorClassIdentifier: 
-  CorrectAnswer: 
-  Value: 0
+  CorrectAnswer: dokuz
+  Value: 9

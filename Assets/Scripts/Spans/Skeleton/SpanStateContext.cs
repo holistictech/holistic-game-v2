@@ -21,7 +21,8 @@ namespace Spans
 
         public void Transition(ISpanState state)
         {
-            CurrentState.Exit();
+            if(CurrentState != null)
+                CurrentState.Exit();
             CurrentState = state;
             CurrentState.Enter(_spanController);
         }

@@ -28,6 +28,7 @@ namespace Spans.Skeleton
             }
 
             AddListeners();
+            EnableUIElements();
             _timer = StartCoroutine(PlayTimer());
         }
 
@@ -53,6 +54,7 @@ namespace Spans.Skeleton
             }
             
             RemoveListeners();
+            DisableUIElements();
         }
 
         public void SwitchNextState()
@@ -78,6 +80,22 @@ namespace Spans.Skeleton
         private void StopTemporarily()
         {
             speechRecognition.EndRecording();
+        }
+
+        public void EnableUIElements()
+        {
+            micButton.gameObject.SetActive(true);
+            cancelButton.gameObject.SetActive(true);
+            stopButton.gameObject.SetActive(true);
+            timerBar.gameObject.SetActive(true);
+        }
+
+        public void DisableUIElements()
+        {
+            micButton.gameObject.SetActive(false);
+            cancelButton.gameObject.SetActive(false);
+            stopButton.gameObject.SetActive(false);
+            timerBar.gameObject.SetActive(false);
         }
 
         private void AddListeners()

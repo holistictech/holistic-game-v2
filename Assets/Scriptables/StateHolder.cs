@@ -7,6 +7,7 @@ namespace Scriptables
     [CreateAssetMenu(fileName = "StateHolder", menuName = "SpanStates/Holder")]
     public class StateHolder : ScriptableObject
     {
+        public List<GameObject> StatePrefabs;
         public SpanInitialState InitialState;
         public SpanQuestionState QuestionState;
         public SpanAnswerState AnswerState;

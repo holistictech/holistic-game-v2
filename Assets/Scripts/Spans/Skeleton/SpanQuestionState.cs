@@ -24,6 +24,7 @@ namespace Spans.Skeleton
         {
             if (_spanController == null) _spanController = spanController;
             _spanObjects = _spanController.GetSpanObjects();
+            EnableUIElements();
             ShowQuestion();
         }
 
@@ -36,19 +37,17 @@ namespace Spans.Skeleton
                 _currentQuestionIndex = 0;
             }
             
-            var type = _spanObjects[_currentQuestionIndex].GetType();
-            if (type == typeof(int))
+            var question = _spanObjects[_currentQuestionIndex];
+            if (question is NumberQuestion)
             {
                 _displayingQuestions = StartCoroutine(ShowNumbers());
-            } else if (type == typeof(Sprite))
+            } else if (question is ImageQuestion)
             {
                 _displayingQuestions = StartCoroutine(ShowImages());
-            } else if (type == typeof(AudioClip))
+            } else if (question is ClipQuestion)
             {
                 _displayingQuestions = StartCoroutine(PlayClips());
             }
-            
-            SwitchNextState();
         }
 
         private IEnumerator ShowNumbers()
@@ -62,6 +61,8 @@ namespace Spans.Skeleton
                 _currentQuestionIndex++;
                 yield return new WaitForSeconds(1f);
             }
+            
+            SwitchNextState();
         }
 
         private IEnumerator ShowImages()
@@ -74,6 +75,8 @@ namespace Spans.Skeleton
                 _currentQuestionIndex++;
                 yield return new WaitForSeconds(1f);
             }
+            
+            SwitchNextState();
         }
 
         private IEnumerator PlayClips()
@@ -86,6 +89,8 @@ namespace Spans.Skeleton
                 _currentQuestionIndex++;
                 yield return new WaitForSeconds(1f);
             }
+            
+            SwitchNextState();
         }
 
         public void Exit()
@@ -95,14 +100,24 @@ namespace Spans.Skeleton
                 StopCoroutine(_displayingQuestions);
             }
             
-            questionBox.enabled = true;
-            questionBox.GetComponentInChildren<TextMeshProUGUI>().text = "";
+            DisableUIElements();
         }
 
         public void SwitchNextState()
         {
             _spanController.SetCorrectAnswers(_answers);
             _spanController.SwitchState();
+        }
+
+        public void EnableUIElements()
+        {
+            questionBox.gameObject.SetActive(true);
+        }
+
+        public void DisableUIElements()
+        {
+            questionBox.GetComponentInChildren<TextMeshProUGUI>().text = "";
+            questionBox.gameObject.SetActive(false);
         }
     }
 }

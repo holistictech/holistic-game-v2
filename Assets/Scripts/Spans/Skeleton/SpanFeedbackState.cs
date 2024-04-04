@@ -44,5 +44,15 @@ namespace Spans.Skeleton
         {
             _spanController.SwitchState();
         }
+
+        public void EnableUIElements()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void DisableUIElements()
+        {
+            throw new System.NotImplementedException();
+        }
     }
 }

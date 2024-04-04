@@ -16,11 +16,12 @@ namespace Spans.Skeleton
         private Coroutine _countdown;
         public void Enter(SpanController spanController)
         {
+            EnableUIElements();
             if (_spanController == null)
             {
                 _spanController = spanController;
                 FadeGetReady();
-            } 
+            }
             ConfigureUI();
             _countdown = StartCoroutine(PlayCountdown());
         }
@@ -32,11 +33,26 @@ namespace Spans.Skeleton
                 StopCoroutine(_countdown);
             }
             ResetFields();
+            DisableUIElements();
         }
 
         public void SwitchNextState()
         {
             _spanController.SwitchState();
+        }
+
+        public void EnableUIElements()
+        {
+            getReady.gameObject.SetActive(true);
+            getStarted.gameObject.SetActive(true);
+            countdownField.gameObject.SetActive(true);
+        }
+
+        public void DisableUIElements()
+        {
+            getReady.gameObject.SetActive(false);
+            getStarted.gameObject.SetActive(false);
+            countdownField.gameObject.SetActive(false);
         }
 
         private void FadeGetReady()
@@ -55,7 +71,6 @@ namespace Spans.Skeleton
 
         private IEnumerator PlayCountdown()
         {
-            countdownField.gameObject.SetActive(true);
             for (int i = 2; i >= 0; i--)
             {
                 countdownField.text = $"{i}";
@@ -66,8 +81,6 @@ namespace Spans.Skeleton
 
         private void ResetFields()
         {
-            getStarted.gameObject.SetActive(false);
-            countdownField.gameObject.SetActive(false);
             countdownField.text = "";
             Color fieldColor = getReady.color;
             getReady.color = new Color(fieldColor.r, fieldColor.g, fieldColor.b, 0);
