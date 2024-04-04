@@ -55,6 +55,7 @@ namespace Spans.Skeleton
 
         private IEnumerator PlayCountdown()
         {
+            countdownField.gameObject.SetActive(true);
             for (int i = 2; i >= 0; i--)
             {
                 countdownField.text = $"{i}";
@@ -67,6 +68,9 @@ namespace Spans.Skeleton
         {
             getStarted.gameObject.SetActive(false);
             countdownField.gameObject.SetActive(false);
+            countdownField.text = "";
+            Color fieldColor = getReady.color;
+            getReady.color = new Color(fieldColor.r, fieldColor.g, fieldColor.b, 0);
         }
     }
 }
