@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -5,16 +6,33 @@ namespace UI
 {
     public class MainUIHelper : MonoBehaviour
     {
-        // Start is called before the first frame update
-        void Start()
+        [SerializeField] private Button playButton;
+
+        [SerializeField] private GameObject forwardSpan;
+
+        private void OnEnable()
         {
-        
+            AddListeners();
         }
 
-        // Update is called once per frame
-        void Update()
+        private void OnDisable()
         {
-        
+            RemoveListeners();
+        }
+
+        private void TESTPlaySpan()
+        {
+            forwardSpan.gameObject.SetActive(true);
+        }
+
+        private void AddListeners()
+        {
+            playButton.onClick.AddListener(TESTPlaySpan);
+        }
+
+        private void RemoveListeners()
+        {
+            playButton.onClick.RemoveListener(TESTPlaySpan);
         }
     }
 }

@@ -18,7 +18,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &4142577917760699175
 RectTransform:
   m_ObjectHideFlags: 0
@@ -94,7 +94,17 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   states: {fileID: 11400000, guid: 3fb6e373d1e1d8845a6d2869f6b5d250, type: 2}
-  numbers: []
+  numbers:
+  - {fileID: 11400000, guid: 4f552d1e98b4fd3428ad4235b8bc016e, type: 2}
+  - {fileID: 11400000, guid: 23458be218ed1dd4e81ac88f88db08d1, type: 2}
+  - {fileID: 11400000, guid: 21ce3fe8aaf5564479e8b9f20c1d9c8e, type: 2}
+  - {fileID: 11400000, guid: 01afc39b05706654bb2f2976870209bb, type: 2}
+  - {fileID: 11400000, guid: 06b411921680e724fbb7abbbecd66644, type: 2}
+  - {fileID: 11400000, guid: 5a9d12d931ad7ac489339a4cf19760b4, type: 2}
+  - {fileID: 11400000, guid: 989b7005ceca4b8489bfe52567fbae56, type: 2}
+  - {fileID: 11400000, guid: 4e0cf6cdb572b504f99bf59abf2c3aa9, type: 2}
+  - {fileID: 11400000, guid: 8342a1a9e4602aa419c30f1ad6b08b77, type: 2}
+  - {fileID: 11400000, guid: e0fc73d5139bb6140a91a4decd78312b, type: 2}
 --- !u!1001 &1035016488162016013
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -317,7 +327,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 7573779997559919891, guid: 1a1758605587797439b2cc162f45e46a, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8953210684643047250, guid: 1a1758605587797439b2cc162f45e46a, type: 3}
       propertyPath: m_Pivot.x
