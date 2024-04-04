@@ -15,6 +15,8 @@ namespace Spans.Skeleton
             {
                 _spanController = spanController;
             }
+
+            EnableUIElements();
             PlayEffects();
         }
 
@@ -37,7 +39,7 @@ namespace Spans.Skeleton
 
         public void Exit()
         {
-            throw new System.NotImplementedException();
+            DisableUIElements();
         }
 
         public void SwitchNextState()
@@ -47,12 +49,16 @@ namespace Spans.Skeleton
 
         public void EnableUIElements()
         {
-            throw new System.NotImplementedException();
+            successEffect.gameObject.SetActive(true);
+            failEffect.gameObject.SetActive(true);
+            progressBar.gameObject.SetActive(true);
         }
 
         public void DisableUIElements()
         {
-            throw new System.NotImplementedException();
+            successEffect.gameObject.SetActive(false);
+            failEffect.gameObject.SetActive(false);
+            progressBar.gameObject.SetActive(false);
         }
     }
 }

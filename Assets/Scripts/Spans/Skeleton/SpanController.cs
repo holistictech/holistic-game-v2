@@ -39,7 +39,7 @@ namespace Spans.Skeleton
         public void SwitchState()
         {
             var index = _stateList.IndexOf(stateContext.CurrentState);
-            if (index < _stateList.Count - 1)
+            if (index < _stateList.Count - 2)
             {
                 ISpanState nextState = _stateList[index+1];
                 stateContext.Transition(nextState);

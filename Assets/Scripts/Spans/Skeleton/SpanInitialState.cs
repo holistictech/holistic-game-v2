@@ -50,6 +50,7 @@ namespace Spans.Skeleton
 
         public void DisableUIElements()
         {
+            getStarted.text = "";
             getReady.gameObject.SetActive(false);
             getStarted.gameObject.SetActive(false);
             countdownField.gameObject.SetActive(false);

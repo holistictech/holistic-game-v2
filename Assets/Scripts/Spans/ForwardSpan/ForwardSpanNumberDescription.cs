@@ -11,7 +11,6 @@ namespace Spans.ForwardSpan
         [SerializeField] private NumberQuestion[] numbers;
         public override List<Question> GetSpanObjects()
         {
-            IncrementRoundIndex();
             return PickNumbers(fetchedQuestionCount);
         }
         
