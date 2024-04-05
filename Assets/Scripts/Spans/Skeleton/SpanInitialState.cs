@@ -22,8 +22,10 @@ namespace Spans.Skeleton
                 _spanController = spanController;
                 FadeGetReady();
             }
-            ConfigureUI();
-            _countdown = StartCoroutine(PlayCountdown());
+            else
+            {
+                ConfigureUI();
+            }
         }
 
         public void Exit()
@@ -59,15 +61,14 @@ namespace Spans.Skeleton
         private void FadeGetReady()
         {
             getStarted.text = "HADİ BAŞLAYALIM";
-            getStarted.DOFade(1, 0.5f).SetEase(Ease.OutBack);
+            getStarted.DOFade(1, 0.5f).SetEase(Ease.OutBounce).OnComplete(ConfigureUI);
         }
         
         private void ConfigureUI()
         {
             getReady.text = "HAZIR OL";
-            getReady.DOFade(1, 2f).SetEase(Ease.Linear).OnComplete(() =>
-            {
-            });
+            _countdown = StartCoroutine(PlayCountdown());
+            getReady.DOFade(1, .5f).SetEase(Ease.OutBounce);
         }
 
         private IEnumerator PlayCountdown()

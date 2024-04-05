@@ -11,7 +11,7 @@ namespace Spans.Skeleton
         [SerializeField] private StateHolder states;
         private List<ISpanState> _stateList = new List<ISpanState>();
         protected SpanStateContext stateContext;
-        protected int currentRoundIndex = 0;
+        protected int currentRoundIndex = 1;
         protected int fetchedQuestionCount = 9;
 
         protected int currentSuccessStreak;
