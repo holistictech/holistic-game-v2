@@ -9,9 +9,9 @@ namespace Samples.Whisper
 {
     public class Whisper : MonoBehaviour
     {
-        [SerializeField] private Button recordButton;
-        [SerializeField] private Image progressBar;
-        [SerializeField] private Text message;
+        //[SerializeField] private Button recordButton;
+        //[SerializeField] private Image progressBar;
+        //[SerializeField] private Text message;
         [SerializeField] private TMP_Dropdown dropdown;
         
         private readonly string fileName = "output.wav";
@@ -28,19 +28,19 @@ namespace Samples.Whisper
             {
                 dropdown.options.Add(new TMP_Dropdown.OptionData(device));
             }
-            /*#if UNITY_WEBGL && !UNITY_EDITOR
+            #if UNITY_WEBGL && !UNITY_EDITOR
             dropdown.options.Add(new Dropdown.OptionData("Microphone not supported on WebGL"));
             #else
             foreach (var device in Microphone.devices)
             {
-                dropdown.options.Add(new Dropdown.OptionData(device));
+                dropdown.options.Add(new TMP_Dropdown.OptionData(device));
             }
-            recordButton.onClick.AddListener(StartRecording);
+            //recordButton.onClick.AddListener(StartRecording);
             dropdown.onValueChanged.AddListener(ChangeMicrophone);
             
             var index = PlayerPrefs.GetInt("user-mic-device-index");
             dropdown.SetValueWithoutNotify(index);
-            #endif*/
+            #endif
         }
 
         private void ChangeMicrophone(int index)
