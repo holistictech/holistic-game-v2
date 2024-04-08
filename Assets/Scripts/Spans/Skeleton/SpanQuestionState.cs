@@ -34,7 +34,7 @@ namespace Spans.Skeleton
             if (_currentQuestionIndex + _spanController.GetRoundIndex() >= _spanObjects.Count)
             {
                 _spanObjects = _spanController.GetSpanObjects();
-                _currentQuestionIndex = 0;
+                _spanController.ResetRoundIndex();
             }
             
             var question = _spanObjects[_currentQuestionIndex];

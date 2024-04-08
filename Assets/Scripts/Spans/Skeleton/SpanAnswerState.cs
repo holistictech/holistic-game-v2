@@ -1,7 +1,9 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using Samples.Whisper;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -15,6 +17,7 @@ namespace Spans.Skeleton
         [SerializeField] private Button stopButton;
         [SerializeField] private Button cancelButton;
         [SerializeField] private Slider timerBar;
+        [SerializeField] private TextMeshProUGUI givenAnswerField;
         private SpanController _spanController;
 
         private int _maxTime;
@@ -74,7 +77,8 @@ namespace Spans.Skeleton
             string detectedAnswer = await speechRecognition.EndRecording();
             List<string> answerList = detectedAnswer.Split(" ").ToList();
             _spanController.SetDetectedAnswers(answerList);
-            SwitchNextState();
+            givenAnswerField.text = $"Verilen cevap: {detectedAnswer}";
+            DOVirtual.DelayedCall(.5f, SwitchNextState);
         }
 
         private void StopTemporarily()
@@ -88,6 +92,7 @@ namespace Spans.Skeleton
             cancelButton.gameObject.SetActive(true);
             stopButton.gameObject.SetActive(true);
             timerBar.gameObject.SetActive(true);
+            givenAnswerField.gameObject.SetActive(true);
         }
 
         public void DisableUIElements()
@@ -96,6 +101,8 @@ namespace Spans.Skeleton
             cancelButton.gameObject.SetActive(false);
             stopButton.gameObject.SetActive(false);
             timerBar.gameObject.SetActive(false);
+            givenAnswerField.gameObject.SetActive(false);
+            givenAnswerField.text = "";
         }
 
         private void AddListeners()

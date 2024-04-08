@@ -3,6 +3,7 @@ namespace Utilities
     public class CommonFields
     {
         public const int DAILY_ACTIVITY_COUNT = 10;
+        public const int DEFAULT_ROUND_INDEX = 1;
         
         public enum InteractableType
         {

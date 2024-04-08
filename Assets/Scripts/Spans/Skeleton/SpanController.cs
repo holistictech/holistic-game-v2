@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Scriptables;
 using Scriptables.QuestionSystem;
 using UnityEngine;
+using Utilities;
 
 namespace Spans.Skeleton
 {
@@ -11,7 +12,7 @@ namespace Spans.Skeleton
         [SerializeField] private StateHolder states;
         private List<ISpanState> _stateList = new List<ISpanState>();
         protected SpanStateContext stateContext;
-        protected int currentRoundIndex = 1;
+        protected int currentRoundIndex = CommonFields.DEFAULT_ROUND_INDEX;
         protected int fetchedQuestionCount = 9;
 
         protected int currentSuccessStreak;
@@ -24,14 +25,6 @@ namespace Spans.Skeleton
         protected virtual void Start()
         {
             stateContext = new SpanStateContext(this);
-            /*_stateList = new List<ISpanState>()
-            {
-                states.InitialState,
-                states.QuestionState,
-                states.AnswerState,
-                states.AnswerState,
-                states.GameEndState
-            };*/
             InstantiateGameStates();
             stateContext.Transition(_stateList[0]);
         }
@@ -85,6 +78,11 @@ namespace Spans.Skeleton
         public virtual int GetRoundTime()
         {
             return 10;
+        }
+
+        public void ResetRoundIndex()
+        {
+            currentRoundIndex = CommonFields.DEFAULT_ROUND_INDEX;
         }
 
         public int GetRoundIndex()
