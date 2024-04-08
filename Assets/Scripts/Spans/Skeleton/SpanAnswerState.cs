@@ -43,6 +43,7 @@ namespace Spans.Skeleton
                 timerBar.value = i;
                 yield return new WaitForSeconds(1f);
             }
+            timerBar.value = 0f;
             
             StopRecording();
         }
