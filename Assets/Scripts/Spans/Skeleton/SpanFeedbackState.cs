@@ -56,7 +56,7 @@ namespace Spans.Skeleton
                 feedbackLabel.sprite = wrongSprite;
             }
 
-            feedbackField.transform.DOScale(1f, 1.5f).SetEase(Ease.OutBounce).OnComplete(() =>
+            feedbackLabel.transform.DOScale(1f, 1.5f).SetEase(Ease.OutBounce).OnComplete(() =>
             {
                 _spanController.SwitchState();
             });
@@ -85,9 +85,8 @@ namespace Spans.Skeleton
         {
             successEffect.gameObject.SetActive(false);
             failEffect.gameObject.SetActive(false);
-            feedbackField.gameObject.SetActive(false);
             feedbackLabel.gameObject.SetActive(false);
-            feedbackField.transform.localScale = new Vector3(0,0,0);
+            feedbackLabel.transform.localScale = new Vector3(0,0,0);
         }
     }
 }
