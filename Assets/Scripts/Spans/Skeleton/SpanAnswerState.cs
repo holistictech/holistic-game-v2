@@ -17,6 +17,7 @@ namespace Spans.Skeleton
         [SerializeField] private Button stopButton;
         [SerializeField] private Button cancelButton;
         [SerializeField] private Slider timerBar;
+        [SerializeField] private GameObject answerPopup;
         [SerializeField] private TextMeshProUGUI givenAnswerField;
         private SpanController _spanController;
 
@@ -38,15 +39,20 @@ namespace Spans.Skeleton
         private IEnumerator PlayTimer()
         {
             timerBar.maxValue = _maxTime;
-            for (int i = _maxTime; i > 0; i--)
+            float currentTime = _maxTime;
+
+            while (currentTime > 0)
             {
-                timerBar.value = i;
-                yield return new WaitForSeconds(1f);
+                timerBar.value = Mathf.Lerp(timerBar.value, currentTime, Time.deltaTime * 10);
+                currentTime -= Time.deltaTime;
+                yield return null;
             }
+
             timerBar.value = 0f;
-            
+
             StopRecording();
         }
+
 
         public void Exit()
         {
@@ -78,8 +84,9 @@ namespace Spans.Skeleton
             string detectedAnswer = await speechRecognition.EndRecording();
             List<string> answerList = detectedAnswer.Split(" ").ToList();
             _spanController.SetDetectedAnswers(answerList);
-            givenAnswerField.text = $"Verilen cevap: {detectedAnswer}";
-            DOVirtual.DelayedCall(.5f, SwitchNextState);
+            answerPopup.gameObject.SetActive(true);
+            givenAnswerField.text = $"{detectedAnswer}";
+            DOVirtual.DelayedCall(1f, SwitchNextState);
         }
 
         private void StopTemporarily()
@@ -93,7 +100,6 @@ namespace Spans.Skeleton
             cancelButton.gameObject.SetActive(true);
             stopButton.gameObject.SetActive(true);
             timerBar.gameObject.SetActive(true);
-            givenAnswerField.gameObject.SetActive(true);
         }
 
         public void DisableUIElements()
@@ -102,7 +108,7 @@ namespace Spans.Skeleton
             cancelButton.gameObject.SetActive(false);
             stopButton.gameObject.SetActive(false);
             timerBar.gameObject.SetActive(false);
-            givenAnswerField.gameObject.SetActive(false);
+            answerPopup.gameObject.SetActive(false);
             givenAnswerField.text = "";
         }
 

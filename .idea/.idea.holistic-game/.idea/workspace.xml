@@ -6,10 +6,38 @@
   <component name="ChangeListManager">
     <list default="true" id="3d01f5fc-4a81-4ccb-94d7-a0f07bc2bc79" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/Prefabs/Prefabs_Component_Frames/BorderFrame_Round04_Transparent_White.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/Prefabs/Prefabs_Component_Frames/BorderFrame_Round04_Transparent_White.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/Prefabs/Prefabs_Component_Labels/Title_Flag02-Group.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/Prefabs/Prefabs_Component_Labels/Title_Flag02-Group.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/Prefabs/Prefabs_Component_Labels/Title_Ribbon-Group-.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/Prefabs/Prefabs_Component_Labels/Title_Ribbon-Group-.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/Prefabs/Prefabs_Component_Popups/Popup01_White.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/Prefabs/Prefabs_Component_Popups/Popup01_White.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/Prefabs/Prefabs_Component_Popups/Popup02_Divided_Single_Navy.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/Prefabs/Prefabs_Component_Popups/Popup02_Divided_Single_Navy.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/Prefabs/Prefabs_Component_Sliders/_PrefabsPanel_Sliders.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/Prefabs/Prefabs_Component_Sliders/_PrefabsPanel_Sliders.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/Prefabs/Prefabs_DemoScene_Panels/Character.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/Prefabs/Prefabs_DemoScene_Panels/Character.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/Prefabs/Prefabs_DemoScene_Panels/Chat.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/Prefabs/Prefabs_DemoScene_Panels/Chat.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/Prefabs/Prefabs_DemoScene_Panels/Component_1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/Prefabs/Prefabs_DemoScene_Panels/Component_1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/Prefabs/Prefabs_DemoScene_Panels/Missions.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/Prefabs/Prefabs_DemoScene_Panels/Missions.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/Prefabs/Prefabs_DemoScene_Panels/Stage_Select_Type2_Detail.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/Prefabs/Prefabs_DemoScene_Panels/Stage_Select_Type2_Detail.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/Prefabs/Prefabs_DemoScene_Particle/Fx_Sparkle_LongStar01_ClearGreen.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/Prefabs/Prefabs_DemoScene_Particle/Fx_Sparkle_LongStar01_ClearGreen.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/Prefabs/Prefabs_DemoScene_Particle/Fx_Sparkle_LongStar01_ClearRed.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/Prefabs/Prefabs_DemoScene_Particle/Fx_Sparkle_LongStar01_ClearRed.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/Prefabs/Prefabs_DemoScene_Particle/Fx_Spread_Star03.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/Prefabs/Prefabs_DemoScene_Particle/Fx_Spread_Star03.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/Prefabs/Prefabs_DemoScene_Particle/Fx_Spread_Star04.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/Prefabs/Prefabs_DemoScene_Particle/Fx_Spread_Star04.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/ResourcesData/Sprite/Components/Label/Title_Flag02_Red.png" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/ResourcesData/Sprite/Components/Label/Title_Flag02_Red.png.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/States/AnswerState.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/States/AnswerState.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/OpenAI Unity/0.2.0/Whisper/Whisper Sample.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/OpenAI Unity/0.2.0/Whisper/Whisper Sample.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Samples/OpenAI Unity/0.2.0/Whisper/Whisper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Samples/OpenAI Unity/0.2.0/Whisper/Whisper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/States/FeedbackState.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/States/FeedbackState.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/States/InitialState.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/States/InitialState.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/States/QuestionState.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/States/QuestionState.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GamePlay/Grid.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GamePlay/Grid.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanAnswerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanAnswerState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanFeedbackState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanFeedbackState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanInitialState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanInitialState.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -98,10 +126,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="8864">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="8864" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -130,7 +158,8 @@
       <workItem from="1712141987073" duration="5707000" />
       <workItem from="1712184066315" duration="4160000" />
       <workItem from="1712269205842" duration="5473000" />
-      <workItem from="1712616784862" duration="1541000" />
+      <workItem from="1712616784862" duration="5077000" />
+      <workItem from="1712692797443" duration="2738000" />
     </task>
     <servers />
   </component>
@@ -141,37 +170,5 @@
   <component name="UnityUnitTestConfiguration" currentTestLauncher="Both" />
   <component name="VcsManagerConfiguration">
     <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanAnswerState.cs</url>
-          <line>74</line>
-          <properties documentPath="C:\Users\ahaka\Documents\GitHub\holistic-game\Assets\Scripts\Spans\Skeleton\SpanAnswerState.cs" initialLine="74" containingFunctionPresentation="Method 'StopRecording'">
-            <startOffsets>
-              <option value="2101" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2102" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanFeedbackState.cs</url>
-          <line>23</line>
-          <properties documentPath="C:\Users\ahaka\Documents\GitHub\holistic-game\Assets\Scripts\Spans\Skeleton\SpanFeedbackState.cs" initialLine="23" containingFunctionPresentation="Method 'PlayEffects'">
-            <startOffsets>
-              <option value="662" />
-            </startOffsets>
-            <endOffsets>
-              <option value="663" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="5" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

@@ -8,7 +8,9 @@ namespace Spans.Skeleton
 {
     public class SpanInitialState : MonoBehaviour, ISpanState
     {
+        [SerializeField] private GameObject getStartedBanner;
         [SerializeField] private TextMeshProUGUI getStarted;
+        [SerializeField] private GameObject getReadyPopup;
         [SerializeField] private TextMeshProUGUI countdownField;
         [SerializeField] private TextMeshProUGUI getReady;
 
@@ -45,21 +47,19 @@ namespace Spans.Skeleton
 
         public void EnableUIElements()
         {
-            getReady.gameObject.SetActive(true);
-            getStarted.gameObject.SetActive(true);
-            countdownField.gameObject.SetActive(true);
+            getReadyPopup.gameObject.SetActive(true);
         }
 
         public void DisableUIElements()
         {
             getStarted.text = "";
-            getReady.gameObject.SetActive(false);
-            getStarted.gameObject.SetActive(false);
-            countdownField.gameObject.SetActive(false);
+            getReadyPopup.gameObject.SetActive(false);
+            getStartedBanner.gameObject.SetActive(false);
         }
 
         private void FadeGetReady()
         {
+            getStartedBanner.gameObject.SetActive(true);
             getStarted.text = "HADİ BAŞLAYALIM";
             getStarted.DOFade(1, 0.5f).SetEase(Ease.OutBounce).OnComplete(ConfigureUI);
         }
