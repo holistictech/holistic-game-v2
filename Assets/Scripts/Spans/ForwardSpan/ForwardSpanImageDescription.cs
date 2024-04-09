@@ -2,17 +2,17 @@ using System.Collections.Generic;
 using Scriptables.QuestionSystem;
 using Spans.Skeleton;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
 
 namespace Spans.ForwardSpan
 {
     public class ForwardSpanImageDescription : SpanController
     {
-        [SerializeField] private ImageQuestion[] spanSprites;
+        [SerializeField] private ImageQuestion[] imageQuestions;
         
         public override List<Question> GetSpanObjects()
         {
-            IncrementRoundIndex();
             return GetRandomSprites();
         }
 
@@ -23,7 +23,7 @@ namespace Spans.ForwardSpan
         
         private List<Question> GetRandomSprites()
         {
-            List<Question> shuffledSprites = new List<Question>(spanSprites);
+            List<Question> shuffledSprites = new List<Question>(imageQuestions);
             for (int i = 0; i < shuffledSprites.Count; i++)
             {
                 int randomIndex = Random.Range(i, shuffledSprites.Count);
@@ -31,7 +31,7 @@ namespace Spans.ForwardSpan
             }
             
             List<Question> selected = new List<Question>();
-            for (int i = 0; i < currentRoundIndex; i++)
+            for (int i = 0; i < fetchedQuestionCount; i++)
             {
                 selected.Add(shuffledSprites[i]);
             }

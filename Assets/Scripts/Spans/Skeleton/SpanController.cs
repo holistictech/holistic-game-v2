@@ -39,7 +39,7 @@ namespace Spans.Skeleton
             }
             else
             {
-                stateContext.Transition(_stateList[1]); // to turn back to question state.
+                stateContext.Transition(_stateList[0]); // to turn back to initial state.
             }
         }
 
@@ -97,7 +97,12 @@ namespace Spans.Skeleton
 
         public void DecrementRoundIndex()
         {
-            currentRoundIndex--;
+            if(currentRoundIndex > 1)
+                currentRoundIndex--;
+            else
+            {
+                currentRoundIndex = 1;
+            }
         }
 
         public void IncrementSuccessStreak()
