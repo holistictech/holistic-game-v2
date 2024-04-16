@@ -207,10 +207,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 2248318883426158715}
-  - component: {fileID: 2570565552252034592}
   - component: {fileID: 1727128002678048721}
+  - component: {fileID: 5360731155288646572}
   m_Layer: 5
-  m_Name: AnswerState
+  m_Name: VoiceAnswerState
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -241,25 +241,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 600}
   m_Pivot: {x: 0.5, y: 0}
---- !u!114 &2570565552252034592
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 917999565626506664}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e8a5504b6a070c5499c99ff070b581c4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  speechRecognition: {fileID: 1727128002678048721}
-  micButton: {fileID: 4005362165529287975}
-  stopButton: {fileID: 2603808145648072477}
-  cancelButton: {fileID: 7135347986602432172}
-  timerBar: {fileID: 7316995603535891579}
-  answerPopup: {fileID: 587499743697491966}
-  givenAnswerField: {fileID: 8116766303458172877}
 --- !u!114 &1727128002678048721
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -273,6 +254,25 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   dropdown: {fileID: 6441759887597162315}
+--- !u!114 &5360731155288646572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 917999565626506664}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 68a4d5509b5223a4c83bf3e7dbe213ac, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  speechRecognition: {fileID: 1727128002678048721}
+  micButton: {fileID: 4005362165529287975}
+  stopButton: {fileID: 2603808145648072477}
+  cancelButton: {fileID: 7135347986602432172}
+  timerBar: {fileID: 7316995603535891579}
+  answerPopup: {fileID: 587499743697491966}
+  givenAnswerField: {fileID: 8116766303458172877}
 --- !u!1 &2579761437394502955
 GameObject:
   m_ObjectHideFlags: 0

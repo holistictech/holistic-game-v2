@@ -12,117 +12,29 @@ namespace Spans.Skeleton
 {
     public class SpanAnswerState : MonoBehaviour, ISpanState
     {
-        [SerializeField] private Whisper speechRecognition;
-        [SerializeField] private Button micButton;
-        [SerializeField] private Button stopButton;
-        [SerializeField] private Button cancelButton;
-        [SerializeField] private Slider timerBar;
-        [SerializeField] private GameObject answerPopup;
-        [SerializeField] private TextMeshProUGUI givenAnswerField;
         private SpanController _spanController;
-
-        private int _maxTime;
-        private Coroutine _timer;
-        public void Enter(SpanController spanController)
+        
+        public virtual void Enter(SpanController spanController)
         {
-            if (_spanController == null)
-            {
-                _spanController = spanController;
-                _maxTime = _spanController.GetRoundTime();
-            }
-
-            AddListeners();
-            EnableUIElements();
-            _timer = StartCoroutine(PlayTimer());
-        }
-
-        private IEnumerator PlayTimer()
-        {
-            timerBar.maxValue = _maxTime;
-            float currentTime = _maxTime;
-
-            while (currentTime > 0)
-            {
-                timerBar.value = Mathf.Lerp(timerBar.value, currentTime, Time.deltaTime * 10);
-                currentTime -= Time.deltaTime;
-                yield return null;
-            }
-
-            timerBar.value = 0f;
-
-            StopRecording();
         }
 
 
-        public void Exit()
+        public virtual void Exit()
         {
-            RemoveListeners();
-
-            if (_timer != null)
-            {
-                StopCoroutine(_timer);
-            }
-            
-            RemoveListeners();
-            DisableUIElements();
         }
 
-        public void SwitchNextState()
+        public virtual void SwitchNextState()
         {
             _spanController.SwitchState();
         }
+        
 
-        private void StartRecording()
+        public virtual void EnableUIElements()
         {
-            //@todo: for future development reference, composition may be used for different type of answer detection.
-            speechRecognition.StartRecording();
-            stopButton.onClick.AddListener(StopRecording);
         }
 
-        private async void StopRecording()
+        public virtual void DisableUIElements()
         {
-            string detectedAnswer = await speechRecognition.EndRecording();
-            List<string> answerList = detectedAnswer.Split(" ").ToList();
-            _spanController.SetDetectedAnswers(answerList);
-            answerPopup.gameObject.SetActive(true);
-            givenAnswerField.text = $"{detectedAnswer}";
-            DOVirtual.DelayedCall(1f, SwitchNextState);
-        }
-
-        private void StopTemporarily()
-        {
-            speechRecognition.EndRecording();
-        }
-
-        public void EnableUIElements()
-        {
-            micButton.gameObject.SetActive(true);
-            cancelButton.gameObject.SetActive(true);
-            stopButton.gameObject.SetActive(true);
-            timerBar.gameObject.SetActive(true);
-        }
-
-        public void DisableUIElements()
-        {
-            micButton.gameObject.SetActive(false);
-            cancelButton.gameObject.SetActive(false);
-            stopButton.gameObject.SetActive(false);
-            timerBar.gameObject.SetActive(false);
-            answerPopup.gameObject.SetActive(false);
-            givenAnswerField.text = "";
-        }
-
-        private void AddListeners()
-        {
-            micButton.onClick.AddListener(StartRecording);
-            stopButton.onClick.AddListener(StopRecording);
-            cancelButton.onClick.AddListener(StopTemporarily);
-        }
-
-        private void RemoveListeners()
-        {
-            micButton.onClick.RemoveAllListeners();
-            cancelButton.onClick.RemoveListener(StopTemporarily);
         }
     }
 }
