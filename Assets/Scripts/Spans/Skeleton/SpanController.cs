@@ -97,11 +97,11 @@ namespace Spans.Skeleton
 
         public void DecrementRoundIndex()
         {
-            if(currentRoundIndex > 1)
+            if(currentRoundIndex > CommonFields.DEFAULT_ROUND_INDEX)
                 currentRoundIndex--;
             else
             {
-                currentRoundIndex = 1;
+                currentRoundIndex = CommonFields.DEFAULT_ROUND_INDEX;
             }
         }
 
