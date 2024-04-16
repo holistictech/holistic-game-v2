@@ -44,6 +44,19 @@ namespace UI
             {
                 choiceImage.sprite = (Sprite)_question.GetQuestionItem();
             }
+
+            EnableSelf();
+        }
+
+        public void DisableSelf()
+        {
+            ResetUI();
+            gameObject.SetActive(false);
+        }
+
+        private void EnableSelf()
+        {
+            gameObject.SetActive(true);
         }
 
         public void ResetUI()

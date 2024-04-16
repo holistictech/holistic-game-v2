@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Scriptables.QuestionSystem;
@@ -14,7 +15,7 @@ namespace Spans.Skeleton.AnswerStates
         [SerializeField] private Button confirmButton;
         [SerializeField] private Button resetButton;
 
-        private List<Choice> _spawnedChoices = new List<Choice>();
+        private List<Choice> _choicePool = new List<Choice>();
         private List<Question> _givenAnswers = new List<Question>();
         private SpanController _spanController;
 
@@ -26,24 +27,34 @@ namespace Spans.Skeleton.AnswerStates
             {
                 _spanController = controller;
                 _maxTime = _spanController.GetRoundTime();
+                SpawnChoices();
             }
 
             AddListeners();
             EnableUIElements();
-            
-            SpawnChoices();
+
+            SetChoiceUI();
             _timer = StartCoroutine(PlayTimer(_maxTime));
         }
 
         private void SpawnChoices()
         {
-            var choices = _spanController.GetChoices();
-
-            foreach (var question in choices)
+            for (int i = 0; i < 18; i++)
             {
                 var tempChoice = Instantiate(choicePrefab, gridLayoutGroup);
-                tempChoice.ConfigureUI(question, this);
-                _spawnedChoices.Add(tempChoice);
+                _choicePool.Add(tempChoice);
+            }
+        }
+
+        private void SetChoiceUI()
+        {
+            _givenAnswers.Clear();
+            var choices = _spanController.GetChoices();
+            
+            foreach (var choice in choices)
+            {
+                var temp = GetAvailableChoice();
+                temp.ConfigureUI(choice, this);
             }
         }
         
@@ -65,14 +76,18 @@ namespace Spans.Skeleton.AnswerStates
 
         public override void SwitchNextState()
         {
+            _spanController.SetSelectedAnswers(_givenAnswers);
             _spanController.SwitchState();
         }
 
         public override void Exit()
         {
-            DestroySpawnedChoices();
             DisableUIElements();
             RemoveListeners();
+            if (_timer != null)
+            {
+                StopCoroutine(_timer);
+            }
         }
         
         public override void EnableUIElements()
@@ -89,13 +104,14 @@ namespace Spans.Skeleton.AnswerStates
             gridLayoutGroup.gameObject.SetActive(false);
             confirmButton.gameObject.SetActive(false);
             resetButton.gameObject.SetActive(false);
+            DisableSpawnedChoices();
         }
 
-        private void DestroySpawnedChoices()
+        private void DisableSpawnedChoices()
         {
-            foreach (var spawnedChoice in _spawnedChoices)
+            foreach (var spawnedChoice in _choicePool)
             {
-                Destroy(spawnedChoice.gameObject);
+                spawnedChoice.DisableSelf();
             }
         }
 
@@ -107,7 +123,7 @@ namespace Spans.Skeleton.AnswerStates
         private void ResetGivenAnswers()
         {
             _givenAnswers.Clear();
-            foreach (var choice in _spawnedChoices)
+            foreach (var choice in _choicePool)
             {
                 choice.ResetUI();
             }
@@ -123,6 +139,20 @@ namespace Spans.Skeleton.AnswerStates
         {
             resetButton.onClick.RemoveListener(ResetGivenAnswers);
             confirmButton.onClick.RemoveListener(SwitchNextState);
+        }
+
+        private Choice GetAvailableChoice()
+        {
+            for (int i = 0; i < _choicePool.Count; i++)
+            {
+                if (!_choicePool[i].isActiveAndEnabled)
+                {
+                    return _choicePool[i];
+                }
+            }
+
+            throw new Exception("No available choice. Need to spawn");
+            return null;
         }
     }
 }

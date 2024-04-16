@@ -33,9 +33,11 @@ namespace Spans.ForwardSpan
             {
                 if (currentDisplayedQuestions[i].GetQuestionItem() != currentGivenAnswers[i].GetQuestionItem())
                 {
+                    IncrementFailStreak();
                     return false;
                 }
             }
+            IncrementSuccessStreak();
             return true;
         }
     }
