@@ -18,8 +18,9 @@ namespace Spans.Skeleton
         protected int currentSuccessStreak;
         protected int currentFailStreak;
         protected List<Question> currentSpanQuestions;
-        private List<string> _currentCorrectAnswers;
-        private List<string> _currentDetectedAnswers;
+        protected List<Question> currentDisplayedQuestions;
+        protected List<string> currentDetectedAnswers;
+        protected List<Question> currentGivenAnswers;
         private const int _neededStreakCount = 4;
 
         protected virtual void Start()
@@ -48,13 +49,18 @@ namespace Spans.Skeleton
             return new List<Question>();
         }
 
-        public bool IsAnswerCorrect()
+        public virtual List<Question> GetChoices()
+        {
+            return new List<Question>();
+        }
+
+        public virtual bool IsAnswerCorrect()
         {
             //@todo: change this with appropriate to game rules. 
             //maybe a comparator to check correctness percentage.
-            for (int i = 0; i < _currentCorrectAnswers.Count; i++)
+            for (int i = 0; i < currentDisplayedQuestions.Count; i++)
             {
-                if (!_currentCorrectAnswers[i].Equals(_currentDetectedAnswers[i], StringComparison.OrdinalIgnoreCase))
+                if (!currentDisplayedQuestions[i].CorrectAnswer.Equals(currentDetectedAnswers[i], StringComparison.OrdinalIgnoreCase))
                 {
                     IncrementFailStreak();
                     return false;
@@ -65,14 +71,24 @@ namespace Spans.Skeleton
             return true;
         }
 
-        public void SetCorrectAnswers(List<string> corrects)
+        public void SetCurrentQuestions(List<Question> questions)
         {
-            _currentCorrectAnswers = corrects;
+            currentDisplayedQuestions = questions;
         }
 
-        public void SetDetectedAnswers(List<string> given)
+        public List<Question> GetCurrentQuestions()
         {
-            _currentDetectedAnswers = given;
+            return currentDisplayedQuestions;
+        }
+
+        public void SetDetectedAnswers(List<string> detected)
+        {
+            currentDetectedAnswers = detected;
+        }
+
+        public void SetSelectedAnswers(List<Question> given)
+        {
+            currentGivenAnswers = given;
         }
 
         public virtual int GetRoundTime()
@@ -134,6 +150,22 @@ namespace Spans.Skeleton
                 var temp = Instantiate(state, transform);
                 _stateList.Add(temp.GetComponent<ISpanState>());
             }
+        }
+    }
+}
+
+public static class ListExtensions
+{
+    private static readonly System.Random rng = new System.Random();
+
+    public static void Shuffle<T>(this IList<T> list)
+    {
+        int n = list.Count;
+        while (n > 1)
+        {
+            n--;
+            int k = rng.Next(n + 1);
+            (list[k], list[n]) = (list[n], list[k]);
         }
     }
 }

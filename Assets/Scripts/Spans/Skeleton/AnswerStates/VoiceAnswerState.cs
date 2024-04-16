@@ -15,7 +15,7 @@ namespace Spans.Skeleton.AnswerStates
         [SerializeField] private Button micButton;
         [SerializeField] private Button stopButton;
         [SerializeField] private Button cancelButton;
-        [SerializeField] private Slider timerBar;
+        //[SerializeField] private Slider timerBar;
         [SerializeField] private GameObject answerPopup;
         [SerializeField] private TextMeshProUGUI givenAnswerField;
         private SpanController _spanController;
@@ -51,7 +51,11 @@ namespace Spans.Skeleton.AnswerStates
 
             StopRecording();
         }
-
+        
+        public override void SwitchNextState()
+        {
+            _spanController.SwitchState();
+        }
 
         public override void Exit()
         {
@@ -64,11 +68,6 @@ namespace Spans.Skeleton.AnswerStates
             
             RemoveListeners();
             DisableUIElements();
-        }
-
-        public override void SwitchNextState()
-        {
-            _spanController.SwitchState();
         }
 
         private void StartRecording()
@@ -97,7 +96,7 @@ namespace Spans.Skeleton.AnswerStates
             micButton.gameObject.SetActive(true);
             cancelButton.gameObject.SetActive(true);
             stopButton.gameObject.SetActive(true);
-            timerBar.gameObject.SetActive(true);
+            base.EnableUIElements();
         }
 
         public override void DisableUIElements()
@@ -105,9 +104,9 @@ namespace Spans.Skeleton.AnswerStates
             micButton.gameObject.SetActive(false);
             cancelButton.gameObject.SetActive(false);
             stopButton.gameObject.SetActive(false);
-            timerBar.gameObject.SetActive(false);
             answerPopup.gameObject.SetActive(false);
             givenAnswerField.text = "";
+            base.DisableUIElements();
         }
 
         private void AddListeners()

@@ -1,18 +1,42 @@
-using System.Collections;
 using System.Collections.Generic;
+using Scriptables.QuestionSystem;
+using Spans.Skeleton;
 using UnityEngine;
 
-public class ImageChooser : MonoBehaviour
+namespace Spans.ForwardSpan
 {
-    // Start is called before the first frame update
-    void Start()
+    public class ImageChooser : ForwardSpanImageDescription
     {
-        
-    }
+        public override List<Question> GetChoices()
+        {
+            int choiceCount = currentRoundIndex;
+            List<Question> choices = new List<Question>(GetCurrentQuestions());
+            
+            for (int i = 0; i < choiceCount; i++)
+            {
+                var index = Random.Range(0, ImageQuestions.Length);
+                var question = ImageQuestions[index];
+                while (choices.Contains(question))
+                {
+                    index = Random.Range(0, ImageQuestions.Length);
+                    question = ImageQuestions[index];
+                }
+                choices.Add(question);
+            }
+            choices.Shuffle();
+            return choices;
+        }
 
-    // Update is called once per frame
-    void Update()
-    {
-        
+        public override bool IsAnswerCorrect()
+        {
+            for (int i = 0; i < currentDisplayedQuestions.Count; i++)
+            {
+                if (currentDisplayedQuestions[i].GetQuestionItem() != currentGivenAnswers[i].GetQuestionItem())
+                {
+                    return false;
+                }
+            }
+            return true;
+        }
     }
 }

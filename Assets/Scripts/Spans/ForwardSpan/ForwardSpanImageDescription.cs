@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Scriptables.QuestionSystem;
 using Spans.Skeleton;
@@ -9,7 +10,7 @@ namespace Spans.ForwardSpan
 {
     public class ForwardSpanImageDescription : SpanController
     {
-        [SerializeField] private ImageQuestion[] imageQuestions;
+        public ImageQuestion[] ImageQuestions;
         
         public override List<Question> GetSpanObjects()
         {
@@ -23,7 +24,7 @@ namespace Spans.ForwardSpan
         
         private List<Question> GetRandomSprites()
         {
-            List<Question> shuffledSprites = new List<Question>(imageQuestions);
+            List<Question> shuffledSprites = new List<Question>(ImageQuestions);
             for (int i = 0; i < shuffledSprites.Count; i++)
             {
                 int randomIndex = Random.Range(i, shuffledSprites.Count);
@@ -40,5 +41,20 @@ namespace Spans.ForwardSpan
             return selected;
         }
         
+        public override bool IsAnswerCorrect()
+        {
+            //@todo: change this with appropriate to game rules. 
+            //maybe a comparator to check correctness percentage.
+            for (int i = 0; i < currentDisplayedQuestions.Count; i++)
+            {
+                if (!currentDisplayedQuestions[i].CorrectAnswer.Equals(currentDetectedAnswers[i], StringComparison.OrdinalIgnoreCase))
+                {
+                    IncrementFailStreak();
+                    return false;
+                }
+            }
+            IncrementSuccessStreak();
+            return true;
+        }
     }
 }

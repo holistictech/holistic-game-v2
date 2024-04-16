@@ -18,7 +18,7 @@ namespace Spans.Skeleton
         private List<Question> _spanObjects;
 
         private int _currentQuestionIndex;
-        private List<string> _answers = new List<string>();
+        private List<Question> _currentQuestions = new List<Question>();
         private Coroutine _displayingQuestions;
         public void Enter(SpanController spanController)
         {
@@ -30,7 +30,7 @@ namespace Spans.Skeleton
 
         private void ShowQuestion()
         {
-            _answers = new List<string>();
+            _currentQuestions = new List<Question>();
             if (_currentQuestionIndex + _spanController.GetRoundIndex() >= _spanObjects.Count)
             {
                 _spanObjects = _spanController.GetSpanObjects();
@@ -57,7 +57,7 @@ namespace Spans.Skeleton
                 var question = _spanObjects[_currentQuestionIndex];
                 questionBox.GetComponentInChildren<TextMeshProUGUI>().text = $"{question.GetQuestionItem()}";
                 questionBox.enabled = false;
-                _answers.Add(question.CorrectAnswer);
+                _currentQuestions.Add(question);
                 _currentQuestionIndex++;
                 yield return new WaitForSeconds(1f);
             }
@@ -71,7 +71,7 @@ namespace Spans.Skeleton
             {
                 var question = _spanObjects[_currentQuestionIndex];
                 questionBox.sprite = (Sprite)question.GetQuestionItem();
-                _answers.Add(question.CorrectAnswer);
+                _currentQuestions.Add(question);
                 _currentQuestionIndex++;
                 yield return new WaitForSeconds(1f);
             }
@@ -85,7 +85,7 @@ namespace Spans.Skeleton
             {
                 var question = _spanObjects[_currentQuestionIndex];
                 audioSource.Play((ulong)question.GetQuestionItem());
-                _answers.Add(question.CorrectAnswer);
+                _currentQuestions.Add(question);
                 _currentQuestionIndex++;
                 yield return new WaitForSeconds(1f);
             }
@@ -105,7 +105,7 @@ namespace Spans.Skeleton
 
         public void SwitchNextState()
         {
-            _spanController.SetCorrectAnswers(_answers);
+            _spanController.SetCurrentQuestions(_currentQuestions);
             _spanController.SwitchState();
         }
 
