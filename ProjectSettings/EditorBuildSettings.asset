@@ -8,117 +8,120 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/SampleScene.unity
     guid: 2cda990e2423bbf4892e6590ba056729
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/SpanSelectMenu.unity
     guid: 1950bd976e9757949bcb73da606c95f3
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/BackwardSpan/BackwardSpanAudio.unity
     guid: 90212ca0ed6ea0147aa77fa58d1806ce
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/BackwardSpan/BackwardSpanAudioNumber.unity
     guid: cfe4e122d92077f43960d4e712025c45
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/BackwardSpan/BackwardSpanImage.unity
     guid: 46f4cacc45a5b6a42a6225a611fa0404
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/BackwardSpan/BackwardSpanNumber.unity
     guid: 1d899a2c65e72eb488904caafd33a443
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/CorsiSpan/CorsiSpan.unity
     guid: 370ead9ae9cde6b42a169a6c6beb0790
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/CorsiSpan/CorsiSpanBackward.unity
     guid: fb7b40444fc7126499f85962ecc8d148
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/CorsiSpan/CorsiSpanBackwardMoving.unity
     guid: ea22458fae8ff6d48a045f77cb449136
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/CorsiSpan/CorsiSpanCumulative.unity
     guid: 57711f100fd952f43a8f5bb65f722890
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/CorsiSpan/CorsiSpanCumulativeMoving.unity
     guid: c934ada424fff994f97e42e80cbacba2
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/CorsiSpan/CorsiSpanMoving.unity
     guid: e1a739a9eb7083b46acff1bc1ab0bd9b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/CumulativeSpan/CumulativeSpanAudio.unity
     guid: 09c083fd21497e3458579a90ffc9fae9
-  - enabled: 1
+  - enabled: 0
     path: "Assets/Scenes/Oyunlar/Al\u0131\u015Fveri\u015FListesi.unity"
     guid: cd5b2e2cb809a444ca582307a7e78707
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Oyunlar/MemoryCard.unity
     guid: 667d7b690ff124faa8d521d9945ec02f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Oyunlar/MemoryCardAudio.unity
     guid: f269d8712c93d42c1bd572dd12ab95fc
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/CumulativeSpan/CumulativeSpanAudioBackward.unity
     guid: 669ab304222e40f41867ed8c3551e676
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ForwardSpan/ForwardSpanNumber.unity
     guid: 97bea2e3516204bb0ad71cece52e631b
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/KomplexSpan/KomplexSpanNeDuydun.unity
     guid: d43ec3342aea0864a9fae94cd2276534
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/NBack/NBackOncekiIsaretle.unity
     guid: 5db71e8d519ed1843ace669e8394bec8
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ForwardSpan/ForwardSpanAudio.unity
     guid: f7411fab2fbb124459abb50fa748e10d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ForwardSpan/ForwardSpanAudioNumber.unity
     guid: 22a81f28fd2771b4b9f0a2cd9bbcfd0c
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ForwardSpan/ForwardSpanImage.unity
     guid: cda93b0a695367f47a6bd81e3623274e
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/NBack/NBackSameOrDifferent.unity
     guid: 613a584f22fed11428ffc3a2173453cb
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/NBack/NBackWhatChanged.unity
     guid: ee6daa6a49aca6a438e6000b21b4bd43
-  - enabled: 1
+  - enabled: 0
     path: "Assets/Scenes/SekilliNotaSpan/S\u0327ekilliNotaForward.unity"
     guid: 6cb9d8127c0c3394492a0bf375e00062
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/NBack/DualNBack.unity
     guid: 0a941ef225c2fa5408b91a09e4af3fa5
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/NBack/NBack.unity
     guid: 08a71cd3cfb6f46428d1c068ee3d3e4f
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/CumulativeSpan/CumulativeSpanImage.unity
     guid: b557ed78c1b804346be6a7eb0d9afccc
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/CumulativeSpan/CumulativeSpanImageBackward.unity
     guid: 4989ccffaa494a443be4f9e0abeff024
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/CumulativeSpan/KsilofonSpan.unity
     guid: 1ef94988c581d44a58937603d55a7835
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/BlockSpan/BlockSpan.unity
     guid: 7ef68084b07f8704f8fd26872c602d84
-  - enabled: 1
+  - enabled: 0
     path: "Assets/Scenes/CumulativeSpan/S\u0327ekilliNotaBackward.unity"
     guid: 0548bac0379aa4bd1aa737002e00a801
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/NBack/NBackWhatChanged(3option).unity
     guid: 13fb9e22b3b50754cb597ac47277dbff
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/BlockSpan/BlockSpanCombine.unity
     guid: 6b273b985afcea7418425ffc78efc92d
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/ForwardSpan/ForwardSpanChooseOrder.unity
     guid: a343efc29c0737d4897d005d7561bd07
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/BackwardSpan/BackwardSpanChooseOrder.unity
     guid: 18861a8f25d47af46914ce3b887f4ad3
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/BlockSpan/BlockSpanRotation.unity
     guid: f488aaeee8540474fa8450accd8ea1b4
+  - enabled: 1
+    path: Assets/Scenes/GamePlay/Grid.unity
+    guid: b498d782d5717de4bad0d155dd361b15
   m_configObjects:
     com.unity.adaptiveperformance.loader_settings: {fileID: 11400000, guid: 1e4278d7c2d24cf469f49a534bc88d6d, type: 2}
     com.unity.adaptiveperformance.samsung.android.provider_settings: {fileID: 11400000, guid: ee95420af04eebc4c85f2d5139df1edb, type: 2}

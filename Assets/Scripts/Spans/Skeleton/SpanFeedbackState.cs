@@ -15,6 +15,41 @@ namespace Spans.Skeleton
         [SerializeField] private Sprite correctSprite;
         [SerializeField] private Slider progressBar;
         private SpanController _spanController;
+
+        private readonly string[] _successFeedbacks = new string[]
+        {
+            "Harika!",
+            "Başardın!",
+            "Çok iyi!",
+            "Aferin sana!",
+            "Süper!",
+            "Tam isabet!",
+            "Mükemmel!",
+            "Doğru cevap!",
+            "İşte bu!",
+            "Çok güzel!",
+            "Bravo!",
+            "Çok akıllıca!",
+            "Ne kadar zekisin!",
+            "Çok başarılı!",
+            "Harikasın!",
+        };
+        private readonly string[] _failFeedbacks = new string[]
+        {
+            "Bir daha deneyelim!",
+            "Çok yaklaştın, tekrar dene!",
+            "Az kaldı, bir kez daha dene!",
+            "Hiç sorun değil, birlikte doğru cevabı bulalım.",
+            "Olur böyle, önemli olan denemek!",
+            "Bu sefer olmadı ama doğru yoldasın!",
+            "İyi bir denemeydi, şimdi düzeltebiliriz!",
+            "Herkes hata yapabilir, önemli olan tekrar denemektir.",
+            "Hatalardan öğreniyoruz, bir daha deneyelim",
+            "Biraz daha çalışırsak yapabiliriz.",
+            "Her zaman ilk seferde olmaz, tekrar deneyelim",
+            "Doğru cevaba bir adım daha yaklaştın, devam et!",
+            "Bu sefer olmadı ama bir dahaki sefere daha iyi olacak!",
+        };
         public void Enter(SpanController spanController)
         {
             if (_spanController == null)
@@ -45,21 +80,23 @@ namespace Spans.Skeleton
 
         private void ConfigureFeedbackField(bool correct)
         {
-            if (correct)
-            {
-                feedbackField.text = "Dogru!";
-                feedbackLabel.sprite = correctSprite;
-            }
-            else
-            {
-                feedbackField.text = "Yanlis";
-                feedbackLabel.sprite = wrongSprite;
-            }
+            feedbackLabel.sprite = correct ? correctSprite : wrongSprite;
+            
+            feedbackField.text = GetRandomFeedback(correct);
 
-            feedbackLabel.transform.DOScale(1f, 1.5f).SetEase(Ease.OutBounce).OnComplete(() =>
+            feedbackLabel.transform.DOScale(1f, 1.5f).SetEase(Ease.OutBack).OnComplete(() =>
             {
-                _spanController.SwitchState();
+                DOVirtual.DelayedCall(2.5f, () =>
+                {
+                    _spanController.SwitchState();
+                });
             });
+        }
+
+        private string GetRandomFeedback(bool isCorrect)
+        {
+            var index = Random.Range(0, _successFeedbacks.Length);
+            return isCorrect ? _successFeedbacks[index] : _failFeedbacks[index];
         }
 
         public void Exit()
