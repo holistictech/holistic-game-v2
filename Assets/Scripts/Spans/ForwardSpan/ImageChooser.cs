@@ -29,6 +29,11 @@ namespace Spans.ForwardSpan
 
         public override bool IsAnswerCorrect()
         {
+            if (currentGivenAnswers.Count == 0 || currentGivenAnswers.Count != currentDisplayedQuestions.Count)
+            {
+                IncrementFailStreak();
+                return false;
+            }
             for (int i = 0; i < currentDisplayedQuestions.Count; i++)
             {
                 if (currentDisplayedQuestions[i].GetQuestionItem() != currentGivenAnswers[i].GetQuestionItem())

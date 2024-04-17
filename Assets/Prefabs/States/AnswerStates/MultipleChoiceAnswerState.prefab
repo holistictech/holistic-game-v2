@@ -54,7 +54,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   timerBar: {fileID: 7316995603535891579}
-  gridLayoutGroup: {fileID: 531959979449421316}
+  gridLayoutGroup: {fileID: 3852416867757628982}
   choicePrefab: {fileID: 7698170080985097280, guid: d1d268f3c8fd23f4e9fa33daf813df34, type: 3}
   confirmButton: {fileID: 4200861930125296401}
   resetButton: {fileID: 8630966795538606114}
@@ -661,13 +661,13 @@ MonoBehaviour:
     m_Right: 50
     m_Top: 50
     m_Bottom: 50
-  m_ChildAlignment: 0
+  m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
   m_CellSize: {x: 300, y: 300}
   m_Spacing: {x: 50, y: 50}
-  m_Constraint: 0
-  m_ConstraintCount: 2
+  m_Constraint: 1
+  m_ConstraintCount: 4
 --- !u!1001 &5264378602918931989
 PrefabInstance:
   m_ObjectHideFlags: 0

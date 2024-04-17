@@ -5,12 +5,13 @@ using Scriptables.QuestionSystem;
 using UI;
 using UnityEngine;
 using UnityEngine.UI;
+using Vector2 = UnityEngine.Vector2;
 
 namespace Spans.Skeleton.AnswerStates
 {
     public class MultipleChoiceAnswerState : SpanAnswerState
     {
-        [SerializeField] private RectTransform gridLayoutGroup;
+        [SerializeField] private GridLayoutGroup gridLayoutGroup;
         [SerializeField] private Choice choicePrefab;
         [SerializeField] private Button confirmButton;
         [SerializeField] private Button resetButton;
@@ -41,7 +42,7 @@ namespace Spans.Skeleton.AnswerStates
         {
             for (int i = 0; i < 18; i++)
             {
-                var tempChoice = Instantiate(choicePrefab, gridLayoutGroup);
+                var tempChoice = Instantiate(choicePrefab, gridLayoutGroup.transform);
                 _choicePool.Add(tempChoice);
             }
         }
@@ -50,12 +51,22 @@ namespace Spans.Skeleton.AnswerStates
         {
             _givenAnswers.Clear();
             var choices = _spanController.GetChoices();
+            CalculateDynamicCellSize();
             
             foreach (var choice in choices)
             {
                 var temp = GetAvailableChoice();
                 temp.ConfigureUI(choice, this);
             }
+        }
+
+        private void CalculateDynamicCellSize()
+        {
+            var width = gridLayoutGroup.GetComponent<RectTransform>().rect.width;
+            float available = width - (gridLayoutGroup.padding.left + gridLayoutGroup.padding.right) -
+                              (3 * gridLayoutGroup.spacing.x);
+            float cellWidth = available / 4;
+            gridLayoutGroup.cellSize = new Vector2(cellWidth, cellWidth);
         }
         
         private IEnumerator PlayTimer(float maxTime)
