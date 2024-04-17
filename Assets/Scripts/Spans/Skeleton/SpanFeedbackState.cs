@@ -1,5 +1,8 @@
+using System.Collections;
+using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -15,6 +18,8 @@ namespace Spans.Skeleton
         [SerializeField] private Sprite correctSprite;
         [SerializeField] private Slider progressBar;
         private SpanController _spanController;
+
+        private Coroutine _progressBar;
 
         private readonly string[] _successFeedbacks = new string[]
         {
@@ -61,22 +66,47 @@ namespace Spans.Skeleton
             PlayEffects();
         }
 
+
+        private float speed = 5f;
         private void PlayEffects()
         {
             if (_spanController.IsAnswerCorrect())
             {
                 successEffect.Play();
                 progressBar.maxValue = _spanController.GetRoundIndex();
-                progressBar.value += progressBar.maxValue / 4;
+                float maxValue = progressBar.maxValue;
+                float target = maxValue / 4f + progressBar.value;
+                _progressBar = StartCoroutine(AnimateProgressBar(target, .3f));
+
+
                 ConfigureFeedbackField(true);
             }
             else
             {
                 failEffect.Play();
-                progressBar.value = 0;
+                _progressBar = StartCoroutine(AnimateProgressBar(0, .3f));
                 ConfigureFeedbackField(false);
             }
         }
+        
+        private IEnumerator AnimateProgressBar(float targetValue, float duration)
+        {
+            float elapsedTime = 0f;
+            float startValue = progressBar.value;
+    
+            while (elapsedTime < duration)
+            {
+                float t = elapsedTime / duration;
+                float newValue = Mathf.Lerp(startValue, targetValue, t);
+                
+                progressBar.value = newValue;
+                
+                elapsedTime += Time.deltaTime;
+                yield return null;
+            }
+            progressBar.value = targetValue;
+        }
+
 
         private void ConfigureFeedbackField(bool correct)
         {
@@ -102,6 +132,10 @@ namespace Spans.Skeleton
         public void Exit()
         {
             DisableUIElements();
+            if (_progressBar != null)
+            {
+                StopCoroutine(_progressBar);
+            }
         }
 
         public void SwitchNextState()
