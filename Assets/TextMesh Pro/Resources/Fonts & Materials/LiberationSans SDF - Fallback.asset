@@ -242,21 +242,6 @@ MonoBehaviour:
     m_Scale: 1
     m_AtlasIndex: 0
     m_ClassDefinitionType: 0
-  - m_Index: 225
-    m_Metrics:
-      m_Width: 40
-      m_Height: 81
-      m_HorizontalBearingX: 3
-      m_HorizontalBearingY: 63
-      m_HorizontalAdvance: 48
-    m_GlyphRect:
-      m_X: 10
-      m_Y: 201
-      m_Width: 40
-      m_Height: 81
-    m_Scale: 1
-    m_AtlasIndex: 0
-    m_ClassDefinitionType: 0
   - m_Index: 289
     m_Metrics:
       m_Width: 38
@@ -269,6 +254,21 @@ MonoBehaviour:
       m_Y: 10
       m_Width: 38
       m_Height: 64
+    m_Scale: 1
+    m_AtlasIndex: 0
+    m_ClassDefinitionType: 0
+  - m_Index: 225
+    m_Metrics:
+      m_Width: 40
+      m_Height: 81
+      m_HorizontalBearingX: 3
+      m_HorizontalBearingY: 63
+      m_HorizontalAdvance: 48
+    m_GlyphRect:
+      m_X: 10
+      m_Y: 201
+      m_Width: 40
+      m_Height: 81
     m_Scale: 1
     m_AtlasIndex: 0
     m_ClassDefinitionType: 0
@@ -286,12 +286,12 @@ MonoBehaviour:
     m_GlyphIndex: 243
     m_Scale: 1
   - m_ElementType: 1
-    m_Unicode: 287
-    m_GlyphIndex: 225
-    m_Scale: 1
-  - m_ElementType: 1
     m_Unicode: 351
     m_GlyphIndex: 289
+    m_Scale: 1
+  - m_ElementType: 1
+    m_Unicode: 287
+    m_GlyphIndex: 225
     m_Scale: 1
   m_AtlasTextures:
   - {fileID: 28268798066460806}
@@ -311,23 +311,15 @@ MonoBehaviour:
     m_Y: 0
     m_Width: 27
     m_Height: 64
-  - m_X: 0
-    m_Y: 191
-    m_Width: 59
-    m_Height: 100
   - m_X: 56
     m_Y: 0
     m_Width: 57
     m_Height: 83
-  m_FreeGlyphRects:
   - m_X: 0
-    m_Y: 291
-    m_Width: 511
-    m_Height: 220
-  - m_X: 59
     m_Y: 191
-    m_Width: 452
-    m_Height: 320
+    m_Width: 59
+    m_Height: 100
+  m_FreeGlyphRects:
   - m_X: 70
     m_Y: 83
     m_Width: 441
@@ -344,6 +336,14 @@ MonoBehaviour:
     m_Y: 64
     m_Width: 27
     m_Height: 30
+  - m_X: 0
+    m_Y: 291
+    m_Width: 511
+    m_Height: 220
+  - m_X: 59
+    m_Y: 191
+    m_Width: 452
+    m_Height: 320
   m_fontInfo:
     Name: Liberation Sans
     PointSize: 86

@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using Scriptables.QuestionSystem;
 using TMPro;
+using UI;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -13,18 +14,35 @@ namespace Spans.Skeleton
     public class SpanQuestionState : MonoBehaviour, ISpanState
     {
         [SerializeField] private Image questionBox;
-        [SerializeField] private AudioSource audioSource; 
+        [SerializeField] private AudioSource audioSource;
+        [SerializeField] private HorizontalLayoutGroup unitParent;
+        [SerializeField] private UnitCircle unit;
+        
         private SpanController _spanController;
         private List<Question> _spanObjects;
+
+        private List<UnitCircle> _spawnedUnitPool;
+        private List<UnitCircle> _activeCircles;
 
         private int _currentQuestionIndex;
         private List<Question> _currentQuestions = new List<Question>();
         private Coroutine _displayingQuestions;
+
+        private void Start()
+        {
+            SpawnUnitCircles();
+        }
+
         public void Enter(SpanController spanController)
         {
-            if (_spanController == null) _spanController = spanController;
+            if (_spanController == null)
+            {
+                _spanController = spanController;
+            }
+            DisablePreviousCircles();
             _spanObjects = _spanController.GetSpanObjects();
             EnableUIElements();
+            SetCircleUI(_spanController.GetRoundIndex());
             ShowQuestion();
         }
 
@@ -56,6 +74,7 @@ namespace Spans.Skeleton
             {
                 var question = _spanObjects[_currentQuestionIndex];
                 questionBox.GetComponentInChildren<TextMeshProUGUI>().text = $"{question.GetQuestionItem()}";
+                ActivateCircle(i);
                 questionBox.enabled = false;
                 _currentQuestions.Add(question);
                 _currentQuestionIndex++;
@@ -71,6 +90,7 @@ namespace Spans.Skeleton
             {
                 var question = _spanObjects[_currentQuestionIndex];
                 questionBox.sprite = (Sprite)question.GetQuestionItem();
+                ActivateCircle(i);
                 _currentQuestions.Add(question);
                 _currentQuestionIndex++;
                 yield return new WaitForSeconds(1f);
@@ -85,12 +105,43 @@ namespace Spans.Skeleton
             {
                 var question = _spanObjects[_currentQuestionIndex];
                 audioSource.Play((ulong)question.GetQuestionItem());
+                ActivateCircle(i);
                 _currentQuestions.Add(question);
                 _currentQuestionIndex++;
                 yield return new WaitForSeconds(1f);
             }
             
             SwitchNextState();
+        }
+
+        private void SetCircleUI(int count)
+        {
+            for (int i = 0; i < count; i++)
+            {
+                var tempCircle = GetAvailableUnitCircle();
+                tempCircle.EnableSelf();
+                _activeCircles.Add(tempCircle);
+            }
+        }
+
+        private void SpawnUnitCircles()
+        {
+            _spawnedUnitPool = new List<UnitCircle>();
+            _activeCircles = new List<UnitCircle>();
+            for (int i = 0; i < 9; i++)
+            {
+                var tempCircle = Instantiate(unit, unitParent.transform);
+                _spawnedUnitPool.Add(tempCircle);
+                tempCircle.ResetSelf();
+            }
+        }
+
+        private void ActivateCircle(int index)
+        {
+            if (_activeCircles != null && _activeCircles.Count > index)
+            {
+                _activeCircles[index].ConfigureUI();
+            }
         }
 
         public void Exit()
@@ -101,6 +152,7 @@ namespace Spans.Skeleton
             }
             
             DisableUIElements();
+            //DisablePreviousCircles();
         }
 
         public void SwitchNextState()
@@ -112,12 +164,38 @@ namespace Spans.Skeleton
         public void EnableUIElements()
         {
             questionBox.gameObject.SetActive(true);
+            unitParent.gameObject.SetActive(true);
         }
 
         public void DisableUIElements()
         {
             questionBox.GetComponentInChildren<TextMeshProUGUI>().text = "";
             questionBox.gameObject.SetActive(false);
+            //unitParent.gameObject.SetActive(false);
+        }
+
+        private void DisablePreviousCircles()
+        {
+            foreach (var circle in _activeCircles)
+            {
+                circle.ResetSelf();
+            }
+            
+            _activeCircles.Clear();
+        }
+
+        private UnitCircle GetAvailableUnitCircle()
+        {
+            foreach (var circle in _spawnedUnitPool)
+            {
+                if (!circle.isActiveAndEnabled)
+                {
+                    return circle;
+                }
+            }
+
+            throw new Exception("No available unit circle");
+            return null;
         }
     }
 }
