@@ -143,6 +143,14 @@ namespace Spans.Skeleton
             _spanController.SwitchState();
         }
 
+        public List<GameObject> GetTutorialObjects()
+        {
+            return new List<GameObject>()
+            {
+                progressBar.gameObject
+            };
+        }
+
         public void EnableUIElements()
         {
             successEffect.gameObject.SetActive(true);

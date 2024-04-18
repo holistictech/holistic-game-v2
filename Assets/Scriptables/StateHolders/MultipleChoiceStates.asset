@@ -12,12 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2966298be79be0948b7dfbe9a52b94e4, type: 3}
   m_Name: MultipleChoiceStates
   m_EditorClassIdentifier: 
+  TutorialKey: 
   StatePrefabs:
   - {fileID: 6665612139833752001, guid: 1d6d08058b2e5bd45b47ad9e62279971, type: 3}
   - {fileID: 343728590293082522, guid: ae743216f9aef6546aaa58d9c41a96f5, type: 3}
   - {fileID: 917999565626506664, guid: 477fcc199e5894f42ac04afb945ad6d8, type: 3}
   - {fileID: 4398036663724712788, guid: 1a1758605587797439b2cc162f45e46a, type: 3}
   - {fileID: 7419551033220530312, guid: 13c22131f8cde7c478ebac501b80413c, type: 3}
+  TutorialSteps:
+  - {fileID: 11400000, guid: d7f07e0c809e5b449942bf6da51fce69, type: 2}
+  - {fileID: 11400000, guid: 74a5475a67497d94fba80b7f2921f8fd, type: 2}
+  - {fileID: 11400000, guid: 96a2a5c219d0eb54fb0bca06c367acbc, type: 2}
+  - {fileID: 11400000, guid: 66b4df7a2fb1e6149978cd02d0d3710c, type: 2}
+  - {fileID: 11400000, guid: 76bb00d30d5d47148a220b8f8b64f4ac, type: 2}
+  - {fileID: 11400000, guid: 11c8a8df6bf0644478aedcdc317cbd20, type: 2}
+  - {fileID: 11400000, guid: 7376698f8fced3343b6938425d8e40d6, type: 2}
   InitialState: {fileID: 2252729160077255524, guid: 1d6d08058b2e5bd45b47ad9e62279971, type: 3}
   QuestionState: {fileID: 6412640762316234808, guid: ae743216f9aef6546aaa58d9c41a96f5, type: 3}
   AnswerState: {fileID: 8669911120965660855, guid: 477fcc199e5894f42ac04afb945ad6d8, type: 3}

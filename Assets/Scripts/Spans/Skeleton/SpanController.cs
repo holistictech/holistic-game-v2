@@ -1,8 +1,12 @@
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using Scriptables;
 using Scriptables.QuestionSystem;
+using Scriptables.Tutorial;
+using Tutorial;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Utilities;
 
 namespace Spans.Skeleton
@@ -10,6 +14,8 @@ namespace Spans.Skeleton
     public abstract class SpanController : MonoBehaviour
     {
         [SerializeField] private StateHolder states;
+        [SerializeField] private ForwardChooserTutorialManager tutorialManager;
+        private List<TutorialStep> _tutorialSteps;
         private List<ISpanState> _stateList = new List<ISpanState>();
         protected SpanStateContext stateContext;
         protected int currentRoundIndex = CommonFields.DEFAULT_ROUND_INDEX;
@@ -27,7 +33,18 @@ namespace Spans.Skeleton
         {
             stateContext = new SpanStateContext(this);
             InstantiateGameStates();
-            stateContext.Transition(_stateList[0]);
+            /*if (PlayerSaveManager.GetPlayerAttribute(states.TutorialKey, 0) == 0)
+            {
+                tutorialManager.SetObjectsToHighlight(_stateList);
+                tutorialManager.ActivateTutorial(states.TutorialSteps, states.TutorialKey);
+            }
+            else
+            {
+                stateContext.Transition(_stateList[0]);
+            }
+            */
+            tutorialManager.SetObjectsToHighlight(_stateList);
+            tutorialManager.ActivateTutorial(states.TutorialSteps, states.TutorialKey);
         }
 
         public void SwitchState()

@@ -161,6 +161,14 @@ namespace Spans.Skeleton
             _spanController.SwitchState();
         }
 
+        public List<GameObject> GetTutorialObjects()
+        {
+            return new List<GameObject>()
+            {
+                questionBox.gameObject
+            };
+        }
+
         public void EnableUIElements()
         {
             questionBox.gameObject.SetActive(true);

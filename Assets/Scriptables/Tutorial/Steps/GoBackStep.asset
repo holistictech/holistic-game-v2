@@ -1,0 +1,18 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c4d81edbe4a6cd146ad49ba5b6bce348, type: 3}
+  m_Name: GoBackStep
+  m_EditorClassIdentifier: 
+  HighlightObjects:
+  - {fileID: 1161325463088413936, guid: a51df2a60b780694b89f9f8912e70d67, type: 3}
+  StepClip: {fileID: 0}
+  StepText: "Yanl\u0131\u015F basarsak geri tu\u015Funa basabiliriz"

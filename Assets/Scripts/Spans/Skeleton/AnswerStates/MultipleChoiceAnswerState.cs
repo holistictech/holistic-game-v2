@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Scriptables.QuestionSystem;
 using UI;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Vector2 = UnityEngine.Vector2;
 
@@ -14,7 +15,7 @@ namespace Spans.Skeleton.AnswerStates
         [SerializeField] private GridLayoutGroup gridLayoutGroup;
         [SerializeField] private Choice choicePrefab;
         [SerializeField] private Button confirmButton;
-        [SerializeField] private Button resetButton;
+        [SerializeField] private Button revertButton;
 
         private List<Choice> _choicePool = new List<Choice>();
         private List<Question> _givenAnswers = new List<Question>();
@@ -102,12 +103,23 @@ namespace Spans.Skeleton.AnswerStates
             }
         }
         
+        public override List<GameObject> GetTutorialObjects()
+        {
+            return new List<GameObject>()
+            {
+                gridLayoutGroup.gameObject,
+                revertButton.gameObject,
+                confirmButton.gameObject,
+                timerBar.gameObject
+            };
+        }
+        
         public override void EnableUIElements()
         {
             base.EnableUIElements();
             gridLayoutGroup.gameObject.SetActive(true);
             confirmButton.gameObject.SetActive(true);
-            resetButton.gameObject.SetActive(true);
+            revertButton.gameObject.SetActive(true);
         }
 
         public override void DisableUIElements()
@@ -115,7 +127,7 @@ namespace Spans.Skeleton.AnswerStates
             base.DisableUIElements();
             gridLayoutGroup.gameObject.SetActive(false);
             confirmButton.gameObject.SetActive(false);
-            resetButton.gameObject.SetActive(false);
+            revertButton.gameObject.SetActive(false);
             DisableSpawnedChoices();
         }
 
@@ -142,13 +154,13 @@ namespace Spans.Skeleton.AnswerStates
 
         private void AddListeners()
         { 
-            resetButton.onClick.AddListener(ResetGivenAnswers);
+            revertButton.onClick.AddListener(ResetGivenAnswers);
             confirmButton.onClick.AddListener(SwitchNextState);
         }
 
         private void RemoveListeners()
         {
-            resetButton.onClick.RemoveListener(ResetGivenAnswers);
+            revertButton.onClick.RemoveListener(ResetGivenAnswers);
             confirmButton.onClick.RemoveListener(SwitchNextState);
         }
 

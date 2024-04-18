@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Spans.Skeleton
@@ -17,6 +18,14 @@ namespace Spans.Skeleton
         public void SwitchNextState()
         {
             throw new System.NotImplementedException();
+        }
+
+        public List<GameObject> GetTutorialObjects()
+        {
+            return new List<GameObject>()
+            {
+
+            };
         }
 
         public void EnableUIElements()

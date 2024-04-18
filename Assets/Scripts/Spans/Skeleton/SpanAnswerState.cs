@@ -42,7 +42,15 @@ namespace Spans.Skeleton
         public virtual void SwitchNextState()
         {
         }
-        
+
+        public virtual List<GameObject> GetTutorialObjects()
+        {
+            return new List<GameObject>()
+            {
+                timerBar.gameObject
+            };
+        }
+
 
         public virtual void EnableUIElements()
         {
