@@ -67,7 +67,7 @@ namespace UI
         private void SetIsSelected()
         {
             choice.interactable = false;
-            _answerState.AppendGivenAnswers(_question);
+            _answerState.AppendGivenAnswers(_question, this);
         }
 
         private void AddListeners()

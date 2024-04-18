@@ -18,6 +18,7 @@ namespace Spans.Skeleton.AnswerStates
 
         private List<Choice> _choicePool = new List<Choice>();
         private List<Question> _givenAnswers = new List<Question>();
+        private List<Choice> _selectedChoices = new List<Choice>(); 
         private SpanController _spanController;
 
         private Coroutine _timer;
@@ -126,18 +127,17 @@ namespace Spans.Skeleton.AnswerStates
             }
         }
 
-        public void AppendGivenAnswers(Question question)
+        public void AppendGivenAnswers(Question question, Choice choice)
         {
             _givenAnswers.Add(question);
+            _selectedChoices.Add(choice);
         }
 
         private void ResetGivenAnswers()
         {
-            _givenAnswers.Clear();
-            foreach (var choice in _choicePool)
-            {
-                choice.ResetUI();
-            }
+            _givenAnswers.Remove(_givenAnswers[^1]);
+            _selectedChoices[^1].ResetUI();
+            _selectedChoices.Remove(_selectedChoices[^1]);
         }
 
         private void AddListeners()
