@@ -7,6 +7,7 @@ using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 using Utilities;
 
 namespace Tutorial
@@ -50,8 +51,12 @@ namespace Tutorial
                 {
                     var temp = _objectsToHighlight[i];
                     GameObject highlight = Instantiate(tutorialFrame, tutorialPanel);
+                    if (temp.GetComponentInChildren<Image>() != null)
+                    {
+                        highlight.GetComponentInChildren<Image>().sprite = temp.GetComponentInChildren<Image>().sprite;
+                    }
+                    
                     RectTransform highlightTransform = highlight.GetComponent<RectTransform>();
-
                     // Get the RectTransform of the target object
                     RectTransform tempTransform = temp.GetComponent<RectTransform>();
 
