@@ -23,6 +23,7 @@ namespace Spans.Skeleton
 
         protected int currentSuccessStreak;
         protected int currentFailStreak;
+        private bool _tutorialActive;
         protected List<Question> currentSpanQuestions;
         protected List<Question> currentDisplayedQuestions;
         protected List<string> currentDetectedAnswers;
@@ -167,6 +168,11 @@ namespace Spans.Skeleton
                 var temp = Instantiate(state, transform);
                 _stateList.Add(temp.GetComponent<ISpanState>());
             }
+        }
+
+        public bool GetTutorialStatus()
+        {
+            return _tutorialActive;
         }
     }
 }

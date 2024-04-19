@@ -51,6 +51,11 @@ namespace Spans.Skeleton
             };
         }
 
+        public virtual void TryShowStateTutorial()
+        {
+            throw new System.NotImplementedException();
+        }
+
 
         public virtual void EnableUIElements()
         {

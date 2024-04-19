@@ -331,7 +331,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 45a52e62b642b9a4f9b875bb842e48db, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  commonParent: {fileID: 8242588130389079751}
   tutorialPanel: {fileID: 7859149007981708873}
   tutorialFrame: {fileID: 5676812556043528798, guid: 9d48c73489107dc4d889ec1f7541333a, type: 3}
   tutorialStepField: {fileID: 2638306012739917003}

@@ -9,6 +9,7 @@ namespace Spans.Skeleton
         public abstract void Exit();
         public abstract void SwitchNextState();
         public abstract List<GameObject> GetTutorialObjects();
+        public abstract void TryShowStateTutorial();
         public abstract void EnableUIElements();
         public abstract void DisableUIElements();
     }

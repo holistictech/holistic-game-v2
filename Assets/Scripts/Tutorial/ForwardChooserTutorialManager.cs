@@ -45,25 +45,45 @@ namespace Tutorial
                 if (i == 0)
                 {
                     tutorialStepField.text = _steps[i].StepText;
-                    continue;
                 }
-                
-                var temp = _objectsToHighlight[i];
-                GameObject highlight = Instantiate(tutorialFrame, tutorialPanel);
-                RectTransform highlightTransform = highlight.GetComponent<RectTransform>();
-        
-                if (Camera.main != null)
+                else
                 {
-                    
+                    var temp = _objectsToHighlight[i];
+                    GameObject highlight = Instantiate(tutorialFrame, tutorialPanel);
+                    RectTransform highlightTransform = highlight.GetComponent<RectTransform>();
+
+                    // Get the RectTransform of the target object
+                    RectTransform tempTransform = temp.GetComponent<RectTransform>();
+
+                    // Check if both RectTransforms are available
+                    if (tempTransform != null && highlightTransform != null)
+                    {
+                        // Set the anchored position of the highlight to match the target object
+                        highlightTransform.anchoredPosition = tempTransform.anchoredPosition;
+
+                        // Set the anchors of the highlight to match the target object
+                        highlightTransform.anchorMin = tempTransform.anchorMin;
+                        highlightTransform.anchorMax = tempTransform.anchorMax;
+
+                        // Optionally, you can also match the size of the highlight to the size of the target object
+                        highlightTransform.sizeDelta = tempTransform.sizeDelta;
+
+                        // Set the pivot of the highlight to match the target object
+                        highlightTransform.pivot = tempTransform.pivot;
+
+                        // Update the text of the tutorial step
+                        tutorialStepField.text = _steps[i].StepText;
+                    }
                 }
-                
-                yield return new WaitForSeconds(7f);
         
+                yield return new WaitForSeconds(7f);
+
                 ClearHighlight();
                 PlayerSaveManager.SavePlayerAttribute(1, _currentTutorialKey);
                 _currentTutorialKey = null;
             }
         }
+
         
         private void ClearHighlight()
         {

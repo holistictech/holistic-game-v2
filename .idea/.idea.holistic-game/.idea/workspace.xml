@@ -6,13 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="3d01f5fc-4a81-4ccb-94d7-a0f07bc2bc79" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/ResourcesData/Sprite/Components/Frame/ItemFrame01_Single_Green.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/ResourcesData/Sprite/Components/Frame/ItemFrame01_Single_Green.png.meta" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Spans/ForwardSpanImageChooser.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Spans/ForwardSpanImageChooser.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/States/AnswerStates/MultipleChoiceAnswerState.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/States/AnswerStates/MultipleChoiceAnswerState.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/States/FeedbackState.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/States/FeedbackState.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/States/InitialState.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/States/InitialState.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/States/QuestionState.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/States/QuestionState.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GamePlay/Grid.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GamePlay/Grid.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/StateHolder.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/StateHolder.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/StateHolders/MultipleChoiceStates.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/StateHolders/MultipleChoiceStates.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/MultipleChoiceAnswerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/MultipleChoiceAnswerState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/ISpanState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/ISpanState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanAnswerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanAnswerState.cs" afterDir="false" />
@@ -21,7 +19,7 @@
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanGameEndState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanGameEndState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanInitialState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanInitialState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanQuestionState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanQuestionState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Tutorial/ForwardChooserTutorialManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Tutorial/ForwardChooserTutorialManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -114,10 +112,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="9516">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="9516" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -152,7 +150,8 @@
       <workItem from="1713339256817" duration="2799000" />
       <workItem from="1713383704695" duration="984000" />
       <workItem from="1713426896152" duration="4488000" />
-      <workItem from="1713431723591" duration="9694000" />
+      <workItem from="1713431723591" duration="14721000" />
+      <workItem from="1713512649239" duration="3075000" />
     </task>
     <servers />
   </component>
@@ -179,32 +178,6 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Tutorial/ForwardChooserTutorialManager.cs</url>
-          <line>40</line>
-          <properties documentPath="C:\Users\ahaka\Documents\GitHub\holistic-game\Assets\Scripts\Tutorial\ForwardChooserTutorialManager.cs" initialLine="40" containingFunctionPresentation="Method 'IterateTutorialSteps'">
-            <startOffsets>
-              <option value="1344" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1345" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="4" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Tutorial/ForwardChooserTutorialManager.cs</url>
-          <line>32</line>
-          <properties documentPath="C:\Users\ahaka\Documents\GitHub\holistic-game\Assets\Scripts\Tutorial\ForwardChooserTutorialManager.cs" initialLine="32" containingFunctionPresentation="Method 'SetObjectsToHighlight'">
-            <startOffsets>
-              <option value="1125" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1154" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="5" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

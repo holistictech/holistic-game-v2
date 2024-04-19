@@ -169,6 +169,11 @@ namespace Spans.Skeleton
             };
         }
 
+        public void TryShowStateTutorial()
+        {
+            throw new NotImplementedException();
+        }
+
         public void EnableUIElements()
         {
             questionBox.gameObject.SetActive(true);

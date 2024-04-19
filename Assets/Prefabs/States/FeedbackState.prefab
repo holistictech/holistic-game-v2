@@ -185,6 +185,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Slider_Basic04_Green
       objectReference: {fileID: 0}
+    - target: {fileID: 5840184242018545915, guid: 0ad258211a66a7047a76542f9c84603c, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5840184242140714966, guid: 0ad258211a66a7047a76542f9c84603c, type: 3}
       propertyPath: m_AnchorMax.y
       value: 1

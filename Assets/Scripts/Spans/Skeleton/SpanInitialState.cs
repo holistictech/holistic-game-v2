@@ -54,6 +54,11 @@ namespace Spans.Skeleton
             };
         }
 
+        public void TryShowStateTutorial()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public void EnableUIElements()
         {
             getReadyPopup.gameObject.SetActive(true);

@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using Scriptables.QuestionSystem;
+using Scriptables.Tutorial;
 using UI;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -12,6 +13,7 @@ namespace Spans.Skeleton.AnswerStates
 {
     public class MultipleChoiceAnswerState : SpanAnswerState
     {
+        [SerializeField] private List<TutorialStep> stateTutorialSteps;
         [SerializeField] private GridLayoutGroup gridLayoutGroup;
         [SerializeField] private Choice choicePrefab;
         [SerializeField] private Button confirmButton;
@@ -112,6 +114,14 @@ namespace Spans.Skeleton.AnswerStates
                 confirmButton.gameObject,
                 timerBar.gameObject
             };
+        }
+        
+        public override void TryShowStateTutorial()
+        {
+            if (!_spanController.GetTutorialStatus())
+                return;
+            
+            throw new System.NotImplementedException();
         }
         
         public override void EnableUIElements()
