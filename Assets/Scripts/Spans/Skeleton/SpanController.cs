@@ -14,7 +14,7 @@ namespace Spans.Skeleton
     public abstract class SpanController : MonoBehaviour
     {
         [SerializeField] private StateHolder states;
-        [SerializeField] private ForwardChooserTutorialManager tutorialManager;
+        [SerializeField] private TutorialManager tutorialManager;
         private List<TutorialStep> _tutorialSteps;
         private List<ISpanState> _stateList = new List<ISpanState>();
         protected SpanStateContext stateContext;
@@ -46,6 +46,7 @@ namespace Spans.Skeleton
             */
             tutorialManager.SetObjectsToHighlight(_stateList);
             tutorialManager.ActivateTutorial(states.TutorialSteps, states.TutorialKey);
+            stateContext.Transition(_stateList[0]);
         }
 
         public void SwitchState()

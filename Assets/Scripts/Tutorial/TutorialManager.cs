@@ -12,7 +12,7 @@ using Utilities;
 
 namespace Tutorial
 {
-    public class ForwardChooserTutorialManager : MonoBehaviour
+    public class TutorialManager : MonoBehaviour
     {
         [SerializeField] private RectTransform tutorialPanel;
         [SerializeField] private GameObject tutorialFrame;
@@ -21,9 +21,12 @@ namespace Tutorial
         private List<GameObject> _currentHighlights = new List<GameObject>();
         private List<TutorialStep> _steps = new List<TutorialStep>();
         private string _currentTutorialKey;
+
+        public static bool IsTutorialActive;
         
         public void ActivateTutorial(List<TutorialStep> steps, string key)
         {
+            IsTutorialActive = true;
             _steps = steps;
             _currentTutorialKey = key;
             tutorialPanel.gameObject.SetActive(true);
@@ -86,6 +89,7 @@ namespace Tutorial
                 ClearHighlight();
                 PlayerSaveManager.SavePlayerAttribute(1, _currentTutorialKey);
                 _currentTutorialKey = null;
+                IsTutorialActive = false;
             }
         }
 

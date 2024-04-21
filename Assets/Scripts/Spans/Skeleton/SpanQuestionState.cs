@@ -28,6 +28,8 @@ namespace Spans.Skeleton
         private List<Question> _currentQuestions = new List<Question>();
         private Coroutine _displayingQuestions;
 
+        public static event Action<List<GameObject>> OnQuestionStateTutorialNeeded;
+
         private void Start()
         {
             SpawnUnitCircles();

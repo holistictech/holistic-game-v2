@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
+using Tutorial;
 using UnityEngine;
 using UnityEngine.Serialization;
 

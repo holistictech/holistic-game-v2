@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Scriptables.QuestionSystem;
 using Scriptables.Tutorial;
+using Tutorial;
 using UI;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -39,7 +40,8 @@ namespace Spans.Skeleton.AnswerStates
             EnableUIElements();
 
             SetChoiceUI();
-            _timer = StartCoroutine(PlayTimer(_maxTime));
+            if(!TutorialManager.IsTutorialActive)
+                _timer = StartCoroutine(PlayTimer(_maxTime));
         }
 
         private void SpawnChoices()
