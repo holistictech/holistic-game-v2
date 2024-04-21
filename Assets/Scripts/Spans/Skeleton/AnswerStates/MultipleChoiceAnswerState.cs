@@ -5,6 +5,7 @@ using Scriptables.QuestionSystem;
 using Scriptables.Tutorial;
 using Tutorial;
 using UI;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -15,7 +16,6 @@ namespace Spans.Skeleton.AnswerStates
 {
     public class MultipleChoiceAnswerState : SpanAnswerState
     {
-        [SerializeField] private List<TutorialStep> stateTutorialSteps;
         [SerializeField] private GridLayoutGroup gridLayoutGroup;
         [SerializeField] private Choice choicePrefab;
         [SerializeField] private Button confirmButton;
@@ -41,8 +41,9 @@ namespace Spans.Skeleton.AnswerStates
             EnableUIElements();
 
             SetChoiceUI();
-            if(!TutorialManager.IsTutorialActive)
+            if(!_spanController.GetTutorialStatus())
                 _timer = StartCoroutine(PlayTimer(_maxTime));
+            TryShowStateTutorial();
         }
 
         private void SpawnChoices()
@@ -78,6 +79,11 @@ namespace Spans.Skeleton.AnswerStates
         
         private IEnumerator PlayTimer(float maxTime)
         {
+            if (_spanController.GetTutorialStatus())
+            {
+                StopCoroutine(_timer);
+            }
+            
             timerBar.maxValue = maxTime;
             float currentTime = maxTime;
 
@@ -89,7 +95,9 @@ namespace Spans.Skeleton.AnswerStates
             }
 
             timerBar.value = 0f;
-            SwitchNextState();
+            
+            if(!_spanController.GetTutorialStatus())
+                SwitchNextState();
         }
 
         public override void SwitchNextState()
@@ -118,7 +126,10 @@ namespace Spans.Skeleton.AnswerStates
                 timerBar.gameObject
             };
             var dictionary = new Dictionary<GameObject, TutorialStep>().CreateFromLists(targets, GetTutorialSteps());
-            _spanController.TriggerStateTutorial(dictionary);
+            _spanController.TriggerStateTutorial(dictionary, () =>
+            {
+                
+            });
         }
         
         public override void EnableUIElements()

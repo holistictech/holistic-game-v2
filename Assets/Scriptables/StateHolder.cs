@@ -10,7 +10,6 @@ namespace Scriptables
     {
         public string TutorialKey;
         public List<GameObject> StatePrefabs;
-        public List<TutorialStep> TutorialSteps;
         public SpanInitialState InitialState;
         public SpanQuestionState QuestionState;
         public SpanAnswerState AnswerState;

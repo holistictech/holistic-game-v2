@@ -46,6 +46,7 @@ namespace Spans.Skeleton
             _spanObjects = _spanController.GetSpanObjects();
             EnableUIElements();
             SetCircleUI(_spanController.GetRoundIndex());
+            TryShowStateTutorial();
             ShowQuestion();
         }
 
@@ -84,7 +85,8 @@ namespace Spans.Skeleton
                 yield return new WaitForSeconds(1f);
             }
             
-            SwitchNextState();
+            if(!_spanController.GetTutorialStatus())
+                SwitchNextState();
         }
 
         private IEnumerator ShowImages()
@@ -99,7 +101,8 @@ namespace Spans.Skeleton
                 yield return new WaitForSeconds(1f);
             }
             
-            SwitchNextState();
+            if(!_spanController.GetTutorialStatus())
+                SwitchNextState();
         }
 
         private IEnumerator PlayClips()
@@ -114,7 +117,8 @@ namespace Spans.Skeleton
                 yield return new WaitForSeconds(1f);
             }
             
-            SwitchNextState();
+            if(!_spanController.GetTutorialStatus())
+                SwitchNextState();
         }
 
         private void SetCircleUI(int count)
@@ -172,7 +176,7 @@ namespace Spans.Skeleton
             };
 
             var dictionary = new Dictionary<GameObject, TutorialStep>().CreateFromLists(targets, steps);
-            _spanController.TriggerStateTutorial(dictionary);
+            _spanController.TriggerStateTutorial(dictionary, SwitchNextState);
         }
 
         public void EnableUIElements()

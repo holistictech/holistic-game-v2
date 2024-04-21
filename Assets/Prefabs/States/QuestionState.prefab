@@ -50,6 +50,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0bbbf1c3bec1c7c48b469e3f34e52026, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  steps:
+  - {fileID: 11400000, guid: 74a5475a67497d94fba80b7f2921f8fd, type: 2}
   questionBox: {fileID: 8373753712324026652}
   audioSource: {fileID: 0}
   unitParent: {fileID: 4493078967045124660}

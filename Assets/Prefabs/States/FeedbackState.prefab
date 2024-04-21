@@ -50,6 +50,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4769d96ac7dc714b8aa1a3759f37ac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  steps:
+  - {fileID: 11400000, guid: 7376698f8fced3343b6938425d8e40d6, type: 2}
   successEffect: {fileID: 8627674946918836953}
   failEffect: {fileID: 2070143625604301989}
   feedbackLabel: {fileID: 2051065968516979051}

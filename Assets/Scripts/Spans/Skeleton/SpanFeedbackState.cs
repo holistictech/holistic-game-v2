@@ -67,6 +67,7 @@ namespace Spans.Skeleton
 
             EnableUIElements();
             PlayEffects();
+            TryShowStateTutorial();
         }
 
 
@@ -121,7 +122,8 @@ namespace Spans.Skeleton
             {
                 DOVirtual.DelayedCall(2.5f, () =>
                 {
-                    _spanController.SwitchState();
+                    if(!_spanController.GetTutorialStatus())
+                        _spanController.SwitchState();
                 });
             });
         }
@@ -153,7 +155,7 @@ namespace Spans.Skeleton
                 progressBar.gameObject
             };
             var dictionary = new Dictionary<GameObject, TutorialStep>().CreateFromLists(targets, steps);
-            _spanController.TriggerStateTutorial(dictionary);
+            _spanController.TriggerStateTutorial(dictionary, SwitchNextState);
         }
 
         public void EnableUIElements()
