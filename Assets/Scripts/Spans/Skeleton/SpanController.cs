@@ -44,9 +44,9 @@ namespace Spans.Skeleton
                 stateContext.Transition(_stateList[0]);
             }
             */
+            EnableAllTutorialObjects();
             tutorialManager.SetObjectsToHighlight(_stateList);
             tutorialManager.ActivateTutorial(states.TutorialSteps, states.TutorialKey);
-            stateContext.Transition(_stateList[0]);
         }
 
         public void SwitchState()
@@ -167,6 +167,7 @@ namespace Spans.Skeleton
             foreach (var state in states.StatePrefabs)
             {
                 var temp = Instantiate(state, transform);
+                temp.transform.SetSiblingIndex(0);
                 _stateList.Add(temp.GetComponent<ISpanState>());
             }
         }
@@ -174,6 +175,19 @@ namespace Spans.Skeleton
         public bool GetTutorialStatus()
         {
             return _tutorialActive;
+        }
+
+        public void TriggerStateTutorial(Dictionary<GameObject, TutorialStep> tutorials)
+        {
+            tutorialManager.ActivateStateTutorial(tutorials);
+        }
+
+        private void EnableAllTutorialObjects()
+        {
+            foreach (var state in _stateList)
+            {
+                state.TryShowStateTutorial();
+            }
         }
     }
 }

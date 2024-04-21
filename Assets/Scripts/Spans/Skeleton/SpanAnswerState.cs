@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using DG.Tweening;
 using Samples.Whisper;
+using Scriptables.Tutorial;
 using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -12,13 +14,14 @@ namespace Spans.Skeleton
 {
     public class SpanAnswerState : MonoBehaviour, ISpanState
     {
+        [SerializeField] private List<TutorialStep> _steps;
         public Slider timerBar;
         private SpanController _spanController;
+        
         
         public virtual void Enter(SpanController spanController)
         {
         }
-
 
         public virtual void Exit()
         {
@@ -43,19 +46,9 @@ namespace Spans.Skeleton
         {
         }
 
-        public virtual List<GameObject> GetTutorialObjects()
-        {
-            return new List<GameObject>()
-            {
-                timerBar.gameObject
-            };
-        }
-
         public virtual void TryShowStateTutorial()
         {
-            throw new System.NotImplementedException();
         }
-
 
         public virtual void EnableUIElements()
         {
@@ -65,6 +58,11 @@ namespace Spans.Skeleton
         public virtual void DisableUIElements()
         {
             timerBar.gameObject.SetActive(false);
+        }
+
+        protected List<TutorialStep> GetTutorialSteps()
+        {
+            return _steps;
         }
     }
 }

@@ -1,15 +1,18 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Scriptables.Tutorial;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using Utilities;
 
 namespace Spans.Skeleton
 {
     public class SpanFeedbackState : MonoBehaviour, ISpanState
     {
+        [SerializeField] private List<TutorialStep> steps;
         [SerializeField] private ParticleSystem successEffect;
         [SerializeField] private ParticleSystem failEffect;
         [SerializeField] private Image feedbackLabel;
@@ -143,17 +146,14 @@ namespace Spans.Skeleton
             _spanController.SwitchState();
         }
 
-        public List<GameObject> GetTutorialObjects()
+        public void TryShowStateTutorial()
         {
-            return new List<GameObject>()
+            var targets = new List<GameObject>()
             {
                 progressBar.gameObject
             };
-        }
-
-        public void TryShowStateTutorial()
-        {
-            throw new System.NotImplementedException();
+            var dictionary = new Dictionary<GameObject, TutorialStep>().CreateFromLists(targets, steps);
+            _spanController.TriggerStateTutorial(dictionary);
         }
 
         public void EnableUIElements()

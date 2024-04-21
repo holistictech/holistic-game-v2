@@ -836,9 +836,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 5317712305952169983, guid: ef47053ec73cedf40a4b775e5259e359, type: 3}
+      propertyPath: tutorialPanel
+      value: 
+      objectReference: {fileID: 723846005}
+    - target: {fileID: 5317712305952169983, guid: ef47053ec73cedf40a4b775e5259e359, type: 3}
+      propertyPath: tutorialParent
+      value: 
+      objectReference: {fileID: 637434732}
     - target: {fileID: 8242588130389079751, guid: ef47053ec73cedf40a4b775e5259e359, type: 3}
       propertyPath: m_Name
       value: ForwardSpanImageChooser
+      objectReference: {fileID: 0}
+    - target: {fileID: 8242588130389079751, guid: ef47053ec73cedf40a4b775e5259e359, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8840831442161132576, guid: ef47053ec73cedf40a4b775e5259e359, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -989,6 +1005,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 703693078}
   m_CullTransparentMesh: 1
+--- !u!1 &723846005 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8840831442161132576, guid: ef47053ec73cedf40a4b775e5259e359, type: 3}
+  m_PrefabInstance: {fileID: 637434731}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &858425924
 GameObject:
   m_ObjectHideFlags: 0

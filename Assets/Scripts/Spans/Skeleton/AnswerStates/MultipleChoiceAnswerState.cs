@@ -8,6 +8,7 @@ using UI;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using Utilities;
 using Vector2 = UnityEngine.Vector2;
 
 namespace Spans.Skeleton.AnswerStates
@@ -107,23 +108,17 @@ namespace Spans.Skeleton.AnswerStates
             }
         }
         
-        public override List<GameObject> GetTutorialObjects()
+        public override void TryShowStateTutorial()
         {
-            return new List<GameObject>()
+            List<GameObject> targets = new List<GameObject>()
             {
                 gridLayoutGroup.gameObject,
                 revertButton.gameObject,
                 confirmButton.gameObject,
                 timerBar.gameObject
             };
-        }
-        
-        public override void TryShowStateTutorial()
-        {
-            if (!_spanController.GetTutorialStatus())
-                return;
-            
-            throw new System.NotImplementedException();
+            var dictionary = new Dictionary<GameObject, TutorialStep>().CreateFromLists(targets, GetTutorialSteps());
+            _spanController.TriggerStateTutorial(dictionary);
         }
         
         public override void EnableUIElements()

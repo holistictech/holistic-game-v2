@@ -3,16 +3,19 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using Scriptables.QuestionSystem;
+using Scriptables.Tutorial;
 using TMPro;
 using UI;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using Utilities;
 
 namespace Spans.Skeleton
 {
     public class SpanQuestionState : MonoBehaviour, ISpanState
     {
+        [SerializeField] private List<TutorialStep> steps;
         [SerializeField] private Image questionBox;
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private HorizontalLayoutGroup unitParent;
@@ -27,8 +30,6 @@ namespace Spans.Skeleton
         private int _currentQuestionIndex;
         private List<Question> _currentQuestions = new List<Question>();
         private Coroutine _displayingQuestions;
-
-        public static event Action<List<GameObject>> OnQuestionStateTutorialNeeded;
 
         private void Start()
         {
@@ -163,17 +164,15 @@ namespace Spans.Skeleton
             _spanController.SwitchState();
         }
 
-        public List<GameObject> GetTutorialObjects()
+        public void TryShowStateTutorial()
         {
-            return new List<GameObject>()
+            var targets = new List<GameObject>()
             {
                 questionBox.gameObject
             };
-        }
 
-        public void TryShowStateTutorial()
-        {
-            throw new NotImplementedException();
+            var dictionary = new Dictionary<GameObject, TutorialStep>().CreateFromLists(targets, steps);
+            _spanController.TriggerStateTutorial(dictionary);
         }
 
         public void EnableUIElements()

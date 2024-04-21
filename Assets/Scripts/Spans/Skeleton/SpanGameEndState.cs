@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using Scriptables.Tutorial;
 using UnityEngine;
 
 namespace Spans.Skeleton
@@ -20,17 +21,8 @@ namespace Spans.Skeleton
             throw new System.NotImplementedException();
         }
 
-        public List<GameObject> GetTutorialObjects()
-        {
-            return new List<GameObject>()
-            {
-
-            };
-        }
-
         public void TryShowStateTutorial()
         {
-            throw new System.NotImplementedException();
         }
 
         public void EnableUIElements()

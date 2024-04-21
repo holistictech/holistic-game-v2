@@ -14,7 +14,8 @@ namespace Tutorial
 {
     public class TutorialManager : MonoBehaviour
     {
-        [SerializeField] private RectTransform tutorialPanel;
+        [SerializeField] private RectTransform tutorialParent;
+        [SerializeField] private GameObject tutorialPanel;
         [SerializeField] private GameObject tutorialFrame;
         [SerializeField] private TextMeshProUGUI tutorialStepField;
         private List<GameObject> _objectsToHighlight = new List<GameObject>();
@@ -38,7 +39,36 @@ namespace Tutorial
             foreach (var state in states)
             {
                 
-                _objectsToHighlight.AddRange(state.GetTutorialObjects());
+                //_objectsToHighlight.AddRange(state.GetTutorialObjects());
+            }
+        }
+
+        public void ActivateStateTutorial(Dictionary<GameObject, TutorialStep> steps)
+        {
+            StartCoroutine(DisplayTutorialSteps(steps));
+        }
+
+        public IEnumerator DisplayTutorialSteps(Dictionary<GameObject, TutorialStep> steps)
+        {
+            foreach (KeyValuePair<GameObject, TutorialStep> step in steps)
+            {
+                var temp = step.Key;
+                GameObject highlight = Instantiate(tutorialFrame, tutorialParent);
+                RectTransform highlightTransform = highlight.GetComponent<RectTransform>();
+                RectTransform tempTransform = temp.GetComponent<RectTransform>();
+                if (tempTransform != null && highlightTransform != null)
+                {
+                    highlightTransform.anchoredPosition = tempTransform.anchoredPosition;
+                    highlightTransform.anchorMin = tempTransform.anchorMin;
+                    highlightTransform.anchorMax = tempTransform.anchorMax;
+                    
+                    highlightTransform.sizeDelta = tempTransform.sizeDelta;
+                    highlightTransform.pivot = tempTransform.pivot;
+                    highlightTransform.SetSiblingIndex(0);
+                    tutorialStepField.text = step.Value.StepText;
+                }
+                yield return new WaitForSeconds(7f);
+                ClearHighlight(); 
             }
         }
 
@@ -53,12 +83,7 @@ namespace Tutorial
                 else
                 {
                     var temp = _objectsToHighlight[i];
-                    GameObject highlight = Instantiate(tutorialFrame, tutorialPanel);
-                    if (temp.GetComponentInChildren<Image>() != null)
-                    {
-                        highlight.GetComponentInChildren<Image>().sprite = temp.GetComponentInChildren<Image>().sprite;
-                    }
-                    
+                    GameObject highlight = Instantiate(tutorialFrame, tutorialParent);
                     RectTransform highlightTransform = highlight.GetComponent<RectTransform>();
                     // Get the RectTransform of the target object
                     RectTransform tempTransform = temp.GetComponent<RectTransform>();
@@ -78,19 +103,19 @@ namespace Tutorial
 
                         // Set the pivot of the highlight to match the target object
                         highlightTransform.pivot = tempTransform.pivot;
-
+                        highlightTransform.SetSiblingIndex(0);
                         // Update the text of the tutorial step
                         tutorialStepField.text = _steps[i].StepText;
                     }
                 }
         
                 yield return new WaitForSeconds(7f);
-
                 ClearHighlight();
-                PlayerSaveManager.SavePlayerAttribute(1, _currentTutorialKey);
-                _currentTutorialKey = null;
-                IsTutorialActive = false;
+
             }
+            PlayerSaveManager.SavePlayerAttribute(1, _currentTutorialKey);
+            _currentTutorialKey = null;
+            IsTutorialActive = false;
         }
 
         

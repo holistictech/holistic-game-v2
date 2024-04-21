@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Scriptables.Tutorial;
 using TMPro;
 using Tutorial;
 using UnityEngine;
@@ -47,17 +48,8 @@ namespace Spans.Skeleton
             _spanController.SwitchState();
         }
 
-        public List<GameObject> GetTutorialObjects()
-        {
-            return new List<GameObject>()
-            {
-
-            };
-        }
-
         public void TryShowStateTutorial()
         {
-            throw new System.NotImplementedException();
         }
 
         public void EnableUIElements()
