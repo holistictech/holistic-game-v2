@@ -185,6 +185,12 @@ namespace Spans.Skeleton
             return _tutorialActive;
         }
 
+        public void SetTutorialCompleted()
+        {
+            _tutorialActive = false;
+            PlayerSaveManager.SavePlayerAttribute(states.TutorialKey, "1");
+        }
+
         public void TriggerStateTutorial(Dictionary<GameObject, TutorialStep> tutorials, Action onComplete)
         {
             tutorialManager.ActivateStateTutorial(tutorials, () =>

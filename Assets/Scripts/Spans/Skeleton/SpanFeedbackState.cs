@@ -39,8 +39,8 @@ namespace Spans.Skeleton
             "Bravo!",
             "Çok akıllıca!",
             "Ne kadar zekisin!",
-            "Çok başarılı!",
-            "Harikasın!",
+            //"Çok başarılı!",
+            //"Harikasın!",
         };
         private readonly string[] _failFeedbacks = new string[]
         {
@@ -67,7 +67,8 @@ namespace Spans.Skeleton
 
             EnableUIElements();
             PlayEffects();
-            TryShowStateTutorial();
+            if(!_spanController.GetTutorialStatus())
+                TryShowStateTutorial();
         }
 
 
@@ -130,7 +131,7 @@ namespace Spans.Skeleton
 
         private string GetRandomFeedback(bool isCorrect)
         {
-            var index = Random.Range(0, _successFeedbacks.Length);
+            var index = Random.Range(0, _successFeedbacks.Length -1);
             return isCorrect ? _successFeedbacks[index] : _failFeedbacks[index];
         }
 
@@ -155,7 +156,11 @@ namespace Spans.Skeleton
                 progressBar.gameObject
             };
             var dictionary = new Dictionary<GameObject, TutorialStep>().CreateFromLists(targets, steps);
-            _spanController.TriggerStateTutorial(dictionary, SwitchNextState);
+            _spanController.TriggerStateTutorial(dictionary, ()=>
+            {
+                _spanController.SetTutorialCompleted();
+                SwitchNextState();
+            });
         }
 
         public void EnableUIElements()

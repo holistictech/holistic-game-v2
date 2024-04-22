@@ -41,9 +41,11 @@ namespace Spans.Skeleton.AnswerStates
             EnableUIElements();
 
             SetChoiceUI();
-            if(!_spanController.GetTutorialStatus())
+            if (!_spanController.GetTutorialStatus())
+            {
                 _timer = StartCoroutine(PlayTimer(_maxTime));
-            TryShowStateTutorial();
+                TryShowStateTutorial();
+            }
         }
 
         private void SpawnChoices()
