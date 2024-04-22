@@ -42,7 +42,6 @@ namespace Spans.Skeleton
             {
                 _spanController = spanController;
             }
-            DisablePreviousCircles();
             _spanObjects = _spanController.GetSpanObjects();
             EnableUIElements();
             SetCircleUI(_spanController.GetRoundIndex());
@@ -142,7 +141,7 @@ namespace Spans.Skeleton
             {
                 var tempCircle = Instantiate(unit, unitParent.transform);
                 _spawnedUnitPool.Add(tempCircle);
-                tempCircle.ResetSelf();
+                tempCircle.DisableSelf();
             }
         }
 
@@ -160,9 +159,8 @@ namespace Spans.Skeleton
             {
                 StopCoroutine(_displayingQuestions);
             }
-            
+            DisablePreviousCircles();
             DisableUIElements();
-            //DisablePreviousCircles();
         }
 
         public void SwitchNextState()
@@ -192,13 +190,13 @@ namespace Spans.Skeleton
         {
             questionBox.GetComponentInChildren<TextMeshProUGUI>().text = "";
             questionBox.gameObject.SetActive(false);
-            //unitParent.gameObject.SetActive(false);
         }
 
         private void DisablePreviousCircles()
         {
             foreach (var circle in _activeCircles)
             {
+                circle.DisableSelf();
                 circle.ResetSelf();
             }
             

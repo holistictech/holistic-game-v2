@@ -11,8 +11,7 @@ namespace UI
 
         public void ConfigureUI()
         {
-            circleImage.color = activeColor;
-            EnableSelf();
+            circleImage.DOColor(activeColor, 1f).SetEase(Ease.Flash).OnComplete(ResetSelf);
         }
 
         public void EnableSelf()
@@ -20,10 +19,14 @@ namespace UI
             gameObject.SetActive(true);
         }
 
+        public void DisableSelf()
+        {
+            gameObject.SetActive(false);
+        }
+
         public void ResetSelf()
         {
             circleImage.color = Color.white;
-            gameObject.SetActive(false);
         }
     }
 }
