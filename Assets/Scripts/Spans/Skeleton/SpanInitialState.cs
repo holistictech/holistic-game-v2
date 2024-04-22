@@ -33,17 +33,26 @@ namespace Spans.Skeleton
                 }
                 else
                 {
-                    EnableUIElements();
-                    if (_isInitial)
-                    {
-                        FadeGetReady();
-                        _isInitial = false;
-                    }
-                    else
-                    {
-                        ConfigureUI();
-                    }
+                    SetStateConfig();
                 }
+            }
+            else
+            {
+                SetStateConfig();
+            }
+        }
+
+        private void SetStateConfig()
+        {
+            EnableUIElements();
+            if (_isInitial)
+            {
+                FadeGetReady();
+                _isInitial = false;
+            }
+            else
+            {
+                ConfigureUI();
             }
         }
 

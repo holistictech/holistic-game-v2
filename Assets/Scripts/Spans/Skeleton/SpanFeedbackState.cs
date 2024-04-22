@@ -67,7 +67,7 @@ namespace Spans.Skeleton
 
             EnableUIElements();
             PlayEffects();
-            if(!_spanController.GetTutorialStatus())
+            if(_spanController.GetTutorialStatus())
                 TryShowStateTutorial();
         }
 

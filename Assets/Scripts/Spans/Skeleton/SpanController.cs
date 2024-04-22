@@ -15,7 +15,6 @@ namespace Spans.Skeleton
     {
         [SerializeField] private StateHolder states;
         [SerializeField] private TutorialManager tutorialManager;
-        private List<TutorialStep> _tutorialSteps;
         private List<ISpanState> _stateList = new List<ISpanState>();
         protected SpanStateContext stateContext;
         protected int currentRoundIndex = CommonFields.DEFAULT_ROUND_INDEX;
@@ -34,27 +33,8 @@ namespace Spans.Skeleton
         {
             stateContext = new SpanStateContext(this);
             InstantiateGameStates();
-            if (PlayerSaveManager.GetPlayerAttribute(states.TutorialKey, 0) == 0)
-            {
-                _tutorialActive = true;
-            }
-            else
-            {
-                _tutorialActive = false;
-            }
-            /*if (PlayerSaveManager.GetPlayerAttribute(states.TutorialKey, 0) == 0)
-            {
-                tutorialManager.SetObjectsToHighlight(_stateList);
-                tutorialManager.ActivateTutorial(states.TutorialSteps, states.TutorialKey);
-            }
-            else
-            {
-                stateContext.Transition(_stateList[0]);
-            }
-            */
-            
+            _tutorialActive = PlayerSaveManager.GetPlayerAttribute(states.TutorialKey, 0) == 0;
             stateContext.Transition(_stateList[0]);
-            
         }
 
         public void SwitchState()
@@ -188,7 +168,7 @@ namespace Spans.Skeleton
         public void SetTutorialCompleted()
         {
             _tutorialActive = false;
-            PlayerSaveManager.SavePlayerAttribute(states.TutorialKey, "1");
+            PlayerSaveManager.SavePlayerAttribute(1, states.TutorialKey);
         }
 
         public void TriggerStateTutorial(Dictionary<GameObject, TutorialStep> tutorials, Action onComplete)

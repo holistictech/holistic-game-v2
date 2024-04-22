@@ -46,7 +46,8 @@ namespace Spans.Skeleton
             _spanObjects = _spanController.GetSpanObjects();
             EnableUIElements();
             SetCircleUI(_spanController.GetRoundIndex());
-            TryShowStateTutorial();
+            if(_spanController.GetTutorialStatus())
+                TryShowStateTutorial();
             ShowQuestion();
         }
 

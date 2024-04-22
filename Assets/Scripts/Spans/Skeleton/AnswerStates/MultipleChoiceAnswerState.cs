@@ -39,12 +39,15 @@ namespace Spans.Skeleton.AnswerStates
 
             AddListeners();
             EnableUIElements();
-
             SetChoiceUI();
-            if (!_spanController.GetTutorialStatus())
+            
+            if (_spanController.GetTutorialStatus())
+            {
+                TryShowStateTutorial();
+            }
+            else
             {
                 _timer = StartCoroutine(PlayTimer(_maxTime));
-                TryShowStateTutorial();
             }
         }
 
@@ -97,9 +100,7 @@ namespace Spans.Skeleton.AnswerStates
             }
 
             timerBar.value = 0f;
-            
-            if(!_spanController.GetTutorialStatus())
-                SwitchNextState();
+            SwitchNextState();
         }
 
         public override void SwitchNextState()
