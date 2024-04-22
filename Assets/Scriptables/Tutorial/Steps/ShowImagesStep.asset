@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: ShowImagesStep
   m_EditorClassIdentifier: 
   StepClip: {fileID: 0}
-  StepText: "G\xF6rselleri s\u0131ras\u0131yla akl\u0131m\u0131zda tutal\u0131m."
+  StepText: "G\xF6sterilenleri s\u0131ras\u0131yla akl\u0131m\u0131zda tutal\u0131m."

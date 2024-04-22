@@ -3,12 +3,13 @@ using System.Collections.Generic;
 using Scriptables.QuestionSystem;
 using Spans.Skeleton;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Spans.ForwardSpan
 {
     public class ForwardSpanNumberDescription : SpanController
     {
-        [SerializeField] private NumberQuestion[] numbers;
+        public NumberQuestion[] NumberQuestions;
         public override List<Question> GetSpanObjects()
         {
             return PickNumbers(fetchedQuestionCount);
@@ -24,19 +25,19 @@ namespace Spans.ForwardSpan
             List<Question> pickedNumbers = new List<Question>();
             HashSet<int> pickedIndices = new HashSet<int>();
             
-            ShuffleArray(numbers);
+            ShuffleArray(NumberQuestions);
             
-            for (int i = 0; i < numbers.Length && pickedNumbers.Count < count; i++)
+            for (int i = 0; i < NumberQuestions.Length && pickedNumbers.Count < count; i++)
             {
                 if (!pickedIndices.Contains(i))
                 {
-                    pickedNumbers.Add(numbers[i]);
+                    pickedNumbers.Add(NumberQuestions[i]);
                     pickedIndices.Add(i);
 
                     int nextIndex = FindNextNonConsecutiveIndex(i, pickedIndices);
                     if (nextIndex != -1)
                     {
-                        pickedNumbers.Add(numbers[nextIndex]);
+                        pickedNumbers.Add(NumberQuestions[nextIndex]);
                         pickedIndices.Add(nextIndex);
                     }
                 }
@@ -59,14 +60,30 @@ namespace Spans.ForwardSpan
         
         private int FindNextNonConsecutiveIndex(int currentIndex, HashSet<int> pickedIndices)
         {
-            for (int i = currentIndex + 1; i < numbers.Length; i++)
+            for (int i = currentIndex + 1; i < NumberQuestions.Length; i++)
             {
-                if (!pickedIndices.Contains(i) && Math.Abs(numbers[currentIndex].Value - numbers[i].Value) > 1)
+                if (!pickedIndices.Contains(i) && Math.Abs(NumberQuestions[currentIndex].Value - NumberQuestions[i].Value) > 1)
                 {
                     return i;
                 }
             }
             return -1;
+        }
+        
+        public override bool IsAnswerCorrect()
+        {
+            //@todo: change this with appropriate to game rules. 
+            //maybe a comparator to check correctness percentage.
+            for (int i = 0; i < currentDisplayedQuestions.Count; i++)
+            {
+                if (!currentDisplayedQuestions[i].CorrectAnswer.Equals(currentDetectedAnswers[i], StringComparison.OrdinalIgnoreCase))
+                {
+                    IncrementFailStreak();
+                    return false;
+                }
+            }
+            IncrementSuccessStreak();
+            return true;
         }
     }
 }

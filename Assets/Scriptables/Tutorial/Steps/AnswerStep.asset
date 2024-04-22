@@ -13,4 +13,4 @@ MonoBehaviour:
   m_Name: AnswerStep
   m_EditorClassIdentifier: 
   StepClip: {fileID: 0}
-  StepText: "Biraz \xF6nce hangi g\xF6rseller vard\u0131? S\u0131ras\u0131yla i\u015Faretleyelim."
+  StepText: "Biraz \xF6nce neler g\xF6sterildi? S\u0131ras\u0131yla i\u015Faretleyelim."
