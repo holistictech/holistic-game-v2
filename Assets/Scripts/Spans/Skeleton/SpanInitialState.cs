@@ -6,11 +6,13 @@ using TMPro;
 using Tutorial;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Utilities;
 
 namespace Spans.Skeleton
 {
     public class SpanInitialState : MonoBehaviour, ISpanState
     {
+        [SerializeField] private List<TutorialStep> steps;
         [SerializeField] private GameObject getStartedBanner;
         [SerializeField] private TextMeshProUGUI getStarted;
         [SerializeField] private GameObject getReadyPopup;
@@ -19,17 +21,29 @@ namespace Spans.Skeleton
 
         private SpanController _spanController;
         private Coroutine _countdown;
+        private bool _isInitial = true;
         public void Enter(SpanController spanController)
         {
-            EnableUIElements();
             if (_spanController == null)
             {
                 _spanController = spanController;
-                FadeGetReady();
-            }
-            else
-            {
-                ConfigureUI();
+                if (_spanController.GetTutorialStatus())
+                {
+                    TryShowStateTutorial();
+                }
+                else
+                {
+                    EnableUIElements();
+                    if (_isInitial)
+                    {
+                        FadeGetReady();
+                        _isInitial = false;
+                    }
+                    else
+                    {
+                        ConfigureUI();
+                    }
+                }
             }
         }
 
@@ -50,6 +64,13 @@ namespace Spans.Skeleton
 
         public void TryShowStateTutorial()
         {
+            var targets = new List<GameObject>()
+            {
+                getReadyPopup.gameObject
+            };
+            var dictionary = new Dictionary<GameObject, TutorialStep>().CreateFromLists(targets, steps);
+            SetTutorialField();
+            _spanController.TriggerStateTutorial(dictionary, SwitchNextState);
         }
 
         public void EnableUIElements()
@@ -62,6 +83,13 @@ namespace Spans.Skeleton
             getStarted.text = "";
             getReadyPopup.gameObject.SetActive(false);
             getStartedBanner.gameObject.SetActive(false);
+        }
+
+        private void SetTutorialField()
+        {
+            getReadyPopup.gameObject.SetActive(true);
+            getReady.text = "Nasıl Oynuyoruz?";
+            getReady.DOFade(1, .25f).SetEase(Ease.OutBack);
         }
 
         private void FadeGetReady()

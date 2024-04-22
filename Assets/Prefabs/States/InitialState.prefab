@@ -50,6 +50,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7dfb4b2e4f6586242bbfef86bbf0aec6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  steps:
+  - {fileID: 11400000, guid: d7f07e0c809e5b449942bf6da51fce69, type: 2}
   getStartedBanner: {fileID: 2827329129563522799}
   getStarted: {fileID: 2827329131189345658}
   getReadyPopup: {fileID: 6617449493728522369}
@@ -137,7 +139,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2603885025544375483, guid: c0a0826cd04c2e046a2f1a2c931b0c19, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 889
+      value: 955
       objectReference: {fileID: 0}
     - target: {fileID: 2603885025544375483, guid: c0a0826cd04c2e046a2f1a2c931b0c19, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
@@ -272,6 +274,18 @@ PrefabInstance:
     - target: {fileID: 3773185802880890031, guid: 2f2f2e432a8f0234bae7858f6e86d925, type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9041209770088053116, guid: 2f2f2e432a8f0234bae7858f6e86d925, type: 3}
+      propertyPath: m_fontSizeMax
+      value: 86
+      objectReference: {fileID: 0}
+    - target: {fileID: 9041209770088053116, guid: 2f2f2e432a8f0234bae7858f6e86d925, type: 3}
+      propertyPath: m_fontSizeMin
+      value: 48
+      objectReference: {fileID: 0}
+    - target: {fileID: 9041209770088053116, guid: 2f2f2e432a8f0234bae7858f6e86d925, type: 3}
+      propertyPath: m_enableAutoSizing
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
