@@ -10,6 +10,7 @@ namespace Spans.ForwardSpan
 {
     public class ForwardSpanImageDescription : SpanController
     {
+        [SerializeField] protected bool isBackwards;
         public ImageQuestion[] ImageQuestions;
         
         public override List<Question> GetSpanObjects()
