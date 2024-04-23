@@ -13,6 +13,7 @@ namespace Spans.Skeleton
 {
     public abstract class SpanController : MonoBehaviour
     {
+        [SerializeField] protected bool isBackwards;
         [SerializeField] private StateHolder states;
         [SerializeField] private TutorialManager tutorialManager;
         private List<ISpanState> _stateList = new List<ISpanState>();

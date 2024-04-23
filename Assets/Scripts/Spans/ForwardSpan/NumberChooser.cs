@@ -35,6 +35,11 @@ namespace Spans.ForwardSpan
                 return false;
             }
             
+            if (isBackwards)
+            {
+                currentDisplayedQuestions.Reverse();
+            }
+            
             for (int i = 0; i < currentDisplayedQuestions.Count; i++)
             {
                 if (currentDisplayedQuestions[i].CorrectAnswer != currentGivenAnswers[i].CorrectAnswer)

@@ -224,7 +224,7 @@ GameObject:
   - component: {fileID: 5317712305952169983}
   - component: {fileID: -2616531748195164674}
   m_Layer: 5
-  m_Name: ForwardSpanNumberChooser
+  m_Name: ForwardNumberChooser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 773999855161395063}
   - component: {fileID: 474080819667563323}
   m_Layer: 5
-  m_Name: ForwardSpanNumberDescription
+  m_Name: ForwardNumberDescription
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
