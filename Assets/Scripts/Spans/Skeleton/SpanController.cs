@@ -178,6 +178,11 @@ namespace Spans.Skeleton
                 onComplete?.Invoke();
             });
         }
+
+        public void TriggerTutorialField(string fieldText)
+        {
+            tutorialManager.SetTutorialWaitingInput(fieldText);
+        }
     }
 }
 

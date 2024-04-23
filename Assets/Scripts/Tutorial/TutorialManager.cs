@@ -54,10 +54,17 @@ namespace Tutorial
                     tutorialStepField.text = step.Value.StepText;
                 }
                 yield return new WaitForSeconds(4.5f);
-                ClearHighlight(); 
+                ClearHighlight();
             }
             
             onComplete?.Invoke();
+        }
+
+        public void SetTutorialWaitingInput(string text)
+        {
+            tutorialPanel.gameObject.SetActive(true);
+            tutorialPanel.GetComponent<Image>().enabled = false;
+            tutorialStepField.text = $"{text}";
         }
         
         private void ClearHighlight()

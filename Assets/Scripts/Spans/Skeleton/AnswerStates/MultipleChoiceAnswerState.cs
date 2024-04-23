@@ -131,7 +131,7 @@ namespace Spans.Skeleton.AnswerStates
             var dictionary = new Dictionary<GameObject, TutorialStep>().CreateFromLists(targets, GetTutorialSteps());
             _spanController.TriggerStateTutorial(dictionary, () =>
             {
-                
+                _spanController.TriggerTutorialField("Şimdi sıra sende!");
             });
         }
         
