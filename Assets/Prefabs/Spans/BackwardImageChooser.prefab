@@ -300,7 +300,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0742bd8615375c42ac07478dfc65e39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  states: {fileID: 11400000, guid: 5ebf71650ec0b544e939eeca3eb79c4a, type: 2}
+  states: {fileID: 11400000, guid: e134fe7addeaa8a4ea74da601071fbff, type: 2}
   tutorialManager: {fileID: 5317712305952169983}
   isBackwards: 1
   ImageQuestions:
