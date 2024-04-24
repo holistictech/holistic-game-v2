@@ -16,6 +16,7 @@ namespace Spans.Skeleton
     public class SpanQuestionState : MonoBehaviour, ISpanState
     {
         [SerializeField] private List<TutorialStep> steps;
+        [SerializeField] private Image questionFieldParent;
         [SerializeField] private Image questionBox;
         [SerializeField] private AudioSource audioSource;
         [SerializeField] private HorizontalLayoutGroup unitParent;
@@ -182,14 +183,15 @@ namespace Spans.Skeleton
 
         public void EnableUIElements()
         {
-            questionBox.gameObject.SetActive(true);
+            questionFieldParent.gameObject.SetActive(true);
             unitParent.gameObject.SetActive(true);
         }
 
         public void DisableUIElements()
         {
             questionBox.GetComponentInChildren<TextMeshProUGUI>().text = "";
-            questionBox.gameObject.SetActive(false);
+            questionBox.sprite = null;
+            questionFieldParent.gameObject.SetActive(false);
         }
 
         private void DisablePreviousCircles()
