@@ -84,6 +84,7 @@ namespace Spans.Skeleton
             {
                 var question = _spanObjects[_currentQuestionIndex];
                 questionBox.GetComponentInChildren<TextMeshProUGUI>().text = $"{question.GetQuestionItem()}";
+                questionBox.enabled = true;
                 ActivateCircle(i);
                 questionBox.enabled = false;
                 _currentQuestions.Add(question);
@@ -100,6 +101,7 @@ namespace Spans.Skeleton
             {
                 var question = _spanObjects[_currentQuestionIndex];
                 questionBox.sprite = (Sprite)question.GetQuestionItem();
+                questionBox.enabled = true;
                 ActivateCircle(i);
                 _currentQuestions.Add(question);
                 _currentQuestionIndex++;
@@ -174,7 +176,7 @@ namespace Spans.Skeleton
         {
             var targets = new List<GameObject>()
             {
-                questionBox.gameObject
+                questionFieldParent.gameObject
             };
 
             var dictionary = new Dictionary<GameObject, TutorialStep>().CreateFromLists(targets, steps);
@@ -191,6 +193,7 @@ namespace Spans.Skeleton
         {
             questionBox.GetComponentInChildren<TextMeshProUGUI>().text = "";
             questionBox.sprite = null;
+            questionBox.enabled = false;
             questionFieldParent.gameObject.SetActive(false);
         }
 
