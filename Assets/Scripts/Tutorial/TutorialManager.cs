@@ -46,12 +46,13 @@ namespace Tutorial
                 RectTransform tempTransform = temp.GetComponent<RectTransform>();
                 if (tempTransform != null && highlightTransform != null)
                 {
-                    highlightTransform.anchoredPosition = tempTransform.anchoredPosition;
+                    PositionHighlightToTarget(highlightTransform, tempTransform);
+                    /*highlightTransform.anchoredPosition = tempTransform.anchoredPosition;
                     highlightTransform.anchorMin = tempTransform.anchorMin;
                     highlightTransform.anchorMax = tempTransform.anchorMax;
                     
                     highlightTransform.sizeDelta = tempTransform.sizeDelta;
-                    highlightTransform.pivot = tempTransform.pivot;
+                    highlightTransform.pivot = tempTransform.pivot;*/
                     highlightTransform.SetSiblingIndex(0);
                     tutorialStepField.text = step.Value.StepText;
                 }
@@ -74,23 +75,26 @@ namespace Tutorial
         public void HighlightTutorialObject(RectTransform targetTransform, RectTransform parent, float offset)
         {
             if (targetTransform == _lastTarget) return;
-            
-            //ClearHighlights();
             if (_spawnedHand == null)
             {
                 _spawnedHand = Instantiate(tutorialHand, parent);
                 _currentHighlights.Add(_spawnedHand);
             }
             RectTransform handTransform = _spawnedHand.GetComponent<RectTransform>();
-
-            var anchoredPosition = targetTransform.anchoredPosition;
-            handTransform.anchoredPosition = new Vector2(anchoredPosition.x - offset, anchoredPosition.y + offset);
-            handTransform.anchorMin = targetTransform.anchorMin;
-            handTransform.anchorMax = targetTransform.anchorMax;
-            handTransform.sizeDelta = targetTransform.sizeDelta;
-            handTransform.pivot = targetTransform.pivot;
-            //handTransform.SetSiblingIndex(0);
+            handTransform.SetParent(parent);
+            PositionHighlightToTarget(handTransform, targetTransform, offset);
+            handTransform.DOKill();
             handTransform.DOScale(1.2f, 0.5f).SetLoops(-1, LoopType.Yoyo);
+        }
+
+        private void PositionHighlightToTarget(RectTransform highlightTransform, RectTransform target, float offset = 0)
+        {
+            var anchoredPosition = target.anchoredPosition;
+            highlightTransform.anchoredPosition = new Vector2(anchoredPosition.x - offset, anchoredPosition.y + offset);
+            highlightTransform.anchorMin = target.anchorMin;
+            highlightTransform.anchorMax = target.anchorMax;
+            highlightTransform.sizeDelta = target.sizeDelta;
+            highlightTransform.pivot = target.pivot;
         }
         
         private void ClearHighlights()

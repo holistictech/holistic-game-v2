@@ -185,7 +185,7 @@ namespace Spans.Skeleton
             tutorialManager.SetTutorialWaitingInput(fieldText);
         }
 
-        public void HighlightTarget(RectTransform target, RectTransform parent, float offset)
+        public void HighlightTarget(RectTransform target, RectTransform parent, float offset = 0)
         {
             tutorialManager.HighlightTutorialObject(target, parent, offset);
         }

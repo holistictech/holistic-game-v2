@@ -151,7 +151,7 @@ namespace Spans.Skeleton
 
         public void TryShowStateTutorial()
         {
-            var targets = new List<GameObject>()
+            /*var targets = new List<GameObject>()
             {
                 progressBar.gameObject
             };
@@ -160,7 +160,7 @@ namespace Spans.Skeleton
             {
                 _spanController.SetTutorialCompleted();
                 SwitchNextState();
-            });
+            });*/
         }
 
         public void EnableUIElements()

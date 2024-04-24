@@ -16,6 +16,7 @@ namespace Spans.Skeleton.AnswerStates
 {
     public class MultipleChoiceAnswerState : SpanAnswerState
     {
+        [SerializeField] private List<TutorialStep> gridStep;
         [SerializeField] private GridLayoutGroup gridLayoutGroup;
         [SerializeField] private Choice choicePrefab;
         [SerializeField] private Button confirmButton;
@@ -130,8 +131,15 @@ namespace Spans.Skeleton.AnswerStates
             SwitchNextState();
         }
 
+        private bool _tutorialShown;
         public override void SwitchNextState()
         {
+            if (_spanController.GetTutorialStatus() && !_tutorialShown)
+            {
+                TryShowSecondPartTutorial();
+                _tutorialShown = true;
+                return;
+            }
             OnChoiceSelected?.Invoke(0);
             _spanController.SetSelectedAnswers(_givenAnswers);
             _spanController.SwitchState();
@@ -154,18 +162,30 @@ namespace Spans.Skeleton.AnswerStates
         
         public override void TryShowStateTutorial()
         {
-            List<GameObject> targets = new List<GameObject>()
+            List<GameObject> firstPart = new List<GameObject>()
             {
                 gridLayoutGroup.gameObject,
-                revertButton.gameObject,
-                confirmButton.gameObject,
-                timerBar.gameObject
             };
-            var dictionary = new Dictionary<GameObject, TutorialStep>().CreateFromLists(targets, GetTutorialSteps());
+            var dictionary = new Dictionary<GameObject, TutorialStep>().CreateFromLists(firstPart, GetGridStep());
             _spanController.TriggerStateTutorial(dictionary, () =>
             {
                 _spanController.TriggerTutorialField("Şimdi sıra sende!");
                 _tutorialHighlight = StartCoroutine(HighlightAnswersForTutorial());
+            });
+        }
+
+        private void TryShowSecondPartTutorial()
+        {
+            List<GameObject> secondPart = new List<GameObject>()
+            {
+                revertButton.gameObject,
+                timerBar.gameObject
+            };
+            var secondPartDict = new Dictionary<GameObject, TutorialStep>().CreateFromLists(secondPart, GetTutorialSteps());
+            _spanController.TriggerStateTutorial(secondPartDict, () =>
+            {
+                _spanController.SetTutorialCompleted();
+                SwitchNextState();
             });
         }
 
@@ -186,6 +206,8 @@ namespace Spans.Skeleton.AnswerStates
                     yield return new WaitUntil(() => !_waitInput);
                 }       
             }
+            
+            _spanController.HighlightTarget(confirmButton.GetComponent<RectTransform>(), GetComponent<RectTransform>(), 150f);
         }
 
         private RectTransform GetAppropriateChoice(Question question)
@@ -202,8 +224,11 @@ namespace Spans.Skeleton.AnswerStates
             throw new ArgumentException("Could not find such question in spawned choices");
             return null;
         }
-        
-        
+
+        private List<TutorialStep> GetGridStep()
+        {
+            return gridStep;
+        }
         
         public override void EnableUIElements()
         {
