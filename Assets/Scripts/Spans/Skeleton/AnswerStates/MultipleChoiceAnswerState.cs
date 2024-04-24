@@ -77,11 +77,34 @@ namespace Spans.Skeleton.AnswerStates
 
         private void CalculateDynamicCellSize()
         {
-            var width = gridLayoutGroup.GetComponent<RectTransform>().rect.width;
-            float available = width - (gridLayoutGroup.padding.left + gridLayoutGroup.padding.right) -
-                              (3 * gridLayoutGroup.spacing.x);
-            float cellWidth = available / 4;
-            gridLayoutGroup.cellSize = new Vector2(cellWidth, cellWidth);
+            SetConstraintCount();
+    
+            RectTransform gridRectTransform = gridLayoutGroup.GetComponent<RectTransform>();
+
+            var rect = gridRectTransform.rect;
+            float width = rect.width;
+            float height = rect.height;
+    
+            float availableWidth = width - (gridLayoutGroup.padding.left + gridLayoutGroup.padding.right) - ((gridLayoutGroup.constraintCount - 1) * gridLayoutGroup.spacing.x);
+            float availableHeight = height - (gridLayoutGroup.padding.top + gridLayoutGroup.padding.bottom) - ((gridLayoutGroup.constraintCount - 1) * gridLayoutGroup.spacing.y);
+    
+            float cellWidth = availableWidth / gridLayoutGroup.constraintCount;
+            float cellHeight = availableHeight / gridLayoutGroup.constraintCount;
+            float cellSize = Mathf.Min(cellWidth, cellHeight);
+            gridLayoutGroup.cellSize = new Vector2(cellSize, cellSize);
+        }
+
+
+        private void SetConstraintCount()
+        {
+            var index = _spanController.GetRoundIndex();
+            if (index == 2)
+            {
+                gridLayoutGroup.constraintCount = 2;
+            }else
+            {
+                gridLayoutGroup.constraintCount = 3;
+            }
         }
         
         private IEnumerator PlayTimer(float maxTime)
