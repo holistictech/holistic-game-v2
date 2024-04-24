@@ -23,10 +23,12 @@ namespace Spans.Skeleton.AnswerStates
 
         private List<Choice> _choicePool = new List<Choice>();
         private List<Question> _givenAnswers = new List<Question>();
+        private List<Choice> _activeChoices = new List<Choice>();
         private List<Choice> _selectedChoices = new List<Choice>(); 
         private SpanController _spanController;
 
         private Coroutine _timer;
+        private Coroutine _tutorialHighlight;
         private float _maxTime;
 
         public static event Action<int> OnChoiceSelected;
@@ -72,13 +74,13 @@ namespace Spans.Skeleton.AnswerStates
             {
                 var temp = GetAvailableChoice();
                 temp.ConfigureUI(choice, this);
+                _activeChoices.Add(temp);
             }
         }
 
         private void CalculateDynamicCellSize()
         {
             SetConstraintCount();
-    
             RectTransform gridRectTransform = gridLayoutGroup.GetComponent<RectTransform>();
 
             var rect = gridRectTransform.rect;
@@ -143,6 +145,11 @@ namespace Spans.Skeleton.AnswerStates
             {
                 StopCoroutine(_timer);
             }
+
+            if (_tutorialHighlight != null)
+            {
+                StopCoroutine(_tutorialHighlight);
+            }
         }
         
         public override void TryShowStateTutorial()
@@ -158,8 +165,45 @@ namespace Spans.Skeleton.AnswerStates
             _spanController.TriggerStateTutorial(dictionary, () =>
             {
                 _spanController.TriggerTutorialField("Şimdi sıra sende!");
+                _tutorialHighlight = StartCoroutine(HighlightAnswersForTutorial());
             });
         }
+
+        private int _highlightIndex = 0;
+        private int _lastIndex = -1;
+        private bool _waitInput;
+        private IEnumerator HighlightAnswersForTutorial()
+        {
+            List<Question> currentQuestions = _spanController.GetCurrentQuestions();
+            while (_highlightIndex < currentQuestions.Count)
+            {
+                if (_highlightIndex != _lastIndex)
+                {
+                    var targetRect = GetAppropriateChoice(currentQuestions[_highlightIndex]);
+                    _spanController.HighlightTarget(targetRect, gridLayoutGroup.GetComponent<RectTransform>(), gridLayoutGroup.cellSize.x);
+                    _lastIndex = _highlightIndex;
+                    _waitInput = true;
+                    yield return new WaitUntil(() => !_waitInput);
+                }       
+            }
+        }
+
+        private RectTransform GetAppropriateChoice(Question question)
+        {
+            foreach (var choice in _activeChoices)
+            {
+                var config = choice.GetAssignedQuestionConfig();
+                if (config.GetQuestionItem() == question.GetQuestionItem())
+                {
+                    return choice.GetComponent<RectTransform>();
+                }
+            }
+
+            throw new ArgumentException("Could not find such question in spawned choices");
+            return null;
+        }
+        
+        
         
         public override void EnableUIElements()
         {
@@ -184,11 +228,17 @@ namespace Spans.Skeleton.AnswerStates
             {
                 spawnedChoice.DisableSelf();
             }
+            _activeChoices.Clear();
         }
 
         public void AppendGivenAnswers(Question question, Choice choice)
         {
             _givenAnswers.Add(question);
+            if (_spanController.GetTutorialStatus())
+            {
+                _highlightIndex++;
+                _waitInput = false;
+            }
             OnChoiceSelected?.Invoke(_givenAnswers.Count);
             _selectedChoices.Add(choice);
         }

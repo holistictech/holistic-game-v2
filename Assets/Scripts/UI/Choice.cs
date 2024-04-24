@@ -48,6 +48,11 @@ namespace UI
             EnableSelf();
         }
 
+        public Question GetAssignedQuestionConfig()
+        {
+            return _question;
+        }
+
         public void DisableSelf()
         {
             ResetUI();

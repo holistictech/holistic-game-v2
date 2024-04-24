@@ -1558,11 +1558,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4142577917760699175, guid: f5c7d838e473b1e44917feed44c43999, type: 3}
   m_PrefabInstance: {fileID: 1512006121}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &1512006123 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8242588130389079751, guid: f5c7d838e473b1e44917feed44c43999, type: 3}
-  m_PrefabInstance: {fileID: 1512006121}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1551247755
 GameObject:
   m_ObjectHideFlags: 0
@@ -1860,6 +1855,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4142577917760699175, guid: ef47053ec73cedf40a4b775e5259e359, type: 3}
   m_PrefabInstance: {fileID: 1941021212}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1941021214 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8242588130389079751, guid: ef47053ec73cedf40a4b775e5259e359, type: 3}
+  m_PrefabInstance: {fileID: 1941021212}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2135509754
 GameObject:
   m_ObjectHideFlags: 0
@@ -1979,7 +1979,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playButton: {fileID: 64421678}
-  forwardSpan: {fileID: 1512006123}
+  forwardSpan: {fileID: 1941021214}
 --- !u!1001 &3296659668964140188
 PrefabInstance:
   m_ObjectHideFlags: 0

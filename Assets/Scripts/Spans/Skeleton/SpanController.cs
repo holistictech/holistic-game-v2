@@ -185,6 +185,11 @@ namespace Spans.Skeleton
             tutorialManager.SetTutorialWaitingInput(fieldText);
         }
 
+        public void HighlightTarget(RectTransform target, RectTransform parent, float offset)
+        {
+            tutorialManager.HighlightTutorialObject(target, parent, offset);
+        }
+
         public bool GetBackwardStatus()
         {
             return isBackwards;

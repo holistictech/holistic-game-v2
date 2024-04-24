@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using DG.Tweening;
 using Scriptables.Tutorial;
 using Spans.Skeleton;
 using TMPro;
@@ -18,6 +19,7 @@ namespace Tutorial
         [SerializeField] private RectTransform tutorialParent;
         [SerializeField] private GameObject tutorialPanel;
         [SerializeField] private GameObject tutorialFrame;
+        [SerializeField] private GameObject tutorialHand;
         [SerializeField] private TextMeshProUGUI tutorialStepField;
         private List<GameObject> _currentHighlights = new List<GameObject>();
         private string _currentTutorialKey;
@@ -54,7 +56,7 @@ namespace Tutorial
                     tutorialStepField.text = step.Value.StepText;
                 }
                 yield return new WaitForSeconds(4.5f);
-                ClearHighlight();
+                ClearHighlights();
             }
             
             onComplete?.Invoke();
@@ -66,8 +68,32 @@ namespace Tutorial
             tutorialPanel.GetComponent<Image>().enabled = false;
             tutorialStepField.text = $"{text}";
         }
+
+        private RectTransform _lastTarget;
+        private GameObject _spawnedHand;
+        public void HighlightTutorialObject(RectTransform targetTransform, RectTransform parent, float offset)
+        {
+            if (targetTransform == _lastTarget) return;
+            
+            //ClearHighlights();
+            if (_spawnedHand == null)
+            {
+                _spawnedHand = Instantiate(tutorialHand, parent);
+                _currentHighlights.Add(_spawnedHand);
+            }
+            RectTransform handTransform = _spawnedHand.GetComponent<RectTransform>();
+
+            var anchoredPosition = targetTransform.anchoredPosition;
+            handTransform.anchoredPosition = new Vector2(anchoredPosition.x - offset, anchoredPosition.y + offset);
+            handTransform.anchorMin = targetTransform.anchorMin;
+            handTransform.anchorMax = targetTransform.anchorMax;
+            handTransform.sizeDelta = targetTransform.sizeDelta;
+            handTransform.pivot = targetTransform.pivot;
+            //handTransform.SetSiblingIndex(0);
+            handTransform.DOScale(1.2f, 0.5f).SetLoops(-1, LoopType.Yoyo);
+        }
         
-        private void ClearHighlight()
+        private void ClearHighlights()
         {
             if (_currentHighlights != null)
             {
