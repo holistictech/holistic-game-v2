@@ -43,6 +43,7 @@ namespace UI
                 DisableSelf();
             }
         }
+
         public void EnableSelf()
         {
             gameObject.SetActive(true);

@@ -184,6 +184,11 @@ namespace Spans.Skeleton
         {
             tutorialManager.SetTutorialWaitingInput(fieldText);
         }
+
+        public bool GetBackwardStatus()
+        {
+            return isBackwards;
+        }
     }
 }
 

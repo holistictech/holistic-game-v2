@@ -84,7 +84,6 @@ namespace Spans.Skeleton
             {
                 var question = _spanObjects[_currentQuestionIndex];
                 questionBox.GetComponentInChildren<TextMeshProUGUI>().text = $"{question.GetQuestionItem()}";
-                questionBox.enabled = true;
                 ActivateCircle(i);
                 questionBox.enabled = false;
                 _currentQuestions.Add(question);
@@ -107,7 +106,6 @@ namespace Spans.Skeleton
                 _currentQuestionIndex++;
                 yield return new WaitForSeconds(1f);
             }
-            
             SwitchNextState();
         }
 
@@ -152,7 +150,15 @@ namespace Spans.Skeleton
         {
             if (_activeCircles != null && _activeCircles.Count > index)
             {
-                _activeCircles[index].ConfigureUI(index+1);
+                if (_spanController.GetBackwardStatus())
+                {
+                    var temp = _spanController.GetRoundIndex() - index;
+                    _activeCircles[index].ConfigureUI(temp);
+                }
+                else
+                {
+                    _activeCircles[index].ConfigureUI(index+1);
+                }
             }
         }
 
@@ -162,14 +168,24 @@ namespace Spans.Skeleton
             {
                 StopCoroutine(_displayingQuestions);
             }
-            DisablePreviousCircles();
-            DisableUIElements();
+            ResetPreviousCircles();
         }
 
         public void SwitchNextState()
         {
+            DisableUIElements();
             _spanController.SetCurrentQuestions(_currentQuestions);
-            _spanController.SwitchState();
+            if (_spanController.GetBackwardStatus())
+            {
+                RotateCircles(() =>
+                {
+                    _spanController.SwitchState();
+                });
+            }
+            else
+            {
+                _spanController.SwitchState();
+            }
         }
 
         public void TryShowStateTutorial()
@@ -197,7 +213,15 @@ namespace Spans.Skeleton
             questionFieldParent.gameObject.SetActive(false);
         }
 
-        private void DisablePreviousCircles()
+        private void RotateCircles(Action onComplete)
+        {
+            unitParent.transform.DORotate(new Vector3(0, 0, 180), .5f).SetEase(Ease.Linear).OnComplete(() =>
+            {
+                onComplete?.Invoke();
+            });
+        }
+
+        private void ResetPreviousCircles()
         {
             foreach (var circle in _activeCircles)
             {
