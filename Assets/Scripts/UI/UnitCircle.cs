@@ -1,4 +1,6 @@
+using System;
 using DG.Tweening;
+using Spans.Skeleton.AnswerStates;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -9,11 +11,38 @@ namespace UI
         [SerializeField] private Image circleImage;
         [SerializeField] private Color activeColor;
 
-        public void ConfigureUI()
+        private int _circleIndex = -1;
+
+        private void OnEnable()
         {
+            AddListeners();
+        }
+
+        private void OnDisable()
+        {
+            RemoveListeners();
+        }
+
+        public void ConfigureUI(int index)
+        {
+            _circleIndex = index;
             circleImage.DOColor(activeColor, 1f).SetEase(Ease.Flash).OnComplete(ResetSelf);
         }
 
+        private void HandleOnAnswerGiven(int index)
+        {
+            if (index == _circleIndex)
+            {
+                circleImage.color = activeColor;
+            }else if (index == -_circleIndex)
+            {
+                ResetSelf();
+            }else if (index == 0)
+            {
+                ResetSelf();
+                DisableSelf();
+            }
+        }
         public void EnableSelf()
         {
             gameObject.SetActive(true);
@@ -21,12 +50,23 @@ namespace UI
 
         public void DisableSelf()
         {
+            _circleIndex = -1;
             gameObject.SetActive(false);
         }
 
         public void ResetSelf()
         {
             circleImage.color = Color.white;
+        }
+
+        private void AddListeners()
+        {
+            MultipleChoiceAnswerState.OnChoiceSelected += HandleOnAnswerGiven;
+        }
+
+        private void RemoveListeners()
+        {
+            MultipleChoiceAnswerState.OnChoiceSelected -= HandleOnAnswerGiven;
         }
     }
 }

@@ -28,6 +28,8 @@ namespace Spans.Skeleton.AnswerStates
 
         private Coroutine _timer;
         private float _maxTime;
+
+        public static event Action<int> OnChoiceSelected;
         public override void Enter(SpanController controller)
         {
             if (_spanController == null)
@@ -105,6 +107,7 @@ namespace Spans.Skeleton.AnswerStates
 
         public override void SwitchNextState()
         {
+            OnChoiceSelected?.Invoke(0);
             _spanController.SetSelectedAnswers(_givenAnswers);
             _spanController.SwitchState();
         }
@@ -163,11 +166,14 @@ namespace Spans.Skeleton.AnswerStates
         public void AppendGivenAnswers(Question question, Choice choice)
         {
             _givenAnswers.Add(question);
+            OnChoiceSelected?.Invoke(_givenAnswers.Count);
             _selectedChoices.Add(choice);
         }
 
-        private void ResetGivenAnswers()
+        private void RevertLastAnswer()
         {
+            if (_givenAnswers.Count == 0) return;
+            OnChoiceSelected?.Invoke(-(_givenAnswers.Count));
             _givenAnswers.Remove(_givenAnswers[^1]);
             _selectedChoices[^1].ResetUI();
             _selectedChoices.Remove(_selectedChoices[^1]);
@@ -175,13 +181,13 @@ namespace Spans.Skeleton.AnswerStates
 
         private void AddListeners()
         { 
-            revertButton.onClick.AddListener(ResetGivenAnswers);
+            revertButton.onClick.AddListener(RevertLastAnswer);
             confirmButton.onClick.AddListener(SwitchNextState);
         }
 
         private void RemoveListeners()
         {
-            revertButton.onClick.RemoveListener(ResetGivenAnswers);
+            revertButton.onClick.RemoveListener(RevertLastAnswer);
             confirmButton.onClick.RemoveListener(SwitchNextState);
         }
 

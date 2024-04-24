@@ -150,7 +150,7 @@ namespace Spans.Skeleton
         {
             if (_activeCircles != null && _activeCircles.Count > index)
             {
-                _activeCircles[index].ConfigureUI();
+                _activeCircles[index].ConfigureUI(index+1);
             }
         }
 
@@ -198,7 +198,6 @@ namespace Spans.Skeleton
         {
             foreach (var circle in _activeCircles)
             {
-                circle.DisableSelf();
                 circle.ResetSelf();
             }
             
