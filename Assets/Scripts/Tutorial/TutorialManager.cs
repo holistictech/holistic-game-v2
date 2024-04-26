@@ -16,6 +16,7 @@ namespace Tutorial
 {
     public class TutorialManager : MonoBehaviour
     {
+        [SerializeField] private AudioManager audioManager;
         [SerializeField] private RectTransform tutorialParent;
         [SerializeField] private GameObject tutorialPanel;
         [SerializeField] private GameObject tutorialFrame;
@@ -56,8 +57,8 @@ namespace Tutorial
                 {
                     HighlightTutorialObject(highlightTransform, tempTransform, 100f, false);
                 }
-                
-                yield return new WaitForSeconds(4.5f);
+                audioManager.PlayAudioClip(step.Value.StepClip);
+                yield return new WaitForSeconds(step.Value.StepClip.length);
                 ClearHighlights();
             }
             

@@ -151,16 +151,6 @@ namespace Spans.Skeleton
 
         public void TryShowStateTutorial()
         {
-            /*var targets = new List<GameObject>()
-            {
-                progressBar.gameObject
-            };
-            var dictionary = new Dictionary<GameObject, TutorialStep>().CreateFromLists(targets, steps);
-            _spanController.TriggerStateTutorial(dictionary, ()=>
-            {
-                _spanController.SetTutorialCompleted();
-                SwitchNextState();
-            });*/
         }
 
         public void EnableUIElements()
