@@ -169,12 +169,13 @@ namespace Spans.Skeleton
         public void SetTutorialCompleted()
         {
             _tutorialActive = false;
+            tutorialManager.DisablePanel();
             PlayerSaveManager.SavePlayerAttribute(1, states.TutorialKey);
         }
 
-        public void TriggerStateTutorial(Dictionary<GameObject, TutorialStep> tutorials, Action onComplete)
+        public void TriggerStateTutorial(Dictionary<GameObject, TutorialStep> tutorials, bool needHand, Action onComplete)
         {
-            tutorialManager.ActivateStateTutorial(tutorials, () =>
+            tutorialManager.ActivateStateTutorial(tutorials, needHand, () =>
             {
                 onComplete?.Invoke();
             });
@@ -185,9 +186,14 @@ namespace Spans.Skeleton
             tutorialManager.SetTutorialWaitingInput(fieldText);
         }
 
-        public void HighlightTarget(RectTransform target, RectTransform parent, float offset = 0)
+        public void HighlightTarget(RectTransform target, RectTransform parent, bool animNeeded, float offset = 0)
         {
-            tutorialManager.HighlightTutorialObject(target, parent, offset);
+            tutorialManager.HighlightTutorialObject(target, parent, offset, animNeeded);
+        }
+
+        public void ClearTutorialHighlights()
+        {
+            tutorialManager.ClearHighlights();
         }
 
         public bool GetBackwardStatus()

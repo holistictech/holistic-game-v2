@@ -25,20 +25,21 @@ namespace Tutorial
         private string _currentTutorialKey;
         
         
-        public void ActivateStateTutorial(Dictionary<GameObject, TutorialStep> steps, Action onComplete)
+        public void ActivateStateTutorial(Dictionary<GameObject, TutorialStep> steps, bool needHand, Action onComplete)
         {
             tutorialPanel.gameObject.SetActive(true);
-            StartCoroutine(DisplayTutorialSteps(steps, () =>
+            StartCoroutine(DisplayTutorialSteps(steps, needHand, () =>
             {
                 tutorialPanel.gameObject.SetActive(false);
                 onComplete?.Invoke();
             }));
         }
 
-        public IEnumerator DisplayTutorialSteps(Dictionary<GameObject, TutorialStep> steps, Action onComplete)
+        public IEnumerator DisplayTutorialSteps(Dictionary<GameObject, TutorialStep> steps, bool needHand, Action onComplete)
         {
             foreach (KeyValuePair<GameObject, TutorialStep> step in steps)
             {
+                tutorialPanel.GetComponent<Image>().enabled = true;
                 var temp = step.Key;
                 GameObject highlight = Instantiate(tutorialFrame, tutorialParent);
                 _currentHighlights.Add(highlight);
@@ -47,15 +48,15 @@ namespace Tutorial
                 if (tempTransform != null && highlightTransform != null)
                 {
                     PositionHighlightToTarget(highlightTransform, tempTransform);
-                    /*highlightTransform.anchoredPosition = tempTransform.anchoredPosition;
-                    highlightTransform.anchorMin = tempTransform.anchorMin;
-                    highlightTransform.anchorMax = tempTransform.anchorMax;
-                    
-                    highlightTransform.sizeDelta = tempTransform.sizeDelta;
-                    highlightTransform.pivot = tempTransform.pivot;*/
                     highlightTransform.SetSiblingIndex(0);
                     tutorialStepField.text = step.Value.StepText;
                 }
+
+                if (needHand)
+                {
+                    HighlightTutorialObject(highlightTransform, tempTransform, 100f, false);
+                }
+                
                 yield return new WaitForSeconds(4.5f);
                 ClearHighlights();
             }
@@ -72,19 +73,27 @@ namespace Tutorial
 
         private RectTransform _lastTarget;
         private GameObject _spawnedHand;
-        public void HighlightTutorialObject(RectTransform targetTransform, RectTransform parent, float offset)
+        public void HighlightTutorialObject(RectTransform targetTransform, RectTransform parent, float offset, bool animNeeded)
         {
             if (targetTransform == _lastTarget) return;
-            if (_spawnedHand == null)
+            if (_spawnedHand != null)
             {
-                _spawnedHand = Instantiate(tutorialHand, parent);
-                _currentHighlights.Add(_spawnedHand);
+                Destroy(_spawnedHand.gameObject);
             }
+            _spawnedHand = Instantiate(tutorialHand, animNeeded ? parent : tutorialParent);
+            _currentHighlights.Add(_spawnedHand);
             RectTransform handTransform = _spawnedHand.GetComponent<RectTransform>();
-            handTransform.SetParent(parent);
             PositionHighlightToTarget(handTransform, targetTransform, offset);
             handTransform.DOKill();
-            handTransform.DOScale(1.2f, 0.5f).SetLoops(-1, LoopType.Yoyo);
+            if (animNeeded)
+            {
+                AnimateHighlight(handTransform);
+            }
+        }
+
+        private void AnimateHighlight(RectTransform highlight)
+        {
+            highlight.DOScale(1.2f, 0.5f).SetLoops(-1, LoopType.Yoyo);
         }
 
         private void PositionHighlightToTarget(RectTransform highlightTransform, RectTransform target, float offset = 0)
@@ -97,12 +106,19 @@ namespace Tutorial
             highlightTransform.pivot = target.pivot;
         }
         
-        private void ClearHighlights()
+        public void ClearHighlights()
         {
+            if(_spawnedHand != null)
+                _spawnedHand.transform.DOKill();
             if (_currentHighlights != null)
             {
                 _currentHighlights.ForEach(x => Destroy(x.gameObject));
             }
+        }
+
+        public void DisablePanel()
+        {
+            tutorialPanel.gameObject.SetActive(false);
         }
     }
 }

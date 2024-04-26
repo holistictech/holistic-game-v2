@@ -131,14 +131,12 @@ namespace Spans.Skeleton.AnswerStates
             SwitchNextState();
         }
 
-        private bool _tutorialShown;
         public override void SwitchNextState()
         {
-            if (_spanController.GetTutorialStatus() && !_tutorialShown)
+            if (_spanController.GetTutorialStatus())
             {
-                TryShowSecondPartTutorial();
-                _tutorialShown = true;
-                return;
+                _spanController.ClearTutorialHighlights();
+                _spanController.SetTutorialCompleted();
             }
             OnChoiceSelected?.Invoke(0);
             _spanController.SetSelectedAnswers(_givenAnswers);
@@ -162,16 +160,26 @@ namespace Spans.Skeleton.AnswerStates
         
         public override void TryShowStateTutorial()
         {
-            List<GameObject> firstPart = new List<GameObject>()
+            List<GameObject> secondPart = new List<GameObject>()
             {
-                gridLayoutGroup.gameObject,
+                timerBar.gameObject,
+                revertButton.gameObject
             };
-            var dictionary = new Dictionary<GameObject, TutorialStep>().CreateFromLists(firstPart, GetGridStep());
-            _spanController.TriggerStateTutorial(dictionary, () =>
+            var secondPartDict = new Dictionary<GameObject, TutorialStep>().CreateFromLists(secondPart, GetTutorialSteps());
+            _spanController.TriggerStateTutorial(secondPartDict, true,() =>
             {
-                _spanController.TriggerTutorialField("Şimdi sıra sende!");
-                _tutorialHighlight = StartCoroutine(HighlightAnswersForTutorial());
+                List<GameObject> firstPart = new List<GameObject>()
+                {
+                    gridLayoutGroup.gameObject,
+                };
+                var dictionary = new Dictionary<GameObject, TutorialStep>().CreateFromLists(firstPart, GetGridStep());
+                _spanController.TriggerStateTutorial(dictionary, false, () =>
+                {
+                    _spanController.TriggerTutorialField("Şimdi sıra sende!");
+                    _tutorialHighlight = StartCoroutine(HighlightObjectsForTutorial());
+                });
             });
+           
         }
 
         private void TryShowSecondPartTutorial()
@@ -182,7 +190,7 @@ namespace Spans.Skeleton.AnswerStates
                 timerBar.gameObject
             };
             var secondPartDict = new Dictionary<GameObject, TutorialStep>().CreateFromLists(secondPart, GetTutorialSteps());
-            _spanController.TriggerStateTutorial(secondPartDict, () =>
+            _spanController.TriggerStateTutorial(secondPartDict, true, () =>
             {
                 _spanController.SetTutorialCompleted();
                 SwitchNextState();
@@ -192,7 +200,7 @@ namespace Spans.Skeleton.AnswerStates
         private int _highlightIndex = 0;
         private int _lastIndex = -1;
         private bool _waitInput;
-        private IEnumerator HighlightAnswersForTutorial()
+        private IEnumerator HighlightObjectsForTutorial()
         {
             List<Question> currentQuestions = _spanController.GetCurrentQuestions();
             while (_highlightIndex < currentQuestions.Count)
@@ -200,14 +208,13 @@ namespace Spans.Skeleton.AnswerStates
                 if (_highlightIndex != _lastIndex)
                 {
                     var targetRect = GetAppropriateChoice(currentQuestions[_highlightIndex]);
-                    _spanController.HighlightTarget(targetRect, gridLayoutGroup.GetComponent<RectTransform>(), gridLayoutGroup.cellSize.x);
+                    _spanController.HighlightTarget(targetRect, gridLayoutGroup.GetComponent<RectTransform>(), true, gridLayoutGroup.cellSize.x);
                     _lastIndex = _highlightIndex;
                     _waitInput = true;
                     yield return new WaitUntil(() => !_waitInput);
                 }       
             }
-            
-            _spanController.HighlightTarget(confirmButton.GetComponent<RectTransform>(), GetComponent<RectTransform>(), 150f);
+            _spanController.HighlightTarget(confirmButton.GetComponent<RectTransform>(), GetComponent<RectTransform>(), true, 150f);
         }
 
         private RectTransform GetAppropriateChoice(Question question)

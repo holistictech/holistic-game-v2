@@ -79,7 +79,7 @@ namespace Spans.Skeleton
             };
             var dictionary = new Dictionary<GameObject, TutorialStep>().CreateFromLists(targets, steps);
             SetTutorialField();
-            _spanController.TriggerStateTutorial(dictionary, SwitchNextState);
+            _spanController.TriggerStateTutorial(dictionary, false, SwitchNextState);
         }
 
         public void EnableUIElements()

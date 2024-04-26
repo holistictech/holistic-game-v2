@@ -196,7 +196,7 @@ namespace Spans.Skeleton
             };
 
             var dictionary = new Dictionary<GameObject, TutorialStep>().CreateFromLists(targets, steps);
-            _spanController.TriggerStateTutorial(dictionary, ShowQuestion);
+            _spanController.TriggerStateTutorial(dictionary, false, ShowQuestion);
         }
 
         public void EnableUIElements()
