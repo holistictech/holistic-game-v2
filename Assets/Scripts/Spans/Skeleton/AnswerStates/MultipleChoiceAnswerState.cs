@@ -52,7 +52,8 @@ namespace Spans.Skeleton.AnswerStates
             }
             else
             {
-                _timer = StartCoroutine(PlayTimer(_maxTime));
+                PlayTimer(_maxTime);
+                //_timer = StartCoroutine(PlayTimer(_maxTime));
             }
         }
 
@@ -110,13 +111,16 @@ namespace Spans.Skeleton.AnswerStates
             }
         }
         
-        private IEnumerator PlayTimer(float maxTime)
+        public override void PlayTimer(float maxTime)
         {
-            if (_spanController.GetTutorialStatus())
+            if (_spanController.GetTutorialStatus()) return;
+            
+            timer.StartTimer(maxTime, SwitchNextState);
+            /*if (_spanController.GetTutorialStatus())
             {
                 StopCoroutine(_timer);
             }
-            
+
             timerBar.maxValue = maxTime;
             float currentTime = maxTime;
 
@@ -128,7 +132,7 @@ namespace Spans.Skeleton.AnswerStates
             }
 
             timerBar.value = 0f;
-            SwitchNextState();
+            SwitchNextState();*/
         }
 
         public override void SwitchNextState()
@@ -147,10 +151,12 @@ namespace Spans.Skeleton.AnswerStates
         {
             DisableUIElements();
             RemoveListeners();
-            if (_timer != null)
+            /*if (_timer != null)
             {
                 StopCoroutine(_timer);
-            }
+            }*/
+
+            timer.StopTimer();
 
             if (_tutorialHighlight != null)
             {
@@ -162,7 +168,7 @@ namespace Spans.Skeleton.AnswerStates
         {
             List<GameObject> secondPart = new List<GameObject>()
             {
-                timerBar.gameObject,
+                timer.gameObject,
                 revertButton.gameObject
             };
             var secondPartDict = new Dictionary<GameObject, TutorialStep>().CreateFromLists(secondPart, GetTutorialSteps());
@@ -179,7 +185,6 @@ namespace Spans.Skeleton.AnswerStates
                     _tutorialHighlight = StartCoroutine(HighlightObjectsForTutorial());
                 });
             });
-           
         }
 
         private void TryShowSecondPartTutorial()
@@ -187,7 +192,7 @@ namespace Spans.Skeleton.AnswerStates
             List<GameObject> secondPart = new List<GameObject>()
             {
                 revertButton.gameObject,
-                timerBar.gameObject
+                timer.gameObject
             };
             var secondPartDict = new Dictionary<GameObject, TutorialStep>().CreateFromLists(secondPart, GetTutorialSteps());
             _spanController.TriggerStateTutorial(secondPartDict, true, () =>

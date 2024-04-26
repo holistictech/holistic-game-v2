@@ -15,7 +15,6 @@ namespace Spans.Skeleton.AnswerStates
         [SerializeField] private Button micButton;
         [SerializeField] private Button stopButton;
         [SerializeField] private Button cancelButton;
-        //[SerializeField] private Slider timerBar;
         [SerializeField] private GameObject answerPopup;
         [SerializeField] private TextMeshProUGUI givenAnswerField;
         private SpanController _spanController;
@@ -32,12 +31,14 @@ namespace Spans.Skeleton.AnswerStates
 
             AddListeners();
             EnableUIElements();
-            _timer = StartCoroutine(PlayTimer());
+            PlayTimer(_maxTime);
+            //_timer = StartCoroutine(PlayTimer());
         }
 
-        private IEnumerator PlayTimer()
+        public override void PlayTimer(float maxTime)
         {
-            timerBar.maxValue = _maxTime;
+            timer.StartTimer(maxTime, StopRecording);
+            /*timerBar.maxValue = _maxTime;
             float currentTime = _maxTime;
 
             while (currentTime > 0)
@@ -49,7 +50,7 @@ namespace Spans.Skeleton.AnswerStates
 
             timerBar.value = 0f;
 
-            StopRecording();
+            StopRecording();*/
         }
         
         public override void SwitchNextState()
