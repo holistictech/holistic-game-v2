@@ -264,6 +264,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 4226185219912531754}
     m_Modifications:
+    - target: {fileID: 1363977633978349049, guid: c067694fa8e5f4f8d9a75fbf23cf7002, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1363977633978349052, guid: c067694fa8e5f4f8d9a75fbf23cf7002, type: 3}
       propertyPath: m_Name
       value: ConfirmIcon

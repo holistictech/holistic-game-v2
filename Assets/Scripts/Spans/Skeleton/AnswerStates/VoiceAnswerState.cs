@@ -32,25 +32,11 @@ namespace Spans.Skeleton.AnswerStates
             AddListeners();
             EnableUIElements();
             PlayTimer(_maxTime);
-            //_timer = StartCoroutine(PlayTimer());
         }
 
         public override void PlayTimer(float maxTime)
         {
             timer.StartTimer(maxTime, StopRecording);
-            /*timerBar.maxValue = _maxTime;
-            float currentTime = _maxTime;
-
-            while (currentTime > 0)
-            {
-                timerBar.value = Mathf.Lerp(timerBar.value, currentTime, Time.deltaTime * 10);
-                currentTime -= Time.deltaTime;
-                yield return null;
-            }
-
-            timerBar.value = 0f;
-
-            StopRecording();*/
         }
         
         public override void SwitchNextState()

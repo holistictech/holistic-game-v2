@@ -264,6 +264,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 6853374544005144024}
     m_Modifications:
+    - target: {fileID: 1363977633978349049, guid: 2d0497f7bb02bfc48916d9b65c69eb08, type: 3}
+      propertyPath: m_RaycastTarget
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 1363977633978349052, guid: 2d0497f7bb02bfc48916d9b65c69eb08, type: 3}
       propertyPath: m_Name
       value: GoBackIcon

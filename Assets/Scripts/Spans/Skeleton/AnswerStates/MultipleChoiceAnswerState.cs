@@ -53,7 +53,6 @@ namespace Spans.Skeleton.AnswerStates
             else
             {
                 PlayTimer(_maxTime);
-                //_timer = StartCoroutine(PlayTimer(_maxTime));
             }
         }
 
@@ -114,25 +113,7 @@ namespace Spans.Skeleton.AnswerStates
         public override void PlayTimer(float maxTime)
         {
             if (_spanController.GetTutorialStatus()) return;
-            
             timer.StartTimer(maxTime, SwitchNextState);
-            /*if (_spanController.GetTutorialStatus())
-            {
-                StopCoroutine(_timer);
-            }
-
-            timerBar.maxValue = maxTime;
-            float currentTime = maxTime;
-
-            while (currentTime > 0)
-            {
-                timerBar.value = Mathf.Lerp(timerBar.value, currentTime, Time.deltaTime * 10);
-                currentTime -= Time.deltaTime;
-                yield return null;
-            }
-
-            timerBar.value = 0f;
-            SwitchNextState();*/
         }
 
         public override void SwitchNextState()
@@ -151,13 +132,7 @@ namespace Spans.Skeleton.AnswerStates
         {
             DisableUIElements();
             RemoveListeners();
-            /*if (_timer != null)
-            {
-                StopCoroutine(_timer);
-            }*/
-
             timer.StopTimer();
-
             if (_tutorialHighlight != null)
             {
                 StopCoroutine(_tutorialHighlight);
