@@ -112,7 +112,11 @@ namespace Spans.Skeleton.AnswerStates
         
         public override void PlayTimer(float maxTime)
         {
-            if (_spanController.GetTutorialStatus()) return;
+            if (_spanController.GetTutorialStatus())
+            {
+                timer.EnableSelf();
+                return;
+            }
             timer.StartTimer(maxTime, SwitchNextState);
         }
 

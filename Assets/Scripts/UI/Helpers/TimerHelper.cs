@@ -25,6 +25,11 @@ namespace UI.Helpers
             _timer = StartCoroutine(PlayTimer(maxTime, onComplete));
         }
 
+        public void EnableSelf()
+        {
+            timerBg.gameObject.SetActive(true);
+        }
+
         private IEnumerator PlayTimer(float maxTime, Action onComplete)
         {
             Vector3 initialScale = new Vector3(1, 1, 1);

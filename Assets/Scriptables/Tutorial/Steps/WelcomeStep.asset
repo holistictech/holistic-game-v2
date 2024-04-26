@@ -12,7 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d81edbe4a6cd146ad49ba5b6bce348, type: 3}
   m_Name: WelcomeStep
   m_EditorClassIdentifier: 
-  HighlightObjects:
-  - {fileID: 1813736300680549452, guid: f37b1c1cba48b5f49941089c211b4175, type: 3}
-  StepClip: {fileID: 0}
+  StepClip: {fileID: 8300000, guid: 8886fbab9621fca4980a637091cbd164, type: 3}
   StepText: "\xD6\u011Freticiye ho\u015Fgeldin!"

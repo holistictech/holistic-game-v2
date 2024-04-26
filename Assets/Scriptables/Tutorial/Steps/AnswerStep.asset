@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d81edbe4a6cd146ad49ba5b6bce348, type: 3}
   m_Name: AnswerStep
   m_EditorClassIdentifier: 
-  StepClip: {fileID: 0}
+  StepClip: {fileID: 8300000, guid: ae94a0c9e39c6e94a8e34c06d71eab2b, type: 3}
   StepText: "Biraz \xF6nce neler g\xF6sterildi? S\u0131ras\u0131yla i\u015Faretleyelim."

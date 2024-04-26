@@ -12,7 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d81edbe4a6cd146ad49ba5b6bce348, type: 3}
   m_Name: GoBackStep
   m_EditorClassIdentifier: 
-  HighlightObjects:
-  - {fileID: 1161325463088413936, guid: a51df2a60b780694b89f9f8912e70d67, type: 3}
-  StepClip: {fileID: 0}
+  StepClip: {fileID: 8300000, guid: b5f34685448bf5843b857b8fb1e34142, type: 3}
   StepText: "Yanl\u0131\u015F basarsak geri tu\u015Funa basabiliriz"

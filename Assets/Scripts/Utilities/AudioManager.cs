@@ -8,6 +8,40 @@ namespace Utilities
     {
         [SerializeField] private AudioSource source;
 
+        private static AudioManager _instance;
+
+        public static AudioManager Instance
+        {
+            get
+            {
+                if (_instance == null)
+                {
+                    _instance = FindObjectOfType<AudioManager>();
+
+                    if (_instance == null)
+                    {
+                        GameObject singleton = new GameObject(nameof(AudioManager));
+                        _instance = singleton.AddComponent<AudioManager>();
+                    }
+                }
+
+                return _instance;
+            }
+        }
+        
+        protected virtual void Awake()
+        {
+            if (_instance == null)
+            {
+                _instance = this as AudioManager;
+                DontDestroyOnLoad(gameObject);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
+        }
+
         public void PlayAudioClip(AudioClip clip)
         {
             source.PlayOneShot(clip);

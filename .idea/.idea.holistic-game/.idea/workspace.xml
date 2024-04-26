@@ -5,7 +5,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3d01f5fc-4a81-4ccb-94d7-a0f07bc2bc79" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanFeedbackState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanFeedbackState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Tutorial/Steps/AnswerStep.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Tutorial/Steps/AnswerStep.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Tutorial/Steps/GoBackStep.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Tutorial/Steps/GoBackStep.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Tutorial/Steps/ShowImagesStep.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Tutorial/Steps/ShowImagesStep.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Tutorial/Steps/TimerStep.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Tutorial/Steps/TimerStep.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Tutorial/Steps/WelcomeStep.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Tutorial/Steps/WelcomeStep.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Tutorial/TutorialManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Tutorial/TutorialManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/AudioManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/AudioManager.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -16,6 +23,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b8eda6d2ec9b43c6bd20605ef94edd0610000/9a/329b7ad4/AudioSource.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scriptables/InteractableConfig.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scriptables/Level.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/ClipQuestion.cs" root0="FORCE_HIGHLIGHTING" />
@@ -143,7 +151,7 @@
       <workItem from="1713795102390" duration="135000" />
       <workItem from="1713872404270" duration="2694000" />
       <workItem from="1713954113176" duration="12572000" />
-      <workItem from="1714125337429" duration="5653000" />
+      <workItem from="1714125337429" duration="6448000" />
     </task>
     <servers />
   </component>
