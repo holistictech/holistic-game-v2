@@ -134,6 +134,7 @@ namespace Spans.Skeleton
         {
             if (_spanController.GetTutorialStatus())
             {
+                _spanController.SetTutorialCompleted();
                 AudioManager.Instance.PlayAudioClip(tutorialSuccessFeedback);
                 return _successFeedbacks[0];
             }

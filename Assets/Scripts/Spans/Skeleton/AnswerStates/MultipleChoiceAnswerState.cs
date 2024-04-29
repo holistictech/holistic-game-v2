@@ -48,6 +48,7 @@ namespace Spans.Skeleton.AnswerStates
             
             if (_spanController.GetTutorialStatus())
             {
+                timer.EnableSelf();
                 TryShowStateTutorial();
             }
             else
@@ -112,11 +113,6 @@ namespace Spans.Skeleton.AnswerStates
         
         public override void PlayTimer(float maxTime)
         {
-            if (_spanController.GetTutorialStatus())
-            {
-                timer.EnableSelf();
-                return;
-            }
             timer.StartTimer(maxTime, SwitchNextState);
         }
 
@@ -125,7 +121,6 @@ namespace Spans.Skeleton.AnswerStates
             if (_spanController.GetTutorialStatus())
             {
                 _spanController.ClearTutorialHighlights();
-                _spanController.SetTutorialCompleted();
             }
             OnChoiceSelected?.Invoke(0);
             _spanController.SetSelectedAnswers(_givenAnswers);

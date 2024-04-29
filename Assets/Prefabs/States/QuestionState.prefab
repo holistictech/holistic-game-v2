@@ -131,9 +131,17 @@ PrefabInstance:
       propertyPath: m_Enabled
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6292200697462806812, guid: 7958412e887e02a4697d2490470f291f, type: 3}
+      propertyPath: m_Color.a
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 8236910482573640776, guid: 7958412e887e02a4697d2490470f291f, type: 3}
       propertyPath: m_Name
       value: QuestionField
+      objectReference: {fileID: 0}
+    - target: {fileID: 8236910482573640776, guid: 7958412e887e02a4697d2490470f291f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8464011290444304060, guid: 7958412e887e02a4697d2490470f291f, type: 3}
       propertyPath: m_Pivot.x
