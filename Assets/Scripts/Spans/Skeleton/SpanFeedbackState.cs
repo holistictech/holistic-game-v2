@@ -122,7 +122,7 @@ namespace Spans.Skeleton
 
             feedbackLabel.transform.DOScale(1f, 1.5f).SetEase(Ease.OutBack).OnComplete(() =>
             {
-                DOVirtual.DelayedCall(2.5f, () =>
+                DOVirtual.DelayedCall(.5f, () =>
                 {
                     if(!_spanController.GetTutorialStatus())
                         _spanController.SwitchState();
