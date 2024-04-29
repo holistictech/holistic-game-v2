@@ -303,6 +303,7 @@ MonoBehaviour:
   tutorialParent: {fileID: 4142577917760699175}
   tutorialPanel: {fileID: 8840831442161132576}
   tutorialFrame: {fileID: 5676812556043528798, guid: 9d48c73489107dc4d889ec1f7541333a, type: 3}
+  tutorialHand: {fileID: 3664510739497132171, guid: ba7f4ed0cc0af46cf86c01ba89ab9169, type: 3}
   tutorialStepField: {fileID: 2638306012739917003}
 --- !u!114 &-2616531748195164674
 MonoBehaviour:
@@ -316,6 +317,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efe98b7de50c5bf45b3389c89901c3a6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBackwards: 0
   states: {fileID: 11400000, guid: 5ebf71650ec0b544e939eeca3eb79c4a, type: 2}
   tutorialManager: {fileID: 5317712305952169983}
   NumberQuestions:

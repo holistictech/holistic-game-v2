@@ -300,9 +300,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d0742bd8615375c42ac07478dfc65e39, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBackwards: 1
   states: {fileID: 11400000, guid: e134fe7addeaa8a4ea74da601071fbff, type: 2}
   tutorialManager: {fileID: 5317712305952169983}
-  isBackwards: 1
   ImageQuestions:
   - {fileID: 11400000, guid: dbfee19f47082c44da521c74b044ef0c, type: 2}
   - {fileID: 11400000, guid: d0fede666edb02643abe24604af6edbd, type: 2}
@@ -335,6 +335,7 @@ MonoBehaviour:
   tutorialParent: {fileID: 4142577917760699175}
   tutorialPanel: {fileID: 8840831442161132576}
   tutorialFrame: {fileID: 5676812556043528798, guid: 9d48c73489107dc4d889ec1f7541333a, type: 3}
+  tutorialHand: {fileID: 3664510739497132171, guid: ba7f4ed0cc0af46cf86c01ba89ab9169, type: 3}
   tutorialStepField: {fileID: 2638306012739917003}
 --- !u!1 &8840831442161132576
 GameObject:
