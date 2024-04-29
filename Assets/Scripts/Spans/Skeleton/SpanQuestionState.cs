@@ -59,9 +59,13 @@ namespace Spans.Skeleton
         private void ShowQuestion()
         {
             _currentQuestions = new List<Question>();
-            if (_currentQuestionIndex + _spanController.GetRoundIndex() >= _spanObjects.Count)
+            if (_currentQuestionIndex + _spanController.GetRoundIndex() >= _spanObjects.Count && !_spanController.GetCumulativeStatus())
             {
                 _spanObjects = _spanController.GetSpanObjects();
+                _currentQuestionIndex = 0;
+            }
+            else if (_spanController.GetCumulativeStatus())
+            {
                 _currentQuestionIndex = 0;
             }
             

@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using Scriptables.QuestionSystem;
 using Spans.Skeleton;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Random = UnityEngine.Random;
@@ -11,6 +12,14 @@ namespace Spans.ForwardSpan
     public class ForwardSpanImageDescription : SpanController
     {
         public ImageQuestion[] ImageQuestions;
+
+        private new void Start()
+        {
+            foreach (var question in ImageQuestions)
+            {
+                question.SetHasSelected(false);
+            }
+        }
         
         public override List<Question> GetSpanObjects()
         {

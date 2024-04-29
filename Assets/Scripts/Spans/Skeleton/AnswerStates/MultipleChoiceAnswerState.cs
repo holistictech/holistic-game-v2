@@ -5,6 +5,7 @@ using Scriptables.QuestionSystem;
 using Scriptables.Tutorial;
 using Tutorial;
 using UI;
+using UI.Helpers;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -17,6 +18,7 @@ namespace Spans.Skeleton.AnswerStates
     public class MultipleChoiceAnswerState : SpanAnswerState
     {
         [SerializeField] private List<TutorialStep> gridStep;
+        [SerializeField] private GridUIHelper gridHelper;
         [SerializeField] private GridLayoutGroup gridLayoutGroup;
         [SerializeField] private Choice choicePrefab;
         [SerializeField] private Button confirmButton;
@@ -102,7 +104,11 @@ namespace Spans.Skeleton.AnswerStates
         private void SetConstraintCount()
         {
             var index = _spanController.GetRoundIndex();
-            if (index == 2)
+            if (_spanController.GetCumulativeStatus())
+            {
+                gridLayoutGroup.constraintCount = 3;
+            }
+            else if (index == 2)
             {
                 gridLayoutGroup.constraintCount = 2;
             }else

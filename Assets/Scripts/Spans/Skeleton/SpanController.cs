@@ -14,6 +14,7 @@ namespace Spans.Skeleton
     public abstract class SpanController : MonoBehaviour
     {
         [SerializeField] protected bool isBackwards;
+        [SerializeField] protected bool isCumulative;
         [SerializeField] private StateHolder states;
         [SerializeField] private TutorialManager tutorialManager;
         private List<ISpanState> _stateList = new List<ISpanState>();
@@ -24,7 +25,7 @@ namespace Spans.Skeleton
         protected int currentSuccessStreak;
         protected int currentFailStreak;
         private bool _tutorialActive;
-        protected List<Question> currentSpanQuestions;
+        protected List<Question> currentSpanQuestions = new List<Question>();
         protected List<Question> currentDisplayedQuestions;
         protected List<string> currentDetectedAnswers;
         protected List<Question> currentGivenAnswers;
@@ -129,7 +130,7 @@ namespace Spans.Skeleton
             }
         }
 
-        protected void IncrementSuccessStreak()
+        protected virtual void IncrementSuccessStreak()
         {
             currentSuccessStreak++;
             currentFailStreak = 0;
@@ -140,7 +141,7 @@ namespace Spans.Skeleton
             }
         }
 
-        protected void IncrementFailStreak()
+        protected virtual void IncrementFailStreak()
         {
             currentFailStreak++;
             currentSuccessStreak = 0;
@@ -199,6 +200,11 @@ namespace Spans.Skeleton
         public bool GetBackwardStatus()
         {
             return isBackwards;
+        }
+
+        public bool GetCumulativeStatus()
+        {
+            return isCumulative;
         }
     }
 }
