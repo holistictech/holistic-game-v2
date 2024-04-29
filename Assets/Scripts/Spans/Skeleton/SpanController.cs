@@ -35,7 +35,7 @@ namespace Spans.Skeleton
         {
             stateContext = new SpanStateContext(this);
             InstantiateGameStates();
-            _tutorialActive = PlayerSaveManager.GetPlayerAttribute(states.TutorialKey, 0) == 0;
+            _tutorialActive = true; //PlayerSaveManager.GetPlayerAttribute(states.TutorialKey, 0) == 0;
             stateContext.Transition(_stateList[0]);
         }
 

@@ -60,7 +60,7 @@ namespace Tutorial
                 if (step.Value.StepClip != null)
                 {
                     AudioManager.Instance.PlayAudioClip(step.Value.StepClip);
-                    yield return new WaitForSeconds(step.Value.StepClip.length);
+                    yield return new WaitForSeconds(step.Value.StepClip.length + 1.5f);
                 }
                 else
                 {

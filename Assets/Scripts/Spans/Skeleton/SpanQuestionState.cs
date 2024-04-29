@@ -93,9 +93,11 @@ namespace Spans.Skeleton
                 _currentQuestions.Add(question);
                 _currentQuestionIndex++;
                 yield return new WaitForSeconds(1f);
+                questionBox.GetComponentInChildren<TextMeshProUGUI>().text = $"";
+                yield return new WaitForSeconds(1f);
             }
             
-            SwitchNextState();
+            DOVirtual.DelayedCall(1f, SwitchNextState);
         }
 
         private IEnumerator ShowImages()
@@ -109,8 +111,11 @@ namespace Spans.Skeleton
                 _currentQuestions.Add(question);
                 _currentQuestionIndex++;
                 yield return new WaitForSeconds(1f);
+                questionBox.enabled = false;
+                yield return new WaitForSeconds(1f);
             }
-            SwitchNextState();
+
+            DOVirtual.DelayedCall(1f, SwitchNextState);
         }
 
         private IEnumerator PlayClips()
@@ -122,10 +127,10 @@ namespace Spans.Skeleton
                 ActivateCircle(i);
                 _currentQuestions.Add(question);
                 _currentQuestionIndex++;
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds((ulong)question.GetQuestionItem() + 1f);
             } 
             
-            SwitchNextState();
+            DOVirtual.DelayedCall(1f, SwitchNextState);
         }
 
         private void SetCircleUI(int count)
