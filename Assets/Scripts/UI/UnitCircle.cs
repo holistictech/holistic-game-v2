@@ -1,6 +1,7 @@
 using System;
 using DG.Tweening;
 using Spans.Skeleton.AnswerStates;
+using UI.Helpers;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -62,12 +63,12 @@ namespace UI
 
         private void AddListeners()
         {
-            MultipleChoiceAnswerState.OnChoiceSelected += HandleOnAnswerGiven;
+            GridUIHelper.OnChoiceSelected += HandleOnAnswerGiven;
         }
 
         private void RemoveListeners()
         {
-            MultipleChoiceAnswerState.OnChoiceSelected -= HandleOnAnswerGiven;
+            GridUIHelper.OnChoiceSelected -= HandleOnAnswerGiven;
         }
     }
 }

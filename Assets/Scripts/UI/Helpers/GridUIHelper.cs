@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Scriptables.QuestionSystem;
 using Spans.Skeleton.AnswerStates;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 
 namespace UI.Helpers
@@ -10,9 +11,10 @@ namespace UI.Helpers
     public class GridUIHelper : MonoBehaviour
     {
         [SerializeField] private GridLayoutGroup gridParent;
-        [SerializeField] private Choice choice;
+        [SerializeField] private Choice choicePrefab;
 
         private List<Choice> _choicePool;
+        private MultipleChoiceAnswerState _answerState;
         private List<Question> _givenAnswers = new List<Question>();
         private List<Choice> _activeChoices = new List<Choice>();
         private List<Choice> _selectedChoices = new List<Choice>();
@@ -26,12 +28,22 @@ namespace UI.Helpers
 
         public void ConfigureChoices(List<Question> questions, MultipleChoiceAnswerState answerState)
         {
+            _answerState = answerState;
+            _givenAnswers.Clear();
             foreach (var question in questions)
             {
                 var available = GetAvailableChoice();
-                available.ConfigureUI(question, answerState);
+                //available.ConfigureUI(question, answerState);
+                available.ConfigureUI(question, this);
                 _activeChoices.Add(available);
             }
+            
+            CalculateDynamicCellSize();
+        }
+
+        public List<Question> GetGivenAnswers()
+        {
+            return _givenAnswers;
         }
 
         private void SpawnChoicePool()
@@ -39,7 +51,7 @@ namespace UI.Helpers
             _choicePool = new List<Choice>();
             for (int i = 0; i < 9; i++)
             {
-                var temp = Instantiate(choice, gridParent.transform);
+                var temp = Instantiate(choicePrefab, gridParent.transform);
                 _choicePool.Add(temp);
             }
         }
@@ -65,12 +77,14 @@ namespace UI.Helpers
         {
             _givenAnswers.Add(question);
             _selectedChoices.Add(selected);
+            _answerState.AppendGivenAnswers(question, selected);
+            OnChoiceSelected?.Invoke(_givenAnswers.Count);
         }
 
         public void RevokeLastSelection()
         {
             if (_givenAnswers.Count == 0) return;
-            //OnChoiceSelected?.Invoke(-(_givenAnswers.Count));
+            OnChoiceSelected?.Invoke(-(_givenAnswers.Count));
             _givenAnswers.Remove(_givenAnswers[^1]);
             _selectedChoices[^1].ResetUI();
             _selectedChoices.Remove(_selectedChoices[^1]);
@@ -91,13 +105,30 @@ namespace UI.Helpers
             }
         }
         
-        private void DisableSpawnedChoices()
+        public RectTransform GetAppropriateChoice(Question question)
         {
+            foreach (var choice in _activeChoices)
+            {
+                var config = choice.GetAssignedQuestionConfig();
+                if (config.GetQuestionItem() == question.GetQuestionItem())
+                {
+                    return choice.GetComponent<RectTransform>();
+                }
+            }
+
+            throw new ArgumentException("Could not find such question in spawned choices");
+            return null;
+        }
+        
+        public void DisableSpawnedChoices()
+        {
+            OnChoiceSelected?.Invoke(0);
             foreach (var spawnedChoice in _choicePool)
             {
                 spawnedChoice.DisableSelf();
             }
             _activeChoices.Clear();
+            _selectedChoices.Clear();
         }
         
         private Choice GetAvailableChoice()

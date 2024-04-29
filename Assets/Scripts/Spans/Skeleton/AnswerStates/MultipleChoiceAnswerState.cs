@@ -25,23 +25,23 @@ namespace Spans.Skeleton.AnswerStates
         [SerializeField] private Button revertButton;
 
         private List<Choice> _choicePool = new List<Choice>();
-        private List<Question> _givenAnswers = new List<Question>();
-        private List<Choice> _activeChoices = new List<Choice>();
-        private List<Choice> _selectedChoices = new List<Choice>(); 
+        //private List<Question> _givenAnswers = new List<Question>();
+        //private List<Choice> _activeChoices = new List<Choice>();
+        //private List<Choice> _selectedChoices = new List<Choice>(); 
         private SpanController _spanController;
 
         private Coroutine _timer;
         private Coroutine _tutorialHighlight;
         private float _maxTime;
 
-        public static event Action<int> OnChoiceSelected;
+        //public static event Action<int> OnChoiceSelected;
         public override void Enter(SpanController controller)
         {
             if (_spanController == null)
             {
                 _spanController = controller;
                 _maxTime = _spanController.GetRoundTime();
-                SpawnChoices();
+                //SpawnChoices();
             }
 
             AddListeners();
@@ -70,8 +70,10 @@ namespace Spans.Skeleton.AnswerStates
 
         private void SetChoiceUI()
         {
-            _givenAnswers.Clear();
+            gridHelper.SetConstraintCount(_spanController.GetRoundIndex(), _spanController.GetCumulativeStatus());
             var choices = _spanController.GetChoices();
+            gridHelper.ConfigureChoices(choices, this);
+            /*_givenAnswers.Clear();
             CalculateDynamicCellSize();
             
             foreach (var choice in choices)
@@ -79,7 +81,7 @@ namespace Spans.Skeleton.AnswerStates
                 var temp = GetAvailableChoice();
                 temp.ConfigureUI(choice, this);
                 _activeChoices.Add(temp);
-            }
+            }*/
         }
 
         private void CalculateDynamicCellSize()
@@ -128,8 +130,8 @@ namespace Spans.Skeleton.AnswerStates
             {
                 _spanController.ClearTutorialHighlights();
             }
-            OnChoiceSelected?.Invoke(0);
-            _spanController.SetSelectedAnswers(_givenAnswers);
+            //OnChoiceSelected?.Invoke(0);
+            _spanController.SetSelectedAnswers(gridHelper.GetGivenAnswers());
             _spanController.SwitchState();
         }
 
@@ -156,7 +158,7 @@ namespace Spans.Skeleton.AnswerStates
             {
                 List<GameObject> firstPart = new List<GameObject>()
                 {
-                    gridLayoutGroup.gameObject,
+                    gridHelper.gameObject,
                 };
                 var dictionary = new Dictionary<GameObject, TutorialStep>().CreateFromLists(firstPart, GetGridStep());
                 _spanController.TriggerStateTutorial(dictionary, false, () =>
@@ -193,7 +195,7 @@ namespace Spans.Skeleton.AnswerStates
                 if (_highlightIndex != _lastIndex)
                 {
                     var targetRect = GetAppropriateChoice(currentQuestions[_highlightIndex]);
-                    _spanController.HighlightTarget(targetRect, gridLayoutGroup.GetComponent<RectTransform>(), true, gridLayoutGroup.cellSize.x);
+                    _spanController.HighlightTarget(targetRect, gridLayoutGroup.GetComponent<RectTransform>(), true, 130f);
                     _lastIndex = _highlightIndex;
                     _waitInput = true;
                     yield return new WaitUntil(() => !_waitInput);
@@ -204,7 +206,8 @@ namespace Spans.Skeleton.AnswerStates
 
         private RectTransform GetAppropriateChoice(Question question)
         {
-            foreach (var choice in _activeChoices)
+            return gridHelper.GetAppropriateChoice(question);
+            /*foreach (var choice in _activeChoices)
             {
                 var config = choice.GetAssignedQuestionConfig();
                 if (config.GetQuestionItem() == question.GetQuestionItem())
@@ -214,7 +217,7 @@ namespace Spans.Skeleton.AnswerStates
             }
 
             throw new ArgumentException("Could not find such question in spawned choices");
-            return null;
+            return null;*/
         }
 
         private List<TutorialStep> GetGridStep()
@@ -236,37 +239,43 @@ namespace Spans.Skeleton.AnswerStates
             gridLayoutGroup.gameObject.SetActive(false);
             confirmButton.gameObject.SetActive(false);
             revertButton.gameObject.SetActive(false);
-            DisableSpawnedChoices();
+            gridHelper.DisableSpawnedChoices();
+            timer.StopTimer();
+
+            //DisableSpawnedChoices();
         }
 
         private void DisableSpawnedChoices()
         {
-            foreach (var spawnedChoice in _choicePool)
+            gridHelper.DisableSpawnedChoices();
+            /*foreach (var spawnedChoice in _choicePool)
             {
                 spawnedChoice.DisableSelf();
             }
-            _activeChoices.Clear();
+            _activeChoices.Clear();*/
         }
 
         public void AppendGivenAnswers(Question question, Choice choice)
         {
-            _givenAnswers.Add(question);
             if (_spanController.GetTutorialStatus())
             {
                 _highlightIndex++;
                 _waitInput = false;
             }
+            
+            /*_givenAnswers.Add(question);
             OnChoiceSelected?.Invoke(_givenAnswers.Count);
-            _selectedChoices.Add(choice);
+            _selectedChoices.Add(choice);*/
         }
 
         private void RevertLastAnswer()
         {
-            if (_givenAnswers.Count == 0) return;
+            gridHelper.RevokeLastSelection();
+            /*if (_givenAnswers.Count == 0) return;
             OnChoiceSelected?.Invoke(-(_givenAnswers.Count));
             _givenAnswers.Remove(_givenAnswers[^1]);
             _selectedChoices[^1].ResetUI();
-            _selectedChoices.Remove(_selectedChoices[^1]);
+            _selectedChoices.Remove(_selectedChoices[^1]);*/
         }
 
         private void AddListeners()

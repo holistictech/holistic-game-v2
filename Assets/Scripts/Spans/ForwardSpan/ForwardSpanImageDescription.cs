@@ -13,8 +13,9 @@ namespace Spans.ForwardSpan
     {
         public ImageQuestion[] ImageQuestions;
 
-        private new void Start()
+        protected override void Start()
         {
+            base.Start();
             foreach (var question in ImageQuestions)
             {
                 question.SetHasSelected(false);

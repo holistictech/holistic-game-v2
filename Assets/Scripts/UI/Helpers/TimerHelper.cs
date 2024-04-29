@@ -57,8 +57,8 @@ namespace UI.Helpers
             if (_timer != null)
             {
                 StopCoroutine(_timer);
-                timerBg.gameObject.SetActive(false);
             }
+            timerBg.gameObject.SetActive(false);
         }
     }
 

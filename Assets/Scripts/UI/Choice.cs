@@ -2,6 +2,7 @@ using System;
 using Scriptables.QuestionSystem;
 using Spans.Skeleton.AnswerStates;
 using TMPro;
+using UI.Helpers;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -14,7 +15,8 @@ namespace UI
         [SerializeField] private TextMeshProUGUI choiceValue;
         [SerializeField] private Sprite numberChoiceSprite;
 
-        private MultipleChoiceAnswerState _answerState;
+        //private MultipleChoiceAnswerState _answerState;
+        private GridUIHelper _gridHelper;
         private Question _question;
         private void OnEnable()
         {
@@ -26,9 +28,16 @@ namespace UI
             RemoveListeners();
         }
 
+        public void ConfigureUI(Question question, GridUIHelper gridHelper)
+        {
+            _gridHelper = gridHelper;
+            _question = question;
+            SetChoice();
+        }
+        
         public void ConfigureUI(Question question, MultipleChoiceAnswerState answerState)
         {
-            _answerState = answerState;
+            //_answerState = answerState;
             _question = question;
             SetChoice();
         }
@@ -72,7 +81,8 @@ namespace UI
         private void SetIsSelected()
         {
             choice.interactable = false;
-            _answerState.AppendGivenAnswers(_question, this);
+            _gridHelper.SelectChoice(_question, this);
+            //_answerState.AppendGivenAnswers(_question, this);
         }
 
         private void AddListeners()
