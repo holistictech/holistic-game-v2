@@ -31,17 +31,6 @@ namespace Spans.Skeleton
         public virtual void PlayTimer(float maxTime)
         {
             timer.StartTimer(maxTime, SwitchNextState);
-            /*timerBar.maxValue = maxTime;
-            float currentTime = maxTime;
-
-            while (currentTime > 0)
-            {
-                timerBar.value = Mathf.Lerp(timerBar.value, currentTime, Time.deltaTime * 10);
-                currentTime -= Time.deltaTime;
-                yield return null;
-            }
-
-            timerBar.value = 0f;*/
         }
 
         public virtual void SwitchNextState()

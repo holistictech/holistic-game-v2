@@ -114,12 +114,12 @@ namespace Spans.Skeleton
             return currentRoundIndex;
         }
 
-        public void IncrementRoundIndex()
+        private void IncrementRoundIndex()
         {
             currentRoundIndex++;
         }
 
-        public void DecrementRoundIndex()
+        private void DecrementRoundIndex()
         {
             if(currentRoundIndex > CommonFields.DEFAULT_ROUND_INDEX)
                 currentRoundIndex--;
@@ -129,7 +129,7 @@ namespace Spans.Skeleton
             }
         }
 
-        public void IncrementSuccessStreak()
+        protected void IncrementSuccessStreak()
         {
             currentSuccessStreak++;
             currentFailStreak = 0;
@@ -140,7 +140,7 @@ namespace Spans.Skeleton
             }
         }
 
-        public void IncrementFailStreak()
+        protected void IncrementFailStreak()
         {
             currentFailStreak++;
             currentSuccessStreak = 0;
