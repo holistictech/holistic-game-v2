@@ -12,6 +12,7 @@ namespace Spans.Skeleton
 {
     public class SpanFeedbackState : MonoBehaviour, ISpanState
     {
+        [SerializeField] private AudioClip tutorialSuccessFeedback;
         [SerializeField] private List<TutorialStep> steps;
         [SerializeField] private ParticleSystem successEffect;
         [SerializeField] private ParticleSystem failEffect;
@@ -26,8 +27,8 @@ namespace Spans.Skeleton
 
         private readonly string[] _successFeedbacks = new string[]
         {
-            "Harika!",
             "Başardın!",
+            "Harika!",
             "Çok iyi!",
             "Aferin sana!",
             "Süper!",
@@ -131,8 +132,16 @@ namespace Spans.Skeleton
 
         private string GetRandomFeedback(bool isCorrect)
         {
-            var index = Random.Range(0, _successFeedbacks.Length -1);
-            return isCorrect ? _successFeedbacks[index] : _failFeedbacks[index];
+            if (_spanController.GetTutorialStatus())
+            {
+                AudioManager.Instance.PlayAudioClip(tutorialSuccessFeedback);
+                return _successFeedbacks[0];
+            }
+            else
+            {
+                var index = Random.Range(0, _successFeedbacks.Length -1);
+                return isCorrect ? _successFeedbacks[index] : _failFeedbacks[index];
+            }
         }
 
         public void Exit()

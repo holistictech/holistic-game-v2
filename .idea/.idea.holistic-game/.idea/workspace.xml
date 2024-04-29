@@ -6,13 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="3d01f5fc-4a81-4ccb-94d7-a0f07bc2bc79" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Tutorial/Steps/AnswerStep.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Tutorial/Steps/AnswerStep.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Tutorial/Steps/GoBackStep.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Tutorial/Steps/GoBackStep.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Tutorial/Steps/ShowImagesStep.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Tutorial/Steps/ShowImagesStep.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Tutorial/Steps/TimerStep.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Tutorial/Steps/TimerStep.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Tutorial/Steps/WelcomeStep.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Tutorial/Steps/WelcomeStep.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Tutorial/TutorialManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Tutorial/TutorialManager.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/AudioManager.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/AudioManager.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanFeedbackState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanFeedbackState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -151,7 +147,8 @@
       <workItem from="1713795102390" duration="135000" />
       <workItem from="1713872404270" duration="2694000" />
       <workItem from="1713954113176" duration="12572000" />
-      <workItem from="1714125337429" duration="6448000" />
+      <workItem from="1714125337429" duration="6672000" />
+      <workItem from="1714381645713" duration="725000" />
     </task>
     <servers />
   </component>
