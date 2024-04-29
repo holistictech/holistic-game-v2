@@ -54,7 +54,7 @@ namespace Tutorial
 
                 if (needHand)
                 {
-                    HighlightTutorialObject(highlightTransform, tempTransform, 100f, false);
+                    HighlightTutorialObject(highlightTransform, tempTransform, 150f, false);
                 }
 
                 if (step.Value.StepClip != null)

@@ -195,7 +195,7 @@ namespace Spans.Skeleton.AnswerStates
                 if (_highlightIndex != _lastIndex)
                 {
                     var targetRect = GetAppropriateChoice(currentQuestions[_highlightIndex]);
-                    _spanController.HighlightTarget(targetRect, gridHelper.GetComponent<RectTransform>(), true, 130f);
+                    _spanController.HighlightTarget(targetRect, gridHelper.GetComponent<RectTransform>(), true, 170f);
                     _lastIndex = _highlightIndex;
                     _waitInput = true;
                     yield return new WaitUntil(() => !_waitInput);
