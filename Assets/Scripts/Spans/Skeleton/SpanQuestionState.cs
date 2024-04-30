@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening;
 using Scriptables.QuestionSystem;
 using Scriptables.Tutorial;
@@ -24,10 +25,8 @@ namespace Spans.Skeleton
         
         private SpanController _spanController;
         private List<Question> _spanObjects;
-
         private List<UnitCircle> _spawnedUnitPool;
         private List<UnitCircle> _activeCircles;
-
         private int _currentQuestionIndex;
         private List<Question> _currentQuestions = new List<Question>();
         private Coroutine _displayingQuestions;
@@ -64,10 +63,10 @@ namespace Spans.Skeleton
                 _spanObjects = _spanController.GetSpanObjects();
                 _currentQuestionIndex = 0;
             }
-            else if (_spanController.GetCumulativeStatus())
+            /*else if (_spanController.GetCumulativeStatus())
             {
                 _currentQuestionIndex = 0;
-            }
+            }*/
             
             var question = _spanObjects[_currentQuestionIndex];
             if (question is NumberQuestion)
@@ -84,8 +83,12 @@ namespace Spans.Skeleton
 
         private IEnumerator ShowNumbers()
         {
-            for (int i = 0; i < _spanController.GetRoundIndex(); i++)
+            for (int i = 0; i < _spanObjects.Count; i++)
             {
+                if (_currentQuestionIndex >= _spanObjects.Count)
+                {
+                    break;
+                }
                 var question = _spanObjects[_currentQuestionIndex];
                 questionBox.GetComponentInChildren<TextMeshProUGUI>().text = $"{question.GetQuestionItem()}";
                 ActivateCircle(i);
@@ -102,12 +105,16 @@ namespace Spans.Skeleton
 
         private IEnumerator ShowImages()
         {
-            for (int i = 0; i < _spanController.GetRoundIndex(); i++)
+            for (int i = 0; i < _spanObjects.Count; i++)
             {
+                if (_currentQuestionIndex >= _spanObjects.Count)
+                {
+                    break;
+                }
                 var question = _spanObjects[_currentQuestionIndex];
                 questionBox.sprite = (Sprite)question.GetQuestionItem();
                 questionBox.enabled = true;
-                ActivateCircle(i);
+                ActivateCircle(_currentQuestionIndex);
                 _currentQuestions.Add(question);
                 _currentQuestionIndex++;
                 yield return new WaitForSeconds(1f);
@@ -120,8 +127,12 @@ namespace Spans.Skeleton
 
         private IEnumerator PlayClips()
         {
-            for (int i = 0; i < _spanController.GetRoundIndex(); i++)
+            for (int i = 0; i < _spanObjects.Count; i++)
             {
+                if (_currentQuestionIndex >= _spanObjects.Count)
+                {
+                    break;
+                }
                 var question = _spanObjects[_currentQuestionIndex];
                 audioSource.Play((ulong)question.GetQuestionItem());
                 ActivateCircle(i);
@@ -141,6 +152,8 @@ namespace Spans.Skeleton
                 tempCircle.EnableSelf();
                 _activeCircles.Add(tempCircle);
             }
+
+            _spanController.SetActiveCircles(_activeCircles);
         }
 
         private void SpawnUnitCircles()
@@ -183,7 +196,7 @@ namespace Spans.Skeleton
         public void SwitchNextState()
         {
             DisableUIElements();
-            _spanController.SetCurrentQuestions(_currentQuestions);
+            _spanController.SetCurrentDisplayedQuestions(_currentQuestions);
             if (_spanController.GetBackwardStatus())
             {
                 RotateCircles(() =>

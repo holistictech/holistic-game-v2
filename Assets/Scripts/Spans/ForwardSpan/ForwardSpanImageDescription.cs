@@ -42,7 +42,7 @@ namespace Spans.ForwardSpan
             }
             
             List<Question> selected = new List<Question>();
-            for (int i = 0; i < fetchedQuestionCount; i++)
+            for (int i = 0; i < currentRoundIndex; i++)
             {
                 selected.Add(shuffledSprites[i]);
             }

@@ -15,7 +15,7 @@ namespace Spans.ForwardSpan
                 choiceCount = 9 - currentRoundIndex;
             }
             
-            List<Question> choices = new List<Question>(GetCurrentQuestions());
+            List<Question> choices = new List<Question>(GetCurrentDisplayedQuestions());
             
             for (int i = 0; i < choiceCount; i++)
             {

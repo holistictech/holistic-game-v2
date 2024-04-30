@@ -35,8 +35,8 @@ namespace Spans.CumulativeSpan
         
         public override List<Question> GetChoices()
         {
-            List<Question> choices = new List<Question>(GetCurrentQuestions());
-            var iterations = _choiceCount - currentRoundIndex;
+            List<Question> choices = new List<Question>(currentSpanQuestions);
+            var iterations = _choiceCount - choices.Count;
             
             for (int i = 0; i < iterations; i++)
             {
@@ -72,9 +72,15 @@ namespace Spans.CumulativeSpan
             IncrementSuccessStreak();
             return true;
         }
+        
+        public override void SetCurrentDisplayedQuestions(List<Question> questions)
+        {
+            currentDisplayedQuestions.AddRange(questions);
+        }
 
         protected override void IncrementFailStreak()
         {
+            currentSpanQuestions.Clear();
             ResetRoundIndex();
         }
 

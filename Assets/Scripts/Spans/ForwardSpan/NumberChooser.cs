@@ -10,7 +10,7 @@ namespace Spans.ForwardSpan
         public override List<Question> GetChoices()
         {
             int choiceCount = currentRoundIndex;
-            List<Question> choices = new List<Question>(GetCurrentQuestions());
+            List<Question> choices = new List<Question>(GetCurrentDisplayedQuestions());
             
             for (int i = 0; i < choiceCount; i++)
             {

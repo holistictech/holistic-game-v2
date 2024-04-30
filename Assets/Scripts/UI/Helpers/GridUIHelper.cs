@@ -18,8 +18,10 @@ namespace UI.Helpers
         private List<Question> _givenAnswers = new List<Question>();
         private List<Choice> _activeChoices = new List<Choice>();
         private List<Choice> _selectedChoices = new List<Choice>();
-        
-        public static event Action<int> OnChoiceSelected;
+        private List<UnitCircle> _activeUnitCircles;
+
+        private int _answerIndex = 0;
+        public static event Action OnChoiceSelected;
 
         private void Start()
         {
@@ -33,12 +35,17 @@ namespace UI.Helpers
             foreach (var question in questions)
             {
                 var available = GetAvailableChoice();
-                //available.ConfigureUI(question, answerState);
                 available.ConfigureUI(question, this);
                 _activeChoices.Add(available);
             }
             
             CalculateDynamicCellSize();
+            _activeUnitCircles[_answerIndex].AnimateCircle();
+        }
+
+        public void SetActiveCircles(List<UnitCircle> circles)
+        {
+            _activeUnitCircles = circles;
         }
 
         public List<Question> GetGivenAnswers()
@@ -77,14 +84,14 @@ namespace UI.Helpers
         {
             _givenAnswers.Add(question);
             _selectedChoices.Add(selected);
-            _answerState.AppendGivenAnswers(question, selected);
-            OnChoiceSelected?.Invoke(_givenAnswers.Count);
+            _answerState.OnAnswerGiven();
+            UpdateAndAnimateUnitCircle(true);
         }
 
         public void RevokeLastSelection()
         {
             if (_givenAnswers.Count == 0) return;
-            OnChoiceSelected?.Invoke(-(_givenAnswers.Count));
+            UpdateAndAnimateUnitCircle(false);
             _givenAnswers.Remove(_givenAnswers[^1]);
             _selectedChoices[^1].ResetUI();
             _selectedChoices.Remove(_selectedChoices[^1]);
@@ -102,6 +109,25 @@ namespace UI.Helpers
             }else
             {
                 gridParent.constraintCount = 3;
+            }
+        }
+
+        private void UpdateAndAnimateUnitCircle(bool toggle)
+        {
+            if (toggle)
+            {
+                _activeUnitCircles[_answerIndex].OnAnswerGiven();
+                _answerIndex++;
+                if (_answerIndex >= _activeUnitCircles.Count) return;
+                _activeUnitCircles[_answerIndex].AnimateCircle();
+            }
+            else
+            {
+                if(_answerIndex < _activeUnitCircles.Count)
+                    _activeUnitCircles[_answerIndex].OnAnswerRevoked();
+                _answerIndex--;
+                _activeUnitCircles[_answerIndex].OnAnswerRevoked();
+                _activeUnitCircles[_answerIndex].AnimateCircle();
             }
         }
         
@@ -122,7 +148,7 @@ namespace UI.Helpers
         
         public void DisableSpawnedChoices()
         {
-            OnChoiceSelected?.Invoke(0);
+            OnChoiceSelected?.Invoke();
             foreach (var spawnedChoice in _choicePool)
             {
                 spawnedChoice.DisableSelf();

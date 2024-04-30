@@ -13,7 +13,8 @@ namespace UI
         [SerializeField] private Color activeColor;
 
         private int _circleIndex = -1;
-
+        private Tween _jump;
+        
         private void OnEnable()
         {
             AddListeners();
@@ -30,23 +31,33 @@ namespace UI
             circleImage.DOColor(activeColor, 1f).SetEase(Ease.Flash).OnComplete(ResetSelf);
         }
 
-        private void HandleOnAnswerGiven(int index)
+        public void OnAnswerGiven()
         {
-            if (index == _circleIndex)
-            {
-                circleImage.color = activeColor;
-            }else if (index == -_circleIndex)
-            {
-                ResetSelf();
-            }else if (index == 0)
-            {
-                ResetSelf();
-                DisableSelf();
-            }
+            circleImage.color = activeColor;
+            ResetScale();
+        }
+
+        public void OnAnswerRevoked()
+        {
+            ResetSelf();
+        }
+
+        public void AnimateCircle()
+        {
+            _jump = circleImage.transform.DOScale(new Vector3(1f, 1f, 1f), .4f).SetEase(Ease.OutBack)
+                .SetLoops(-1, LoopType.Yoyo);
+            _jump.Play();
+        }
+
+        private void DisableCircle()
+        {
+            ResetSelf();
+            DisableSelf();
         }
 
         public void EnableSelf()
         {
+            ResetScale();
             gameObject.SetActive(true);
         }
 
@@ -58,17 +69,24 @@ namespace UI
 
         public void ResetSelf()
         {
+            ResetScale();
             circleImage.color = Color.white;
+        }
+
+        private void ResetScale()
+        {
+            _jump.Kill();
+            transform.localScale = new Vector3(.8f, .8f, .8f);
         }
 
         private void AddListeners()
         {
-            GridUIHelper.OnChoiceSelected += HandleOnAnswerGiven;
+            GridUIHelper.OnChoiceSelected += DisableCircle;
         }
 
         private void RemoveListeners()
         {
-            GridUIHelper.OnChoiceSelected -= HandleOnAnswerGiven;
+            GridUIHelper.OnChoiceSelected -= DisableCircle;
         }
     }
 }

@@ -3,15 +3,10 @@ using System.Collections;
 using System.Collections.Generic;
 using Scriptables.QuestionSystem;
 using Scriptables.Tutorial;
-using Tutorial;
-using UI;
 using UI.Helpers;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Utilities;
-using Vector2 = UnityEngine.Vector2;
 
 namespace Spans.Skeleton.AnswerStates
 {
@@ -20,28 +15,22 @@ namespace Spans.Skeleton.AnswerStates
         [SerializeField] private List<TutorialStep> gridStep;
         [SerializeField] private GridUIHelper gridHelper;
         [SerializeField] private GridLayoutGroup gridLayoutGroup;
-        [SerializeField] private Choice choicePrefab;
         [SerializeField] private Button confirmButton;
         [SerializeField] private Button revertButton;
-
-        private List<Choice> _choicePool = new List<Choice>();
-        //private List<Question> _givenAnswers = new List<Question>();
-        //private List<Choice> _activeChoices = new List<Choice>();
-        //private List<Choice> _selectedChoices = new List<Choice>(); 
+        
         private SpanController _spanController;
-
         private Coroutine _timer;
         private Coroutine _tutorialHighlight;
         private float _maxTime;
-
-        //public static event Action<int> OnChoiceSelected;
+        
+        private int _circleIndex = 1;
+        
         public override void Enter(SpanController controller)
         {
             if (_spanController == null)
             {
                 _spanController = controller;
                 _maxTime = _spanController.GetRoundTime();
-                //SpawnChoices();
             }
 
             AddListeners();
@@ -59,64 +48,13 @@ namespace Spans.Skeleton.AnswerStates
             }
         }
 
-        private void SpawnChoices()
-        {
-            for (int i = 0; i < 18; i++)
-            {
-                var tempChoice = Instantiate(choicePrefab, gridLayoutGroup.transform);
-                _choicePool.Add(tempChoice);
-            }
-        }
-
         private void SetChoiceUI()
         {
             gridHelper.SetConstraintCount(_spanController.GetRoundIndex(), _spanController.GetCumulativeStatus());
             var choices = _spanController.GetChoices();
+            var unitCircles = _spanController.GetActiveCircles();
+            gridHelper.SetActiveCircles(unitCircles);
             gridHelper.ConfigureChoices(choices, this);
-            /*_givenAnswers.Clear();
-            CalculateDynamicCellSize();
-            
-            foreach (var choice in choices)
-            {
-                var temp = GetAvailableChoice();
-                temp.ConfigureUI(choice, this);
-                _activeChoices.Add(temp);
-            }*/
-        }
-
-        private void CalculateDynamicCellSize()
-        {
-            SetConstraintCount();
-            RectTransform gridRectTransform = gridLayoutGroup.GetComponent<RectTransform>();
-
-            var rect = gridRectTransform.rect;
-            float width = rect.width;
-            float height = rect.height;
-    
-            float availableWidth = width - (gridLayoutGroup.padding.left + gridLayoutGroup.padding.right) - ((gridLayoutGroup.constraintCount - 1) * gridLayoutGroup.spacing.x);
-            float availableHeight = height - (gridLayoutGroup.padding.top + gridLayoutGroup.padding.bottom) - ((gridLayoutGroup.constraintCount - 1) * gridLayoutGroup.spacing.y);
-    
-            float cellWidth = availableWidth / gridLayoutGroup.constraintCount;
-            float cellHeight = availableHeight / gridLayoutGroup.constraintCount;
-            float cellSize = Mathf.Min(cellWidth, cellHeight);
-            gridLayoutGroup.cellSize = new Vector2(cellSize, cellSize);
-        }
-
-
-        private void SetConstraintCount()
-        {
-            var index = _spanController.GetRoundIndex();
-            if (_spanController.GetCumulativeStatus())
-            {
-                gridLayoutGroup.constraintCount = 3;
-            }
-            else if (index == 2)
-            {
-                gridLayoutGroup.constraintCount = 2;
-            }else
-            {
-                gridLayoutGroup.constraintCount = 3;
-            }
         }
         
         public override void PlayTimer(float maxTime)
@@ -130,7 +68,6 @@ namespace Spans.Skeleton.AnswerStates
             {
                 _spanController.ClearTutorialHighlights();
             }
-            //OnChoiceSelected?.Invoke(0);
             _spanController.SetSelectedAnswers(gridHelper.GetGivenAnswers());
             _spanController.SwitchState();
         }
@@ -169,27 +106,12 @@ namespace Spans.Skeleton.AnswerStates
             });
         }
 
-        private void TryShowSecondPartTutorial()
-        {
-            List<GameObject> secondPart = new List<GameObject>()
-            {
-                revertButton.gameObject,
-                timer.gameObject
-            };
-            var secondPartDict = new Dictionary<GameObject, TutorialStep>().CreateFromLists(secondPart, GetTutorialSteps());
-            _spanController.TriggerStateTutorial(secondPartDict, true, () =>
-            {
-                _spanController.SetTutorialCompleted();
-                SwitchNextState();
-            });
-        }
-
         private int _highlightIndex = 0;
         private int _lastIndex = -1;
         private bool _waitInput;
         private IEnumerator HighlightObjectsForTutorial()
         {
-            List<Question> currentQuestions = _spanController.GetCurrentQuestions();
+            List<Question> currentQuestions = _spanController.GetCurrentDisplayedQuestions();
             while (_highlightIndex < currentQuestions.Count)
             {
                 if (_highlightIndex != _lastIndex)
@@ -207,17 +129,6 @@ namespace Spans.Skeleton.AnswerStates
         private RectTransform GetAppropriateChoice(Question question)
         {
             return gridHelper.GetAppropriateChoice(question);
-            /*foreach (var choice in _activeChoices)
-            {
-                var config = choice.GetAssignedQuestionConfig();
-                if (config.GetQuestionItem() == question.GetQuestionItem())
-                {
-                    return choice.GetComponent<RectTransform>();
-                }
-            }
-
-            throw new ArgumentException("Could not find such question in spawned choices");
-            return null;*/
         }
 
         private List<TutorialStep> GetGridStep()
@@ -242,40 +153,26 @@ namespace Spans.Skeleton.AnswerStates
             gridHelper.DisableSpawnedChoices();
             timer.StopTimer();
 
-            //DisableSpawnedChoices();
+            DisableSpawnedChoices();
         }
 
         private void DisableSpawnedChoices()
         {
             gridHelper.DisableSpawnedChoices();
-            /*foreach (var spawnedChoice in _choicePool)
-            {
-                spawnedChoice.DisableSelf();
-            }
-            _activeChoices.Clear();*/
         }
 
-        public void AppendGivenAnswers(Question question, Choice choice)
+        public void OnAnswerGiven()
         {
             if (_spanController.GetTutorialStatus())
             {
                 _highlightIndex++;
                 _waitInput = false;
             }
-            
-            /*_givenAnswers.Add(question);
-            OnChoiceSelected?.Invoke(_givenAnswers.Count);
-            _selectedChoices.Add(choice);*/
         }
 
         private void RevertLastAnswer()
         {
             gridHelper.RevokeLastSelection();
-            /*if (_givenAnswers.Count == 0) return;
-            OnChoiceSelected?.Invoke(-(_givenAnswers.Count));
-            _givenAnswers.Remove(_givenAnswers[^1]);
-            _selectedChoices[^1].ResetUI();
-            _selectedChoices.Remove(_selectedChoices[^1]);*/
         }
 
         private void AddListeners()
@@ -288,20 +185,6 @@ namespace Spans.Skeleton.AnswerStates
         {
             revertButton.onClick.RemoveListener(RevertLastAnswer);
             confirmButton.onClick.RemoveListener(SwitchNextState);
-        }
-
-        private Choice GetAvailableChoice()
-        {
-            for (int i = 0; i < _choicePool.Count; i++)
-            {
-                if (!_choicePool[i].isActiveAndEnabled)
-                {
-                    return _choicePool[i];
-                }
-            }
-
-            throw new Exception("No available choice. Need to spawn");
-            return null;
         }
     }
 }

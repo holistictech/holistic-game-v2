@@ -5,6 +5,7 @@ using Scriptables;
 using Scriptables.QuestionSystem;
 using Scriptables.Tutorial;
 using Tutorial;
+using UI;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Utilities;
@@ -17,6 +18,7 @@ namespace Spans.Skeleton
         [SerializeField] protected bool isCumulative;
         [SerializeField] private StateHolder states;
         [SerializeField] private TutorialManager tutorialManager;
+        private List<UnitCircle> _activeUnitCircles = new List<UnitCircle>();
         private List<ISpanState> _stateList = new List<ISpanState>();
         protected SpanStateContext stateContext;
         protected int currentRoundIndex = CommonFields.DEFAULT_ROUND_INDEX;
@@ -26,16 +28,16 @@ namespace Spans.Skeleton
         protected int currentFailStreak;
         private bool _tutorialActive;
         protected List<Question> currentSpanQuestions = new List<Question>();
-        protected List<Question> currentDisplayedQuestions;
+        protected List<Question> currentDisplayedQuestions = new List<Question>();
         protected List<string> currentDetectedAnswers;
-        protected List<Question> currentGivenAnswers;
+        protected List<Question> currentGivenAnswers = new List<Question>();
         private const int _neededStreakCount = 4;
 
         protected virtual void Start()
         {
             stateContext = new SpanStateContext(this);
             InstantiateGameStates();
-            _tutorialActive = true; //PlayerSaveManager.GetPlayerAttribute(states.TutorialKey, 0) == 0;
+            _tutorialActive = PlayerSaveManager.GetPlayerAttribute(states.TutorialKey, 0) == 0;
             stateContext.Transition(_stateList[0]);
         }
 
@@ -80,12 +82,12 @@ namespace Spans.Skeleton
             return true;
         }
 
-        public void SetCurrentQuestions(List<Question> questions)
+        public virtual void SetCurrentDisplayedQuestions(List<Question> questions)
         {
             currentDisplayedQuestions = questions;
         }
 
-        public List<Question> GetCurrentQuestions()
+        public List<Question> GetCurrentDisplayedQuestions()
         {
             return currentDisplayedQuestions;
         }
@@ -160,6 +162,16 @@ namespace Spans.Skeleton
                 temp.transform.SetSiblingIndex(0);
                 _stateList.Add(temp.GetComponent<ISpanState>());
             }
+        }
+
+        public void SetActiveCircles(List<UnitCircle> circles)
+        {
+            _activeUnitCircles = new List<UnitCircle>(circles);
+        }
+
+        public List<UnitCircle> GetActiveCircles()
+        {
+            return _activeUnitCircles;
         }
 
         public bool GetTutorialStatus()
