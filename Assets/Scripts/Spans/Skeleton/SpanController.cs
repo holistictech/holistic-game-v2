@@ -201,7 +201,7 @@ namespace Spans.Skeleton
 
         public void TriggerTutorialField(string fieldText)
         {
-            tutorialManager.SetTutorialWaitingInput(fieldText);
+            tutorialManager.SetFinalTutorialField(fieldText);
         }
 
         public void HighlightTarget(RectTransform target, RectTransform parent, bool animNeeded, float offset = 0)

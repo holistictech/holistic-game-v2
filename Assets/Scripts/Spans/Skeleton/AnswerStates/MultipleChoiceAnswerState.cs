@@ -100,7 +100,7 @@ namespace Spans.Skeleton.AnswerStates
                 var dictionary = new Dictionary<GameObject, TutorialStep>().CreateFromLists(firstPart, GetGridStep());
                 _spanController.TriggerStateTutorial(dictionary, false, () =>
                 {
-                    _spanController.TriggerTutorialField("Şimdi sıra sende!");
+                    //_spanController.TriggerTutorialField("Şimdi sıra sende!");
                     _tutorialHighlight = StartCoroutine(HighlightObjectsForTutorial());
                 });
             });

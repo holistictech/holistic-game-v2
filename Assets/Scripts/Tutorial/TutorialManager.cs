@@ -73,7 +73,7 @@ namespace Tutorial
             onComplete?.Invoke();
         }
 
-        public void SetTutorialWaitingInput(string text)
+        public void SetFinalTutorialField(string text)
         {
             tutorialPanel.gameObject.SetActive(true);
             tutorialPanel.GetComponent<Image>().enabled = false;
