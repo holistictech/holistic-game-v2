@@ -12,9 +12,14 @@ namespace Scriptables.QuestionSystem
             return Clip;
         }
 
-        public override object GetCorrectSprite()
+        public override Sprite GetCorrectSprite()
         {
-            return ClipSprite;
+            return IsAnswerStringMUST ? ClipSprite : null;
+        }
+
+        public override string GetCorrectText()
+        {
+            return IsAnswerStringMUST ? CorrectAnswerString : "";
         }
     }
 }

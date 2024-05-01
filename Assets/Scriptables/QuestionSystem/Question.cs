@@ -6,8 +6,8 @@ namespace Scriptables.QuestionSystem
     public abstract class Question : ScriptableObject
     {
         public string CorrectAnswerString;
+        public bool IsAnswerStringMUST; 
         private bool _hasSelected = false;
-
         public bool HasSelected()
         {
             return _hasSelected;
@@ -18,9 +18,14 @@ namespace Scriptables.QuestionSystem
             _hasSelected = val;
         }
 
-        public virtual object GetCorrectSprite()
+        public virtual Sprite GetCorrectSprite()
         {
             return null;
+        }
+
+        public virtual string GetCorrectText()
+        {
+            return "";
         }
 
         public abstract object GetQuestionItem();

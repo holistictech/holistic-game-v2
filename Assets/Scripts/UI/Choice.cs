@@ -47,7 +47,9 @@ namespace UI
             }
             else if (_question is ClipQuestion)
             {
-                choiceImage.sprite = (Sprite)_question.GetCorrectSprite();
+                var sprite = _question.GetCorrectSprite();
+                choiceValue.text = $"{_question.GetCorrectText()}";
+                choiceImage.sprite = sprite == null ? numberChoiceSprite : sprite;
             }
 
             EnableSelf();
