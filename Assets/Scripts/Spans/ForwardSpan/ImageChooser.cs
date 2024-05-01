@@ -9,6 +9,7 @@ namespace Spans.ForwardSpan
     {
         public override List<Question> GetChoices()
         {
+            var allImageQuestions = base.GetAllAvailableSpanObjects();
             int choiceCount = currentRoundIndex;
             if (currentRoundIndex >= 4)
             {
@@ -19,12 +20,12 @@ namespace Spans.ForwardSpan
             
             for (int i = 0; i < choiceCount; i++)
             {
-                var index = Random.Range(0, ImageQuestions.Length);
-                var question = ImageQuestions[index];
+                var index = Random.Range(0, allImageQuestions.Length);
+                var question = allImageQuestions[index];
                 while (choices.Contains(question))
                 {
-                    index = Random.Range(0, ImageQuestions.Length);
-                    question = ImageQuestions[index];
+                    index = Random.Range(0, allImageQuestions.Length);
+                    question = allImageQuestions[index];
                 }
                 choices.Add(question);
             }

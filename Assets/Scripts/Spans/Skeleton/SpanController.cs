@@ -37,7 +37,7 @@ namespace Spans.Skeleton
         {
             stateContext = new SpanStateContext(this);
             InstantiateGameStates();
-            _tutorialActive = PlayerSaveManager.GetPlayerAttribute(states.TutorialKey, 0) == 0;
+            _tutorialActive = false; //PlayerSaveManager.GetPlayerAttribute(states.TutorialKey, 0) == 0;
             stateContext.Transition(_stateList[0]);
         }
 
@@ -64,6 +64,11 @@ namespace Spans.Skeleton
         {
             return new List<Question>();
         }
+        
+        public virtual Question[] GetAllAvailableSpanObjects()
+        {
+            return new Question[] { };
+        }
 
         public virtual bool IsAnswerCorrect()
         {
@@ -71,7 +76,7 @@ namespace Spans.Skeleton
             //maybe a comparator to check correctness percentage.
             for (int i = 0; i < currentDisplayedQuestions.Count; i++)
             {
-                if (!currentDisplayedQuestions[i].CorrectAnswer.Equals(currentDetectedAnswers[i], StringComparison.OrdinalIgnoreCase))
+                if (!currentDisplayedQuestions[i].CorrectAnswerString.Equals(currentDetectedAnswers[i], StringComparison.OrdinalIgnoreCase))
                 {
                     IncrementFailStreak();
                     return false;

@@ -1,53 +1,59 @@
-using System;
 using System.Collections.Generic;
 using Scriptables.QuestionSystem;
-using Random = UnityEngine.Random;
+using UnityEngine;
 
 namespace Spans.ForwardSpan
 {
-    public class NumberChooser : ForwardSpanNumberDescription
+    public class SoundChooser : ForwardSpanVoiceDescription
     {
         public override List<Question> GetChoices()
         {
+            var allClips = base.GetAllAvailableSpanObjects();
             int choiceCount = currentRoundIndex;
+            if (currentRoundIndex >= 4)
+            {
+                choiceCount = 9 - currentRoundIndex;
+            }
+            
             List<Question> choices = new List<Question>(GetCurrentDisplayedQuestions());
             
             for (int i = 0; i < choiceCount; i++)
             {
-                var index = Random.Range(0, NumberQuestions.Length);
-                var question = NumberQuestions[index];
+                var index = Random.Range(0, allClips.Length);
+                var question = allClips[index];
                 while (choices.Contains(question))
                 {
-                    index = Random.Range(0, NumberQuestions.Length);
-                    question = NumberQuestions[index];
+                    index = Random.Range(0, allClips.Length);
+                    question = allClips[index];
                 }
                 choices.Add(question);
             }
             choices.Shuffle();
             return choices;
         }
-        
+
         public override bool IsAnswerCorrect()
         {
-            if (currentGivenAnswers.Count == 0 || currentGivenAnswers.Count != currentDisplayedQuestions.Count)
+            if (currentGivenAnswers.Count == 0 || currentDisplayedQuestions.Count != currentGivenAnswers.Count)
             {
                 IncrementFailStreak();
                 return false;
             }
-            
+
             if (isBackwards)
             {
                 currentDisplayedQuestions.Reverse();
             }
-            
+
             for (int i = 0; i < currentDisplayedQuestions.Count; i++)
             {
-                if (currentDisplayedQuestions[i].CorrectAnswerString != currentGivenAnswers[i].CorrectAnswerString)
+                if (currentDisplayedQuestions[i].GetCorrectSprite() != currentGivenAnswers[i].GetCorrectSprite())
                 {
                     IncrementFailStreak();
                     return false;
                 }
             }
+            
             IncrementSuccessStreak();
             return true;
         }

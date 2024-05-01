@@ -6,9 +6,15 @@ namespace Scriptables.QuestionSystem
     public class ClipQuestion : Question
     {
         public AudioClip Clip;
+        public Sprite ClipSprite;
         public override object GetQuestionItem()
         {
             return Clip;
+        }
+
+        public override object GetCorrectSprite()
+        {
+            return ClipSprite;
         }
     }
 }

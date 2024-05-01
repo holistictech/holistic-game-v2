@@ -11,12 +11,12 @@ namespace Spans.ForwardSpan
 {
     public class ForwardSpanImageDescription : SpanController
     {
-        public ImageQuestion[] ImageQuestions;
+        [SerializeField] private ImageQuestion[] imageQuestions;
 
         protected override void Start()
         {
             base.Start();
-            foreach (var question in ImageQuestions)
+            foreach (var question in imageQuestions)
             {
                 question.SetHasSelected(false);
             }
@@ -26,6 +26,11 @@ namespace Spans.ForwardSpan
         {
             return GetRandomSprites();
         }
+        
+        public override Question[] GetAllAvailableSpanObjects()
+        {
+            return imageQuestions;
+        }
 
         public override int GetRoundTime()
         {
@@ -34,7 +39,7 @@ namespace Spans.ForwardSpan
         
         private List<Question> GetRandomSprites()
         {
-            List<Question> shuffledSprites = new List<Question>(ImageQuestions);
+            List<Question> shuffledSprites = new List<Question>(imageQuestions);
             for (int i = 0; i < shuffledSprites.Count; i++)
             {
                 int randomIndex = Random.Range(i, shuffledSprites.Count);
@@ -57,7 +62,7 @@ namespace Spans.ForwardSpan
             //maybe a comparator to check correctness percentage.
             for (int i = 0; i < currentDisplayedQuestions.Count; i++)
             {
-                if (!currentDisplayedQuestions[i].CorrectAnswer.Equals(currentDetectedAnswers[i], StringComparison.OrdinalIgnoreCase))
+                if (!currentDisplayedQuestions[i].CorrectAnswerString.Equals(currentDetectedAnswers[i], StringComparison.OrdinalIgnoreCase))
                 {
                     IncrementFailStreak();
                     return false;

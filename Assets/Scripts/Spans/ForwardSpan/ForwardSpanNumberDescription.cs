@@ -76,7 +76,7 @@ namespace Spans.ForwardSpan
             //maybe a comparator to check correctness percentage.
             for (int i = 0; i < currentDisplayedQuestions.Count; i++)
             {
-                if (!currentDisplayedQuestions[i].CorrectAnswer.Equals(currentDetectedAnswers[i], StringComparison.OrdinalIgnoreCase))
+                if (!currentDisplayedQuestions[i].CorrectAnswerString.Equals(currentDetectedAnswers[i], StringComparison.OrdinalIgnoreCase))
                 {
                     IncrementFailStreak();
                     return false;

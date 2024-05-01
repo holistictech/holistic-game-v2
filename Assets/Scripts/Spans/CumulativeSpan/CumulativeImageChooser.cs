@@ -24,28 +24,30 @@ namespace Spans.CumulativeSpan
 
         private Question GetUnusedQuestion()
         {
-            var randomIndex = Random.Range(0, ImageQuestions.Length);
-            while (ImageQuestions[randomIndex].HasSelected())
+            var imageQuestions = base.GetAllAvailableSpanObjects();
+            var randomIndex = Random.Range(0, imageQuestions.Length);
+            while (imageQuestions[randomIndex].HasSelected())
             {
-                randomIndex = Random.Range(0, ImageQuestions.Length);
+                randomIndex = Random.Range(0, imageQuestions.Length);
             }
-            ImageQuestions[randomIndex].SetHasSelected(true);
-            return ImageQuestions[randomIndex];
+            imageQuestions[randomIndex].SetHasSelected(true);
+            return imageQuestions[randomIndex];
         }
         
         public override List<Question> GetChoices()
         {
+            var imageQuestions = base.GetAllAvailableSpanObjects();
             List<Question> choices = new List<Question>(currentSpanQuestions);
             var iterations = _choiceCount - choices.Count;
             
             for (int i = 0; i < iterations; i++)
             {
-                var index = Random.Range(0, ImageQuestions.Length);
-                var question = ImageQuestions[index];
+                var index = Random.Range(0, imageQuestions.Length);
+                var question = imageQuestions[index];
                 while (choices.Contains(question))
                 {
-                    index = Random.Range(0, ImageQuestions.Length);
-                    question = ImageQuestions[index];
+                    index = Random.Range(0, imageQuestions.Length);
+                    question = imageQuestions[index];
                 }
                 choices.Add(question);
             }

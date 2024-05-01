@@ -14,8 +14,7 @@ namespace UI
         [SerializeField] private Image choiceImage;
         [SerializeField] private TextMeshProUGUI choiceValue;
         [SerializeField] private Sprite numberChoiceSprite;
-
-        //private MultipleChoiceAnswerState _answerState;
+        
         private GridUIHelper _gridHelper;
         private Question _question;
         private void OnEnable()
@@ -34,13 +33,6 @@ namespace UI
             _question = question;
             SetChoice();
         }
-        
-        public void ConfigureUI(Question question, MultipleChoiceAnswerState answerState)
-        {
-            //_answerState = answerState;
-            _question = question;
-            SetChoice();
-        }
 
         private void SetChoice()
         {
@@ -52,6 +44,10 @@ namespace UI
             else if (_question is ImageQuestion)
             {
                 choiceImage.sprite = (Sprite)_question.GetQuestionItem();
+            }
+            else if (_question is ClipQuestion)
+            {
+                choiceImage.sprite = (Sprite)_question.GetCorrectSprite();
             }
 
             EnableSelf();
@@ -82,7 +78,6 @@ namespace UI
         {
             choice.interactable = false;
             _gridHelper.SelectChoice(_question, this);
-            //_answerState.AppendGivenAnswers(_question, this);
         }
 
         private void AddListeners()

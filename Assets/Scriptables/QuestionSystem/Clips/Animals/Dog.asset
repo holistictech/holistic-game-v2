@@ -1,0 +1,17 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8e7f783fc839fe347ad91774b867366d, type: 3}
+  m_Name: Dog
+  m_EditorClassIdentifier: 
+  CorrectAnswerString: "K\xF6pek"
+  Clip: {fileID: 8300000, guid: 8e33679bdd972e24eb3bfa4629c3b77a, type: 3}
+  ClipSprite: {fileID: 21300000, guid: 6f1323482ddc42d4cb38813aea19f355, type: 3}

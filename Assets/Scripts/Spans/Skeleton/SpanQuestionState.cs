@@ -19,7 +19,6 @@ namespace Spans.Skeleton
         [SerializeField] private List<TutorialStep> steps;
         [SerializeField] private Image questionFieldParent;
         [SerializeField] private Image questionBox;
-        [SerializeField] private AudioSource audioSource;
         [SerializeField] private HorizontalLayoutGroup unitParent;
         [SerializeField] private UnitCircle unit;
         
@@ -134,11 +133,12 @@ namespace Spans.Skeleton
                     break;
                 }
                 var question = _spanObjects[_currentQuestionIndex];
-                audioSource.Play((ulong)question.GetQuestionItem());
+                AudioClip clip = (AudioClip)question.GetQuestionItem();
+                AudioManager.Instance.PlayAudioClip(clip);
                 ActivateCircle(i);
                 _currentQuestions.Add(question);
                 _currentQuestionIndex++;
-                yield return new WaitForSeconds((ulong)question.GetQuestionItem() + 1f);
+                yield return new WaitForSeconds(clip.length + 1f);
             } 
             
             DOVirtual.DelayedCall(1f, SwitchNextState);

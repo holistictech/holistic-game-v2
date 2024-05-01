@@ -1,16 +1,12 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Scriptables.QuestionSystem
 {
     public abstract class Question : ScriptableObject
     {
-        public string CorrectAnswer;
+        public string CorrectAnswerString;
         private bool _hasSelected = false;
-
-        public string GetCorrectAnswer()
-        {
-            return CorrectAnswer;
-        }
 
         public bool HasSelected()
         {
@@ -20,6 +16,11 @@ namespace Scriptables.QuestionSystem
         public void SetHasSelected(bool val)
         {
             _hasSelected = val;
+        }
+
+        public virtual object GetCorrectSprite()
+        {
+            return null;
         }
 
         public abstract object GetQuestionItem();
