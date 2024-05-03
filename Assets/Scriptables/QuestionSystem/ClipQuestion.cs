@@ -14,7 +14,7 @@ namespace Scriptables.QuestionSystem
 
         public override Sprite GetCorrectSprite()
         {
-            return IsAnswerStringMUST ? null : ClipSprite;
+            return IsAnswerStringMUST ? ClipSprite : null;
         }
 
         public override string GetCorrectText()
