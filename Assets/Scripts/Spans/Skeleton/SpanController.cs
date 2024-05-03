@@ -171,7 +171,14 @@ namespace Spans.Skeleton
 
         public void SetActiveCircles(List<UnitCircle> circles)
         {
-            _activeUnitCircles = new List<UnitCircle>(circles);
+            if (isCumulative)
+            {
+                _activeUnitCircles.AddRange(circles);
+            }
+            else
+            {
+                _activeUnitCircles = new List<UnitCircle>(circles);
+            }
         }
 
         public List<UnitCircle> GetActiveCircles()

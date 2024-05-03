@@ -16,11 +16,11 @@ MonoBehaviour:
   StatePrefabs:
   - {fileID: 6665612139833752001, guid: 1d6d08058b2e5bd45b47ad9e62279971, type: 3}
   - {fileID: 343728590293082522, guid: ff4427d8451bf864ba5f47757ec845a3, type: 3}
-  - {fileID: 917999565626506664, guid: 42b21579bade1374c8e9a27fa9a5c252, type: 3}
+  - {fileID: 917999565626506664, guid: 7d319ff28837eb64d8dee9ecd67c4205, type: 3}
   - {fileID: 4398036663724712788, guid: 1a1758605587797439b2cc162f45e46a, type: 3}
   - {fileID: 7419551033220530312, guid: 13c22131f8cde7c478ebac501b80413c, type: 3}
   InitialState: {fileID: 2252729160077255524, guid: 1d6d08058b2e5bd45b47ad9e62279971, type: 3}
   QuestionState: {fileID: 6412640762316234808, guid: ff4427d8451bf864ba5f47757ec845a3, type: 3}
-  AnswerState: {fileID: 8669911120965660855, guid: 42b21579bade1374c8e9a27fa9a5c252, type: 3}
+  AnswerState: {fileID: 8669911120965660855, guid: 7d319ff28837eb64d8dee9ecd67c4205, type: 3}
   FeedbackState: {fileID: 228390392596929256, guid: 1a1758605587797439b2cc162f45e46a, type: 3}
   GameEndState: {fileID: 4512456094231747571, guid: 13c22131f8cde7c478ebac501b80413c, type: 3}

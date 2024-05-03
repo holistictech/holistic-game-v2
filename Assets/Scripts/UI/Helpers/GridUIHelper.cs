@@ -153,6 +153,8 @@ namespace UI.Helpers
             {
                 spawnedChoice.DisableSelf();
             }
+
+            _answerIndex = 0;
             _activeChoices.Clear();
             _selectedChoices.Clear();
         }

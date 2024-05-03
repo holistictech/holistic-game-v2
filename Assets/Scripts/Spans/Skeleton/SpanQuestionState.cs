@@ -152,7 +152,7 @@ namespace Spans.Skeleton
                 tempCircle.EnableSelf();
                 _activeCircles.Add(tempCircle);
             }
-
+            
             _spanController.SetActiveCircles(_activeCircles);
         }
 
@@ -172,15 +172,7 @@ namespace Spans.Skeleton
         {
             if (_activeCircles != null && _activeCircles.Count > index)
             {
-                if (_spanController.GetBackwardStatus())
-                {
-                    var temp = _spanController.GetRoundIndex() - index;
-                    _activeCircles[index].ConfigureUI(temp);
-                }
-                else
-                {
-                    _activeCircles[index].ConfigureUI(index+1);
-                }
+                _activeCircles[index].ConfigureUI();
             }
         }
 
@@ -237,8 +229,9 @@ namespace Spans.Skeleton
 
         private void RotateCircles(Action onComplete)
         {
-            unitParent.transform.DORotate(new Vector3(0, 0, 180), .5f).SetEase(Ease.Linear).OnComplete(() =>
+            unitParent.transform.DORotate(new Vector3(0, 0, -180), .5f).SetEase(Ease.Linear).OnComplete(() =>
             {
+                unitParent.transform.rotation = Quaternion.Euler(0, 0, 0);
                 onComplete?.Invoke();
             });
         }

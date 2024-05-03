@@ -301,17 +301,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   isBackwards: 0
+  isCumulative: 0
   states: {fileID: 11400000, guid: 5ebf71650ec0b544e939eeca3eb79c4a, type: 2}
   tutorialManager: {fileID: 5317712305952169983}
-  ImageQuestions:
-  - {fileID: 11400000, guid: dbfee19f47082c44da521c74b044ef0c, type: 2}
-  - {fileID: 11400000, guid: d0fede666edb02643abe24604af6edbd, type: 2}
-  - {fileID: 11400000, guid: 1030ceacba3ffe745a82c33daa6101a7, type: 2}
-  - {fileID: 11400000, guid: 9dd0bb9790a46ee44bec173fd5be0f11, type: 2}
-  - {fileID: 11400000, guid: 25941a0004fe6c9489c5b461eb956587, type: 2}
-  - {fileID: 11400000, guid: 34a03212e18f2dd489e94c7d224b36b0, type: 2}
-  - {fileID: 11400000, guid: 371ad4754b42b874b931136bc7a76b17, type: 2}
-  - {fileID: 11400000, guid: bc14e271c83f35848a764c63090921e5, type: 2}
+  imageQuestions:
   - {fileID: 11400000, guid: ef52f2267186b6a4692217928d821200, type: 2}
   - {fileID: 11400000, guid: 06ad9c9adc8a5bb4d88a3529959bf116, type: 2}
   - {fileID: 11400000, guid: da2c2ed86852601438cb2f38e763ca45, type: 2}
@@ -320,6 +313,14 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 9b10b573564f17b40b5fc702b0a33d10, type: 2}
   - {fileID: 11400000, guid: 41b934c2dc939584d9f5582620588eee, type: 2}
   - {fileID: 11400000, guid: 54d18a4bf3d912c4eb7801e2b3b3492a, type: 2}
+  - {fileID: 11400000, guid: dbfee19f47082c44da521c74b044ef0c, type: 2}
+  - {fileID: 11400000, guid: d0fede666edb02643abe24604af6edbd, type: 2}
+  - {fileID: 11400000, guid: 1030ceacba3ffe745a82c33daa6101a7, type: 2}
+  - {fileID: 11400000, guid: 9dd0bb9790a46ee44bec173fd5be0f11, type: 2}
+  - {fileID: 11400000, guid: 25941a0004fe6c9489c5b461eb956587, type: 2}
+  - {fileID: 11400000, guid: 34a03212e18f2dd489e94c7d224b36b0, type: 2}
+  - {fileID: 11400000, guid: 371ad4754b42b874b931136bc7a76b17, type: 2}
+  - {fileID: 11400000, guid: bc14e271c83f35848a764c63090921e5, type: 2}
 --- !u!114 &5317712305952169983
 MonoBehaviour:
   m_ObjectHideFlags: 0
