@@ -75,6 +75,7 @@ namespace Spawners
 
             if (interactable != null && !_gridController.IsGridBlocked(desiredPoint))
             {
+                //@todo: kaplayacağı alanın hepsine bakılmalı
                 interactable.InjectFields(_gridController, itemConfig);
                 interactable.BuildSelf(desiredPoint);
                 swipeHandler.enabled = false;

@@ -45,11 +45,11 @@ namespace Interactables
         {
             List<CartesianPoint> points = new List<CartesianPoint>();
 
-            for (int y = desiredPoint.GetYCoordinate(); y < desiredPoint.GetYCoordinate() + _interactableConfig.Height; y++)
+            for (int z = desiredPoint.GetYCoordinate() - _interactableConfig.Height / 2; z < desiredPoint.GetYCoordinate() + _interactableConfig.Height / 2; z++)
             {
-                for (int x = desiredPoint.GetXCoordinate(); x < desiredPoint.GetXCoordinate() + _interactableConfig.Width; x++)
+                for (int x = desiredPoint.GetXCoordinate() - _interactableConfig.Width / 2 ; x < desiredPoint.GetXCoordinate() + _interactableConfig.Width / 2; x++)
                 {
-                    CartesianPoint temp = new CartesianPoint(x, y);
+                    CartesianPoint temp = new CartesianPoint(x, z);
                     points.Add(temp);
                 }
             }

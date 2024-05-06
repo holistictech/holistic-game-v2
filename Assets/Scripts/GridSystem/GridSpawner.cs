@@ -39,6 +39,7 @@ namespace GridSystem
             _gridController = new GridController(board);
             _spawner.InjectLogicBoard(_gridController);
             //DistributeLogicBoard();
+            //transform.position = new Vector3(0, -60, 26);
         }
 
         private void DistributeLogicBoard()

@@ -21,7 +21,7 @@ namespace Spans.CumulativeSpan
             currentSpanQuestions.AddRange(roundQuestions);
             return currentSpanQuestions;
         }
-
+        
         private Question GetUnusedQuestion()
         {
             var imageQuestions = base.GetAllAvailableSpanObjects();
@@ -34,6 +34,7 @@ namespace Spans.CumulativeSpan
             return imageQuestions[randomIndex];
         }
         
+
         public override List<Question> GetChoices()
         {
             var imageQuestions = base.GetAllAvailableSpanObjects();

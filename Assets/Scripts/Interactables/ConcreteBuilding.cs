@@ -17,7 +17,6 @@ namespace Interactables
             var points = base.CalculateCoordinatesForBlocking(desiredPoint);
             BlockCoordinates(points);
             base.BuildSelf(desiredPoint);
-            Debug.Log("in desired scope");
         }
     }
 }

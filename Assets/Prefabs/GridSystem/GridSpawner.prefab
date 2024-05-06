@@ -48,3 +48,4 @@ MonoBehaviour:
   height: 100
   gridParent: {fileID: 8013622138607943297}
   gridPrefab: {fileID: 6166610986861114104, guid: 24bb6c6288d430a418ec301099dd71a1, type: 3}
+  _spawner: {fileID: 0}
