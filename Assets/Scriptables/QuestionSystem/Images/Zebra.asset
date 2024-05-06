@@ -10,8 +10,8 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 576094c64b81ec044884d4ae3e5eaa4c, type: 3}
-  m_Name: Elephant
+  m_Name: Zebra
   m_EditorClassIdentifier: 
   CorrectAnswerString: 
   IsAnswerStringMUST: 0
-  Image: {fileID: 21300000, guid: 5cb7ae3ba9b23654d9680d2e1518d11f, type: 3}
+  Image: {fileID: 21300000, guid: 365d3868e811d8a4eb69618f1a5512f5, type: 3}

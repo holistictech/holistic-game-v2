@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 576094c64b81ec044884d4ae3e5eaa4c, type: 3}
   m_Name: Horse
   m_EditorClassIdentifier: 
-  CorrectAnswer: at
-  Image: {fileID: 21300000, guid: c4d06659bc824e7409d85279c1234617, type: 3}
+  CorrectAnswerString: 
+  IsAnswerStringMUST: 0
+  Image: {fileID: 21300000, guid: 3fc39cd90c41a53409cc64ff2c86d8d3, type: 3}
