@@ -8,25 +8,9 @@ namespace Spans.ForwardSpan
 {
     public class ForwardSpanVoiceDescription : SpanController
     {
-        [SerializeField] private ClipQuestion[] clips;
-        
-        protected override void Start()
-        {
-            base.Start();
-            foreach (var question in clips)
-            {
-                question.SetHasSelected(false);
-            }
-        }
-
         public override List<Question> GetSpanObjects()
         {
             return GetRandomClips();
-        }
-        
-        public override Question[] GetAllAvailableSpanObjects()
-        {
-            return clips;
         }
         
         public override int GetRoundTime()
@@ -36,7 +20,7 @@ namespace Spans.ForwardSpan
 
         private List<Question> GetRandomClips()
         {
-            List<Question> shuffledSprites = new List<Question>(clips);
+            List<Question> shuffledSprites = new List<Question>(GetAllAvailableSpanObjects());
             for (int i = 0; i < shuffledSprites.Count; i++)
             {
                 int randomIndex = Random.Range(i, shuffledSprites.Count);

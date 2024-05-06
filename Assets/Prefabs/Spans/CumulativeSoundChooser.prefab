@@ -222,9 +222,9 @@ GameObject:
   - component: {fileID: 1476230812880317276}
   - component: {fileID: 773999855161395063}
   - component: {fileID: 5317712305952169983}
-  - component: {fileID: -4529128140775410050}
+  - component: {fileID: 4725945387555554203}
   m_Layer: 5
-  m_Name: ForwardSoundChooser
+  m_Name: CumulativeSoundChooser
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -305,7 +305,7 @@ MonoBehaviour:
   tutorialFrame: {fileID: 5676812556043528798, guid: 9d48c73489107dc4d889ec1f7541333a, type: 3}
   tutorialHand: {fileID: 3664510739497132171, guid: ba7f4ed0cc0af46cf86c01ba89ab9169, type: 3}
   tutorialStepField: {fileID: 2638306012739917003}
---- !u!114 &-4529128140775410050
+--- !u!114 &4725945387555554203
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -314,7 +314,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 8242588130389079751}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: afff162546ea78747b6bcc3d9bc84c41, type: 3}
+  m_Script: {fileID: 11500000, guid: a912fa5cbd0495444bac45a815c35c06, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spanQuestions:
@@ -325,7 +325,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c1006429572901b498849b03a3a97899, type: 2}
   - {fileID: 11400000, guid: f04eaca9e9893984096ee394ab0b5f35, type: 2}
   isBackwards: 0
-  isCumulative: 0
+  isCumulative: 1
   states: {fileID: 11400000, guid: 5ebf71650ec0b544e939eeca3eb79c4a, type: 2}
   tutorialManager: {fileID: 5317712305952169983}
 --- !u!1 &8840831442161132576

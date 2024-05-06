@@ -9,7 +9,6 @@ namespace Spans.ForwardSpan
 {
     public class ForwardSpanNumberDescription : SpanController
     {
-        public NumberQuestion[] NumberQuestions;
         public override List<Question> GetSpanObjects()
         {
             return PickNumbers(fetchedQuestionCount);
@@ -24,20 +23,21 @@ namespace Spans.ForwardSpan
         {
             List<Question> pickedNumbers = new List<Question>();
             HashSet<int> pickedIndices = new HashSet<int>();
+
+            var numberQuestions = GetAllAvailableSpanObjects();
+            ShuffleArray(numberQuestions);
             
-            ShuffleArray(NumberQuestions);
-            
-            for (int i = 0; i < NumberQuestions.Length && pickedNumbers.Count < count; i++)
+            for (int i = 0; i < numberQuestions.Length && pickedNumbers.Count < count; i++)
             {
                 if (!pickedIndices.Contains(i))
                 {
-                    pickedNumbers.Add(NumberQuestions[i]);
+                    pickedNumbers.Add(numberQuestions[i]);
                     pickedIndices.Add(i);
 
                     int nextIndex = FindNextNonConsecutiveIndex(i, pickedIndices);
                     if (nextIndex != -1)
                     {
-                        pickedNumbers.Add(NumberQuestions[nextIndex]);
+                        pickedNumbers.Add(numberQuestions[nextIndex]);
                         pickedIndices.Add(nextIndex);
                     }
                 }
@@ -60,9 +60,10 @@ namespace Spans.ForwardSpan
         
         private int FindNextNonConsecutiveIndex(int currentIndex, HashSet<int> pickedIndices)
         {
-            for (int i = currentIndex + 1; i < NumberQuestions.Length; i++)
+            var numberQuestions = GetAllAvailableSpanObjects();
+            for (int i = currentIndex + 1; i < numberQuestions.Length; i++)
             {
-                if (!pickedIndices.Contains(i) && Math.Abs(NumberQuestions[currentIndex].Value - NumberQuestions[i].Value) > 1)
+                if (!pickedIndices.Contains(i) && Math.Abs((int)numberQuestions[currentIndex].GetQuestionItem() - (int)numberQuestions[i].GetQuestionItem()) > 1)
                 {
                     return i;
                 }

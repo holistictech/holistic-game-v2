@@ -317,17 +317,17 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afff162546ea78747b6bcc3d9bc84c41, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  isBackwards: 1
-  isCumulative: 0
-  states: {fileID: 11400000, guid: 5ebf71650ec0b544e939eeca3eb79c4a, type: 2}
-  tutorialManager: {fileID: 5317712305952169983}
-  clips:
+  spanQuestions:
   - {fileID: 11400000, guid: 7bd52b577d48cce43950f2ce6ade3eb8, type: 2}
   - {fileID: 11400000, guid: 389a72fde8342e448b1ae9d8e6cb64da, type: 2}
   - {fileID: 11400000, guid: 663d02544fcae5646ba048365ebe79c7, type: 2}
   - {fileID: 11400000, guid: 4e9aa210280b2114faf22241298a9c27, type: 2}
   - {fileID: 11400000, guid: c1006429572901b498849b03a3a97899, type: 2}
   - {fileID: 11400000, guid: f04eaca9e9893984096ee394ab0b5f35, type: 2}
+  isBackwards: 1
+  isCumulative: 0
+  states: {fileID: 11400000, guid: 5ebf71650ec0b544e939eeca3eb79c4a, type: 2}
+  tutorialManager: {fileID: 5317712305952169983}
 --- !u!1 &8840831442161132576
 GameObject:
   m_ObjectHideFlags: 0

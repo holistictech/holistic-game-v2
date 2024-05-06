@@ -7,7 +7,6 @@ namespace Spans.ForwardSpan
 {
     public class ForwardSpanBelongingsDescription : SpanController
     {
-        [SerializeField] private ClipQuestion[] clips;
         public override List<Question> GetSpanObjects()
         {
             return GetRandomClips();
@@ -20,7 +19,7 @@ namespace Spans.ForwardSpan
 
         private List<Question> GetRandomClips()
         {
-            List<Question> shuffledClips = new List<Question>(clips);
+            List<Question> shuffledClips = new List<Question>(GetAllAvailableSpanObjects());
             for (int i = 0; i < shuffledClips.Count; i++)
             {
                 int randomIndex = Random.Range(i, shuffledClips.Count);

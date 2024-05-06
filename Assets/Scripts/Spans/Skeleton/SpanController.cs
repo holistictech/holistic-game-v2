@@ -14,6 +14,7 @@ namespace Spans.Skeleton
 {
     public abstract class SpanController : MonoBehaviour
     {
+        [SerializeField] private Question[] spanQuestions;
         [SerializeField] protected bool isBackwards;
         [SerializeField] protected bool isCumulative;
         [SerializeField] private StateHolder states;
@@ -36,6 +37,10 @@ namespace Spans.Skeleton
         protected virtual void Start()
         {
             stateContext = new SpanStateContext(this);
+            foreach (var question in spanQuestions)
+            {
+                question.SetHasSelected(false);
+            }
             InstantiateGameStates();
             _tutorialActive = false; //PlayerSaveManager.GetPlayerAttribute(states.TutorialKey, 0) == 0;
             stateContext.Transition(_stateList[0]);
@@ -65,9 +70,9 @@ namespace Spans.Skeleton
             return new List<Question>();
         }
         
-        public virtual Question[] GetAllAvailableSpanObjects()
+        public Question[] GetAllAvailableSpanObjects()
         {
-            return new Question[] { };
+            return spanQuestions;
         }
 
         public virtual bool IsAnswerCorrect()

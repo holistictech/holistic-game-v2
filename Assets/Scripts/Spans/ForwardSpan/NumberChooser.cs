@@ -9,17 +9,18 @@ namespace Spans.ForwardSpan
     {
         public override List<Question> GetChoices()
         {
+            var numberQuestions = GetAllAvailableSpanObjects();
             int choiceCount = currentRoundIndex;
             List<Question> choices = new List<Question>(GetCurrentDisplayedQuestions());
             
             for (int i = 0; i < choiceCount; i++)
             {
-                var index = Random.Range(0, NumberQuestions.Length);
-                var question = NumberQuestions[index];
+                var index = Random.Range(0, numberQuestions.Length);
+                var question = numberQuestions[index];
                 while (choices.Contains(question))
                 {
-                    index = Random.Range(0, NumberQuestions.Length);
-                    question = NumberQuestions[index];
+                    index = Random.Range(0, numberQuestions.Length);
+                    question = numberQuestions[index];
                 }
                 choices.Add(question);
             }

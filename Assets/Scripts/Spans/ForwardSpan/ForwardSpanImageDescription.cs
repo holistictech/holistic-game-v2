@@ -11,27 +11,11 @@ namespace Spans.ForwardSpan
 {
     public class ForwardSpanImageDescription : SpanController
     {
-        [SerializeField] private ImageQuestion[] imageQuestions;
-
-        protected override void Start()
-        {
-            base.Start();
-            foreach (var question in imageQuestions)
-            {
-                question.SetHasSelected(false);
-            }
-        }
-        
         public override List<Question> GetSpanObjects()
         {
             return GetRandomSprites();
         }
         
-        public override Question[] GetAllAvailableSpanObjects()
-        {
-            return imageQuestions;
-        }
-
         public override int GetRoundTime()
         {
             return currentRoundIndex * 3 + 2;
@@ -39,7 +23,7 @@ namespace Spans.ForwardSpan
         
         private List<Question> GetRandomSprites()
         {
-            List<Question> shuffledSprites = new List<Question>(imageQuestions);
+            List<Question> shuffledSprites = new List<Question>(base.GetAllAvailableSpanObjects());
             for (int i = 0; i < shuffledSprites.Count; i++)
             {
                 int randomIndex = Random.Range(i, shuffledSprites.Count);
