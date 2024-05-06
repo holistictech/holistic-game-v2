@@ -128,6 +128,11 @@ namespace Spans.Skeleton
             return _levelChanged ? currentRoundIndex - 1 : currentRoundIndex;
         }
 
+        public void ResetLevelChangedStatus()
+        {
+            _levelChanged = false;
+        }
+
         private void IncrementRoundIndex()
         {
             _levelChanged = true;

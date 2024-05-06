@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -7,6 +8,7 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
 using Utilities;
+using Random = UnityEngine.Random;
 
 namespace Spans.Skeleton
 {
@@ -14,6 +16,7 @@ namespace Spans.Skeleton
     {
         [SerializeField] private AudioClip tutorialSuccessFeedback;
         [SerializeField] private List<TutorialStep> steps;
+        [SerializeField] private ParticleSystem levelUpEffect;
         [SerializeField] private ParticleSystem successEffect;
         [SerializeField] private ParticleSystem failEffect;
         [SerializeField] private Image feedbackLabel;
@@ -97,10 +100,26 @@ namespace Spans.Skeleton
         
         private IEnumerator AnimateProgressBar(float targetValue, float duration)
         {
-            if (targetValue >= 1)
+            if (targetValue >= progressBar.maxValue)
             {
-                //means level up.
+                StartCoroutine(LerpSlider(targetValue, duration, () =>
+                {
+                    levelUpEffect.Play();
+                    progressBar.value = 0f;
+                    _spanController.ResetLevelChangedStatus();
+                }));
             }
+            else
+            {
+                StartCoroutine(LerpSlider(targetValue, duration));
+            }
+
+            yield return null;
+
+        }
+
+        private IEnumerator LerpSlider(float targetValue, float duration, Action onComplete = null)
+        {
             float elapsedTime = 0f;
             float startValue = progressBar.value;
     
@@ -115,6 +134,7 @@ namespace Spans.Skeleton
                 yield return null;
             }
             progressBar.value = targetValue;
+            onComplete?.Invoke();
         }
 
 
@@ -126,7 +146,7 @@ namespace Spans.Skeleton
 
             feedbackLabel.transform.DOScale(1f, 1.5f).SetEase(Ease.OutBack).OnComplete(() =>
             {
-                DOVirtual.DelayedCall(.5f, () =>
+                DOVirtual.DelayedCall(1f, () =>
                 {
                     _spanController.SwitchState();
                 });
@@ -173,6 +193,7 @@ namespace Spans.Skeleton
             progressBar.gameObject.SetActive(true);
             feedbackLabel.gameObject.SetActive(true);
             feedbackField.gameObject.SetActive(true);
+            levelUpEffect.gameObject.SetActive(true);
         }
 
         public void DisableUIElements()
@@ -180,6 +201,7 @@ namespace Spans.Skeleton
             successEffect.gameObject.SetActive(false);
             failEffect.gameObject.SetActive(false);
             feedbackLabel.gameObject.SetActive(false);
+            levelUpEffect.gameObject.SetActive(false);
             feedbackLabel.transform.localScale = new Vector3(0,0,0);
         }
     }

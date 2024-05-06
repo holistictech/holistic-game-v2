@@ -108,7 +108,7 @@ namespace Tutorial
         private void PositionHighlightToTarget(RectTransform highlightTransform, RectTransform target, float offset = 0)
         {
             var anchoredPosition = target.anchoredPosition;
-            highlightTransform.anchoredPosition = new Vector2(anchoredPosition.x - offset, anchoredPosition.y + offset);
+            highlightTransform.anchoredPosition = new Vector2(anchoredPosition.x - offset, anchoredPosition.y - offset/2);
             highlightTransform.anchorMin = target.anchorMin;
             highlightTransform.anchorMax = target.anchorMax;
             highlightTransform.sizeDelta = target.sizeDelta;

@@ -101,13 +101,16 @@ namespace UI.Helpers
         {
             if (isCumulative)
             {
+                gridParent.constraint = GridLayoutGroup.Constraint.FixedRowCount;
                 gridParent.constraintCount = 3;
             }
             else if (index == 2)
             {
+                gridParent.constraint = GridLayoutGroup.Constraint.FixedRowCount;
                 gridParent.constraintCount = 2;
             }else
             {
+                gridParent.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
                 gridParent.constraintCount = 3;
             }
         }

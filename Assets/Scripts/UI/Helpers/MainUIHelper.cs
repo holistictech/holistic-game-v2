@@ -7,7 +7,7 @@ namespace UI
     public class MainUIHelper : MonoBehaviour
     {
         [SerializeField] private Button playButton;
-
+        [SerializeField] private GameObject grid;
         [SerializeField] private GameObject forwardSpan;
 
         private void OnEnable()
@@ -22,6 +22,7 @@ namespace UI
 
         private void TESTPlaySpan()
         {
+            grid.gameObject.SetActive(false);
             forwardSpan.gameObject.SetActive(true);
         }
 
