@@ -42,7 +42,7 @@ namespace UI
 
         public void AnimateCircle()
         {
-            _jump = circleImage.transform.DOScale(new Vector3(1f, 1f, 1f), .3f).SetEase(Ease.OutBounce)
+            _jump = circleImage.transform.DOScale(new Vector3(1f, 1f, 1f), .6f).SetEase(Ease.OutBack)
                 .SetLoops(-1, LoopType.Yoyo);
             _jump.Play();
         }

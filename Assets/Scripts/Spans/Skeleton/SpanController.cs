@@ -42,7 +42,7 @@ namespace Spans.Skeleton
                 question.SetHasSelected(false);
             }
             InstantiateGameStates();
-            _tutorialActive = true; //PlayerSaveManager.GetPlayerAttribute(states.TutorialKey, 0) == 0;
+            _tutorialActive = PlayerSaveManager.GetPlayerAttribute(states.TutorialKey, 0) == 0;
             stateContext.Transition(_stateList[0]);
         }
 
@@ -201,6 +201,16 @@ namespace Spans.Skeleton
             _tutorialActive = false;
             tutorialManager.DisablePanel();
             PlayerSaveManager.SavePlayerAttribute(1, states.TutorialKey);
+        }
+
+        public void SetHelperTutorialCompleted()
+        {
+            PlayerSaveManager.SavePlayerAttribute(1, $"Helper{states.TutorialKey}");
+        }
+
+        public bool IsHelperTutorialNeeded()
+        {
+            return PlayerSaveManager.GetPlayerAttribute($"Helper{states.TutorialKey}", 0) == 0;
         }
 
         public void TriggerStateTutorial(Dictionary<GameObject, TutorialStep> tutorials, bool needHand, Action onComplete)

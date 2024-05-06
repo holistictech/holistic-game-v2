@@ -53,14 +53,14 @@ namespace Spans.Skeleton
             else
             {
                 ConfigureUI();
-                if (_spanController.GetTutorialStatus())
+                /*if (_spanController.GetTutorialStatus())
                 {
                     _spanController.TriggerTutorialField("Şimdi sıra sende!");
                     DOVirtual.DelayedCall(1f, () =>
                     {
-                        _spanController.SetTutorialCompleted();
+                        //_spanController.SetTutorialCompleted();
                     });
-                }
+                }*/
             }
         }
 

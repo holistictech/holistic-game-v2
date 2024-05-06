@@ -44,7 +44,8 @@ namespace Spans.Skeleton.AnswerStates
             }
             else
             {
-                PlayTimer(_maxTime);
+                TryShowHelpers();
+                //PlayTimer(_maxTime);
             }
         }
 
@@ -82,20 +83,32 @@ namespace Spans.Skeleton.AnswerStates
                 StopCoroutine(_tutorialHighlight);
             }
         }
-        
-        public override void TryShowStateTutorial()
+
+        private void TryShowHelpers()
         {
-            /*List<GameObject> secondPart = new List<GameObject>()
+            if (!_spanController.IsHelperTutorialNeeded())
+            {
+                PlayTimer(_maxTime);
+                return;
+            }
+            
+            timer.EnableSelf();
+            List<GameObject> secondPart = new List<GameObject>()
             {
                 timer.gameObject,
-                revertButton.gameObject
+                revertButton.gameObject,
+                confirmButton.gameObject
             };
             var secondPartDict = new Dictionary<GameObject, TutorialStep>().CreateFromLists(secondPart, GetTutorialSteps());
             _spanController.TriggerStateTutorial(secondPartDict, true,() =>
             {
-                
-            });*/
-            
+                _spanController.SetHelperTutorialCompleted();
+                PlayTimer(_maxTime);
+            });
+        }
+        
+        public override void TryShowStateTutorial()
+        {
             List<GameObject> firstPart = new List<GameObject>()
             {
                 gridHelper.gameObject,
