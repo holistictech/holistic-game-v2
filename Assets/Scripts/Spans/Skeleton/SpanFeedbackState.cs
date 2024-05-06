@@ -97,6 +97,10 @@ namespace Spans.Skeleton
         
         private IEnumerator AnimateProgressBar(float targetValue, float duration)
         {
+            if (targetValue >= 1)
+            {
+                //means level up.
+            }
             float elapsedTime = 0f;
             float startValue = progressBar.value;
     

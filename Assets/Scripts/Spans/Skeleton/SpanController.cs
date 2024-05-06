@@ -33,6 +33,7 @@ namespace Spans.Skeleton
         protected List<string> currentDetectedAnswers;
         protected List<Question> currentGivenAnswers = new List<Question>();
         private const int _neededStreakCount = 4;
+        private bool _levelChanged;
 
         protected virtual void Start()
         {
@@ -124,11 +125,12 @@ namespace Spans.Skeleton
 
         public int GetRoundIndex()
         {
-            return currentRoundIndex;
+            return _levelChanged ? currentRoundIndex - 1 : currentRoundIndex;
         }
 
         private void IncrementRoundIndex()
         {
+            _levelChanged = true;
             currentRoundIndex++;
         }
 
@@ -150,6 +152,10 @@ namespace Spans.Skeleton
             {
                 IncrementRoundIndex();
                 currentSuccessStreak = 0;
+            }
+            else
+            {
+                _levelChanged = false;
             }
         }
 
