@@ -105,7 +105,7 @@ namespace Spans.Skeleton
         private void SetTutorialField()
         {
             getReadyPopup.gameObject.SetActive(true);
-            getReady.text = "Nasıl Oynuyoruz?";
+            getReady.text = "Hadi başlayalım";
             getReady.DOFade(1, .25f).SetEase(Ease.OutBack);
         }
 

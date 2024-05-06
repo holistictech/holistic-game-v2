@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d81edbe4a6cd146ad49ba5b6bce348, type: 3}
   m_Name: AnswerStep
   m_EditorClassIdentifier: 
-  StepClip: {fileID: 8300000, guid: ae94a0c9e39c6e94a8e34c06d71eab2b, type: 3}
-  StepText: "Neler g\xF6sterdi\u011Fimi hat\u0131rl\u0131yor musun?"
+  StepClip: {fileID: 8300000, guid: 0e2d22a95585ca64f9d2ded315d73f6c, type: 3}
+  StepText: "Ne g\xF6rd\xFC\u011F\xFCn\xFC s\u0131ras\u0131yla hat\u0131rl\u0131yor
+    musun? Hadi onlara dokunal\u0131m."

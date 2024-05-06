@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d81edbe4a6cd146ad49ba5b6bce348, type: 3}
   m_Name: ShowImagesStep
   m_EditorClassIdentifier: 
-  StepClip: {fileID: 8300000, guid: b5a302c7f73c4874fa988ad3dfb99c45, type: 3}
-  StepText: "\u015Eimdi iki g\xF6r\xFCnt\xFC g\xF6sterece\u011Fim."
+  StepClip: {fileID: 8300000, guid: 8cf8676c7b6e99847b9dcf780e3c16aa, type: 3}
+  StepText: "\u015Eimdi sana iki g\xF6rsel g\xF6sterece\u011Fim."

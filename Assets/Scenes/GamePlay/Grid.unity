@@ -530,11 +530,6 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4142577917760699175, guid: 7590ea1621254ad458fb546177970f71, type: 3}
   m_PrefabInstance: {fileID: 209254180}
   m_PrefabAsset: {fileID: 0}
---- !u!1 &209254182 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 8242588130389079751, guid: 7590ea1621254ad458fb546177970f71, type: 3}
-  m_PrefabInstance: {fileID: 209254180}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &401950441
 GameObject:
   m_ObjectHideFlags: 0
@@ -2498,6 +2493,11 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4142577917760699175, guid: ef47053ec73cedf40a4b775e5259e359, type: 3}
   m_PrefabInstance: {fileID: 1941021212}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &1941021214 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 8242588130389079751, guid: ef47053ec73cedf40a4b775e5259e359, type: 3}
+  m_PrefabInstance: {fileID: 1941021212}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &2135509754
 GameObject:
   m_ObjectHideFlags: 0
@@ -2621,7 +2621,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   playButton: {fileID: 64421678}
-  forwardSpan: {fileID: 209254182}
+  forwardSpan: {fileID: 1941021214}
 --- !u!1001 &3296659668964140188
 PrefabInstance:
   m_ObjectHideFlags: 0

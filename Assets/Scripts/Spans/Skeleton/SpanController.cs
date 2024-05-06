@@ -42,7 +42,7 @@ namespace Spans.Skeleton
                 question.SetHasSelected(false);
             }
             InstantiateGameStates();
-            _tutorialActive = false; //PlayerSaveManager.GetPlayerAttribute(states.TutorialKey, 0) == 0;
+            _tutorialActive = true; //PlayerSaveManager.GetPlayerAttribute(states.TutorialKey, 0) == 0;
             stateContext.Transition(_stateList[0]);
         }
 

@@ -85,7 +85,7 @@ namespace Spans.Skeleton.AnswerStates
         
         public override void TryShowStateTutorial()
         {
-            List<GameObject> secondPart = new List<GameObject>()
+            /*List<GameObject> secondPart = new List<GameObject>()
             {
                 timer.gameObject,
                 revertButton.gameObject
@@ -93,16 +93,18 @@ namespace Spans.Skeleton.AnswerStates
             var secondPartDict = new Dictionary<GameObject, TutorialStep>().CreateFromLists(secondPart, GetTutorialSteps());
             _spanController.TriggerStateTutorial(secondPartDict, true,() =>
             {
-                List<GameObject> firstPart = new List<GameObject>()
-                {
-                    gridHelper.gameObject,
-                };
-                var dictionary = new Dictionary<GameObject, TutorialStep>().CreateFromLists(firstPart, GetGridStep());
-                _spanController.TriggerStateTutorial(dictionary, false, () =>
-                {
-                    //_spanController.TriggerTutorialField("Şimdi sıra sende!");
-                    _tutorialHighlight = StartCoroutine(HighlightObjectsForTutorial());
-                });
+                
+            });*/
+            
+            List<GameObject> firstPart = new List<GameObject>()
+            {
+                gridHelper.gameObject,
+            };
+            var dictionary = new Dictionary<GameObject, TutorialStep>().CreateFromLists(firstPart, GetGridStep());
+            _spanController.TriggerStateTutorial(dictionary, false, () =>
+            {
+                //_spanController.TriggerTutorialField("Şimdi sıra sende!");
+                _tutorialHighlight = StartCoroutine(HighlightObjectsForTutorial());
             });
         }
 

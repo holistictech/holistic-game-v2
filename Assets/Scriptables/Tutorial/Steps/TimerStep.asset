@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d81edbe4a6cd146ad49ba5b6bce348, type: 3}
   m_Name: TimerStep
   m_EditorClassIdentifier: 
-  StepClip: {fileID: 8300000, guid: 5fdd45bd30a69b64eaeb46e527546a69, type: 3}
+  StepClip: {fileID: 8300000, guid: eaff891a9b7e7844eacc3330a99c8719, type: 3}
   StepText: "Buras\u0131 s\xFCremizi g\xF6steriyor"

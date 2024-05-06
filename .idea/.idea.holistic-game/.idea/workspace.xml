@@ -6,17 +6,30 @@
   <component name="ChangeListManager">
     <list default="true" id="3d01f5fc-4a81-4ccb-94d7-a0f07bc2bc79" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Spans/BackwardImageChooser.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Spans/BackwardImageChooser.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Spans/BackwardSoundChooser.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Spans/BackwardSoundChooser.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Spans/CumulativeImageChooser.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Spans/CumulativeImageChooser.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Spans/ForwardSoundChooser.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Spans/ForwardSoundChooser.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/AudioClips/TutorialSteps/AnswerStep.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/AudioClips/TutorialSteps/AnswerStep.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/AudioClips/TutorialSteps/Congrats.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/AudioClips/TutorialSteps/Congrats.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/AudioClips/TutorialSteps/GoBackStep.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/AudioClips/TutorialSteps/GoBackStep.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/AudioClips/TutorialSteps/ShowImages.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/AudioClips/TutorialSteps/ShowImages.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/AudioClips/TutorialSteps/SuccessFeedback.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/AudioClips/TutorialSteps/SuccessFeedback.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/AudioClips/TutorialSteps/TimerStep.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/AudioClips/TutorialSteps/TimerStep.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/AudioClips/TutorialSteps/WelcomeStep.mp3" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/AudioClips/TutorialSteps/WelcomeStep.mp3.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/States/FeedbackState.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/States/FeedbackState.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/GamePlay/Grid.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GamePlay/Grid.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/ForwardSpan/ForwardSpanBelongingsDescription.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/ForwardSpan/ForwardSpanBelongingsDescription.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/ForwardSpan/ForwardSpanImageDescription.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/ForwardSpan/ForwardSpanImageDescription.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/ForwardSpan/ForwardSpanNumberDescription.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/ForwardSpan/ForwardSpanNumberDescription.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/ForwardSpan/ForwardSpanVoiceDescription.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/ForwardSpan/ForwardSpanVoiceDescription.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/ForwardSpan/NumberChooser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/ForwardSpan/NumberChooser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Tutorial/Steps/AnswerStep.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Tutorial/Steps/AnswerStep.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Tutorial/Steps/ConfirmStep.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Tutorial/Steps/ConfirmStep.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Tutorial/Steps/GoBackStep.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Tutorial/Steps/GoBackStep.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Tutorial/Steps/ShowImagesStep.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Tutorial/Steps/ShowImagesStep.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Tutorial/Steps/TimerStep.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Tutorial/Steps/TimerStep.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Tutorial/Steps/WelcomeStep.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Tutorial/Steps/WelcomeStep.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/MultipleChoiceAnswerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/MultipleChoiceAnswerState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanInitialState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanInitialState.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -112,10 +125,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="43224">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="43224" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -164,6 +177,7 @@
       <workItem from="1714464929058" duration="7807000" />
       <workItem from="1714568442167" duration="6317000" />
       <workItem from="1714729217833" duration="6116000" />
+      <workItem from="1714982754445" duration="359000" />
     </task>
     <servers />
   </component>
@@ -216,19 +230,6 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/MultipleChoiceAnswerState.cs</url>
-          <line>54</line>
-          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Spans\Skeleton\AnswerStates\MultipleChoiceAnswerState.cs" initialLine="54" containingFunctionPresentation="Method 'SetChoiceUI'">
-            <startOffsets>
-              <option value="1665" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1718" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="4" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

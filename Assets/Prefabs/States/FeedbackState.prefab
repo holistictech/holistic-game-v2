@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4769d96ac7dc714b8aa1a3759f37ac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialSuccessFeedback: {fileID: 8300000, guid: f42ecf8f82e9ed54f8a50830b13855e0, type: 3}
+  tutorialSuccessFeedback: {fileID: 8300000, guid: ee828410bcccb1040ab558c76cd84730, type: 3}
   steps:
   - {fileID: 11400000, guid: 7376698f8fced3343b6938425d8e40d6, type: 2}
   successEffect: {fileID: 8627674946918836953}

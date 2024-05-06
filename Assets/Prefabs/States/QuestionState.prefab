@@ -54,7 +54,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 74a5475a67497d94fba80b7f2921f8fd, type: 2}
   questionFieldParent: {fileID: 8100135639205710447}
   questionBox: {fileID: 8373753712324026652}
-  audioSource: {fileID: 0}
   unitParent: {fileID: 4493078967045124660}
   unit: {fileID: 1528521190168788059, guid: 32871c8165623f5459169d4295a25ae0, type: 3}
 --- !u!1001 &2826876559702020979
@@ -197,6 +196,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: UnitParent
       objectReference: {fileID: 0}
+    - target: {fileID: 2883354088969091414, guid: eacc5905aacaaff439ffb7e8c538dd44, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6939642943807859237, guid: eacc5905aacaaff439ffb7e8c538dd44, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -263,7 +266,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6939642943807859237, guid: eacc5905aacaaff439ffb7e8c538dd44, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 0
+      value: 78
       objectReference: {fileID: 0}
     - target: {fileID: 6939642943807859237, guid: eacc5905aacaaff439ffb7e8c538dd44, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
