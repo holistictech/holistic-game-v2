@@ -1,21 +1,57 @@
+using System.Collections.Generic;
+using Scriptables.QuestionSystem;
 using UI;
+using UI.Helpers;
 using UnityEngine;
 using UnityEngine.UI;
 
 namespace Spans.Skeleton.QuestionStates
 {
-    public class CorsiQuestionState : SpanQuestionState
+    public class CorsiQuestionState : ISpanState
     {
-        [SerializeField] private LayoutGroup blockParent;
-        [SerializeField] private CorsiBlock blockPrefab;
-        private const int _corsiBlockCount = 9;
+        [SerializeField] private CorsiBlockUIHelper blockUIHelper;
 
-        private void SpawnCorsiBlocks()
+        private SpanController _spanController;
+        private List<Question> spanObjects = new List<Question>();
+        public void Enter(SpanController spanController)
         {
-            for (int i = 0; i < _corsiBlockCount; i++)
+            if (_spanController == null)
             {
-                var tempBlock = Instantiate(blockPrefab, blockParent.transform);
+                _spanController = spanController;
+                blockUIHelper.InjectQuestionState(this);
             }
+            
+            spanObjects = _spanController.GetSpanObjects();
+            DistributeQuestions();
+        }
+
+        private void DistributeQuestions()
+        {
+            blockUIHelper.AssignQuestions(spanObjects);
+        }
+
+        public void Exit()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void SwitchNextState()
+        {
+            _spanController.SwitchState();
+        }
+
+        public void TryShowStateTutorial()
+        {
+        }
+
+        public void EnableUIElements()
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void DisableUIElements()
+        {
+            throw new System.NotImplementedException();
         }
     }
 }

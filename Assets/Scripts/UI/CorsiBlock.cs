@@ -1,4 +1,6 @@
 using System;
+using Scriptables.QuestionSystem;
+using UI.Helpers;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -8,6 +10,9 @@ namespace UI
     {
         [SerializeField] private Image blockImage;
         [SerializeField] private Button blockButton;
+
+        private CorsiBlockUIHelper _blockHelper;
+        private Question _blockQuestion;
 
         private void OnEnable()
         {
@@ -19,9 +24,36 @@ namespace UI
             RemoveListeners();
         }
 
-        private void SetSelected()
+        public void ConfigureSelf(Question question, CorsiBlockUIHelper helper)
+        {
+            if(_blockHelper == null)
+                _blockHelper = helper;
+            _blockQuestion = question;
+            EnableSelf();
+        }
+
+        public void AnimateSelf()
         {
             
+        }
+
+        public void ResetUI()
+        {
+            
+        }
+
+        private void SetSelected()
+        {
+        }
+
+        public void DisableSelf()
+        {
+            gameObject.SetActive(false);
+        }
+
+        private void EnableSelf()
+        {
+            gameObject.SetActive(true);
         }
 
         private void AddListeners()
