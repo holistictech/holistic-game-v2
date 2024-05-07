@@ -25,7 +25,7 @@ namespace Spans.Skeleton
         [SerializeField] private UnitCircle unit;
         
         private SpanController _spanController;
-        private List<Question> _spanObjects;
+        private List<Question> _spanObjects; 
         private List<UnitCircle> _spawnedUnitPool;
         private List<UnitCircle> _activeCircles;
         private int _currentQuestionIndex;
@@ -193,10 +193,15 @@ namespace Spans.Skeleton
             ResetPreviousCircles();
         }
 
+        public virtual void ConfigureDisplayedQuestions()
+        {
+            _spanController.SetCurrentDisplayedQuestions(_currentQuestions);
+        }
+
         public void SwitchNextState()
         {
             DisableUIElements();
-            _spanController.SetCurrentDisplayedQuestions(_currentQuestions);
+            ConfigureDisplayedQuestions();
             if (_spanController.GetBackwardStatus())
             {
                 RotateCircles(() =>

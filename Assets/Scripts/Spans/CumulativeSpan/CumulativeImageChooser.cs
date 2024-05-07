@@ -24,7 +24,7 @@ namespace Spans.CumulativeSpan
             return currentSpanQuestions;
         }
         
-        private Question GetUnusedQuestion()
+        public Question GetUnusedQuestion()
         {
             var imageQuestions = base.GetAllAvailableSpanObjects();
             var randomIndex = Random.Range(0, imageQuestions.Length);
