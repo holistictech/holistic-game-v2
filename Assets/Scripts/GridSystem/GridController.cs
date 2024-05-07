@@ -21,6 +21,18 @@ namespace GridSystem
             return _board[point.GetXCoordinate(), point.GetYCoordinate()].IsBlocked();
         }
 
+        public bool IsPlacementValid(List<CartesianPoint> plan)
+        {
+            foreach (var point in plan)
+            {
+                if (IsPointInvalid(point)) return false;
+
+                if (_board[point.GetXCoordinate(), point.GetYCoordinate()].IsBlocked())
+                    return false;
+            }
+            return true;
+        }
+
         private int GetWidth()
         {
             return _board.GetLength(0);

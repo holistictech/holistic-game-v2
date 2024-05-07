@@ -73,15 +73,16 @@ namespace Spawners
             var spawnedInstance = InteractableFactory.SpawnInstance(spawnable, itemConfig, objectParent);
             var interactable = spawnedInstance.GetComponent<InteractableObject>();
 
-            if (interactable != null && !_gridController.IsGridBlocked(desiredPoint))
+            interactable.InjectFields(_gridController, itemConfig);
+            var buildingPlan = interactable.CalculateCoordinatesForBlocking(desiredPoint);
+            if (interactable != null && _gridController.IsPlacementValid(buildingPlan))
             {
-                //@todo: kaplayacağı alanın hepsine bakılmalı
-                interactable.InjectFields(_gridController, itemConfig);
                 interactable.BuildSelf(desiredPoint);
                 swipeHandler.enabled = false;
             }
             else
             {
+                Destroy(interactable.gameObject);
                 Debug.LogError("Error while spawning building");
             }
         }
