@@ -5,8 +5,10 @@ using System.Linq;
 using DG.Tweening;
 using Scriptables.QuestionSystem;
 using Scriptables.Tutorial;
+using Spans.CumulativeSpan;
 using TMPro;
 using UI;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -33,6 +35,16 @@ namespace Spans.Skeleton
         private void Start()
         {
             SpawnUnitCircles();
+        }
+
+        private void OnEnable()
+        {
+            AddListeners();
+        }
+
+        private void OnDisable()
+        {
+            RemoveListeners();
         }
 
         public void Enter(SpanController spanController)
@@ -62,10 +74,6 @@ namespace Spans.Skeleton
                 _spanObjects = _spanController.GetSpanObjects();
                 _currentQuestionIndex = 0;
             }
-            /*else if (_spanController.GetCumulativeStatus())
-            {
-                _currentQuestionIndex = 0;
-            }*/
             
             var question = _spanObjects[_currentQuestionIndex];
             if (question is NumberQuestion)
@@ -242,7 +250,6 @@ namespace Spans.Skeleton
             {
                 circle.ResetSelf();
             }
-            
             _activeCircles.Clear();
         }
 
@@ -258,6 +265,21 @@ namespace Spans.Skeleton
 
             throw new Exception("No available unit circle");
             return null;
+        }
+
+        private void ResetQuestionIndex()
+        {
+            _currentQuestionIndex = 0;
+        }
+
+        private void AddListeners()
+        {
+            CumulativeImageChooser.OnRoundReset += ResetQuestionIndex;
+        }
+
+        private void RemoveListeners()
+        {
+            CumulativeImageChooser.OnRoundReset -= ResetQuestionIndex;
         }
     }
 }

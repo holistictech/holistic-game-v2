@@ -23,8 +23,6 @@ namespace Spans.Skeleton.AnswerStates
         private Coroutine _tutorialHighlight;
         private float _maxTime;
         
-        private int _circleIndex = 1;
-        
         public override void Enter(SpanController controller)
         {
             if (_spanController == null)

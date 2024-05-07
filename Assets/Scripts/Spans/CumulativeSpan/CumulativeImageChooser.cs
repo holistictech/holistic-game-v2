@@ -1,8 +1,9 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Scriptables.QuestionSystem;
 using Spans.ForwardSpan;
-using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Spans.CumulativeSpan
 {
@@ -10,6 +11,7 @@ namespace Spans.CumulativeSpan
     {
         private const int _choiceCount = 9;
 
+        public static event Action OnRoundReset;
         public override List<Question> GetSpanObjects()
         {
             List<Question> roundQuestions = new List<Question>();
@@ -84,7 +86,9 @@ namespace Spans.CumulativeSpan
         protected override void IncrementFailStreak()
         {
             currentSpanQuestions.Clear();
+            currentDisplayedQuestions.Clear();
             ResetRoundIndex();
+            OnRoundReset?.Invoke();
         }
 
         protected override void IncrementSuccessStreak()
