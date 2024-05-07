@@ -19,7 +19,7 @@ namespace Spans.Skeleton
         [SerializeField] protected bool isCumulative;
         [SerializeField] private StateHolder states;
         [SerializeField] private TutorialManager tutorialManager;
-        private List<UnitCircle> _activeUnitCircles = new List<UnitCircle>();
+        protected List<UnitCircle> activeUnitCircles = new List<UnitCircle>();
         private List<ISpanState> _stateList = new List<ISpanState>();
         protected SpanStateContext stateContext;
         protected int currentRoundIndex = CommonFields.DEFAULT_ROUND_INDEX;
@@ -187,19 +187,20 @@ namespace Spans.Skeleton
 
         public void SetActiveCircles(List<UnitCircle> circles)
         {
-            if (isCumulative)
+            /*if (isCumulative)
             {
-                _activeUnitCircles.AddRange(circles);
+                activeUnitCircles.AddRange(circles);
             }
             else
             {
-                _activeUnitCircles = new List<UnitCircle>(circles);
-            }
+                activeUnitCircles = new List<UnitCircle>(circles);
+            }*/
+            activeUnitCircles = new List<UnitCircle>(circles);
         }
 
         public List<UnitCircle> GetActiveCircles()
         {
-            return _activeUnitCircles;
+            return activeUnitCircles;
         }
 
         public bool GetTutorialStatus()

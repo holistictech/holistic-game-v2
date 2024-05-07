@@ -87,6 +87,7 @@ namespace Spans.CumulativeSpan
         {
             currentSpanQuestions.Clear();
             currentDisplayedQuestions.Clear();
+            activeUnitCircles.Clear();
             ResetRoundIndex();
             OnRoundReset?.Invoke();
         }

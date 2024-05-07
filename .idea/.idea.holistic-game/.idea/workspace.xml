@@ -7,8 +7,7 @@
     <list default="true" id="3d01f5fc-4a81-4ccb-94d7-a0f07bc2bc79" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/CumulativeSpan/CumulativeImageChooser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/CumulativeSpan/CumulativeImageChooser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/MultipleChoiceAnswerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/MultipleChoiceAnswerState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanQuestionState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanQuestionState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanController.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -107,10 +106,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="73044">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="29176">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="73044" />
+      <option name="pid" value="29176" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -162,6 +161,7 @@
       <workItem from="1714982754445" duration="14193000" />
       <workItem from="1715009490795" duration="1987000" />
       <workItem from="1715029911703" duration="2476000" />
+      <workItem from="1715068907399" duration="423000" />
     </task>
     <servers />
   </component>
@@ -203,43 +203,17 @@
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanQuestionState.cs</url>
-          <line>270</line>
-          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Spans\Skeleton\SpanQuestionState.cs" initialLine="262" containingFunctionPresentation="Method 'ResetQuestionIndex'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/UI/Helpers/GridUIHelper.cs</url>
+          <line>118</line>
+          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\UI\Helpers\GridUIHelper.cs" initialLine="118" containingFunctionPresentation="Method 'UpdateAndAnimateUnitCircle'">
             <startOffsets>
-              <option value="8631" />
+              <option value="4163" />
             </startOffsets>
             <endOffsets>
-              <option value="8632" />
+              <option value="4164" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="13" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/CumulativeSpan/CumulativeImageChooser.cs</url>
-          <line>15</line>
-          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Spans\CumulativeSpan\CumulativeImageChooser.cs" initialLine="15" containingFunctionPresentation="Method 'GetSpanObjects'">
-            <startOffsets>
-              <option value="429" />
-            </startOffsets>
-            <endOffsets>
-              <option value="430" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="14" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanQuestionState.cs</url>
-          <line>69</line>
-          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Spans\Skeleton\SpanQuestionState.cs" initialLine="69" containingFunctionPresentation="Method 'ShowQuestion'">
-            <startOffsets>
-              <option value="1935" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1936" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="15" />
+          <option name="timeStamp" value="16" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
