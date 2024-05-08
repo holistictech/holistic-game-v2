@@ -4,6 +4,7 @@ using DG.Tweening;
 using Scriptables;
 using Scriptables.QuestionSystem;
 using Scriptables.Tutorial;
+using TMPro;
 using Tutorial;
 using UI;
 using UnityEngine;
@@ -19,6 +20,7 @@ namespace Spans.Skeleton
         [SerializeField] protected bool isCumulative;
         [SerializeField] private StateHolder states;
         [SerializeField] private TutorialManager tutorialManager;
+        [SerializeField] private TextMeshProUGUI _spanNameField;
         protected List<UnitCircle> activeUnitCircles = new List<UnitCircle>();
         private List<ISpanState> _stateList = new List<ISpanState>();
         protected SpanStateContext stateContext;
@@ -37,9 +39,15 @@ namespace Spans.Skeleton
 
         private GameObject _helperObject;
 
+        private void SetSpanField()
+        {
+            _spanNameField.text = $"{gameObject.name}";
+        }
+
         protected virtual void Start()
         {
             stateContext = new SpanStateContext(this);
+            SetSpanField();
             ResetQuestionStatus();
             InstantiateGameStates();
             _tutorialActive = false; //PlayerSaveManager.GetPlayerAttribute(states.TutorialKey, 0) == 0;

@@ -55,7 +55,6 @@ namespace Utilities
             Experience = PlayerSaveManager.GetPlayerAttribute(ExperienceKey, 0);
             CurrentLevel = PlayerSaveManager.GetPlayerAttribute(CurrentLevelKey, 0);
             CurrentStage = PlayerSaveManager.GetPlayerAttribute(CurrentStageKey, 0);
-            Currency = 100;
         }
 
         public void ChangeCurrencyAmount(int amount)

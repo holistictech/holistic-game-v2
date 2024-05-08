@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 576094c64b81ec044884d4ae3e5eaa4c, type: 3}
   m_Name: Plane
   m_EditorClassIdentifier: 
-  CorrectAnswer: "u\xE7ak"
+  CorrectAnswerString: "U\xE7ak"
+  IsAnswerStringMUST: 0
   Image: {fileID: 21300000, guid: d4fcbb937b2a49b439fd4832ced6ed31, type: 3}

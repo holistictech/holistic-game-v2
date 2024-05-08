@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 576094c64b81ec044884d4ae3e5eaa4c, type: 3}
   m_Name: Car
   m_EditorClassIdentifier: 
-  CorrectAnswer: araba
+  CorrectAnswerString: Araba
+  IsAnswerStringMUST: 0
   Image: {fileID: 21300000, guid: ed7fb80283d481149952796a6e9d2a12, type: 3}

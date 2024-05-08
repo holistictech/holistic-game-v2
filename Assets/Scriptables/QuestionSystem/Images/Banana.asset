@@ -12,5 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 576094c64b81ec044884d4ae3e5eaa4c, type: 3}
   m_Name: Banana
   m_EditorClassIdentifier: 
-  CorrectAnswer: muz
+  CorrectAnswerString: Muz
+  IsAnswerStringMUST: 0
   Image: {fileID: 21300000, guid: 571f8a32cec17eb4595274ebc03387a5, type: 3}

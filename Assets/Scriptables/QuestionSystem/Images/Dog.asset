@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 576094c64b81ec044884d4ae3e5eaa4c, type: 3}
   m_Name: Dog
   m_EditorClassIdentifier: 
-  CorrectAnswerString: 
+  CorrectAnswerString: "K\xF6pek"
   IsAnswerStringMUST: 0
   Image: {fileID: 21300000, guid: 3c035fd97890a55459e11b6f5683d9eb, type: 3}

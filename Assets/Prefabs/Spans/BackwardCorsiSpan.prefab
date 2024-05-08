@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &2333321853392803064
+--- !u!1 &3264793079781087867
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,9 +8,9 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 7938967541988802092}
-  - component: {fileID: 1417166571398748773}
-  - component: {fileID: 8243098352082445945}
+  - component: {fileID: 1564954135088397854}
+  - component: {fileID: 6173398369765792599}
+  - component: {fileID: 6731400225021948266}
   m_Layer: 5
   m_Name: spanField
   m_TagString: Untagged
@@ -18,14 +18,14 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!224 &7938967541988802092
+--- !u!224 &1564954135088397854
 RectTransform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2333321853392803064}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_GameObject: {fileID: 3264793079781087867}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
@@ -37,21 +37,21 @@ RectTransform:
   m_AnchoredPosition: {x: 21, y: 0}
   m_SizeDelta: {x: 798.2579, y: 88}
   m_Pivot: {x: 0, y: 0}
---- !u!222 &1417166571398748773
+--- !u!222 &6173398369765792599
 CanvasRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2333321853392803064}
+  m_GameObject: {fileID: 3264793079781087867}
   m_CullTransparentMesh: 1
---- !u!114 &8243098352082445945
+--- !u!114 &6731400225021948266
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2333321853392803064}
+  m_GameObject: {fileID: 3264793079781087867}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
@@ -356,9 +356,9 @@ GameObject:
   - component: {fileID: 1476230812880317276}
   - component: {fileID: 773999855161395063}
   - component: {fileID: 5317712305952169983}
-  - component: {fileID: 5184597612336586594}
+  - component: {fileID: 6050537155324000093}
   m_Layer: 5
-  m_Name: CumulativeImageChooser
+  m_Name: BackwardCorsiSpan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -376,8 +376,8 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
-  - {fileID: 7938967541988802092}
   - {fileID: 7859149007981708873}
+  - {fileID: 1564954135088397854}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
@@ -440,7 +440,7 @@ MonoBehaviour:
   tutorialFrame: {fileID: 5676812556043528798, guid: 9d48c73489107dc4d889ec1f7541333a, type: 3}
   tutorialHand: {fileID: 3664510739497132171, guid: ba7f4ed0cc0af46cf86c01ba89ab9169, type: 3}
   tutorialStepField: {fileID: 2638306012739917003}
---- !u!114 &5184597612336586594
+--- !u!114 &6050537155324000093
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -449,31 +449,24 @@ MonoBehaviour:
   m_GameObject: {fileID: 8242588130389079751}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a912fa5cbd0495444bac45a815c35c06, type: 3}
+  m_Script: {fileID: 11500000, guid: d33a1c7c7f3d5a54b9b5d791163bfddb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   spanQuestions:
-  - {fileID: 11400000, guid: dbfee19f47082c44da521c74b044ef0c, type: 2}
-  - {fileID: 11400000, guid: d0fede666edb02643abe24604af6edbd, type: 2}
-  - {fileID: 11400000, guid: 1030ceacba3ffe745a82c33daa6101a7, type: 2}
-  - {fileID: 11400000, guid: 9dd0bb9790a46ee44bec173fd5be0f11, type: 2}
-  - {fileID: 11400000, guid: 25941a0004fe6c9489c5b461eb956587, type: 2}
-  - {fileID: 11400000, guid: 34a03212e18f2dd489e94c7d224b36b0, type: 2}
-  - {fileID: 11400000, guid: 371ad4754b42b874b931136bc7a76b17, type: 2}
-  - {fileID: 11400000, guid: bc14e271c83f35848a764c63090921e5, type: 2}
-  - {fileID: 11400000, guid: ef52f2267186b6a4692217928d821200, type: 2}
-  - {fileID: 11400000, guid: 06ad9c9adc8a5bb4d88a3529959bf116, type: 2}
-  - {fileID: 11400000, guid: da2c2ed86852601438cb2f38e763ca45, type: 2}
-  - {fileID: 11400000, guid: 71c3034beaec4c443a06efa229b3886a, type: 2}
-  - {fileID: 11400000, guid: 9e30e14b5a62bad4c9e0009b6c9c0fea, type: 2}
-  - {fileID: 11400000, guid: 9b10b573564f17b40b5fc702b0a33d10, type: 2}
-  - {fileID: 11400000, guid: 41b934c2dc939584d9f5582620588eee, type: 2}
-  - {fileID: 11400000, guid: 54d18a4bf3d912c4eb7801e2b3b3492a, type: 2}
-  isBackwards: 0
-  isCumulative: 1
-  states: {fileID: 11400000, guid: 5ebf71650ec0b544e939eeca3eb79c4a, type: 2}
+  - {fileID: 11400000, guid: 23458be218ed1dd4e81ac88f88db08d1, type: 2}
+  - {fileID: 11400000, guid: 21ce3fe8aaf5564479e8b9f20c1d9c8e, type: 2}
+  - {fileID: 11400000, guid: 01afc39b05706654bb2f2976870209bb, type: 2}
+  - {fileID: 11400000, guid: 06b411921680e724fbb7abbbecd66644, type: 2}
+  - {fileID: 11400000, guid: 5a9d12d931ad7ac489339a4cf19760b4, type: 2}
+  - {fileID: 11400000, guid: 989b7005ceca4b8489bfe52567fbae56, type: 2}
+  - {fileID: 11400000, guid: 4e0cf6cdb572b504f99bf59abf2c3aa9, type: 2}
+  - {fileID: 11400000, guid: 8342a1a9e4602aa419c30f1ad6b08b77, type: 2}
+  - {fileID: 11400000, guid: e0fc73d5139bb6140a91a4decd78312b, type: 2}
+  isBackwards: 1
+  isCumulative: 0
+  states: {fileID: 11400000, guid: f57291796e8509c428a22f6057d43560, type: 2}
   tutorialManager: {fileID: 5317712305952169983}
-  _spanNameField: {fileID: 8243098352082445945}
+  _spanNameField: {fileID: 6731400225021948266}
 --- !u!1 &8840831442161132576
 GameObject:
   m_ObjectHideFlags: 0
