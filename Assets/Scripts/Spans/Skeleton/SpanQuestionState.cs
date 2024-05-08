@@ -14,7 +14,7 @@ namespace Spans.Skeleton
 
         private List<UnitCircle> _spawnedUnitPool;
         private List<UnitCircle> _activeCircles;
-        private SpanController _spanController;
+        protected SpanController spanController;
         protected Coroutine displayingQuestions;
         
         private void Start()
@@ -22,11 +22,11 @@ namespace Spans.Skeleton
             SpawnUnitCircles();
         }
         
-        public virtual void Enter(SpanController spanController)
+        public virtual void Enter(SpanController controller)
         {
-            if (_spanController == null)
+            if (spanController == null)
             {
-                _spanController = spanController;
+                spanController = controller;
             }
             EnableUIElements();
         }
@@ -46,7 +46,7 @@ namespace Spans.Skeleton
 
         public virtual void SwitchNextState()
         {
-            _spanController.SwitchState();
+            spanController.SwitchState();
         }
 
         public virtual void TryShowStateTutorial()
@@ -71,7 +71,7 @@ namespace Spans.Skeleton
                 _activeCircles.Add(tempCircle);
             }
             
-            _spanController.SetActiveCircles(_activeCircles);
+            spanController.SetActiveCircles(_activeCircles);
         }
 
         private void SpawnUnitCircles()

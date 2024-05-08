@@ -22,11 +22,11 @@ namespace Spans.Skeleton
         private SpanController _spanController;
         private Coroutine _countdown;
         private bool _isInitial = true;
-        public void Enter(SpanController spanController)
+        public void Enter(SpanController controller)
         {
             if (_spanController == null)
             {
-                _spanController = spanController;
+                _spanController = controller;
                 if (_spanController.GetTutorialStatus())
                 {
                     TryShowStateTutorial();

@@ -19,7 +19,6 @@ namespace Spans.Skeleton.QuestionStates
         [SerializeField] private Image questionFieldParent;
         [SerializeField] private Image questionBox;
         
-        private SpanController _spanController;
         private List<Question> _spanObjects; 
         private int _currentQuestionIndex;
         private List<Question> _currentQuestions = new List<Question>();
@@ -34,17 +33,17 @@ namespace Spans.Skeleton.QuestionStates
             RemoveListeners();
         }
 
-        public override void Enter(SpanController spanController)
+        public override void Enter(SpanController controller)
         {
-            if (_spanController == null)
+            if (spanController == null)
             {
-                _spanController = spanController;
-                base.Enter(_spanController);
+                spanController = controller;
+                base.Enter(spanController);
             }
-            _spanObjects = _spanController.GetSpanObjects();
+            _spanObjects = spanController.GetSpanObjects();
             EnableUIElements();
-            SetCircleUI(_spanController.GetRoundIndex());
-            if (_spanController.GetTutorialStatus())
+            SetCircleUI(spanController.GetRoundIndex());
+            if (spanController.GetTutorialStatus())
             {
                 TryShowStateTutorial();
             }
@@ -57,9 +56,9 @@ namespace Spans.Skeleton.QuestionStates
         public override void ShowQuestion()
         {
             _currentQuestions = new List<Question>();
-            if (_currentQuestionIndex + _spanController.GetRoundIndex() >= _spanObjects.Count && !_spanController.GetCumulativeStatus())
+            if (_currentQuestionIndex + spanController.GetRoundIndex() >= _spanObjects.Count && !spanController.GetCumulativeStatus())
             {
-                _spanObjects = _spanController.GetSpanObjects();
+                _spanObjects = spanController.GetSpanObjects();
                 _currentQuestionIndex = 0;
             }
             
@@ -152,23 +151,23 @@ namespace Spans.Skeleton.QuestionStates
 
         public void ConfigureDisplayedQuestions()
         {
-            _spanController.SetCurrentDisplayedQuestions(_currentQuestions);
+            spanController.SetCurrentDisplayedQuestions(_currentQuestions);
         }
 
         public override void SwitchNextState()
         {
             DisableUIElements();
             ConfigureDisplayedQuestions();
-            if (_spanController.GetBackwardStatus())
+            if (spanController.GetBackwardStatus())
             {
                 RotateCircles(() =>
                 {
-                    _spanController.SwitchState();
+                    spanController.SwitchState();
                 });
             }
             else
             {
-                _spanController.SwitchState();
+                spanController.SwitchState();
             }
         }
 
@@ -180,7 +179,7 @@ namespace Spans.Skeleton.QuestionStates
             };
 
             var dictionary = new Dictionary<GameObject, TutorialStep>().CreateFromLists(targets, steps);
-            _spanController.TriggerStateTutorial(dictionary, false, ShowQuestion);
+            spanController.TriggerStateTutorial(dictionary, false, ShowQuestion);
         }
 
         public override void EnableUIElements()

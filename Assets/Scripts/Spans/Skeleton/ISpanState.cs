@@ -7,7 +7,7 @@ namespace Spans.Skeleton
 {
     public interface ISpanState
     {
-        public abstract void Enter(SpanController spanController);
+        public abstract void Enter(SpanController controller);
         public abstract void Exit();
         public abstract void SwitchNextState();
         public abstract void TryShowStateTutorial();

@@ -17,16 +17,15 @@ namespace Spans.Skeleton.AnswerStates
         [SerializeField] private Button cancelButton;
         [SerializeField] private GameObject answerPopup;
         [SerializeField] private TextMeshProUGUI givenAnswerField;
-        private SpanController _spanController;
 
         private int _maxTime;
         private Coroutine _timer;
-        public override void Enter(SpanController spanController)
+        public override void Enter(SpanController controller)
         {
-            if (_spanController == null)
+            if (spanController == null)
             {
-                _spanController = spanController;
-                _maxTime = _spanController.GetRoundTime();
+                spanController = controller;
+                _maxTime = spanController.GetRoundTime();
             }
 
             AddListeners();
@@ -41,7 +40,7 @@ namespace Spans.Skeleton.AnswerStates
         
         public override void SwitchNextState()
         {
-            _spanController.SwitchState();
+            spanController.SwitchState();
         }
 
         public override void Exit()
@@ -67,7 +66,7 @@ namespace Spans.Skeleton.AnswerStates
         {
             string detectedAnswer = await speechRecognition.EndRecording();
             List<string> answerList = detectedAnswer.Split(" ").ToList();
-            _spanController.SetDetectedAnswers(answerList);
+            spanController.SetDetectedAnswers(answerList);
             answerPopup.gameObject.SetActive(true);
             givenAnswerField.text = $"{detectedAnswer}";
             DOVirtual.DelayedCall(1f, SwitchNextState);

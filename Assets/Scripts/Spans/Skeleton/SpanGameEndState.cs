@@ -6,7 +6,7 @@ namespace Spans.Skeleton
 {
     public class SpanGameEndState : MonoBehaviour, ISpanState
     {
-        public void Enter(SpanController spanController)
+        public void Enter(SpanController controller)
         {
             throw new System.NotImplementedException();
         }

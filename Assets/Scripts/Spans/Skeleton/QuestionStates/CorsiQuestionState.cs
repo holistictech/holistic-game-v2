@@ -12,22 +12,20 @@ namespace Spans.Skeleton.QuestionStates
     public class CorsiQuestionState : SpanQuestionState
     {
         [SerializeField] private CorsiBlockUIHelper blockUIHelper;
-
-        private SpanController _spanController;
         private List<Question> _spanObjects = new List<Question>();
-        public override void Enter(SpanController spanController)
+        public override void Enter(SpanController controller)
         {
-            if (_spanController == null)
+            if (spanController == null)
             {
-                _spanController = spanController;
-                base.Enter(_spanController);
+                spanController = controller;
+                base.Enter(spanController);
                 blockUIHelper.SpawnCorsiBlocks();
                 blockUIHelper.InjectQuestionState(this);
-                _spanController.SetHelperObject(blockUIHelper.gameObject);
+                spanController.SetHelperObject(blockUIHelper.gameObject);
             }
-            SetCircleUI(_spanController.GetRoundIndex());
+            SetCircleUI(spanController.GetRoundIndex());
             EnableUIElements();
-            _spanObjects = _spanController.GetSpanObjects();
+            _spanObjects = spanController.GetSpanObjects();
             ShowQuestion();
         }
         
@@ -44,7 +42,7 @@ namespace Spans.Skeleton.QuestionStates
 
         private IEnumerator IterateQuestions()
         {
-            var spanQuestions = _spanController.GetCurrentSpanQuestions();
+            var spanQuestions = spanController.GetCurrentSpanQuestions();
             for (int i = 0; i < spanQuestions.Count; i++)
             {
                 ActivateCircle(i);
@@ -57,16 +55,16 @@ namespace Spans.Skeleton.QuestionStates
 
         public override void SwitchNextState()
         {
-            if (_spanController.GetBackwardStatus())
+            if (spanController.GetBackwardStatus())
             {
                 RotateCircles(() =>
                 {
-                    _spanController.SwitchState();
+                    spanController.SwitchState();
                 });
             }
             else
             {
-                _spanController.SwitchState();
+                spanController.SwitchState();
             }
         }
 

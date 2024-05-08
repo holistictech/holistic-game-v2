@@ -16,24 +16,23 @@ namespace Spans.Skeleton.AnswerStates
         [SerializeField] private GridUIHelper gridHelper;
         [SerializeField] private GridLayoutGroup gridLayoutGroup;
         
-        private SpanController _spanController;
         private Coroutine _timer;
         private Coroutine _tutorialHighlight;
         private float _maxTime;
         
         public override void Enter(SpanController controller)
         {
-            if (_spanController == null)
+            if (spanController == null)
             {
-                _spanController = controller;
+                spanController = controller;
             }
 
-            _maxTime = _spanController.GetRoundTime();
+            _maxTime = spanController.GetRoundTime();
             AddListeners();
             EnableUIElements();
             SetChoiceUI();
             
-            if (_spanController.GetTutorialStatus())
+            if (spanController.GetTutorialStatus())
             {
                 timer.EnableSelf();
                 TryShowStateTutorial();
@@ -41,15 +40,14 @@ namespace Spans.Skeleton.AnswerStates
             else
             {
                 TryShowHelpers();
-                //PlayTimer(_maxTime);
             }
         }
 
         private void SetChoiceUI()
         {
-            gridHelper.SetConstraintCount(_spanController.GetRoundIndex(), _spanController.GetCumulativeStatus());
-            var choices = _spanController.GetChoices();
-            var unitCircles = _spanController.GetActiveCircles();
+            gridHelper.SetConstraintCount(spanController.GetRoundIndex(), spanController.GetCumulativeStatus());
+            var choices = spanController.GetChoices();
+            var unitCircles = spanController.GetActiveCircles();
             gridHelper.SetActiveCircles(unitCircles);
             gridHelper.ConfigureChoices(choices, this);
         }
@@ -61,12 +59,12 @@ namespace Spans.Skeleton.AnswerStates
 
         public override void SwitchNextState()
         {
-            if (_spanController.GetTutorialStatus())
+            if (spanController.GetTutorialStatus())
             {
-                _spanController.ClearTutorialHighlights();
+                spanController.ClearTutorialHighlights();
             }
-            _spanController.SetSelectedAnswers(gridHelper.GetGivenAnswers());
-            _spanController.SwitchState();
+            spanController.SetSelectedAnswers(gridHelper.GetGivenAnswers());
+            spanController.SwitchState();
         }
 
         public override void Exit()
@@ -82,7 +80,7 @@ namespace Spans.Skeleton.AnswerStates
 
         private void TryShowHelpers()
         {
-            if (!_spanController.IsHelperTutorialNeeded())
+            if (!spanController.IsHelperTutorialNeeded())
             {
                 PlayTimer(_maxTime);
                 return;
@@ -96,9 +94,9 @@ namespace Spans.Skeleton.AnswerStates
                 confirmButton.gameObject
             };
             var secondPartDict = new Dictionary<GameObject, TutorialStep>().CreateFromLists(secondPart, GetTutorialSteps());
-            _spanController.TriggerStateTutorial(secondPartDict, true,() =>
+            spanController.TriggerStateTutorial(secondPartDict, true,() =>
             {
-                _spanController.SetHelperTutorialCompleted();
+                spanController.SetHelperTutorialCompleted();
                 PlayTimer(_maxTime);
             });
         }
@@ -110,7 +108,7 @@ namespace Spans.Skeleton.AnswerStates
                 gridHelper.gameObject,
             };
             var dictionary = new Dictionary<GameObject, TutorialStep>().CreateFromLists(firstPart, GetGridStep());
-            _spanController.TriggerStateTutorial(dictionary, false, () =>
+            spanController.TriggerStateTutorial(dictionary, false, () =>
             {
                 //_spanController.TriggerTutorialField("Şimdi sıra sende!");
                 _tutorialHighlight = StartCoroutine(HighlightObjectsForTutorial());
@@ -122,19 +120,19 @@ namespace Spans.Skeleton.AnswerStates
         private bool _waitInput;
         private IEnumerator HighlightObjectsForTutorial()
         {
-            List<Question> currentQuestions = _spanController.GetCurrentDisplayedQuestions();
+            List<Question> currentQuestions = spanController.GetCurrentDisplayedQuestions();
             while (_highlightIndex < currentQuestions.Count)
             {
                 if (_highlightIndex != _lastIndex)
                 {
                     var targetRect = GetAppropriateChoice(currentQuestions[_highlightIndex]);
-                    _spanController.HighlightTarget(targetRect, gridHelper.GetComponent<RectTransform>(), true, 170f);
+                    spanController.HighlightTarget(targetRect, gridHelper.GetComponent<RectTransform>(), true, 170f);
                     _lastIndex = _highlightIndex;
                     _waitInput = true;
                     yield return new WaitUntil(() => !_waitInput);
                 }       
             }
-            _spanController.HighlightTarget(confirmButton.GetComponent<RectTransform>(), GetComponent<RectTransform>(), true, 150f);
+            spanController.HighlightTarget(confirmButton.GetComponent<RectTransform>(), GetComponent<RectTransform>(), true, 150f);
         }
 
         private RectTransform GetAppropriateChoice(Question question)
@@ -174,7 +172,7 @@ namespace Spans.Skeleton.AnswerStates
 
         public void OnAnswerGiven()
         {
-            if (_spanController.GetTutorialStatus())
+            if (spanController.GetTutorialStatus())
             {
                 _highlightIndex++;
                 _waitInput = false;

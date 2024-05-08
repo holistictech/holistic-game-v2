@@ -6,17 +6,16 @@ namespace Spans.Skeleton.AnswerStates
     public class CorsiAnswerState : SpanAnswerState
     {
         private CorsiBlockUIHelper _corsiHelper;
-        private SpanController _spanController;
         private float _maxTime;
-        public override void Enter(SpanController spanController)
+        public override void Enter(SpanController controller)
         {
-            base.Enter(spanController);
-            if (_spanController == null)
+            base.Enter(controller);
+            if (spanController == null)
             {
-                _spanController = spanController;
-                _corsiHelper = _spanController.GetHelperObject().GetComponent<CorsiBlockUIHelper>();
+                spanController = controller;
+                _corsiHelper = spanController.GetHelperObject().GetComponent<CorsiBlockUIHelper>();
             }
-            _maxTime = _spanController.GetRoundTime();
+            _maxTime = spanController.GetRoundTime();
             EnableUIElements();
             ConfigureCorsiHelper();
             PlayTimer(_maxTime);
@@ -25,7 +24,7 @@ namespace Spans.Skeleton.AnswerStates
         private void ConfigureCorsiHelper()
         {
             _corsiHelper.InjectAnswerState(this);
-            var circles = _spanController.GetActiveCircles();
+            var circles = spanController.GetActiveCircles();
             _corsiHelper.SetActiveCircles(circles);
         }
         
@@ -43,12 +42,12 @@ namespace Spans.Skeleton.AnswerStates
         
         public override void SwitchNextState()
         {
-            if (_spanController.GetTutorialStatus())
+            if (spanController.GetTutorialStatus())
             {
-                _spanController.ClearTutorialHighlights();
+                spanController.ClearTutorialHighlights();
             }
-            _spanController.SetSelectedAnswers(_corsiHelper.GetGivenAnswers());
-            _spanController.SwitchState();
+            spanController.SetSelectedAnswers(_corsiHelper.GetGivenAnswers());
+            spanController.SwitchState();
         }
 
         public override void RevertLastAnswer()
