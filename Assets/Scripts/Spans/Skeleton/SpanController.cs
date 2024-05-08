@@ -33,17 +33,16 @@ namespace Spans.Skeleton
         protected List<string> currentDetectedAnswers;
         protected List<Question> currentGivenAnswers = new List<Question>();
         private const int _neededStreakCount = 4;
-        private bool _levelChanged;
+        private bool _hasLeveledUp;
+
+        private GameObject _helperObject;
 
         protected virtual void Start()
         {
             stateContext = new SpanStateContext(this);
-            foreach (var question in spanQuestions)
-            {
-                question.SetHasSelected(false);
-            }
+            ResetQuestionStatus();
             InstantiateGameStates();
-            _tutorialActive = PlayerSaveManager.GetPlayerAttribute(states.TutorialKey, 0) == 0;
+            _tutorialActive = false; //PlayerSaveManager.GetPlayerAttribute(states.TutorialKey, 0) == 0;
             stateContext.Transition(_stateList[0]);
         }
 
@@ -92,10 +91,16 @@ namespace Spans.Skeleton
             IncrementSuccessStreak();
             return true;
         }
+        
 
         public virtual void SetCurrentDisplayedQuestions(List<Question> questions)
         {
             currentDisplayedQuestions = questions;
+        }
+
+        public virtual List<Question> GetCurrentSpanQuestions()
+        {
+            return currentSpanQuestions;
         }
 
         public List<Question> GetCurrentDisplayedQuestions()
@@ -125,17 +130,17 @@ namespace Spans.Skeleton
 
         public int GetRoundIndex()
         {
-            return _levelChanged ? currentRoundIndex - 1 : currentRoundIndex;
+            return _hasLeveledUp ? currentRoundIndex - 1 : currentRoundIndex;
         }
 
         public void ResetLevelChangedStatus()
         {
-            _levelChanged = false;
+            _hasLeveledUp = false;
         }
 
         private void IncrementRoundIndex()
         {
-            _levelChanged = true;
+            _hasLeveledUp = true;
             currentRoundIndex++;
         }
 
@@ -160,7 +165,7 @@ namespace Spans.Skeleton
             }
             else
             {
-                _levelChanged = false;
+                _hasLeveledUp = false;
             }
         }
 
@@ -201,6 +206,17 @@ namespace Spans.Skeleton
         public List<UnitCircle> GetActiveCircles()
         {
             return activeUnitCircles;
+        }
+
+        public void SetHelperObject(GameObject helper)
+        {
+            if(_helperObject == null)
+                _helperObject = helper;
+        }
+
+        public GameObject GetHelperObject()
+        {
+            return _helperObject;
         }
 
         public bool GetTutorialStatus()
@@ -246,6 +262,14 @@ namespace Spans.Skeleton
         public void ClearTutorialHighlights()
         {
             tutorialManager.ClearHighlights();
+        }
+
+        protected void ResetQuestionStatus()
+        {
+            foreach (var question in spanQuestions)
+            {
+                question.SetHasSelected(false);
+            }
         }
 
         public bool GetBackwardStatus()

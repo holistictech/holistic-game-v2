@@ -1,158 +1,68 @@
 using System;
-using System.Collections;
 using System.Collections.Generic;
-using System.Linq;
 using DG.Tweening;
-using Scriptables.QuestionSystem;
-using Scriptables.Tutorial;
-using Spans.CumulativeSpan;
-using TMPro;
 using UI;
-using Unity.VisualScripting;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
-using Utilities;
 
 namespace Spans.Skeleton
 {
     public class SpanQuestionState : MonoBehaviour, ISpanState
     {
-        [SerializeField] private List<TutorialStep> steps;
-        [SerializeField] private Image questionFieldParent;
-        [SerializeField] private Image questionBox;
-        [SerializeField] private HorizontalLayoutGroup unitParent;
-        [SerializeField] private UnitCircle unit;
-        
-        private SpanController _spanController;
-        private List<Question> _spanObjects; 
+        [SerializeField] protected HorizontalLayoutGroup unitParent;
+        [SerializeField] protected UnitCircle unit;
+
         private List<UnitCircle> _spawnedUnitPool;
         private List<UnitCircle> _activeCircles;
-        private int _currentQuestionIndex;
-        private List<Question> _currentQuestions = new List<Question>();
-        private Coroutine _displayingQuestions;
-
+        private SpanController _spanController;
+        protected Coroutine displayingQuestions;
+        
         private void Start()
         {
             SpawnUnitCircles();
         }
-
-        private void OnEnable()
-        {
-            AddListeners();
-        }
-
-        private void OnDisable()
-        {
-            RemoveListeners();
-        }
-
-        public void Enter(SpanController spanController)
+        
+        public virtual void Enter(SpanController spanController)
         {
             if (_spanController == null)
             {
                 _spanController = spanController;
             }
-            _spanObjects = _spanController.GetSpanObjects();
             EnableUIElements();
-            SetCircleUI(_spanController.GetRoundIndex());
-            if (_spanController.GetTutorialStatus())
-            {
-                TryShowStateTutorial();
-            }
-            else
-            {
-                ShowQuestion();
-            }
         }
 
-        private void ShowQuestion()
+        public virtual void ShowQuestion()
         {
-            _currentQuestions = new List<Question>();
-            if (_currentQuestionIndex + _spanController.GetRoundIndex() >= _spanObjects.Count && !_spanController.GetCumulativeStatus())
-            {
-                _spanObjects = _spanController.GetSpanObjects();
-                _currentQuestionIndex = 0;
-            }
-            
-            var question = _spanObjects[_currentQuestionIndex];
-            if (question is NumberQuestion)
-            {
-                _displayingQuestions = StartCoroutine(ShowNumbers());
-            } else if (question is ImageQuestion)
-            {
-                _displayingQuestions = StartCoroutine(ShowImages());
-            } else if (question is ClipQuestion)
-            {
-                _displayingQuestions = StartCoroutine(PlayClips());
-            }
         }
 
-        private IEnumerator ShowNumbers()
+        public virtual void Exit()
         {
-            for (int i = 0; i < _spanObjects.Count; i++)
+            DisableUIElements();
+            if (displayingQuestions != null)
             {
-                if (_currentQuestionIndex >= _spanObjects.Count)
-                {
-                    break;
-                }
-                var question = _spanObjects[_currentQuestionIndex];
-                questionBox.GetComponentInChildren<TextMeshProUGUI>().text = $"{question.GetQuestionItem()}";
-                ActivateCircle(i);
-                questionBox.enabled = false;
-                _currentQuestions.Add(question);
-                _currentQuestionIndex++;
-                yield return new WaitForSeconds(1f);
-                questionBox.GetComponentInChildren<TextMeshProUGUI>().text = $"";
-                yield return new WaitForSeconds(1f);
+                StopCoroutine(displayingQuestions);
             }
-            
-            DOVirtual.DelayedCall(1f, SwitchNextState);
         }
 
-        private IEnumerator ShowImages()
+        public virtual void SwitchNextState()
         {
-            for (int i = 0; i < _spanObjects.Count; i++)
-            {
-                if (_currentQuestionIndex >= _spanObjects.Count)
-                {
-                    break;
-                }
-                var question = _spanObjects[_currentQuestionIndex];
-                questionBox.sprite = (Sprite)question.GetQuestionItem();
-                questionBox.enabled = true;
-                ActivateCircle(_currentQuestionIndex);
-                _currentQuestions.Add(question);
-                _currentQuestionIndex++;
-                yield return new WaitForSeconds(1f);
-                questionBox.enabled = false;
-                yield return new WaitForSeconds(1f);
-            }
-
-            DOVirtual.DelayedCall(1f, SwitchNextState);
+            _spanController.SwitchState();
         }
 
-        private IEnumerator PlayClips()
+        public virtual void TryShowStateTutorial()
         {
-            for (int i = 0; i < _spanObjects.Count; i++)
-            {
-                if (_currentQuestionIndex >= _spanObjects.Count)
-                {
-                    break;
-                }
-                var question = _spanObjects[_currentQuestionIndex];
-                AudioClip clip = (AudioClip)question.GetQuestionItem();
-                AudioManager.Instance.PlayAudioClip(clip);
-                ActivateCircle(i);
-                _currentQuestions.Add(question);
-                _currentQuestionIndex++;
-                yield return new WaitForSeconds(clip.length + 1f);
-            } 
-            
-            DOVirtual.DelayedCall(1f, SwitchNextState);
         }
 
-        private void SetCircleUI(int count)
+        public virtual void EnableUIElements()
+        {
+            unitParent.gameObject.SetActive(true);
+        }
+
+        public virtual void DisableUIElements()
+        {
+        }
+        
+        public void SetCircleUI(int count)
         {
             for (int i = 0; i < count; i++)
             {
@@ -164,7 +74,7 @@ namespace Spans.Skeleton
             _spanController.SetActiveCircles(_activeCircles);
         }
 
-        private void SpawnUnitCircles()
+        public void SpawnUnitCircles()
         {
             _spawnedUnitPool = new List<UnitCircle>();
             _activeCircles = new List<UnitCircle>();
@@ -176,80 +86,15 @@ namespace Spans.Skeleton
             }
         }
 
-        private void ActivateCircle(int index)
+        public void ActivateCircle(int index)
         {
             if (_activeCircles != null && _activeCircles.Count > index)
             {
                 _activeCircles[index].ConfigureUI();
             }
         }
-
-        public void Exit()
-        {
-            if (_displayingQuestions != null)
-            {
-                StopCoroutine(_displayingQuestions);
-            }
-            ResetPreviousCircles();
-        }
-
-        public virtual void ConfigureDisplayedQuestions()
-        {
-            _spanController.SetCurrentDisplayedQuestions(_currentQuestions);
-        }
-
-        public void SwitchNextState()
-        {
-            DisableUIElements();
-            ConfigureDisplayedQuestions();
-            if (_spanController.GetBackwardStatus())
-            {
-                RotateCircles(() =>
-                {
-                    _spanController.SwitchState();
-                });
-            }
-            else
-            {
-                _spanController.SwitchState();
-            }
-        }
-
-        public void TryShowStateTutorial()
-        {
-            var targets = new List<GameObject>()
-            {
-                questionFieldParent.gameObject
-            };
-
-            var dictionary = new Dictionary<GameObject, TutorialStep>().CreateFromLists(targets, steps);
-            _spanController.TriggerStateTutorial(dictionary, false, ShowQuestion);
-        }
-
-        public void EnableUIElements()
-        {
-            questionFieldParent.gameObject.SetActive(true);
-            unitParent.gameObject.SetActive(true);
-        }
-
-        public void DisableUIElements()
-        {
-            questionBox.GetComponentInChildren<TextMeshProUGUI>().text = "";
-            questionBox.sprite = null;
-            questionBox.enabled = false;
-            questionFieldParent.gameObject.SetActive(false);
-        }
-
-        private void RotateCircles(Action onComplete)
-        {
-            unitParent.transform.DORotate(new Vector3(0, 0, -180), .5f).SetEase(Ease.Linear).OnComplete(() =>
-            {
-                unitParent.transform.rotation = Quaternion.Euler(0, 0, 0);
-                onComplete?.Invoke();
-            });
-        }
-
-        private void ResetPreviousCircles()
+        
+        public void ResetPreviousCircles()
         {
             foreach (var circle in _activeCircles)
             {
@@ -258,7 +103,7 @@ namespace Spans.Skeleton
             _activeCircles.Clear();
         }
 
-        private UnitCircle GetAvailableUnitCircle()
+        public UnitCircle GetAvailableUnitCircle()
         {
             foreach (var circle in _spawnedUnitPool)
             {
@@ -271,20 +116,14 @@ namespace Spans.Skeleton
             throw new Exception("No available unit circle");
             return null;
         }
-
-        private void ResetQuestionIndex()
+        
+        public void RotateCircles(Action onComplete)
         {
-            _currentQuestionIndex = 0;
-        }
-
-        private void AddListeners()
-        {
-            CumulativeImageChooser.OnRoundReset += ResetQuestionIndex;
-        }
-
-        private void RemoveListeners()
-        {
-            CumulativeImageChooser.OnRoundReset -= ResetQuestionIndex;
+            unitParent.transform.DORotate(new Vector3(0, 0, -180), .5f).SetEase(Ease.Linear).OnComplete(() =>
+            {
+                unitParent.transform.rotation = Quaternion.Euler(0, 0, 0);
+                onComplete?.Invoke();
+            });
         }
     }
 }

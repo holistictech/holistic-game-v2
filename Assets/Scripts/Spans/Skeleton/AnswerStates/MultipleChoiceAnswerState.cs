@@ -15,8 +15,6 @@ namespace Spans.Skeleton.AnswerStates
         [SerializeField] private List<TutorialStep> gridStep;
         [SerializeField] private GridUIHelper gridHelper;
         [SerializeField] private GridLayoutGroup gridLayoutGroup;
-        [SerializeField] private Button confirmButton;
-        [SerializeField] private Button revertButton;
         
         private SpanController _spanController;
         private Coroutine _timer;
@@ -28,9 +26,9 @@ namespace Spans.Skeleton.AnswerStates
             if (_spanController == null)
             {
                 _spanController = controller;
-                _maxTime = _spanController.GetRoundTime();
             }
 
+            _maxTime = _spanController.GetRoundTime();
             AddListeners();
             EnableUIElements();
             SetChoiceUI();
@@ -183,12 +181,12 @@ namespace Spans.Skeleton.AnswerStates
             }
         }
 
-        private void RevertLastAnswer()
+        public override void RevertLastAnswer()
         {
             gridHelper.RevokeLastSelection();
         }
 
-        private void AddListeners()
+        /*public override void AddListeners()
         { 
             revertButton.onClick.AddListener(RevertLastAnswer);
             confirmButton.onClick.AddListener(SwitchNextState);
@@ -198,6 +196,6 @@ namespace Spans.Skeleton.AnswerStates
         {
             revertButton.onClick.RemoveListener(RevertLastAnswer);
             confirmButton.onClick.RemoveListener(SwitchNextState);
-        }
+        }*/
     }
 }

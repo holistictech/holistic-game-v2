@@ -1,4 +1,6 @@
+using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using Scriptables.QuestionSystem;
 using UI;
 using UI.Helpers;
@@ -7,51 +9,69 @@ using UnityEngine.UI;
 
 namespace Spans.Skeleton.QuestionStates
 {
-    public class CorsiQuestionState : ISpanState
+    public class CorsiQuestionState : SpanQuestionState
     {
         [SerializeField] private CorsiBlockUIHelper blockUIHelper;
 
         private SpanController _spanController;
-        private List<Question> spanObjects = new List<Question>();
-        public void Enter(SpanController spanController)
+        private List<Question> _spanObjects = new List<Question>();
+        public override void Enter(SpanController spanController)
         {
             if (_spanController == null)
             {
                 _spanController = spanController;
+                base.Enter(_spanController);
+                blockUIHelper.SpawnCorsiBlocks();
                 blockUIHelper.InjectQuestionState(this);
+                _spanController.SetHelperObject(blockUIHelper.gameObject);
             }
-            
-            spanObjects = _spanController.GetSpanObjects();
+            SetCircleUI(_spanController.GetRoundIndex());
+            EnableUIElements();
+            _spanObjects = _spanController.GetSpanObjects();
+            ShowQuestion();
+        }
+        
+        public override void ShowQuestion()
+        {
             DistributeQuestions();
         }
 
         private void DistributeQuestions()
         {
-            blockUIHelper.AssignQuestions(spanObjects);
+            blockUIHelper.AssignQuestions(_spanObjects);
+            displayingQuestions = StartCoroutine(IterateQuestions());
         }
 
-        public void Exit()
+        private IEnumerator IterateQuestions()
         {
-            throw new System.NotImplementedException();
+            var spanQuestions = _spanController.GetCurrentSpanQuestions();
+            for (int i = 0; i < spanQuestions.Count; i++)
+            {
+                ActivateCircle(i);
+                blockUIHelper.HighlightTargetBlock(spanQuestions[i]);
+                yield return new WaitForSeconds(2f);
+            }
+            
+            DOVirtual.DelayedCall(1f, SwitchNextState);
         }
 
-        public void SwitchNextState()
+        public override void SwitchNextState()
         {
             _spanController.SwitchState();
         }
 
-        public void TryShowStateTutorial()
+        public override void TryShowStateTutorial()
         {
         }
 
-        public void EnableUIElements()
+        public override void EnableUIElements()
         {
-            throw new System.NotImplementedException();
+            blockUIHelper.gameObject.SetActive(true);
+            unitParent.gameObject.SetActive(true);
         }
 
-        public void DisableUIElements()
+        public override void DisableUIElements()
         {
-            throw new System.NotImplementedException();
         }
     }
 }

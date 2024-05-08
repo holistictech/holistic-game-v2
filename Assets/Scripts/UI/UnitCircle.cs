@@ -47,7 +47,7 @@ namespace UI
             _jump.Play();
         }
 
-        private void DisableCircle()
+        public void DisableCircle()
         {
             ResetSelf();
             DisableSelf();
@@ -78,12 +78,12 @@ namespace UI
 
         private void AddListeners()
         {
-            GridUIHelper.OnChoiceSelected += DisableCircle;
+            GridUIHelper.OnRoundFinished += DisableCircle;
         }
 
         private void RemoveListeners()
         {
-            GridUIHelper.OnChoiceSelected -= DisableCircle;
+            GridUIHelper.OnRoundFinished -= DisableCircle;
         }
     }
 }

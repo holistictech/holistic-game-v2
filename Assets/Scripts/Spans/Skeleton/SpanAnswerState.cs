@@ -17,15 +17,20 @@ namespace Spans.Skeleton
     {
         [SerializeField] private List<TutorialStep> _steps;
         [SerializeField] protected TimerHelper timer;
+        [SerializeField] protected Button confirmButton;
+        [SerializeField] protected Button revertButton;
         private SpanController _spanController;
         
         
         public virtual void Enter(SpanController spanController)
         {
+            AddListeners();
         }
 
         public virtual void Exit()
         {
+            RemoveListeners();
+            timer.StopTimer();
         }
         
         public virtual void PlayTimer(float maxTime)
@@ -43,15 +48,35 @@ namespace Spans.Skeleton
 
         public virtual void EnableUIElements()
         {
+            confirmButton.gameObject.SetActive(true);
+            revertButton.gameObject.SetActive(true);
         }
 
         public virtual void DisableUIElements()
+        {
+            confirmButton.gameObject.SetActive(false);
+            revertButton.gameObject.SetActive(false);
+        }
+        
+        public virtual void RevertLastAnswer()
         {
         }
 
         protected List<TutorialStep> GetTutorialSteps()
         {
             return _steps;
+        }
+
+        public virtual void AddListeners()
+        {
+            confirmButton.onClick.AddListener(SwitchNextState);
+            revertButton.onClick.AddListener(RevertLastAnswer);
+        }
+
+        public virtual void RemoveListeners()
+        {
+            confirmButton.onClick.RemoveListener(SwitchNextState);
+            revertButton.onClick.RemoveListener(RevertLastAnswer);
         }
     }
 }

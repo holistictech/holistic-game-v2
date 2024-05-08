@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using Scriptables.QuestionSystem;
 using UI.Helpers;
 using UnityEngine;
@@ -10,7 +11,7 @@ namespace UI
     {
         [SerializeField] private Image blockImage;
         [SerializeField] private Button blockButton;
-
+        [SerializeField] private Color highlightColor;
         private CorsiBlockUIHelper _blockHelper;
         private Question _blockQuestion;
 
@@ -34,26 +35,28 @@ namespace UI
 
         public void AnimateSelf()
         {
-            
+            blockImage.DOColor(highlightColor, 1f).SetEase(Ease.Flash).OnComplete(ResetUI);
         }
 
         public void ResetUI()
         {
-            
+            blockImage.color = Color.white;
         }
 
         private void SetSelected()
         {
-        }
-
-        public void DisableSelf()
-        {
-            gameObject.SetActive(false);
+            blockImage.color = highlightColor;
+            _blockHelper.AppendSelectedAnswers(_blockQuestion, this);
         }
 
         private void EnableSelf()
         {
             gameObject.SetActive(true);
+        }
+
+        public Question GetAssignedQuestion()
+        {
+            return _blockQuestion;
         }
 
         private void AddListeners()

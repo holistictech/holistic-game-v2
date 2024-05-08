@@ -21,7 +21,7 @@ namespace UI.Helpers
         private List<UnitCircle> _activeUnitCircles;
 
         private int _answerIndex = 0;
-        public static event Action OnChoiceSelected;
+        public static event Action OnRoundFinished;
 
         private void Start()
         {
@@ -151,7 +151,7 @@ namespace UI.Helpers
         
         public void DisableSpawnedChoices()
         {
-            OnChoiceSelected?.Invoke();
+            OnRoundFinished?.Invoke();
             foreach (var spawnedChoice in _choicePool)
             {
                 spawnedChoice.DisableSelf();

@@ -10,17 +10,17 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 2966298be79be0948b7dfbe9a52b94e4, type: 3}
-  m_Name: ImageMultipleChoiceStates
+  m_Name: ForwardCorsiStates
   m_EditorClassIdentifier: 
   TutorialKey: ForwardMultipleChoiceImage
   StatePrefabs:
   - {fileID: 6665612139833752001, guid: 1d6d08058b2e5bd45b47ad9e62279971, type: 3}
-  - {fileID: 343728590293082522, guid: ae743216f9aef6546aaa58d9c41a96f5, type: 3}
-  - {fileID: 917999565626506664, guid: 477fcc199e5894f42ac04afb945ad6d8, type: 3}
+  - {fileID: 343728590293082522, guid: 52233eb035b76a24d9677f3385bdccf7, type: 3}
+  - {fileID: 917999565626506664, guid: 8dc584ac5f2b6c14db76c93658a10f33, type: 3}
   - {fileID: 4398036663724712788, guid: 1a1758605587797439b2cc162f45e46a, type: 3}
   - {fileID: 7419551033220530312, guid: 13c22131f8cde7c478ebac501b80413c, type: 3}
   InitialState: {fileID: 2252729160077255524, guid: 1d6d08058b2e5bd45b47ad9e62279971, type: 3}
-  QuestionState: {fileID: -8240159349078522210, guid: ae743216f9aef6546aaa58d9c41a96f5, type: 3}
-  AnswerState: {fileID: 8669911120965660855, guid: 477fcc199e5894f42ac04afb945ad6d8, type: 3}
+  QuestionState: {fileID: 999686745360716270, guid: 52233eb035b76a24d9677f3385bdccf7, type: 3}
+  AnswerState: {fileID: 106273001369839992, guid: 8dc584ac5f2b6c14db76c93658a10f33, type: 3}
   FeedbackState: {fileID: 228390392596929256, guid: 1a1758605587797439b2cc162f45e46a, type: 3}
   GameEndState: {fileID: 4512456094231747571, guid: 13c22131f8cde7c478ebac501b80413c, type: 3}
