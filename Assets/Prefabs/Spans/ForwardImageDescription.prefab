@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 1476230812880317276}
   - component: {fileID: 773999855161395063}
   - component: {fileID: 8897751145034989654}
+  - component: {fileID: 1043398036102280366}
   m_Layer: 5
   m_Name: ForwardImageDescription
   m_TagString: Untagged
@@ -251,3 +252,16 @@ MonoBehaviour:
   states: {fileID: 11400000, guid: 3fb6e373d1e1d8845a6d2869f6b5d250, type: 2}
   tutorialManager: {fileID: 0}
   _spanNameField: {fileID: 8384774950508815311}
+  timerHelper: {fileID: 1043398036102280366}
+--- !u!114 &1043398036102280366
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8242588130389079751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 328724f29e794f24abb0431455aecde8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 

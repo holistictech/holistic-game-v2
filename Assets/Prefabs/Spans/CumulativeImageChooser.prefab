@@ -357,6 +357,7 @@ GameObject:
   - component: {fileID: 773999855161395063}
   - component: {fileID: 5317712305952169983}
   - component: {fileID: 5184597612336586594}
+  - component: {fileID: 7256291826367197107}
   m_Layer: 5
   m_Name: CumulativeImageChooser
   m_TagString: Untagged
@@ -474,6 +475,19 @@ MonoBehaviour:
   states: {fileID: 11400000, guid: 5ebf71650ec0b544e939eeca3eb79c4a, type: 2}
   tutorialManager: {fileID: 5317712305952169983}
   _spanNameField: {fileID: 8243098352082445945}
+  timerHelper: {fileID: 7256291826367197107}
+--- !u!114 &7256291826367197107
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8242588130389079751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 328724f29e794f24abb0431455aecde8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8840831442161132576
 GameObject:
   m_ObjectHideFlags: 0

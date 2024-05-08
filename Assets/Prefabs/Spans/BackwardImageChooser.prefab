@@ -357,6 +357,7 @@ GameObject:
   - component: {fileID: 773999855161395063}
   - component: {fileID: 2092169552042374700}
   - component: {fileID: 5317712305952169983}
+  - component: {fileID: 8558737718165215953}
   m_Layer: 5
   m_Name: BackwardImageChooser
   m_TagString: Untagged
@@ -457,6 +458,7 @@ MonoBehaviour:
   states: {fileID: 11400000, guid: e134fe7addeaa8a4ea74da601071fbff, type: 2}
   tutorialManager: {fileID: 5317712305952169983}
   _spanNameField: {fileID: 8285521967046049998}
+  timerHelper: {fileID: 8558737718165215953}
 --- !u!114 &5317712305952169983
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -474,6 +476,18 @@ MonoBehaviour:
   tutorialFrame: {fileID: 5676812556043528798, guid: 9d48c73489107dc4d889ec1f7541333a, type: 3}
   tutorialHand: {fileID: 3664510739497132171, guid: ba7f4ed0cc0af46cf86c01ba89ab9169, type: 3}
   tutorialStepField: {fileID: 2638306012739917003}
+--- !u!114 &8558737718165215953
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8242588130389079751}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 328724f29e794f24abb0431455aecde8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &8840831442161132576
 GameObject:
   m_ObjectHideFlags: 0
