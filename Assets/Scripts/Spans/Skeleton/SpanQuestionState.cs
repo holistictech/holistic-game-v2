@@ -61,8 +61,8 @@ namespace Spans.Skeleton
         public virtual void DisableUIElements()
         {
         }
-        
-        public void SetCircleUI(int count)
+
+        protected void SetCircleUI(int count)
         {
             for (int i = 0; i < count; i++)
             {
@@ -74,7 +74,7 @@ namespace Spans.Skeleton
             _spanController.SetActiveCircles(_activeCircles);
         }
 
-        public void SpawnUnitCircles()
+        private void SpawnUnitCircles()
         {
             _spawnedUnitPool = new List<UnitCircle>();
             _activeCircles = new List<UnitCircle>();
@@ -86,15 +86,15 @@ namespace Spans.Skeleton
             }
         }
 
-        public void ActivateCircle(int index)
+        protected void ActivateCircle(int index)
         {
             if (_activeCircles != null && _activeCircles.Count > index)
             {
                 _activeCircles[index].ConfigureUI();
             }
         }
-        
-        public void ResetPreviousCircles()
+
+        protected void ResetPreviousCircles()
         {
             foreach (var circle in _activeCircles)
             {
@@ -103,7 +103,7 @@ namespace Spans.Skeleton
             _activeCircles.Clear();
         }
 
-        public UnitCircle GetAvailableUnitCircle()
+        private UnitCircle GetAvailableUnitCircle()
         {
             foreach (var circle in _spawnedUnitPool)
             {
@@ -116,14 +116,19 @@ namespace Spans.Skeleton
             throw new Exception("No available unit circle");
             return null;
         }
-        
-        public void RotateCircles(Action onComplete)
+
+        protected void RotateCircles(Action onComplete)
         {
-            unitParent.transform.DORotate(new Vector3(0, 0, -180), .5f).SetEase(Ease.Linear).OnComplete(() =>
-            {
-                unitParent.transform.rotation = Quaternion.Euler(0, 0, 0);
-                onComplete?.Invoke();
-            });
+            Quaternion originalRotation = unitParent.transform.rotation;
+            
+            unitParent.transform.DORotate(new Vector3(originalRotation.eulerAngles.x, 0, -180), .5f)
+                .SetEase(Ease.Linear)
+                .OnComplete(() =>
+                {
+                    unitParent.transform.rotation = originalRotation;
+                    onComplete?.Invoke();
+                });
         }
+
     }
 }

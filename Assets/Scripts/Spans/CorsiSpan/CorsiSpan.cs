@@ -39,6 +39,11 @@ namespace Spans.CorsiSpan
                 IncrementFailStreak();
                 return false;
             }
+
+            if (GetBackwardStatus())
+            {
+                currentSpanQuestions.Reverse();
+            }
             
             for (int i = 0; i < currentSpanQuestions.Count; i++)
             {

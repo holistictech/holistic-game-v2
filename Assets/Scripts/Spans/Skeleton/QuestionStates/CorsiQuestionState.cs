@@ -57,7 +57,17 @@ namespace Spans.Skeleton.QuestionStates
 
         public override void SwitchNextState()
         {
-            _spanController.SwitchState();
+            if (_spanController.GetBackwardStatus())
+            {
+                RotateCircles(() =>
+                {
+                    _spanController.SwitchState();
+                });
+            }
+            else
+            {
+                _spanController.SwitchState();
+            }
         }
 
         public override void TryShowStateTutorial()

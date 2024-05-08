@@ -150,7 +150,7 @@ namespace Spans.Skeleton.QuestionStates
             ResetPreviousCircles();
         }
 
-        public virtual void ConfigureDisplayedQuestions()
+        public void ConfigureDisplayedQuestions()
         {
             _spanController.SetCurrentDisplayedQuestions(_currentQuestions);
         }
