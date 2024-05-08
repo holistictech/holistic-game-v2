@@ -39,6 +39,7 @@ namespace Spans.Skeleton.QuestionStates
             if (_spanController == null)
             {
                 _spanController = spanController;
+                base.Enter(_spanController);
             }
             _spanObjects = _spanController.GetSpanObjects();
             EnableUIElements();
