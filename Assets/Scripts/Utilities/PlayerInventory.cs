@@ -9,11 +9,11 @@ namespace Utilities
         [SerializeField] private Level[] gameLevels;
         private static PlayerInventory _instance;
         
-        private string CurrencyKey = "CurrencyKey";
-        public int Currency { get; private set; }
+        private string EnergyKey = "EnergyKey";
+        public int Energy { get; private set; }
 
-        private string ExperienceKey = "ExperienceKey";
-        public int Experience { get; private set; }
+        private string PerformanceKey = "PerformanceKey";
+        public int Performance { get; private set; }
 
         private string CurrentLevelKey = "CurrentLevel";
         public int CurrentLevel { get; private set; }
@@ -51,22 +51,22 @@ namespace Utilities
             _instance = this;
             DontDestroyOnLoad(gameObject);
 
-            Currency = PlayerSaveManager.GetPlayerAttribute(CurrencyKey, 0);
-            Experience = PlayerSaveManager.GetPlayerAttribute(ExperienceKey, 0);
+            Energy = PlayerSaveManager.GetPlayerAttribute(EnergyKey, 0);
+            Performance = PlayerSaveManager.GetPlayerAttribute(PerformanceKey, 0);
             CurrentLevel = PlayerSaveManager.GetPlayerAttribute(CurrentLevelKey, 0);
             CurrentStage = PlayerSaveManager.GetPlayerAttribute(CurrentStageKey, 0);
         }
 
-        public void ChangeCurrencyAmount(int amount)
+        public void ChangeEnergyAmount(int amount)
         {
-            Currency += amount;
-            PlayerSaveManager.SavePlayerAttribute(Currency, CurrencyKey);
+            Energy += amount;
+            PlayerSaveManager.SavePlayerAttribute(Energy, EnergyKey);
         }
 
-        public void ChangeExperienceAmount(int amount)
+        public void ChangePerformanceAmount(int amount)
         {
-            Experience += amount;
-            PlayerSaveManager.SavePlayerAttribute(Experience, ExperienceKey);
+            Performance += amount;
+            PlayerSaveManager.SavePlayerAttribute(Performance, PerformanceKey);
         }
 
         public void SetCurrentLevel(int level)

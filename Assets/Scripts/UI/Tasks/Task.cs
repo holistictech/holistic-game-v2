@@ -42,7 +42,7 @@ namespace UI.Tasks
 
         private void ConfigureButtonState()
         {
-            if (PlayerInventory.Instance.Currency >= _taskConfig.Cost)
+            if (PlayerInventory.Instance.Energy >= _taskConfig.Cost)
             {
                 MakeButtonGo();
             }

@@ -5,17 +5,23 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3d01f5fc-4a81-4ccb-94d7-a0f07bc2bc79" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/Prefabs/Prefabs_Component_Buttons/Button01_BtnText_Green.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/Prefabs/Prefabs_Component_Buttons/Button01_BtnText_Green.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/Prefabs/Prefabs_DemoScene_Panels/Clan.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/Prefabs/Prefabs_DemoScene_Panels/Clan.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/Prefabs/Prefabs_DemoScene_Panels/Inventory.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/Prefabs/Prefabs_DemoScene_Panels/Inventory.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/Prefabs/Prefabs_DemoScene_Panels/Missions.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/Prefabs/Prefabs_DemoScene_Panels/Missions.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/Prefabs/Prefabs_DemoScene_Panels/Pass.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/Prefabs/Prefabs_DemoScene_Panels/Pass.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/Prefabs/Prefabs_DemoScene_Panels/Shop.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/Prefabs/Prefabs_DemoScene_Panels/Shop.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/ResourcesData/Sprite/Components/Button/Button01_Green.Png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/ResourcesData/Sprite/Components/Button/Button01_Green.Png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Spans/BackwardCorsiSpan.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Spans/BackwardCorsiSpan.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GamePlay/Grid.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GamePlay/Grid.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/CorsiAnswerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/CorsiAnswerState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/MultipleChoiceAnswerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/MultipleChoiceAnswerState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/VoiceAnswerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/VoiceAnswerState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/ISpanState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/ISpanState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/CommonQuestionState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/CommonQuestionState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/CorsiQuestionState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/CorsiQuestionState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanAnswerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanAnswerState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanFeedbackState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanFeedbackState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanGameEndState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanGameEndState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanInitialState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanInitialState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanQuestionState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanQuestionState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Helpers/MainUIHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Helpers/MainUIHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Tasks/Task.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Tasks/Task.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/CommonFields.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/CommonFields.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/PlayerInventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/PlayerInventory.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -51,6 +57,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Choice.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/CorsiBlock.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Helpers/CorsiBlockUIHelper.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Helpers/EnergyUIHelper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Helpers/TimerHelper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Tasks/Task.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/UnitCircle.cs" root0="FORCE_HIGHLIGHTING" />
@@ -59,6 +66,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utilities/PermissionRequester.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utilities/PlayerInventory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utilities/PlayerSaveManager.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utilities/RoundTimerHelper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utilities/ZoomController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.srcnalt.openai-unity@f7f501c076/Runtime/OpenAIApi.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -178,7 +186,7 @@
       <workItem from="1715029911703" duration="2476000" />
       <workItem from="1715068907399" duration="3549000" />
       <workItem from="1715084796014" duration="2512000" />
-      <workItem from="1715163982894" duration="5772000" />
+      <workItem from="1715163982894" duration="9026000" />
     </task>
     <servers />
   </component>

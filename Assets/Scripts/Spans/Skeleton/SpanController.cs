@@ -21,6 +21,7 @@ namespace Spans.Skeleton
         [SerializeField] private StateHolder states;
         [SerializeField] private TutorialManager tutorialManager;
         [SerializeField] private TextMeshProUGUI _spanNameField;
+        [SerializeField] private RoundTimerHelper timerHelper;
         protected List<UnitCircle> activeUnitCircles = new List<UnitCircle>();
         private List<ISpanState> _stateList = new List<ISpanState>();
         protected SpanStateContext stateContext;
@@ -36,6 +37,7 @@ namespace Spans.Skeleton
         protected List<Question> currentGivenAnswers = new List<Question>();
         private const int _neededStreakCount = 4;
         private bool _hasLeveledUp;
+        private bool _isSpanFinished;
 
         private GameObject _helperObject;
 
@@ -44,8 +46,19 @@ namespace Spans.Skeleton
             _spanNameField.text = $"{gameObject.name}";
         }
 
+        private void StartTimer()
+        {
+            timerHelper.InjectSpanController(this);
+        }
+
+        public void SetSpanCompleted()
+        {
+            _isSpanFinished = true;
+        }
+
         protected virtual void Start()
         {
+            StartTimer();
             stateContext = new SpanStateContext(this);
             SetSpanField();
             ResetQuestionStatus();
@@ -56,6 +69,12 @@ namespace Spans.Skeleton
 
         public void SwitchState()
         {
+            if (_isSpanFinished)
+            {
+                Debug.Log("this is finished");
+                return;
+            }
+            
             var index = _stateList.IndexOf(stateContext.CurrentState);
             if (index < _stateList.Count - 2)
             {

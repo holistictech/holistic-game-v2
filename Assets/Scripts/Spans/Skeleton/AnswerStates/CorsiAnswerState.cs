@@ -13,8 +13,8 @@ namespace Spans.Skeleton.AnswerStates
             if (spanController == null)
             {
                 spanController = controller;
-                _corsiHelper = spanController.GetHelperObject().GetComponent<CorsiBlockUIHelper>();
             }
+            _corsiHelper = spanController.GetHelperObject().GetComponent<CorsiBlockUIHelper>();
             _maxTime = spanController.GetRoundTime();
             EnableUIElements();
             ConfigureCorsiHelper();

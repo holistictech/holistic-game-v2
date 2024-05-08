@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 7474141742100322982}
   - component: {fileID: 7474141742100322983}
   m_Layer: 5
-  m_Name: Button01_BtnText_Green
+  m_Name: PlayButton
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
