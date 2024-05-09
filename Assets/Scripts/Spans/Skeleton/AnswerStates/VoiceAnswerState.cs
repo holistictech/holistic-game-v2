@@ -13,8 +13,7 @@ namespace Spans.Skeleton.AnswerStates
     {
         [SerializeField] private Whisper speechRecognition;
         [SerializeField] private Button micButton;
-        [SerializeField] private Button stopButton;
-        [SerializeField] private Button cancelButton;
+        [SerializeField] private Image recordRing;
         [SerializeField] private GameObject answerPopup;
         [SerializeField] private TextMeshProUGUI givenAnswerField;
 
@@ -59,7 +58,14 @@ namespace Spans.Skeleton.AnswerStates
         private void StartRecording()
         {
             speechRecognition.StartRecording();
-            stopButton.onClick.AddListener(StopRecording);
+            micButton.interactable = false;
+            AnimateRecordRing();
+        }
+
+        private void AnimateRecordRing()
+        {
+            recordRing.transform.DOScale(new Vector3(1.5f, 1.5f, 1.5f), 0.5f).SetEase(Ease.Linear)
+                .SetLoops(-1, LoopType.Restart);
         }
 
         private async void StopRecording()
@@ -69,43 +75,46 @@ namespace Spans.Skeleton.AnswerStates
             spanController.SetDetectedAnswers(answerList);
             answerPopup.gameObject.SetActive(true);
             givenAnswerField.text = $"{detectedAnswer}";
+            recordRing.DOKill();
             DOVirtual.DelayedCall(1f, SwitchNextState);
+            micButton.interactable = true;
         }
 
         private void StopTemporarily()
         {
             speechRecognition.EndRecording();
+            micButton.interactable = true;
+            recordRing.DOKill();
         }
 
         public override void EnableUIElements()
         {
             micButton.gameObject.SetActive(true);
-            cancelButton.gameObject.SetActive(true);
-            stopButton.gameObject.SetActive(true);
+            recordRing.gameObject.SetActive(true);
             base.EnableUIElements();
         }
 
         public override void DisableUIElements()
         {
             micButton.gameObject.SetActive(false);
-            cancelButton.gameObject.SetActive(false);
-            stopButton.gameObject.SetActive(false);
             answerPopup.gameObject.SetActive(false);
+            recordRing.gameObject.SetActive(false);
             givenAnswerField.text = "";
             base.DisableUIElements();
         }
 
-        private void AddListeners()
+        public override void AddListeners()
         {
             micButton.onClick.AddListener(StartRecording);
-            stopButton.onClick.AddListener(StopRecording);
-            cancelButton.onClick.AddListener(StopTemporarily);
+            confirmButton.onClick.AddListener(StopRecording);
+            revertButton.onClick.AddListener(StopTemporarily);
         }
 
-        private void RemoveListeners()
+        public override void RemoveListeners()
         {
             micButton.onClick.RemoveAllListeners();
-            cancelButton.onClick.RemoveListener(StopTemporarily);
+            confirmButton.onClick.RemoveListener(StopRecording);
+            revertButton.onClick.RemoveListener(StopTemporarily);
         }
     }
 }
