@@ -1,5 +1,6 @@
 using TMPro;
 using UnityEngine;
+using Utilities;
 
 namespace UI.Helpers
 {
@@ -7,9 +8,9 @@ namespace UI.Helpers
     {
         [SerializeField] private TextMeshProUGUI energyCountField;
 
-        public void SetEnergyCount(int amount)
+        public void UpdateEnergyField()
         {
-            energyCountField.text = $"{amount}";
+            energyCountField.text = $"{PlayerInventory.Instance.Energy}";
         }
     }
 }

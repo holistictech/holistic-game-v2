@@ -41,6 +41,7 @@ namespace Spans.Skeleton
 
         private GameObject _helperObject;
 
+        public static event Action OnSpanFinished;
         private void SetSpanField()
         {
             _spanNameField.text = $"{gameObject.name}";
@@ -72,6 +73,7 @@ namespace Spans.Skeleton
             if (_isSpanFinished)
             {
                 Debug.Log("this is finished");
+                OnSpanFinished?.Invoke();
                 return;
             }
             
