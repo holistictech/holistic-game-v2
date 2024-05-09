@@ -17,8 +17,7 @@ namespace Spans.Skeleton
         [SerializeField] private AudioClip tutorialSuccessFeedback;
         [SerializeField] private List<TutorialStep> steps;
         [SerializeField] private ParticleSystem levelUpEffect;
-        [SerializeField] private ParticleSystem successEffect;
-        [SerializeField] private ParticleSystem failEffect;
+        [SerializeField] private ParticleSystem[] confettis;
         [SerializeField] private Image feedbackLabel;
         [SerializeField] private TextMeshProUGUI feedbackField;
         [SerializeField] private Sprite wrongSprite;
@@ -80,7 +79,7 @@ namespace Spans.Skeleton
         {
             if (_spanController.IsAnswerCorrect())
             {
-                successEffect.Play();
+                PlayConfetti();
                 var roundIndex = _spanController.GetRoundIndex();
                 progressBar.maxValue = roundIndex;
                 levelField.text = $"{roundIndex}";
@@ -91,9 +90,17 @@ namespace Spans.Skeleton
             }
             else
             {
-                failEffect.Play();
                 _progressBar = StartCoroutine(AnimateProgressBar(0, .3f));
                 ConfigureFeedbackField(false);
+            }
+        }
+
+        private void PlayConfetti()
+        {
+            foreach (var confetti in confettis)
+            {
+                confetti.gameObject.SetActive(true);
+                confetti.Play();
             }
         }
         
@@ -188,8 +195,6 @@ namespace Spans.Skeleton
 
         public void EnableUIElements()
         {
-            successEffect.gameObject.SetActive(true);
-            failEffect.gameObject.SetActive(true);
             progressBar.gameObject.SetActive(true);
             feedbackLabel.gameObject.SetActive(true);
             feedbackField.gameObject.SetActive(true);
@@ -198,11 +203,18 @@ namespace Spans.Skeleton
 
         public void DisableUIElements()
         {
-            successEffect.gameObject.SetActive(false);
-            failEffect.gameObject.SetActive(false);
             feedbackLabel.gameObject.SetActive(false);
             levelUpEffect.gameObject.SetActive(false);
             feedbackLabel.transform.localScale = new Vector3(0,0,0);
+            DisableConfetti();
+        }
+        
+        private void DisableConfetti()
+        {
+            foreach (var confetti in confettis)
+            {
+                confetti.gameObject.SetActive(false);
+            }
         }
     }
 }
