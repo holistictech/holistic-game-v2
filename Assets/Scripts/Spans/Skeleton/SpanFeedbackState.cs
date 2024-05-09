@@ -24,6 +24,7 @@ namespace Spans.Skeleton
         [SerializeField] private Sprite wrongSprite;
         [SerializeField] private Sprite correctSprite;
         [SerializeField] private Slider progressBar;
+        [SerializeField] private TextMeshProUGUI levelField;
         private SpanController _spanController;
 
         private Coroutine _progressBar;
@@ -74,20 +75,18 @@ namespace Spans.Skeleton
             if(_spanController.GetTutorialStatus())
                 TryShowStateTutorial();
         }
-
-
-        private float speed = 5f;
+        
         private void PlayEffects()
         {
             if (_spanController.IsAnswerCorrect())
             {
                 successEffect.Play();
-                progressBar.maxValue = _spanController.GetRoundIndex();
+                var roundIndex = _spanController.GetRoundIndex();
+                progressBar.maxValue = roundIndex;
+                levelField.text = $"{roundIndex}";
                 float maxValue = progressBar.maxValue;
                 float target = maxValue / 4f + progressBar.value;
                 _progressBar = StartCoroutine(AnimateProgressBar(target, .3f));
-
-
                 ConfigureFeedbackField(true);
             }
             else
@@ -107,6 +106,7 @@ namespace Spans.Skeleton
                     levelUpEffect.Play();
                     progressBar.value = 0f;
                     _spanController.ResetLevelChangedStatus();
+                    levelField.text = $"{targetValue+1}";
                 }));
             }
             else

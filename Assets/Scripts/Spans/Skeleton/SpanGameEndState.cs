@@ -11,6 +11,7 @@ namespace Spans.Skeleton
 {
     public class SpanGameEndState : MonoBehaviour, ISpanState
     {
+        [SerializeField] private ParticleSystem confettiShower;
         [SerializeField] private Button confirmButton;
         [SerializeField] private Image timeFinishedBanner;
         [SerializeField] private Image finalPopup;
@@ -29,6 +30,7 @@ namespace Spans.Skeleton
 
         private void ConfigureUI()
         {
+            confettiShower.Play();
             var trueCount = StatisticsHelper.GetTrueCount();
             var total = StatisticsHelper.GetTotalQuestionCount();
 
@@ -39,7 +41,7 @@ namespace Spans.Skeleton
 
         private void AnimateConfirmButton()
         {
-            confirmButton.transform.DOScale(new Vector3(1, 1, 1), 1.7f).SetEase(Ease.OutBounce);
+            confirmButton.transform.DOScale(new Vector3(1, 1, 1), 1.4f).SetEase(Ease.OutBounce);
         }
 
         public void Exit()
@@ -59,6 +61,7 @@ namespace Spans.Skeleton
 
         public void EnableUIElements()
         {
+            confettiShower.gameObject.SetActive(true);
             confirmButton.gameObject.SetActive(true);
             timeFinishedBanner.gameObject.SetActive(true);
             finalPopup.gameObject.SetActive(true);
@@ -67,10 +70,12 @@ namespace Spans.Skeleton
 
         public void DisableUIElements()
         {
+            confettiShower.gameObject.SetActive(false);
             confirmButton.gameObject.SetActive(false);
             timeFinishedBanner.gameObject.SetActive(false);
             finalPopup.gameObject.SetActive(false);
             feedbackField.gameObject.SetActive(false);
+            confettiShower.Stop();
         }
 
         private void AddListeners()
