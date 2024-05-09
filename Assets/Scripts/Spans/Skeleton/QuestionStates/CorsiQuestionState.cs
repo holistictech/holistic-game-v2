@@ -6,6 +6,7 @@ using UI;
 using UI.Helpers;
 using UnityEngine;
 using UnityEngine.UI;
+using Utilities;
 
 namespace Spans.Skeleton.QuestionStates
 {
@@ -27,6 +28,7 @@ namespace Spans.Skeleton.QuestionStates
             EnableUIElements();
             _spanObjects = spanController.GetSpanObjects();
             ShowQuestion();
+            StatisticsHelper.IncrementDisplayedQuestionCount();
         }
         
         public override void ShowQuestion()

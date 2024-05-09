@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Scriptables.QuestionSystem;
 using Spans.ForwardSpan;
+using Utilities;
 using Random = UnityEngine.Random;
 
 namespace Spans.CumulativeSpan
@@ -94,6 +95,7 @@ namespace Spans.CumulativeSpan
 
         protected override void IncrementSuccessStreak()
         {
+            StatisticsHelper.IncrementTrueCount();
             if(currentRoundIndex < 9)
                 currentRoundIndex++;
         }

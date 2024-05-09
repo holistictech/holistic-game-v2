@@ -29,7 +29,7 @@ namespace UI.Helpers
         private void PlayRandomSpan()
         {
             var index = Random.Range(0, spans.Count);
-            var span = spans[index];
+            var span = spans[0];
             _activeSpan = Instantiate(span, transform);
             _activeSpan.gameObject.SetActive(true);
         }

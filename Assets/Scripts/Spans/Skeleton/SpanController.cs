@@ -73,7 +73,7 @@ namespace Spans.Skeleton
             if (_isSpanFinished)
             {
                 Debug.Log("this is finished");
-                OnSpanFinished?.Invoke();
+                stateContext.Transition(_stateList[^1]);
                 return;
             }
             
@@ -89,6 +89,12 @@ namespace Spans.Skeleton
             }
         }
 
+        public void EndSpan()
+        {
+            gameObject.SetActive(false);
+            OnSpanFinished?.Invoke();
+        }
+
         public virtual List<Question> GetSpanObjects()
         {
             return new List<Question>();
@@ -98,8 +104,8 @@ namespace Spans.Skeleton
         {
             return new List<Question>();
         }
-        
-        public Question[] GetAllAvailableSpanObjects()
+
+        protected Question[] GetAllAvailableSpanObjects()
         {
             return spanQuestions;
         }
@@ -185,6 +191,7 @@ namespace Spans.Skeleton
 
         protected virtual void IncrementSuccessStreak()
         {
+            StatisticsHelper.IncrementTrueCount();
             currentSuccessStreak++;
             currentFailStreak = 0;
             if (currentSuccessStreak == _neededStreakCount)
@@ -221,14 +228,6 @@ namespace Spans.Skeleton
 
         public void SetActiveCircles(List<UnitCircle> circles)
         {
-            /*if (isCumulative)
-            {
-                activeUnitCircles.AddRange(circles);
-            }
-            else
-            {
-                activeUnitCircles = new List<UnitCircle>(circles);
-            }*/
             activeUnitCircles = new List<UnitCircle>(circles);
         }
 

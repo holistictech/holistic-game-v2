@@ -51,6 +51,7 @@ namespace Spans.Skeleton.QuestionStates
             {
                 ShowQuestion();
             }
+            StatisticsHelper.IncrementDisplayedQuestionCount();
         }
 
         public override void ShowQuestion()
