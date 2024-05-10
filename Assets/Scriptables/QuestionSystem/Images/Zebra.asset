@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CorrectAnswerString: Zebra
   IsAnswerStringMUST: 0
-  Image: {fileID: 21300000, guid: 365d3868e811d8a4eb69618f1a5512f5, type: 3}
+  Image: {fileID: 21300000, guid: 92438308caac3004894b5d29ad910e68, type: 3}

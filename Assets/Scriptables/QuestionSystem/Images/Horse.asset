@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CorrectAnswerString: At
   IsAnswerStringMUST: 0
-  Image: {fileID: 21300000, guid: 3fc39cd90c41a53409cc64ff2c86d8d3, type: 3}
+  Image: {fileID: 21300000, guid: debbc6e3b608b214b84a4feabfc7a087, type: 3}

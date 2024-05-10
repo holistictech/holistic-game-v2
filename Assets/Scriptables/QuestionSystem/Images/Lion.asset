@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CorrectAnswerString: Aslan
   IsAnswerStringMUST: 0
-  Image: {fileID: 21300000, guid: 35c161ae75e902340b5513cee971d18a, type: 3}
+  Image: {fileID: 21300000, guid: 4af80e0e255ff4447ac26f710ccb840c, type: 3}
