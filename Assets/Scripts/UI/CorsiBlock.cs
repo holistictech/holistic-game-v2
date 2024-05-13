@@ -68,10 +68,10 @@ namespace UI
             gameObject.SetActive(true);
         }
 
-        public void AcceptInput()
+        public void ConfigureInput(bool toggle)
         {
-            blockButton.transition = Selectable.Transition.Animation;
-            blockButton.interactable = true;
+            blockButton.transition = toggle ? Selectable.Transition.ColorTint : Selectable.Transition.None;
+            blockButton.interactable = toggle;
         }
 
         public Question GetAssignedQuestion()

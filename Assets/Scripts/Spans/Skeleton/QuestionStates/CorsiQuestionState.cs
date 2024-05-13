@@ -26,6 +26,7 @@ namespace Spans.Skeleton.QuestionStates
             SetCircleUI(spanController.GetRoundIndex());
             EnableUIElements();
             _spanObjects = spanController.GetSpanObjects();
+            blockUIHelper.ConfigureInput(false);
             ShowQuestion();
             StatisticsHelper.IncrementDisplayedQuestionCount();
         }

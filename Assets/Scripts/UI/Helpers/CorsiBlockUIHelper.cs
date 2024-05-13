@@ -64,11 +64,11 @@ namespace UI.Helpers
             }
         }
 
-        public void EnableInput()
+        public void ConfigureInput(bool toggle)
         {
             foreach (var block in _spawnedBlocks)
             {
-                block.AcceptInput();
+                block.ConfigureInput(toggle);
             }
         }
 
