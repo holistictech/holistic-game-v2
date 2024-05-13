@@ -9,7 +9,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1717492734996794538}
-  - component: {fileID: 6412640762316234808}
+  - component: {fileID: 676547197037714810}
   m_Layer: 5
   m_Name: BackwardQuestionState
   m_TagString: Untagged
@@ -38,7 +38,7 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &6412640762316234808
+--- !u!114 &676547197037714810
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -47,15 +47,14 @@ MonoBehaviour:
   m_GameObject: {fileID: 343728590293082522}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 0bbbf1c3bec1c7c48b469e3f34e52026, type: 3}
+  m_Script: {fileID: 11500000, guid: 5eee5c012ac681a418ba043726a2769f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  steps:
-  - {fileID: 11400000, guid: 2113d07b36c4d4144b2dbf45e2f6cb80, type: 2}
-  questionFieldParent: {fileID: 4434634595705323715}
-  questionBox: {fileID: 4167525632228764592}
   unitParent: {fileID: 2221472986108085519}
   unit: {fileID: 1528521190168788059, guid: 32871c8165623f5459169d4295a25ae0, type: 3}
+  steps: []
+  questionFieldParent: {fileID: 4434634595705323715}
+  questionBox: {fileID: 4167525632228764592}
 --- !u!1001 &4634995447668513255
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -177,9 +176,33 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1717492734996794538}
     m_Modifications:
+    - target: {fileID: 1554772227874620452, guid: 7958412e887e02a4697d2490470f291f, type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 450
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554772227874620452, guid: 7958412e887e02a4697d2490470f291f, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 450
+      objectReference: {fileID: 0}
+    - target: {fileID: 1554772227874620452, guid: 7958412e887e02a4697d2490470f291f, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -0.000030517578
+      objectReference: {fileID: 0}
+    - target: {fileID: 2940816065738871514, guid: 7958412e887e02a4697d2490470f291f, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5984890152093512303, guid: 7958412e887e02a4697d2490470f291f, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 5984890152093512303, guid: 7958412e887e02a4697d2490470f291f, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5984890152093512303, guid: 7958412e887e02a4697d2490470f291f, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 8236910482573640776, guid: 7958412e887e02a4697d2490470f291f, type: 3}
       propertyPath: m_Name

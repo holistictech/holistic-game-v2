@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CorrectAnswerString: Elma
   IsAnswerStringMUST: 0
-  Image: {fileID: 21300000, guid: 3b7f1ea8b57f2dc43b95d0c19289904a, type: 3}
+  Image: {fileID: 21300000, guid: 0969186d3d5f4e8408e5ccba3868bb36, type: 3}

@@ -4,6 +4,7 @@ using System.Linq;
 using Scriptables.QuestionSystem;
 using Spans.ForwardSpan;
 using Spans.Skeleton;
+using UnityEngine;
 using Utilities;
 using Random = UnityEngine.Random;
 
@@ -60,25 +61,25 @@ namespace Spans.CumulativeSpan
         
         public override bool IsAnswerCorrect()
         {
-            if (currentGivenAnswers.Count == 0 || currentGivenAnswers.Count != currentDisplayedQuestions.Count)
+            if (currentGivenAnswers.Count == 0 || currentGivenAnswers.Count != currentSpanQuestions.Count)
             {
                 IncrementFailStreak();
                 return false;
             }
             
-            for (int i = 0; i < currentDisplayedQuestions.Count; i++)
+            for (int i = 0; i < currentSpanQuestions.Count; i++)
             {
-                if (currentDisplayedQuestions[i] is NumberQuestion)
+                if (currentSpanQuestions[i] is NumberQuestion)
                 {
-                    if ((int)currentDisplayedQuestions[i].GetQuestionItem() != (int)currentGivenAnswers[i].GetQuestionItem())
+                    if ((int)currentSpanQuestions[i].GetQuestionItem() != (int)currentGivenAnswers[i].GetQuestionItem())
                     {
                         IncrementFailStreak();
                         return false;
                     }
                 }
-                else if (currentDisplayedQuestions[i] is ImageQuestion)
+                else if (currentSpanQuestions[i] is ImageQuestion)
                 {
-                    if (currentDisplayedQuestions[i].GetQuestionItem() != currentGivenAnswers[i].GetQuestionItem())
+                    if ((Sprite)currentSpanQuestions[i].GetQuestionItem() != (Sprite)currentGivenAnswers[i].GetQuestionItem())
                     {
                         IncrementFailStreak();
                         return false;

@@ -146,6 +146,5 @@ namespace Spans.Skeleton
         {
             currentQuestionIndex = 0;
         }
-
     }
 }

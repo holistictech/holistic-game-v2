@@ -14,4 +14,4 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CorrectAnswerString: "\xC7ilek"
   IsAnswerStringMUST: 0
-  Image: {fileID: 21300000, guid: 4bc2b5718b4a4a04c8c5de99cb1fedfb, type: 3}
+  Image: {fileID: 21300000, guid: 133e268f263f4334f85134883a73566c, type: 3}
