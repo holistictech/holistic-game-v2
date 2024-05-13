@@ -51,7 +51,7 @@ namespace Spans.CumulativeSpan
                 while (choices.Contains(question))
                 {
                     index = Random.Range(0, imageQuestions.Length);
-                    question = imageQuestions[index];
+                    question = imageQuestions[index];   
                 }
                 choices.Add(question);
             }

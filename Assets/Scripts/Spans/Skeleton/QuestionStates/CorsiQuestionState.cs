@@ -14,6 +14,8 @@ namespace Spans.Skeleton.QuestionStates
     {
         [SerializeField] private CorsiBlockUIHelper blockUIHelper;
         private List<Question> _spanObjects = new List<Question>();
+
+        private int _currentQuestionIndex;
         public override void Enter(SpanController controller)
         {
             if (spanController == null)
@@ -47,8 +49,13 @@ namespace Spans.Skeleton.QuestionStates
             var spanQuestions = spanController.GetCurrentSpanQuestions();
             for (int i = 0; i < spanQuestions.Count; i++)
             {
-                ActivateCircle(i);
-                blockUIHelper.HighlightTargetBlock(spanQuestions[i]);
+                if (_currentQuestionIndex >= spanQuestions.Count)
+                {
+                    break;
+                }
+                ActivateCircle(_currentQuestionIndex);
+                blockUIHelper.HighlightTargetBlock(spanQuestions[_currentQuestionIndex]);
+                _currentQuestionIndex++;
                 yield return new WaitForSeconds(2f);
             }
             

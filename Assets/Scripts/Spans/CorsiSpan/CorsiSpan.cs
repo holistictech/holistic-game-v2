@@ -3,6 +3,7 @@ using System.Linq;
 using Scriptables.QuestionSystem;
 using Spans.Skeleton;
 using UnityEngine;
+using Utilities;
 
 namespace Spans.CorsiSpan
 {
@@ -10,10 +11,14 @@ namespace Spans.CorsiSpan
     {
         public override List<Question> GetSpanObjects()
         {
-            ResetQuestionStatus();
+            if (!GetCumulativeStatus())
+            {
+                ResetQuestionStatus();
+            }
             var allQuestions = GetAllAvailableSpanObjects();
             List<Question> roundQuestions = new List<Question>();
-            for (int i = 0; i < GetRoundIndex(); i++)
+            var iterations = GetCumulativeStatus() ? GetRoundIndex() - currentSpanQuestions.Count : GetRoundIndex();
+            for (int i = 0; i < iterations; i++)
             {
                 var randomQuestionIndex = Random.Range(0, allQuestions.Length);
                 var randomQuestion = allQuestions[randomQuestionIndex];
@@ -27,7 +32,14 @@ namespace Spans.CorsiSpan
                 roundQuestions.Add(randomQuestion);
             }
 
-            currentSpanQuestions = roundQuestions;
+            if (GetCumulativeStatus())
+            {
+                currentSpanQuestions.AddRange(roundQuestions);
+            }
+            else
+            {
+                currentSpanQuestions = roundQuestions;
+            }
             
             return allQuestions.ToList();
         }
@@ -55,6 +67,37 @@ namespace Spans.CorsiSpan
             }
             IncrementSuccessStreak();
             return true;
+        }
+
+        protected override void IncrementSuccessStreak()
+        {
+            StatisticsHelper.IncrementTrueCount();
+            if (GetCumulativeStatus())
+            {
+                if(currentRoundIndex < 9)
+                    currentRoundIndex++;
+            }
+            else
+            {
+                base.IncrementSuccessStreak();
+            }
+        }
+        
+        protected override void IncrementFailStreak()
+        {
+            if (GetCumulativeStatus())
+            {
+                
+                currentSpanQuestions.Clear();
+                currentDisplayedQuestions.Clear();
+                activeUnitCircles.Clear();
+                ResetRoundIndex();
+                //OnRoundReset?.Invoke();
+            }
+            else
+            {
+                base.IncrementFailStreak();
+            }
         }
     }
 }

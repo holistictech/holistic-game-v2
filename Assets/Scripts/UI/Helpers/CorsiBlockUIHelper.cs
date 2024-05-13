@@ -130,6 +130,8 @@ namespace UI.Helpers
             {
                 circle.DisableCircle();
             }
+
+            _answerIndex = 0;
         }
     }
 }

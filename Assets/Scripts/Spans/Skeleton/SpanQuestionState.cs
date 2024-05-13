@@ -43,6 +43,7 @@ namespace Spans.Skeleton
             {
                 StopCoroutine(displayingQuestions);
             }
+            ResetPreviousCircles();
         }
 
         public virtual void SwitchNextState()
