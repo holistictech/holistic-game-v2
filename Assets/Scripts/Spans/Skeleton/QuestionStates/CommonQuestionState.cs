@@ -66,7 +66,7 @@ namespace Spans.Skeleton.QuestionStates
 
         private IEnumerator ShowNumbers()
         {
-            for (int i = 0; i < _spanObjects.Count; i++)
+            for (int i = 0; i < spanController.GetRoundIndex(); i++)
             {
                 if (currentQuestionIndex >= _spanObjects.Count)
                 {

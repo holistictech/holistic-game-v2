@@ -1,9 +1,11 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using TMPro;
 using System.Linq;
+using Random = UnityEngine.Random;
 
 public class corsiSpan : MonoBehaviour
 {
@@ -536,7 +538,7 @@ public class corsiSpan : MonoBehaviour
         }
     }
 
-        void AvoidBlockCollisions(Transform currentBlock, CircleCollider2D currentCollider, List<Vector2> blockPositions)
+    void AvoidBlockCollisions(Transform currentBlock, CircleCollider2D currentCollider, List<Vector2> blockPositions)
     {
         foreach (Vector2 position in blockPositions)
         {
