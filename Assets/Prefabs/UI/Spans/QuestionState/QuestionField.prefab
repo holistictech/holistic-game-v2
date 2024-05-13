@@ -114,11 +114,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2627512713774198276, guid: af083baff59e2844bb9be3ba0da0c7f0, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 577.57263
+      value: 450
       objectReference: {fileID: 0}
     - target: {fileID: 2627512713774198276, guid: af083baff59e2844bb9be3ba0da0c7f0, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 577.1155
+      value: 450
       objectReference: {fileID: 0}
     - target: {fileID: 2627512713774198276, guid: af083baff59e2844bb9be3ba0da0c7f0, type: 3}
       propertyPath: m_LocalPosition.x
@@ -169,8 +169,16 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 7128068035000997967, guid: af083baff59e2844bb9be3ba0da0c7f0, type: 3}
+      propertyPath: m_Sprite
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 7128068035000997967, guid: af083baff59e2844bb9be3ba0da0c7f0, type: 3}
       propertyPath: m_Enabled
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7128068035000997967, guid: af083baff59e2844bb9be3ba0da0c7f0, type: 3}
+      propertyPath: m_PreserveAspect
+      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
