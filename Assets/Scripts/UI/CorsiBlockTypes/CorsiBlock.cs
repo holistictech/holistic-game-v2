@@ -1,20 +1,15 @@
-using System;
-using DG.Tweening;
 using Scriptables.QuestionSystem;
 using UI.Helpers;
 using UnityEngine;
 using UnityEngine.UI;
 
-namespace UI
+namespace UI.CorsiBlockTypes
 {
     public class CorsiBlock : MonoBehaviour
     {
-        [SerializeField] private Image blockImage;
-        [SerializeField] private Sprite eggSprite;
-        [SerializeField] private Sprite chickSprite;
-        [SerializeField] private ParticleSystem dustEffect;
-        [SerializeField] private Button blockButton;
-        [SerializeField] private Color highlightColor;
+        [SerializeField] protected Image blockImage;
+        [SerializeField] protected Button blockButton;
+        [SerializeField] protected Color highlightColor;
         private CorsiBlockUIHelper _blockHelper;
         private Question _blockQuestion;
 
@@ -36,25 +31,12 @@ namespace UI
             EnableSelf();
         }
 
-        public void AnimateSelf()
+        public virtual void AnimateSelf()
         {
-            //blockImage.DOColor(highlightColor, 1f).SetEase(Ease.Flash).OnComplete(ResetUI);
-
-            blockImage.transform.DOShakeScale(0.5f, .3f).SetEase(Ease.Flash).OnComplete(() =>
-            {
-                dustEffect.Play();
-                DOVirtual.DelayedCall(0.1f, () =>
-                {
-                    blockImage.sprite = chickSprite;
-                    DOVirtual.DelayedCall(0.9f, ResetUI);
-                });
-            });
         }
 
-        public void ResetUI()
+        public virtual void ResetUI()
         {
-            blockImage.sprite = eggSprite;
-            blockImage.color = Color.white;
         }
 
         private void SetSelected()

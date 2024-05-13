@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using Scriptables.QuestionSystem;
 using Spans.Skeleton.AnswerStates;
 using Spans.Skeleton.QuestionStates;
+using UI.CorsiBlockTypes;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -20,7 +21,6 @@ namespace UI.Helpers
         private List<CorsiBlock> _selectedBlocks = new List<CorsiBlock>();
         private List<Question> _selectedAnswers = new List<Question>();
         private List<UnitCircle> _activeCircles = new List<UnitCircle>();
-        private const int _blockSpawnCount = 9;
         private int _answerIndex;
 
         public void InjectQuestionState(CorsiQuestionState questionState)
@@ -37,15 +37,6 @@ namespace UI.Helpers
         {
             _activeCircles = circles;
             _activeCircles[_answerIndex].AnimateCircle();
-        }
-
-        public void SpawnCorsiBlocks()
-        {
-            for (int i = 0; i < _blockSpawnCount; i++)
-            {
-                var tempBlock = Instantiate(blockPrefab, blockParent.transform);
-                _spawnedBlocks.Add(tempBlock);
-            }
         }
 
         public void GetCorsiBlocks()

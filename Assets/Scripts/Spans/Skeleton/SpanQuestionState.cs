@@ -137,6 +137,11 @@ namespace Spans.Skeleton
                 });
         }
 
+        private void OnDestroy()
+        {
+            _spanEventBus.Unregister<RoundResetEvent>(OnRoundReset);
+        }
+
         private void OnRoundReset(RoundResetEvent reset)
         {
             currentQuestionIndex = 0;
