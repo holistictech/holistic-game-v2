@@ -6,9 +6,17 @@
   <component name="ChangeListManager">
     <list default="true" id="3d01f5fc-4a81-4ccb-94d7-a0f07bc2bc79" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Sprites/Egg_SpanImage.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Sprites/Egg_SpanImage.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Assets/Sprites/Title_Flag02_Red.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/Sprites/Title_Flag02_Red.png.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/glow1_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/glow1_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Lightning/lightning2_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Lightning/lightning2_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Lightning/lightning_3x1_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Lightning/lightning_3x1_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Prefabs/Environment/Dust/DustDirtyPoofSoft.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Prefabs/Environment/Dust/DustDirtyPoofSoft.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Prefabs/States/QuestionStates/CorsiQuestionState.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/States/QuestionStates/CorsiQuestionState.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/CorsiQuestionState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/CorsiQuestionState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Helpers/CorsiBlockUIHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Helpers/CorsiBlockUIHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Spans/QuestionState/CorsiBlock.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Spans/QuestionState/CorsiBlock.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Spans/QuestionState/CorsiBlockParent.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Spans/QuestionState/CorsiBlockParent.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GamePlay/Grid.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GamePlay/Grid.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/CorsiBlock.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/CorsiBlock.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +185,7 @@
       <workItem from="1715163982894" duration="9628000" />
       <workItem from="1715240293340" duration="3414000" />
       <workItem from="1715248640284" duration="3015000" />
-      <workItem from="1715587634398" duration="6374000" />
+      <workItem from="1715587634398" duration="8263000" />
     </task>
     <servers />
   </component>

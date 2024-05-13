@@ -10,6 +10,9 @@ namespace UI
     public class CorsiBlock : MonoBehaviour
     {
         [SerializeField] private Image blockImage;
+        [SerializeField] private Sprite eggSprite;
+        [SerializeField] private Sprite chickSprite;
+        [SerializeField] private ParticleSystem dustEffect;
         [SerializeField] private Button blockButton;
         [SerializeField] private Color highlightColor;
         private CorsiBlockUIHelper _blockHelper;
@@ -35,11 +38,22 @@ namespace UI
 
         public void AnimateSelf()
         {
-            blockImage.DOColor(highlightColor, 1f).SetEase(Ease.Flash).OnComplete(ResetUI);
+            //blockImage.DOColor(highlightColor, 1f).SetEase(Ease.Flash).OnComplete(ResetUI);
+
+            blockImage.transform.DOShakeScale(0.5f, .3f).SetEase(Ease.Flash).OnComplete(() =>
+            {
+                dustEffect.Play();
+                DOVirtual.DelayedCall(0.1f, () =>
+                {
+                    blockImage.sprite = chickSprite;
+                    DOVirtual.DelayedCall(0.9f, ResetUI);
+                });
+            });
         }
 
         public void ResetUI()
         {
+            blockImage.sprite = eggSprite;
             blockImage.color = Color.white;
         }
 
