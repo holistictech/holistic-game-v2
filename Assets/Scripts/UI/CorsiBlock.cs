@@ -68,6 +68,12 @@ namespace UI
             gameObject.SetActive(true);
         }
 
+        public void AcceptInput()
+        {
+            blockButton.transition = Selectable.Transition.Animation;
+            blockButton.interactable = true;
+        }
+
         public Question GetAssignedQuestion()
         {
             return _blockQuestion;

@@ -20,8 +20,6 @@ namespace Spans.Skeleton
         [SerializeField] protected Button confirmButton;
         [SerializeField] protected Button revertButton;
         protected SpanController spanController;
-        
-        
         public virtual void Enter(SpanController controller)
         {
             if (spanController == null)

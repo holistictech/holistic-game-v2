@@ -5,13 +5,10 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3d01f5fc-4a81-4ccb-94d7-a0f07bc2bc79" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/CorsiSpan/CorsiSpan.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/CorsiSpan/CorsiSpan.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/CumulativeSpan/CumulativeChooser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/CumulativeSpan/CumulativeChooser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/CommonQuestionState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/CommonQuestionState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/CorsiQuestionState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/CorsiQuestionState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanQuestionState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanQuestionState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/CorsiAnswerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/CorsiAnswerState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanAnswerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanAnswerState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/CorsiBlock.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/CorsiBlock.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Helpers/CorsiBlockUIHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Helpers/CorsiBlockUIHelper.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -182,7 +179,7 @@
       <workItem from="1715163982894" duration="9628000" />
       <workItem from="1715240293340" duration="3414000" />
       <workItem from="1715248640284" duration="3015000" />
-      <workItem from="1715587634398" duration="10961000" />
+      <workItem from="1715587634398" duration="11541000" />
     </task>
     <servers />
   </component>
@@ -235,19 +232,6 @@
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanQuestionState.cs</url>
-          <line>34</line>
-          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Spans\Skeleton\SpanQuestionState.cs" initialLine="34" containingFunctionPresentation="Method 'Enter'">
-            <startOffsets>
-              <option value="1015" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1069" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/CorsiQuestionState.cs</url>
           <line>17</line>
           <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Spans\Skeleton\QuestionStates\CorsiQuestionState.cs" initialLine="17" containingFunctionPresentation="Method 'Enter'">
@@ -259,6 +243,19 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanQuestionState.cs</url>
+          <line>31</line>
+          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Spans\Skeleton\SpanQuestionState.cs" initialLine="31" containingFunctionPresentation="Method 'Enter'">
+            <startOffsets>
+              <option value="890" />
+            </startOffsets>
+            <endOffsets>
+              <option value="891" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="11" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

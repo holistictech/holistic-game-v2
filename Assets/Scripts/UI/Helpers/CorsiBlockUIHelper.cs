@@ -64,6 +64,14 @@ namespace UI.Helpers
             }
         }
 
+        public void EnableInput()
+        {
+            foreach (var block in _spawnedBlocks)
+            {
+                block.AcceptInput();
+            }
+        }
+
         public List<Question> GetGivenAnswers()
         {
             return _selectedAnswers;

@@ -26,6 +26,7 @@ namespace Spans.Skeleton.AnswerStates
             _corsiHelper.InjectAnswerState(this);
             var circles = spanController.GetActiveCircles();
             _corsiHelper.SetActiveCircles(circles);
+            _corsiHelper.EnableInput();
         }
         
         public override void PlayTimer(float maxTime)
