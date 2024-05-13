@@ -14,14 +14,11 @@ namespace Spans.Skeleton.QuestionStates
     {
         [SerializeField] private CorsiBlockUIHelper blockUIHelper;
         private List<Question> _spanObjects = new List<Question>();
-
-        private int _currentQuestionIndex;
         public override void Enter(SpanController controller)
         {
             if (spanController == null)
             {
-                spanController = controller;
-                base.Enter(spanController);
+                base.Enter(controller);
                 blockUIHelper.GetCorsiBlocks();
                 blockUIHelper.InjectQuestionState(this);
                 spanController.SetHelperObject(blockUIHelper.gameObject);
@@ -49,13 +46,13 @@ namespace Spans.Skeleton.QuestionStates
             var spanQuestions = spanController.GetCurrentSpanQuestions();
             for (int i = 0; i < spanQuestions.Count; i++)
             {
-                if (_currentQuestionIndex >= spanQuestions.Count)
+                if (currentQuestionIndex >= spanQuestions.Count)
                 {
                     break;
                 }
-                ActivateCircle(_currentQuestionIndex);
-                blockUIHelper.HighlightTargetBlock(spanQuestions[_currentQuestionIndex]);
-                _currentQuestionIndex++;
+                ActivateCircle(currentQuestionIndex);
+                blockUIHelper.HighlightTargetBlock(spanQuestions[currentQuestionIndex]);
+                currentQuestionIndex++;
                 yield return new WaitForSeconds(2f);
             }
             

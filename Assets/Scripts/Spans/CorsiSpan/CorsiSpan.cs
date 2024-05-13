@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using Scriptables.QuestionSystem;
+using Spans.CumulativeSpan;
 using Spans.Skeleton;
 using UnityEngine;
 using Utilities;
@@ -87,12 +88,12 @@ namespace Spans.CorsiSpan
         {
             if (GetCumulativeStatus())
             {
-                
                 currentSpanQuestions.Clear();
                 currentDisplayedQuestions.Clear();
                 activeUnitCircles.Clear();
                 ResetRoundIndex();
                 //OnRoundReset?.Invoke();
+                spanEventBus.Trigger(new RoundResetEvent());
             }
             else
             {

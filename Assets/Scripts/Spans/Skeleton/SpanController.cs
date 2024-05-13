@@ -38,6 +38,8 @@ namespace Spans.Skeleton
         private const int _neededStreakCount = 4;
         private bool _hasLeveledUp;
         private bool _isSpanFinished;
+        
+        protected SpanEventBus spanEventBus;
 
         private GameObject _helperObject;
 
@@ -61,6 +63,7 @@ namespace Spans.Skeleton
         {
             StartTimer();
             stateContext = new SpanStateContext(this);
+            spanEventBus = new SpanEventBus();
             SetSpanField();
             ResetQuestionStatus();
             InstantiateGameStates();
@@ -242,6 +245,11 @@ namespace Spans.Skeleton
                 _helperObject = helper;
         }
 
+        public SpanEventBus GetEventBus()
+        {
+            return spanEventBus;
+        }
+
         public GameObject GetHelperObject()
         {
             return _helperObject;
@@ -275,11 +283,6 @@ namespace Spans.Skeleton
             {
                 onComplete?.Invoke();
             });
-        }
-
-        public void TriggerTutorialField(string fieldText)
-        {
-            tutorialManager.SetFinalTutorialField(fieldText);
         }
 
         public void HighlightTarget(RectTransform target, RectTransform parent, bool animNeeded, float offset = 0)

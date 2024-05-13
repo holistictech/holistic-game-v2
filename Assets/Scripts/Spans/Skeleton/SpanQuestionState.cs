@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using DG.Tweening;
+using Spans.CumulativeSpan;
 using UI;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,6 +16,8 @@ namespace Spans.Skeleton
 
         private List<UnitCircle> _spawnedUnitPool;
         private List<UnitCircle> _activeCircles;
+        protected int currentQuestionIndex;
+        private SpanEventBus _spanEventBus;
         protected SpanController spanController;
         protected Coroutine displayingQuestions;
         
@@ -28,6 +31,8 @@ namespace Spans.Skeleton
             if (spanController == null)
             {
                 spanController = controller;
+                _spanEventBus = spanController.GetEventBus();
+                _spanEventBus.Register<RoundResetEvent>(OnRoundReset);
             }
             EnableUIElements();
         }
@@ -130,6 +135,11 @@ namespace Spans.Skeleton
                     unitParent.transform.rotation = originalRotation;
                     onComplete?.Invoke();
                 });
+        }
+
+        private void OnRoundReset(RoundResetEvent reset)
+        {
+            currentQuestionIndex = 0;
         }
 
     }
