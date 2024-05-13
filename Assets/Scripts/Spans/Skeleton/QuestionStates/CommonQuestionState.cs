@@ -86,7 +86,7 @@ namespace Spans.Skeleton.QuestionStates
                 }
                 var question = _spanObjects[_currentQuestionIndex];
                 questionBox.GetComponentInChildren<TextMeshProUGUI>().text = $"{question.GetQuestionItem()}";
-                ActivateCircle(i);
+                ActivateCircle(_currentQuestionIndex);
                 questionBox.enabled = false;
                 _currentQuestions.Add(question);
                 _currentQuestionIndex++;
@@ -204,12 +204,12 @@ namespace Spans.Skeleton.QuestionStates
 
         private void AddListeners()
         {
-            CumulativeImageChooser.OnRoundReset += ResetQuestionIndex;
+            CumulativeChooser.OnRoundReset += ResetQuestionIndex;
         }
 
         private void RemoveListeners()
         {
-            CumulativeImageChooser.OnRoundReset -= ResetQuestionIndex;
+            CumulativeChooser.OnRoundReset -= ResetQuestionIndex;
         }
     }
 }

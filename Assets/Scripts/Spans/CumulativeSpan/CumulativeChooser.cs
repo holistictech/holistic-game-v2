@@ -8,7 +8,7 @@ using Random = UnityEngine.Random;
 
 namespace Spans.CumulativeSpan
 {
-    public class CumulativeImageChooser : ForwardSpanImageDescription
+    public class CumulativeChooser : ForwardSpanImageDescription
     {
         private const int _choiceCount = 9;
 
@@ -69,10 +69,21 @@ namespace Spans.CumulativeSpan
             
             for (int i = 0; i < currentDisplayedQuestions.Count; i++)
             {
-                if (currentDisplayedQuestions[i].GetQuestionItem() != currentGivenAnswers[i].GetQuestionItem())
+                if (currentDisplayedQuestions[i] is NumberQuestion)
                 {
-                    IncrementFailStreak();
-                    return false;
+                    if ((int)currentDisplayedQuestions[i].GetQuestionItem() != (int)currentGivenAnswers[i].GetQuestionItem())
+                    {
+                        IncrementFailStreak();
+                        return false;
+                    }
+                }
+                else if (currentDisplayedQuestions[i] is ImageQuestion)
+                {
+                    if (currentDisplayedQuestions[i].GetQuestionItem() != currentGivenAnswers[i].GetQuestionItem())
+                    {
+                        IncrementFailStreak();
+                        return false;
+                    }
                 }
             }
             IncrementSuccessStreak();

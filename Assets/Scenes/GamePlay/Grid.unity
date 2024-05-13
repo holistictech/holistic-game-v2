@@ -7491,6 +7491,7 @@ MonoBehaviour:
   playButton: {fileID: 709096445}
   energyHelper: {fileID: 1728660784}
   spans:
+  - {fileID: 8242588130389079751, guid: 8ad06098b623c5146b75d84237dbd4f9, type: 3}
   - {fileID: 8242588130389079751, guid: 12b0e0dc60bff7e4ebdd6a3e6f78e05f, type: 3}
   - {fileID: 8242588130389079751, guid: f5c7d838e473b1e44917feed44c43999, type: 3}
   - {fileID: 8242588130389079751, guid: d7ffc106b648cb84b82b25f2456d8e09, type: 3}

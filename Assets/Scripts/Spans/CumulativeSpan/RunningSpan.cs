@@ -3,7 +3,7 @@ using Scriptables.QuestionSystem;
 
 namespace Spans.CumulativeSpan
 {
-    public class RunningSpan : CumulativeImageChooser
+    public class RunningSpan : CumulativeChooser
     {
         private const int max_fetch_count = 5;
 
