@@ -1,3 +1,4 @@
+using DG.Tweening;
 using Scriptables.QuestionSystem;
 using UI.Helpers;
 using UnityEngine;
@@ -33,10 +34,13 @@ namespace UI.CorsiBlockTypes
 
         public virtual void AnimateSelf()
         {
+            blockImage.DOColor(highlightColor, 1f).SetEase(Ease.Flash).OnComplete(ResetUI);
         }
 
         public virtual void ResetUI()
         {
+            blockImage.sprite = null;
+            blockImage.color = Color.white;
         }
 
         private void SetSelected()

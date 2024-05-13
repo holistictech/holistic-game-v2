@@ -1,3 +1,6 @@
+using System.Collections.Generic;
+using UnityEngine;
+
 namespace Utilities
 {
     public class CommonFields
@@ -12,6 +15,22 @@ namespace Utilities
             Barn,
             Animal
         }
+
+        public enum Direction
+        {
+            Up = 0,
+            Right,
+            Down,
+            Left
+        }
+
+        public static Dictionary<Direction, Vector2> DirectionVectors = new Dictionary<Direction, Vector2>()
+        {
+            { Direction.Up, new Vector2(0, 5) },
+            { Direction.Right, new Vector2(5, 0) },
+            { Direction.Down, new Vector2(0, -5) },
+            { Direction.Left, new Vector2(-5, 0) },
+        };
     }
 
     public struct Size
