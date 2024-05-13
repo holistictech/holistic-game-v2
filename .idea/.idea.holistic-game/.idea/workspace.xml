@@ -6,23 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3d01f5fc-4a81-4ccb-94d7-a0f07bc2bc79" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Spans/BackwardImageChooser.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Spans/BackwardImageChooser.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Spans/CumulativeImageChooser.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Spans/CumulativeImageChooser.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Spans/ForwardImageChooser.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Spans/ForwardImageChooser.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Spans/ForwardImageDescription.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Spans/ForwardImageDescription.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/States/QuestionStates/BackwardQuestionState.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/States/QuestionStates/BackwardQuestionState.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GamePlay/Grid.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GamePlay/Grid.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Images/Apple.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Images/Apple.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Images/Banana.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Images/Banana.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Images/Orange.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Images/Orange.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Images/Pear.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Images/Pear.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Images/Strawberry.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Images/Strawberry.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/StateHolders/BackwardImageMultipleChoiceStates.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/StateHolders/BackwardImageMultipleChoiceStates.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/StateHolders/BackwardNumberMultipleChoiceStates.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/StateHolders/BackwardNumberMultipleChoiceStates.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/StateHolders/NumberMultipleChoiceStates.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/StateHolders/NumberMultipleChoiceStates.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/StateHolders/SpeechRecognitionStates.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/StateHolders/SpeechRecognitionStates.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/CumulativeSpan/CumulativeChooser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/CumulativeSpan/CumulativeChooser.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanQuestionState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanQuestionState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/CommonQuestionState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/CommonQuestionState.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,7 +79,7 @@
     "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "XThreadsFramesViewSplitterKey": "0.6666667",
+    "XThreadsFramesViewSplitterKey": "0.94273126",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
     "node.js.detected.package.eslint": "true",
@@ -201,7 +185,7 @@
       <workItem from="1715163982894" duration="9628000" />
       <workItem from="1715240293340" duration="3414000" />
       <workItem from="1715248640284" duration="3015000" />
-      <workItem from="1715587634398" duration="21967000" />
+      <workItem from="1715587634398" duration="22760000" />
     </task>
     <servers />
   </component>
@@ -254,17 +238,30 @@
           <option name="timeStamp" value="10" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/CommonQuestionState.cs</url>
-          <line>25</line>
-          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Spans\Skeleton\QuestionStates\CommonQuestionState.cs" initialLine="25" containingFunctionPresentation="Method 'Enter'">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/MultipleChoiceAnswerState.cs</url>
+          <line>46</line>
+          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Spans\Skeleton\AnswerStates\MultipleChoiceAnswerState.cs" initialLine="46" containingFunctionPresentation="Method 'SetChoiceUI'">
             <startOffsets>
-              <option value="740" />
+              <option value="1265" />
             </startOffsets>
             <endOffsets>
-              <option value="741" />
+              <option value="1266" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="12" />
+          <option name="timeStamp" value="14" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/ForwardSpan/ImageChooser.cs</url>
+          <line>10</line>
+          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Spans\ForwardSpan\ImageChooser.cs" initialLine="10" containingFunctionPresentation="Method 'GetChoices'">
+            <startOffsets>
+              <option value="266" />
+            </startOffsets>
+            <endOffsets>
+              <option value="267" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="15" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -44,6 +44,7 @@ namespace Spans.Skeleton.QuestionStates
 
         public override void ShowQuestion()
         {
+            _currentQuestions = new List<Question>();
             if (currentQuestionIndex + spanController.GetRoundIndex() >= _spanObjects.Count && !spanController.GetCumulativeStatus())
             {
                 _spanObjects = spanController.GetSpanObjects();
