@@ -12,6 +12,7 @@ namespace UI.Helpers
         [SerializeField] private Button playButton;
         [SerializeField] private EnergyUIHelper energyHelper;
         [SerializeField] private List<GameObject> spans;
+        [SerializeField] private Image selectionPopup;
 
         private GameObject _activeSpan;
 
@@ -28,8 +29,15 @@ namespace UI.Helpers
 
         private void PlayRandomSpan()
         {
-            var index = Random.Range(0, spans.Count);
+            /*var index = Random.Range(0, spans.Count);
             var span = spans[0];
+            _activeSpan = Instantiate(span, transform);
+            _activeSpan.gameObject.SetActive(true);*/
+            selectionPopup.gameObject.SetActive(true);
+        }
+
+        public void PlaySelectedSpan(GameObject span)
+        {
             _activeSpan = Instantiate(span, transform);
             _activeSpan.gameObject.SetActive(true);
         }

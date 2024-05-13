@@ -13,7 +13,6 @@ namespace UI.Helpers
     public class CorsiBlockUIHelper : MonoBehaviour
     {
         [SerializeField] private LayoutGroup blockParent;
-        [SerializeField] private CorsiBlock blockPrefab;
 
         private CorsiQuestionState _corsiQuestionState;
         private CorsiAnswerState _corsiAnswerState;
