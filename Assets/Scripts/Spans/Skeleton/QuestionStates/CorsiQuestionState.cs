@@ -22,7 +22,7 @@ namespace Spans.Skeleton.QuestionStates
             {
                 spanController = controller;
                 base.Enter(spanController);
-                blockUIHelper.SpawnCorsiBlocks();
+                blockUIHelper.GetCorsiBlocks();
                 blockUIHelper.InjectQuestionState(this);
                 spanController.SetHelperObject(blockUIHelper.gameObject);
             }

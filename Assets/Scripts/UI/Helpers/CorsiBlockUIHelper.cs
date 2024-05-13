@@ -48,6 +48,11 @@ namespace UI.Helpers
             }
         }
 
+        public void GetCorsiBlocks()
+        {
+            _spawnedBlocks = new List<CorsiBlock>(blockParent.GetComponentsInChildren<CorsiBlock>());
+        }
+
         public void AssignQuestions(List<Question> spanQuestions)
         {
             _selectedAnswers.Clear();
