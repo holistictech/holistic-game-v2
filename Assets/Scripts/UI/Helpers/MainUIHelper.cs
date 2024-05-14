@@ -45,7 +45,7 @@ namespace UI.Helpers
         private void DestroyActiveSpan()
         {
             Destroy(_activeSpan.gameObject);
-            PlayerInventory.Instance.ChangeEnergyAmount(2);
+            PlayerInventory.Instance.ChangeEnergyAmount(1);
             energyHelper.UpdateEnergyField();
         }
 
