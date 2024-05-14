@@ -10,9 +10,9 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a14b061b09037164cb92c3110829b97d, type: 3}
-  m_Name: Task1
+  m_Name: Coop
   m_EditorClassIdentifier: 
   TaskSprite: {fileID: 0}
-  Mission: "Su tank\u0131n\u0131 in\u015Faa et"
+  Mission: "Tavuk k\xFCmesi in\u015Faa et"
   Cost: 5
-  RewardInteractable: {fileID: 11400000, guid: ef465228844806741822a7ea9c2b5cc0, type: 2}
+  RewardInteractable: {fileID: 11400000, guid: 6a31ab0e318804d4c92e013a1511bc30, type: 2}

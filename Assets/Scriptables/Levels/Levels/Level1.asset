@@ -16,5 +16,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 127fc3e6611070a43a8e7ffd71bb72f7, type: 2}
   - {fileID: 11400000, guid: 42f6a55d4d9ffdf42a128afe5015a168, type: 2}
   - {fileID: 11400000, guid: 53b2ccc20da7c41458c8b4e2a0969ed5, type: 2}
+  - {fileID: 11400000, guid: b8745941d9ccad24ebf5e22854bf99de, type: 2}
+  - {fileID: 11400000, guid: 3d72845721c1890498c7166b05877482, type: 2}
   LevelId: 1
   CurrentStage: 0
