@@ -11430,6 +11430,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 66f403962e012e44cb5f63f875f4d4d5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  fieldImage: {fileID: 890441796}
+  energySprite: {fileID: 21300000, guid: 8865df1114fa24fed914687ef9ce0ce8, type: 3}
   energyCountField: {fileID: 1985587121}
 --- !u!1 &1737824140
 GameObject:
@@ -12958,6 +12960,7 @@ GameObject:
   - component: {fileID: 2135509756}
   - component: {fileID: 2135509755}
   - component: {fileID: 2135509759}
+  - component: {fileID: 2135509760}
   m_Layer: 5
   m_Name: GameCanvas
   m_TagString: Untagged
@@ -13062,6 +13065,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a538a99850608e14aa7d67f42c523680, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  trailHelper: {fileID: 0}
   playButton: {fileID: 709096445}
   energyHelper: {fileID: 1728660784}
   spans:
@@ -13080,6 +13084,19 @@ MonoBehaviour:
   - {fileID: 8242588130389079751, guid: 4039366b1e83d10469be3cdcdf84ab5c, type: 3}
   - {fileID: 8242588130389079751, guid: ce65451c05df1ee42923282e6a4f2bee, type: 3}
   selectionPopup: {fileID: 885373564}
+--- !u!114 &2135509760
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2135509754}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dd914694d1a2fb4a80adab8824770d6, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  trailObject: {fileID: 5096043776111173978, guid: 3317a27f816bbe741bde42132cca072f, type: 3}
 --- !u!1001 &3296659668964140188
 PrefabInstance:
   m_ObjectHideFlags: 0

@@ -274,7 +274,7 @@ namespace Spans.Skeleton
 
         public bool IsHelperTutorialNeeded()
         {
-            return PlayerSaveManager.GetPlayerAttribute($"Helper{states.TutorialKey}", 0) == 0;
+            return false; //PlayerSaveManager.GetPlayerAttribute($"Helper{states.TutorialKey}", 0) == 0;
         }
 
         public void TriggerStateTutorial(Dictionary<GameObject, TutorialStep> tutorials, bool needHand, Action onComplete)

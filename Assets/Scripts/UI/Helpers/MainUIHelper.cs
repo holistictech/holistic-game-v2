@@ -9,6 +9,7 @@ namespace UI.Helpers
 {
     public class MainUIHelper : MonoBehaviour
     {
+        [SerializeField] private CurrencyTrailHelper trailHelper;
         [SerializeField] private Button playButton;
         [SerializeField] private EnergyUIHelper energyHelper;
         [SerializeField] private List<GameObject> spans;
@@ -40,13 +41,17 @@ namespace UI.Helpers
         {
             _activeSpan = Instantiate(span, transform);
             _activeSpan.gameObject.SetActive(true);
+            selectionPopup.gameObject.SetActive(false);
         }
 
         private void DestroyActiveSpan()
         {
             Destroy(_activeSpan.gameObject);
-            PlayerInventory.Instance.ChangeEnergyAmount(1);
-            energyHelper.UpdateEnergyField();
+            trailHelper.AnimateTrail(energyHelper, () =>
+            {
+                PlayerInventory.Instance.ChangeEnergyAmount(1);
+                energyHelper.UpdateEnergyField();
+            });
         }
 
         private void AddListeners()
