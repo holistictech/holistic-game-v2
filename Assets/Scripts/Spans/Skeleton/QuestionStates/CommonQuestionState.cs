@@ -45,11 +45,15 @@ namespace Spans.Skeleton.QuestionStates
         public override void ShowQuestion()
         {
             _currentQuestions = new List<Question>();
-            if (currentQuestionIndex + spanController.GetRoundIndex() >= _spanObjects.Count && !spanController.GetCumulativeStatus())
+            
+            if (!spanController.GetCumulativeStatus())
             {
-                _spanObjects = spanController.GetSpanObjects();
                 currentQuestionIndex = 0;
             }
+            /*if (currentQuestionIndex + spanController.GetRoundIndex() >= _spanObjects.Count && !spanController.GetCumulativeStatus())
+            {
+                _spanObjects = spanController.GetSpanObjects();
+            }*/
             
             var question = _spanObjects[currentQuestionIndex];
             if (question is NumberQuestion)
@@ -119,7 +123,7 @@ namespace Spans.Skeleton.QuestionStates
                 var question = _spanObjects[currentQuestionIndex];
                 AudioClip clip = (AudioClip)question.GetQuestionItem();
                 AudioManager.Instance.PlayAudioClip(clip);
-                ActivateCircle(i);
+                ActivateCircle(currentQuestionIndex);
                 _currentQuestions.Add(question);
                 currentQuestionIndex++;
                 yield return new WaitForSeconds(clip.length + 1f);

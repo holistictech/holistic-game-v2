@@ -40,10 +40,12 @@ namespace UI
             {
                 choiceValue.text = $"{_question.GetQuestionItem()}";
                 choiceImage.sprite = numberChoiceSprite;
+                choiceImage.type = Image.Type.Sliced;
             }
             else if (_question is ImageQuestion)
             {
                 choiceImage.sprite = (Sprite)_question.GetQuestionItem();
+                choiceImage.type = Image.Type.Simple;
             }
             else if (_question is ClipQuestion)
             {

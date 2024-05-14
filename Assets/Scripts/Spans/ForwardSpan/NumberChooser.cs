@@ -11,6 +11,10 @@ namespace Spans.ForwardSpan
         {
             var numberQuestions = GetAllAvailableSpanObjects();
             int choiceCount = currentRoundIndex;
+            if (currentRoundIndex >= 4)
+            {
+                choiceCount = 9 - currentRoundIndex;
+            }
             List<Question> choices = new List<Question>(GetCurrentDisplayedQuestions());
             
             for (int i = 0; i < choiceCount; i++)
