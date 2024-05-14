@@ -19,7 +19,7 @@ namespace UI.Tasks
 
         private TaskConfig _taskConfig;
 
-        public static event Action<InteractableConfig> OnTaskCompleted;
+        public static event Action<TaskConfig> OnTaskCompleted;
         public static event Action OnSpanRequested;
 
         private void OnEnable()
@@ -66,7 +66,7 @@ namespace UI.Tasks
 
         private void TryCompleteTask()
         {
-            OnTaskCompleted?.Invoke(_taskConfig.RewardInteractable);
+            OnTaskCompleted?.Invoke(_taskConfig);
             taskPanelManager.DisableTaskPopup();
         }
 

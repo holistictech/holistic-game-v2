@@ -43,17 +43,22 @@ namespace UI.Tasks
 
         private void EnableTaskPopup()
         {
+            if (taskPanel.activeSelf) return;
+            taskButton.transition = Selectable.Transition.None;
+            taskButton.interactable = false;
             taskPanel.gameObject.SetActive(true);
             InstantiateTasks();
         }
 
-        public void DisableTasksPanel(InteractableConfig config)
+        public void DisableTasksPanel(TaskConfig config)
         {
             DisableTaskPopup();
         }
 
         public void DisableTaskPopup()
         {
+            taskButton.transition = Selectable.Transition.ColorTint;
+            taskButton.interactable = true;
             taskPanel.gameObject.SetActive(false);
             DestroyTasks();
         }

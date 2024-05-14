@@ -19,7 +19,7 @@ namespace Scriptables
 
         public List<TaskConfig> GetAvailableTasks()
         {
-            return LevelTasks.Where((item, index) => index >= CurrentStage).ToList();
+            return LevelTasks.Where((item, index) => !item.GetHasCompleted()).ToList();
         }
     }
 }

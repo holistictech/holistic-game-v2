@@ -21,7 +21,7 @@ namespace Spawners
         [SerializeField] private Transform objectParent;
         [SerializeField] private SwipeHandler swipeHandler;
         private GridController _gridController;
-        private InteractableConfig _currentConfig;
+        private TaskConfig _currentConfig;
 
         [SerializeField] private InteractableConfig itemConfig;
 
@@ -42,7 +42,7 @@ namespace Spawners
             _gridController = controller;
         }
 
-        private void SpawnSketch(InteractableConfig config)
+        private void SpawnSketch(TaskConfig config)
         {
             _currentConfig = config;
             var mainCamera = Camera.main;
@@ -54,7 +54,7 @@ namespace Spawners
             
                 Vector3 middlePoint = cameraPosition + cameraForward * mainCamera.nearClipPlane;
                 var spawnedSketch = Instantiate(sketch, objectParent);
-                spawnedSketch.ConfigureObjectMesh(_currentConfig.ObjectMesh);
+                spawnedSketch.ConfigureObjectMesh(_currentConfig.RewardInteractable.ObjectMesh);
                 spawnedSketch.transform.position = new Vector3(middlePoint.x, 0, middlePoint.y);
                 swipeHandler.enabled = true;
                 OnPositionChoiceNeeded?.Invoke(spawnedSketch);
@@ -64,21 +64,22 @@ namespace Spawners
         private void SpawnInteractable()
         {
             var finalPos = swipeHandler.GetFinalPosition();
-            SpawnSelectedInteractable(new CartesianPoint((int)finalPos.x, (int)finalPos.z), _currentConfig);
+            SpawnSelectedInteractable(new CartesianPoint((int)finalPos.x, (int)finalPos.z), _currentConfig.RewardInteractable);
         }
 
 
-        public void SpawnSelectedInteractable(CartesianPoint desiredPoint, InteractableConfig itemConfig)
+        public void SpawnSelectedInteractable(CartesianPoint desiredPoint, InteractableConfig config)
         {
-            var spawnedInstance = InteractableFactory.SpawnInstance(spawnable, itemConfig, objectParent);
+            var spawnedInstance = InteractableFactory.SpawnInstance(spawnable, config, objectParent);
             var interactable = spawnedInstance.GetComponent<InteractableObject>();
 
-            interactable.InjectFields(_gridController, itemConfig);
+            interactable.InjectFields(_gridController, config);
             var buildingPlan = interactable.CalculateCoordinatesForBlocking(desiredPoint);
             if (interactable != null && _gridController.IsPlacementValid(buildingPlan))
             {
                 interactable.BuildSelf(desiredPoint);
                 swipeHandler.enabled = false;
+                _currentConfig.SetHasCompleted(true);
             }
             else
             {
