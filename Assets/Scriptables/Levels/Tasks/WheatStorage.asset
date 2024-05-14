@@ -16,3 +16,4 @@ MonoBehaviour:
   Mission: "Bu\u011Fday deposunu in\u015Faa et"
   Cost: 3
   RewardInteractable: {fileID: 11400000, guid: 1a181b7f7baf9bb429bf480dd7ebbedf, type: 2}
+  _hasCompleted: 0

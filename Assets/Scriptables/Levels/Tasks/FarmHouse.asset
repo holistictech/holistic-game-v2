@@ -16,3 +16,4 @@ MonoBehaviour:
   Mission: "\xC7iftlik evini in\u015Faa et"
   Cost: 2
   RewardInteractable: {fileID: 11400000, guid: f36a9929aea01b941bdfa295d7ca9bab, type: 2}
+  _hasCompleted: 0

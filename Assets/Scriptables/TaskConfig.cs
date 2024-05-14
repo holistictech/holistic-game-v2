@@ -10,7 +10,7 @@ namespace Scriptables
         public String Mission;
         public int Cost;
         public InteractableConfig RewardInteractable;
-        private bool _hasCompleted;
+        public bool _hasCompleted;
 
         public void SetHasCompleted(bool toggle)
         {

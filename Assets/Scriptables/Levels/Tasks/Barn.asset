@@ -16,3 +16,4 @@ MonoBehaviour:
   Mission: "Ah\u0131r in\u015Faa et"
   Cost: 5
   RewardInteractable: {fileID: 11400000, guid: bcd9afd009a057d45984edf831668461, type: 2}
+  _hasCompleted: 0

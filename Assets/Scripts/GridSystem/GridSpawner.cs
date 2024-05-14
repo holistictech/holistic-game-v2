@@ -17,9 +17,14 @@ namespace GridSystem
 
         public static event Action<GridController> OnGridReady;
 
-        private void OnEnable()
+        private void Awake()
         {
             SpawnGrids();
+        }
+
+        private void OnEnable()
+        {
+            //SpawnGrids();
         }
         
         private void SpawnGrids()
@@ -29,9 +34,11 @@ namespace GridSystem
             {
                 for (int x = 0; x < width; x++)
                 {
-                    var tempGrid = Instantiate(gridPrefab, new Vector3(x, 0, z), Quaternion.identity);
-                    tempGrid.InitializeGrid(x, z);
-                    tempGrid.transform.SetParent(gridParent);
+                    //var tempGrid = Instantiate(gridPrefab, new Vector3(x, 0, z), Quaternion.identity);
+                    //tempGrid.InitializeGrid(x, z);
+                    //tempGrid.transform.SetParent(gridParent);
+                    //board[x, z] = tempGrid;
+                    Grid tempGrid = new Grid(x, z);
                     board[x, z] = tempGrid;
                 }
             }
@@ -39,7 +46,6 @@ namespace GridSystem
             _gridController = new GridController(board);
             _spawner.InjectLogicBoard(_gridController);
             //DistributeLogicBoard();
-            //transform.position = new Vector3(0, -60, 26);
         }
 
         private void DistributeLogicBoard()

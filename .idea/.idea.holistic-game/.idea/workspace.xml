@@ -6,23 +6,23 @@
   <component name="ChangeListManager">
     <list default="true" id="3d01f5fc-4a81-4ccb-94d7-a0f07bc2bc79" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/ResourcesData/Sprite/Components/Button/Button_Hexagon199_Blue.png.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/ResourcesData/Sprite/Components/Button/Button_Hexagon199_Blue.png.meta" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/GridMaterial.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/GridMaterial.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My Farm/Demo/Prefabs/Roads/Road_green_3.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My Farm/Demo/Prefabs/Roads/Road_green_3.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Bubbles/bubble_half_clear_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Bubbles/bubble_half_clear_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Liquid/drop_AB.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Liquid/drop_AB.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/Prefabs/Prefabs_Component_Buttons/Button03_BtnIconText_Purple.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/GUI Casual/Layer Lab/GUI Pro-CasualGame/Prefabs/Prefabs_Component_Buttons/Button03_BtnIconText_Purple.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/GridSystem/Grid.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/GridSystem/Grid.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Tasks/Tasks.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Tasks/Tasks.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/GamePlay/Grid.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GamePlay/Grid.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Level.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Level.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/Level1.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/Level1.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/Task1.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/Task1.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/Task2.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/Task2.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/Task3.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/Task3.asset.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/Barn.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/Barn.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/Coop.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/Coop.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/FarmHouse.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/FarmHouse.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/WaterTank.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/WaterTank.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/WheatStorage.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/WheatStorage.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scriptables/TaskConfig.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/TaskConfig.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GridSystem/Grid.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GridSystem/Grid.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/GridSystem/GridSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/GridSystem/GridSpawner.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spawners/InteractableSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spawners/InteractableSpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Tasks/Task.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Tasks/Task.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Tasks/TasksPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Tasks/TasksPanel.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/PlayerInventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/PlayerInventory.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -35,6 +35,7 @@
   <component name="HighlightingSettingsPerFile">
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/d8/f4b5447c/List`1.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/834b2ded5dad441e8c7a4287897d63c746ac00/51/75e86bcd/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9920ff0c944845d7b9f9a61ef1478edc94bc00/59/31ff7f93/SerializedObject.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b1fe495152fd4f0180f79e56e3bccacc173e00/05/b3862672/UnitySynchronizationContext.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b1fe495152fd4f0180f79e56e3bccacc173e00/c9/bc6cbc87/SetupCoroutine.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scriptables/InteractableConfig.cs" root0="FORCE_HIGHLIGHTING" />
@@ -58,14 +59,6 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanInitialState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spawners/InteractableSpawner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Choice.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://D:/UnityProjects/holistic-game/Assets/Scripts/UI/CorsiBlockTypes/CorsiBlock.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/UnityProjects/holistic-game/Assets/Scripts/UI/CorsiBlockTypes/CorsiBlock.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/UnityProjects/holistic-game/Assets/Scripts/UI/CorsiBlockTypes/CorsiBlock.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/UnityProjects/holistic-game/Assets/Scripts/UI/CorsiBlockTypes/CorsiBlock.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/UnityProjects/holistic-game/Assets/Scripts/UI/CorsiBlockTypes/CorsiBlock.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/UnityProjects/holistic-game/Assets/Scripts/UI/CorsiBlockTypes/CorsiBlock.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/UnityProjects/holistic-game/Assets/Scripts/UI/CorsiBlockTypes/CorsiBlock.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/UnityProjects/holistic-game/Assets/Scripts/UI/CorsiBlockTypes/CorsiBlock.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Helpers/CorsiBlockUIHelper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Helpers/EnergyUIHelper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Helpers/TimerHelper.cs" root0="FORCE_HIGHLIGHTING" />
@@ -141,10 +134,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="126172">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="126172" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -202,7 +195,7 @@
       <workItem from="1715240293340" duration="3414000" />
       <workItem from="1715248640284" duration="3015000" />
       <workItem from="1715587634398" duration="24858000" />
-      <workItem from="1715672210682" duration="3780000" />
+      <workItem from="1715672210682" duration="8553000" />
     </task>
     <servers />
   </component>
@@ -253,6 +246,19 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/UI/Tasks/TasksPanel.cs</url>
+          <line>57</line>
+          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\UI\Tasks\TasksPanel.cs" initialLine="58" containingFunctionPresentation="Method 'DisableTaskPopup'">
+            <startOffsets>
+              <option value="1480" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1481" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="18" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

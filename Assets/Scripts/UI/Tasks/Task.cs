@@ -15,7 +15,7 @@ namespace UI.Tasks
         [SerializeField] private Button goButton;
         [SerializeField] private TextMeshProUGUI buttonTextField;
 
-        [SerializeField] private TasksPanel taskPanelManager;
+        private TasksPanel _taskPanelManager;
 
         private TaskConfig _taskConfig;
 
@@ -32,8 +32,9 @@ namespace UI.Tasks
             RemoveListeners();
         }
 
-        public void ConfigureUI(TaskConfig config)
+        public void ConfigureUI(TaskConfig config, TasksPanel parent)
         {
+            _taskPanelManager = parent;
             _taskConfig = config;
             taskField.text = config.Mission;
             targetField.text = $"{config.Cost}";
@@ -67,12 +68,12 @@ namespace UI.Tasks
         private void TryCompleteTask()
         {
             OnTaskCompleted?.Invoke(_taskConfig);
-            taskPanelManager.DisableTaskPopup();
+            _taskPanelManager.DisableTaskPopup();
         }
 
         private void RedirectToSpan()
         {
-            taskPanelManager.DisableTaskPopup();
+            _taskPanelManager.DisableTaskPopup();
             OnSpanRequested?.Invoke();
         }
 

@@ -37,28 +37,21 @@ namespace UI.Tasks
             foreach (var task in tasks)
             {
                 var temp = Instantiate(taskPrefab, taskContent);
-                temp.ConfigureUI(task);
+                temp.ConfigureUI(task, this);
             }
         }
 
         private void EnableTaskPopup()
         {
             if (taskPanel.activeSelf) return;
-            taskButton.transition = Selectable.Transition.None;
-            taskButton.interactable = false;
+            taskButton.gameObject.SetActive(false);
             taskPanel.gameObject.SetActive(true);
             InstantiateTasks();
         }
 
-        public void DisableTasksPanel(TaskConfig config)
-        {
-            DisableTaskPopup();
-        }
-
         public void DisableTaskPopup()
         {
-            taskButton.transition = Selectable.Transition.ColorTint;
-            taskButton.interactable = true;
+            taskButton.gameObject.SetActive(true);
             taskPanel.gameObject.SetActive(false);
             DestroyTasks();
         }
@@ -76,14 +69,12 @@ namespace UI.Tasks
         {
             taskButton.onClick.AddListener(EnableTaskPopup);
             closeButton.onClick.AddListener(DisableTaskPopup);
-            Task.OnTaskCompleted += DisableTasksPanel;
         }
 
         private void RemoveListeners()
         {
             taskButton.onClick.RemoveListener(EnableTaskPopup);
             closeButton.onClick.RemoveListener(DisableTaskPopup);
-            Task.OnTaskCompleted -= DisableTasksPanel;
         }
     }
 }

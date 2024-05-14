@@ -66,6 +66,10 @@ PrefabInstance:
       propertyPath: m_ChildForceExpandHeight
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 1128796841670692565, guid: c1f60efe09035488b945be08488849b1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -98.153015
+      objectReference: {fileID: 0}
     - target: {fileID: 1603259476441814303, guid: c1f60efe09035488b945be08488849b1, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -85,6 +89,22 @@ PrefabInstance:
     - target: {fileID: 1603259476441814303, guid: c1f60efe09035488b945be08488849b1, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2036552867429981113, guid: c1f60efe09035488b945be08488849b1, type: 3}
+      propertyPath: m_Horizontal
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2237503821802499013, guid: c1f60efe09035488b945be08488849b1, type: 3}
+      propertyPath: m_SizeDelta.y
+      value: -1075.29
+      objectReference: {fileID: 0}
+    - target: {fileID: 2237503821802499013, guid: c1f60efe09035488b945be08488849b1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 0.007446289
+      objectReference: {fileID: 0}
+    - target: {fileID: 2880476020508528814, guid: c1f60efe09035488b945be08488849b1, type: 3}
+      propertyPath: m_VerticalFit
+      value: 2
       objectReference: {fileID: 0}
     - target: {fileID: 6854430822851708288, guid: c1f60efe09035488b945be08488849b1, type: 3}
       propertyPath: m_Pivot.x
@@ -169,6 +189,10 @@ PrefabInstance:
     - target: {fileID: 6854430822851708291, guid: c1f60efe09035488b945be08488849b1, type: 3}
       propertyPath: m_Name
       value: Popup01_Single_Navy
+      objectReference: {fileID: 0}
+    - target: {fileID: 6854430822851708291, guid: c1f60efe09035488b945be08488849b1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

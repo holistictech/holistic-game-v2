@@ -62,7 +62,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 3ab88c74573cb11468bb8dae5b1d83c7, type: 2}
+  - {fileID: 2100000, guid: 4970176c3a60ad84498af6dfb5cf9e03, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -96,3 +96,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c2ecdb1a0126a0d4ca61b1ab023d0559, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  possibleLayouts:
+  - {fileID: 4300000, guid: 1bd206f6308abbc489fa8f5227d28395, type: 3}
+  - {fileID: 4300000, guid: fa377f9ac03e1b148a96a6696057aec9, type: 3}
+  - {fileID: 4300000, guid: 041b637a4b7788741bd80b03a6a944b5, type: 3}
+  - {fileID: 4300000, guid: 7aa7e2e8c2580c74f85b1486cedbb5dc, type: 3}
+  gridMesh: {fileID: 2787322817524813385}
