@@ -13065,7 +13065,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a538a99850608e14aa7d67f42c523680, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trailHelper: {fileID: 0}
+  trailHelper: {fileID: 2135509760}
   playButton: {fileID: 709096445}
   energyHelper: {fileID: 1728660784}
   spans:
