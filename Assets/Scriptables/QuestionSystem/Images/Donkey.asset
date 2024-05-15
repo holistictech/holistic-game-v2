@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 576094c64b81ec044884d4ae3e5eaa4c, type: 3}
   m_Name: Donkey
   m_EditorClassIdentifier: 
-  CorrectAnswerString: 
+  CorrectAnswerString: "E\u015Fek"
   IsAnswerStringMUST: 0
-  Image: {fileID: 0}
+  Image: {fileID: 21300000, guid: 69f7885eab9c1324ba6dd37518ba623f, type: 3}

@@ -79,7 +79,29 @@ namespace Spawners
             {
                 interactable.BuildSelf(desiredPoint);
                 swipeHandler.enabled = false;
-                _currentConfig.SetHasCompleted(true);
+                if(_currentConfig != null)
+                    _currentConfig.SetHasCompleted(true);
+            }
+            else
+            {
+                Destroy(interactable.gameObject);
+                Debug.LogError("Error while spawning building");
+            }
+        }
+
+        public void LoadInteractableFromFile(CartesianPoint desiredPoint, InteractableConfig config)
+        {
+            var spawnedInstance = InteractableFactory.SpawnInstance(spawnable, config, objectParent);
+            var interactable = spawnedInstance.GetComponent<InteractableObject>();
+
+            interactable.InjectFields(_gridController, config);
+            var buildingPlan = interactable.CalculateCoordinatesForBlocking(desiredPoint);
+            if (interactable != null && _gridController.IsPlacementValid(buildingPlan))
+            {
+                interactable.BuildSelf(desiredPoint);
+                swipeHandler.enabled = false;
+                if(_currentConfig != null)
+                    _currentConfig.SetHasCompleted(true);
             }
             else
             {

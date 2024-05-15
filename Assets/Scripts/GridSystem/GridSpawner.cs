@@ -2,6 +2,7 @@ using System;
 using Spawners;
 using UnityEngine;
 using UnityEngine.Serialization;
+using Utilities;
 
 namespace GridSystem
 {
@@ -22,9 +23,9 @@ namespace GridSystem
             SpawnGrids();
         }
 
-        private void OnEnable()
+        private void OnDestroy()
         {
-            //SpawnGrids();
+            
         }
         
         private void SpawnGrids()
@@ -34,10 +35,6 @@ namespace GridSystem
             {
                 for (int x = 0; x < width; x++)
                 {
-                    //var tempGrid = Instantiate(gridPrefab, new Vector3(x, 0, z), Quaternion.identity);
-                    //tempGrid.InitializeGrid(x, z);
-                    //tempGrid.transform.SetParent(gridParent);
-                    //board[x, z] = tempGrid;
                     Grid tempGrid = new Grid(x, z);
                     board[x, z] = tempGrid;
                 }
@@ -46,6 +43,20 @@ namespace GridSystem
             _gridController = new GridController(board);
             _spawner.InjectLogicBoard(_gridController);
             //DistributeLogicBoard();
+            TryLoadInteractables();
+        }
+
+        private void TryLoadInteractables()
+        {
+            var data = SaveLoadManager.TryLoadFarm();
+            _gridController.SetExistingFarmData(data);
+            var interactables = data.InteractableData;
+
+            foreach (var itemData in interactables)
+            {
+                itemData.Config.ObjectMesh = itemData.CreateMeshFromData();
+                _spawner.LoadInteractableFromFile(itemData.Point, itemData.Config);
+            }
         }
 
         private void DistributeLogicBoard()

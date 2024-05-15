@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -9,6 +10,7 @@ namespace Utilities
         public const int DAILY_ACTIVITY_COUNT = 10;
         public const int DEFAULT_ROUND_INDEX = 2;
         
+        [Serializable]
         public enum InteractableType
         {
             Concrete = 0,
@@ -39,6 +41,7 @@ namespace Utilities
         public int Height;
     }
 
+    [Serializable]
     public class CartesianPoint
     {
         private int _xCoordinate;

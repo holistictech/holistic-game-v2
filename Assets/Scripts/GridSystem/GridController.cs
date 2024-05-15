@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
+using Interactables;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 using Utilities;
 using static Utilities.CartesianPoint;
 
@@ -10,11 +12,18 @@ namespace GridSystem
     public class GridController
     {
         private Grid[,] _board;
+        private FarmData _farmData;
 
         public GridController(Grid[,] board)
         {
             _board = board;
         }
+
+        public void SetExistingFarmData(FarmData data)
+        {
+            _farmData = data;
+        }
+        
 
         public bool IsGridBlocked(CartesianPoint point)
         {
@@ -66,8 +75,25 @@ namespace GridSystem
                 }
             }
         }
+
+        public void AppendSpawnedInteractables(InteractableData data)
+        {
+            _farmData.InteractableData.Add(data);
+            SaveLoadManager.SaveFarm(GetFarmData());
+        }
+
+        public FarmData GetFarmData()
+        {
+            return _farmData;
+        }
         
         private bool IsPointInvalid(CartesianPoint placedPoint) => 
             placedPoint.GetXCoordinate() >= GetWidth() || placedPoint.GetYCoordinate() >= GetHeight();
+    }
+    
+    [Serializable]
+    public class FarmData
+    {
+        public List<InteractableData> InteractableData = new List<InteractableData>();
     }
 }

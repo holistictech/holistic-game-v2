@@ -12,6 +12,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 576094c64b81ec044884d4ae3e5eaa4c, type: 3}
   m_Name: Rabbit
   m_EditorClassIdentifier: 
-  CorrectAnswerString: 
+  CorrectAnswerString: "Tav\u015Fan"
   IsAnswerStringMUST: 0
-  Image: {fileID: 0}
+  Image: {fileID: 21300000, guid: db990b8434bd5804a8ac13834d42faab, type: 3}
