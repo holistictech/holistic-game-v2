@@ -27,6 +27,7 @@ namespace UI.Helpers
 
         public void EnableSelf()
         {
+            gameObject.SetActive(true);
             timerBg.gameObject.SetActive(true);
         }
 
@@ -50,6 +51,11 @@ namespace UI.Helpers
             
             timerFill.transform.localScale = new Vector3(0f, initialScale.y, initialScale.z);
             onComplete?.Invoke();
+        }
+
+        public GameObject GetBackgroundForTutorial()
+        {
+            return timerBg.gameObject;
         }
 
         public void StopTimer()

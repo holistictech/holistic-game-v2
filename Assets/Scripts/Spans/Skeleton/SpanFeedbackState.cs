@@ -15,6 +15,7 @@ namespace Spans.Skeleton
     public class SpanFeedbackState : MonoBehaviour, ISpanState
     {
         [SerializeField] private AudioClip tutorialSuccessFeedback;
+        [SerializeField] private AudioClip yourTurnClip;
         [SerializeField] private List<TutorialStep> steps;
         [SerializeField] private ParticleSystem levelUpEffect;
         [SerializeField] private ParticleSystem[] confettis;
@@ -71,8 +72,6 @@ namespace Spans.Skeleton
 
             EnableUIElements();
             PlayEffects();
-            if(_spanController.GetTutorialStatus())
-                TryShowStateTutorial();
         }
         
         private void PlayEffects()
@@ -153,10 +152,19 @@ namespace Spans.Skeleton
 
             feedbackLabel.transform.DOScale(1f, 1.5f).SetEase(Ease.OutBack).OnComplete(() =>
             {
-                DOVirtual.DelayedCall(1f, () =>
+                if (_spanController.GetTutorialStatus())
                 {
-                    _spanController.SwitchState();
-                });
+                    feedbackLabel.transform.localScale = new Vector3(0,0,0);
+                    TryShowStateTutorial();
+                }
+                else
+                {
+                    SwitchNextState();
+                }
+                /*DOVirtual.DelayedCall(1f, () =>
+                {
+                    //_spanController.SwitchState();
+                });*/
             });
         }
 
@@ -165,7 +173,6 @@ namespace Spans.Skeleton
             if (_spanController.GetTutorialStatus())
             {
                 AudioManager.Instance.PlayAudioClip(tutorialSuccessFeedback);
-                _spanController.SetTutorialCompleted();
                 return _successFeedbacks[0];
             }
             else
@@ -191,6 +198,18 @@ namespace Spans.Skeleton
 
         public void TryShowStateTutorial()
         {
+            List<GameObject> objects = new List<GameObject>(_spanController.GetTutorialHelperObjects());
+            var dictionary = new Dictionary<GameObject, TutorialStep>().CreateFromLists(objects, steps);
+            DOVirtual.DelayedCall(1.5f, () =>
+            {
+                _spanController.TriggerStateTutorial(dictionary, false, () =>
+                {
+                    _spanController.TriggerFinalTutorialField("Şimdi sıra sende", yourTurnClip);
+                    _spanController.SetTutorialCompleted();
+                    _spanController.SetHelperTutorialCompleted();
+                    SwitchNextState();
+                });
+            });
         }
 
         public void EnableUIElements()

@@ -58,13 +58,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 11c8a8df6bf0644478aedcdc317cbd20, type: 2}
   - {fileID: 11400000, guid: 66b4df7a2fb1e6149978cd02d0d3710c, type: 2}
   timer: {fileID: 4447996048511822422}
+  confirmButton: {fileID: 4200861930125296401}
+  revertButton: {fileID: 8630966795538606114}
   gridStep:
   - {fileID: 11400000, guid: 96a2a5c219d0eb54fb0bca06c367acbc, type: 2}
   gridHelper: {fileID: 7836674634508229821}
   gridLayoutGroup: {fileID: 3852416867757628982}
-  choicePrefab: {fileID: 7698170080985097280, guid: d1d268f3c8fd23f4e9fa33daf813df34, type: 3}
-  confirmButton: {fileID: 4200861930125296401}
-  revertButton: {fileID: 8630966795538606114}
 --- !u!1 &8668791638465285324
 GameObject:
   m_ObjectHideFlags: 0
@@ -124,6 +123,26 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2248318883426158715}
     m_Modifications:
+    - target: {fileID: 4508782063301379381, guid: 6ef072eff945d784ebdca48523af13b3, type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4508782063301379381, guid: 6ef072eff945d784ebdca48523af13b3, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4508782063301379381, guid: 6ef072eff945d784ebdca48523af13b3, type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4508782063301379381, guid: 6ef072eff945d784ebdca48523af13b3, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4956563815326933675, guid: 6ef072eff945d784ebdca48523af13b3, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 5712596384308515899, guid: 6ef072eff945d784ebdca48523af13b3, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

@@ -52,7 +52,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitParent: {fileID: 4493078967045124660}
   unit: {fileID: 1528521190168788059, guid: 32871c8165623f5459169d4295a25ae0, type: 3}
-  steps: []
+  steps:
+  - {fileID: 11400000, guid: 74a5475a67497d94fba80b7f2921f8fd, type: 2}
   questionFieldParent: {fileID: 8100135639205710447}
   questionBox: {fileID: 8373753712324026652}
 --- !u!1001 &2826876559702020979

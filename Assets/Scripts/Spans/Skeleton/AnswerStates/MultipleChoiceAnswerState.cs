@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using DG.Tweening;
 using Scriptables.QuestionSystem;
 using Scriptables.Tutorial;
 using UI.Helpers;
@@ -39,7 +40,8 @@ namespace Spans.Skeleton.AnswerStates
             }
             else
             {
-                TryShowHelpers();
+                //TryShowHelpers();
+                PlayTimer(_maxTime);
             }
         }
 
@@ -71,7 +73,6 @@ namespace Spans.Skeleton.AnswerStates
         {
             DisableUIElements();
             RemoveListeners();
-            timer.StopTimer();
             if (_tutorialHighlight != null)
             {
                 StopCoroutine(_tutorialHighlight);
@@ -96,8 +97,7 @@ namespace Spans.Skeleton.AnswerStates
             var secondPartDict = new Dictionary<GameObject, TutorialStep>().CreateFromLists(secondPart, GetTutorialSteps());
             spanController.TriggerStateTutorial(secondPartDict, true,() =>
             {
-                spanController.SetHelperTutorialCompleted();
-                PlayTimer(_maxTime);
+                //PlayTimer(_maxTime);
             });
         }
         
@@ -130,7 +130,7 @@ namespace Spans.Skeleton.AnswerStates
                     _lastIndex = _highlightIndex;
                     _waitInput = true;
                     yield return new WaitUntil(() => !_waitInput);
-                }       
+                }
             }
             spanController.HighlightTarget(confirmButton.GetComponent<RectTransform>(), GetComponent<RectTransform>(), true, 150f);
         }
@@ -151,17 +151,29 @@ namespace Spans.Skeleton.AnswerStates
             gridLayoutGroup.gameObject.SetActive(true);
             confirmButton.gameObject.SetActive(true);
             revertButton.gameObject.SetActive(true);
+            timer.EnableSelf();
         }
 
         public override void DisableUIElements()
         {
             base.DisableUIElements();
             gridLayoutGroup.gameObject.SetActive(false);
-            confirmButton.gameObject.SetActive(false);
-            revertButton.gameObject.SetActive(false);
-            gridHelper.DisableSpawnedChoices();
-            timer.StopTimer();
-
+            confirmButton.gameObject.SetActive(spanController.GetTutorialStatus());
+            revertButton.gameObject.SetActive(spanController.GetTutorialStatus());
+            if (spanController.GetTutorialStatus())
+            {
+                timer.EnableSelf();
+                spanController.SetTutorialHelperObjects(new List<GameObject>
+                {
+                    timer.gameObject,
+                    revertButton.gameObject,
+                    confirmButton.gameObject
+                });
+            }
+            else
+            {
+                timer.StopTimer();
+            }
             DisableSpawnedChoices();
         }
 

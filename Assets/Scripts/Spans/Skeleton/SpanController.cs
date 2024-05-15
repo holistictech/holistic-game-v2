@@ -40,8 +40,8 @@ namespace Spans.Skeleton
         private bool _isSpanFinished;
         
         protected SpanEventBus spanEventBus;
-
         private GameObject _helperObject;
+        private List<GameObject> _tutorialHelpers = new List<GameObject>();
 
         public static event Action OnSpanFinished;
         private void SetSpanField()
@@ -67,7 +67,7 @@ namespace Spans.Skeleton
             SetSpanField();
             ResetQuestionStatus();
             InstantiateGameStates();
-            _tutorialActive = false; //PlayerSaveManager.GetPlayerAttribute(states.TutorialKey, 0) == 0;
+            _tutorialActive = PlayerSaveManager.GetPlayerAttribute(states.TutorialKey, 0) == 0;
             stateContext.Transition(_stateList[0]);
         }
 
@@ -260,6 +260,16 @@ namespace Spans.Skeleton
             return _tutorialActive;
         }
 
+        public void SetTutorialHelperObjects(List<GameObject> tutorialObjects)
+        {
+            _tutorialHelpers = tutorialObjects;
+        }
+
+        public List<GameObject> GetTutorialHelperObjects()
+        {
+            return _tutorialHelpers;
+        }
+
         public void SetTutorialCompleted()
         {
             _tutorialActive = false;
@@ -269,12 +279,16 @@ namespace Spans.Skeleton
 
         public void SetHelperTutorialCompleted()
         {
+            foreach (var item in _tutorialHelpers)
+            {
+                item.gameObject.SetActive(false);
+            }
             PlayerSaveManager.SavePlayerAttribute(1, $"Helper{states.TutorialKey}");
         }
 
         public bool IsHelperTutorialNeeded()
         {
-            return false; //PlayerSaveManager.GetPlayerAttribute($"Helper{states.TutorialKey}", 0) == 0;
+            return PlayerSaveManager.GetPlayerAttribute($"Helper{states.TutorialKey}", 0) == 0;
         }
 
         public void TriggerStateTutorial(Dictionary<GameObject, TutorialStep> tutorials, bool needHand, Action onComplete)
@@ -285,6 +299,11 @@ namespace Spans.Skeleton
             });
         }
 
+        public void TriggerFinalTutorialField(string text, AudioClip clip)
+        {
+            tutorialManager.SetFinalTutorialField(text, clip);
+        }
+        
         public void HighlightTarget(RectTransform target, RectTransform parent, bool animNeeded, float offset = 0)
         {
             tutorialManager.HighlightTutorialObject(target, parent, offset, animNeeded);

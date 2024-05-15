@@ -59,12 +59,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 66b4df7a2fb1e6149978cd02d0d3710c, type: 2}
   - {fileID: 11400000, guid: 76bb00d30d5d47148a220b8f8b64f4ac, type: 2}
   timer: {fileID: 4447996048511822422}
+  confirmButton: {fileID: 4200861930125296401}
+  revertButton: {fileID: 8630966795538606114}
   gridStep:
   - {fileID: 11400000, guid: 96a2a5c219d0eb54fb0bca06c367acbc, type: 2}
   gridHelper: {fileID: 7836674634508229821}
   gridLayoutGroup: {fileID: 3852416867757628982}
-  confirmButton: {fileID: 4200861930125296401}
-  revertButton: {fileID: 8630966795538606114}
 --- !u!1 &8668791638465285324
 GameObject:
   m_ObjectHideFlags: 0
@@ -150,11 +150,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5712596384308515899, guid: 6ef072eff945d784ebdca48523af13b3, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 0
+      value: 695
       objectReference: {fileID: 0}
     - target: {fileID: 5712596384308515899, guid: 6ef072eff945d784ebdca48523af13b3, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 0
+      value: 144
       objectReference: {fileID: 0}
     - target: {fileID: 5712596384308515899, guid: 6ef072eff945d784ebdca48523af13b3, type: 3}
       propertyPath: m_LocalPosition.x
@@ -186,11 +186,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5712596384308515899, guid: 6ef072eff945d784ebdca48523af13b3, type: 3}
       propertyPath: m_AnchoredPosition.x
-      value: 0.00018310547
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5712596384308515899, guid: 6ef072eff945d784ebdca48523af13b3, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 689.7841
+      value: 697
       objectReference: {fileID: 0}
     - target: {fileID: 5712596384308515899, guid: 6ef072eff945d784ebdca48523af13b3, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x

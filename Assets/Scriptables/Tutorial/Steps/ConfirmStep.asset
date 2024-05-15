@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d81edbe4a6cd146ad49ba5b6bce348, type: 3}
   m_Name: ConfirmStep
   m_EditorClassIdentifier: 
-  StepClip: {fileID: 8300000, guid: 44784a0184d8e3e4e9e6af49279ee729, type: 3}
+  StepClip: {fileID: 8300000, guid: 5c0c172fcbdc1634a8cf18d9fb0c65ad, type: 3}
   StepText: "Kaydete basarak cevab\u0131n\u0131 g\xF6nderebilirsin."

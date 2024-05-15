@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4d81edbe4a6cd146ad49ba5b6bce348, type: 3}
   m_Name: WelcomeStep
   m_EditorClassIdentifier: 
-  StepClip: {fileID: 8300000, guid: ee0500bf0ef1ff744a34a93b27b83e42, type: 3}
+  StepClip: {fileID: 8300000, guid: e5972581eb866f741ae91dfca08b963e, type: 3}
   StepText: "Nas\u0131l Oynuyoruz?"

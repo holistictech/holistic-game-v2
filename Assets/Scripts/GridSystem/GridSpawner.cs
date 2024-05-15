@@ -43,7 +43,7 @@ namespace GridSystem
             _gridController = new GridController(board);
             _spawner.InjectLogicBoard(_gridController);
             //DistributeLogicBoard();
-            TryLoadInteractables();
+            //TryLoadInteractables();
         }
 
         private void TryLoadInteractables()

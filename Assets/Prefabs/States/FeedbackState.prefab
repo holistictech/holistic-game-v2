@@ -187,9 +187,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d4769d96ac7dc714b8aa1a3759f37ac8, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  tutorialSuccessFeedback: {fileID: 8300000, guid: ee828410bcccb1040ab558c76cd84730, type: 3}
+  tutorialSuccessFeedback: {fileID: 8300000, guid: 0fc22db88ab129e42aaf557a7b0b160b, type: 3}
+  yourTurnClip: {fileID: 8300000, guid: 79ba15b40faee8f4e9613f6c1b4d09f4, type: 3}
   steps:
-  - {fileID: 11400000, guid: 7376698f8fced3343b6938425d8e40d6, type: 2}
+  - {fileID: 11400000, guid: 11c8a8df6bf0644478aedcdc317cbd20, type: 2}
+  - {fileID: 11400000, guid: 66b4df7a2fb1e6149978cd02d0d3710c, type: 2}
+  - {fileID: 11400000, guid: 76bb00d30d5d47148a220b8f8b64f4ac, type: 2}
   levelUpEffect: {fileID: 1720047944738798817}
   confettis:
   - {fileID: 3442321672115779995}
@@ -1242,6 +1245,10 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19854642, guid: 4de72d65c2293424cbe6461a89fe2997, type: 3}
+      propertyPath: looping
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19854642, guid: 4de72d65c2293424cbe6461a89fe2997, type: 3}
       propertyPath: playOnAwake
       value: 0
       objectReference: {fileID: 0}
@@ -1544,6 +1551,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 19850206, guid: 4de72d65c2293424cbe6461a89fe2997, type: 3}
       propertyPath: playOnAwake
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 19854642, guid: 4de72d65c2293424cbe6461a89fe2997, type: 3}
+      propertyPath: looping
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 19854642, guid: 4de72d65c2293424cbe6461a89fe2997, type: 3}

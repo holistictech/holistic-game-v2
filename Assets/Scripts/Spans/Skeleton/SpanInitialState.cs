@@ -16,6 +16,7 @@ namespace Spans.Skeleton
         [SerializeField] private GameObject getStartedBanner;
         [SerializeField] private TextMeshProUGUI getStarted;
         [SerializeField] private GameObject getReadyPopup;
+        [SerializeField] private GameObject dummyTutorialPopup;
         [SerializeField] private TextMeshProUGUI countdownField;
         [SerializeField] private TextMeshProUGUI getReady;
 
@@ -83,7 +84,8 @@ namespace Spans.Skeleton
         {
             var targets = new List<GameObject>()
             {
-                getReadyPopup.gameObject
+                getReadyPopup.gameObject,
+                dummyTutorialPopup.gameObject
             };
             var dictionary = new Dictionary<GameObject, TutorialStep>().CreateFromLists(targets, steps);
             SetTutorialField();

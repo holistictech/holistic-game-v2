@@ -79,7 +79,7 @@ namespace GridSystem
         public void AppendSpawnedInteractables(InteractableData data)
         {
             _farmData.InteractableData.Add(data);
-            SaveLoadManager.SaveFarm(GetFarmData());
+            //SaveLoadManager.SaveFarm(GetFarmData());
         }
 
         public FarmData GetFarmData()

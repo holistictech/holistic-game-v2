@@ -73,11 +73,12 @@ namespace Tutorial
             onComplete?.Invoke();
         }
 
-        public void SetFinalTutorialField(string text)
+        public void SetFinalTutorialField(string text, AudioClip clip)
         {
             tutorialPanel.gameObject.SetActive(true);
             tutorialPanel.GetComponent<Image>().enabled = false;
             tutorialStepField.text = $"{text}";
+            AudioManager.Instance.PlayAudioClip(clip);
         }
 
         private RectTransform _lastTarget;
