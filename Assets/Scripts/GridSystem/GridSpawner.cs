@@ -1,4 +1,7 @@
 using System;
+using System.Collections.Generic;
+using Interactables;
+using Scriptables;
 using Spawners;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -50,7 +53,14 @@ namespace GridSystem
         {
             var data = SaveLoadManager.TryLoadFarm();
             _gridController.SetExistingFarmData(data);
-            var interactables = data.InteractableData;
+            //var interactables = new List<InteractableData>(data.InteractableData);
+            var interactables = new List<InteractableData>();
+            foreach (var item in data.InteractableData)
+            {
+                var config = ScriptableObject.CreateInstance<InteractableConfig>();
+                config = item.Config;
+                interactables.Add(new InteractableData(config, item.Point));
+            }
 
             foreach (var itemData in interactables)
             {

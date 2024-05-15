@@ -22,6 +22,7 @@ namespace Spans.Skeleton
         [SerializeField] private TutorialManager tutorialManager;
         [SerializeField] private TextMeshProUGUI _spanNameField;
         [SerializeField] private RoundTimerHelper timerHelper;
+        [SerializeField] private bool dummyTutorialBool;
         protected List<UnitCircle> activeUnitCircles = new List<UnitCircle>();
         private List<ISpanState> _stateList = new List<ISpanState>();
         protected SpanStateContext stateContext;
@@ -67,7 +68,14 @@ namespace Spans.Skeleton
             SetSpanField();
             ResetQuestionStatus();
             InstantiateGameStates();
-            _tutorialActive = PlayerSaveManager.GetPlayerAttribute(states.TutorialKey, 0) == 0;
+            if (dummyTutorialBool)
+            {
+                _tutorialActive = PlayerSaveManager.GetPlayerAttribute(states.TutorialKey, 0) == 0;
+            }
+            else
+            {
+                _tutorialActive = false;
+            }
             stateContext.Transition(_stateList[0]);
         }
 

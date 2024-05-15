@@ -482,6 +482,7 @@ MonoBehaviour:
   tutorialManager: {fileID: 5317712305952169983}
   _spanNameField: {fileID: 4451707193335140539}
   timerHelper: {fileID: 6310977371895727424}
+  dummyTutorialBool: 1
 --- !u!114 &5317712305952169983
 MonoBehaviour:
   m_ObjectHideFlags: 0
