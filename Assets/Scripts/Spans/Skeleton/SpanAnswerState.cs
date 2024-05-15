@@ -19,6 +19,7 @@ namespace Spans.Skeleton
         [SerializeField] protected TimerHelper timer;
         [SerializeField] protected Button confirmButton;
         [SerializeField] protected Button revertButton;
+        [SerializeField] protected AudioClip confirmClip;
         protected SpanController spanController;
         public virtual void Enter(SpanController controller)
         {

@@ -132,6 +132,7 @@ namespace Spans.Skeleton.AnswerStates
                     yield return new WaitUntil(() => !_waitInput);
                 }
             }
+            AudioManager.Instance.PlayAudioClip(confirmClip);
             spanController.HighlightTarget(confirmButton.GetComponent<RectTransform>(), GetComponent<RectTransform>(), true, 150f);
         }
 
@@ -158,7 +159,7 @@ namespace Spans.Skeleton.AnswerStates
         {
             base.DisableUIElements();
             gridLayoutGroup.gameObject.SetActive(false);
-            confirmButton.gameObject.SetActive(spanController.GetTutorialStatus());
+            confirmButton.gameObject.SetActive(false);
             revertButton.gameObject.SetActive(spanController.GetTutorialStatus());
             if (spanController.GetTutorialStatus())
             {
@@ -167,7 +168,6 @@ namespace Spans.Skeleton.AnswerStates
                 {
                     timer.gameObject,
                     revertButton.gameObject,
-                    confirmButton.gameObject
                 });
             }
             else

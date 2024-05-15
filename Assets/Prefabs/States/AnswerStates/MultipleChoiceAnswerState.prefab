@@ -61,6 +61,7 @@ MonoBehaviour:
   timer: {fileID: 4447996048511822422}
   confirmButton: {fileID: 4200861930125296401}
   revertButton: {fileID: 8630966795538606114}
+  confirmClip: {fileID: 8300000, guid: 5c0c172fcbdc1634a8cf18d9fb0c65ad, type: 3}
   gridStep:
   - {fileID: 11400000, guid: 96a2a5c219d0eb54fb0bca06c367acbc, type: 2}
   gridHelper: {fileID: 7836674634508229821}
