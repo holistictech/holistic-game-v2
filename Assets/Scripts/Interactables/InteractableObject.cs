@@ -64,7 +64,7 @@ namespace Interactables
         public void SetObjectMesh()
         {
             _objectMeshFilter = GetComponent<MeshFilter>();
-            _objectMeshFilter.mesh = _interactableConfig.ObjectMesh;
+            _objectMeshFilter.mesh = MeshContainer.Instance.GetMeshById(_interactableConfig.MeshId);
         }
 
         public void SetPosition(CartesianPoint point)
@@ -76,55 +76,14 @@ namespace Interactables
     [Serializable]
     public class InteractableData
     {
-        internal SerializableMeshData MeshData; // Serialized mesh data
-        internal CartesianPoint Point;
+        public CartesianPoint Point;
         public InteractableConfig Config;
     
         public InteractableData(InteractableConfig config, CartesianPoint point)
         {
             Config = config;
             Point = point;
-            // Extract mesh data from the config and store it
-            MeshData = SerializeMesh(config.ObjectMesh);
-        }
-
-        // Helper method to serialize mesh data
-        private SerializableMeshData SerializeMesh(Mesh mesh)
-        {
-            SerializableMeshData meshData = new SerializableMeshData();
-            meshData.vertices = mesh.vertices;
-            meshData.triangles = mesh.triangles;
-            meshData.uv = mesh.uv;
-            // Add any other necessary data for mesh reconstruction
-            return meshData;
         }
         
-        public Mesh CreateMeshFromData()
-        {
-            if (MeshData == null)
-            {
-                Debug.LogError("SerializableMeshData is null. Cannot create mesh.");
-                return null;
-            }
-
-            Mesh mesh = new Mesh();
-            mesh.vertices = MeshData.vertices;
-            mesh.triangles = MeshData.triangles;
-            mesh.uv = MeshData.uv;
-            // Add any other necessary data for mesh reconstruction
-
-            mesh.RecalculateNormals(); // Recalculate normals to ensure proper shading
-
-            return mesh;
-        }
-    }
-
-    [Serializable]
-    public class SerializableMeshData
-    {
-        public Vector3[] vertices;
-        public int[] triangles;
-        public Vector2[] uv;
-        // Add any other necessary data for mesh reconstruction
     }
 }

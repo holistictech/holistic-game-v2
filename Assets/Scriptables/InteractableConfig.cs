@@ -9,7 +9,7 @@ namespace Scriptables
     [Serializable]
     public class InteractableConfig : ScriptableObject
     {
-        public Mesh ObjectMesh;
+        public int MeshId;
         public CommonFields.InteractableType InteractableType;
         public int Width;
         public int Height;

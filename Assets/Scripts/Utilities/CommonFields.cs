@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 namespace Utilities
 {
@@ -44,24 +45,24 @@ namespace Utilities
     [Serializable]
     public class CartesianPoint
     {
-        private int _xCoordinate;
-        private int _zCoordinate;
+        public int XCoordinate;
+        public int ZCoordinate;
         
         
         public CartesianPoint(int x, int z)
         {
-            _xCoordinate = x;
-            _zCoordinate = z;
+            XCoordinate = x;
+            ZCoordinate = z;
         }
 
         public int GetXCoordinate()
         {
-            return _xCoordinate;
+            return XCoordinate;
         }
 
         public int GetYCoordinate()
         {
-            return _zCoordinate;
+            return ZCoordinate;
         }
     }
 }

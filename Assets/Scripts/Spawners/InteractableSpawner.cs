@@ -51,10 +51,9 @@ namespace Spawners
                 var transform1 = mainCamera.transform;
                 Vector3 cameraPosition = transform1.position;
                 Vector3 cameraForward = transform1.forward;
-            
                 Vector3 middlePoint = cameraPosition + cameraForward * mainCamera.nearClipPlane;
                 var spawnedSketch = Instantiate(sketch, objectParent);
-                spawnedSketch.ConfigureObjectMesh(_currentConfig.RewardInteractable.ObjectMesh);
+                spawnedSketch.ConfigureObjectMesh(MeshContainer.Instance.GetMeshById(_currentConfig.RewardInteractable.MeshId));
                 spawnedSketch.transform.position = new Vector3(middlePoint.x, 0, 0);
                 swipeHandler.enabled = true;
                 OnPositionChoiceNeeded?.Invoke(spawnedSketch);

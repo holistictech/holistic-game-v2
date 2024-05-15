@@ -43,7 +43,7 @@ namespace GridSystem
             _gridController = new GridController(board);
             _spawner.InjectLogicBoard(_gridController);
             //DistributeLogicBoard();
-            //TryLoadInteractables();
+            TryLoadInteractables();
         }
 
         private void TryLoadInteractables()
@@ -54,8 +54,7 @@ namespace GridSystem
 
             foreach (var itemData in interactables)
             {
-                itemData.Config.ObjectMesh = itemData.CreateMeshFromData();
-                _spawner.LoadInteractableFromFile(itemData.Point, itemData.Config);
+                _spawner.SpawnSelectedInteractable(itemData.Point, itemData.Config);
             }
         }
 

@@ -30,8 +30,26 @@ namespace Utilities
             }
         }
 
-        public static Mesh GetMeshById(int id)
+        private void Awake()
         {
+            BuildDictionary();
+        }
+
+        private void BuildDictionary()
+        {
+            for (int i = 0; i < meshList.Count; i++)
+            {
+                MeshDictionary.TryAdd(i, meshList[i]);
+            }
+        }
+
+        public Mesh GetMeshById(int id)
+        {
+            if (MeshDictionary.Count == 0 )
+            {
+                BuildDictionary();
+            }
+            
             if (MeshDictionary.ContainsKey(id))
             {
                 MeshDictionary.TryGetValue(id, out Mesh mesh);

@@ -202,7 +202,7 @@ namespace Spans.Skeleton
             var dictionary = new Dictionary<GameObject, TutorialStep>().CreateFromLists(objects, steps);
             DOVirtual.DelayedCall(1.5f, () =>
             {
-                _spanController.TriggerStateTutorial(dictionary, false, () =>
+                _spanController.TriggerStateTutorial(dictionary, true, () =>
                 {
                     _spanController.TriggerFinalTutorialField("Şimdi sıra sende", yourTurnClip);
                     _spanController.SetTutorialCompleted();
