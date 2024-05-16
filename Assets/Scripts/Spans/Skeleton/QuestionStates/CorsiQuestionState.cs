@@ -33,6 +33,10 @@ namespace Spans.Skeleton.QuestionStates
         
         public override void ShowQuestion()
         {
+            if (!spanController.GetCumulativeStatus())
+            {
+                currentQuestionIndex = 0;
+            }
             DistributeQuestions();
         }
 

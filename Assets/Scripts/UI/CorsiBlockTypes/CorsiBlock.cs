@@ -1,3 +1,5 @@
+using System.Collections;
+using System.Collections.Generic;
 using DG.Tweening;
 using Scriptables.QuestionSystem;
 using UI.Helpers;
@@ -37,9 +39,19 @@ namespace UI.CorsiBlockTypes
             blockImage.DOColor(highlightColor, 1f).SetEase(Ease.Flash).OnComplete(ResetUI);
         }
 
+        public virtual void MakeBlockMove()
+        {
+            
+        }
+
+        public virtual IEnumerator MoveSelf()
+        {
+            yield return null;
+        }
+
         public virtual void ResetUI()
         {
-            blockImage.sprite = null;
+            //blockImage.sprite = null;
             blockImage.color = Color.white;
         }
 

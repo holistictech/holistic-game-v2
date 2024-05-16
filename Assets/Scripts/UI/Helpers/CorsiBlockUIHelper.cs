@@ -51,6 +51,7 @@ namespace UI.Helpers
             for (int i = 0; i < spanQuestions.Count; i++)
             {
                 _spawnedBlocks[i].ConfigureSelf(spanQuestions[i], this);
+                _spawnedBlocks[i].MakeBlockMove();
             }
         }
 

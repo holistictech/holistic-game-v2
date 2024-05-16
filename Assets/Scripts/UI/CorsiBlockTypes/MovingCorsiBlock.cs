@@ -14,44 +14,43 @@ namespace UI.CorsiBlockTypes
         [SerializeField] private Sprite moveSprite;
         [SerializeField] private BoxCollider2D blockCollider;
         [SerializeField] private Rigidbody2D rigidBody;
+        [SerializeField] private RectTransform rectTransform;
 
         private Direction _lastDirection;
         private Vector2 _moveVector;
         private Coroutine _movement;
         private bool _canChangeDirection = true;
-        private float _directionChangeCooldown = 0.3f;
+        private float _directionChangeCooldown = 0.7f;
 
         private void OnValidate()
         {
             blockCollider = GetComponent<BoxCollider2D>();
             rigidBody = GetComponent<Rigidbody2D>();
+            rectTransform = GetComponent<RectTransform>();
         }
-
-        private void Start()
+        
+        public override void MakeBlockMove()
         {
+            _canChangeDirection = true;
             _lastDirection = (Direction)Random.Range(0, 4);
             _moveVector = DirectionVectors[_lastDirection];
-            _movement = StartCoroutine(MoveBlock());
+            _movement = StartCoroutine(MoveSelf());
         }
         
-        public float moveSpeed = .5f;
-        
-        private IEnumerator MoveBlock()
+        public float moveSpeed = 20;
+        public override IEnumerator MoveSelf()
         {
             while (true)
             {
-                var transform1 = transform;
-                var position = transform1.position;
-                position += (Vector3)_moveVector * (moveSpeed * Time.deltaTime);
-                position = new Vector3(position.x, position.y, 0);
-                transform1.position = position;
+                var anchoredPosition = rectTransform.anchoredPosition;
+                anchoredPosition += _moveVector * (moveSpeed * Time.deltaTime);
+                rectTransform.anchoredPosition = new Vector2(anchoredPosition.x, anchoredPosition.y);
                 yield return null;
             }
         }
 
         private void OnTriggerEnter2D(Collider2D other)
         {
-            Debug.Log("this is a trigger " + other.name);
             ChooseNewDirection();
         }
 
@@ -61,7 +60,20 @@ namespace UI.CorsiBlockTypes
             {
                 ChooseNewDirection();
                 StartCoroutine(CooldownDirectionChange());
-                Debug.Log("this is a trigger stay " + other.name);
+            }
+        }
+
+        private void OnCollisionEnter2D(Collision2D other)
+        {
+            Debug.Log("on trigger enter: " + other.gameObject.name);
+            rigidBody.velocity = -rigidBody.velocity;
+            if (other.gameObject.GetComponent<RectTransform>().anchoredPosition.x < rectTransform.anchoredPosition.x)
+            {
+                transform.rotation = Quaternion.Euler(new Vector3(0, 180, 0));
+            }
+            else
+            {
+                transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
             }
         }
 
@@ -77,7 +89,7 @@ namespace UI.CorsiBlockTypes
             
             _lastDirection = direction;
             _moveVector = DirectionVectors[_lastDirection];
-            _movement = StartCoroutine(MoveBlock());
+            _movement = StartCoroutine(MoveSelf());
         }
 
         private IEnumerator CooldownDirectionChange()

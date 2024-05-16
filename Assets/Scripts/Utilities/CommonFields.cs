@@ -29,10 +29,10 @@ namespace Utilities
 
         public static Dictionary<Direction, Vector2> DirectionVectors = new Dictionary<Direction, Vector2>()
         {
-            { Direction.Up, new Vector2(0, 5) },
-            { Direction.Right, new Vector2(5, 0) },
-            { Direction.Down, new Vector2(0, -5) },
-            { Direction.Left, new Vector2(-5, 0) },
+            { Direction.Up, new Vector2(0, 100) },
+            { Direction.Right, new Vector2(100, 0) },
+            { Direction.Down, new Vector2(0, -100) },
+            { Direction.Left, new Vector2(-100, 0) },
         };
     }
 
