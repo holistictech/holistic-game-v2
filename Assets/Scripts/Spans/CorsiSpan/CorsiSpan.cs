@@ -92,7 +92,6 @@ namespace Spans.CorsiSpan
                 currentDisplayedQuestions.Clear();
                 activeUnitCircles.Clear();
                 ResetRoundIndex();
-                //OnRoundReset?.Invoke();
                 spanEventBus.Trigger(new RoundResetEvent());
             }
             else

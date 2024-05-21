@@ -142,7 +142,8 @@ MonoBehaviour:
   moveSprite: {fileID: 0}
   blockCollider: {fileID: 6860052424875810183}
   rigidBody: {fileID: 4591212128738644032}
-  moveSpeed: 1
+  rectTransform: {fileID: 751416415697146483}
+  moveSpeed: 0.3
 --- !u!61 &6860052424875810183
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -186,7 +187,7 @@ BoxCollider2D:
     adaptiveTiling: 0
   m_AutoTiling: 0
   serializedVersion: 2
-  m_Size: {x: 200, y: 200}
+  m_Size: {x: 100, y: 100}
   m_EdgeRadius: 0
 --- !u!50 &4591212128738644032
 Rigidbody2D:
@@ -214,4 +215,4 @@ Rigidbody2D:
   m_Interpolate: 0
   m_SleepingMode: 1
   m_CollisionDetection: 0
-  m_Constraints: 4
+  m_Constraints: 0
