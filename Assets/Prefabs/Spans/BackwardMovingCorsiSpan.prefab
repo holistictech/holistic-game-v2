@@ -359,7 +359,7 @@ GameObject:
   - component: {fileID: 4893235895707078479}
   - component: {fileID: 7802197437131782412}
   m_Layer: 5
-  m_Name: MovingCorsiSpan
+  m_Name: BackwardMovingCorsiSpan
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -475,7 +475,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4e0cf6cdb572b504f99bf59abf2c3aa9, type: 2}
   - {fileID: 11400000, guid: 8342a1a9e4602aa419c30f1ad6b08b77, type: 2}
   - {fileID: 11400000, guid: e0fc73d5139bb6140a91a4decd78312b, type: 2}
-  isBackwards: 0
+  isBackwards: 1
   isCumulative: 0
   states: {fileID: 11400000, guid: d31714f9088b0204b9d3b15ce33491c6, type: 2}
   tutorialManager: {fileID: 5317712305952169983}
