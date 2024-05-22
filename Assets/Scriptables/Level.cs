@@ -9,6 +9,7 @@ namespace Scriptables
     public class Level : ScriptableObject
     {
         public List<TaskConfig> LevelTasks;
+        public List<GameObject> dailySpans;
         public int LevelId;
         public int CurrentStage;
 
@@ -20,6 +21,15 @@ namespace Scriptables
         public List<TaskConfig> GetAvailableTasks()
         {
             return LevelTasks.Where((item, index) => !item.GetHasCompleted()).ToList();
+        }
+
+        public GameObject GetSpanByIndex(int index)
+        {
+            if (index >= dailySpans.Count)
+            {
+                return dailySpans[0];
+            }
+            return dailySpans[index];
         }
     }
 }

@@ -29,6 +29,12 @@ namespace UI.Helpers
             RemoveListeners();
         }
 
+        private void PlayNextSpan()
+        {
+            var span = PlayerInventory.Instance.GetNextSpan();
+            PlaySelectedSpan(span);
+        }
+
         private void EnableSpanChooser()
         {
             /*var index = Random.Range(0, spans.Count);
@@ -56,23 +62,24 @@ namespace UI.Helpers
             trailHelper.AnimateTrail(energyHelper, () =>
             {
                 PlayerInventory.Instance.ChangeEnergyAmount(1);
+                PlayerInventory.Instance.IncrementCurrentStage();
                 energyHelper.UpdateEnergyField();
             });
         }
 
         private void AddListeners()
         {
-            playButton.onClick.AddListener(EnableSpanChooser);
+            playButton.onClick.AddListener(PlayNextSpan);
             closeButton.onClick.AddListener(DisableSpanChooser);
-            Task.OnSpanRequested += EnableSpanChooser;
+            Task.OnSpanRequested += PlayNextSpan;
             SpanController.OnSpanFinished += DestroyActiveSpan;
         }
 
         private void RemoveListeners()
         {
-            playButton.onClick.RemoveListener(EnableSpanChooser);
+            playButton.onClick.RemoveListener(PlayNextSpan);
             closeButton.onClick.RemoveListener(DisableSpanChooser);
-            Task.OnSpanRequested -= EnableSpanChooser;
+            Task.OnSpanRequested -= PlayNextSpan;
             SpanController.OnSpanFinished += DestroyActiveSpan;
         }
     }

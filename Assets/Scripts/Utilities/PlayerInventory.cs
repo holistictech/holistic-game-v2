@@ -55,7 +55,6 @@ namespace Utilities
             Performance = PlayerSaveManager.GetPlayerAttribute(PerformanceKey, 0);
             CurrentLevel = PlayerSaveManager.GetPlayerAttribute(CurrentLevelKey, 0);
             CurrentStage = PlayerSaveManager.GetPlayerAttribute(CurrentStageKey, 0);
-            Energy = 10;
         }
 
         public void ChangeEnergyAmount(int amount)
@@ -98,6 +97,11 @@ namespace Utilities
         {
             var level = PlayerSaveManager.GetPlayerAttribute(CurrentLevelKey, 0);
             return gameLevels[level].GetAvailableTasks();
+        }
+
+        public GameObject GetNextSpan()
+        {
+            return gameLevels[CurrentLevel].GetSpanByIndex(CurrentStage);
         }
     }
 
