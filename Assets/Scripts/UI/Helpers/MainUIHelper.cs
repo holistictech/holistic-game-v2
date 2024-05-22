@@ -14,6 +14,7 @@ namespace UI.Helpers
         [SerializeField] private EnergyUIHelper energyHelper;
         [SerializeField] private List<GameObject> spans;
         [SerializeField] private Image selectionPopup;
+        [SerializeField] private Button closeButton;
 
         private GameObject _activeSpan;
 
@@ -28,13 +29,18 @@ namespace UI.Helpers
             RemoveListeners();
         }
 
-        private void PlayRandomSpan()
+        private void EnableSpanChooser()
         {
             /*var index = Random.Range(0, spans.Count);
             var span = spans[0];
             _activeSpan = Instantiate(span, transform);
             _activeSpan.gameObject.SetActive(true);*/
             selectionPopup.gameObject.SetActive(true);
+        }
+
+        private void DisableSpanChooser()
+        {
+            selectionPopup.gameObject.SetActive(false);
         }
 
         public void PlaySelectedSpan(GameObject span)
@@ -56,15 +62,17 @@ namespace UI.Helpers
 
         private void AddListeners()
         {
-            playButton.onClick.AddListener(PlayRandomSpan);
-            Task.OnSpanRequested += PlayRandomSpan;
+            playButton.onClick.AddListener(EnableSpanChooser);
+            closeButton.onClick.AddListener(DisableSpanChooser);
+            Task.OnSpanRequested += EnableSpanChooser;
             SpanController.OnSpanFinished += DestroyActiveSpan;
         }
 
         private void RemoveListeners()
         {
-            playButton.onClick.RemoveListener(PlayRandomSpan);
-            Task.OnSpanRequested -= PlayRandomSpan;
+            playButton.onClick.RemoveListener(EnableSpanChooser);
+            closeButton.onClick.RemoveListener(DisableSpanChooser);
+            Task.OnSpanRequested -= EnableSpanChooser;
             SpanController.OnSpanFinished += DestroyActiveSpan;
         }
     }
