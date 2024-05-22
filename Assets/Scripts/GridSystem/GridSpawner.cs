@@ -64,7 +64,7 @@ namespace GridSystem
 
             foreach (var itemData in interactables)
             {
-                _spawner.SpawnSelectedInteractable(itemData.Point, itemData.Config);
+                _spawner.SpawnSelectedInteractable(itemData.Point, itemData.Config, false);
             }
         }
 

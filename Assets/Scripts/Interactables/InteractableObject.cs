@@ -33,12 +33,13 @@ namespace Interactables
             _interactableConfig = config;
         }
 
-        public virtual void BuildSelf(CartesianPoint desiredPoint)
+        public virtual void BuildSelf(CartesianPoint desiredPoint, bool shouldSave)
         {
             SetObjectMesh();
             SetPosition(desiredPoint);
             _data = new InteractableData(_interactableConfig, desiredPoint);
-            _gridController.AppendSpawnedInteractables(_data);
+            if(shouldSave)
+                _gridController.AppendSpawnedInteractables(_data);
         }
 
         public void BlockCoordinates(List<CartesianPoint> desiredPoints)
