@@ -69,17 +69,17 @@ namespace UI.Helpers
 
         private void AddListeners()
         {
-            playButton.onClick.AddListener(PlayNextSpan);
+            playButton.onClick.AddListener(EnableSpanChooser);
             closeButton.onClick.AddListener(DisableSpanChooser);
-            Task.OnSpanRequested += PlayNextSpan;
+            Task.OnSpanRequested += EnableSpanChooser;
             SpanController.OnSpanFinished += DestroyActiveSpan;
         }
 
         private void RemoveListeners()
         {
-            playButton.onClick.RemoveListener(PlayNextSpan);
+            playButton.onClick.RemoveListener(EnableSpanChooser);
             closeButton.onClick.RemoveListener(DisableSpanChooser);
-            Task.OnSpanRequested -= PlayNextSpan;
+            Task.OnSpanRequested -= EnableSpanChooser;
             SpanController.OnSpanFinished += DestroyActiveSpan;
         }
     }
