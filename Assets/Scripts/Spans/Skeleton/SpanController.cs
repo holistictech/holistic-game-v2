@@ -62,6 +62,7 @@ namespace Spans.Skeleton
 
         protected virtual void Start()
         {
+            currentRoundIndex = PlayerSaveManager.GetPlayerAttribute(gameObject.name, 2);
             StartTimer();
             stateContext = new SpanStateContext(this);
             spanEventBus = new SpanEventBus();
@@ -235,6 +236,12 @@ namespace Spans.Skeleton
                 temp.transform.SetSiblingIndex(0);
                 _stateList.Add(temp.GetComponent<ISpanState>());
             }
+        }
+
+        public void ExitSpan()
+        {
+            PlayerSaveManager.SavePlayerAttribute(currentRoundIndex, gameObject.name);
+            EndSpan();
         }
 
         public void SetActiveCircles(List<UnitCircle> circles)

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
@@ -6,6 +7,7 @@ using TMPro;
 using Tutorial;
 using UnityEngine;
 using UnityEngine.Serialization;
+using UnityEngine.UI;
 using Utilities;
 
 namespace Spans.Skeleton
@@ -20,9 +22,22 @@ namespace Spans.Skeleton
         [SerializeField] private TextMeshProUGUI countdownField;
         [SerializeField] private TextMeshProUGUI getReady;
 
+        [SerializeField] private Button testExitButton;
+
         private SpanController _spanController;
         private Coroutine _countdown;
         private bool _isInitial = true;
+
+        private void OnEnable()
+        {
+            AddListeners();
+        }
+
+        private void OnDisable()
+        {
+            RemoveListeners();
+        }
+
         public void Enter(SpanController controller)
         {
             if (_spanController == null)
@@ -95,6 +110,7 @@ namespace Spans.Skeleton
         public void EnableUIElements()
         {
             getReadyPopup.gameObject.SetActive(true);
+            testExitButton.gameObject.SetActive(true);
         }
 
         public void DisableUIElements()
@@ -140,6 +156,21 @@ namespace Spans.Skeleton
             countdownField.text = "";
             Color fieldColor = getReady.color;
             getReady.color = new Color(fieldColor.r, fieldColor.g, fieldColor.b, 0);
+        }
+
+        private void SaveAndExit()
+        {
+            _spanController.ExitSpan();
+        }
+
+        private void AddListeners()
+        {
+            testExitButton.onClick.AddListener(SaveAndExit);
+        }
+
+        private void RemoveListeners()
+        {
+            testExitButton.onClick.RemoveListener(SaveAndExit);
         }
     }
 }
