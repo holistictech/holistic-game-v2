@@ -20,10 +20,9 @@ namespace Spawners
         [SerializeField] private Sketch sketch;
         [SerializeField] private Transform objectParent;
         [SerializeField] private SwipeHandler swipeHandler;
+        [SerializeField] private ParticleSystem buildingEffect;
         private GridController _gridController;
         private TaskConfig _currentConfig;
-
-        [SerializeField] private InteractableConfig itemConfig;
 
         public static event Action<Sketch> OnPositionChoiceNeeded;
 
@@ -72,7 +71,7 @@ namespace Spawners
             var spawnedInstance = InteractableFactory.SpawnInstance(spawnable, config, objectParent);
             var interactable = spawnedInstance.GetComponent<InteractableObject>();
 
-            interactable.InjectFields(_gridController, config);
+            interactable.InjectFields(_gridController, config, buildingEffect);
             var buildingPlan = interactable.CalculateCoordinatesForBlocking(desiredPoint);
             if (interactable != null && _gridController.IsPlacementValid(buildingPlan))
             {

@@ -15224,6 +15224,10 @@ PrefabInstance:
       propertyPath: swipeHandler
       value: 
       objectReference: {fileID: 1551247756}
+    - target: {fileID: 1500978507082087894, guid: aad8d3e15be67234ca70f3d2d9fe7be9, type: 3}
+      propertyPath: buildingEffect
+      value: 
+      objectReference: {fileID: 19826678, guid: 125ca82d2bcc7124898f4c63533dd880, type: 3}
     - target: {fileID: 4893083438995325354, guid: aad8d3e15be67234ca70f3d2d9fe7be9, type: 3}
       propertyPath: m_LocalScale.x
       value: 1
