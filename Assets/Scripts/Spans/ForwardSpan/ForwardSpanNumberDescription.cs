@@ -11,7 +11,7 @@ namespace Spans.ForwardSpan
     {
         public override List<Question> GetSpanObjects()
         {
-            return PickNumbers(fetchedQuestionCount);
+            return PickNumbers(currentRoundIndex);
         }
         
         public override int GetRoundTime()
@@ -23,18 +23,19 @@ namespace Spans.ForwardSpan
         {
             List<Question> pickedNumbers = new List<Question>();
             HashSet<int> pickedIndices = new HashSet<int>();
-
             var numberQuestions = GetAllAvailableSpanObjects();
-            ShuffleArray(numberQuestions);
-            
-            for (int i = 0; i < numberQuestions.Length && pickedNumbers.Count < count; i++)
-            {
-                if (!pickedIndices.Contains(i))
-                {
-                    pickedNumbers.Add(numberQuestions[i]);
-                    pickedIndices.Add(i);
+            System.Random rng = new System.Random();
 
-                    int nextIndex = FindNextNonConsecutiveIndex(i, pickedIndices);
+            while (pickedNumbers.Count < count && pickedIndices.Count < numberQuestions.Length)
+            {
+                int randomIndex = rng.Next(numberQuestions.Length);
+
+                if (!pickedIndices.Contains(randomIndex))
+                {
+                    pickedNumbers.Add(numberQuestions[randomIndex]);
+                    pickedIndices.Add(randomIndex);
+
+                    int nextIndex = FindNextNonConsecutiveIndex(randomIndex, pickedIndices, numberQuestions.Length, rng);
                     if (nextIndex != -1)
                     {
                         pickedNumbers.Add(numberQuestions[nextIndex]);
@@ -46,28 +47,24 @@ namespace Spans.ForwardSpan
             currentSpanQuestions = pickedNumbers;
             return pickedNumbers;
         }
-        private void ShuffleArray<T>(T[] array)
+
+        private int FindNextNonConsecutiveIndex(int currentIndex, HashSet<int> pickedIndices, int arrayLength, System.Random rng)
         {
-            System.Random rng = new System.Random();
-            int n = array.Length;
-            while (n > 1)
+            List<int> availableIndices = new List<int>();
+
+            for (int i = 0; i < arrayLength; i++)
             {
-                n--;
-                int k = rng.Next(n + 1);
-                (array[k], array[n]) = (array[n], array[k]);
-            }
-        }
-        
-        private int FindNextNonConsecutiveIndex(int currentIndex, HashSet<int> pickedIndices)
-        {
-            var numberQuestions = GetAllAvailableSpanObjects();
-            for (int i = currentIndex + 1; i < numberQuestions.Length; i++)
-            {
-                if (!pickedIndices.Contains(i) && Math.Abs((int)numberQuestions[currentIndex].GetQuestionItem() - (int)numberQuestions[i].GetQuestionItem()) > 1)
+                if (!pickedIndices.Contains(i) && Math.Abs(currentIndex - i) > 1)
                 {
-                    return i;
+                    availableIndices.Add(i);
                 }
             }
+
+            if (availableIndices.Count > 0)
+            {
+                return availableIndices[rng.Next(availableIndices.Count)];
+            }
+
             return -1;
         }
         
