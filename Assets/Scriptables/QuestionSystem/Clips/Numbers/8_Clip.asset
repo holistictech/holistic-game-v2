@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8e7f783fc839fe347ad91774b867366d, type: 3}
   m_Name: 8_Clip
   m_EditorClassIdentifier: 
-  CorrectAnswerString: Sekiz
-  IsAnswerStringMUST: 0
+  CorrectAnswerString: 8
+  IsAnswerStringMUST: 1
   Clip: {fileID: 8300000, guid: 73b9610003b157e47b00e48df437cf4b, type: 3}
   ClipSprite: {fileID: 0}

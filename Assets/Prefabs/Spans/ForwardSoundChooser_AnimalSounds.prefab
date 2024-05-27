@@ -359,7 +359,7 @@ GameObject:
   - component: {fileID: -4529128140775410050}
   - component: {fileID: 8220159496544250917}
   m_Layer: 5
-  m_Name: ForwardSoundChooser
+  m_Name: ForwardSoundChooser_AnimalSounds
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
