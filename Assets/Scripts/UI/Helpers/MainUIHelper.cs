@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using Spans.Skeleton;
 using UI.Tasks;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Utilities;
 
@@ -11,7 +12,8 @@ namespace UI.Helpers
     {
         [SerializeField] private CurrencyTrailHelper trailHelper;
         [SerializeField] private Button playButton;
-        [SerializeField] private EnergyUIHelper energyHelper;
+        [SerializeField] private CurrencyUIHelper currencyHelper;
+        [SerializeField] private CurrencyUIHelper performanceHelper;
         [SerializeField] private List<GameObject> spans;
         [SerializeField] private Image selectionPopup;
         [SerializeField] private Button closeButton;
@@ -21,7 +23,8 @@ namespace UI.Helpers
         private void OnEnable()
         {
             AddListeners();
-            energyHelper.UpdateEnergyField();
+            currencyHelper.UpdateCurrencyField();
+            performanceHelper.UpdateCurrencyField();
         }
 
         private void OnDisable()
@@ -56,15 +59,22 @@ namespace UI.Helpers
             selectionPopup.gameObject.SetActive(false);
         }
 
-        private void DestroyActiveSpan()
+        private void DestroyActiveSpan(int earnedPerformance)
         {
-            Destroy(_activeSpan.gameObject);
-            trailHelper.AnimateTrail(energyHelper, () =>
+            trailHelper.AnimateCurrencyIncrease(currencyHelper, 1, () =>
             {
                 PlayerInventory.Instance.ChangeEnergyAmount(1);
                 PlayerInventory.Instance.IncrementCurrentStage();
-                energyHelper.UpdateEnergyField();
+                currencyHelper.UpdateCurrencyField();
+                trailHelper.AnimateCurrencyIncrease(performanceHelper, earnedPerformance, () =>
+                {
+                    PlayerInventory.Instance.ChangePerformanceAmount(earnedPerformance);
+                    performanceHelper.UpdateCurrencyField();
+                });
             });
+
+            
+            Destroy(_activeSpan.gameObject);
         }
 
         private void AddListeners()

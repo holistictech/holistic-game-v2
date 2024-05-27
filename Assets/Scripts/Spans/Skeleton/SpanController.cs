@@ -44,7 +44,7 @@ namespace Spans.Skeleton
         private GameObject _helperObject;
         private List<GameObject> _tutorialHelpers = new List<GameObject>();
 
-        public static event Action OnSpanFinished;
+        public static event Action<int> OnSpanFinished;
         private void SetSpanField()
         {
             _spanNameField.text = $"{gameObject.name}";
@@ -104,7 +104,7 @@ namespace Spans.Skeleton
         public void EndSpan()
         {
             gameObject.SetActive(false);
-            OnSpanFinished?.Invoke();
+            OnSpanFinished?.Invoke(currentRoundIndex);
         }
 
         public virtual List<Question> GetSpanObjects()
@@ -177,12 +177,15 @@ namespace Spans.Skeleton
 
         public int GetRoundIndex()
         {
-            return _hasLeveledUp ? currentRoundIndex - 1 : currentRoundIndex;
-        }
-
-        public void ResetLevelChangedStatus()
-        {
-            _hasLeveledUp = false;
+            if (_hasLeveledUp)
+            {
+                _hasLeveledUp = false;
+                return currentRoundIndex - 1;
+            }
+            else
+            {
+                return currentRoundIndex;
+            }
         }
 
         private void IncrementRoundIndex()

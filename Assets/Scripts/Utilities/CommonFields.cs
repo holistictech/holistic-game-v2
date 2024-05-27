@@ -19,6 +19,12 @@ namespace Utilities
             Animal
         }
 
+        public enum CurrencyType
+        {
+            Energy = 0,
+            Performance
+        }
+
         public enum Direction
         {
             Up = 0,

@@ -105,14 +105,14 @@ namespace Spans.Skeleton
         
         private IEnumerator AnimateProgressBar(float targetValue, float duration)
         {
+            levelField.text = $"{_spanController.GetRoundIndex()}";
             if (targetValue >= progressBar.maxValue)
             {
                 StartCoroutine(LerpSlider(targetValue, duration, () =>
                 {
                     levelUpEffect.Play();
                     progressBar.value = 0f;
-                    _spanController.ResetLevelChangedStatus();
-                    levelField.text = $"{targetValue+1}";
+                    levelField.text = $"{_spanController.GetRoundIndex()}";
                 }));
             }
             else
