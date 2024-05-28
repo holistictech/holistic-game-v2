@@ -23,7 +23,6 @@ namespace Spans.Skeleton.AnswerStates
 
         private void ConfigureCorsiHelper()
         {
-            _corsiHelper.InjectAnswerState(this);
             var circles = spanController.GetActiveCircles();
             _corsiHelper.SetActiveCircles(circles);
             _corsiHelper.ConfigureInput(true);

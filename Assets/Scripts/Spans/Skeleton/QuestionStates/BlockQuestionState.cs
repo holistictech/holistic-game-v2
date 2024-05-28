@@ -2,47 +2,36 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using Scriptables.QuestionSystem;
-using UI;
 using UI.Helpers;
 using UnityEngine;
-using UnityEngine.UI;
-using Utilities;
 
 namespace Spans.Skeleton.QuestionStates
 {
-    public class CorsiQuestionState : SpanQuestionState
+    public class BlockQuestionState : SpanQuestionState
     {
-        [SerializeField] private CorsiBlockUIHelper blockUIHelper;
+        [SerializeField] private BlockSpanUIHelper blockUIHelper;
         private List<Question> _spanObjects = new List<Question>();
+        
         public override void Enter(SpanController controller)
         {
+            base.Enter(controller);
             if (spanController == null)
             {
-                base.Enter(controller);
-                blockUIHelper.GetCorsiBlocks();
-                spanController.SetHelperObject(blockUIHelper.gameObject);
+                spanController = controller;
             }
-            SetCircleUI(spanController.GetRoundIndex());
-            EnableUIElements();
+
             _spanObjects = spanController.GetSpanObjects();
-            blockUIHelper.ConfigureInput(false);
-            ShowQuestion();
-            StatisticsHelper.IncrementDisplayedQuestionCount();
         }
-        
+
         public override void ShowQuestion()
         {
-            if (!spanController.GetCumulativeStatus())
-            {
-                currentQuestionIndex = 0;
-            }
             DistributeQuestions();
+            displayingQuestions = StartCoroutine(IterateQuestions());
         }
 
         private void DistributeQuestions()
         {
             blockUIHelper.AssignQuestions(_spanObjects);
-            displayingQuestions = StartCoroutine(IterateQuestions());
         }
 
         private IEnumerator IterateQuestions()
@@ -63,33 +52,26 @@ namespace Spans.Skeleton.QuestionStates
             DOVirtual.DelayedCall(1f, SwitchNextState);
         }
 
-        public override void SwitchNextState()
-        {
-            if (spanController.GetBackwardStatus())
-            {
-                RotateCircles(() =>
-                {
-                    spanController.SwitchState();
-                });
-            }
-            else
-            {
-                spanController.SwitchState();
-            }
-        }
 
-        public override void TryShowStateTutorial()
-        {
-        }
 
         public override void EnableUIElements()
         {
-            blockUIHelper.gameObject.SetActive(true);
-            unitParent.gameObject.SetActive(true);
+            base.EnableUIElements();
         }
 
         public override void DisableUIElements()
         {
+            base.DisableUIElements();
+        }
+
+        private void AddListeners()
+        {
+            
+        }
+
+        private void RemoveListeners()
+        {
+            
         }
     }
 }

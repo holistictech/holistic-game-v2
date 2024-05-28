@@ -12,25 +12,13 @@ namespace UI.Helpers
 {
     public class CorsiBlockUIHelper : MonoBehaviour
     {
-        [SerializeField] private LayoutGroup blockParent;
-
-        private CorsiQuestionState _corsiQuestionState;
-        private CorsiAnswerState _corsiAnswerState;
+        [SerializeField] private GridLayoutGroup blockParent;
+        
         private List<CorsiBlock> _spawnedBlocks = new List<CorsiBlock>();
         private List<CorsiBlock> _selectedBlocks = new List<CorsiBlock>();
         private List<Question> _selectedAnswers = new List<Question>();
         private List<UnitCircle> _activeCircles = new List<UnitCircle>();
         private int _answerIndex;
-
-        public void InjectQuestionState(CorsiQuestionState questionState)
-        {
-            _corsiQuestionState = questionState;
-        }
-
-        public void InjectAnswerState(CorsiAnswerState answerState)
-        {
-            _corsiAnswerState = answerState;
-        }
 
         public void SetActiveCircles(List<UnitCircle> circles)
         {
@@ -43,7 +31,7 @@ namespace UI.Helpers
             _spawnedBlocks = new List<CorsiBlock>(blockParent.GetComponentsInChildren<CorsiBlock>());
         }
 
-        public void AssignQuestions(List<Question> spanQuestions)
+        public virtual void AssignQuestions(List<Question> spanQuestions)
         {
             _selectedAnswers.Clear();
             _selectedBlocks.Clear();
@@ -54,7 +42,7 @@ namespace UI.Helpers
                 _spawnedBlocks[i].MakeBlockMove();
             }
         }
-
+        
         public void ConfigureInput(bool toggle)
         {
             foreach (var block in _spawnedBlocks)
@@ -82,7 +70,7 @@ namespace UI.Helpers
                     return block;
             }
 
-            throw new Exception("Could not find target question in corsi blocks");
+            throw new Exception("Could not find target question in blocks");
         }
 
         public void AppendSelectedAnswers(Question question, CorsiBlock selectedBlock)
