@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a14b061b09037164cb92c3110829b97d, type: 3}
-  m_Name: Truck
+  m_Name: WaterTank
   m_EditorClassIdentifier: 
-  TaskSprite: {fileID: 21300000, guid: 0adad161b12827f4b9405e72bf05139c, type: 3}
-  Mission: Kamyon
-  Cost: 10
+  TaskSprite: {fileID: 21300000, guid: 7bb8d367c034641448f0f3c504b357e7, type: 3}
+  Mission: Su Deposu
+  Cost: 15
   CurrencyType: 1
-  RewardInteractable: {fileID: 11400000, guid: abea35a6ae1fe824295197130522c5e7, type: 2}
+  RewardInteractable: {fileID: 11400000, guid: d3ede9ae32046a24e918bc5442d47a4e, type: 2}
   _hasCompleted: 0

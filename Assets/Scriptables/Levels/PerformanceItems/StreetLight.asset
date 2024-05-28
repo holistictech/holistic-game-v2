@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a14b061b09037164cb92c3110829b97d, type: 3}
-  m_Name: Truck
+  m_Name: StreetLight
   m_EditorClassIdentifier: 
-  TaskSprite: {fileID: 21300000, guid: 0adad161b12827f4b9405e72bf05139c, type: 3}
-  Mission: Kamyon
-  Cost: 10
+  TaskSprite: {fileID: 21300000, guid: 2f6d38223f5a49a428b717cc2f56e23e, type: 3}
+  Mission: "Sokak I\u015F\u0131\u011F\u0131"
+  Cost: 2
   CurrencyType: 1
-  RewardInteractable: {fileID: 11400000, guid: abea35a6ae1fe824295197130522c5e7, type: 2}
+  RewardInteractable: {fileID: 11400000, guid: 4ea49842e46d40d4bae82842a1c718bd, type: 2}
   _hasCompleted: 0

@@ -78,7 +78,7 @@ namespace Spawners
             {
                 interactable.BuildSelf(desiredPoint, shouldSave);
                 swipeHandler.enabled = false;
-                if(_currentConfig != null)
+                if(_currentConfig != null && _currentConfig.CurrencyType == CurrencyType.Energy)
                     _currentConfig.SetHasCompleted(true);
             }
             else

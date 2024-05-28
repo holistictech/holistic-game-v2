@@ -10,11 +10,11 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: a14b061b09037164cb92c3110829b97d, type: 3}
-  m_Name: Truck
+  m_Name: BirdHouse
   m_EditorClassIdentifier: 
-  TaskSprite: {fileID: 21300000, guid: 0adad161b12827f4b9405e72bf05139c, type: 3}
-  Mission: Kamyon
+  TaskSprite: {fileID: 21300000, guid: 51da8a1e3c8ce6b4e8d0555a7b920a14, type: 3}
+  Mission: "Ku\u015F Evi"
   Cost: 10
   CurrencyType: 1
-  RewardInteractable: {fileID: 11400000, guid: abea35a6ae1fe824295197130522c5e7, type: 2}
+  RewardInteractable: {fileID: 11400000, guid: e3ae685b78a4dd44684ef016381d20a1, type: 2}
   _hasCompleted: 0
