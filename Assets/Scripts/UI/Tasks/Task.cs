@@ -10,8 +10,11 @@ namespace UI.Tasks
 {
     public class Task : MonoBehaviour
     {
+        [SerializeField] private Image taskImage;
         [SerializeField] private TextMeshProUGUI taskField;
         [SerializeField] private TextMeshProUGUI targetField;
+        [SerializeField] private Image currencyField;
+        [SerializeField] private Sprite[] currencies;
         [SerializeField] private Button goButton;
         [SerializeField] private TextMeshProUGUI buttonTextField;
 
@@ -24,7 +27,7 @@ namespace UI.Tasks
 
         private void OnEnable()
         {
-            AddListeners();
+            AddListeners(); 
         }
 
         private void OnDisable()
@@ -38,6 +41,13 @@ namespace UI.Tasks
             _taskConfig = config;
             taskField.text = config.Mission;
             targetField.text = $"{config.Cost}";
+            currencyField.sprite =
+                config.CurrencyType == CommonFields.CurrencyType.Energy ? currencies[0] : currencies[1];
+            if (config.TaskSprite != null)
+            {
+                taskImage.sprite = config.TaskSprite;
+                taskImage.gameObject.SetActive(true);
+            }
             ConfigureButtonState();
         }
 

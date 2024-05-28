@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Scriptables;
+using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -14,6 +15,7 @@ namespace UI.Tasks
         [Header("UI Attributes")] 
         [SerializeField] private RectTransform taskContent;
         [SerializeField] private GameObject taskPanel;
+        [SerializeField] private TextMeshProUGUI headerField;
         [SerializeField] private Button taskButton;
         [SerializeField] private Button closeButton;
         
@@ -30,10 +32,10 @@ namespace UI.Tasks
             RemoveListeners();
         }
 
-        private void InstantiateTasks()
+        private void InstantiateTasks(bool type)
         {
-            List<TaskConfig> tasks = PlayerInventory.Instance.GetAvailableTasks();
-
+            List<TaskConfig> tasks = PlayerInventory.Instance.GetTasksByType(type);
+            
             foreach (var task in tasks)
             {
                 var temp = Instantiate(taskPrefab, taskContent);
@@ -41,12 +43,13 @@ namespace UI.Tasks
             }
         }
 
-        private void EnableTaskPopup()
+        public void EnableTaskPopup(bool type)
         {
             if (taskPanel.activeSelf) return;
             taskButton.gameObject.SetActive(false);
             taskPanel.gameObject.SetActive(true);
-            InstantiateTasks();
+            headerField.text = type ? "Görevler" : "Araçlar";
+            InstantiateTasks(type);
         }
 
         public void DisableTaskPopup()
@@ -67,13 +70,13 @@ namespace UI.Tasks
 
         private void AddListeners()
         {
-            taskButton.onClick.AddListener(EnableTaskPopup);
+            //taskButton.onClick.AddListener(EnableTaskPopup);
             closeButton.onClick.AddListener(DisableTaskPopup);
         }
 
         private void RemoveListeners()
         {
-            taskButton.onClick.RemoveListener(EnableTaskPopup);
+            //taskButton.onClick.RemoveListener(EnableTaskPopup);
             closeButton.onClick.RemoveListener(DisableTaskPopup);
         }
     }

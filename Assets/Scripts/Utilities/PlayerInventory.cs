@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using Scriptables;
 using UnityEngine;
 
@@ -7,6 +8,7 @@ namespace Utilities
     public class PlayerInventory : MonoBehaviour
     {
         [SerializeField] private Level[] gameLevels;
+        [SerializeField] private TaskConfig[] performanceItems; 
         private static PlayerInventory _instance;
         
         private string EnergyKey = "EnergyKey";
@@ -58,6 +60,18 @@ namespace Utilities
             Energy = 10;
         }
 
+        public void ChangeCurrencyAmountByType(TaskConfig config)
+        {
+            if (config.CurrencyType == CommonFields.CurrencyType.Energy)
+            {
+                ChangeEnergyAmount(-config.Cost);
+            }
+            else if (config.CurrencyType == CommonFields.CurrencyType.Performance)
+            {
+                ChangePerformanceAmount(-config.Cost);
+            }
+        }
+
         public void ChangeEnergyAmount(int amount)
         {
             Energy += amount;
@@ -94,10 +108,20 @@ namespace Utilities
             PlayerSaveManager.SavePlayerAttribute(CurrentStage, CurrentStageKey);
         }
 
-        public List<TaskConfig> GetAvailableTasks()
+        public List<TaskConfig> GetTasksByType(bool type)
+        {
+            return type ? GetAvailableTasks() : GetPerformanceItems();
+        }
+
+        private List<TaskConfig> GetAvailableTasks()
         {
             var level = PlayerSaveManager.GetPlayerAttribute(CurrentLevelKey, 0);
             return gameLevels[level].GetAvailableTasks();
+        }
+
+        private List<TaskConfig> GetPerformanceItems()
+        {
+            return performanceItems.ToList();
         }
 
         public GameObject GetNextSpan()

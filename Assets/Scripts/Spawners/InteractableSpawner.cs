@@ -63,6 +63,7 @@ namespace Spawners
         {
             var finalPos = swipeHandler.GetFinalPosition();
             SpawnSelectedInteractable(new CartesianPoint((int)finalPos.x, (int)finalPos.z), _currentConfig.RewardInteractable, true);
+            PlayerInventory.Instance.ChangeCurrencyAmountByType(_currentConfig);
         }
 
 
