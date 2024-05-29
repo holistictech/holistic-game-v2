@@ -67,7 +67,7 @@ namespace Spans.Skeleton.QuestionStates
         {
             if (spanController.GetBackwardStatus())
             {
-                RotateCircles(() =>
+                RotateCircles(-180, () =>
                 {
                     spanController.SwitchState();
                 });

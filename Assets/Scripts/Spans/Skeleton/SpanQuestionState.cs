@@ -124,11 +124,11 @@ namespace Spans.Skeleton
             return null;
         }
 
-        protected void RotateCircles(Action onComplete)
+        protected void RotateCircles(int endValue, Action onComplete)
         {
             Quaternion originalRotation = unitParent.transform.rotation;
             
-            unitParent.transform.DORotate(new Vector3(originalRotation.eulerAngles.x, 0, -180), .5f)
+            unitParent.transform.DORotate(new Vector3(originalRotation.eulerAngles.x, originalRotation.eulerAngles.y, endValue), .5f)
                 .SetEase(Ease.Linear)
                 .OnComplete(() =>
                 {

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using DG.Tweening;
 using Scriptables.QuestionSystem;
 using UI.CorsiBlockTypes;
 using UnityEngine;
@@ -32,6 +33,18 @@ namespace UI.Helpers
         {
             gridLayout.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
             gridLayout.constraintCount = helperIndex;
+        }
+
+        public void RotateGrid(int amount, Action onComplete)
+        {
+            Quaternion originalRotation = gridLayout.transform.rotation;
+
+            gridLayout.transform.DORotate(new Vector3(originalRotation.eulerAngles.x, originalRotation.eulerAngles.y, amount), 0.5f)
+                .SetEase(Ease.Linear).OnComplete(
+                    () =>
+                    {
+                        onComplete?.Invoke();
+                    });
         }
 
         public void EnableGrid()

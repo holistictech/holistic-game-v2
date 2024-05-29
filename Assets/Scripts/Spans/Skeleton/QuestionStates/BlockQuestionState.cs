@@ -6,6 +6,7 @@ using Scriptables.QuestionSystem;
 using UI.Helpers;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.UIElements;
 using Utilities;
 
 namespace Spans.Skeleton.QuestionStates
@@ -71,7 +72,18 @@ namespace Spans.Skeleton.QuestionStates
             }
             DisableUIElements();
             ConfigureDisplayedQuestions();
-            base.SwitchNextState();
+            
+            if (spanController.GetBackwardStatus())
+            {
+                blockUIHelper.RotateGrid(-90, () =>
+                {
+                    base.SwitchNextState();
+                });
+            }
+            else
+            {
+                base.SwitchNextState();
+            }
         }
         
         private void ConfigureDisplayedQuestions()
