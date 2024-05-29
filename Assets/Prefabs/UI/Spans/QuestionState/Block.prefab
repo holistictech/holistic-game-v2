@@ -91,7 +91,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   blockImage: {fileID: 7974761984613211116}
   blockButton: {fileID: -8650742710520217601}
-  highlightColor: {r: 0.9843137, g: 0.4745098, b: 0.019607844, a: 0}
+  highlightColor: {r: 0.9843137, g: 0.4745098, b: 0.019607844, a: 1}
 --- !u!114 &-8650742710520217601
 MonoBehaviour:
   m_ObjectHideFlags: 0

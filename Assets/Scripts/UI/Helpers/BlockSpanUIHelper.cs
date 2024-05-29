@@ -14,7 +14,7 @@ namespace UI.Helpers
 
         private List<CorsiBlock> _blockPool = new List<CorsiBlock>();
         
-        private void Start()
+        private void Awake()
         {
             InstantiatePool();
         }
@@ -36,21 +36,27 @@ namespace UI.Helpers
 
         public void EnableGrid()
         {
+            gridLayout.gameObject.SetActive(true);
             ResetCorsiBlocks();
         }
-
-        public void DisableGrid()
+        
+        public void DisableCorsiBlocks()
         {
-            DisableUnitCircles();
+            foreach (var block in spawnedBlocks)
+            {
+                block.DisableSelf();
+            }
         }
 
         private void InstantiatePool()
         {
             for (int i = 0; i < 9; i++)
             {
-                var tempBlock = Instantiate(blockImage, transform);
+                var tempBlock = Instantiate(blockImage, gridLayout.transform);
                 _blockPool.Add(tempBlock);
             }
+
+            spawnedBlocks = _blockPool;
         }
 
         private CorsiBlock GetAvailableBlock()

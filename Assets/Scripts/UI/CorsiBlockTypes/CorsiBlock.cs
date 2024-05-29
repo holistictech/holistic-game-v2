@@ -66,6 +66,11 @@ namespace UI.CorsiBlockTypes
             gameObject.SetActive(true);
         }
 
+        public void DisableSelf()
+        {
+            gameObject.SetActive(false);
+        }
+
         public void ConfigureInput(bool toggle)
         {
             blockButton.transition = toggle ? Selectable.Transition.ColorTint : Selectable.Transition.None;

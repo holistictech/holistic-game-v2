@@ -13,10 +13,12 @@ namespace Spans.Skeleton
 
     public class BlockSpanGridSizeEvent
     {
-        public Vector2Int NewGrid;
-        public BlockSpanGridSizeEvent(Vector2Int grid)
+        internal Vector2Int NewGrid;
+        internal int CircleCount;
+        public BlockSpanGridSizeEvent(Vector2Int grid, int count)
         {
             NewGrid = grid;
+            CircleCount = count;
         }
     }
 }

@@ -14,7 +14,7 @@ namespace UI.Helpers
     {
         [SerializeField] private GridLayoutGroup blockParent;
         
-        private List<CorsiBlock> _spawnedBlocks = new List<CorsiBlock>();
+        protected List<CorsiBlock> spawnedBlocks = new List<CorsiBlock>();
         private List<CorsiBlock> _selectedBlocks = new List<CorsiBlock>();
         private List<Question> _selectedAnswers = new List<Question>();
         private List<UnitCircle> _activeCircles = new List<UnitCircle>();
@@ -28,7 +28,7 @@ namespace UI.Helpers
 
         public void GetCorsiBlocks()
         {
-            _spawnedBlocks = new List<CorsiBlock>(blockParent.GetComponentsInChildren<CorsiBlock>());
+            spawnedBlocks = new List<CorsiBlock>(blockParent.GetComponentsInChildren<CorsiBlock>());
         }
 
         public virtual void AssignQuestions(List<Question> spanQuestions)
@@ -38,14 +38,14 @@ namespace UI.Helpers
             blockParent.gameObject.SetActive(true);
             for (int i = 0; i < spanQuestions.Count; i++)
             {
-                _spawnedBlocks[i].ConfigureSelf(spanQuestions[i], this);
-                _spawnedBlocks[i].MakeBlockMove();
+                spawnedBlocks[i].ConfigureSelf(spanQuestions[i], this);
+                spawnedBlocks[i].MakeBlockMove();
             }
         }
         
         public void ConfigureInput(bool toggle)
         {
-            foreach (var block in _spawnedBlocks)
+            foreach (var block in spawnedBlocks)
             {
                 block.ConfigureInput(toggle);
             }
@@ -64,7 +64,7 @@ namespace UI.Helpers
 
         public CorsiBlock GetBlockByQuestion(Question question)
         {
-            foreach (var block in _spawnedBlocks)
+            foreach (var block in spawnedBlocks)
             {
                 if (block.GetAssignedQuestion() == question)
                     return block;
@@ -110,7 +110,7 @@ namespace UI.Helpers
 
         public void ResetCorsiBlocks()
         {
-            foreach (var block in _spawnedBlocks)
+            foreach (var block in spawnedBlocks)
             {
                 block.ResetUI();
             }

@@ -6,6 +6,7 @@ using Scriptables.QuestionSystem;
 using UI.Helpers;
 using UnityEngine;
 using UnityEngine.UI;
+using Utilities;
 
 namespace Spans.Skeleton.QuestionStates
 {
@@ -16,18 +17,22 @@ namespace Spans.Skeleton.QuestionStates
         private List<Question> _currentQuestions = new List<Question>();
 
         private int _indexHelper = 2;
-
+        private int _circleCount = 1;
+        
         public override void Enter(SpanController controller)
         {
-            base.Enter(controller);
+            blockUIHelper.DisableCorsiBlocks();
             EnableUIElements();
             if (spanController == null)
             {
-                spanController = controller;
+                base.Enter(controller);
+                spanController.SetHelperObject(blockUIHelper.gameObject);
+                spanEventBus.Register<BlockSpanGridSizeEvent>(UpdateHelperIndex);
             }
-
             _spanObjects = spanController.GetSpanObjects();
-            spanEventBus.Register<BlockSpanGridSizeEvent>(UpdateHelperIndex);
+            blockUIHelper.ConfigureInput(false);
+            StatisticsHelper.IncrementDisplayedQuestionCount();
+            SetCircleUI(_circleCount);
             ShowQuestion();
         }
 
@@ -48,13 +53,13 @@ namespace Spans.Skeleton.QuestionStates
             var spanQuestions = spanController.GetCurrentSpanQuestions();
             for (int i = 0; i < spanQuestions.Count; i++)
             {
-                if (currentQuestionIndex >= spanQuestions.Count)
+                /*if (currentQuestionIndex >= spanQuestions.Count)
                 {
                     break;
-                }
+                }*/
                 
-                ActivateCircle(currentQuestionIndex);
-                blockUIHelper.HighlightTargetBlock(spanQuestions[currentQuestionIndex]);
+                ActivateCircle(i);
+                blockUIHelper.HighlightTargetBlock(spanQuestions[i]);
                 currentQuestionIndex++;
                 _currentQuestions.Add(spanQuestions[i]);
                 yield return new WaitForSeconds(2f);
@@ -82,18 +87,19 @@ namespace Spans.Skeleton.QuestionStates
         private void UpdateHelperIndex(BlockSpanGridSizeEvent update)
         {
             _indexHelper = update.NewGrid.y;
+            _circleCount = update.CircleCount;
         }
         
         public override void EnableUIElements()
         {
             base.EnableUIElements();
             blockUIHelper.EnableGrid();
+            blockUIHelper.gameObject.SetActive(true);
         }
 
         public override void DisableUIElements()
         {
             base.DisableUIElements();
-            blockUIHelper.DisableGrid();
         }
 
         private void AddListeners()

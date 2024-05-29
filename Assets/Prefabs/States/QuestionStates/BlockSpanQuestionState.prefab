@@ -65,6 +65,14 @@ PrefabInstance:
       propertyPath: m_Name
       value: BlockParent
       objectReference: {fileID: 0}
+    - target: {fileID: 6052620986267761256, guid: b2c5378b1bf035245a9ece1f4131eefc, type: 3}
+      propertyPath: m_Spacing.x
+      value: 10
+      objectReference: {fileID: 0}
+    - target: {fileID: 6052620986267761256, guid: b2c5378b1bf035245a9ece1f4131eefc, type: 3}
+      propertyPath: m_Spacing.y
+      value: 10
+      objectReference: {fileID: 0}
     - target: {fileID: 6486893474914513475, guid: b2c5378b1bf035245a9ece1f4131eefc, type: 3}
       propertyPath: m_Color.a
       value: 0.003921569
@@ -147,6 +155,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8600129928798833048, guid: b2c5378b1bf035245a9ece1f4131eefc, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9158934591373192983, guid: b2c5378b1bf035245a9ece1f4131eefc, type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []

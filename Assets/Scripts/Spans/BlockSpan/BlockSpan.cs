@@ -26,8 +26,9 @@ namespace Spans.BlockSpan
 
         protected override void Start()
         {
-            _currentGrid = _gridSizes[0];
             base.Start();
+            _currentGrid = _gridSizes[0];
+            UpdateSpanConfig();
         }
         
         public override List<Question> GetSpanObjects()
@@ -102,7 +103,6 @@ namespace Spans.BlockSpan
         protected override void IncrementSuccessStreak()
         {
             StatisticsHelper.IncrementTrueCount();
-            
             currentSuccessStreak++;
             currentFailStreak = 0;
             if (currentSuccessStreak == 4)
@@ -141,7 +141,7 @@ namespace Spans.BlockSpan
         {
             var size = _currentGrid.x * _currentGrid.y;
             _questionCount = (int)Mathf.Floor(size/3);
-            spanEventBus.Trigger(new BlockSpanGridSizeEvent(_currentGrid));
+            spanEventBus.Trigger(new BlockSpanGridSizeEvent(_currentGrid, _questionCount));
         }
     }
 }
