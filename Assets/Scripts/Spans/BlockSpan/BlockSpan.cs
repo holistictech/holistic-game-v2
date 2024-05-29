@@ -40,7 +40,7 @@ namespace Spans.BlockSpan
             {
                 var randomQuestionIndex = Random.Range(0, allQuestions.Length);
                 var randomQuestion = allQuestions[randomQuestionIndex];
-                while (randomQuestion.HasSelected())
+                while (roundQuestions.Contains(randomQuestion))
                 {
                     randomQuestionIndex = Random.Range(0, allQuestions.Length);
                     randomQuestion = allQuestions[randomQuestionIndex];

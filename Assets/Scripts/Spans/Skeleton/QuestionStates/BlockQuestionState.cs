@@ -53,11 +53,6 @@ namespace Spans.Skeleton.QuestionStates
             var spanQuestions = spanController.GetCurrentSpanQuestions();
             for (int i = 0; i < spanQuestions.Count; i++)
             {
-                /*if (currentQuestionIndex >= spanQuestions.Count)
-                {
-                    break;
-                }*/
-                
                 ActivateCircle(i);
                 blockUIHelper.HighlightTargetBlock(spanQuestions[i]);
                 currentQuestionIndex++;
