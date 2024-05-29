@@ -50,7 +50,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockParent: {fileID: 5605435775947130704}
-  blockPrefab: {fileID: 442554275804650517, guid: 0b3dc0a40f2a169418c7b97bcfd324eb, type: 3}
 --- !u!1 &7002722382907314735
 GameObject:
   m_ObjectHideFlags: 0

@@ -28,6 +28,7 @@ namespace Spans.Skeleton.QuestionStates
 
             _spanObjects = spanController.GetSpanObjects();
             spanEventBus.Register<BlockSpanGridSizeEvent>(UpdateHelperIndex);
+            ShowQuestion();
         }
 
         public override void ShowQuestion()
@@ -86,11 +87,13 @@ namespace Spans.Skeleton.QuestionStates
         public override void EnableUIElements()
         {
             base.EnableUIElements();
+            blockUIHelper.EnableGrid();
         }
 
         public override void DisableUIElements()
         {
             base.DisableUIElements();
+            blockUIHelper.DisableGrid();
         }
 
         private void AddListeners()

@@ -13,11 +13,6 @@ namespace UI.Helpers
         [SerializeField] private GridLayoutGroup gridLayout;
 
         private List<CorsiBlock> _blockPool = new List<CorsiBlock>();
-
-        private void OnValidate()
-        {
-            gridLayout = GetComponent<GridLayoutGroup>();
-        }
         
         private void Start()
         {
@@ -37,7 +32,17 @@ namespace UI.Helpers
         {
             gridLayout.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
             gridLayout.constraintCount = helperIndex;
-        } 
+        }
+
+        public void EnableGrid()
+        {
+            ResetCorsiBlocks();
+        }
+
+        public void DisableGrid()
+        {
+            DisableUnitCircles();
+        }
 
         private void InstantiatePool()
         {

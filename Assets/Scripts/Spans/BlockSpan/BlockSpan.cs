@@ -9,7 +9,6 @@ namespace Spans.BlockSpan
 {
     public class BlockSpan : SpanController
     {
-
         private List<Vector2Int> _gridSizes = new List<Vector2Int>()
         {
             new Vector2Int(2, 2),
@@ -24,13 +23,15 @@ namespace Spans.BlockSpan
         private int _gridIndex;
         private Vector2Int _currentGrid;
         private int _questionCount = 1;
+
+        protected override void Start()
+        {
+            _currentGrid = _gridSizes[0];
+            base.Start();
+        }
         
         public override List<Question> GetSpanObjects()
         {
-            if (!GetCumulativeStatus())
-            {
-                ResetQuestionStatus();
-            }
             var allQuestions = GetAllAvailableSpanObjects();
             List<Question> roundQuestions = new List<Question>();
             var iterations = _currentGrid.x * _currentGrid.y;
@@ -71,6 +72,11 @@ namespace Spans.BlockSpan
             }
             
             return corrects;
+        }
+        
+        public override int GetRoundTime()
+        {
+            return _questionCount * 3;
         }
 
         public override bool IsAnswerCorrect()
