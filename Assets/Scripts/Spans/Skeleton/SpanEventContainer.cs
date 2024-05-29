@@ -10,4 +10,13 @@ namespace Spans.Skeleton
     {
         
     }
+
+    public class BlockSpanGridSizeEvent
+    {
+        public Vector2Int NewGrid;
+        public BlockSpanGridSizeEvent(Vector2Int grid)
+        {
+            NewGrid = grid;
+        }
+    }
 }

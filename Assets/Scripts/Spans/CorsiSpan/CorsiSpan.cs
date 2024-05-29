@@ -72,7 +72,6 @@ namespace Spans.CorsiSpan
 
         protected override void IncrementSuccessStreak()
         {
-            StatisticsHelper.IncrementTrueCount();
             if (GetCumulativeStatus())
             {
                 if(currentRoundIndex < 9)

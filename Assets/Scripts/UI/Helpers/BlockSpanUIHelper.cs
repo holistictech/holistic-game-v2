@@ -10,9 +10,15 @@ namespace UI.Helpers
     public class BlockSpanUIHelper : CorsiBlockUIHelper
     {
         [SerializeField] private CorsiBlock blockImage;
+        [SerializeField] private GridLayoutGroup gridLayout;
 
         private List<CorsiBlock> _blockPool = new List<CorsiBlock>();
 
+        private void OnValidate()
+        {
+            gridLayout = GetComponent<GridLayoutGroup>();
+        }
+        
         private void Start()
         {
             InstantiatePool();
@@ -26,6 +32,12 @@ namespace UI.Helpers
                 block.ConfigureSelf(question, this);
             }
         }
+
+        public void SetConstraintsCount(int helperIndex)
+        {
+            gridLayout.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
+            gridLayout.constraintCount = helperIndex;
+        } 
 
         private void InstantiatePool()
         {
