@@ -6,7 +6,6 @@ namespace Spans.Skeleton.AnswerStates
     public class CorsiAnswerState : SpanAnswerState
     {
         private CorsiBlockUIHelper _corsiHelper;
-        private float _maxTime;
         public override void Enter(SpanController controller)
         {
             base.Enter(controller);
@@ -15,10 +14,10 @@ namespace Spans.Skeleton.AnswerStates
                 spanController = controller;
             }
             _corsiHelper = spanController.GetHelperObject().GetComponent<CorsiBlockUIHelper>();
-            _maxTime = spanController.GetRoundTime();
+            maxTime = spanController.GetRoundTime();
             EnableUIElements();
             ConfigureCorsiHelper();
-            PlayTimer(_maxTime);
+            PlayTimer(maxTime);
         }
 
         private void ConfigureCorsiHelper()
@@ -28,9 +27,9 @@ namespace Spans.Skeleton.AnswerStates
             _corsiHelper.ConfigureInput(true);
         }
         
-        public override void PlayTimer(float maxTime)
+        public override void PlayTimer(float duration)
         {
-            timer.StartTimer(maxTime, SwitchNextState);
+            timer.StartTimer(duration, SwitchNextState);
         }
 
         public override void Exit()

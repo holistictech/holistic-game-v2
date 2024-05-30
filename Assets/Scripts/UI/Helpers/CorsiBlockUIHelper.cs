@@ -13,7 +13,6 @@ namespace UI.Helpers
     public class CorsiBlockUIHelper : MonoBehaviour
     {
         [SerializeField] private GridLayoutGroup blockParent;
-        
         protected List<CorsiBlock> spawnedBlocks = new List<CorsiBlock>();
         protected List<CorsiBlock> selectedBlocks = new List<CorsiBlock>();
         protected List<Question> selectedAnswers = new List<Question>();
@@ -69,7 +68,6 @@ namespace UI.Helpers
                 if (block.GetAssignedQuestion() == question)
                     return block;
             }
-
             throw new Exception("Could not find target question in blocks");
         }
 

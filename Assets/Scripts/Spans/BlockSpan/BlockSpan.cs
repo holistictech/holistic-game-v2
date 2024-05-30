@@ -85,6 +85,19 @@ namespace Spans.BlockSpan
         
         public override List<Question> GetCurrentSpanQuestions()
         {
+            switch (_currentConfig.Mode)
+            {
+                case BlockSpanModes.Regular:
+                    return GetCurrentRegularQuestions();
+                case BlockSpanModes.ColorChooser: case BlockSpanModes.ItemChooser:
+                    return _gameMode.GetCorrectQuestions(currentSpanQuestions);
+            }
+
+            return new List<Question>();
+        }
+
+        private List<Question> GetCurrentRegularQuestions()
+        {
             List<Question> corrects = new List<Question>();
             for (int i = 0; i < _questionCount; i++)
             {

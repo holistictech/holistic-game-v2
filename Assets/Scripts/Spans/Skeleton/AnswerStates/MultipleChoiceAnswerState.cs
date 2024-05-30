@@ -54,9 +54,9 @@ namespace Spans.Skeleton.AnswerStates
             gridHelper.ConfigureChoices(choices, this);
         }
         
-        public override void PlayTimer(float maxTime)
+        public override void PlayTimer(float duration)
         {
-            timer.StartTimer(maxTime, SwitchNextState);
+            timer.StartTimer(duration, SwitchNextState);
         }
 
         public override void SwitchNextState()

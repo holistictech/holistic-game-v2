@@ -21,6 +21,7 @@ namespace Spans.Skeleton
         [SerializeField] protected Button revertButton;
         [SerializeField] protected AudioClip confirmClip;
         protected SpanController spanController;
+        protected int maxTime;
         public virtual void Enter(SpanController controller)
         {
             if (spanController == null)
@@ -36,9 +37,9 @@ namespace Spans.Skeleton
             timer.StopTimer();
         }
         
-        public virtual void PlayTimer(float maxTime)
+        public virtual void PlayTimer(float duration)
         {
-            timer.StartTimer(maxTime, SwitchNextState);
+            timer.StartTimer(duration, SwitchNextState);
         }
 
         public virtual void SwitchNextState()

@@ -498,6 +498,15 @@ MonoBehaviour:
   _spanNameField: {fileID: 8466859783228648739}
   timerHelper: {fileID: 4893235895707078479}
   dummyTutorialBool: 0
+  colorQuestions:
+  - {fileID: 11400000, guid: b6b3d4fbe657e8e4280bcc23f5ae5f84, type: 2}
+  - {fileID: 11400000, guid: 2a61bfa06f53ab24ab1ce57eb7d17f73, type: 2}
+  - {fileID: 11400000, guid: 346db99f75f6d2f4eb62cf0fa34c785f, type: 2}
+  imageQuestions:
+  - {fileID: 11400000, guid: 06ad9c9adc8a5bb4d88a3529959bf116, type: 2}
+  - {fileID: 11400000, guid: 9e30e14b5a62bad4c9e0009b6c9c0fea, type: 2}
+  - {fileID: 11400000, guid: 96cb5f8cece1429458e394b12b9f64e8, type: 2}
+  - {fileID: 11400000, guid: 29c1e0adb9a5f8942ab1b5359f593e70, type: 2}
 --- !u!1 &8840831442161132576
 GameObject:
   m_ObjectHideFlags: 0

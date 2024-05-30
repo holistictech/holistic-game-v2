@@ -32,9 +32,9 @@ namespace Spans.Skeleton.AnswerStates
             PlayTimer(_maxTime);
         }
 
-        public override void PlayTimer(float maxTime)
+        public override void PlayTimer(float duration)
         {
-            timer.StartTimer(maxTime, StopRecording);
+            timer.StartTimer(duration, StopRecording);
         }
         
         public override void SwitchNextState()

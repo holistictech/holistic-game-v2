@@ -32,6 +32,7 @@ namespace UI
         private void OnDisable()
         {
             RemoveListeners();
+            ResetOption();
         }
 
         public void ConfigureOption(Question question)
@@ -41,10 +42,12 @@ namespace UI
             if (question is ImageQuestion)
             {
                 optionImage.sprite = (Sprite)question.GetQuestionItem();
+                optionBg.color = Color.grey;
             }
             else if (question is ColorQuestion)
             {
-                optionImage.color = (Color)question.GetQuestionItem();
+                optionBg.color = (Color)question.GetQuestionItem();
+                optionImage.enabled = false;
             }
             
             gameObject.SetActive(true);
@@ -64,6 +67,12 @@ namespace UI
         public Question GetQuestion()
         {
             return _question;
+        }
+
+        private void ResetOption()
+        {
+            optionImage.enabled = true;
+            optionBg.color = Color.white;
         }
 
         private void AddListeners()
