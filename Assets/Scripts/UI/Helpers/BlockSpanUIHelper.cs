@@ -41,7 +41,7 @@ namespace UI.Helpers
         {
             Quaternion originalRotation = gridLayout.transform.rotation;
 
-            gridLayout.transform.DORotate(new Vector3(originalRotation.eulerAngles.x, originalRotation.eulerAngles.y, originalRotation.eulerAngles.y + amount), 1.5f)
+            gridLayout.transform.DORotate(new Vector3(originalRotation.eulerAngles.x, originalRotation.eulerAngles.y, originalRotation.eulerAngles.z + amount), .5f)
                 .SetEase(Ease.Linear).OnComplete(
                     () =>
                     {

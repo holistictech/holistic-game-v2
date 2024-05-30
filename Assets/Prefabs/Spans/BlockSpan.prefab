@@ -491,7 +491,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 040f32474e29a664f8184083deea2bee, type: 2}
   - {fileID: 11400000, guid: 3b4e64fdaa14af24082fb5946ad30602, type: 2}
   - {fileID: 11400000, guid: 428ea3981d0b41e4284773bd420e8305, type: 2}
-  isBackwards: 0
+  isBackwards: 1
   isCumulative: 0
   states: {fileID: 11400000, guid: a130ac86c1d093e4591361b108a41817, type: 2}
   tutorialManager: {fileID: 5317712305952169983}
