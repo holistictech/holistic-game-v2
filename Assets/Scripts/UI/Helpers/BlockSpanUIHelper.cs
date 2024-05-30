@@ -22,6 +22,8 @@ namespace UI.Helpers
 
         public override void AssignQuestions(List<Question> roundQuestions)
         {
+            selectedAnswers.Clear();
+            selectedBlocks.Clear();
             foreach (var question in roundQuestions)
             {
                 var block = GetAvailableBlock();
@@ -39,7 +41,7 @@ namespace UI.Helpers
         {
             Quaternion originalRotation = gridLayout.transform.rotation;
 
-            gridLayout.transform.DORotate(new Vector3(originalRotation.eulerAngles.x, originalRotation.eulerAngles.y, amount), 0.5f)
+            gridLayout.transform.DORotate(new Vector3(originalRotation.eulerAngles.x, originalRotation.eulerAngles.y, originalRotation.eulerAngles.y + amount), 1.5f)
                 .SetEase(Ease.Linear).OnComplete(
                     () =>
                     {

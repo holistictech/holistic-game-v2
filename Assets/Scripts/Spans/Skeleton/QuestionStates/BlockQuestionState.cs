@@ -52,6 +52,7 @@ namespace Spans.Skeleton.QuestionStates
         private IEnumerator IterateQuestions()
         {
             var spanQuestions = spanController.GetCurrentSpanQuestions();
+            _currentQuestions = new List<Question>();
             for (int i = 0; i < spanQuestions.Count; i++)
             {
                 ActivateCircle(i);

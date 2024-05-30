@@ -15,8 +15,8 @@ namespace UI.Helpers
         [SerializeField] private GridLayoutGroup blockParent;
         
         protected List<CorsiBlock> spawnedBlocks = new List<CorsiBlock>();
-        private List<CorsiBlock> _selectedBlocks = new List<CorsiBlock>();
-        private List<Question> _selectedAnswers = new List<Question>();
+        protected List<CorsiBlock> selectedBlocks = new List<CorsiBlock>();
+        protected List<Question> selectedAnswers = new List<Question>();
         private List<UnitCircle> _activeCircles = new List<UnitCircle>();
         private int _answerIndex;
 
@@ -33,8 +33,8 @@ namespace UI.Helpers
 
         public virtual void AssignQuestions(List<Question> spanQuestions)
         {
-            _selectedAnswers.Clear();
-            _selectedBlocks.Clear();
+            selectedAnswers.Clear();
+            selectedBlocks.Clear();
             blockParent.gameObject.SetActive(true);
             for (int i = 0; i < spanQuestions.Count; i++)
             {
@@ -53,7 +53,7 @@ namespace UI.Helpers
 
         public List<Question> GetGivenAnswers()
         {
-            return _selectedAnswers;
+            return selectedAnswers;
         }
 
         public void HighlightTargetBlock(Question target)
@@ -75,17 +75,17 @@ namespace UI.Helpers
 
         public void AppendSelectedAnswers(Question question, CorsiBlock selectedBlock)
         {
-            _selectedBlocks.Add(selectedBlock);
-            _selectedAnswers.Add(question);
+            selectedBlocks.Add(selectedBlock);
+            selectedAnswers.Add(question);
             UpdateAndAnimateUnitCircle(true);
         }
 
         public void RevokeLastSelection()
         {
-            if (_selectedAnswers.Count == 0) return;
-            _selectedAnswers.Remove(_selectedAnswers[^1]);
-            _selectedBlocks[^1].ResetUI();
-            _selectedBlocks.Remove(_selectedBlocks[^1]);
+            if (selectedAnswers.Count == 0) return;
+            selectedAnswers.Remove(selectedAnswers[^1]);
+            selectedBlocks[^1].ResetUI();
+            selectedBlocks.Remove(selectedBlocks[^1]);
             UpdateAndAnimateUnitCircle(false);
         }
         

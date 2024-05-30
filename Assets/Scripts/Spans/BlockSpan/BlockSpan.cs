@@ -46,7 +46,6 @@ namespace Spans.BlockSpan
                     randomQuestion = allQuestions[randomQuestionIndex];
                 }
                 
-                randomQuestion.SetHasSelected(true);
                 roundQuestions.Add(randomQuestion);
             }
             
