@@ -25,6 +25,13 @@ namespace Utilities
             Performance
         }
 
+        public enum BlockSpanModes
+        {
+            Regular = 0,
+            ColorChooser,
+            ItemChooser
+        }
+
         public enum Direction
         {
             Up = 0,
@@ -69,6 +76,18 @@ namespace Utilities
         public int GetYCoordinate()
         {
             return ZCoordinate;
+        }
+    }
+
+    public class GridConfiguration
+    {
+        public Vector2Int GridSize { get; set; }
+        public CommonFields.BlockSpanModes Mode { get; set; }
+
+        public GridConfiguration(Vector2Int grid, CommonFields.BlockSpanModes mode)
+        {
+            GridSize = grid;
+            Mode = mode;
         }
     }
 }

@@ -6,13 +6,29 @@
   <component name="ChangeListManager">
     <list default="true" id="3d01f5fc-4a81-4ccb-94d7-a0f07bc2bc79" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My Farm/Materials/building_glass.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My Farm/Materials/building_glass.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Spans/BlockSpan.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Spans/BlockSpan.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/BlockSpan/BlockSpan.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/BlockSpan/BlockSpan.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/BlockQuestionState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/BlockQuestionState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Helpers/BlockSpanUIHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Helpers/BlockSpanUIHelper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Helpers/CorsiBlockUIHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Helpers/CorsiBlockUIHelper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HolyFarm.json" beforeDir="false" afterPath="$PROJECT_DIR$/HolyFarm.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/CameraMover.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/CameraMover.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/CommonFields.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/CommonFields.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/DictionaryExtensions.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/DictionaryExtensions.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/MeshContainer.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/MeshContainer.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/PlayerInventory.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/PlayerInventory.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/PlayerSaveManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/PlayerSaveManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/RoundTimerHelper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/RoundTimerHelper.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/SaveLoadManager.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/SaveLoadManager.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/StatisticsHelper.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/StatisticsHelper.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/SwipeHandler.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/SwipeHandler.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/ZoomController.cs" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/ZoomController.cs.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -32,6 +48,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scriptables/Tutorial/TutorialStep.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Factory/InteractableFactory.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interactables/ConcreteBuilding.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interfaces/IBlockSpanStrategy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/BlockSpan/BlockSpan.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/CorsiSpan/CorsiSpan.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/CumulativeSpan/CumulativeChooser.cs" root0="FORCE_HIGHLIGHTING" />
@@ -55,14 +72,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Tasks/Task.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/UnitCircle.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utilities/AudioManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utilities/DictionaryExtensions.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utilities/MeshContainer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utilities/PermissionRequester.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utilities/PlayerInventory.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utilities/PlayerSaveManager.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utilities/RoundTimerHelper.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utilities/StatisticsHelper.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utilities/ZoomController.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.srcnalt.openai-unity@f7f501c076/Runtime/OpenAIApi.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Layout/GridLayoutGroup.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.visualscripting@1.9.1/Runtime/VisualScripting.Core/Events/EventBus.cs" root0="SKIP_HIGHLIGHTING" />
@@ -195,7 +205,7 @@
       <workItem from="1716797900131" duration="7882000" />
       <workItem from="1716971467213" duration="9547000" />
       <workItem from="1716987245557" duration="4243000" />
-      <workItem from="1717057177090" duration="732000" />
+      <workItem from="1717057177090" duration="2805000" />
     </task>
     <servers />
   </component>
