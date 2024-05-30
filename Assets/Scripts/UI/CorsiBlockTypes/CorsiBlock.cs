@@ -55,7 +55,7 @@ namespace UI.CorsiBlockTypes
             blockImage.color = Color.white;
         }
 
-        private void SetSelected()
+        public virtual void SetSelected()
         {
             blockImage.color = highlightColor;
             _blockHelper.AppendSelectedAnswers(_blockQuestion, this);

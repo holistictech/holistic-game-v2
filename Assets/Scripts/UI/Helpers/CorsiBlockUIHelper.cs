@@ -56,7 +56,7 @@ namespace UI.Helpers
             return selectedAnswers;
         }
 
-        public void HighlightTargetBlock(Question target)
+        public virtual void HighlightTargetBlock(Question target)
         {
             var block = GetBlockByQuestion(target);
             block.AnimateSelf();

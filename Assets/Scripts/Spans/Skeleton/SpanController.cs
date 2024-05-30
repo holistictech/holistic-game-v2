@@ -15,7 +15,7 @@ namespace Spans.Skeleton
 {
     public abstract class SpanController : MonoBehaviour
     {
-        [SerializeField] private Question[] spanQuestions;
+        [SerializeField] protected Question[] spanQuestions;
         [SerializeField] protected bool isBackwards;
         [SerializeField] protected bool isCumulative;
         [SerializeField] private StateHolder states;
@@ -117,7 +117,7 @@ namespace Spans.Skeleton
             return new List<Question>();
         }
 
-        protected Question[] GetAllAvailableSpanObjects()
+        protected virtual Question[] GetAllAvailableSpanObjects()
         {
             return spanQuestions;
         }

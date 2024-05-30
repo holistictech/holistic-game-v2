@@ -1,12 +1,16 @@
+using DG.Tweening;
 using Interfaces;
+using UI.CorsiBlockTypes;
 
 namespace Spans.BlockSpan
 {
     public class ColorChooserMode : IBlockSpanStrategy
     {
-        public void HighlightBlocks()
+        public void HighlightBlock(AdaptableBlock targetBlock)
         {
-            throw new System.NotImplementedException();
+            var image = targetBlock.GetBlockImage();
+            var color = targetBlock.GetHighlightColor();
+            image.DOColor(color, 1f).SetEase(Ease.Flash).OnComplete(targetBlock.ResetUI);
         }
 
         public void CheckAnswer()

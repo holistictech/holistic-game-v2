@@ -1,4 +1,6 @@
+using Interfaces;
 using UnityEngine;
+using Utilities;
 
 namespace Spans.Skeleton
 {
@@ -13,11 +15,13 @@ namespace Spans.Skeleton
 
     public class BlockSpanGridSizeEvent
     {
-        internal Vector2Int NewGrid;
+        internal GridConfiguration NewConfig;
+        internal IBlockSpanStrategy StrategyClass;
         internal int CircleCount;
-        public BlockSpanGridSizeEvent(Vector2Int grid, int count)
+        public BlockSpanGridSizeEvent(GridConfiguration config, int count, IBlockSpanStrategy strategy)
         {
-            NewGrid = grid;
+            StrategyClass = strategy;
+            NewConfig = config;
             CircleCount = count;
         }
     }

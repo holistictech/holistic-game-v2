@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using DG.Tweening;
+using Interfaces;
 using Scriptables.QuestionSystem;
 using UI.CorsiBlockTypes;
 using UnityEngine;
@@ -14,6 +15,7 @@ namespace UI.Helpers
         [SerializeField] private GridLayoutGroup gridLayout;
 
         private List<CorsiBlock> _blockPool = new List<CorsiBlock>();
+        private IBlockSpanStrategy _currentStrategy;
         
         private void Awake()
         {
@@ -28,6 +30,7 @@ namespace UI.Helpers
             {
                 var block = GetAvailableBlock();
                 block.ConfigureSelf(question, this);
+                block.GetComponent<AdaptableBlock>().SetStrategy(_currentStrategy);
             }
         }
 
@@ -35,6 +38,17 @@ namespace UI.Helpers
         {
             gridLayout.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
             gridLayout.constraintCount = helperIndex;
+        }
+
+        public void SetStrategy(IBlockSpanStrategy strategy)
+        {
+            _currentStrategy = strategy;
+        }
+
+        public override void HighlightTargetBlock(Question target)
+        {
+            var block = GetBlockByQuestion(target);
+            _currentStrategy.HighlightBlock((AdaptableBlock)block);
         }
 
         public void RotateGrid(int amount, Action onComplete)

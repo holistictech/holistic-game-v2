@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using System.Linq;
+using Interfaces;
 using Scriptables.QuestionSystem;
 using Spans.Skeleton;
 using UnityEngine;
@@ -10,6 +11,8 @@ namespace Spans.BlockSpan
 {
     public class BlockSpan : SpanController
     {
+        [SerializeField] private Question[] colorQuestions;
+        [SerializeField] private Question[] imageQuestions;
         private List<GridConfiguration> _gridConfigs =
             new List<GridConfiguration>()
             {
@@ -33,13 +36,14 @@ namespace Spans.BlockSpan
             };
         
         private int _gridIndex;
-        private Vector2Int _currentGrid;
+        private GridConfiguration _currentConfig;
         private int _questionCount = 1;
+        private IBlockSpanStrategy _gameMode;
 
         protected override void Start()
         {
             base.Start();
-            _currentGrid = _gridConfigs[0].GridSize;
+            _currentConfig = _gridConfigs[0];
             UpdateSpanConfig();
         }
         
@@ -47,7 +51,7 @@ namespace Spans.BlockSpan
         {
             var allQuestions = GetAllAvailableSpanObjects();
             List<Question> roundQuestions = new List<Question>();
-            var iterations = _currentGrid.x * _currentGrid.y;
+            var iterations = _currentConfig.GridSize.x * _currentConfig.GridSize.y;
             for (int i = 0; i < iterations; i++)
             {
                 var randomQuestionIndex = Random.Range(0, allQuestions.Length);
@@ -60,11 +64,23 @@ namespace Spans.BlockSpan
                 
                 roundQuestions.Add(randomQuestion);
             }
-            
             currentSpanQuestions = roundQuestions;
-
-
             return currentSpanQuestions;
+        }
+        
+        protected override Question[] GetAllAvailableSpanObjects()
+        {
+            switch (_currentConfig.Mode)
+            {
+                case BlockSpanModes.Regular:
+                    return spanQuestions;
+                case BlockSpanModes.ColorChooser:
+                    return colorQuestions;
+                case BlockSpanModes.ItemChooser:
+                    return imageQuestions;
+            }
+
+            return new Question[]{};
         }
         
         public override List<Question> GetCurrentSpanQuestions()
@@ -137,22 +153,39 @@ namespace Spans.BlockSpan
         private void IncrementGridSize()
         {
             _gridIndex++;
-            _currentGrid = _gridIndex >= _gridConfigs.Count ? _gridConfigs[^1].GridSize : _gridConfigs[_gridIndex].GridSize;
+            _currentConfig = _gridIndex >= _gridConfigs.Count ? _gridConfigs[^1] : _gridConfigs[_gridIndex]; 
+            SetGameMode(_currentConfig.Mode);
             UpdateSpanConfig();
         }
 
         private void DecrementGridSize()
         {
             _gridIndex--;
-            _currentGrid = _gridIndex <= 0 ? _gridConfigs[0].GridSize : _gridConfigs[_gridIndex].GridSize;
+            _currentConfig = _gridIndex <= 0 ? _gridConfigs[0] : _gridConfigs[_gridIndex]; 
+            SetGameMode(_currentConfig.Mode);
             UpdateSpanConfig();
         }
         
         private void UpdateSpanConfig()
         {
-            var size = _currentGrid.x * _currentGrid.y;
+            var size = _currentConfig.GridSize.x * _currentConfig.GridSize.y;
             _questionCount = (int)Mathf.Floor(size/3);
-            spanEventBus.Trigger(new BlockSpanGridSizeEvent(_currentGrid, _questionCount));
+            spanEventBus.Trigger(new BlockSpanGridSizeEvent(_currentConfig, _questionCount, _gameMode));
+        }
+
+        private void SetGameMode(BlockSpanModes mode)
+        {
+            switch (mode)
+            {
+                case BlockSpanModes.Regular:
+                    break;
+                case BlockSpanModes.ColorChooser:
+                    _gameMode = new ColorChooserMode();
+                    break;
+                case BlockSpanModes.ItemChooser:
+                    _gameMode = new ItemChooserMode();
+                    break;
+            }
         }
     }
 }

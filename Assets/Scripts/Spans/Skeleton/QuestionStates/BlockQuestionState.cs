@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Interfaces;
 using Scriptables.QuestionSystem;
 using UI.Helpers;
 using UnityEngine;
@@ -17,6 +18,7 @@ namespace Spans.Skeleton.QuestionStates
         private List<Question> _spanObjects = new List<Question>();
         private List<Question> _currentQuestions = new List<Question>();
 
+        private IBlockSpanStrategy _config;
         private int _indexHelper = 2;
         private int _circleCount = 1;
         
@@ -47,6 +49,7 @@ namespace Spans.Skeleton.QuestionStates
         {
             blockUIHelper.AssignQuestions(_spanObjects);
             blockUIHelper.SetConstraintsCount(_indexHelper);
+            blockUIHelper.SetStrategy(_config);
         }
 
         private IEnumerator IterateQuestions()
@@ -94,7 +97,8 @@ namespace Spans.Skeleton.QuestionStates
 
         private void UpdateHelperIndex(BlockSpanGridSizeEvent update)
         {
-            _indexHelper = update.NewGrid.y;
+            _config = update.StrategyClass;
+            _indexHelper = update.NewConfig.GridSize.y;
             _circleCount = update.CircleCount;
         }
         

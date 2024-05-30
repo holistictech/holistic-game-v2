@@ -1,10 +1,11 @@
+using UI.CorsiBlockTypes;
 using UnityEngine;
 
 namespace Interfaces
 {
     public interface IBlockSpanStrategy
     {
-        public void HighlightBlocks();
+        public void HighlightBlock(AdaptableBlock targetBlock);
         public void CheckAnswer();
     }
 }
