@@ -4,22 +4,34 @@ using Scriptables.QuestionSystem;
 using Spans.Skeleton;
 using UnityEngine;
 using Utilities;
+using static Utilities.CommonFields;
 
 namespace Spans.BlockSpan
 {
     public class BlockSpan : SpanController
     {
-        private List<Vector2Int> _gridSizes = new List<Vector2Int>()
-        {
-            new Vector2Int(2, 2),
-            new Vector2Int(2, 3),
-            new Vector2Int(3, 3),
-            new Vector2Int(3, 4),
-            new Vector2Int(4, 4),
-            new Vector2Int(4, 5),
-            new Vector2Int(5, 5),
-        };
-
+        private List<GridConfiguration> _gridConfigs =
+            new List<GridConfiguration>()
+            {
+                new (new Vector2Int(2, 2), BlockSpanModes.Regular),
+                new (new Vector2Int(2, 3), BlockSpanModes.Regular),
+                new (new Vector2Int(3, 3), BlockSpanModes.Regular),
+                new (new Vector2Int(3, 3), BlockSpanModes.ColorChooser),
+                new (new Vector2Int(3, 3), BlockSpanModes.ItemChooser),
+                new (new Vector2Int(3, 4), BlockSpanModes.Regular),
+                new (new Vector2Int(3, 4), BlockSpanModes.ColorChooser),
+                new (new Vector2Int(3, 4), BlockSpanModes.ItemChooser),
+                new (new Vector2Int(4, 4), BlockSpanModes.Regular),
+                new (new Vector2Int(4, 4), BlockSpanModes.ColorChooser),
+                new (new Vector2Int(4, 4), BlockSpanModes.ItemChooser),
+                new (new Vector2Int(4, 5), BlockSpanModes.Regular),
+                new (new Vector2Int(4, 5), BlockSpanModes.ColorChooser),
+                new (new Vector2Int(4, 5), BlockSpanModes.ItemChooser),
+                new (new Vector2Int(5, 5), BlockSpanModes.Regular),
+                new (new Vector2Int(5, 5), BlockSpanModes.ColorChooser),
+                new (new Vector2Int(5, 5), BlockSpanModes.ItemChooser),
+            };
+        
         private int _gridIndex;
         private Vector2Int _currentGrid;
         private int _questionCount = 1;
@@ -27,7 +39,7 @@ namespace Spans.BlockSpan
         protected override void Start()
         {
             base.Start();
-            _currentGrid = _gridSizes[0];
+            _currentGrid = _gridConfigs[0].GridSize;
             UpdateSpanConfig();
         }
         
@@ -125,14 +137,14 @@ namespace Spans.BlockSpan
         private void IncrementGridSize()
         {
             _gridIndex++;
-            _currentGrid = _gridIndex >= _gridSizes.Count ? _gridSizes[^1] : _gridSizes[_gridIndex];
+            _currentGrid = _gridIndex >= _gridConfigs.Count ? _gridConfigs[^1].GridSize : _gridConfigs[_gridIndex].GridSize;
             UpdateSpanConfig();
         }
 
         private void DecrementGridSize()
         {
             _gridIndex--;
-            _currentGrid = _gridIndex <= 0 ? _gridSizes[0] : _gridSizes[_gridIndex];
+            _currentGrid = _gridIndex <= 0 ? _gridConfigs[0].GridSize : _gridConfigs[_gridIndex].GridSize;
             UpdateSpanConfig();
         }
         
