@@ -47,9 +47,9 @@ namespace Spans.Skeleton.QuestionStates
 
         private void DistributeQuestions()
         {
+            blockUIHelper.SetStrategy(_config);
             blockUIHelper.AssignQuestions(_spanObjects);
             blockUIHelper.SetConstraintsCount(_indexHelper);
-            blockUIHelper.SetStrategy(_config);
         }
 
         private IEnumerator IterateQuestions()

@@ -9,7 +9,6 @@ namespace UI.CorsiBlockTypes
     {
         [SerializeField] private Image itemImage;
         private Sprite _itemSprite;
-        private Color _highlightColor;
         private IBlockSpanStrategy _currentStrategy;
         
         public void SetStrategy(IBlockSpanStrategy strategy)
@@ -38,14 +37,10 @@ namespace UI.CorsiBlockTypes
             
         }
 
-        public void SetColor(Color color)
-        {
-            _highlightColor = color;
-        }
-
         public Color GetHighlightColor()
         {
-            return _highlightColor;
+            //@todo: need of function in prob. answer state which takes current selection from option picker and passes it here. 
+            return (Color)blockQuestion.GetQuestionItem();
         }
 
         public Sprite GetBasketItem()

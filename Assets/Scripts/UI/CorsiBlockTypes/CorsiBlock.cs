@@ -14,7 +14,7 @@ namespace UI.CorsiBlockTypes
         [SerializeField] protected Button blockButton;
         [SerializeField] protected Color highlightColor;
         private CorsiBlockUIHelper _blockHelper;
-        private Question _blockQuestion;
+        protected Question blockQuestion;
 
         private void OnEnable()
         {
@@ -30,7 +30,7 @@ namespace UI.CorsiBlockTypes
         {
             if(_blockHelper == null)
                 _blockHelper = helper;
-            _blockQuestion = question;
+            blockQuestion = question;
             EnableSelf();
         }
 
@@ -58,7 +58,7 @@ namespace UI.CorsiBlockTypes
         public virtual void SetSelected()
         {
             blockImage.color = highlightColor;
-            _blockHelper.AppendSelectedAnswers(_blockQuestion, this);
+            _blockHelper.AppendSelectedAnswers(blockQuestion, this);
         }
 
         private void EnableSelf()
@@ -79,7 +79,7 @@ namespace UI.CorsiBlockTypes
 
         public Question GetAssignedQuestion()
         {
-            return _blockQuestion;
+            return blockQuestion;
         }
 
         private void AddListeners()

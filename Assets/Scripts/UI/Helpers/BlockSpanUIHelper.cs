@@ -21,6 +21,11 @@ namespace UI.Helpers
         {
             InstantiatePool();
         }
+        
+        public void SetStrategy(IBlockSpanStrategy strategy)
+        {
+            _currentStrategy = strategy;
+        }
 
         public override void AssignQuestions(List<Question> roundQuestions)
         {
@@ -40,15 +45,10 @@ namespace UI.Helpers
             gridLayout.constraintCount = helperIndex;
         }
 
-        public void SetStrategy(IBlockSpanStrategy strategy)
-        {
-            _currentStrategy = strategy;
-        }
-
         public override void HighlightTargetBlock(Question target)
         {
             var block = GetBlockByQuestion(target);
-            _currentStrategy.HighlightBlock((AdaptableBlock)block);
+            block.AnimateSelf();
         }
 
         public void RotateGrid(int amount, Action onComplete)
