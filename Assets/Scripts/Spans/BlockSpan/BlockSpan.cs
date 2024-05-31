@@ -90,7 +90,7 @@ namespace Spans.BlockSpan
             switch (_currentConfig.Mode)
             {
                 case BlockSpanModes.Regular:
-                    currentQuestions = GetCurrentRegularQuestions();
+                    currentQuestions = _gameMode.GetCorrectQuestions(currentSpanQuestions, _questionCount);
                     break;
                 case BlockSpanModes.ColorChooser: case BlockSpanModes.ItemChooser:
                     currentQuestions = _gameMode.GetCorrectQuestions(currentSpanQuestions);
@@ -100,25 +100,6 @@ namespace Spans.BlockSpan
             currentDisplayedQuestions = currentQuestions;
             return currentQuestions;
         }
-
-        private List<Question> GetCurrentRegularQuestions()
-        {
-            List<Question> corrects = new List<Question>();
-            for (int i = 0; i < _questionCount; i++)
-            {
-                var randomIndex = Random.Range(0, currentSpanQuestions.Count);
-                var tempQuestion = currentSpanQuestions[randomIndex];
-                while (corrects.Contains(tempQuestion))
-                {
-                    randomIndex = Random.Range(0, currentSpanQuestions.Count);
-                    tempQuestion = currentSpanQuestions[randomIndex];
-                }
-                
-                corrects.Add(tempQuestion);
-            }
-            
-            return corrects;
-        }
         
         public override int GetRoundTime()
         {
@@ -127,22 +108,17 @@ namespace Spans.BlockSpan
 
         public override bool IsAnswerCorrect()
         {
-            if (currentGivenAnswers.Count == 0 || currentGivenAnswers.Count != currentDisplayedQuestions.Count)
+            var result = _gameMode.CheckAnswer(currentDisplayedQuestions, currentGivenAnswers);
+            if (result)
+            {
+                IncrementSuccessStreak();
+            }
+            else
             {
                 IncrementFailStreak();
-                return false;
             }
-            
-            for (int i = 0; i < currentDisplayedQuestions.Count; i++)
-            {
-                if ((int)currentDisplayedQuestions[i].GetQuestionItem() != (int)currentGivenAnswers[i].GetQuestionItem())
-                {
-                    IncrementFailStreak();
-                    return false;
-                }
-            }
-            IncrementSuccessStreak();
-            return true;
+
+            return result;
         }
 
         protected override void IncrementSuccessStreak()

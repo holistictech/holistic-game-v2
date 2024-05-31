@@ -25,6 +25,7 @@ namespace UI
             for(int i = 0; i < 3; i++)
             {
                 var tempOption = Instantiate(optionPrefab, optionParent.transform);
+                tempOption.gameObject.SetActive(false);
                 _pooledOptions.Add(tempOption);
             }
         }
@@ -58,10 +59,12 @@ namespace UI
 
         public void DisableActiveOptions()
         {
+            _currentSelection = null;
             foreach (var option in _activeOptions)
             {
                 option.ResetOption();
             }
+            _activeOptions.Clear();
             optionParent.gameObject.SetActive(false);
         }
 
@@ -74,8 +77,11 @@ namespace UI
         {
             foreach (var option in _pooledOptions)
             {
-                if (!option.isActiveAndEnabled)
+                if (!option.gameObject.activeSelf)
+                {
+                    option.gameObject.SetActive(true);
                     return option;
+                }
             }
 
             throw new Exception("Could not find available option. Need to pool more");

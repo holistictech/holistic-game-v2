@@ -9,7 +9,7 @@ namespace Interfaces
     {
         public void HighlightBlock(AdaptableBlock targetBlock);
         public void SetBlockSelected(AdaptableBlock block, Question selection);
-        public void CheckAnswer();
-        public List<Question> GetCorrectQuestions(List<Question> allQuestions);
+        public bool CheckAnswer(List<Question> displayed, List<Question> given);
+        public List<Question> GetCorrectQuestions(List<Question> allQuestions, int count = -1);
     }
 }

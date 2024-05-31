@@ -28,12 +28,24 @@ namespace Spans.BlockSpan
             itemImage.sprite = (Sprite)selection.GetQuestionItem();
         }
 
-        public void CheckAnswer()
+        public bool CheckAnswer(List<Question> displayed, List<Question> given)
         {
-            throw new System.NotImplementedException();
+            if (given.Count == 0 || given.Count != displayed.Count)
+            {
+                return false;
+            }
+            
+            for (int i = 0; i < displayed.Count; i++)
+            {
+                if ((Sprite)displayed[i].GetQuestionItem() != (Sprite)given[i].GetQuestionItem())
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
-        public List<Question> GetCorrectQuestions(List<Question> allQuestions)
+        public List<Question> GetCorrectQuestions(List<Question> allQuestions, int count = -1)
         {
             var selectedQuestions = new List<Question>();
             for (int i = 0; i < 3; i++)

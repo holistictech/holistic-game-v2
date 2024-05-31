@@ -32,7 +32,6 @@ namespace UI
         private void OnDisable()
         {
             RemoveListeners();
-            ResetOption();
         }
 
         public void ConfigureOption(Question question, OptionPicker parent)
@@ -50,8 +49,6 @@ namespace UI
                 optionBg.color = (Color)question.GetQuestionItem();
                 optionImage.enabled = false;
             }
-            
-            gameObject.SetActive(true);
         }
 
         private void MakeSelected()
@@ -75,6 +72,7 @@ namespace UI
             gameObject.SetActive(false);
             optionImage.enabled = true;
             optionBg.color = Color.white;
+            ScaleOption(1f);
         }
 
         private void AddListeners()

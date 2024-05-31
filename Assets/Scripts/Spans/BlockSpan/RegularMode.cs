@@ -1,7 +1,9 @@
 using System.Collections.Generic;
+using DG.Tweening;
 using Interfaces;
 using Scriptables.QuestionSystem;
 using UI.CorsiBlockTypes;
+using UnityEngine;
 
 namespace Spans.BlockSpan
 {
@@ -9,22 +11,52 @@ namespace Spans.BlockSpan
     {
         public void HighlightBlock(AdaptableBlock targetBlock)
         {
-            throw new System.NotImplementedException();
+            var blockImage = targetBlock.GetBlockImage();
+            var color = targetBlock.GetHighlightColor();
+            blockImage.DOColor(color, 1f).SetEase(Ease.Flash).OnComplete(targetBlock.ResetUI);
         }
 
         public void SetBlockSelected(AdaptableBlock block, Question selection)
         {
-            throw new System.NotImplementedException();
+            var blockImage = block.GetBlockImage();
+            var color = block.GetHighlightColor();
+            blockImage.color = color;
         }
 
-        public void CheckAnswer()
+        public bool CheckAnswer(List<Question> displayed, List<Question> given)
         {
-            throw new System.NotImplementedException();
+            if (given.Count == 0 || given.Count != displayed.Count)
+            {
+                return false;
+            }
+            
+            for (int i = 0; i < displayed.Count; i++)
+            {
+                if ((int)displayed[i].GetQuestionItem() != (int)given[i].GetQuestionItem())
+                {
+                    return false;
+                }
+            }
+            return true;
         }
 
-        public List<Question> GetCorrectQuestions(List<Question> allQuestions)
+        public List<Question> GetCorrectQuestions(List<Question> allQuestions, int count = -1)
         {
-            throw new System.NotImplementedException();
+            List<Question> corrects = new List<Question>();
+            for (int i = 0; i < count; i++)
+            {
+                var randomIndex = Random.Range(0, allQuestions.Count);
+                var tempQuestion = allQuestions[randomIndex];
+                while (corrects.Contains(tempQuestion))
+                {
+                    randomIndex = Random.Range(0, allQuestions.Count);
+                    tempQuestion = allQuestions[randomIndex];
+                }
+                
+                corrects.Add(tempQuestion);
+            }
+            
+            return corrects;
         }
     }
 }
