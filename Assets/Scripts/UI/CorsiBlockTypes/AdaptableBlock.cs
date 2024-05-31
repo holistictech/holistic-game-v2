@@ -20,7 +20,14 @@ namespace UI.CorsiBlockTypes
         
         public override void AnimateSelf()
         {
-            _currentStrategy.HighlightBlock(this);
+            if (_currentStrategy is RegularMode)
+            {
+                base.AnimateSelf();
+            }
+            else
+            {
+                _currentStrategy.HighlightBlock(this);
+            }
         }
 
         public override void ResetUI()
@@ -34,12 +41,13 @@ namespace UI.CorsiBlockTypes
             if (_currentStrategy is RegularMode)
             {
                 base.SetSelected();
-                return;
             }
-            
-            var selection = OptionPicker.GetCurrentSelection();
-            _currentStrategy.SetBlockSelected(this, selection);
-            AppendSelf(selection);
+            else
+            {
+                var selection = OptionPicker.GetCurrentSelection();
+                _currentStrategy.SetBlockSelected(this, selection);
+                AppendSelf(selection);
+            }
         }
         
         public Image GetBlockImage()

@@ -33,10 +33,14 @@ namespace Spans.Skeleton
 
         public virtual void Exit()
         {
-            RemoveListeners();
             timer.StopTimer();
         }
-        
+
+        private void OnDestroy()
+        {
+            RemoveListeners();
+        }
+
         public virtual void PlayTimer(float duration)
         {
             timer.StartTimer(duration, SwitchNextState);

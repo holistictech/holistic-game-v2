@@ -44,7 +44,7 @@ namespace Spans.BlockSpan
         {
             base.Start();
             _currentConfig = _gridConfigs[0];
-            _gameMode = new Regularmode();
+            _gameMode = new RegularMode();
             UpdateSpanConfig();
         }
         

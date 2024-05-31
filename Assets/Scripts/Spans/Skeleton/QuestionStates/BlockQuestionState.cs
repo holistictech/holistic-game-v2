@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using Interfaces;
 using Scriptables.QuestionSystem;
+using Spans.BlockSpan;
 using UI.Helpers;
 using UnityEngine;
 using UnityEngine.UI;
@@ -18,7 +19,7 @@ namespace Spans.Skeleton.QuestionStates
         private List<Question> _spanObjects = new List<Question>();
         private List<Question> _currentQuestions = new List<Question>();
 
-        private IBlockSpanStrategy _config;
+        private IBlockSpanStrategy _config = new RegularMode();
         private int _indexHelper = 2;
         private int _circleCount = 1;
         
