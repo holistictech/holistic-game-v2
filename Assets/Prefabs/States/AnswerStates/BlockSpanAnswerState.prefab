@@ -152,6 +152,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: TimerParent
       objectReference: {fileID: 0}
+    - target: {fileID: 8946128015135552973, guid: 6ef072eff945d784ebdca48523af13b3, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -300,7 +304,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1161325463088413936, guid: a51df2a60b780694b89f9f8912e70d67, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 6177336117744417052, guid: a51df2a60b780694b89f9f8912e70d67, type: 3}
       propertyPath: m_Material
@@ -421,7 +425,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1412308267178359233, guid: 1815fdc14470327408890faa69d7aa05, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4226185219912531754, guid: 1815fdc14470327408890faa69d7aa05, type: 3}
       propertyPath: m_Pivot.x
@@ -644,11 +648,11 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1471166379286313202, guid: e50128533b892334480bacb755591e08, type: 3}
       propertyPath: m_AnchorMax.x
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1471166379286313202, guid: e50128533b892334480bacb755591e08, type: 3}
       propertyPath: m_AnchorMax.y
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1471166380105199848, guid: e50128533b892334480bacb755591e08, type: 3}
       propertyPath: m_SizeDelta.x
@@ -752,7 +756,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1471166380317704291, guid: e50128533b892334480bacb755591e08, type: 3}
       propertyPath: m_IsActive
-      value: 1
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

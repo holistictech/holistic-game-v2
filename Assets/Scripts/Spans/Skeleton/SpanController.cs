@@ -349,6 +349,11 @@ namespace Spans.Skeleton
         {
             return isCumulative;
         }
+        
+        public virtual CommonFields.BlockSpanModes GetCurrentMode()
+        {
+            return CommonFields.BlockSpanModes.Regular;
+        }
     }
 }
 

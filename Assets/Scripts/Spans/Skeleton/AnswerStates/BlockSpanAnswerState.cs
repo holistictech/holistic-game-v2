@@ -1,6 +1,7 @@
 using UI;
 using UI.Helpers;
 using UnityEngine;
+using Utilities;
 
 namespace Spans.Skeleton.AnswerStates
 {
@@ -14,11 +15,13 @@ namespace Spans.Skeleton.AnswerStates
             {
                 base.Enter(controller);
             }
-
+            
+            _blockHelper = spanController.GetHelperObject().GetComponent<BlockSpanUIHelper>();
             maxTime = spanController.GetRoundTime();
             EnableUIElements();
             ConfigureBlockHelper();
-            ConfigureOptionPicker();
+            if(spanController.GetCurrentMode() != CommonFields.BlockSpanModes.Regular)
+                ConfigureOptionPicker();
             PlayTimer(maxTime);
         }
         
@@ -60,12 +63,14 @@ namespace Spans.Skeleton.AnswerStates
 
         public override void EnableUIElements()
         {
+            _blockHelper.gameObject.SetActive(true);
             _blockHelper.ResetCorsiBlocks();
             base.EnableUIElements();
         }
 
         public override void DisableUIElements()
         {
+            _blockHelper.gameObject.SetActive(false);
             _blockHelper.ResetCorsiBlocks();
             base.DisableUIElements();
         }

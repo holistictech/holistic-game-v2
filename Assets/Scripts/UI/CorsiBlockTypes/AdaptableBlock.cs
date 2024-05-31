@@ -1,5 +1,7 @@
 using DG.Tweening;
 using Interfaces;
+using Spans.BlockSpan;
+using UI.Helpers;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -21,31 +23,43 @@ namespace UI.CorsiBlockTypes
             _currentStrategy.HighlightBlock(this);
         }
 
-        public Image GetBlockImage()
-        {
-            return blockImage;
-        }
-
         public override void ResetUI()
         {
             itemImage.enabled = false;
             blockImage.color = new Color(1, 1, 1, 1);
         }
 
-        public override void SetSelected()
+        protected override void SetSelected()
         {
+            if (_currentStrategy is RegularMode)
+            {
+                base.SetSelected();
+                return;
+            }
             
+            var selection = OptionPicker.GetCurrentSelection();
+            _currentStrategy.SetBlockSelected(this, selection);
+            AppendSelf(selection);
+        }
+        
+        public Image GetBlockImage()
+        {
+            return blockImage;
+        }
+
+        public Image GetItemImage()
+        {
+            return itemImage;
         }
 
         public Color GetHighlightColor()
         {
-            //@todo: need of function in prob. answer state which takes current selection from option picker and passes it here. 
             return (Color)blockQuestion.GetQuestionItem();
         }
 
         public Sprite GetBasketItem()
         {
-            return _itemSprite;
+            return (Sprite)blockQuestion.GetQuestionItem();
         }
     }
 }

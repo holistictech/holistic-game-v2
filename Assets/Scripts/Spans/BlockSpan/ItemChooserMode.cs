@@ -11,14 +11,21 @@ namespace Spans.BlockSpan
     {
         public void HighlightBlock(AdaptableBlock targetBlock)
         {
-            var itemImage = targetBlock.GetBlockImage();
+            var itemImage = targetBlock.GetItemImage();
             var itemSprite = targetBlock.GetBasketItem();
             itemImage.sprite = itemSprite;
+            itemImage.enabled = true;
             itemImage.DOColor(new Color(1, 1, 1, 1), 0.3f).OnComplete(() =>
             {
                 itemImage.transform.DOPunchScale(new Vector3(1.2f, 1.2f, 1.2f), 0.8f).SetEase(Ease.OutQuad)
                     .SetLoops(2, LoopType.Yoyo).OnComplete(targetBlock.ResetUI);
             });
+        }
+
+        public void SetBlockSelected(AdaptableBlock block, Question selection)
+        {
+            var itemImage = block.GetBlockImage();
+            itemImage.sprite = (Sprite)selection.GetQuestionItem();
         }
 
         public void CheckAnswer()

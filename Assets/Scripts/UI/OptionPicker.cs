@@ -12,7 +12,7 @@ namespace UI
         [SerializeField] private Option optionPrefab;
 
         private List<Option> _pooledOptions = new List<Option>();
-        private Option _currentSelection;
+        private static Option _currentSelection;
 
         private void Start()
         {
@@ -52,7 +52,7 @@ namespace UI
             }
         }
 
-        public Question GetCurrentSelection()
+        public static Question GetCurrentSelection()
         {
             return _currentSelection.GetQuestion();
         }

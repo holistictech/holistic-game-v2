@@ -44,6 +44,7 @@ namespace Spans.BlockSpan
         {
             base.Start();
             _currentConfig = _gridConfigs[0];
+            _gameMode = new Regularmode();
             UpdateSpanConfig();
         }
         
@@ -191,6 +192,7 @@ namespace Spans.BlockSpan
             switch (mode)
             {
                 case BlockSpanModes.Regular:
+                    _gameMode = new RegularMode();
                     break;
                 case BlockSpanModes.ColorChooser:
                     _gameMode = new ColorChooserMode();
@@ -199,6 +201,11 @@ namespace Spans.BlockSpan
                     _gameMode = new ItemChooserMode();
                     break;
             }
+        }
+
+        public override BlockSpanModes GetCurrentMode()
+        {
+            return _currentConfig.Mode;
         }
     }
 }

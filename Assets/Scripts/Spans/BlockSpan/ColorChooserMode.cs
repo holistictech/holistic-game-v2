@@ -16,6 +16,12 @@ namespace Spans.BlockSpan
             image.DOColor(color, 1f).SetEase(Ease.Flash).OnComplete(targetBlock.ResetUI);
         }
 
+        public void SetBlockSelected(AdaptableBlock block, Question selection)
+        {
+            var image = block.GetBlockImage();
+            image.color = (Color)selection.GetQuestionItem();
+        }
+
         public void CheckAnswer()
         {
             throw new System.NotImplementedException();

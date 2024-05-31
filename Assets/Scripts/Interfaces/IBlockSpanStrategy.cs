@@ -8,6 +8,7 @@ namespace Interfaces
     public interface IBlockSpanStrategy
     {
         public void HighlightBlock(AdaptableBlock targetBlock);
+        public void SetBlockSelected(AdaptableBlock block, Question selection);
         public void CheckAnswer();
         public List<Question> GetCorrectQuestions(List<Question> allQuestions);
     }

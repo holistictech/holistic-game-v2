@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockParent: {fileID: 6052620986267761256}
-  blockImage: {fileID: -8511335593572869611, guid: bb1d42edf16c93248be49f7e9351c766, type: 3}
+  blockImage: {fileID: -8511335593572869611, guid: b7c544eaaf750d44da38c628b7efd808, type: 3}
   gridLayout: {fileID: 6052620986267761256}
 --- !u!1 &9158934591373192983
 GameObject:
@@ -86,8 +86,8 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0, y: 0.0024414062}
-  m_SizeDelta: {x: 1, y: 0.005127}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &2840340654329609878
 CanvasRenderer:
