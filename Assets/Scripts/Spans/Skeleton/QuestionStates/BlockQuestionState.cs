@@ -20,8 +20,8 @@ namespace Spans.Skeleton.QuestionStates
         private List<Question> _currentQuestions = new List<Question>();
 
         private IBlockSpanStrategy _config = new RegularMode();
-        private int _indexHelper = 2;
-        private int _circleCount = 1;
+        private int _indexHelper = 3;
+        private int _circleCount = 3;
         
         public override void Enter(SpanController controller)
         {

@@ -34,7 +34,7 @@ namespace Spans.Skeleton.AnswerStates
 
         private void ConfigureOptionPicker()
         {
-            var options = spanController.GetCurrentSpanQuestions();
+            var options = spanController.GetCurrentDisplayedQuestions();
             optionPicker.ConfigureOptions(options);
         }
         
@@ -72,6 +72,7 @@ namespace Spans.Skeleton.AnswerStates
         {
             _blockHelper.gameObject.SetActive(false);
             _blockHelper.ResetCorsiBlocks();
+            optionPicker.DisableActiveOptions();
             base.DisableUIElements();
         }
     }

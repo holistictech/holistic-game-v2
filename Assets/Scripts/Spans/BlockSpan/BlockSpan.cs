@@ -16,8 +16,8 @@ namespace Spans.BlockSpan
         private List<GridConfiguration> _gridConfigs =
             new List<GridConfiguration>()
             {
-                new (new Vector2Int(2, 2), BlockSpanModes.Regular),
-                new (new Vector2Int(2, 3), BlockSpanModes.Regular),
+                //new (new Vector2Int(2, 2), BlockSpanModes.Regular),
+                //new (new Vector2Int(2, 3), BlockSpanModes.Regular),
                 new (new Vector2Int(3, 3), BlockSpanModes.Regular),
                 new (new Vector2Int(3, 3), BlockSpanModes.ColorChooser),
                 new (new Vector2Int(3, 3), BlockSpanModes.ItemChooser),
@@ -86,15 +86,19 @@ namespace Spans.BlockSpan
         
         public override List<Question> GetCurrentSpanQuestions()
         {
+            List<Question> currentQuestions = new List<Question>();
             switch (_currentConfig.Mode)
             {
                 case BlockSpanModes.Regular:
-                    return GetCurrentRegularQuestions();
+                    currentQuestions = GetCurrentRegularQuestions();
+                    break;
                 case BlockSpanModes.ColorChooser: case BlockSpanModes.ItemChooser:
-                    return _gameMode.GetCorrectQuestions(currentSpanQuestions);
+                    currentQuestions = _gameMode.GetCorrectQuestions(currentSpanQuestions);
+                    break;
             }
 
-            return new List<Question>();
+            currentDisplayedQuestions = currentQuestions;
+            return currentQuestions;
         }
 
         private List<Question> GetCurrentRegularQuestions()

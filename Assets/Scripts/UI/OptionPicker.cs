@@ -12,6 +12,7 @@ namespace UI
         [SerializeField] private Option optionPrefab;
 
         private List<Option> _pooledOptions = new List<Option>();
+        private List<Option> _activeOptions = new List<Option>();
         private static Option _currentSelection;
 
         private void Start()
@@ -33,8 +34,11 @@ namespace UI
             foreach (var element in options)
             {
                 var temp = GetAvailableOption();
-                temp.ConfigureOption(element);
+                temp.ConfigureOption(element, this);
+                _activeOptions.Add(temp);
             }
+            
+            optionParent.gameObject.SetActive(true);
         }
 
         public void SetOptionActive(Option option)
@@ -50,6 +54,15 @@ namespace UI
                     }
                 }
             }
+        }
+
+        public void DisableActiveOptions()
+        {
+            foreach (var option in _activeOptions)
+            {
+                option.ResetOption();
+            }
+            optionParent.gameObject.SetActive(false);
         }
 
         public static Question GetCurrentSelection()

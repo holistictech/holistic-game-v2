@@ -491,7 +491,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 040f32474e29a664f8184083deea2bee, type: 2}
   - {fileID: 11400000, guid: 3b4e64fdaa14af24082fb5946ad30602, type: 2}
   - {fileID: 11400000, guid: 428ea3981d0b41e4284773bd420e8305, type: 2}
-  isBackwards: 1
+  isBackwards: 0
   isCumulative: 0
   states: {fileID: 11400000, guid: a130ac86c1d093e4591361b108a41817, type: 2}
   tutorialManager: {fileID: 5317712305952169983}
@@ -500,8 +500,14 @@ MonoBehaviour:
   dummyTutorialBool: 0
   colorQuestions:
   - {fileID: 11400000, guid: b6b3d4fbe657e8e4280bcc23f5ae5f84, type: 2}
+  - {fileID: 11400000, guid: 5074322d6c03c4f49a5cba9ada3655c4, type: 2}
+  - {fileID: 11400000, guid: 71946411f28abf441863e76fbd7cc2cb, type: 2}
   - {fileID: 11400000, guid: 2a61bfa06f53ab24ab1ce57eb7d17f73, type: 2}
   - {fileID: 11400000, guid: 346db99f75f6d2f4eb62cf0fa34c785f, type: 2}
+  - {fileID: 11400000, guid: 837a6d7fe2efe0044baab1bb9ec4631f, type: 2}
+  - {fileID: 11400000, guid: a2109ddd185b3144f8a22053b16452f6, type: 2}
+  - {fileID: 11400000, guid: 7f21496ed9b83d245af99b0ba480a720, type: 2}
+  - {fileID: 11400000, guid: d358081df5d78ff43a4a675eb762e73f, type: 2}
   imageQuestions:
   - {fileID: 11400000, guid: 06ad9c9adc8a5bb4d88a3529959bf116, type: 2}
   - {fileID: 11400000, guid: 9e30e14b5a62bad4c9e0009b6c9c0fea, type: 2}

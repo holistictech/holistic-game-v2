@@ -35,8 +35,9 @@ namespace UI
             ResetOption();
         }
 
-        public void ConfigureOption(Question question)
+        public void ConfigureOption(Question question, OptionPicker parent)
         {
+            _parent = parent;
             _question = question;
             
             if (question is ImageQuestion)
@@ -69,8 +70,9 @@ namespace UI
             return _question;
         }
 
-        private void ResetOption()
+        public void ResetOption()
         {
+            gameObject.SetActive(false);
             optionImage.enabled = true;
             optionBg.color = Color.white;
         }
