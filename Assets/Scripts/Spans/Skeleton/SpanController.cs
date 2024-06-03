@@ -25,7 +25,7 @@ namespace Spans.Skeleton
         [SerializeField] private RoundTimerHelper timerHelper;
         [SerializeField] private bool dummyTutorialBool;
         protected List<UnitCircle> activeUnitCircles = new List<UnitCircle>();
-        private List<ISpanState> _stateList = new List<ISpanState>();
+        protected List<ISpanState> stateList = new List<ISpanState>();
         protected SpanStateContext stateContext;
         protected int currentRoundIndex = CommonFields.DEFAULT_ROUND_INDEX;
         protected int fetchedQuestionCount = 9;
@@ -39,7 +39,7 @@ namespace Spans.Skeleton
         protected List<Question> currentGivenAnswers = new List<Question>();
         private const int _neededStreakCount = 4;
         private bool _hasLeveledUp;
-        private bool _isSpanFinished;
+        protected bool isSpanFinished;
         
         protected SpanEventBus spanEventBus;
         private GameObject _helperObject;
@@ -58,7 +58,7 @@ namespace Spans.Skeleton
 
         public void SetSpanCompleted()
         {
-            _isSpanFinished = true;
+            isSpanFinished = true;
         }
 
         protected virtual void Start()
@@ -78,27 +78,27 @@ namespace Spans.Skeleton
             {
                 _tutorialActive = false;
             }
-            stateContext.Transition(_stateList[0]);
+            stateContext.Transition(stateList[0]);
         }
 
-        public void SwitchState()
+        public virtual void SwitchState()
         {
-            if (_isSpanFinished)
+            if (isSpanFinished)
             {
                 Debug.Log("this is finished");
-                stateContext.Transition(_stateList[^1]);
+                stateContext.Transition(stateList[^1]);
                 return;
             }
             
-            var index = _stateList.IndexOf(stateContext.CurrentState);
-            if (index < _stateList.Count - 2)
+            var index = stateList.IndexOf(stateContext.CurrentState);
+            if (index < stateList.Count - 2)
             {
-                ISpanState nextState = _stateList[index+1];
+                ISpanState nextState = stateList[index+1];
                 stateContext.Transition(nextState);
             }
             else
             {
-                stateContext.Transition(_stateList[0]); // to turn back to initial state.
+                stateContext.Transition(stateList[0]); // to turn back to initial state.
             }
         }
 
@@ -176,7 +176,7 @@ namespace Spans.Skeleton
             currentRoundIndex = CommonFields.DEFAULT_ROUND_INDEX;
         }
 
-        public int GetRoundIndex()
+        public virtual int GetRoundIndex()
         {
             if (_hasLeveledUp)
             {
@@ -238,7 +238,7 @@ namespace Spans.Skeleton
             {
                 var temp = Instantiate(state, transform);
                 temp.transform.SetSiblingIndex(0);
-                _stateList.Add(temp.GetComponent<ISpanState>());
+                stateList.Add(temp.GetComponent<ISpanState>());
             }
         }
 

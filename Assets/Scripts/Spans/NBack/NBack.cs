@@ -11,15 +11,17 @@ namespace Spans.NBack
 {
     public class NBack : SpanController
     {
-        private Stack<Question> _questionStack;
+        private Queue<Question> _questionStack;
         private CommonFields.ButtonType _identicalShown;
         private INBackStrategy _currentStrategy;
+        private bool _isInitial;
 
         protected override void Start()
         {
             base.Start();
+            _isInitial = true;
             _currentStrategy = new IsIdenticalMode(this);
-            _questionStack = new Stack<Question>();
+            _questionStack = new Queue<Question>();
         }
         
         public override List<Question> GetSpanObjects()
@@ -30,7 +32,7 @@ namespace Spans.NBack
             }
             else
             {
-                _questionStack.Pop();
+                _questionStack.Dequeue();
                 return GetQuestionByCount(1);
             }
         }
@@ -38,6 +40,27 @@ namespace Spans.NBack
         private List<Question> GetQuestionByCount(int count)
         {
             return _currentStrategy.GetQuestionByCount(GetAllAvailableSpanObjects().ToList(), count);
+        }
+        
+        public override void SwitchState()
+        {
+            if (isSpanFinished)
+            {
+                Debug.Log("this is finished");
+                stateContext.Transition(stateList[^1]);
+                return;
+            }
+            
+            var index = stateList.IndexOf(stateContext.CurrentState);
+            if (index < stateList.Count - 2)
+            {
+                ISpanState nextState = stateList[index+1];
+                stateContext.Transition(nextState);
+            }
+            else
+            {
+                stateContext.Transition(stateList[1]); // to turn back to question state for NBack scnearios.
+            }
         }
 
         public override bool IsAnswerCorrect()
@@ -54,13 +77,26 @@ namespace Spans.NBack
             
             return isCorrect;
         }
+        
+        public override int GetRoundIndex()
+        {
+            if (_isInitial)
+            {
+                _isInitial = false;
+                return 2;
+            }
+            else
+            {
+                return 1;
+            }
+        }
 
-        public Stack<Question> GetCurrentStack()
+        public Queue<Question> GetCurrentStack()
         {
             return _questionStack; 
         }
 
-        public void UpdateCurrentStack(Stack<Question> updated)
+        public void UpdateCurrentStack(Queue<Question> updated)
         {
             _questionStack = updated;
         }
@@ -71,23 +107,23 @@ namespace Spans.NBack
         }
     }
 
-    public abstract class StackUtils
+    public abstract class QueueUtils
     {
-        public static Stack<T> AppendStacks<T>(Stack<T> stack1, Stack<T> stack2)
+        public static Queue<T> AppendQueue<T>(Queue<T> stack1, Queue<T> stack2)
         {
-            Stack<T> tempStack = new Stack<T>();
+            Queue<T> tempStack = new Queue<T>();
 
             // Pop elements from stack2 and push them onto tempStack
             while (stack2.Count > 0)
             {
-                tempStack.Push(stack2.Pop());
+                tempStack.Enqueue(stack2.Dequeue());
             }
 
             // Pop elements from tempStack (which reverses it back to original order)
             // and push them onto stack1
             while (tempStack.Count > 0)
             {
-                stack1.Push(tempStack.Pop());
+                stack1.Enqueue(tempStack.Dequeue());
             }
 
             return stack1;

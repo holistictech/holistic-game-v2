@@ -46,6 +46,7 @@ namespace Spans.Skeleton.AnswerStates
             {
                 StopCoroutine(_timer);
             }
+            base.Exit();
         }
         
         public override void EnableUIElements()

@@ -82,11 +82,11 @@ namespace Spans.NBack
 
             if (questionStack.Count == 0)
             {
-                questionStack = new Stack<Question>(roundQuestions);
+                questionStack = new Queue<Question>(roundQuestions);
             }
             else
             {
-                questionStack = StackUtils.AppendStacks(questionStack, new Stack<Question>(roundQuestions));
+                questionStack = QueueUtils.AppendQueue(questionStack, new Queue<Question>(roundQuestions));
             }
 
             _controller.UpdateCurrentStack(questionStack);
