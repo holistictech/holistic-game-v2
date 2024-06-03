@@ -43,6 +43,7 @@ namespace Spans.Skeleton
         protected SpanEventBus spanEventBus;
         private GameObject _helperObject;
         private List<GameObject> _tutorialHelpers = new List<GameObject>();
+        private CommonFields.ButtonType _currentChosenType;
 
         public static event Action<int> OnSpanFinished;
         private void SetSpanField()
@@ -353,6 +354,11 @@ namespace Spans.Skeleton
         public virtual CommonFields.BlockSpanModes GetCurrentMode()
         {
             return CommonFields.BlockSpanModes.Regular;
+        }
+
+        public void SetChosenButtonType(CommonFields.ButtonType type)
+        {
+            _currentChosenType = type;
         }
     }
 }

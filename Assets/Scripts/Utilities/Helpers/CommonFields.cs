@@ -32,6 +32,13 @@ namespace Utilities
             ItemChooser
         }
 
+        public enum ButtonType
+        {
+            Shape = 0,
+            Color,
+            Count
+        }
+
         public enum Direction
         {
             Up = 0,
