@@ -34,7 +34,9 @@ namespace Utilities
 
         public enum ButtonType
         {
-            Shape = 0,
+            Identical = 0,
+            NotIdentical,
+            Shape,
             Color,
             Count
         }

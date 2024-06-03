@@ -21,12 +21,14 @@ namespace Spans.Skeleton.QuestionStates
         
         private List<Question> _spanObjects; 
         private List<Question> _currentQuestions = new List<Question>();
+        private bool _isInitial;
 
         public override void Enter(SpanController controller)
         {
             if (spanController == null)
             {
                 base.Enter(controller);
+                _isInitial = true;
             }
             _spanObjects = spanController.GetSpanObjects();
             EnableUIElements();
@@ -49,6 +51,11 @@ namespace Spans.Skeleton.QuestionStates
             if (!spanController.GetCumulativeStatus())
             {
                 currentQuestionIndex = 0;
+            }
+            else if (spanController.GetNBackStatus() && _isInitial)
+            {
+                currentQuestionIndex = 1;
+                _isInitial = false;
             }
             /*if (currentQuestionIndex + spanController.GetRoundIndex() >= _spanObjects.Count && !spanController.GetCumulativeStatus())
             {

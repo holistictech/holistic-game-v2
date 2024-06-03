@@ -6,7 +6,14 @@
   <component name="ChangeListManager">
     <list default="true" id="3d01f5fc-4a81-4ccb-94d7-a0f07bc2bc79" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Spans/BlockSpan.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Spans/BlockSpan.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interfaces/IBlockSpanStrategy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interfaces/IBlockSpanStrategy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interfaces/INBackStrategy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interfaces/INBackStrategy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/NBack/NBack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/NBack/NBack.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/CommonQuestionState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/CommonQuestionState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanQuestionState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanQuestionState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/Helpers/CommonFields.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/Helpers/CommonFields.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -38,9 +45,11 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/NBack/NBack.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/CorsiAnswerState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/MultipleChoiceAnswerState.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/NBackAnswerState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/BlockQuestionState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/CommonQuestionState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/CorsiQuestionState.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/NBackQuestionState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanEventBus.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanEventContainer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanInitialState.cs" root0="FORCE_HIGHLIGHTING" />
@@ -195,7 +204,7 @@
       <workItem from="1717146236511" duration="2032000" />
       <workItem from="1717150537453" duration="3808000" />
       <workItem from="1717155478466" duration="1794000" />
-      <workItem from="1717402831910" duration="2706000" />
+      <workItem from="1717402831910" duration="6151000" />
     </task>
     <servers />
   </component>

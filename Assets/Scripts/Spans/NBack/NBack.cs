@@ -5,15 +5,23 @@ using Interfaces;
 using Scriptables.QuestionSystem;
 using Spans.Skeleton;
 using UnityEngine;
+using Utilities;
 
 namespace Spans.NBack
 {
     public class NBack : SpanController
     {
         private Stack<Question> _questionStack = new Stack<Question>();
-        private bool _identicalShown;
+        private CommonFields.ButtonType _identicalShown;
         private INBackStrategy _currentStrategy;
 
+        protected override void Start()
+        {
+            base.Start();
+            _currentStrategy = new IsIdenticalMode();
+        }
+        
+        
         public override List<Question> GetSpanObjects()
         {
             if (_questionStack.Count == 0)
@@ -29,73 +37,37 @@ namespace Spans.NBack
 
         private List<Question> GetQuestionByCount(int count)
         {
-            List<Question> roundQuestions = new List<Question>();
-            var allQuestions = GetAllAvailableSpanObjects();
-
-            if (count == 1)
-            {
-                if (ShouldBeSame() && _questionStack.Count > 0)
-                {
-                    var lastQuestion = _questionStack.Peek();
-                    roundQuestions.Add(lastQuestion);
-                    _identicalShown = true;
-                }
-                else
-                {
-                    int randomIndex = Random.Range(0, allQuestions.Length);
-                    var randomQuestion = allQuestions[randomIndex];
-                    roundQuestions.Add(randomQuestion);
-                    _identicalShown = false;
-                }
-            }
-            else
-            {
-                HashSet<int> selectedIndices = new HashSet<int>();
-
-                for (int i = 0; i < count; i++)
-                {
-                    int randomIndex;
-
-                    do
-                    {
-                        randomIndex = Random.Range(0, allQuestions.Length);
-                    } while (selectedIndices.Contains(randomIndex));
-
-                    selectedIndices.Add(randomIndex);
-                    var randomQuestion = allQuestions[randomIndex];
-                    roundQuestions.Add(randomQuestion);
-                    _identicalShown = false;
-
-                    if (count == 2 && ShouldBeSame())
-                    {
-                        roundQuestions.Add(randomQuestion);
-                        _identicalShown = true;
-                        break;
-                    }
-                }
-            }
-
-            if (_questionStack.Count == 0)
-            {
-                _questionStack = new Stack<Question>(roundQuestions);
-            }
-            else
-            {
-                _questionStack = StackUtils.AppendStacks(_questionStack, new Stack<Question>(roundQuestions));
-            }
-
-            return roundQuestions;
+            return _currentStrategy.GetQuestionByCount(GetAllAvailableSpanObjects().ToList(), count);
         }
 
         public override bool IsAnswerCorrect()
         {
-            return false;
+            var isCorrect = _currentStrategy.CheckAnswer();
+            if (isCorrect)
+            {
+                IncrementSuccessStreak();
+            }
+            else
+            {
+                IncrementFailStreak();
+            }
+            
+            return isCorrect;
         }
 
-
-        private bool ShouldBeSame()
+        public Stack<Question> GetCurrentStack()
         {
-            return Random.Range(0, 2) == 0;
+            return _questionStack; 
+        }
+
+        public void UpdateCurrentStack(Stack<Question> updated)
+        {
+            _questionStack = updated;
+        }
+
+        public INBackStrategy GetStrategyClass()
+        {
+            return _currentStrategy;
         }
     }
 

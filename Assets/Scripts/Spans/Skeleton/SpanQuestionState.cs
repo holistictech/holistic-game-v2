@@ -35,6 +35,7 @@ namespace Spans.Skeleton
                 spanEventBus.Register<RoundResetEvent>(OnRoundReset);
             }
             EnableUIElements();
+            
         }
 
         public virtual void ShowQuestion()

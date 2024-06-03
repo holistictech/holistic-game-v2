@@ -18,6 +18,7 @@ namespace Spans.Skeleton
         [SerializeField] protected Question[] spanQuestions;
         [SerializeField] protected bool isBackwards;
         [SerializeField] protected bool isCumulative;
+        [SerializeField] protected bool isNBack;
         [SerializeField] private StateHolder states;
         [SerializeField] private TutorialManager tutorialManager;
         [SerializeField] private TextMeshProUGUI _spanNameField;
@@ -43,7 +44,6 @@ namespace Spans.Skeleton
         protected SpanEventBus spanEventBus;
         private GameObject _helperObject;
         private List<GameObject> _tutorialHelpers = new List<GameObject>();
-        private CommonFields.ButtonType _currentChosenType;
 
         public static event Action<int> OnSpanFinished;
         private void SetSpanField()
@@ -350,15 +350,15 @@ namespace Spans.Skeleton
         {
             return isCumulative;
         }
+
+        public bool GetNBackStatus()
+        {
+            return isNBack;
+        }
         
         public virtual CommonFields.BlockSpanModes GetCurrentMode()
         {
             return CommonFields.BlockSpanModes.Regular;
-        }
-
-        public void SetChosenButtonType(CommonFields.ButtonType type)
-        {
-            _currentChosenType = type;
         }
     }
 }
