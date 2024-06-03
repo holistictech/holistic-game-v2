@@ -11,12 +11,12 @@ namespace Spans.NBack
 {
     public class IsIdenticalMode : INBackStrategy
     {
-        private int _maxButtonIndex = (int)ButtonType.NotIdentical;
+        private int[] _buttonIndexes = new int[]{0, 1};
         private NBack _controller;
         private ButtonType _identicalShown;
         private ButtonType _chosen;
 
-        public void InjectController(NBack controller)
+        public IsIdenticalMode(NBack controller)
         {
             _controller = controller;
         }
@@ -33,6 +33,7 @@ namespace Spans.NBack
 
         public List<Question> GetQuestionByCount(List<Question> questions, int count)
         {
+            _chosen = ButtonType.Null;
             List<Question> roundQuestions = new List<Question>();
             var questionStack = _controller.GetCurrentStack();
 
@@ -93,9 +94,9 @@ namespace Spans.NBack
             return roundQuestions;
         }
 
-        public int GetModeIndex()
+        public int[] GetModeIndexes()
         {
-            return _maxButtonIndex;
+            return _buttonIndexes;
         }
 
         private bool ShouldBeSame()

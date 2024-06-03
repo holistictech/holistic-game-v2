@@ -1,6 +1,7 @@
 using Interfaces;
 using UnityEngine;
 using UnityEngine.UI;
+using Utilities;
 
 namespace Spans.Skeleton.AnswerStates
 {
@@ -17,18 +18,52 @@ namespace Spans.Skeleton.AnswerStates
             {
                 base.Enter(controller);
                 _nBackController = controller.gameObject.GetComponent<NBack.NBack>();
+                spanEventBus.Register<NBackModeEvent>(UpdateStrategy);
             }
 
             _maxTime = spanController.GetRoundTime();
-            AddListeners();
-            EnableUIElements();
-            PlayTimer(_maxTime);
             _currentStrategy = _nBackController.GetStrategyClass();
+            EnableUIElements();
+            AddListeners();
+            PlayTimer(_maxTime);
+        }
+        
+        public override void SwitchNextState()
+        {
+            spanController.SwitchState();
         }
 
+        public void ChooseType(int index)
+        {
+            var type = (CommonFields.ButtonType)index;
+            _currentStrategy.SetChosenButtonType(type);
+            SwitchNextState();
+        }
+        
+        public override void Exit()
+        {
+            if (_timer != null)
+            {
+                StopCoroutine(_timer);
+            }
+        }
+        
         public override void EnableUIElements()
         {
             _currentStrategy.EnableButtons(_modeButtons);
+        }
+
+        public override void DisableUIElements()
+        {
+            foreach (var button in _modeButtons)
+            {
+                button.gameObject.SetActive(false);
+            }
+        }
+
+        private void UpdateStrategy(NBackModeEvent newMode)
+        {
+            _currentStrategy = newMode.StrategyClass;
         }
     }
 }

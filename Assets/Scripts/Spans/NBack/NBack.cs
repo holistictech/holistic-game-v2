@@ -11,16 +11,16 @@ namespace Spans.NBack
 {
     public class NBack : SpanController
     {
-        private Stack<Question> _questionStack = new Stack<Question>();
+        private Stack<Question> _questionStack;
         private CommonFields.ButtonType _identicalShown;
         private INBackStrategy _currentStrategy;
 
         protected override void Start()
         {
             base.Start();
-            _currentStrategy = new IsIdenticalMode();
+            _currentStrategy = new IsIdenticalMode(this);
+            _questionStack = new Stack<Question>();
         }
-        
         
         public override List<Question> GetSpanObjects()
         {

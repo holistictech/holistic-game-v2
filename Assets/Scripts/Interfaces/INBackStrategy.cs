@@ -10,17 +10,20 @@ namespace Interfaces
 {
     public interface INBackStrategy
     {
-        public void InjectController(NBack controller);
         public void SetChosenButtonType(CommonFields.ButtonType chosen);
         public bool CheckAnswer();
         public List<Question> GetQuestionByCount(List<Question> questions, int count);
 
-        public int GetModeIndex();
+        public int[] GetModeIndexes();
         public void EnableButtons(Button[] allButtons)
         {
-            for (int i = 0; i < GetModeIndex(); i++)
+            var indexes = GetModeIndexes();
+            for (int i = 0; i < indexes.Length; i++)
             {
-                allButtons[i].gameObject.SetActive(true);
+                if (allButtons.Length > indexes[i])
+                {
+                    allButtons[indexes[i]].gameObject.SetActive(true);
+                }
             }
         }
     }

@@ -38,7 +38,8 @@ namespace Utilities
             NotIdentical,
             Shape,
             Color,
-            Count
+            Count,
+            Null
         }
 
         public enum Direction
