@@ -29,6 +29,11 @@ namespace UI
             circleImage.DOColor(activeColor, 1f).SetEase(Ease.Flash).OnComplete(ResetSelf);
         }
 
+        public void ChangeColor(Color color)
+        {
+            circleImage.color = color;
+        }
+
         public void OnAnswerGiven()
         {
             circleImage.color = activeColor;

@@ -9,15 +9,14 @@ namespace Utilities
     {
         private SpanController _spanController;
         private Coroutine _timer;
-        private int a;
-        public void InjectSpanController(SpanController controller)
+        public void InjectSpanController(SpanController controller, int roundTime)
         {
             _spanController = controller;
-            _timer = StartCoroutine(StartTimer());
+            _timer = StartCoroutine(StartTimer(roundTime));
         }
-        public IEnumerator StartTimer()
+        public IEnumerator StartTimer(int time)
         {
-            var roundTime = (int)CommonFields.ROUND_DURATION;
+            var roundTime = time;
             for (int i = roundTime; i > 0; i--)
             {
                 yield return new WaitForSeconds(1f);

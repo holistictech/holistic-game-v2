@@ -27,7 +27,8 @@ namespace Spans.Skeleton.QuestionStates
             base.Start();
             SpawnPool();
         }
-        
+
+        private bool _isInitial = true;
         public override void Enter(SpanController controller)
         {
             if (spanController == null)
@@ -38,18 +39,16 @@ namespace Spans.Skeleton.QuestionStates
             _spanObjects = spanController.GetSpanObjects();
             EnableUIElements();
             SetCircleUI(spanController.GetRoundIndex());
+            //if(!_isInitial)
+                //HighlightPreviousCircle();
+            //_isInitial = false;
+            ShowQuestion();
             StatisticsHelper.IncrementDisplayedQuestionCount();
         }
-
-        private bool _isInitial = true;
+        
         public override void ShowQuestion()
         {
-            if (_isInitial)
-            {
-                currentQuestionIndex = 0;
-                _isInitial = false;
-            }
-
+            currentQuestionIndex = 0;
             displayingQuestions = StartCoroutine(IterateQuestions());
         }
 
@@ -57,10 +56,6 @@ namespace Spans.Skeleton.QuestionStates
         {
             for (int i = 0; i < _spanObjects.Count; i++)
             {
-                if (currentQuestionIndex >= _spanObjects.Count)
-                {
-                    break;
-                }
                 var question = _spanObjects[currentQuestionIndex];
                 for(int j = 0; j < question.SpawnAmount; j++)
                 {
@@ -87,11 +82,12 @@ namespace Spans.Skeleton.QuestionStates
                 StopCoroutine(displayingQuestions);
             }
             ResetPreviousCircles();
+            DisableActiveImages();
+            DisableUIElements();
         }
         
         public override void SwitchNextState()
         {
-            DisableUIElements();
             spanController.SetCurrentDisplayedQuestions(_currentQuestions);
             spanController.SwitchState();
         }

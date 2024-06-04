@@ -25,6 +25,11 @@ namespace Spans.NBack
             _questionStack = new Queue<Question>();
         }
         
+        protected override void StartTimer()
+        {
+            timerHelper.InjectSpanController(this, 150);
+        }
+        
         public override List<Question> GetSpanObjects()
         {
             if (_questionStack.Count == 0)

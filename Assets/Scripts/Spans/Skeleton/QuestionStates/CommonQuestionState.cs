@@ -53,11 +53,7 @@ namespace Spans.Skeleton.QuestionStates
             {
                 currentQuestionIndex = 0;
             }
-            else if (spanController.GetNBackStatus() && _isInitial)
-            {
-                currentQuestionIndex = 1;
-                _isInitial = false;
-            }
+            
             /*if (currentQuestionIndex + spanController.GetRoundIndex() >= _spanObjects.Count && !spanController.GetCumulativeStatus())
             {
                 _spanObjects = spanController.GetSpanObjects();

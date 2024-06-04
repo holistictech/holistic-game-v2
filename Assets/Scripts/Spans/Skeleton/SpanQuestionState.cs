@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening;
 using Spans.CumulativeSpan;
 using UI;
@@ -83,6 +84,11 @@ namespace Spans.Skeleton
             spanController.SetActiveCircles(_activeCircles);
         }
 
+        protected void HighlightPreviousCircle()
+        {
+            _activeCircles[^2].ChangeColor(Color.magenta);
+        }
+
         private void SpawnUnitCircles()
         {
             _spawnedUnitPool = new List<UnitCircle>();
@@ -109,6 +115,7 @@ namespace Spans.Skeleton
             {
                 circle.ResetSelf();
             }
+            
             _activeCircles.Clear();
         }
 

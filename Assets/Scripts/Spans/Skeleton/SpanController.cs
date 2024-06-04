@@ -18,18 +18,15 @@ namespace Spans.Skeleton
         [SerializeField] protected Question[] spanQuestions;
         [SerializeField] protected bool isBackwards;
         [SerializeField] protected bool isCumulative;
-        [SerializeField] protected bool isNBack;
         [SerializeField] private StateHolder states;
         [SerializeField] private TutorialManager tutorialManager;
         [SerializeField] private TextMeshProUGUI _spanNameField;
-        [SerializeField] private RoundTimerHelper timerHelper;
+        [SerializeField] protected RoundTimerHelper timerHelper;
         [SerializeField] private bool dummyTutorialBool;
         protected List<UnitCircle> activeUnitCircles = new List<UnitCircle>();
         protected List<ISpanState> stateList = new List<ISpanState>();
         protected SpanStateContext stateContext;
         protected int currentRoundIndex = CommonFields.DEFAULT_ROUND_INDEX;
-        protected int fetchedQuestionCount = 9;
-
         protected int currentSuccessStreak;
         protected int currentFailStreak;
         private bool _tutorialActive;
@@ -51,9 +48,9 @@ namespace Spans.Skeleton
             _spanNameField.text = $"{gameObject.name}";
         }
 
-        private void StartTimer()
+        protected virtual void StartTimer()
         {
-            timerHelper.InjectSpanController(this);
+            timerHelper.InjectSpanController(this, (int)CommonFields.ROUND_DURATION);
         }
 
         public void SetSpanCompleted()
@@ -349,11 +346,6 @@ namespace Spans.Skeleton
         public bool GetCumulativeStatus()
         {
             return isCumulative;
-        }
-
-        public bool GetNBackStatus()
-        {
-            return isNBack;
         }
         
         public virtual CommonFields.BlockSpanModes GetCurrentMode()

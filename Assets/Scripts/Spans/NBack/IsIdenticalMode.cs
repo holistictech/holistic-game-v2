@@ -53,41 +53,38 @@ namespace Spans.NBack
                     roundQuestions.Add(randomQuestion);
                     _correctType = ButtonType.NotIdentical;
                 }
+                questionStack = QueueUtils.AppendQueue(questionStack, new Queue<Question>(roundQuestions));
             }
             else
             {
-                HashSet<int> selectedIndices = new HashSet<int>();
-
-                for (int i = 0; i < count; i++)
+                if (ShouldBeSame())
                 {
-                    int randomIndex;
-
-                    do
-                    {
-                        randomIndex = Random.Range(0, questions.Count);
-                    } while (selectedIndices.Contains(randomIndex));
-
-                    selectedIndices.Add(randomIndex);
+                    int randomIndex = Random.Range(0, questions.Count);
                     var randomQuestion = questions[randomIndex];
                     roundQuestions.Add(randomQuestion);
-                    _correctType = ButtonType.NotIdentical;
+                    roundQuestions.Add(randomQuestion);
+                    _correctType = ButtonType.Identical;
+                }
+                else
+                {
+                    HashSet<int> selectedIndices = new HashSet<int>();
 
-                    if (count == 2 && ShouldBeSame())
+                    for (int i = 0; i < count; i++)
                     {
+                        int randomIndex;
+
+                        do
+                        {
+                            randomIndex = Random.Range(0, questions.Count);
+                        } while (selectedIndices.Contains(randomIndex));
+
+                        selectedIndices.Add(randomIndex);
+                        var randomQuestion = questions[randomIndex];
                         roundQuestions.Add(randomQuestion);
-                        _correctType = ButtonType.Identical;
-                        break;
+                        _correctType = ButtonType.NotIdentical;
                     }
                 }
-            }
-
-            if (questionStack.Count == 0)
-            {
                 questionStack = new Queue<Question>(roundQuestions);
-            }
-            else
-            {
-                questionStack = QueueUtils.AppendQueue(questionStack, new Queue<Question>(roundQuestions));
             }
 
             _controller.UpdateCurrentStack(questionStack);

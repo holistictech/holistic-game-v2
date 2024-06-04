@@ -46,6 +46,8 @@ namespace Spans.Skeleton.AnswerStates
             {
                 StopCoroutine(_timer);
             }
+
+            DisableUIElements();
             base.Exit();
         }
         
