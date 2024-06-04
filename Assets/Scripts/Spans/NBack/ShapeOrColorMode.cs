@@ -11,7 +11,7 @@ namespace Spans.NBack
 {
     public class ShapeOrColorMode : INBackStrategy
     {
-        private int[] _buttonIndexes;
+        private int[] _buttonIndexes = new []{2, 3};
         private NBack _controller;
         private ButtonType _correctType;
         private ButtonType _chosen;

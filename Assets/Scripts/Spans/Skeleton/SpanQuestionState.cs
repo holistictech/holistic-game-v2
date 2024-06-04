@@ -22,7 +22,7 @@ namespace Spans.Skeleton
         protected SpanController spanController;
         protected Coroutine displayingQuestions;
         
-        private void Start()
+        protected virtual void Start()
         {
             SpawnUnitCircles();
         }

@@ -7,6 +7,7 @@ namespace Scriptables.QuestionSystem
     {
         public Sprite ItemSprite;
         public Sprite AlternativeColorSprite;
+        public int SpawnAmount = 1;
         
         public override object GetQuestionItem()
         {

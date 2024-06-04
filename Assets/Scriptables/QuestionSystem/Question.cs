@@ -9,6 +9,7 @@ namespace Scriptables.QuestionSystem
         public string CorrectAnswerString;
         public bool IsAnswerStringMUST; 
         private bool _hasSelected = false;
+        public int SpawnAmount = 1;
         public bool HasSelected()
         {
             return _hasSelected;
