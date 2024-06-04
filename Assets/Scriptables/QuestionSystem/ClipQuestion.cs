@@ -1,4 +1,5 @@
 using UnityEngine;
+using Utilities;
 
 namespace Scriptables.QuestionSystem
 {
@@ -10,6 +11,11 @@ namespace Scriptables.QuestionSystem
         public override object GetQuestionItem()
         {
             return Clip;
+        }
+
+        public override object GetQuestionItemByType(CommonFields.ButtonType type)
+        {
+            throw new System.NotImplementedException();
         }
 
         public override Sprite GetCorrectSprite()

@@ -13,7 +13,7 @@ namespace Spans.NBack
     {
         private int[] _buttonIndexes = new int[]{0, 1};
         private NBack _controller;
-        private ButtonType _identicalShown;
+        private ButtonType _correctType;
         private ButtonType _chosen;
 
         public IsIdenticalMode(NBack controller)
@@ -28,12 +28,13 @@ namespace Spans.NBack
 
         public bool CheckAnswer()
         {
-            return _identicalShown == _chosen;
+            return _correctType == _chosen;
         }
 
         public List<Question> GetQuestionByCount(List<Question> questions, int count)
         {
             _chosen = ButtonType.Null;
+            _correctType = ButtonType.Null;
             List<Question> roundQuestions = new List<Question>();
             var questionStack = _controller.GetCurrentStack();
 
@@ -43,14 +44,14 @@ namespace Spans.NBack
                 {
                     var lastQuestion = questionStack.Peek();
                     roundQuestions.Add(lastQuestion);
-                    _identicalShown = ButtonType.Identical;
+                    _correctType = ButtonType.Identical;
                 }
                 else
                 {
                     int randomIndex = Random.Range(0, questions.Count);
                     var randomQuestion = questions[randomIndex];
                     roundQuestions.Add(randomQuestion);
-                    _identicalShown = ButtonType.NotIdentical;
+                    _correctType = ButtonType.NotIdentical;
                 }
             }
             else
@@ -69,12 +70,12 @@ namespace Spans.NBack
                     selectedIndices.Add(randomIndex);
                     var randomQuestion = questions[randomIndex];
                     roundQuestions.Add(randomQuestion);
-                    _identicalShown = ButtonType.NotIdentical;
+                    _correctType = ButtonType.NotIdentical;
 
                     if (count == 2 && ShouldBeSame())
                     {
                         roundQuestions.Add(randomQuestion);
-                        _identicalShown = ButtonType.Identical;
+                        _correctType = ButtonType.Identical;
                         break;
                     }
                 }

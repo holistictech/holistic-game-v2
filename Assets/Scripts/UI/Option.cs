@@ -1,6 +1,7 @@
 using System;
 using DG.Tweening;
 using Scriptables.QuestionSystem;
+using Scriptables.QuestionSystem.Images;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UIElements;

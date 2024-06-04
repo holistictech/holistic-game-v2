@@ -11,6 +11,7 @@ namespace Spans.NBack
 {
     public class NBack : SpanController
     {
+        [SerializeField] private List<Question> alternativeObjectImages;
         private Queue<Question> _questionStack;
         private CommonFields.ButtonType _identicalShown;
         private INBackStrategy _currentStrategy;
@@ -89,6 +90,11 @@ namespace Spans.NBack
             {
                 return 1;
             }
+        }
+
+        public List<Question> GetAlternativeImages()
+        {
+            return alternativeObjectImages;
         }
 
         public Queue<Question> GetCurrentStack()

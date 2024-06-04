@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using Scriptables.QuestionSystem;
+using Scriptables.QuestionSystem.Images;
 using Scriptables.Tutorial;
 using Spans.CumulativeSpan;
 using TMPro;

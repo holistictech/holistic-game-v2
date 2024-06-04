@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Serialization;
+using Utilities;
 
 namespace Scriptables.QuestionSystem
 {
@@ -29,5 +30,6 @@ namespace Scriptables.QuestionSystem
         }
 
         public abstract object GetQuestionItem();
+        public abstract object GetQuestionItemByType(CommonFields.ButtonType type);
     }
 }

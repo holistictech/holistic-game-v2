@@ -3,18 +3,19 @@ using Utilities;
 
 namespace Scriptables.QuestionSystem
 {
-    [CreateAssetMenu(fileName = "Question", menuName = "Question/Number")]
-    public class NumberQuestion : Question
+    public class NBackQuestion : Question
     {
-        public int Value;
+        public Sprite ItemSprite;
+        public Sprite AlternativeColorSprite;
+        
         public override object GetQuestionItem()
         {
-            return Value;
+            return ItemSprite;
         }
 
         public override object GetQuestionItemByType(CommonFields.ButtonType type)
         {
-            throw new System.NotImplementedException();
+            return type == CommonFields.ButtonType.Color ? AlternativeColorSprite : ItemSprite;
         }
     }
 }

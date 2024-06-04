@@ -1,5 +1,6 @@
 using System;
 using Scriptables.QuestionSystem;
+using Scriptables.QuestionSystem.Images;
 using Spans.Skeleton.AnswerStates;
 using TMPro;
 using UI.Helpers;
