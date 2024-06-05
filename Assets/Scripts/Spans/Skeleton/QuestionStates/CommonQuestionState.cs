@@ -59,6 +59,7 @@ namespace Spans.Skeleton.QuestionStates
                 _spanObjects = spanController.GetSpanObjects();
             }*/
             
+            //@todo: need to check every question's type for complex span and nback scenarios.
             var question = _spanObjects[currentQuestionIndex];
             if (question is NumberQuestion)
             {

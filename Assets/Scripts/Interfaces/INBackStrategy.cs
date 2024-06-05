@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using ETFXPEL;
 using Scriptables.QuestionSystem;
 using Spans.NBack;
+using Spans.Skeleton.QuestionStates;
 using UnityEngine;
 using UnityEngine.UI;
 using Utilities;
@@ -10,6 +11,8 @@ namespace Interfaces
 {
     public interface INBackStrategy
     {
+        public void InjectQuestionState(NBackQuestionState questionState);
+        public abstract void ShowQuestion(List<Question> questions);
         public void SetChosenButtonType(CommonFields.ButtonType chosen);
         public bool CheckAnswer();
         public List<Question> GetQuestionByCount(List<Question> questions, int count);

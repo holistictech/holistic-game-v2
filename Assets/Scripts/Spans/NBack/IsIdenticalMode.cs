@@ -2,6 +2,7 @@ using System.Collections.Generic;
 using ETFXPEL;
 using Interfaces;
 using Scriptables.QuestionSystem;
+using Spans.Skeleton.QuestionStates;
 using UnityEngine;
 using UnityEngine.UI;
 using Utilities;
@@ -15,10 +16,21 @@ namespace Spans.NBack
         private NBack _controller;
         private ButtonType _correctType;
         private ButtonType _chosen;
+        private const NBackModes GameMode = NBackModes.IsIdentical;
 
         public IsIdenticalMode(NBack controller)
         {
             _controller = controller;
+        }
+
+        public void InjectQuestionState(NBackQuestionState questionState)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void ShowQuestion(List<Question> questions)
+        {
+            throw new System.NotImplementedException();
         }
 
         public void SetChosenButtonType(ButtonType chosen)

@@ -16,8 +16,8 @@ namespace Spans.BlockSpan
         private List<GridConfiguration> _gridConfigs =
             new List<GridConfiguration>()
             {
-                //new (new Vector2Int(2, 2), BlockSpanModes.Regular),
-                //new (new Vector2Int(2, 3), BlockSpanModes.Regular),
+                new (new Vector2Int(2, 2), BlockSpanModes.Regular),
+                new (new Vector2Int(2, 3), BlockSpanModes.Regular),
                 new (new Vector2Int(3, 3), BlockSpanModes.Regular),
                 new (new Vector2Int(3, 3), BlockSpanModes.ColorChooser),
                 new (new Vector2Int(3, 3), BlockSpanModes.ItemChooser),

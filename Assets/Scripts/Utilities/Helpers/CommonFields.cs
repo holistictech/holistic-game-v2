@@ -42,6 +42,15 @@ namespace Utilities
             Null
         }
 
+        public enum NBackModes
+        {
+            IsIdentical = 0,
+            ColorOrShape,
+            ColorShapeOrCount,
+            NBack,
+            DualNBack
+        }
+
         public enum Direction
         {
             Up = 0,

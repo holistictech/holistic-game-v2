@@ -12,6 +12,10 @@ namespace Spans.NBack
     public class NBack : SpanController
     {
         [SerializeField] private List<Question> alternativeObjectImages;
+        [SerializeField] private List<Question> nBackQuestions;
+        [SerializeField] private List<Question> dualNBackQuestions;
+
+        private Dictionary<CommonFields.NBackModes, List<Question>> _modeQuestionDictionary;
         private Queue<Question> _questionStack;
         private CommonFields.ButtonType _identicalShown;
         private INBackStrategy _currentStrategy;
@@ -23,13 +27,22 @@ namespace Spans.NBack
             _isInitial = true;
             _currentStrategy = new IsIdenticalMode(this);
             _questionStack = new Queue<Question>();
+            _modeQuestionDictionary =
+                new Dictionary<CommonFields.NBackModes, List<Question>>()
+                {
+                    { CommonFields.NBackModes.IsIdentical, GetAllAvailableSpanObjects().ToList() },
+                    { CommonFields.NBackModes.ColorOrShape, alternativeObjectImages },
+                    { CommonFields.NBackModes.ColorShapeOrCount, alternativeObjectImages },
+                    { CommonFields.NBackModes.NBack, nBackQuestions },
+                    { CommonFields.NBackModes.DualNBack, dualNBackQuestions },
+                };
         }
         
         protected override void StartTimer()
         {
             timerHelper.InjectSpanController(this, 150);
         }
-        
+
         public override List<Question> GetSpanObjects()
         {
             if (_questionStack.Count == 0)
@@ -97,9 +110,10 @@ namespace Spans.NBack
             }
         }
 
-        public List<Question> GetAlternativeImages()
+        public List<Question> GetAlternativeImagesByType(CommonFields.NBackModes mode)
         {
-            return alternativeObjectImages;
+            var list = _modeQuestionDictionary[mode];
+            return list ?? GetAllAvailableSpanObjects().ToList();
         }
 
         public Queue<Question> GetCurrentStack()

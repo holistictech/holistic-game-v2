@@ -4,6 +4,8 @@ using System.Collections.Generic;
 using DG.Tweening;
 using Interfaces;
 using Scriptables.QuestionSystem;
+using Spans.NBack;
+using UI.Helpers;
 using UnityEngine;
 using UnityEngine.UI;
 using Utilities;
@@ -12,8 +14,12 @@ namespace Spans.Skeleton.QuestionStates
 {
     public class NBackQuestionState : SpanQuestionState
     {
+        [SerializeField] private CorsiBlockUIHelper blockUIHelper;
         [SerializeField] private HorizontalLayoutGroup horizontalParent;
         [SerializeField] private Image questionImage;
+
+        private NBack.NBack _nBackController;
+        private INBackStrategy _currentStrategy;
         
         private List<Question> _spanObjects; 
         private List<Question> _currentQuestions = new List<Question>();
@@ -33,16 +39,27 @@ namespace Spans.Skeleton.QuestionStates
         {
             if (spanController == null)
             {
+                blockUIHelper.GetCorsiBlocks();
                 base.Enter(controller);
+                _nBackController = controller.gameObject.GetComponent<NBack.NBack>();
             }
 
+            _currentStrategy = _nBackController.GetStrategyClass();
             _spanObjects = spanController.GetSpanObjects();
             EnableUIElements();
             SetCircleUI(spanController.GetRoundIndex());
+            blockUIHelper.ConfigureInput(false);
             //if(!_isInitial)
                 //HighlightPreviousCircle();
             //_isInitial = false;
-            ShowQuestion();
+            if (_currentStrategy is NBackMode)
+            {
+                _currentStrategy.ShowQuestion(_spanObjects);
+            }
+            else
+            {
+                ShowQuestion();
+            }
             StatisticsHelper.IncrementDisplayedQuestionCount();
         }
         
@@ -59,20 +76,40 @@ namespace Spans.Skeleton.QuestionStates
                 var question = _spanObjects[currentQuestionIndex];
                 for(int j = 0; j < question.SpawnAmount; j++)
                 {
-                    var availableImage = GetAvailableImage();
-                    _activeQuestionImages.Add(availableImage);
-                    availableImage.sprite = (Sprite)question.GetQuestionItem();
-                    availableImage.gameObject.SetActive(true);
-                    ActivateCircle(currentQuestionIndex);
-                    _currentQuestions.Add(question);
-                    currentQuestionIndex++;
-                    yield return new WaitForSeconds(1f);
-                    DisableActiveImages();
-                    yield return new WaitForSeconds(1f);
+                   ShowImage(question); 
+                   yield return new WaitForSeconds(1f);
+                   DisableActiveImages();
+                   yield return new WaitForSeconds(1f);
                 }
             }
 
             DOVirtual.DelayedCall(1f, SwitchNextState);
+        }
+
+        private void ShowImage(Question question)
+        {
+            var availableImage = GetAvailableImage();
+            _activeQuestionImages.Add(availableImage);
+            availableImage.sprite = (Sprite)question.GetQuestionItem();
+            availableImage.gameObject.SetActive(true);
+            ActivateCircle(currentQuestionIndex);
+            _currentQuestions.Add(question);    
+            currentQuestionIndex++;
+        }
+
+        private void PlayAudio(Question question)
+        {
+            
+        }
+
+        public void EnableCircle(int index)
+        {
+            ActivateCircle(index);
+        }
+
+        public CorsiBlockUIHelper GetBlockHelper()
+        {
+            return blockUIHelper;
         }
         
         public override void Exit()

@@ -3,6 +3,7 @@ using System.Linq;
 using ETFXPEL;
 using Interfaces;
 using Scriptables.QuestionSystem;
+using Spans.Skeleton.QuestionStates;
 using UnityEngine;
 using Utilities;
 using static Utilities.CommonFields;
@@ -15,11 +16,23 @@ namespace Spans.NBack
         private NBack _controller;
         private ButtonType _correctType;
         private ButtonType _chosen;
+        private const NBackModes GameMode = NBackModes.ColorOrShape;
         
         public ShapeOrColorMode(NBack controller)
         {
             _controller = controller;
         }
+
+        public void InjectQuestionState(NBackQuestionState questionState)
+        {
+            throw new System.NotImplementedException();
+        }
+
+        public void ShowQuestion(List<Question> questions)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public void SetChosenButtonType(ButtonType chosen)
         {
             _chosen = chosen;
@@ -54,7 +67,7 @@ namespace Spans.NBack
 
         private List<Question> GetAlternativeQuestionByType(bool isInitial)
         {
-            var images = _controller.GetAlternativeImages();
+            var images = _controller.GetAlternativeImagesByType(GameMode);
             var questionStack = _controller.GetCurrentStack();
             Question first = isInitial ? images[Random.Range(0, images.Count)] : questionStack.Peek();
             switch (_correctType)
