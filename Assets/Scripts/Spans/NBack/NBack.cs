@@ -60,6 +60,12 @@ namespace Spans.NBack
         {
             return _currentStrategy.GetQuestionByCount(GetAllAvailableSpanObjects().ToList(), count);
         }
+
+        private void TryUpdateStrategy()
+        {
+            //@todo: update mechanism
+            
+        }
         
         public override void SwitchState()
         {
@@ -78,7 +84,7 @@ namespace Spans.NBack
             }
             else
             {
-                stateContext.Transition(stateList[1]); // to turn back to question state for NBack scnearios.
+                stateContext.Transition(stateList[1]); // to turn back to question state for NBack scenarios.
             }
         }
 

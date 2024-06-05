@@ -35,6 +35,7 @@ namespace Spans.NBack
         public void ShowQuestion()
         {
             GetBlockHelper();
+            _blockUIHelper.GetCorsiBlocks();
             _blockUIHelper.AssignQuestions(GetModeQuestions());
         }
 
@@ -65,7 +66,7 @@ namespace Spans.NBack
                         break;
                     case ButtonType.NotIdentical:
                         Question randomQuestion = first;
-                        while (roundQuestions.Contains(randomQuestion))
+                        while (questionStack.Contains(randomQuestion))
                         {
                             int randomIndex = Random.Range(0, questions.Count); 
                             randomQuestion = questions[randomIndex];

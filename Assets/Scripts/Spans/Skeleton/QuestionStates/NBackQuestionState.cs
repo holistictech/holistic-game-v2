@@ -39,15 +39,13 @@ namespace Spans.Skeleton.QuestionStates
         {
             if (spanController == null)
             {
+                _nBackController = controller.GetComponent<NBack.NBack>();
+                _currentStrategy = _nBackController.GetStrategyClass();
                 base.Enter(controller);
-                blockUIHelper.GetCorsiBlocks();
-                _nBackController = controller.gameObject.GetComponent<NBack.NBack>();
             }
 
             blockUIHelper.ConfigureInput(false);
-            _currentStrategy = _nBackController.GetStrategyClass();
             _spanObjects = spanController.GetSpanObjects();
-            EnableUIElements();
             SetCircleUI(spanController.GetRoundIndex());
             //if(!_isInitial)
                 //HighlightPreviousCircle();
@@ -122,11 +120,6 @@ namespace Spans.Skeleton.QuestionStates
             DOVirtual.DelayedCall(1f, SwitchNextState);
         }
 
-        public void EnableCircle(int index)
-        {
-            ActivateCircle(index);
-        }
-
         public CorsiBlockUIHelper GetBlockHelper()
         {
             return blockUIHelper;
@@ -151,7 +144,10 @@ namespace Spans.Skeleton.QuestionStates
         
         public override void EnableUIElements()
         {
-            horizontalParent.gameObject.SetActive(true);
+            if (_currentStrategy is not NBackMode)
+            {
+                horizontalParent.gameObject.SetActive(true);
+            }
             unitParent.gameObject.SetActive(true);
         }
 

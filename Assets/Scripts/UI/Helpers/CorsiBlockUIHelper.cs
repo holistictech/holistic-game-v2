@@ -27,7 +27,7 @@ namespace UI.Helpers
 
         public void GetCorsiBlocks()
         {
-            spawnedBlocks = new List<CorsiBlock>(blockParent.GetComponentsInChildren<CorsiBlock>());
+            spawnedBlocks = new List<CorsiBlock>(blockParent.GetComponentsInChildren<CorsiBlock>(true));
         }
 
         public virtual void AssignQuestions(List<Question> spanQuestions)
