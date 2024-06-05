@@ -509,12 +509,23 @@ MonoBehaviour:
   - {fileID: 11400000, guid: d311648ad7c03ad40b2b8d76eafebc9e, type: 2}
   isBackwards: 0
   isCumulative: 0
-  isNBack: 1
   states: {fileID: 11400000, guid: e7b61a64e50ec824ba078ea932fb09dd, type: 2}
   tutorialManager: {fileID: 5317712305952169983}
   _spanNameField: {fileID: 4258847563521548559}
   timerHelper: {fileID: 8432561758360857321}
   dummyTutorialBool: 0
+  alternativeObjectImages: []
+  nBackQuestions:
+  - {fileID: 11400000, guid: 23458be218ed1dd4e81ac88f88db08d1, type: 2}
+  - {fileID: 11400000, guid: 21ce3fe8aaf5564479e8b9f20c1d9c8e, type: 2}
+  - {fileID: 11400000, guid: 01afc39b05706654bb2f2976870209bb, type: 2}
+  - {fileID: 11400000, guid: 06b411921680e724fbb7abbbecd66644, type: 2}
+  - {fileID: 11400000, guid: 5a9d12d931ad7ac489339a4cf19760b4, type: 2}
+  - {fileID: 11400000, guid: 989b7005ceca4b8489bfe52567fbae56, type: 2}
+  - {fileID: 11400000, guid: 4e0cf6cdb572b504f99bf59abf2c3aa9, type: 2}
+  - {fileID: 11400000, guid: 8342a1a9e4602aa419c30f1ad6b08b77, type: 2}
+  - {fileID: 11400000, guid: e0fc73d5139bb6140a91a4decd78312b, type: 2}
+  dualNBackQuestions: []
 --- !u!1 &8840831442161132576
 GameObject:
   m_ObjectHideFlags: 0

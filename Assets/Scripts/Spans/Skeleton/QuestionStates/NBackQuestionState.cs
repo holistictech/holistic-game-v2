@@ -39,34 +39,36 @@ namespace Spans.Skeleton.QuestionStates
         {
             if (spanController == null)
             {
-                blockUIHelper.GetCorsiBlocks();
                 base.Enter(controller);
+                blockUIHelper.GetCorsiBlocks();
                 _nBackController = controller.gameObject.GetComponent<NBack.NBack>();
             }
 
+            blockUIHelper.ConfigureInput(false);
             _currentStrategy = _nBackController.GetStrategyClass();
             _spanObjects = spanController.GetSpanObjects();
             EnableUIElements();
             SetCircleUI(spanController.GetRoundIndex());
-            blockUIHelper.ConfigureInput(false);
             //if(!_isInitial)
                 //HighlightPreviousCircle();
             //_isInitial = false;
-            if (_currentStrategy is NBackMode)
-            {
-                _currentStrategy.ShowQuestion(_spanObjects);
-            }
-            else
-            {
-                ShowQuestion();
-            }
+            ShowQuestion();
             StatisticsHelper.IncrementDisplayedQuestionCount();
         }
         
         public override void ShowQuestion()
         {
             currentQuestionIndex = 0;
-            displayingQuestions = StartCoroutine(IterateQuestions());
+            if (_currentStrategy is NBackMode)
+            {
+                _currentStrategy.InjectQuestionState(this);
+                _currentStrategy.ShowQuestion();
+                displayingQuestions = StartCoroutine(IterateBlocks());
+            }
+            else
+            {
+                displayingQuestions = StartCoroutine(IterateQuestions());
+            }
         }
 
         private IEnumerator IterateQuestions()
@@ -100,6 +102,24 @@ namespace Spans.Skeleton.QuestionStates
         private void PlayAudio(Question question)
         {
             
+        }
+        
+        
+        private IEnumerator IterateBlocks()
+        {
+            for (int i = 0; i < _spanObjects.Count; i++)
+            {
+                if (currentQuestionIndex >= _spanObjects.Count)
+                {
+                    break;
+                }
+                ActivateCircle(currentQuestionIndex);
+                blockUIHelper.HighlightTargetBlock(_spanObjects[currentQuestionIndex]);
+                currentQuestionIndex++;
+                yield return new WaitForSeconds(2f);
+            }
+            
+            DOVirtual.DelayedCall(1f, SwitchNextState);
         }
 
         public void EnableCircle(int index)

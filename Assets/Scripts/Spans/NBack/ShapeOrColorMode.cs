@@ -28,7 +28,7 @@ namespace Spans.NBack
             throw new System.NotImplementedException();
         }
 
-        public void ShowQuestion(List<Question> questions)
+        public void ShowQuestion()
         {
             throw new System.NotImplementedException();
         }

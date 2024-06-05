@@ -1,5 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using DG.Tweening;
 using Interfaces;
 using Scriptables.QuestionSystem;
@@ -19,7 +20,6 @@ namespace Spans.NBack
         private NBack _controller;
         private NBackQuestionState _questionState;
         private CorsiBlockUIHelper _blockUIHelper;
-        private int _currentQuestionIndex = 0;
         private const NBackModes GameMode = NBackModes.NBack;
         
         public NBackMode(NBack controller)
@@ -32,28 +32,10 @@ namespace Spans.NBack
             _questionState = questionState;
         }
 
-        public void ShowQuestion(List<Question> questions)
+        public void ShowQuestion()
         {
             GetBlockHelper();
-            _currentQuestionIndex = 0;
-            _blockUIHelper.AssignQuestions(GetQuestionByCount(new List<Question>(), 9));
-        }
-        
-        private IEnumerator IterateQuestions(List<Question> spanQuestions)
-        {
-            for (int i = 0; i < spanQuestions.Count; i++)
-            {
-                if (_currentQuestionIndex >= spanQuestions.Count)
-                {
-                    break;
-                }
-                _questionState.EnableCircle(_currentQuestionIndex);
-                _blockUIHelper.HighlightTargetBlock(spanQuestions[_currentQuestionIndex]);
-                _currentQuestionIndex++;
-                yield return new WaitForSeconds(2f);
-            }
-            
-            DOVirtual.DelayedCall(1f, _questionState.SwitchNextState);
+            _blockUIHelper.AssignQuestions(GetModeQuestions());
         }
 
         public void SetChosenButtonType(ButtonType chosen)
@@ -68,23 +50,72 @@ namespace Spans.NBack
 
         public List<Question> GetQuestionByCount(List<Question> questions, int count)
         {
+            SetCorrectType();
+            _chosen = ButtonType.Null;
+            var questionStack = _controller.GetCurrentStack();
             questions = _controller.GetAlternativeImagesByType(GameMode);
             List<Question> roundQuestions = new List<Question>();
-            var iterations = count;
-            for (int i = 0; i < iterations; i++)
+            if (count == 1)
             {
-                var randomQuestionIndex = Random.Range(0, questions.Count);
-                var randomQuestion = questions[randomQuestionIndex];
-                while (roundQuestions.Contains(randomQuestion))
+                var first = questionStack.Peek();
+                switch (_correctType)
                 {
-                    randomQuestionIndex = Random.Range(0, questions.Count);
-                    randomQuestion = questions[randomQuestionIndex];
+                    case ButtonType.Identical:
+                        roundQuestions.Add(first);
+                        break;
+                    case ButtonType.NotIdentical:
+                        Question randomQuestion = first;
+                        while (roundQuestions.Contains(randomQuestion))
+                        {
+                            int randomIndex = Random.Range(0, questions.Count); 
+                            randomQuestion = questions[randomIndex];
+                        }
+                        roundQuestions.Add(randomQuestion);
+                        break;
                 }
-                
-                roundQuestions.Add(randomQuestion);
+
+                questionStack = QueueUtils.AppendQueue(questionStack, new Queue<Question>(roundQuestions));
+            }
+            else
+            {
+                switch (_correctType)
+                {
+                    case ButtonType.Identical:
+                        int randomIndex = Random.Range(0, questions.Count);
+                        var randomQuestion = questions[randomIndex];
+                        roundQuestions.Add(randomQuestion);
+                        roundQuestions.Add(randomQuestion);
+                        break;
+                    case ButtonType.NotIdentical:
+                        HashSet<int> selectedIndices = new HashSet<int>();
+
+                        for (int i = 0; i < count; i++)
+                        {
+                            do
+                            {
+                                randomIndex = Random.Range(0, questions.Count);
+                            } while (selectedIndices.Contains(randomIndex));
+
+                            selectedIndices.Add(randomIndex);
+                            randomQuestion = questions[randomIndex];
+                            roundQuestions.Add(randomQuestion); 
+                        } 
+                        break;
+                }
+                questionStack = new Queue<Question>(roundQuestions);
             }
             
+            _controller.UpdateCurrentStack(questionStack);
             return roundQuestions;
+        }
+
+        private void SetCorrectType()
+        {
+            _correctType = (ButtonType)Random.Range((int)ButtonType.Identical, (int)ButtonType.NotIdentical+1);
+        }
+        private List<Question> GetModeQuestions()
+        {
+            return _controller.GetAlternativeImagesByType(GameMode);
         }
 
         private void GetBlockHelper()
