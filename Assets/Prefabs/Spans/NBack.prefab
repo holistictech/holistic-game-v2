@@ -514,7 +514,15 @@ MonoBehaviour:
   _spanNameField: {fileID: 4258847563521548559}
   timerHelper: {fileID: 8432561758360857321}
   dummyTutorialBool: 0
-  alternativeObjectImages: []
+  alternativeObjectImages:
+  - {fileID: 11400000, guid: 845bc8cd2d15df34fb1a001cd541f0cf, type: 2}
+  - {fileID: 11400000, guid: d13b11c5844d4394a91fa5cf902df611, type: 2}
+  - {fileID: 11400000, guid: aaaa62462e774c940be81e2dec19e118, type: 2}
+  - {fileID: 11400000, guid: 4bb4cab6f4ba7e84486ff8fe552ffd9e, type: 2}
+  - {fileID: 11400000, guid: 23e3e3891ace05641ad4cc0dabdfce97, type: 2}
+  - {fileID: 11400000, guid: fe98e925fa2a5544280c8207778dcefd, type: 2}
+  - {fileID: 11400000, guid: 8e4bfaf3b05f88c4197a49a8b7c6caaf, type: 2}
+  - {fileID: 11400000, guid: 4fd70f8f4d5899246af5694e80cf109e, type: 2}
   nBackQuestions:
   - {fileID: 11400000, guid: 23458be218ed1dd4e81ac88f88db08d1, type: 2}
   - {fileID: 11400000, guid: 21ce3fe8aaf5564479e8b9f20c1d9c8e, type: 2}

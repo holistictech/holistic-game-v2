@@ -88,6 +88,7 @@ namespace Spans.NBack
                     {
                         NBackQuestion alternative = ScriptableObject.CreateInstance<NBackQuestion>();
                         alternative.ItemSprite = (Sprite)first.GetQuestionItemByType(_correctType);
+                        alternative.AlternativeColorSprite = (Sprite)first.GetQuestionItem();
                         questionStack.Enqueue(alternative);
                     }
                     break;

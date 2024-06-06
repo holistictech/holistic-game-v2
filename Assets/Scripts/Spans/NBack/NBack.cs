@@ -25,7 +25,7 @@ namespace Spans.NBack
         {
             base.Start();
             _isInitial = true;
-            _currentStrategy = new NBackMode(this);
+            _currentStrategy = new ShapeColorOrCountMode(this);
             _questionStack = new Queue<Question>();
             _modeQuestionDictionary =
                 new Dictionary<CommonFields.NBackModes, List<Question>>()

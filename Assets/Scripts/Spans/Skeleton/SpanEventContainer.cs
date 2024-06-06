@@ -25,14 +25,4 @@ namespace Spans.Skeleton
             CircleCount = count;
         }
     }
-
-    public class NBackModeEvent
-    {
-        internal INBackStrategy StrategyClass;
-
-        public NBackModeEvent(INBackStrategy updated)
-        {
-            StrategyClass = updated;
-        }
-    }
 }

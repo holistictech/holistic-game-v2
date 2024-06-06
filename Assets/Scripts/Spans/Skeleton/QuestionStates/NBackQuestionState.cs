@@ -26,7 +26,7 @@ namespace Spans.Skeleton.QuestionStates
 
         private List<Image> _pooledQuestionImages = new List<Image>();
         private List<Image> _activeQuestionImages = new List<Image>();
-        private const int SpawnAmount = 3;
+        private const int SpawnAmount = 6;
 
         protected override void Start()
         {
@@ -47,6 +47,7 @@ namespace Spans.Skeleton.QuestionStates
             blockUIHelper.ConfigureInput(false);
             _spanObjects = spanController.GetSpanObjects();
             SetCircleUI(spanController.GetRoundIndex());
+            EnableUIElements();
             //if(!_isInitial)
                 //HighlightPreviousCircle();
             //_isInitial = false;
@@ -71,30 +72,49 @@ namespace Spans.Skeleton.QuestionStates
 
         private IEnumerator IterateQuestions()
         {
-            for (int i = 0; i < _spanObjects.Count; i++)
+            var start = _isInitial ? 0 : 1;
+            _isInitial = false;
+            for (int i = start; i < _spanObjects.Count; i++)
             {
-                var question = _spanObjects[currentQuestionIndex];
-                for(int j = 0; j < question.SpawnAmount; j++)
+                var question = _spanObjects[i];
+                if (question.SpawnAmount > 1)
                 {
-                   ShowImage(question); 
-                   yield return new WaitForSeconds(1f);
-                   DisableActiveImages();
-                   yield return new WaitForSeconds(1f);
+                    ShowMultipleImages(question, i);
                 }
+                else
+                {
+                    ShowImage(question, i); 
+                }
+                yield return new WaitForSeconds(1f);
+                DisableActiveImages();
+                yield return new WaitForSeconds(1f);
             }
 
             DOVirtual.DelayedCall(1f, SwitchNextState);
         }
 
-        private void ShowImage(Question question)
+        private void ShowMultipleImages(Question question, int index)
+        {
+            ActivateCircle(index);
+            for (int i = 0; i < question.SpawnAmount; i++)
+            {
+                var availableImage = GetAvailableImage();
+                _activeQuestionImages.Add(availableImage);
+                availableImage.sprite = (Sprite)question.GetQuestionItem();
+                availableImage.gameObject.SetActive(true);
+                _currentQuestions.Add(question);
+            }
+        }
+
+        private void ShowImage(Question question, int index)
         {
             var availableImage = GetAvailableImage();
             _activeQuestionImages.Add(availableImage);
             availableImage.sprite = (Sprite)question.GetQuestionItem();
             availableImage.gameObject.SetActive(true);
-            ActivateCircle(currentQuestionIndex);
+            ActivateCircle(index);
             _currentQuestions.Add(question);    
-            currentQuestionIndex++;
+            //currentQuestionIndex++;
         }
 
         private void PlayAudio(Question question)
@@ -105,15 +125,13 @@ namespace Spans.Skeleton.QuestionStates
         
         private IEnumerator IterateBlocks()
         {
-            for (int i = 0; i < _spanObjects.Count; i++)
+            var start = _isInitial ? 0 : 1;
+            _isInitial = false;
+            for (int i = start; i < _spanObjects.Count; i++)
             {
-                if (currentQuestionIndex >= _spanObjects.Count)
-                {
-                    break;
-                }
-                ActivateCircle(currentQuestionIndex);
-                blockUIHelper.HighlightTargetBlock(_spanObjects[currentQuestionIndex]);
-                currentQuestionIndex++;
+                ActivateCircle(i);
+                blockUIHelper.HighlightTargetBlock(_spanObjects[i]);
+                //currentQuestionIndex++;
                 yield return new WaitForSeconds(2f);
             }
             
@@ -144,7 +162,12 @@ namespace Spans.Skeleton.QuestionStates
         
         public override void EnableUIElements()
         {
-            if (_currentStrategy is not NBackMode)
+            if (_currentStrategy is NBackMode)
+            {
+                blockUIHelper.gameObject.SetActive(true);
+                blockUIHelper.ResetCorsiBlocks();
+            }
+            else
             {
                 horizontalParent.gameObject.SetActive(true);
             }
@@ -154,6 +177,8 @@ namespace Spans.Skeleton.QuestionStates
         public override void DisableUIElements()
         {
             horizontalParent.gameObject.SetActive(false);
+            blockUIHelper.gameObject.SetActive(false);
+            blockUIHelper.ResetCorsiBlocks();
         }
 
         private void SpawnPool()

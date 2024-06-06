@@ -17,6 +17,11 @@ namespace Spans.NBack
         private ButtonType _chosen;
         private const NBackModes GameMode = NBackModes.ColorShapeOrCount;
 
+        public ShapeColorOrCountMode(NBack controller)
+        {
+            _controller = controller;
+        }
+
         public void InjectQuestionState(NBackQuestionState questionState)
         {
             throw new System.NotImplementedException();
@@ -83,6 +88,7 @@ namespace Spans.NBack
                     {
                         NBackQuestion alternative = ScriptableObject.CreateInstance<NBackQuestion>();
                         alternative.ItemSprite = (Sprite)first.GetQuestionItemByType(_correctType);
+                        alternative.AlternativeColorSprite = (Sprite)first.GetQuestionItem();
                         questionStack.Enqueue(alternative);
                     }
                     break;

@@ -18,7 +18,6 @@ namespace Spans.Skeleton.AnswerStates
             {
                 base.Enter(controller);
                 _nBackController = controller.gameObject.GetComponent<NBack.NBack>();
-                spanEventBus.Register<NBackModeEvent>(UpdateStrategy);
             }
 
             _maxTime = spanController.GetRoundTime();
@@ -62,11 +61,6 @@ namespace Spans.Skeleton.AnswerStates
             {
                 button.gameObject.SetActive(false);
             }
-        }
-
-        private void UpdateStrategy(NBackModeEvent newMode)
-        {
-            _currentStrategy = newMode.StrategyClass;
         }
     }
 }
