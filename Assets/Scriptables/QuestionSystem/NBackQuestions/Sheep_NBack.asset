@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e113695a3cb1f564d940ee612a52c264, type: 3}
+  m_Name: Sheep_NBack
+  m_EditorClassIdentifier: 
+  CorrectAnswerString: 
+  IsAnswerStringMUST: 0
+  SpawnAmount: 1
+  ItemSprite: {fileID: 21300000, guid: 40a30763448cc8046a1d34191f1c2514, type: 3}
+  AlternativeColorSprite: {fileID: 21300000, guid: f76891b8fd1b4884e84a2b94ad1e12fc, type: 3}
