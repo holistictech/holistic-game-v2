@@ -67,7 +67,7 @@ namespace Spans.NBack
         private List<Question> GetAlternativeQuestionByType(bool isInitial)
         {
             var images = _controller.GetAlternativeImagesByType(GameMode);
-            ResetSpawnAmounts(images);
+            //ResetSpawnAmounts(images);
             var questionStack = _controller.GetCurrentStack();
             Question first = isInitial ? images[Random.Range(0, images.Count)] : questionStack.Peek();
             switch (_correctType)
@@ -87,13 +87,20 @@ namespace Spans.NBack
                     else
                     {
                         NBackQuestion alternative = ScriptableObject.CreateInstance<NBackQuestion>();
+                        alternative.SpawnAmount = first.SpawnAmount;
                         alternative.ItemSprite = (Sprite)first.GetQuestionItemByType(_correctType);
                         alternative.AlternativeColorSprite = (Sprite)first.GetQuestionItem();
                         questionStack.Enqueue(alternative);
                     }
                     break;
                 case ButtonType.Count:
-                    first.SpawnAmount = Random.Range(2, 4);
+                    var temp = first.SpawnAmount;
+                    var random = Random.Range(2, 5);
+                    while (random == temp)
+                    {
+                        random = Random.Range(2, 5);
+                    }
+                    first.SpawnAmount = random;
                     questionStack.Enqueue(first);
                     break;
             }

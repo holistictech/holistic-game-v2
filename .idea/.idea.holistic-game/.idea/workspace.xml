@@ -6,45 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3d01f5fc-4a81-4ccb-94d7-a0f07bc2bc79" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/QuestionImages/Animals/New.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/QuestionImages/Animals/New/Bear_SpanImage.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/QuestionImages/Animals/New/Bear_SpanImage.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/QuestionImages/Animals/New/Bee_SpanImage.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/QuestionImages/Animals/New/Bee_SpanImage.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/QuestionImages/Animals/New/Cat_SpanImage.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/QuestionImages/Animals/New/Cat_SpanImage.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/QuestionImages/Animals/New/Chicken_SpanImage.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/QuestionImages/Animals/New/Chicken_SpanImage.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/QuestionImages/Animals/New/Cow_SpanImage.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/QuestionImages/Animals/New/Cow_SpanImage.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/QuestionImages/Animals/New/Dog_SpanImage.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/QuestionImages/Animals/New/Dog_SpanImage.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/QuestionImages/Animals/New/Donkey_SpanImage.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/QuestionImages/Animals/New/Donkey_SpanImage.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/QuestionImages/Animals/New/Duck_SpanImage.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/QuestionImages/Animals/New/Duck_SpanImage.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/QuestionImages/Animals/New/Elephant_SpanImage.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/QuestionImages/Animals/New/Elephant_SpanImage.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/QuestionImages/Animals/New/Hedgehog_SpanImage.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/QuestionImages/Animals/New/Hedgehog_SpanImage.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/QuestionImages/Animals/New/Horse_SpanImage.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/QuestionImages/Animals/New/Horse_SpanImage.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/QuestionImages/Animals/New/Lion_SpanImage.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/QuestionImages/Animals/New/Lion_SpanImage.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/QuestionImages/Animals/New/Rabbit_SpanImage.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/QuestionImages/Animals/New/Rabbit_SpanImage.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/QuestionImages/Animals/New/Sheep_SpanImage.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/QuestionImages/Animals/New/Sheep_SpanImage.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/QuestionImages/Animals/New/Zebra_SpanImage.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/QuestionImages/Animals/New/Zebra_SpanImage.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Spans/NBack.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Spans/NBack.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/NBackQuestion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/NBackQuestion.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/NBack/NBack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/NBack/NBack.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/NBack/ShapeColorOrCountMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/NBack/ShapeColorOrCountMode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/NBack/ShapeOrColorMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/NBack/ShapeOrColorMode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/NBackAnswerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/NBackAnswerState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/NBackQuestionState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/NBackQuestionState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanEventContainer.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanEventContainer.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -241,7 +203,7 @@
       <workItem from="1717402831910" duration="12849000" />
       <workItem from="1717489051572" duration="11323000" />
       <workItem from="1717581411601" duration="10156000" />
-      <workItem from="1717661074248" duration="2698000" />
+      <workItem from="1717661074248" duration="4130000" />
     </task>
     <servers />
   </component>
