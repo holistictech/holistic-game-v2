@@ -43,6 +43,22 @@ namespace UI.Helpers
         {
             gridLayout.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
             gridLayout.constraintCount = helperIndex;
+            CalculateDynamicCellSize();
+        }
+        
+        private void CalculateDynamicCellSize()
+        {
+            var rect = gridLayout.GetComponent<RectTransform>().rect;
+            float width = rect.width;
+            float height = rect.height;
+    
+            float availableWidth = width - (gridLayout.padding.left + gridLayout.padding.right) - ((gridLayout.constraintCount - 1) * gridLayout.spacing.x);
+            float availableHeight = height - (gridLayout.padding.top + gridLayout.padding.bottom) - ((gridLayout.constraintCount - 1) * gridLayout.spacing.y);
+    
+            float cellWidth = availableWidth / gridLayout.constraintCount;
+            float cellHeight = availableHeight / gridLayout.constraintCount;
+            float cellSize = Mathf.Min(cellWidth, cellHeight);
+            gridLayout.cellSize = new Vector2(cellSize, cellSize);
         }
 
         public override void HighlightTargetBlock(Question target)
@@ -79,7 +95,7 @@ namespace UI.Helpers
 
         private void InstantiatePool()
         {
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 25; i++)
             {
                 var tempBlock = Instantiate(blockImage, gridLayout.transform);
                 _blockPool.Add(tempBlock);

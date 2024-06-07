@@ -19,9 +19,10 @@ namespace Spans.Skeleton.QuestionStates
         private List<Question> _spanObjects = new List<Question>();
         private List<Question> _currentQuestions = new List<Question>();
 
-        private IBlockSpanStrategy _config = new ItemChooserMode();
-        private int _indexHelper = 3;
-        private int _circleCount = 3;
+        private IBlockSpanStrategy _config = new RegularMode();
+        private BlockSpan.BlockSpan _blockSpanController; 
+        private int _indexHelper = 2;
+        private int _circleCount = 1;
         
         public override void Enter(SpanController controller)
         {
@@ -29,10 +30,13 @@ namespace Spans.Skeleton.QuestionStates
             EnableUIElements();
             if (spanController == null)
             {
+                _blockSpanController = controller.GetComponent<BlockSpan.BlockSpan>();
                 base.Enter(controller);
                 spanController.SetHelperObject(blockUIHelper.gameObject);
                 spanEventBus.Register<BlockSpanGridSizeEvent>(UpdateHelperIndex);
             }
+
+            _config = _blockSpanController.GetCurrentStrategy();
             _spanObjects = spanController.GetSpanObjects();
             blockUIHelper.ConfigureInput(false);
             StatisticsHelper.IncrementDisplayedQuestionCount();

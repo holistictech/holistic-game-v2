@@ -42,7 +42,7 @@ namespace Spans.BlockSpan
         public List<Question> GetCorrectQuestions(List<Question> allQuestions, int count = -1)
         {
             var selectedQuestions = new List<Question>();
-            for (int i = 0; i < 2; i++)
+            for (int i = 0; i < count; i++)
             {
                 var randomIndex = Random.Range(0, allQuestions.Count);
                 var randomQuestion = allQuestions[randomIndex];

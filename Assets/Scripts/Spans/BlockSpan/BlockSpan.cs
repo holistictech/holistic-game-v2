@@ -16,10 +16,10 @@ namespace Spans.BlockSpan
         private List<GridConfiguration> _gridConfigs =
             new List<GridConfiguration>()
             {
-                //new (new Vector2Int(2, 2), BlockSpanModes.Regular),
-                //new (new Vector2Int(2, 3), BlockSpanModes.Regular),
-                //new (new Vector2Int(3, 3), BlockSpanModes.Regular),
-                //new (new Vector2Int(3, 3), BlockSpanModes.ColorChooser),
+                new (new Vector2Int(2, 2), BlockSpanModes.Regular),
+                new (new Vector2Int(2, 3), BlockSpanModes.Regular),
+                new (new Vector2Int(3, 3), BlockSpanModes.Regular),
+                new (new Vector2Int(3, 3), BlockSpanModes.ColorChooser),
                 new (new Vector2Int(3, 3), BlockSpanModes.ItemChooser),
                 new (new Vector2Int(3, 4), BlockSpanModes.Regular),
                 new (new Vector2Int(3, 4), BlockSpanModes.ColorChooser),
@@ -44,7 +44,7 @@ namespace Spans.BlockSpan
         {
             base.Start();
             _currentConfig = _gridConfigs[0];
-            _gameMode = new ItemChooserMode();
+            _gameMode = new RegularMode();
             UpdateSpanConfig();
         }
         
@@ -93,7 +93,7 @@ namespace Spans.BlockSpan
                     currentQuestions = _gameMode.GetCorrectQuestions(currentSpanQuestions, _questionCount);
                     break;
                 case BlockSpanModes.ColorChooser: case BlockSpanModes.ItemChooser:
-                    currentQuestions = _gameMode.GetCorrectQuestions(currentSpanQuestions);
+                    currentQuestions = _gameMode.GetCorrectQuestions(currentSpanQuestions, _questionCount);
                     break;
             }
 
@@ -186,6 +186,11 @@ namespace Spans.BlockSpan
         public override BlockSpanModes GetCurrentMode()
         {
             return _currentConfig.Mode;
+        }
+
+        public IBlockSpanStrategy GetCurrentStrategy()
+        {
+            return _gameMode;
         }
     }
 }
