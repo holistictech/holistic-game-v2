@@ -34,30 +34,30 @@ namespace Spans.Skeleton.QuestionStates
             SpawnPool();
         }
 
-        private bool _isInitial = true;
+        private bool _isInitial;
         public override void Enter(SpanController controller)
         {
             if (spanController == null)
             {
                 _nBackController = controller.GetComponent<NBack.NBack>();
                 _currentStrategy = _nBackController.GetStrategyClass();
+                _isInitial = true;
                 base.Enter(controller);
+                currentQuestionIndex = 0;
             }
-
             blockUIHelper.ConfigureInput(false);
             _spanObjects = spanController.GetSpanObjects();
-            SetCircleUI(spanController.GetRoundIndex());
+            SetCircleUI(_isInitial ? 2 : 1);
+            _isInitial = false;
+            if(_nBackController.GetCorrectStatus())
+                HighlightCorrectUnit();
             EnableUIElements();
-            //if(!_isInitial)
-                //HighlightPreviousCircle();
-            //_isInitial = false;
             ShowQuestion();
             StatisticsHelper.IncrementDisplayedQuestionCount();
         }
         
         public override void ShowQuestion()
         {
-            currentQuestionIndex = 0;
             if (_currentStrategy is NBackMode)
             {
                 _currentStrategy.InjectQuestionState(this);
@@ -69,22 +69,25 @@ namespace Spans.Skeleton.QuestionStates
                 displayingQuestions = StartCoroutine(IterateQuestions());
             }
         }
-
+        
+        private bool _initialDisplay = true;
         private IEnumerator IterateQuestions()
         {
-            var start = _isInitial ? 0 : 1;
-            _isInitial = false;
+            var start = _initialDisplay ? 0 : 1;
+            _initialDisplay = false;
             for (int i = start; i < _spanObjects.Count; i++)
             {
                 var question = _spanObjects[i];
                 if (question.SpawnAmount > 1)
                 {
-                    ShowMultipleImages(question, i);
+                    ShowMultipleImages(question, currentQuestionIndex);
                 }
                 else
                 {
-                    ShowImage(question, i); 
+                    ShowImage(question, currentQuestionIndex); 
                 }
+
+                currentQuestionIndex++;
                 yield return new WaitForSeconds(1f);
                 DisableActiveImages();
                 yield return new WaitForSeconds(1f);
@@ -95,7 +98,6 @@ namespace Spans.Skeleton.QuestionStates
 
         private void ShowMultipleImages(Question question, int index)
         {
-            ActivateCircle(index);
             for (int i = 0; i < question.SpawnAmount; i++)
             {
                 var availableImage = GetAvailableImage();
@@ -104,6 +106,7 @@ namespace Spans.Skeleton.QuestionStates
                 availableImage.gameObject.SetActive(true);
                 _currentQuestions.Add(question);
             }
+            ActivateCircle(index);
         }
 
         private void ShowImage(Question question, int index)
@@ -113,8 +116,7 @@ namespace Spans.Skeleton.QuestionStates
             availableImage.sprite = (Sprite)question.GetQuestionItem();
             availableImage.gameObject.SetActive(true);
             ActivateCircle(index);
-            _currentQuestions.Add(question);    
-            //currentQuestionIndex++;
+            _currentQuestions.Add(question);
         }
 
         private void PlayAudio(Question question)
@@ -125,8 +127,8 @@ namespace Spans.Skeleton.QuestionStates
         
         private IEnumerator IterateBlocks()
         {
-            var start = _isInitial ? 0 : 1;
-            _isInitial = false;
+            var start = _initialDisplay ? 0 : 1;
+            _initialDisplay = false;
             for (int i = start; i < _spanObjects.Count; i++)
             {
                 ActivateCircle(i);
@@ -138,6 +140,10 @@ namespace Spans.Skeleton.QuestionStates
             DOVirtual.DelayedCall(1f, SwitchNextState);
         }
 
+        private void HighlightCorrectUnit()
+        {
+            HighlightPreviousCircle();
+        }
         public CorsiBlockUIHelper GetBlockHelper()
         {
             return blockUIHelper;
@@ -149,7 +155,7 @@ namespace Spans.Skeleton.QuestionStates
             {
                 StopCoroutine(displayingQuestions);
             }
-            ResetPreviousCircles();
+            //ResetPreviousCircles();
             DisableActiveImages();
             DisableUIElements();
         }

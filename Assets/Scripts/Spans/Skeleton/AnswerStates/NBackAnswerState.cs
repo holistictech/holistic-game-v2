@@ -1,4 +1,6 @@
+using System.Collections.Generic;
 using Interfaces;
+using UI;
 using UnityEngine;
 using UnityEngine.UI;
 using Utilities;
@@ -12,6 +14,7 @@ namespace Spans.Skeleton.AnswerStates
         private float _maxTime;
         private INBackStrategy _currentStrategy;
         private NBack.NBack _nBackController;
+        private List<UnitCircle> _activeUnitCircles;
         public override void Enter(SpanController controller)
         {
             if (spanController == null)
@@ -20,8 +23,10 @@ namespace Spans.Skeleton.AnswerStates
                 _nBackController = controller.gameObject.GetComponent<NBack.NBack>();
             }
 
+            _activeUnitCircles = spanController.GetActiveCircles(); 
             _maxTime = spanController.GetRoundTime();
             _currentStrategy = _nBackController.GetStrategyClass();
+            _activeUnitCircles[^1].AnimateCircle();
             EnableUIElements();
             AddListeners();
             PlayTimer(_maxTime);
@@ -45,10 +50,12 @@ namespace Spans.Skeleton.AnswerStates
             {
                 StopCoroutine(_timer);
             }
-
+            _activeUnitCircles[^1].ResetSelf();
             DisableUIElements();
             base.Exit();
         }
+        
+        
         
         public override void EnableUIElements()
         {

@@ -20,6 +20,7 @@ namespace Spans.NBack
         public ShapeColorOrCountMode(NBack controller)
         {
             _controller = controller;
+            ResetSpawnAmounts(_controller.GetAlternativeImagesByType(GameMode));
         }
 
         public void InjectQuestionState(NBackQuestionState questionState)
@@ -67,9 +68,9 @@ namespace Spans.NBack
         private List<Question> GetAlternativeQuestionByType(bool isInitial)
         {
             var images = _controller.GetAlternativeImagesByType(GameMode);
-            //ResetSpawnAmounts(images);
             var questionStack = _controller.GetCurrentStack();
             Question first = isInitial ? images[Random.Range(0, images.Count)] : questionStack.Peek();
+            var spawnAmount = first.SpawnAmount;
             switch (_correctType)
             {
                 case ButtonType.Shape:
@@ -77,6 +78,8 @@ namespace Spans.NBack
                     {
                         first = GetRandomQuestion(images);
                     }
+
+                    first.SpawnAmount = spawnAmount;
                     questionStack.Enqueue(first);
                     break;
                 case ButtonType.Color:
@@ -95,13 +98,16 @@ namespace Spans.NBack
                     break;
                 case ButtonType.Count:
                     var temp = first.SpawnAmount;
-                    var random = Random.Range(2, 5);
+                    var random = Random.Range(1, 5);
                     while (random == temp)
                     {
-                        random = Random.Range(2, 5);
+                        random = Random.Range(1, 5);
                     }
-                    first.SpawnAmount = random;
-                    questionStack.Enqueue(first);
+                    NBackQuestion alternativeCount = ScriptableObject.CreateInstance<NBackQuestion>();
+                    alternativeCount.SpawnAmount = random;
+                    alternativeCount.ItemSprite = (Sprite)first.GetQuestionItem();
+                    alternativeCount.AlternativeColorSprite = (Sprite)first.GetQuestionItemByType(_correctType);
+                    questionStack.Enqueue(alternativeCount);
                     break;
             }
             _controller.UpdateCurrentStack(questionStack);

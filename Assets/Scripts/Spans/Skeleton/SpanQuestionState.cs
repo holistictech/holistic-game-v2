@@ -84,11 +84,6 @@ namespace Spans.Skeleton
             spanController.SetActiveCircles(_activeCircles);
         }
 
-        protected void HighlightPreviousCircle()
-        {
-            _activeCircles[^2].ChangeColor(Color.magenta);
-        }
-
         private void SpawnUnitCircles()
         {
             _spawnedUnitPool = new List<UnitCircle>();
@@ -107,6 +102,13 @@ namespace Spans.Skeleton
             {
                 _activeCircles[index].ConfigureUI();
             }
+        }
+
+        protected void HighlightPreviousCircle()
+        {
+            var circle = _activeCircles[^2];
+            if(circle != null)
+                circle.ChangeColor(Color.green);
         }
 
         protected void ResetPreviousCircles()

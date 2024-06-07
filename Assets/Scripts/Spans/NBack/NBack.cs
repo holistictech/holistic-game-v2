@@ -20,12 +20,12 @@ namespace Spans.NBack
         private CommonFields.ButtonType _identicalShown;
         private INBackStrategy _currentStrategy;
         private bool _isInitial;
+        private bool _isCorrect;
 
         protected override void Start()
         {
             base.Start();
             _isInitial = true;
-            _currentStrategy = new ShapeColorOrCountMode(this);
             _questionStack = new Queue<Question>();
             _modeQuestionDictionary =
                 new Dictionary<CommonFields.NBackModes, List<Question>>()
@@ -36,6 +36,7 @@ namespace Spans.NBack
                     { CommonFields.NBackModes.NBack, nBackQuestions },
                     { CommonFields.NBackModes.DualNBack, dualNBackQuestions },
                 };
+            _currentStrategy = new ShapeColorOrCountMode(this);
         }
         
         protected override void StartTimer()
@@ -90,8 +91,8 @@ namespace Spans.NBack
 
         public override bool IsAnswerCorrect()
         {
-            var isCorrect = _currentStrategy.CheckAnswer();
-            if (isCorrect)
+            _isCorrect = _currentStrategy.CheckAnswer();
+            if (_isCorrect)
             {
                 IncrementSuccessStreak();
             }
@@ -100,7 +101,7 @@ namespace Spans.NBack
                 IncrementFailStreak();
             }
             
-            return isCorrect;
+            return _isCorrect;
         }
         
         public override int GetRoundIndex()
@@ -135,6 +136,11 @@ namespace Spans.NBack
         public INBackStrategy GetStrategyClass()
         {
             return _currentStrategy;
+        }
+
+        public bool GetCorrectStatus()
+        {
+            return _isCorrect;
         }
     }
 
