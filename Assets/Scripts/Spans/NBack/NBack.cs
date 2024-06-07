@@ -15,7 +15,8 @@ namespace Spans.NBack
         [SerializeField] private List<Question> alternativeObjectImages;
         [SerializeField] private List<Question> nBackQuestions;
         [SerializeField] private List<Question> dualNBackQuestions;
-
+        [SerializeField] private CommonFields.NBackModes _testMode; 
+            
         private Dictionary<CommonFields.NBackModes, List<Question>> _modeQuestionDictionary;
         private Queue<Question> _questionStack;
         private CommonFields.ButtonType _identicalShown;
@@ -37,7 +38,22 @@ namespace Spans.NBack
                     { CommonFields.NBackModes.NBack, nBackQuestions },
                     { CommonFields.NBackModes.DualNBack, dualNBackQuestions },
                 };
-            _currentStrategy = new ShapeColorOrCountMode(this);
+
+            switch (_testMode)
+            {
+                case CommonFields.NBackModes.IsIdentical:
+                    _currentStrategy = new IsIdenticalMode(this);
+                    break;
+                case CommonFields.NBackModes.ColorOrShape:
+                    _currentStrategy = new ShapeOrColorMode(this);
+                    break;
+                case CommonFields.NBackModes.ColorShapeOrCount:
+                    _currentStrategy = new ShapeColorOrCountMode(this);
+                    break;
+                case CommonFields.NBackModes.NBack:
+                    _currentStrategy = new NBackMode(this);
+                    break;
+            }
         }
         
         protected override void StartTimer()
