@@ -50,7 +50,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   blockParent: {fileID: 6052620986267761256}
-  blockImage: {fileID: -8511335593572869611, guid: b7c544eaaf750d44da38c628b7efd808, type: 3}
+  blockImage: {fileID: 2832797140523739291, guid: b7c544eaaf750d44da38c628b7efd808, type: 3}
   gridLayout: {fileID: 6052620986267761256}
 --- !u!1 &9158934591373192983
 GameObject:
@@ -117,7 +117,7 @@ MonoBehaviour:
   m_ChildAlignment: 4
   m_StartCorner: 0
   m_StartAxis: 0
-  m_CellSize: {x: 230, y: 230}
+  m_CellSize: {x: 280, y: 280}
   m_Spacing: {x: 10, y: 10}
   m_Constraint: 1
-  m_ConstraintCount: 2
+  m_ConstraintCount: 3

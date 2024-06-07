@@ -43,7 +43,6 @@ namespace UI
             if (question is ImageQuestion)
             {
                 optionImage.sprite = (Sprite)question.GetQuestionItem();
-                optionBg.color = Color.grey;
             }
             else if (question is ColorQuestion)
             {

@@ -16,10 +16,10 @@ namespace Spans.BlockSpan
         private List<GridConfiguration> _gridConfigs =
             new List<GridConfiguration>()
             {
-                new (new Vector2Int(2, 2), BlockSpanModes.Regular),
-                new (new Vector2Int(2, 3), BlockSpanModes.Regular),
-                new (new Vector2Int(3, 3), BlockSpanModes.Regular),
-                new (new Vector2Int(3, 3), BlockSpanModes.ColorChooser),
+                //new (new Vector2Int(2, 2), BlockSpanModes.Regular),
+                //new (new Vector2Int(2, 3), BlockSpanModes.Regular),
+                //new (new Vector2Int(3, 3), BlockSpanModes.Regular),
+                //new (new Vector2Int(3, 3), BlockSpanModes.ColorChooser),
                 new (new Vector2Int(3, 3), BlockSpanModes.ItemChooser),
                 new (new Vector2Int(3, 4), BlockSpanModes.Regular),
                 new (new Vector2Int(3, 4), BlockSpanModes.ColorChooser),
@@ -44,7 +44,7 @@ namespace Spans.BlockSpan
         {
             base.Start();
             _currentConfig = _gridConfigs[0];
-            _gameMode = new RegularMode();
+            _gameMode = new ItemChooserMode();
             UpdateSpanConfig();
         }
         

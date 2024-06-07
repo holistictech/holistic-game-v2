@@ -13,13 +13,13 @@ using Utilities;
 
 namespace Spans.Skeleton.QuestionStates
 {
-    public class BlockQuestionState : SpanQuestionState
+    public class BlockSpanQuestionState : SpanQuestionState
     {
         [SerializeField] private BlockSpanUIHelper blockUIHelper;
         private List<Question> _spanObjects = new List<Question>();
         private List<Question> _currentQuestions = new List<Question>();
 
-        private IBlockSpanStrategy _config = new RegularMode();
+        private IBlockSpanStrategy _config = new ItemChooserMode();
         private int _indexHelper = 3;
         private int _circleCount = 3;
         
