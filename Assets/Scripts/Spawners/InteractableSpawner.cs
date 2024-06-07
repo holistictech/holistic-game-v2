@@ -10,7 +10,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Utilities;
-using static Utilities.CommonFields;
+using Utilities.Helpers;
+using static Utilities.Helpers.CommonFields;
 
 namespace Spawners
 {

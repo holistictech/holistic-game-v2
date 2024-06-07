@@ -1,7 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
-using static Utilities.CommonFields;
+using static Utilities.Helpers.CommonFields;
 using UnityEngine;
 using UnityEngine.UIElements;
 using Utilities;

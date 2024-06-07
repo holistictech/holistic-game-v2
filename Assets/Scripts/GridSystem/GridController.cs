@@ -5,7 +5,8 @@ using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Serialization;
 using Utilities;
-using static Utilities.CartesianPoint;
+using Utilities.Helpers;
+using static Utilities.Helpers.CartesianPoint;
 
 namespace GridSystem
 {

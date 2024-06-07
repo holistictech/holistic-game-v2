@@ -6,8 +6,9 @@ using Interfaces;
 using Scriptables;
 using UnityEngine;
 using Utilities;
+using Utilities.Helpers;
 using Grid = UnityEngine.Grid;
-using static Utilities.CommonFields;
+using static Utilities.Helpers.CommonFields;
 
 namespace Interactables
 {

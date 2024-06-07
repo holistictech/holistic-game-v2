@@ -1,9 +1,8 @@
 using System;
 using System.Collections.Generic;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Utilities
+namespace Utilities.Helpers
 {
     public class CommonFields
     {

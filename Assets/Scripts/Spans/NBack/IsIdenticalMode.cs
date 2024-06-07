@@ -6,7 +6,7 @@ using Spans.Skeleton.QuestionStates;
 using UnityEngine;
 using UnityEngine.UI;
 using Utilities;
-using static Utilities.CommonFields;
+using static Utilities.Helpers.CommonFields;
 
 namespace Spans.NBack
 {

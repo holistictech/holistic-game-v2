@@ -1,7 +1,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-using static Utilities.CommonFields;
+using static Utilities.Helpers.CommonFields;
 
 namespace Scriptables
 {

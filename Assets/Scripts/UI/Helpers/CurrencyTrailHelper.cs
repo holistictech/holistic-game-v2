@@ -46,28 +46,35 @@ namespace UI.Helpers
         private void MoveTrailObjects(Action onComplete)
         {
             Sequence masterSequence = DOTween.Sequence();
+
             for (int i = 0; i < _trailObjects.Count; i++)
             {
+                int currentIndex = i;
+                Transform trailTransform = _trailObjects[currentIndex].transform;
+
                 Sequence animSequence = DOTween.Sequence();
-                animSequence.AppendInterval(0.03f * i);
-                animSequence.Join(_trailObjects[i].transform.DOJump(_currentTarget.position, 6, 1, .8f)
-                    .SetEase(Ease.OutQuad));
-                animSequence.Join(_trailObjects[i].transform.DOScale(new Vector3(0.5f, 0.5f, 0.5f), 0.8f));
+                animSequence.AppendInterval(0.03f * currentIndex);
+                animSequence.Append(trailTransform.DOJump(_currentTarget.position, 6, 1, 0.8f).SetEase(Ease.OutQuad));
+                animSequence.Join(trailTransform.DOScale(new Vector3(0.5f, 0.5f, 0.5f), 0.8f));
                 animSequence.AppendCallback(() =>
                 {
                     _currentTarget.transform.DOShakeScale(0.35f, 0.7f);
                 });
-                var i1 = i;
-                animSequence.AppendCallback(() =>
-                {
-                    Destroy(_trailObjects[i1].gameObject);
-                    if (i1 == _trailObjects.Count - 1)
-                    {
-                        onComplete?.Invoke();
-                    }
-                });
+
                 masterSequence.Append(animSequence);
             }
+
+            masterSequence.OnComplete(() =>
+            {
+                for (int i = 0; i < _trailObjects.Count; i++)
+                {
+                    Destroy(_trailObjects[i].gameObject);
+                }
+                onComplete?.Invoke();
+            });
         }
+
+
+
     }
 }

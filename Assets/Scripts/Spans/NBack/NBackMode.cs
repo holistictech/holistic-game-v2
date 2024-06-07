@@ -8,7 +8,7 @@ using Spans.Skeleton.QuestionStates;
 using UI.Helpers;
 using UnityEngine;
 using Utilities;
-using static Utilities.CommonFields;
+using static Utilities.Helpers.CommonFields;
 
 namespace Spans.NBack
 {

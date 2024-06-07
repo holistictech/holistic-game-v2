@@ -1,5 +1,6 @@
 using UnityEngine;
 using Utilities;
+using Utilities.Helpers;
 
 namespace Scriptables.QuestionSystem.Images
 {
