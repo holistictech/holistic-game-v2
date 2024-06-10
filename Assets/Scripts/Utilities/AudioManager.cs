@@ -29,7 +29,7 @@ namespace Utilities
             }
         }
         
-        protected virtual void Awake()
+        protected void Awake()
         {
             if (_instance == null)
             {

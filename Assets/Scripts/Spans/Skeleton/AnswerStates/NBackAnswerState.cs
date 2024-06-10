@@ -56,8 +56,6 @@ namespace Spans.Skeleton.AnswerStates
             base.Exit();
         }
         
-        
-        
         public override void EnableUIElements()
         {
             _currentStrategy.EnableButtons(_modeButtons);
