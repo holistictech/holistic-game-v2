@@ -146,6 +146,7 @@ GameObject:
   - component: {fileID: 5602016856687146033}
   - component: {fileID: 7542045252261746866}
   - component: {fileID: 1123920114003237703}
+  - component: {fileID: -4845694982604811126}
   m_Layer: 5
   m_Name: ui_button_choice
   m_TagString: Untagged
@@ -254,16 +255,19 @@ MonoBehaviour:
   m_TargetGraphic: {fileID: 7542045252261746866}
   m_OnClick:
     m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: Spans.Skeleton.AnswerStates.NBackAnswerState, Assembly-CSharp
-        m_MethodName: ChooseType
-        m_Mode: 3
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
+      m_Calls: []
+--- !u!114 &-4845694982604811126
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1860966997669675427}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c160173fecd17a4f997cd9c88d01551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 1123920114003237703}
+  clickClip: {fileID: 8300000, guid: 5c9f81d8625c42c41b6fe8e1f049ee5c, type: 3}
+  amount: 0.06

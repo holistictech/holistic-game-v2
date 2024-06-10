@@ -8956,6 +8956,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6155714285261264926, guid: 1482041c94a1346b59c7ee0b9822e7cc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 625902096}
+    - targetCorrespondingSourceObject: {fileID: 6155714285261264926, guid: 1482041c94a1346b59c7ee0b9822e7cc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 625902098}
   m_SourcePrefab: {fileID: 100100000, guid: 1482041c94a1346b59c7ee0b9822e7cc, type: 3}
 --- !u!224 &625902094 stripped
 RectTransform:
@@ -8987,6 +8990,32 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &625902097 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 6155714285261264920, guid: 1482041c94a1346b59c7ee0b9822e7cc, type: 3}
+  m_PrefabInstance: {fileID: 625902093}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625902095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!114 &625902098
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 625902095}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c160173fecd17a4f997cd9c88d01551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 625902097}
+  clickClip: {fileID: 8300000, guid: 5c9f81d8625c42c41b6fe8e1f049ee5c, type: 3}
+  amount: 0.06
 --- !u!1 &678780472
 GameObject:
   m_ObjectHideFlags: 0
@@ -9172,7 +9201,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7474141742100322983, guid: 6cf43647e4797452ca8e8cc5521e6bec, type: 3}
   m_PrefabInstance: {fileID: 764378446}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 764378447}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
@@ -14557,8 +14586,31 @@ PrefabInstance:
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 7474141742100322981, guid: 6cf43647e4797452ca8e8cc5521e6bec, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 764378448}
   m_SourcePrefab: {fileID: 100100000, guid: 6cf43647e4797452ca8e8cc5521e6bec, type: 3}
+--- !u!1 &764378447 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7474141742100322981, guid: 6cf43647e4797452ca8e8cc5521e6bec, type: 3}
+  m_PrefabInstance: {fileID: 764378446}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &764378448
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 764378447}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c160173fecd17a4f997cd9c88d01551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 709096445}
+  clickClip: {fileID: 8300000, guid: 5c9f81d8625c42c41b6fe8e1f049ee5c, type: 3}
+  amount: 0.06
 --- !u!1 &772127438
 GameObject:
   m_ObjectHideFlags: 0
@@ -16624,6 +16676,9 @@ PrefabInstance:
     - targetCorrespondingSourceObject: {fileID: 6155714285261264926, guid: 1482041c94a1346b59c7ee0b9822e7cc, type: 3}
       insertIndex: -1
       addedObject: {fileID: 1725589502}
+    - targetCorrespondingSourceObject: {fileID: 6155714285261264926, guid: 1482041c94a1346b59c7ee0b9822e7cc, type: 3}
+      insertIndex: -1
+      addedObject: {fileID: 1725589503}
   m_SourcePrefab: {fileID: 100100000, guid: 1482041c94a1346b59c7ee0b9822e7cc, type: 3}
 --- !u!1 &1148513338
 GameObject:
@@ -19878,6 +19933,21 @@ MonoBehaviour:
   m_FlexibleWidth: -1
   m_FlexibleHeight: -1
   m_LayoutPriority: 1
+--- !u!114 &1725589503
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 916887229}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c160173fecd17a4f997cd9c88d01551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 1725589499}
+  clickClip: {fileID: 8300000, guid: 5c9f81d8625c42c41b6fe8e1f049ee5c, type: 3}
+  amount: 0.06
 --- !u!1 &1728660782
 GameObject:
   m_ObjectHideFlags: 0

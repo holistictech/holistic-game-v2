@@ -6,6 +6,7 @@ using Scriptables.Tutorial;
 using TMPro;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Utilities;
 using Random = UnityEngine.Random;
@@ -23,11 +24,11 @@ namespace Spans.Skeleton
         [SerializeField] private TextMeshProUGUI feedbackField;
         [SerializeField] private Sprite wrongSprite;
         [SerializeField] private Sprite correctSprite;
-        [SerializeField] private Slider progressBar;
+        [SerializeField] private Slider progressBarSlider;
         [SerializeField] private TextMeshProUGUI levelField;
-        private SpanController _spanController;
+        protected SpanController spanController;
 
-        private Coroutine _progressBar;
+        protected Coroutine progressBar;
 
         private readonly string[] _successFeedbacks = new string[]
         {
@@ -65,33 +66,38 @@ namespace Spans.Skeleton
         };
         public void Enter(SpanController controller)
         {
-            if (_spanController == null)
+            if (spanController == null)
             {
-                _spanController = controller;
+                spanController = controller;
             }
 
             EnableUIElements();
             PlayEffects();
         }
         
-        private void PlayEffects()
+        protected virtual void PlayEffects()
         {
-            if (_spanController.IsAnswerCorrect())
+            if (spanController.IsAnswerCorrect())
             {
                 PlayConfetti();
-                var roundIndex = _spanController.GetRoundIndex();
-                progressBar.maxValue = roundIndex;
-                levelField.text = $"{roundIndex}";
-                float maxValue = progressBar.maxValue;
-                float target = maxValue / 4f + progressBar.value;
-                _progressBar = StartCoroutine(AnimateProgressBar(target, .3f));
+                ConfigureProgressBar();
                 ConfigureFeedbackField(true);
             }
             else
             {
-                _progressBar = StartCoroutine(AnimateProgressBar(0, .3f));
+                progressBar = StartCoroutine(AnimateProgressBar(0, .3f));
                 ConfigureFeedbackField(false);
             }
+        }
+
+        public void ConfigureProgressBar()
+        {
+            var roundIndex = spanController.GetRoundIndex();
+            progressBarSlider.maxValue = roundIndex;
+            levelField.text = $"{roundIndex}";
+            float maxValue = progressBarSlider.maxValue;
+            float target = maxValue / 4f + progressBarSlider.value;
+            progressBar = StartCoroutine(AnimateProgressBar(target, .3f));
         }
 
         private void PlayConfetti()
@@ -103,16 +109,16 @@ namespace Spans.Skeleton
             }
         }
         
-        private IEnumerator AnimateProgressBar(float targetValue, float duration)
+        protected IEnumerator AnimateProgressBar(float targetValue, float duration)
         {
-            levelField.text = $"{_spanController.GetRoundIndex()}";
-            if (targetValue >= progressBar.maxValue)
+            levelField.text = $"{spanController.GetRoundIndex()}";
+            if (targetValue >= progressBarSlider.maxValue)
             {
                 StartCoroutine(LerpSlider(targetValue, duration, () =>
                 {
                     levelUpEffect.Play();
-                    progressBar.value = 0f;
-                    levelField.text = $"{_spanController.GetRoundIndex()}";
+                    progressBarSlider.value = 0f;
+                    levelField.text = $"{spanController.GetRoundIndex()}";
                 }));
             }
             else
@@ -127,19 +133,19 @@ namespace Spans.Skeleton
         private IEnumerator LerpSlider(float targetValue, float duration, Action onComplete = null)
         {
             float elapsedTime = 0f;
-            float startValue = progressBar.value;
+            float startValue = progressBarSlider.value;
     
             while (elapsedTime < duration)
             {
                 float t = elapsedTime / duration;
                 float newValue = Mathf.Lerp(startValue, targetValue, t);
                 
-                progressBar.value = newValue;
+                progressBarSlider.value = newValue;
                 
                 elapsedTime += Time.deltaTime;
                 yield return null;
             }
-            progressBar.value = targetValue;
+            progressBarSlider.value = targetValue;
             onComplete?.Invoke();
         }
 
@@ -152,7 +158,7 @@ namespace Spans.Skeleton
 
             feedbackLabel.transform.DOScale(1f, 1.5f).SetEase(Ease.OutBack).OnComplete(() =>
             {
-                if (_spanController.GetTutorialStatus())
+                if (spanController.GetTutorialStatus())
                 {
                     feedbackLabel.transform.localScale = new Vector3(0,0,0);
                     TryShowStateTutorial();
@@ -170,7 +176,7 @@ namespace Spans.Skeleton
 
         private string GetRandomFeedback(bool isCorrect)
         {
-            if (_spanController.GetTutorialStatus())
+            if (spanController.GetTutorialStatus())
             {
                 AudioManager.Instance.PlayAudioClip(tutorialSuccessFeedback);
                 return _successFeedbacks[0];
@@ -185,28 +191,28 @@ namespace Spans.Skeleton
         public void Exit()
         {
             DisableUIElements();
-            if (_progressBar != null)
+            if (progressBar != null)
             {
-                StopCoroutine(_progressBar);
+                StopCoroutine(progressBar);
             }
         }
 
         public void SwitchNextState()
         {
-            _spanController.SwitchState();
+            spanController.SwitchState();
         }
 
         public void TryShowStateTutorial()
         {
-            List<GameObject> objects = new List<GameObject>(_spanController.GetTutorialHelperObjects());
+            List<GameObject> objects = new List<GameObject>(spanController.GetTutorialHelperObjects());
             var dictionary = new Dictionary<GameObject, TutorialStep>().CreateFromLists(objects, steps);
             DOVirtual.DelayedCall(1.5f, () =>
             {
-                _spanController.TriggerStateTutorial(dictionary, true, () =>
+                spanController.TriggerStateTutorial(dictionary, true, () =>
                 {
-                    _spanController.TriggerFinalTutorialField("Şimdi sıra sende", yourTurnClip);
-                    _spanController.SetTutorialCompleted();
-                    _spanController.SetHelperTutorialCompleted();
+                    spanController.TriggerFinalTutorialField("Şimdi sıra sende", yourTurnClip);
+                    spanController.SetTutorialCompleted();
+                    spanController.SetHelperTutorialCompleted();
                     SwitchNextState();
                 });
             });
@@ -214,7 +220,7 @@ namespace Spans.Skeleton
 
         public void EnableUIElements()
         {
-            progressBar.gameObject.SetActive(true);
+            progressBarSlider.gameObject.SetActive(true);
             feedbackLabel.gameObject.SetActive(true);
             feedbackField.gameObject.SetActive(true);
             levelUpEffect.gameObject.SetActive(true);

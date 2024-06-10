@@ -182,7 +182,8 @@ namespace Spans.Skeleton.QuestionStates
 
         public override void DisableUIElements()
         {
-            horizontalParent.gameObject.SetActive(false);
+            if(_currentStrategy is not IsIdenticalMode)
+                horizontalParent.gameObject.SetActive(false);
             blockUIHelper.gameObject.SetActive(false);
             blockUIHelper.ResetCorsiBlocks();
         }

@@ -380,7 +380,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 1235573301}
-  clickClip: {fileID: 0}
+  clickClip: {fileID: 8300000, guid: 5c9f81d8625c42c41b6fe8e1f049ee5c, type: 3}
   amount: 0.06
 --- !u!114 &1235573301 stripped
 MonoBehaviour:

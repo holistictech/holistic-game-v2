@@ -88,7 +88,7 @@ namespace Spans.Skeleton
         {
             _spawnedUnitPool = new List<UnitCircle>();
             _activeCircles = new List<UnitCircle>();
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 25; i++)
             {
                 var tempCircle = Instantiate(unit, unitParent.transform);
                 _spawnedUnitPool.Add(tempCircle);
