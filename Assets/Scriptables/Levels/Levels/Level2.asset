@@ -20,4 +20,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: cf3cfd389be54ad4bb133accba71c16f, type: 2}
   dailySpans:
   - {fileID: 8242588130389079751, guid: ef47053ec73cedf40a4b775e5259e359, type: 3}
+  - {fileID: 8242588130389079751, guid: d1296187e7795f0428651c3d95a5c71e, type: 3}
+  - {fileID: 8242588130389079751, guid: 86913fd5fea1a9f418f1ad112c830c94, type: 3}
+  - {fileID: 8242588130389079751, guid: 64a7bedb5d02a034a9ea04d36d1185d0, type: 3}
+  - {fileID: 8242588130389079751, guid: 12b0e0dc60bff7e4ebdd6a3e6f78e05f, type: 3}
+  - {fileID: 8242588130389079751, guid: 015af635538823c45b55e3361baa6681, type: 3}
+  - {fileID: 8242588130389079751, guid: f5c7d838e473b1e44917feed44c43999, type: 3}
+  - {fileID: 8242588130389079751, guid: cd821be2d8a1d104f940f5f1cb6f2438, type: 3}
+  - {fileID: 8242588130389079751, guid: c47883cdba7105743ada0e156f69f956, type: 3}
+  - {fileID: 8242588130389079751, guid: 0f11c1ceac8dafe4baf2ac67fb9af406, type: 3}
   LevelId: 1

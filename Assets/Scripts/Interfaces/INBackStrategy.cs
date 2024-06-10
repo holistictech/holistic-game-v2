@@ -27,6 +27,7 @@ namespace Interfaces
                 if (allButtons.Length > indexes[i])
                 {
                     allButtons[indexes[i]].gameObject.SetActive(true);
+                    allButtons[indexes[i]].interactable = true;
                 }
             }
         }

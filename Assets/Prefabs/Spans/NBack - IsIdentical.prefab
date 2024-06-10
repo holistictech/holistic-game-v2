@@ -534,6 +534,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 8342a1a9e4602aa419c30f1ad6b08b77, type: 2}
   - {fileID: 11400000, guid: e0fc73d5139bb6140a91a4decd78312b, type: 2}
   dualNBackQuestions: []
+  _testMode: 0
 --- !u!1 &8840831442161132576
 GameObject:
   m_ObjectHideFlags: 0

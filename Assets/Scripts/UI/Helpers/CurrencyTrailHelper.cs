@@ -66,10 +66,12 @@ namespace UI.Helpers
 
             masterSequence.OnComplete(() =>
             {
-                for (int i = 0; i < _trailObjects.Count; i++)
+                for (int i = _trailObjects.Count - 1; i >= 0; i--)
                 {
                     Destroy(_trailObjects[i].gameObject);
                 }
+                
+                _trailObjects.Clear();
                 onComplete?.Invoke();
             });
         }

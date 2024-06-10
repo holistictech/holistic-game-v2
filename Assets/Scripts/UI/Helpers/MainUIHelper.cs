@@ -52,8 +52,8 @@ namespace UI.Helpers
             var span = spans[0];
             _activeSpan = Instantiate(span, transform);
             _activeSpan.gameObject.SetActive(true);*/
-            //selectionPopup.gameObject.SetActive(true);
-            PlayNextSpan();
+            selectionPopup.gameObject.SetActive(true);
+            //PlayNextSpan();
         }
 
         private void DisableSpanChooser()

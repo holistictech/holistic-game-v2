@@ -17,6 +17,15 @@ MonoBehaviour:
   - {fileID: 11400000, guid: c9579d57787be9949aa538e1ec69ee11, type: 2}
   - {fileID: 11400000, guid: 468aeffeb47eb7a41809ccb9ac6854f8, type: 2}
   - {fileID: 11400000, guid: 26790654b89fa404f80f55e5934762b1, type: 2}
-  dailySpans: []
+  dailySpans:
+  - {fileID: 8242588130389079751, guid: 12b0e0dc60bff7e4ebdd6a3e6f78e05f, type: 3}
+  - {fileID: 8242588130389079751, guid: fae0f8b8ec74aee4cada8178b8408607, type: 3}
+  - {fileID: 8242588130389079751, guid: f5c7d838e473b1e44917feed44c43999, type: 3}
+  - {fileID: 8242588130389079751, guid: c47883cdba7105743ada0e156f69f956, type: 3}
+  - {fileID: 8242588130389079751, guid: 3c8b41b5443a9cf4791e1438b18a5b12, type: 3}
+  - {fileID: 8242588130389079751, guid: d1296187e7795f0428651c3d95a5c71e, type: 3}
+  - {fileID: 8242588130389079751, guid: b78705100635f7e45a532ea8d2573245, type: 3}
+  - {fileID: 8242588130389079751, guid: cd821be2d8a1d104f940f5f1cb6f2438, type: 3}
+  - {fileID: 8242588130389079751, guid: 5438282563a37da45856c351e791ff25, type: 3}
+  - {fileID: 8242588130389079751, guid: cd821be2d8a1d104f940f5f1cb6f2438, type: 3}
   LevelId: 2
-  CurrentStage: 0

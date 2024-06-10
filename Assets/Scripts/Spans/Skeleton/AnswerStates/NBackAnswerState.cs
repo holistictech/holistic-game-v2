@@ -67,7 +67,7 @@ namespace Spans.Skeleton.AnswerStates
         {
             foreach (var button in _modeButtons)
             {
-                button.gameObject.SetActive(false);
+                button.interactable = false;
             }
         }
     }

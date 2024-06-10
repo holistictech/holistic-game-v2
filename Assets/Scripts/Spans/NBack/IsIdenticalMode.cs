@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using System.Linq;
 using ETFXPEL;
 using Interfaces;
 using Scriptables.QuestionSystem;
@@ -101,7 +102,7 @@ namespace Spans.NBack
 
             _controller.UpdateCurrentStack(questionStack);
             
-            return roundQuestions;
+            return questionStack.ToList();
         }
 
         public int[] GetModeIndexes()
