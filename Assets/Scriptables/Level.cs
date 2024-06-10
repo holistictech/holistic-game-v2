@@ -1,6 +1,8 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using Utilities;
 using static Utilities.Helpers.CommonFields;
 
 namespace Scriptables
@@ -11,12 +13,6 @@ namespace Scriptables
         public List<TaskConfig> LevelTasks;
         public List<GameObject> dailySpans;
         public int LevelId;
-        public int CurrentStage;
-
-        public int GetActivityId()
-        {
-            return LevelId * DAILY_ACTIVITY_COUNT + CurrentStage;
-        }
 
         public List<TaskConfig> GetAvailableTasks()
         {
@@ -25,11 +21,14 @@ namespace Scriptables
 
         public GameObject GetSpanByIndex(int index)
         {
-            if (index >= dailySpans.Count)
-            {
-                return dailySpans[0];
-            }
+            if(index == dailySpans.Count -1)
+                PlayerSaveManager.SavePlayerAttribute(DateTime.Now,$"Day{LevelId}");
             return dailySpans[index];
+        }
+
+        public bool HasDailySpansCompleted(int stage)
+        {
+            return stage >= dailySpans.Count;
         }
     }
 }

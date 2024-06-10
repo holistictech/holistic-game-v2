@@ -73,8 +73,5 @@ namespace UI.Helpers
                 onComplete?.Invoke();
             });
         }
-
-
-
     }
 }

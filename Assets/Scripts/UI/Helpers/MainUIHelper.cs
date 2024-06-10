@@ -18,6 +18,8 @@ namespace UI.Helpers
         [SerializeField] private Image selectionPopup;
         [SerializeField] private Button closeButton;
 
+        [SerializeField] private DayDoneUIHelper dayCompletedPopup;
+
         private GameObject _activeSpan;
 
         private void OnEnable()
@@ -34,6 +36,12 @@ namespace UI.Helpers
 
         private void PlayNextSpan()
         {
+            if (PlayerInventory.Instance.HasDayCompleted())
+            {
+                dayCompletedPopup.EnableSelf();
+                return;
+            }
+            
             var span = PlayerInventory.Instance.GetNextSpan();
             PlaySelectedSpan(span);
         }
@@ -44,7 +52,8 @@ namespace UI.Helpers
             var span = spans[0];
             _activeSpan = Instantiate(span, transform);
             _activeSpan.gameObject.SetActive(true);*/
-            selectionPopup.gameObject.SetActive(true);
+            //selectionPopup.gameObject.SetActive(true);
+            PlayNextSpan();
         }
 
         private void DisableSpanChooser()
@@ -61,6 +70,7 @@ namespace UI.Helpers
 
         private void DestroyActiveSpan(int earnedPerformance)
         {
+            Destroy(_activeSpan.gameObject);
             trailHelper.AnimateCurrencyIncrease(currencyHelper, 1, () =>
             {
                 PlayerInventory.Instance.ChangeEnergyAmount(1);
@@ -72,9 +82,6 @@ namespace UI.Helpers
                     performanceHelper.UpdateCurrencyField();
                 });
             });
-
-            
-            Destroy(_activeSpan.gameObject);
         }
 
         private void AddListeners()

@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Scriptables;
@@ -58,8 +59,9 @@ namespace Utilities
             Performance = PlayerSaveManager.GetPlayerAttribute(PerformanceKey, 0);
             CurrentLevel = PlayerSaveManager.GetPlayerAttribute(CurrentLevelKey, 0);
             CurrentStage = PlayerSaveManager.GetPlayerAttribute(CurrentStageKey, 0);
-            Energy = 10;
-            Performance = 100;
+            ChangeLevelIfNeeded();
+            //Energy = 10;
+            //Performance = 100;
         }
 
         public void ChangeCurrencyAmountByType(TaskConfig config)
@@ -71,6 +73,17 @@ namespace Utilities
             else if (config.CurrencyType == CommonFields.CurrencyType.Performance)
             {
                 ChangePerformanceAmount(-config.Cost);
+            }
+        }
+
+        private void ChangeLevelIfNeeded()
+        {
+            var savedTime = PlayerSaveManager.GetPlayerAttribute($"Day{CurrentLevel}", DateTime.Now);
+            var difference = DateTime.Now - savedTime;
+            if (difference.TotalHours >= 24)
+            {
+                IncrementCurrentLevel();
+                ChangeCurrentStage(0);
             }
         }
 
@@ -92,13 +105,13 @@ namespace Utilities
             PlayerSaveManager.SavePlayerAttribute(CurrentLevel, CurrentLevelKey);
         }
 
-        public void IncrementCurrentLevel()
+        private void IncrementCurrentLevel()
         {
             CurrentLevel++;
             PlayerSaveManager.SavePlayerAttribute(CurrentLevel, CurrentLevelKey);
         }
 
-        public void ChangeCurrentStage(int stage)
+        private void ChangeCurrentStage(int stage)
         {
             CurrentStage = stage;
             PlayerSaveManager.SavePlayerAttribute(CurrentStage, CurrentStageKey);
@@ -129,6 +142,12 @@ namespace Utilities
         public GameObject GetNextSpan()
         {
             return gameLevels[CurrentLevel].GetSpanByIndex(CurrentStage);
+        }
+
+        public bool HasDayCompleted()
+        {
+            var currentLevel = gameLevels[CurrentLevel];
+            return currentLevel.HasDailySpansCompleted(CurrentStage);
         }
     }
 

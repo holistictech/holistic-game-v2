@@ -18,6 +18,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e67b9f0829c83d0448bd05adea1f91f1, type: 2}
   - {fileID: 11400000, guid: e209dc49b9f085e4482d5e912e81f696, type: 2}
   - {fileID: 11400000, guid: cf3cfd389be54ad4bb133accba71c16f, type: 2}
-  dailySpans: []
+  dailySpans:
+  - {fileID: 8242588130389079751, guid: ef47053ec73cedf40a4b775e5259e359, type: 3}
   LevelId: 1
-  CurrentStage: 0

@@ -19,6 +19,10 @@ namespace Utilities
             {
                 PlayerPrefs.SetString(key, Convert.ToString(value));
             }
+            else if (typeof(T) == typeof(DateTime))
+            {
+                PlayerPrefs.SetString(key, ((DateTime)(object)value).ToString("o"));
+            }
             else
             {
                 throw new ArgumentException("Unsupported parameter type");
@@ -31,6 +35,7 @@ namespace Utilities
             {
                 return (T)(object)PlayerPrefs.GetInt(key, (int)(object)defaultValue);
             }
+            
             if (typeof(T) == typeof(float))
             {
                 return (T)(object)PlayerPrefs.GetFloat(key, (float)(object)defaultValue);
@@ -39,6 +44,12 @@ namespace Utilities
             if (typeof(T) == typeof(string))
             {
                 return (T)(object)PlayerPrefs.GetString(key, (string)(object)defaultValue);
+            }
+
+            if (typeof(T) == typeof(DateTime))
+            {
+                string dateTimeString = PlayerPrefs.GetString(key, defaultValue.ToString());
+                return (T)(object)DateTime.Parse(dateTimeString, null, System.Globalization.DateTimeStyles.RoundtripKind);
             }
             
             throw new ArgumentException("Unsupported parameter type");
