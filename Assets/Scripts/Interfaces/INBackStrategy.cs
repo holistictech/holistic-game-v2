@@ -17,6 +17,7 @@ namespace Interfaces
         public void SetChosenButtonType(CommonFields.ButtonType chosen);
         public bool CheckAnswer();
         public List<Question> GetQuestionByCount(List<Question> questions, int count);
+        public void SetCorrectType();
 
         public int[] GetModeIndexes();
         public void EnableButtons(Button[] allButtons)

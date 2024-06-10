@@ -124,7 +124,7 @@ namespace Spans.NBack
             return queue.Contains(element);
         }
         
-        private void SetCorrectType()
+        public void SetCorrectType()
         {
             _correctType = (ButtonType)Random.Range((int)ButtonType.Shape, (int)ButtonType.Count+1);
         }

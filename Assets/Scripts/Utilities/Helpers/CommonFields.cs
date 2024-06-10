@@ -37,6 +37,9 @@ namespace Utilities.Helpers
             Shape,
             Color,
             Count,
+            Position,
+            Sound,
+            SoundAndPosition,
             Null
         }
 

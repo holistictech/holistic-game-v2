@@ -105,6 +105,11 @@ namespace Spans.NBack
             return questionStack.ToList();
         }
 
+        public void SetCorrectType()
+        {
+            throw new System.NotImplementedException();
+        }
+
         public int[] GetModeIndexes()
         {
             return _buttonIndexes;

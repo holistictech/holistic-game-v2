@@ -53,6 +53,9 @@ namespace Spans.NBack
                 case CommonFields.NBackModes.NBack:
                     _currentStrategy = new NBackMode(this);
                     break;
+                case CommonFields.NBackModes.DualNBack:
+                    _currentStrategy = new DualNBackMode(this);
+                    break;
             }
         }
         

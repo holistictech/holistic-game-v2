@@ -110,7 +110,7 @@ namespace Spans.NBack
             return roundQuestions;
         }
 
-        private void SetCorrectType()
+        public void SetCorrectType()
         {
             _correctType = (ButtonType)Random.Range((int)ButtonType.Identical, (int)ButtonType.NotIdentical+1);
         }
