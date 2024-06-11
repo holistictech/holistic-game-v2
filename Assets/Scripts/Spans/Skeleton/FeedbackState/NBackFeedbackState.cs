@@ -18,6 +18,8 @@ namespace Spans.Skeleton.FeedbackState
                 _nBackController = controller.GetComponent<NBack.NBack>();
                 base.Enter(controller);
             }
+            
+            PlayEffects();
         }
         
         
@@ -25,7 +27,7 @@ namespace Spans.Skeleton.FeedbackState
         {
             if (_nBackController.IsEmptyRound())
             {
-                SwitchNextState();
+                SwitchNextState();    
             }
             else
             {

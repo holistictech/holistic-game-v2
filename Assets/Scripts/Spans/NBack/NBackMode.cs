@@ -51,7 +51,7 @@ namespace Spans.NBack
 
         public bool IsEmptyRound()
         {
-            return _correctType == ButtonType.Null;
+            return false;
         }
 
         public List<Question> GetQuestionByCount(List<Question> questions, int count)
