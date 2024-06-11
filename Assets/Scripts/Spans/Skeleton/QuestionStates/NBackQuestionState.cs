@@ -9,6 +9,7 @@ using UI.Helpers;
 using UnityEngine;
 using UnityEngine.UI;
 using Utilities;
+using Utilities.Helpers;
 
 namespace Spans.Skeleton.QuestionStates
 {
@@ -58,7 +59,7 @@ namespace Spans.Skeleton.QuestionStates
         
         public override void ShowQuestion()
         {
-            if (_currentStrategy is NBackMode)
+            if (IsOneOfNBackModes)
             {
                 _currentStrategy.InjectQuestionState(this);
                 _currentStrategy.ShowQuestion();
@@ -121,7 +122,7 @@ namespace Spans.Skeleton.QuestionStates
 
         private void PlayAudio(Question question)
         {
-            
+            AudioManager.Instance.PlayAudioClip((AudioClip)question.GetQuestionItemByType(CommonFields.ButtonType.Sound));
         }
         
         
@@ -133,7 +134,11 @@ namespace Spans.Skeleton.QuestionStates
             {
                 ActivateCircle(i);
                 blockUIHelper.HighlightTargetBlock(_spanObjects[i]);
-                //currentQuestionIndex++;
+                if (IsDualNBack)
+                {
+                    PlayAudio(_spanObjects[i]);
+                }
+                
                 yield return new WaitForSeconds(2f);
             }
             
@@ -144,6 +149,7 @@ namespace Spans.Skeleton.QuestionStates
         {
             HighlightPreviousCircle();
         }
+        
         public CorsiBlockUIHelper GetBlockHelper()
         {
             return blockUIHelper;
@@ -168,7 +174,7 @@ namespace Spans.Skeleton.QuestionStates
         
         public override void EnableUIElements()
         {
-            if (_currentStrategy is NBackMode)
+            if (IsOneOfNBackModes)
             {
                 blockUIHelper.gameObject.SetActive(true);
                 blockUIHelper.ResetCorsiBlocks();
@@ -184,7 +190,8 @@ namespace Spans.Skeleton.QuestionStates
         {
             if(_currentStrategy is not IsIdenticalMode)
                 horizontalParent.gameObject.SetActive(false);
-            blockUIHelper.gameObject.SetActive(false);
+            if(!IsDualNBack)
+                blockUIHelper.gameObject.SetActive(false);
             blockUIHelper.ResetCorsiBlocks();
         }
 
@@ -218,5 +225,8 @@ namespace Spans.Skeleton.QuestionStates
                 image.gameObject.SetActive(false);
             }
         }
+
+        private bool IsOneOfNBackModes => _currentStrategy is NBackMode || _currentStrategy is DualNBackMode;
+        private bool IsDualNBack => _currentStrategy is DualNBackMode;
     }
 }

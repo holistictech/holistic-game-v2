@@ -13,7 +13,7 @@ namespace Spans.NBack
 {
     public class DualNBackMode : INBackStrategy
     {
-        private int[] _buttonIndexes = new int[] { 0, 1 };
+        private int[] _buttonIndexes = new int[] { 5, 6, 7 };
         private ButtonType _correctType;
         private ButtonType _chosen;
         private NBack _controller;
@@ -71,7 +71,7 @@ namespace Spans.NBack
             }
 
             _controller.UpdateCurrentStack(questionStack);
-            return roundQuestions;
+            return questionStack.ToList();
         }
 
         private Question GetFirstQuestion(int count, Queue<Question> questionStack, List<Question> alternativeQuestions)
@@ -111,6 +111,7 @@ namespace Spans.NBack
         {
             List<Question> roundQuestions = new List<Question>();
             roundQuestions.Add(first);
+            _lastPlayedClip = (AudioClip)first.GetQuestionItemByType(ButtonType.Sound);
 
             switch (_correctType)
             {
@@ -153,11 +154,11 @@ namespace Spans.NBack
             var alternativeSound = ScriptableObject.CreateInstance<DualNBackQuestion>();
             alternativeSound.Value = (int)first.GetQuestionItem();
             var randomClipQuestion = alternativeQuestions[Random.Range(0, alternativeQuestions.Count)];
-            var clip = (AudioClip)randomClipQuestion.GetQuestionItem();
+            var clip = (AudioClip)randomClipQuestion.GetQuestionItemByType(ButtonType.Sound);
             while (clip == _lastPlayedClip)
             {
                 randomClipQuestion = alternativeQuestions[Random.Range(0, alternativeQuestions.Count)];
-                clip = (AudioClip)randomClipQuestion.GetQuestionItem();
+                clip = (AudioClip)randomClipQuestion.GetQuestionItemByType(ButtonType.Sound);
             }
 
             alternativeSound.QuestionClip = clip;

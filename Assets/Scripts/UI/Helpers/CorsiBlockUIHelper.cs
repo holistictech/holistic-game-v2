@@ -65,7 +65,7 @@ namespace UI.Helpers
         {
             foreach (var block in spawnedBlocks)
             {
-                if (block.GetAssignedQuestion() == question)
+                if ((int)block.GetAssignedQuestion().GetQuestionItem() == (int)question.GetQuestionItem())
                     return block;
             }
             throw new Exception("Could not find target question in blocks");
