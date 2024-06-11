@@ -10,7 +10,7 @@ namespace UI.Helpers
     {
         [SerializeField] private Button button;
         [SerializeField] private AudioClip clickClip;
-        [SerializeField] private float amount;
+        private readonly float _amount = 0.08f;
         
         private void OnEnable()
         {
@@ -31,7 +31,7 @@ namespace UI.Helpers
         {
             Sequence buttonSequence = DOTween.Sequence();
             AudioManager.Instance.PlayAudioClip(clickClip);
-            buttonSequence.Append(button.transform.DOPunchScale(new Vector3(-amount, -amount, -amount), 0.25f).SetEase(Ease.OutQuad).OnComplete(
+            buttonSequence.Append(button.transform.DOPunchScale(new Vector3(-_amount, -_amount, -_amount), 0.15f).SetEase(Ease.OutQuad).OnComplete(
                 () =>
                 {
                     button.transform.localScale = new Vector3(1, 1, 1);
