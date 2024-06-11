@@ -43,6 +43,11 @@ namespace Spans.NBack
             return _correctType == _chosen;
         }
 
+        public bool IsEmptyRound()
+        {
+            return false;
+        }
+
         private bool _isInitial;
         public List<Question> GetQuestionByCount(List<Question> questions, int count)
         {

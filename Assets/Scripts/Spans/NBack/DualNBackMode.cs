@@ -13,7 +13,7 @@ namespace Spans.NBack
 {
     public class DualNBackMode : INBackStrategy
     {
-        private int[] _buttonIndexes = new int[] { 5, 6, 7 };
+        private readonly int[] _buttonIndexes = new int[] { 5, 6, 7 };
         private ButtonType _correctType;
         private ButtonType _chosen;
         private NBack _controller;
@@ -47,6 +47,11 @@ namespace Spans.NBack
         public bool CheckAnswer()
         {
             return _correctType == _chosen;
+        }
+
+        public bool IsEmptyRound()
+        {
+            return _correctType == ButtonType.Null;
         }
 
         public List<Question> GetQuestionByCount(List<Question> questions, int count)
@@ -102,6 +107,10 @@ namespace Spans.NBack
                 case ButtonType.SoundAndPosition:
                     roundQuestions.Add(first);
                     break;
+                case ButtonType.Null:
+                    var question = GetCompletelyRandomQuestion(first);
+                    roundQuestions.Add(question);
+                    break;
             }
 
             return roundQuestions;
@@ -125,6 +134,10 @@ namespace Spans.NBack
                     break;
                 case ButtonType.SoundAndPosition:
                     roundQuestions.Add(first);
+                    break;
+                case ButtonType.Null:
+                    var question = GetCompletelyRandomQuestion(first);
+                    roundQuestions.Add(question);
                     break;
             }
 
@@ -165,6 +178,21 @@ namespace Spans.NBack
             return alternativeSound;
         }
 
+        private DualNBackQuestion GetCompletelyRandomQuestion(Question currentQuestion)
+        {
+            var questions = GetModeQuestions();
+            var randomIndex = Random.Range(0, questions.Count);
+            var randomQuestion = questions[randomIndex];
+            while ((int)randomQuestion.GetQuestionItem() == (int)currentQuestion.GetQuestionItem())
+            {
+                randomIndex = Random.Range(0, questions.Count);
+                randomQuestion = questions[randomIndex];
+            }
+
+            var newQuestion = (DualNBackQuestion)randomQuestion;
+            return newQuestion;
+        }
+
         private List<Question> GetModeQuestions()
         {
             return _controller.GetAlternativeImagesByType(GameMode);
@@ -177,7 +205,7 @@ namespace Spans.NBack
 
         public void SetCorrectType()
         {
-            _correctType = (ButtonType)Random.Range((int)ButtonType.Position, (int)ButtonType.SoundAndPosition + 1);
+            _correctType = (ButtonType)Random.Range((int)ButtonType.Position, (int)ButtonType.Null + 1);
         }
 
         public int[] GetModeIndexes()

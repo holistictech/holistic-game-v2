@@ -49,6 +49,11 @@ namespace Spans.NBack
             return _correctType == _chosen;
         }
 
+        public bool IsEmptyRound()
+        {
+            return _correctType == ButtonType.Null;
+        }
+
         public List<Question> GetQuestionByCount(List<Question> questions, int count)
         {
             SetCorrectType();

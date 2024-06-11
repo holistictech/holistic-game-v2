@@ -82,6 +82,11 @@ namespace Spans.NBack
             return _currentStrategy.GetQuestionByCount(GetAllAvailableSpanObjects().ToList(), count);
         }
 
+        public override int GetRoundTime()
+        {
+            return 3;
+        }
+
         private void TryUpdateStrategy()
         {
             //@todo: update mechanism
@@ -120,10 +125,15 @@ namespace Spans.NBack
             {
                 IncrementFailStreak();
             }
-            
+
             return _isCorrect;
         }
-        
+
+        public bool IsEmptyRound()
+        {
+            return _currentStrategy.IsEmptyRound();
+        }
+
         public override int GetRoundIndex()
         {
             if (_isInitial)

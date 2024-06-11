@@ -64,7 +64,7 @@ namespace Spans.Skeleton
             "Doğru cevaba bir adım daha yaklaştın, devam et!",
             "Bu sefer olmadı ama bir dahaki sefere daha iyi olacak!",
         };
-        public void Enter(SpanController controller)
+        public virtual void Enter(SpanController controller)
         {
             if (spanController == null)
             {
