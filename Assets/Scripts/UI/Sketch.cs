@@ -1,4 +1,5 @@
 using System;
+using Scriptables;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -16,6 +17,12 @@ namespace UI
         public void ConfigureObjectMesh(Mesh mesh)
         {
             meshFilter.mesh = mesh;
+        }
+
+        public void ConfigureSize(InteractableConfig config)
+        {
+            var amount = config.ScaleAmount;
+            transform.localScale = new Vector3(amount, amount, amount);
         }
 
         public void SetUIHelperReference(SketchUIHelper uiHelper)

@@ -17,6 +17,7 @@ namespace Interactables
     {
         private ParticleSystem _buildingDust;
         private ParticleSystem _dust;
+        private AudioClip _buildingSFX;
         private MeshFilter _objectMeshFilter;
         private MeshRenderer _meshRenderer;
         private GridController _gridController;
@@ -32,18 +33,20 @@ namespace Interactables
             _interactableConfig = config;
         }
 
-        public void InjectFields(GridController controller, InteractableConfig config, ParticleSystem effect)
+        public void InjectFields(GridController controller, InteractableConfig config, ParticleSystem effect, AudioClip clip)
         {
             _gridController = controller;
             _interactableConfig = config;
             _buildingDust = effect;
             _dust = effect;
+            _buildingSFX = clip;
         }
 
         public virtual void BuildSelf(CartesianPoint desiredPoint, bool isFirstTime)
         {
             SetObjectMesh();
             SetPosition(desiredPoint);
+            SetScale();
             _data = new InteractableData(_interactableConfig, desiredPoint);
             if (isFirstTime)
             {
@@ -87,9 +90,10 @@ namespace Interactables
         {
             SpawnBuildingEffect();
             _dust.Play();
+            AudioManager.Instance.PlayAudioClip(_buildingSFX);
             DOVirtual.DelayedCall(_buildingDust.main.duration - 2f, () =>
             {
-                transform.localScale = new Vector3(1, 0, 1);
+                transform.localScale = new Vector3(_interactableConfig.ScaleAmount, 0, _interactableConfig.ScaleAmount);
                 _meshRenderer.enabled = true;
                 Sequence mySequence = DOTween.Sequence();
                 mySequence.Append(transform.DOShakeScale(0.75f, 0.3f));
@@ -110,6 +114,12 @@ namespace Interactables
         public void SetPosition(CartesianPoint point)
         {
             transform.position = new Vector3(point.GetXCoordinate(), 0, point.GetYCoordinate());
+        }
+
+        public void SetScale()
+        {
+            var amount = _interactableConfig.ScaleAmount;
+            transform.localScale = new Vector3(amount, amount, amount);
         }
     }
 

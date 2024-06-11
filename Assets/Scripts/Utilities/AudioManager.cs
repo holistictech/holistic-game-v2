@@ -44,6 +44,7 @@ namespace Utilities
 
         public void PlayAudioClip(AudioClip clip)
         {
+            if (clip == null) return;
             source.PlayOneShot(clip);
         }
     }

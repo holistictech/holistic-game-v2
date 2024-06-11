@@ -22,6 +22,7 @@ namespace Spawners
         [SerializeField] private Transform objectParent;
         [SerializeField] private SwipeHandler swipeHandler;
         [SerializeField] private ParticleSystem buildingEffect;
+        [SerializeField] private AudioClip buildingSFX;
         private GridController _gridController;
         private TaskConfig _currentConfig;
 
@@ -55,6 +56,7 @@ namespace Spawners
                 var spawnedSketch = Instantiate(sketch, objectParent);
                 spawnedSketch.ConfigureObjectMesh(MeshContainer.Instance.GetMeshById(_currentConfig.RewardInteractable.MeshId));
                 spawnedSketch.transform.position = new Vector3(middlePoint.x, 0, 0);
+                spawnedSketch.ConfigureSize(_currentConfig.RewardInteractable);
                 swipeHandler.enabled = true;
                 OnPositionChoiceNeeded?.Invoke(spawnedSketch);
             }
@@ -73,7 +75,7 @@ namespace Spawners
             var spawnedInstance = InteractableFactory.SpawnInstance(spawnable, config, objectParent);
             var interactable = spawnedInstance.GetComponent<InteractableObject>();
 
-            interactable.InjectFields(_gridController, config, buildingEffect);
+            interactable.InjectFields(_gridController, config, buildingEffect, buildingSFX);
             var buildingPlan = interactable.CalculateCoordinatesForBlocking(desiredPoint);
             if (interactable != null && _gridController.IsPlacementValid(buildingPlan))
             {

@@ -4,6 +4,7 @@ using Scriptables;
 using UnityEngine;
 using Utilities;
 using Utilities.Helpers;
+using static Utilities.Helpers.CommonFields;
 
 namespace Factory
 {
@@ -16,14 +17,17 @@ namespace Factory
 
             switch (config.InteractableType)
             {
-                case CommonFields.InteractableType.Concrete:
+                case InteractableType.Concrete:
                     instance.AddComponent<ConcreteBuilding>();
                     break;
-                case CommonFields.InteractableType.Barn:
+                case InteractableType.Barn:
                     instance.AddComponent<BarnBuilding>();
                     break;
-                case CommonFields.InteractableType.Animal:
+                case InteractableType.Animal:
                     instance.AddComponent<Animal>();
+                    break;
+                case InteractableType.Field:
+                    instance.AddComponent<Field>();
                     break;
                 default:
                     throw new ArgumentException("No such interactable type :" + config.InteractableType);

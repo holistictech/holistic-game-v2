@@ -14,5 +14,6 @@ namespace Scriptables
         public CommonFields.InteractableType InteractableType;
         public int Width;
         public int Height;
+        public int ScaleAmount;
     }
 }

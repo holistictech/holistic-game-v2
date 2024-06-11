@@ -14,7 +14,8 @@ namespace Utilities.Helpers
         {
             Concrete = 0,
             Barn,
-            Animal
+            Animal,
+            Field
         }
 
         public enum CurrencyType

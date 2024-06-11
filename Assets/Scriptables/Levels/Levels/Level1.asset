@@ -18,6 +18,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 53b2ccc20da7c41458c8b4e2a0969ed5, type: 2}
   - {fileID: 11400000, guid: b8745941d9ccad24ebf5e22854bf99de, type: 2}
   - {fileID: 11400000, guid: 3d72845721c1890498c7166b05877482, type: 2}
+  - {fileID: 11400000, guid: 63f0a4d3d23720148a7b8fb4b08f20b6, type: 2}
   dailySpans:
   - {fileID: 8242588130389079751, guid: 86913fd5fea1a9f418f1ad112c830c94, type: 3}
   - {fileID: 8242588130389079751, guid: ef47053ec73cedf40a4b775e5259e359, type: 3}
