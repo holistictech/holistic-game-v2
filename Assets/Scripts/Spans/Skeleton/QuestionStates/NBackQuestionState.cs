@@ -114,18 +114,15 @@ namespace Spans.Skeleton.QuestionStates
                 }
 
                 currentQuestionIndex++;
-                Debug.Log("Waiting for 1 second before disabling images");
+                Debug.Log("Waiting for .5 second before disabling images");
                 yield return new WaitForSeconds(1f);
                 DisableActiveImages();
-                Debug.Log("Waiting for another 1 second after disabling images");
+                Debug.Log("Waiting for another .5 second after disabling images");
                 yield return new WaitForSeconds(1f);
             }
 
             Debug.Log("Scheduling SwitchNextState call");
-            DOVirtual.DelayedCall(1f, () =>
-            {
-                SwitchNextState();
-            });
+            DOVirtual.DelayedCall(1f, SwitchNextState);
         }
 
 

@@ -121,6 +121,11 @@ namespace Spans.NBack
             throw new System.NotImplementedException();
         }
 
+        public bool IsSwitchable()
+        {
+            return true;
+        }
+
         public int[] GetModeIndexes()
         {
             return _buttonIndexes;

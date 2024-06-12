@@ -117,6 +117,11 @@ namespace Spans.NBack
             _correctType = (ButtonType)Random.Range((int)ButtonType.Shape, (int)ButtonType.Color+1);
         }
 
+        public bool IsSwitchable()
+        {
+            return true;
+        }
+
         public int[] GetModeIndexes()
         {
             return _buttonIndexes;

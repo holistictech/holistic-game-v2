@@ -124,6 +124,12 @@ namespace Spans.NBack
         {
             _correctType = (ButtonType)Random.Range((int)ButtonType.Identical, (int)ButtonType.NotIdentical+1);
         }
+
+        public bool IsSwitchable()
+        {
+            return true;
+        }
+
         private List<Question> GetModeQuestions()
         {
             return _controller.GetAlternativeImagesByType(GameMode);

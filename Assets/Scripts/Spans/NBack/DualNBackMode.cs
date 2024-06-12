@@ -216,6 +216,11 @@ namespace Spans.NBack
             _correctType = (ButtonType)Random.Range((int)ButtonType.Position, (int)ButtonType.Null + 1);
         }
 
+        public bool IsSwitchable()
+        {
+            return _correctType != ButtonType.SoundAndPosition;
+        }
+
         public int[] GetModeIndexes()
         {
             return _buttonIndexes;

@@ -134,6 +134,11 @@ namespace Spans.NBack
             _correctType = (ButtonType)Random.Range((int)ButtonType.Shape, (int)ButtonType.Count+1);
         }
 
+        public bool IsSwitchable()
+        {
+            return true;
+        }
+
         private void ResetSpawnAmounts(List<Question> questions)
         {
             foreach (var element in questions)

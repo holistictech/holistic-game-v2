@@ -19,6 +19,7 @@ namespace Interfaces
         public bool IsEmptyRound();
         public List<Question> GetQuestionByCount(List<Question> questions, int count);
         public void SetCorrectType();
+        public bool IsSwitchable();
 
         public int[] GetModeIndexes();
         public void EnableButtons(Button[] allButtons)
