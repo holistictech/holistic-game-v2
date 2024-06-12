@@ -29,10 +29,11 @@ namespace Spans.Skeleton.QuestionStates
         private List<Image> _activeQuestionImages = new List<Image>();
         private const int SpawnAmount = 6;
 
+        private bool _coroutineRunning;
         protected override void Start()
         {
-            base.Start();
             SpawnPool();
+            base.Start();
         }
 
         private bool _isInitial;
@@ -50,34 +51,58 @@ namespace Spans.Skeleton.QuestionStates
             _spanObjects = spanController.GetSpanObjects();
             SetCircleUI(_isInitial ? 2 : 1);
             _isInitial = false;
+            EnableUIElements();
             if(_nBackController.GetCorrectStatus())
                 HighlightCorrectUnit();
-            EnableUIElements();
-            ShowQuestion();
             StatisticsHelper.IncrementDisplayedQuestionCount();
+            if(!_coroutineRunning)
+                ShowQuestion();
         }
         
         public override void ShowQuestion()
         {
+            Debug.Log("ShowQuestion called");
+            if (_coroutineRunning)
+            {
+                Debug.LogWarning("Coroutine is already running. Skipping ShowQuestion call.");
+                return; // Prevent starting a new coroutine if one is already running
+            }
+
+            _coroutineRunning = true;
             if (IsOneOfNBackModes)
             {
                 _currentStrategy.InjectQuestionState(this);
                 _currentStrategy.ShowQuestion();
+                if (displayingQuestions != null)
+                {
+                    StopCoroutine(displayingQuestions);
+                }
                 displayingQuestions = StartCoroutine(IterateBlocks());
             }
             else
             {
+                if (displayingQuestions != null)
+                {
+                    StopCoroutine(displayingQuestions);
+                }
                 displayingQuestions = StartCoroutine(IterateQuestions());
             }
         }
         
         private bool _initialDisplay = true;
+        
         private IEnumerator IterateQuestions()
         {
-            var start = _initialDisplay ? 0 : 1;
-            _initialDisplay = false;
+            Debug.Log("Coroutine started");
+            var start = 1;
+            if (_initialDisplay)
+            {
+                start = 0;
+                _initialDisplay = false;
+            }
             for (int i = start; i < _spanObjects.Count; i++)
             {
+                Debug.Log($"Processing question index: {i}");
                 var question = _spanObjects[i];
                 if (question.SpawnAmount > 1)
                 {
@@ -89,13 +114,21 @@ namespace Spans.Skeleton.QuestionStates
                 }
 
                 currentQuestionIndex++;
+                Debug.Log("Waiting for 1 second before disabling images");
                 yield return new WaitForSeconds(1f);
                 DisableActiveImages();
+                Debug.Log("Waiting for another 1 second after disabling images");
                 yield return new WaitForSeconds(1f);
             }
 
-            DOVirtual.DelayedCall(1f, SwitchNextState);
+            Debug.Log("Scheduling SwitchNextState call");
+            DOVirtual.DelayedCall(1f, () =>
+            {
+                SwitchNextState();
+            });
         }
+
+
 
         private void ShowMultipleImages(Question question, int index)
         {
@@ -112,10 +145,11 @@ namespace Spans.Skeleton.QuestionStates
 
         private void ShowImage(Question question, int index)
         {
-            var availableImage = GetAvailableImage();
-            _activeQuestionImages.Add(availableImage);
-            availableImage.sprite = (Sprite)question.GetQuestionItem();
-            availableImage.gameObject.SetActive(true);
+            Image pooledImage = GetAvailableImage();
+            pooledImage.gameObject.SetActive(true);
+            pooledImage.sprite = (Sprite)question.GetQuestionItem();
+            Debug.Log(pooledImage.gameObject.activeSelf);
+            _activeQuestionImages.Add(pooledImage);
             ActivateCircle(index);
             _currentQuestions.Add(question);
         }
@@ -124,7 +158,6 @@ namespace Spans.Skeleton.QuestionStates
         {
             AudioManager.Instance.PlayAudioClip((AudioClip)question.GetQuestionItemByType(CommonFields.ButtonType.Sound));
         }
-        
         
         private IEnumerator IterateBlocks()
         {
@@ -142,7 +175,11 @@ namespace Spans.Skeleton.QuestionStates
                 yield return new WaitForSeconds(2f);
             }
             
-            DOVirtual.DelayedCall(1f, SwitchNextState);
+            DOVirtual.DelayedCall(1f, () =>
+            {
+                SwitchNextState();
+                
+            });
         }
 
         private void HighlightCorrectUnit()
@@ -158,7 +195,8 @@ namespace Spans.Skeleton.QuestionStates
         public override void Exit()
         {
             if (displayingQuestions != null)
-            {
+            { 
+                _coroutineRunning = false;
                 StopCoroutine(displayingQuestions);
             }
             //ResetPreviousCircles();
@@ -200,7 +238,6 @@ namespace Spans.Skeleton.QuestionStates
             for (int i = 0; i < SpawnAmount; i++)
             {
                 var tempImage = Instantiate(questionImage, horizontalParent.transform);
-                tempImage.gameObject.SetActive(false);
                 _pooledQuestionImages.Add(tempImage);
             }
         }
@@ -224,6 +261,8 @@ namespace Spans.Skeleton.QuestionStates
             {
                 image.gameObject.SetActive(false);
             }
+            
+            _activeQuestionImages.Clear();
         }
 
         private bool IsOneOfNBackModes => _currentStrategy is NBackMode || _currentStrategy is DualNBackMode;

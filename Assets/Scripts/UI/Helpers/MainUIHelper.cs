@@ -17,7 +17,6 @@ namespace UI.Helpers
         [SerializeField] private List<GameObject> spans;
         [SerializeField] private Image selectionPopup;
         [SerializeField] private Button closeButton;
-
         [SerializeField] private DayDoneUIHelper dayCompletedPopup;
 
         private GameObject _activeSpan;

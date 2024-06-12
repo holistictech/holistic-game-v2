@@ -71,6 +71,7 @@ namespace Spans.NBack
                     roundQuestions.Add(randomQuestion);
                     _correctType = ButtonType.NotIdentical;
                 }
+                
                 questionStack = QueueUtils.AppendQueue(questionStack, new Queue<Question>(roundQuestions));
             }
             else
