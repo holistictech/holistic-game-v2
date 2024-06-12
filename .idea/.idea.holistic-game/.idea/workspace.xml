@@ -6,7 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="3d01f5fc-4a81-4ccb-94d7-a0f07bc2bc79" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/FeedbackState/NBackFeedbackState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/FeedbackState/NBackFeedbackState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/NBack/NBack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/NBack/NBack.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanInitialState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanInitialState.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -230,7 +232,7 @@
       <workItem from="1718093265483" duration="12255000" />
       <workItem from="1718180316516" duration="5582000" />
       <workItem from="1718186792120" duration="936000" />
-      <workItem from="1718192306560" duration="3620000" />
+      <workItem from="1718192306560" duration="4621000" />
     </task>
     <servers />
   </component>
@@ -263,12 +265,6 @@
           <option name="timeStamp" value="15" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/NBack/ShapeColorOrCountMode.cs</url>
-          <line>73</line>
-          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Spans\NBack\ShapeColorOrCountMode.cs" initialLine="68" containingFunctionPresentation="Method 'GetAlternativeQuestionByType'" />
-          <option name="timeStamp" value="19" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/NBack/DualNBackMode.cs</url>
           <line>206</line>
           <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Spans\NBack\DualNBackMode.cs" initialLine="206" containingFunctionPresentation="Method 'SetCorrectType'" />
@@ -276,13 +272,13 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanController.cs</url>
-          <line>83</line>
+          <line>82</line>
           <properties documentPath="C:\Users\ahaka\Documents\GitHub\holistic-game\Assets\Scripts\Spans\Skeleton\SpanController.cs" initialLine="83" containingFunctionPresentation="Method 'SwitchState'">
             <startOffsets>
-              <option value="3027" />
+              <option value="2978" />
             </startOffsets>
             <endOffsets>
-              <option value="3028" />
+              <option value="2979" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="29" />

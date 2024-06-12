@@ -93,7 +93,7 @@ namespace Spans.NBack
             
         }
         
-        /*public override void SwitchState()
+        public override void SwitchState()
         {
             if (isSpanFinished)
             {
@@ -112,7 +112,7 @@ namespace Spans.NBack
             {
                 stateContext.Transition(stateList[1]); // to turn back to question state for NBack scenarios.
             }
-        }*/
+        }
 
         public override bool IsAnswerCorrect()
         {

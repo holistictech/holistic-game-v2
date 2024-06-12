@@ -54,14 +54,7 @@ namespace Spans.Skeleton
             }
             else
             {
-                if (_spanController.GetNBackStatus())
-                {
-                    SwitchNextState();
-                }
-                else
-                {
-                    SetStateConfig();
-                }
+                SetStateConfig();
             }
         }
 

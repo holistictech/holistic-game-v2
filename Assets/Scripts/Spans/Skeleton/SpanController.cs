@@ -19,7 +19,6 @@ namespace Spans.Skeleton
         [SerializeField] protected Question[] spanQuestions;
         [SerializeField] protected bool isBackwards;
         [SerializeField] protected bool isCumulative;
-        [SerializeField] protected bool isNBack;
         [SerializeField] private StateHolder states;
         [SerializeField] private TutorialManager tutorialManager;
         [SerializeField] private TextMeshProUGUI _spanNameField;
@@ -94,10 +93,6 @@ namespace Spans.Skeleton
             {
                 ISpanState nextState = stateList[index+1];
                 stateContext.Transition(nextState);
-            }
-            else if (isNBack)
-            {
-                stateContext.Transition(stateList[1]); // test
             }
             else
             {
@@ -352,11 +347,6 @@ namespace Spans.Skeleton
         public bool GetCumulativeStatus()
         {
             return isCumulative;
-        }
-
-        public bool GetNBackStatus()
-        {
-            return isNBack;
         }
         
         public virtual CommonFields.BlockSpanModes GetCurrentMode()
