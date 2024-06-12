@@ -11,17 +11,16 @@ namespace Spans.Skeleton
             _spanController = spanController;
         }
 
-        public void Transition()
+        private void Transition()
         {
             CurrentState.Enter(_spanController);
         }
 
         public void Transition(ISpanState state)
         {
-            if(CurrentState != null)
-                CurrentState.Exit();
+            CurrentState?.Exit();
             CurrentState = state;
-            CurrentState.Enter(_spanController);
+            Transition();
         }
     }
 }

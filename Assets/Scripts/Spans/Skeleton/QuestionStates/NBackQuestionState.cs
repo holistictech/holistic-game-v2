@@ -52,8 +52,8 @@ namespace Spans.Skeleton.QuestionStates
             SetCircleUI(_isInitial ? 2 : 1);
             _isInitial = false;
             EnableUIElements();
-            if(_nBackController.GetCorrectStatus())
-                HighlightCorrectUnit();
+            //if(_nBackController.GetCorrectStatus())
+              //  HighlightCorrectUnit();
             StatisticsHelper.IncrementDisplayedQuestionCount();
             if(!_coroutineRunning)
                 ShowQuestion();
@@ -198,7 +198,9 @@ namespace Spans.Skeleton.QuestionStates
             { 
                 _coroutineRunning = false;
                 StopCoroutine(displayingQuestions);
+                displayingQuestions = null;
             }
+            base.Exit();
             //ResetPreviousCircles();
             DisableActiveImages();
             DisableUIElements();
