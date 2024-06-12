@@ -17,7 +17,7 @@ namespace Spans.Skeleton.AnswerStates
         [SerializeField] private GameObject answerPopup;
         [SerializeField] private TextMeshProUGUI givenAnswerField;
 
-        private int _maxTime;
+        private float _maxTime;
         private Coroutine _timer;
         public override void Enter(SpanController controller)
         {

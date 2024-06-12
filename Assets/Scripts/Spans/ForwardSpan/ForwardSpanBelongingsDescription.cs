@@ -12,7 +12,7 @@ namespace Spans.ForwardSpan
             return GetRandomClips();
         }
         
-        public override int GetRoundTime()
+        public override float GetRoundTime()
         {
             return currentRoundIndex * 3 + 2;
         }

@@ -82,9 +82,9 @@ namespace Spans.NBack
             return _currentStrategy.GetQuestionByCount(GetAllAvailableSpanObjects().ToList(), count);
         }
 
-        public override int GetRoundTime()
+        public override float GetRoundTime()
         {
-            return 3;
+            return 2.5f;
         }
 
         private void TryUpdateStrategy()

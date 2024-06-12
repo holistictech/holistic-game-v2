@@ -102,7 +102,7 @@ namespace Spans.BlockSpan
             return currentQuestions;
         }
         
-        public override int GetRoundTime()
+        public override float GetRoundTime()
         {
             return _questionCount * 3;
         }

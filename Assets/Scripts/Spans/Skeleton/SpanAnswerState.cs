@@ -22,7 +22,7 @@ namespace Spans.Skeleton
         [SerializeField] protected AudioClip confirmClip;
         protected SpanEventBus spanEventBus;
         protected SpanController spanController;
-        protected int maxTime;
+        protected float maxTime;
         public virtual void Enter(SpanController controller)
         {
             if (spanController == null)

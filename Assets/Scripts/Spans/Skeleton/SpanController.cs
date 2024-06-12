@@ -164,7 +164,7 @@ namespace Spans.Skeleton
             currentGivenAnswers = given;
         }
 
-        public virtual int GetRoundTime()
+        public virtual float GetRoundTime()
         {
             return 10;
         }

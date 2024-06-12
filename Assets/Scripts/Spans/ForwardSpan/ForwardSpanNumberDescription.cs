@@ -14,7 +14,7 @@ namespace Spans.ForwardSpan
             return PickNumbers(currentRoundIndex);
         }
         
-        public override int GetRoundTime()
+        public override float GetRoundTime()
         {
             return currentRoundIndex * 3;
         }
