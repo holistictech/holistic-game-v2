@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3d01f5fc-4a81-4ccb-94d7-a0f07bc2bc79" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/BlockSpan/RegularMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/BlockSpan/RegularMode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/BlockSpanQuestionState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/BlockSpanQuestionState.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -231,7 +229,7 @@
       <workItem from="1718093265483" duration="12255000" />
       <workItem from="1718180316516" duration="5582000" />
       <workItem from="1718186792120" duration="936000" />
-      <workItem from="1718192306560" duration="6539000" />
+      <workItem from="1718192306560" duration="7796000" />
     </task>
     <servers />
   </component>
@@ -262,12 +260,6 @@
           <line>28</line>
           <properties documentPath="C:\Users\ahaka\Documents\GitHub\holistic-game\Assets\Scripts\Tutorial\TutorialManager.cs" initialLine="28" containingFunctionPresentation="Method 'ActivateStateTutorial'" />
           <option name="timeStamp" value="15" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/NBack/DualNBackMode.cs</url>
-          <line>214</line>
-          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Spans\NBack\DualNBackMode.cs" initialLine="206" containingFunctionPresentation="Method 'SetCorrectType'" />
-          <option name="timeStamp" value="26" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanController.cs</url>
