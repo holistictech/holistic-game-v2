@@ -16,11 +16,15 @@ namespace Spans.Skeleton.FeedbackState
             if (spanController == null)
             {
                 _nBackController = controller.GetComponent<NBack.NBack>();
-                //base.Enter(controller);
-                spanController = controller;
+                base.Enter(controller);
+                //spanController = controller;
             }
+            else
+            {
+                PlayEffects();
+            }
+            
             EnableUIElements();
-            PlayEffects();
         }
         
         
