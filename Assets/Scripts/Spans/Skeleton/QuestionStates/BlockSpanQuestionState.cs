@@ -67,7 +67,8 @@ namespace Spans.Skeleton.QuestionStates
                 blockUIHelper.HighlightTargetBlock(spanQuestions[i]);
                 currentQuestionIndex++;
                 _currentQuestions.Add(spanQuestions[i]);
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForEndOfFrame();
+                //yield return new WaitForSeconds(2f);
             }
             
             DOVirtual.DelayedCall(1f, SwitchNextState);

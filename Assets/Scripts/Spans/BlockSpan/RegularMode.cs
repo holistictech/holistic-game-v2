@@ -30,16 +30,23 @@ namespace Spans.BlockSpan
                 return false;
             }
             
-            for (int i = 0; i < displayed.Count; i++)
+            var displayedItems = new HashSet<int>();
+            foreach (var question in displayed)
             {
-                if ((int)displayed[i].GetQuestionItem() != (int)given[i].GetQuestionItem())
+                displayedItems.Add((int)question.GetQuestionItem());
+            }
+            
+            foreach (var question in given)
+            {
+                if (!displayedItems.Contains((int)question.GetQuestionItem()))
                 {
                     return false;
                 }
             }
+
             return true;
         }
-
+        
         public List<Question> GetCorrectQuestions(List<Question> allQuestions, int count = -1)
         {
             List<Question> corrects = new List<Question>();
