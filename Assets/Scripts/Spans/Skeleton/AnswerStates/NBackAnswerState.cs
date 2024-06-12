@@ -42,7 +42,7 @@ namespace Spans.Skeleton.AnswerStates
         {
             var type = (CommonFields.ButtonType)index;
             _currentStrategy.SetChosenButtonType(type);
-            SwitchNextState();
+            //SwitchNextState();
         }
         
         public override void Exit()

@@ -13,15 +13,16 @@ namespace Spans.NBack
 {
     public class DualNBackMode : INBackStrategy
     {
-        private readonly int[] _buttonIndexes = new int[] { 5, 6, 7 };
+        private readonly int[] _buttonIndexes = new int[] { 5, 6 };
         private ButtonType _correctType;
         private ButtonType _chosen;
+        private List<ButtonType> _chosenTypes = new List<ButtonType>();
         private NBack _controller;
         private NBackQuestionState _questionState;
         private CorsiBlockUIHelper _blockUIHelper;
         private const NBackModes GameMode = NBackModes.DualNBack;
         private AudioClip _lastPlayedClip;
-
+        
         public DualNBackMode(NBack controller)
         {
             _controller = controller;
@@ -41,11 +42,17 @@ namespace Spans.NBack
 
         public void SetChosenButtonType(ButtonType chosen)
         {
+            _chosenTypes.Add(chosen);
             _chosen = chosen;
         }
 
         public bool CheckAnswer()
         {
+            if (_correctType == ButtonType.SoundAndPosition)
+            {
+                return _chosenTypes.Contains(ButtonType.Sound) && _chosenTypes.Contains(ButtonType.Position);
+            }
+            
             return _correctType == _chosen;
         }
 
@@ -58,6 +65,7 @@ namespace Spans.NBack
         {
             SetCorrectType();
             _chosen = ButtonType.Null;
+            _chosenTypes.Clear();
             var questionStack = _controller.GetCurrentStack();
             var alternativeQuestions = GetModeQuestions();
             List<Question> roundQuestions = new List<Question>();

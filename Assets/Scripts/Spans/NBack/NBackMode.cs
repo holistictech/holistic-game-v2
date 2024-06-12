@@ -44,6 +44,11 @@ namespace Spans.NBack
             _chosen = chosen;
         }
 
+        public void AppendChosenButtonType(ButtonType type)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public bool CheckAnswer()
         {
             return _correctType == _chosen;
