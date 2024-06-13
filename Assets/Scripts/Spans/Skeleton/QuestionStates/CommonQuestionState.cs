@@ -83,7 +83,7 @@ namespace Spans.Skeleton.QuestionStates
                 }
                 var question = _spanObjects[currentQuestionIndex];
                 questionBox.GetComponentInChildren<TextMeshProUGUI>().text = $"{question.GetQuestionItem()}";
-                ActivateCircle(currentQuestionIndex);
+                ActivateCircle(currentQuestionIndex, 1f);
                 questionBox.enabled = false;
                 _currentQuestions.Add(question);
                 currentQuestionIndex++;
@@ -106,7 +106,7 @@ namespace Spans.Skeleton.QuestionStates
                 var question = _spanObjects[currentQuestionIndex];
                 questionBox.sprite = (Sprite)question.GetQuestionItem();
                 questionBox.enabled = true;
-                ActivateCircle(currentQuestionIndex);
+                ActivateCircle(currentQuestionIndex, 1f);
                 _currentQuestions.Add(question);
                 currentQuestionIndex++;
                 yield return new WaitForSeconds(1f);
@@ -128,7 +128,7 @@ namespace Spans.Skeleton.QuestionStates
                 var question = _spanObjects[currentQuestionIndex];
                 AudioClip clip = (AudioClip)question.GetQuestionItem();
                 AudioManager.Instance.PlayAudioClip(clip);
-                ActivateCircle(currentQuestionIndex);
+                ActivateCircle(currentQuestionIndex, 1f);
                 _currentQuestions.Add(question);
                 currentQuestionIndex++;
                 yield return new WaitForSeconds(clip.length + 1f);

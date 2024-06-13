@@ -16,7 +16,7 @@ namespace Spans.NBack
         private int[] _buttonIndexes = new int[]{0, 1};
         private NBack _controller;
         private ButtonType _correctType;
-        private ButtonType _chosen;
+        private List<ButtonType> _chosenTypes = new List<ButtonType>();
         private const NBackModes GameMode = NBackModes.IsIdentical;
 
         public IsIdenticalMode(NBack controller)
@@ -34,19 +34,17 @@ namespace Spans.NBack
             throw new System.NotImplementedException();
         }
 
-        public void SetChosenButtonType(ButtonType chosen)
+        public void AppendChosenButtonType(ButtonType chosen)
         {
-            _chosen = chosen;
+            if (!_chosenTypes.Contains(chosen))
+            {
+                _chosenTypes.Add(chosen);
+            }
         }
-
-        public void AppendChosenButtonType(ButtonType type)
-        {
-            throw new System.NotImplementedException();
-        }
-
+        
         public bool CheckAnswer()
         {
-            return _correctType == _chosen;
+            return _chosenTypes.Count == 1 && _chosenTypes.Contains(_correctType);
         }
 
         public bool IsEmptyRound()
@@ -56,8 +54,8 @@ namespace Spans.NBack
 
         public List<Question> GetQuestionByCount(List<Question> questions, int count)
         {
-            _chosen = ButtonType.Null;
             _correctType = ButtonType.Null;
+            _chosenTypes.Clear();
             List<Question> roundQuestions = new List<Question>();
             var questionStack = _controller.GetCurrentStack();
 

@@ -24,9 +24,9 @@ namespace UI
             RemoveListeners();
         }
 
-        public void ConfigureUI()
+        public void ConfigureUI(float duration)
         {
-            circleImage.DOColor(activeColor, 1f).SetEase(Ease.Flash).OnComplete(ResetSelf);
+            circleImage.DOColor(activeColor, duration).SetEase(Ease.Linear).OnComplete(ResetSelf);
         }
 
         public void ChangeColor(Color color)

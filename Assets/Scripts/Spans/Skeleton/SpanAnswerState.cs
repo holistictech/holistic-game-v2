@@ -43,7 +43,7 @@ namespace Spans.Skeleton
             RemoveListeners();
         }
 
-        public virtual void PlayTimer(float duration)
+        protected virtual void PlayTimer(float duration)
         {
             timer.StartTimer(duration, SwitchNextState);
         }

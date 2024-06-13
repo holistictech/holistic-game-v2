@@ -93,7 +93,6 @@ namespace Spans.Skeleton.QuestionStates
         
         private IEnumerator IterateQuestions()
         {
-            Debug.Log("Coroutine started");
             var start = 1;
             if (_initialDisplay)
             {
@@ -102,7 +101,6 @@ namespace Spans.Skeleton.QuestionStates
             }
             for (int i = start; i < _spanObjects.Count; i++)
             {
-                Debug.Log($"Processing question index: {i}");
                 var question = _spanObjects[i];
                 if (question.SpawnAmount > 1)
                 {
@@ -114,14 +112,11 @@ namespace Spans.Skeleton.QuestionStates
                 }
 
                 currentQuestionIndex++;
-                Debug.Log("Waiting for .5 second before disabling images");
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(0.5f);
                 DisableActiveImages();
-                Debug.Log("Waiting for another .5 second after disabling images");
-                yield return new WaitForSeconds(1f);
+                yield return new WaitForSeconds(0.5f);
             }
-
-            Debug.Log("Scheduling SwitchNextState call");
+            
             DOVirtual.DelayedCall(1f, SwitchNextState);
         }
 
@@ -137,7 +132,7 @@ namespace Spans.Skeleton.QuestionStates
                 availableImage.gameObject.SetActive(true);
                 _currentQuestions.Add(question);
             }
-            ActivateCircle(index);
+            ActivateCircle(index, 0.5f);
         }
 
         private void ShowImage(Question question, int index)
@@ -147,7 +142,7 @@ namespace Spans.Skeleton.QuestionStates
             pooledImage.sprite = (Sprite)question.GetQuestionItem();
             Debug.Log(pooledImage.gameObject.activeSelf);
             _activeQuestionImages.Add(pooledImage);
-            ActivateCircle(index);
+            ActivateCircle(index, 0.5f);
             _currentQuestions.Add(question);
         }
 
@@ -162,14 +157,14 @@ namespace Spans.Skeleton.QuestionStates
             _initialDisplay = false;
             for (int i = start; i < _spanObjects.Count; i++)
             {
-                ActivateCircle(i);
+                ActivateCircle(i, 0.5f);
                 blockUIHelper.HighlightTargetBlock(_spanObjects[i]);
                 if (IsDualNBack)
                 {
                     PlayAudio(_spanObjects[i]);
                 }
                 
-                yield return new WaitForSeconds(2f);
+                yield return new WaitForSeconds(1f);
             }
             
             DOVirtual.DelayedCall(1f, () =>
@@ -197,7 +192,6 @@ namespace Spans.Skeleton.QuestionStates
                 StopCoroutine(displayingQuestions);
                 displayingQuestions = null;
             }
-            base.Exit();
             //ResetPreviousCircles();
             DisableActiveImages();
             DisableUIElements();

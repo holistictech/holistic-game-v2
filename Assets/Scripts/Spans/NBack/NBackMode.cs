@@ -16,7 +16,7 @@ namespace Spans.NBack
     {
         private int[] _buttonIndexes = new int[]{0, 1};
         private ButtonType _correctType;
-        private ButtonType _chosen;
+        private List<ButtonType> _chosenTypes = new List<ButtonType>();
         private NBack _controller;
         private NBackQuestionState _questionState;
         private CorsiBlockUIHelper _blockUIHelper;
@@ -39,19 +39,17 @@ namespace Spans.NBack
             _blockUIHelper.AssignQuestions(GetModeQuestions());
         }
 
-        public void SetChosenButtonType(ButtonType chosen)
+        public void AppendChosenButtonType(ButtonType chosen)
         {
-            _chosen = chosen;
-        }
-
-        public void AppendChosenButtonType(ButtonType type)
-        {
-            throw new System.NotImplementedException();
+            if (!_chosenTypes.Contains(chosen))
+            {
+                _chosenTypes.Add(chosen);
+            }
         }
 
         public bool CheckAnswer()
         {
-            return _correctType == _chosen;
+            return _chosenTypes.Count == 1 && _chosenTypes.Contains(_correctType);
         }
 
         public bool IsEmptyRound()
@@ -61,8 +59,8 @@ namespace Spans.NBack
 
         public List<Question> GetQuestionByCount(List<Question> questions, int count)
         {
+            _chosenTypes.Clear();
             SetCorrectType();
-            _chosen = ButtonType.Null;
             var questionStack = _controller.GetCurrentStack();
             questions = _controller.GetAlternativeImagesByType(GameMode);
             List<Question> roundQuestions = new List<Question>();

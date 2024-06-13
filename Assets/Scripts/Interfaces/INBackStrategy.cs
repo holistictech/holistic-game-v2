@@ -14,7 +14,7 @@ namespace Interfaces
     {
         public void InjectQuestionState(NBackQuestionState questionState);
         public void ShowQuestion();
-        public void SetChosenButtonType(CommonFields.ButtonType chosen);
+        public void AppendChosenButtonType(CommonFields.ButtonType chosen);
         public bool CheckAnswer();
         public bool IsEmptyRound();
         public List<Question> GetQuestionByCount(List<Question> questions, int count);

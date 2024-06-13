@@ -63,7 +63,7 @@ namespace Spans.Skeleton.QuestionStates
             _currentQuestions = new List<Question>();
             for (int i = 0; i < spanQuestions.Count; i++)
             {
-                ActivateCircle(i);
+                ActivateCircle(i, 1f);
                 blockUIHelper.HighlightTargetBlock(spanQuestions[i]);
                 currentQuestionIndex++;
                 _currentQuestions.Add(spanQuestions[i]);

@@ -31,6 +31,7 @@ namespace Spans.Skeleton.AnswerStates
             EnableUIElements();
             AddListeners();
             PlayTimer(_maxTime);
+            timer.DisableSliderUI();
         }
         
         public override void SwitchNextState()
@@ -41,11 +42,11 @@ namespace Spans.Skeleton.AnswerStates
         public void ChooseType(int index)
         {
             var type = (CommonFields.ButtonType)index;
-            _currentStrategy.SetChosenButtonType(type);
-            if (_currentStrategy.IsSwitchable())
+            _currentStrategy.AppendChosenButtonType(type);
+            /*if (_currentStrategy.IsSwitchable())
             {
                 SwitchNextState();
-            }
+            }*/
         }
         
         public override void Exit()

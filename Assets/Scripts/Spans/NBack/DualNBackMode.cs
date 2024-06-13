@@ -15,7 +15,6 @@ namespace Spans.NBack
     {
         private readonly int[] _buttonIndexes = new int[] { 5, 6 };
         private ButtonType _correctType;
-        private ButtonType _chosen;
         private List<ButtonType> _chosenTypes = new List<ButtonType>();
         private NBack _controller;
         private NBackQuestionState _questionState;
@@ -40,10 +39,12 @@ namespace Spans.NBack
             _blockUIHelper.AssignQuestions(GetModeQuestions());
         }
 
-        public void SetChosenButtonType(ButtonType chosen)
+        public void AppendChosenButtonType(ButtonType chosen)
         {
-            _chosenTypes.Add(chosen);
-            _chosen = chosen;
+            if (!_chosenTypes.Contains(chosen))
+            {
+                _chosenTypes.Add(chosen);
+            }
         }
 
         public bool CheckAnswer()
@@ -53,7 +54,7 @@ namespace Spans.NBack
                 return _chosenTypes.Contains(ButtonType.Sound) && _chosenTypes.Contains(ButtonType.Position);
             }
             
-            return _correctType == _chosen;
+            return _chosenTypes.Count == 1 && _chosenTypes[0] == _correctType;
         }
 
         public bool IsEmptyRound()
@@ -64,7 +65,6 @@ namespace Spans.NBack
         public List<Question> GetQuestionByCount(List<Question> questions, int count)
         {
             SetCorrectType();
-            _chosen = ButtonType.Null;
             _chosenTypes.Clear();
             var questionStack = _controller.GetCurrentStack();
             var alternativeQuestions = GetModeQuestions();

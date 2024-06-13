@@ -6,14 +6,28 @@
   <component name="ChangeListManager">
     <list default="true" id="3d01f5fc-4a81-4ccb-94d7-a0f07bc2bc79" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/DualNBackQuestions/DualNBack_7.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/DualNBackQuestions/DualNBack_7.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/DualNBackQuestions/DualNBack_8.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/DualNBackQuestions/DualNBack_8.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/DualNBackQuestions/DualNBack_9.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/DualNBackQuestions/DualNBack_9.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interfaces/INBackStrategy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interfaces/INBackStrategy.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/NBack/DualNBackMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/NBack/DualNBackMode.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/NBack/IsIdenticalMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/NBack/IsIdenticalMode.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/NBack/NBackMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/NBack/NBackMode.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/NBack/ShapeColorOrCountMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/NBack/ShapeColorOrCountMode.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/NBack/ShapeOrColorMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/NBack/ShapeOrColorMode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/BlockSpanAnswerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/BlockSpanAnswerState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/CorsiAnswerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/CorsiAnswerState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/MultipleChoiceAnswerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/MultipleChoiceAnswerState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/NBackAnswerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/NBackAnswerState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/VoiceAnswerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/VoiceAnswerState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/BlockSpanQuestionState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/BlockSpanQuestionState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/CommonQuestionState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/CommonQuestionState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/CorsiQuestionState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/CorsiQuestionState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/NBackQuestionState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/NBackQuestionState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanAnswerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanAnswerState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanQuestionState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanQuestionState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Helpers/TimerHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Helpers/TimerHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/UnitCircle.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/UnitCircle.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +38,8 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="mock:///Dummy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/5a41d6b7189842eca409fd0b1c3e3dcf17bf78/79/ff1e3fbe/DateTime.cs" root0="SKIP_HIGHLIGHTING" />
@@ -65,13 +81,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/FeedbackState/NBackFeedbackState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/CommonQuestionState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/CorsiQuestionState.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://D:/UnityProjects/holistic-game/Assets/Scripts/Spans/Skeleton/QuestionStates/NBackQuestionState.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/UnityProjects/holistic-game/Assets/Scripts/Spans/Skeleton/QuestionStates/NBackQuestionState.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/NBackQuestionState.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="mock://D:/UnityProjects/holistic-game/Assets/Scripts/Spans/Skeleton/QuestionStates/NBackQuestionState.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/UnityProjects/holistic-game/Assets/Scripts/Spans/Skeleton/QuestionStates/NBackQuestionState.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/UnityProjects/holistic-game/Assets/Scripts/Spans/Skeleton/QuestionStates/NBackQuestionState.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="mock://D:/UnityProjects/holistic-game/Assets/Scripts/Spans/Skeleton/QuestionStates/NBackQuestionState.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanEventBus.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanEventContainer.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanInitialState.cs" root0="FORCE_HIGHLIGHTING" />
@@ -102,30 +112,30 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.9429134&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "XThreadsFramesViewSplitterKey": "0.6666667",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\ahaka\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\ahaka\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\ahaka\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\User\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
+      "C:\\Users\\User\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
+      "C:\\Users\\User\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.11f1\Editor\Unity.exe" />
@@ -153,10 +163,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="35204">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="35204" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -239,6 +249,7 @@
       <workItem from="1718186792120" duration="936000" />
       <workItem from="1718192306560" duration="8163000" />
       <workItem from="1718208690658" duration="1642000" />
+      <workItem from="1718276733526" duration="3059000" />
     </task>
     <servers />
   </component>
@@ -273,28 +284,22 @@
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanController.cs</url>
           <line>82</line>
-          <properties documentPath="C:\Users\ahaka\Documents\GitHub\holistic-game\Assets\Scripts\Spans\Skeleton\SpanController.cs" initialLine="83" containingFunctionPresentation="Method 'SwitchState'">
-            <startOffsets>
-              <option value="2978" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2979" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="C:\Users\ahaka\Documents\GitHub\holistic-game\Assets\Scripts\Spans\Skeleton\SpanController.cs" initialLine="83" containingFunctionPresentation="Method 'SwitchState'" />
           <option name="timeStamp" value="29" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanStateContext.cs</url>
-          <line>19</line>
-          <properties documentPath="C:\Users\ahaka\Documents\GitHub\holistic-game\Assets\Scripts\Spans\Skeleton\SpanStateContext.cs" initialLine="19" containingFunctionPresentation="Method 'Transition'">
+          <condition expression="if(count == 1)" language="C#" />
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanQuestionState.cs</url>
+          <line>75</line>
+          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Spans\Skeleton\SpanQuestionState.cs" initialLine="75" containingFunctionPresentation="Method 'SetCircleUI'">
             <startOffsets>
-              <option value="470" />
+              <option value="1932" />
             </startOffsets>
             <endOffsets>
-              <option value="471" />
+              <option value="1933" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="30" />
+          <option name="timeStamp" value="33" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

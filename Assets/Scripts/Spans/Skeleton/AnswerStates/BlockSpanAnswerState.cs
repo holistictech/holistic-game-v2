@@ -38,8 +38,8 @@ namespace Spans.Skeleton.AnswerStates
             var options = spanController.GetCurrentDisplayedQuestions();
             optionPicker.ConfigureOptions(options);
         }
-        
-        public override void PlayTimer(float duration)
+
+        protected override void PlayTimer(float duration)
         {
             timer.StartTimer(duration, SwitchNextState);
         }

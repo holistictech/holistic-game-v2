@@ -16,4 +16,4 @@ MonoBehaviour:
   IsAnswerStringMUST: 0
   SpawnAmount: 1
   Value: 8
-  QuestionClip: {fileID: 8300000, guid: 3e7a526cc70a8cb4fae4716d2d7453e4, type: 3}
+  QuestionClip: {fileID: 8300000, guid: e85b4ba0ceae37348a6140629ea6ec13, type: 3}

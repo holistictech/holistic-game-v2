@@ -26,8 +26,8 @@ namespace Spans.Skeleton.AnswerStates
             _corsiHelper.SetActiveCircles(circles);
             _corsiHelper.ConfigureInput(true);
         }
-        
-        public override void PlayTimer(float duration)
+
+        protected override void PlayTimer(float duration)
         {
             timer.StartTimer(duration, SwitchNextState);
         }

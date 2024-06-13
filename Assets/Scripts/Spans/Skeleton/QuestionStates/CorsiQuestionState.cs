@@ -54,7 +54,7 @@ namespace Spans.Skeleton.QuestionStates
                 {
                     break;
                 }
-                ActivateCircle(currentQuestionIndex);
+                ActivateCircle(currentQuestionIndex, 1f);
                 blockUIHelper.HighlightTargetBlock(spanQuestions[currentQuestionIndex]);
                 currentQuestionIndex++;
                 yield return new WaitForSeconds(2f);

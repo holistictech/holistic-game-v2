@@ -31,6 +31,11 @@ namespace UI.Helpers
             timerBg.gameObject.SetActive(true);
         }
 
+        public void DisableSliderUI()
+        {
+            timerBg.gameObject.SetActive(false);
+        }
+
         private IEnumerator PlayTimer(float maxTime, Action onComplete)
         {
             Vector3 initialScale = new Vector3(1, 1, 1);
