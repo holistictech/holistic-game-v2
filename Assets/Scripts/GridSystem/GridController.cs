@@ -6,7 +6,7 @@ using UnityEngine;
 using UnityEngine.Serialization;
 using Utilities;
 using Utilities.Helpers;
-using static Utilities.Helpers.CartesianPoint;
+using static Utilities.Helpers.CommonFields;
 
 namespace GridSystem
 {
@@ -31,15 +31,27 @@ namespace GridSystem
             return _board[point.GetXCoordinate(), point.GetYCoordinate()].IsBlocked();
         }
 
-        public bool IsPlacementValid(List<CartesianPoint> plan)
+        public bool IsPlacementValid(List<CartesianPoint> plan, InteractableType type)
         {
             foreach (var point in plan)
             {
                 if (IsPointInvalid(point)) return false;
-
-                if (_board[point.GetXCoordinate(), point.GetYCoordinate()].IsBlocked())
-                    return false;
+                
+                if (type == InteractableType.Plant)
+                {
+                    if (_board[point.GetXCoordinate(), point.GetYCoordinate()].GetAssignedType() !=
+                        InteractableType.Field)
+                    {
+                        return false;
+                    }
+                }
+                else
+                {
+                    if (_board[point.GetXCoordinate(), point.GetYCoordinate()].IsBlocked())
+                        return false;
+                }
             }
+            
             return true;
         }
 
@@ -53,7 +65,7 @@ namespace GridSystem
             return _board.GetLength(1);
         }
 
-        public void BlockCoordinates(List<CartesianPoint> coordinates)
+        public void BlockCoordinates(List<CartesianPoint> coordinates, InteractableType type)
         {
             foreach (var point in coordinates)
             {
@@ -63,8 +75,9 @@ namespace GridSystem
                     {
                         throw new IndexOutOfRangeException("Coordinate invalid: " + point);
                     }
-
-                    _board[point.GetXCoordinate(), point.GetYCoordinate()].SetIsBlocked(true);
+                    var temp = _board[point.GetXCoordinate(), point.GetYCoordinate()]; 
+                    temp.SetIsBlocked(true);
+                    temp.SetGridType(type);
                 }
                 catch (IndexOutOfRangeException ex)
                 {

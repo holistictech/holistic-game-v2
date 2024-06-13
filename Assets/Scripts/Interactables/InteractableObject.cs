@@ -59,9 +59,9 @@ namespace Interactables
             }
         }
 
-        public void BlockCoordinates(List<CartesianPoint> desiredPoints)
+        public void BlockCoordinates(List<CartesianPoint> desiredPoints, InteractableType type)
         {
-            _gridController.BlockCoordinates(desiredPoints);
+            _gridController.BlockCoordinates(desiredPoints, type);
         }
 
         public virtual List<CartesianPoint> CalculateCoordinatesForBlocking(CartesianPoint desiredPoint)
@@ -97,9 +97,14 @@ namespace Interactables
                 _meshRenderer.enabled = true;
                 Sequence mySequence = DOTween.Sequence();
                 mySequence.Append(transform.DOShakeScale(0.75f, 0.3f));
-                mySequence.Join(transform.DOScaleY(1f, .75f).SetEase(Ease.OutQuart));
+                mySequence.Join(transform.DOScaleY(_interactableConfig.ScaleAmount, .75f).SetEase(Ease.OutQuart));
 
             });
+        }
+
+        public InteractableType GetInteractableType()
+        {
+            return _interactableConfig.InteractableType;
         }
 
         private void SpawnBuildingEffect()

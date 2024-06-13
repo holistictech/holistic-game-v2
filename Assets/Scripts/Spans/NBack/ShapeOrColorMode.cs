@@ -25,12 +25,10 @@ namespace Spans.NBack
 
         public void InjectQuestionState(NBackQuestionState questionState)
         {
-            throw new System.NotImplementedException();
         }
 
         public void ShowQuestion()
         {
-            throw new System.NotImplementedException();
         }
 
         public void AppendChosenButtonType(ButtonType chosen)

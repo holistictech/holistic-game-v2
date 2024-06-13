@@ -69,15 +69,16 @@ namespace Spawners
             PlayerInventory.Instance.ChangeCurrencyAmountByType(_currentConfig);
         }
 
-
         public void SpawnSelectedInteractable(CartesianPoint desiredPoint, InteractableConfig config, bool shouldSave)
         {
             var spawnedInstance = InteractableFactory.SpawnInstance(spawnable, config, objectParent);
             var interactable = spawnedInstance.GetComponent<InteractableObject>();
 
             interactable.InjectFields(_gridController, config, buildingEffect, buildingSFX);
-            var buildingPlan = interactable.CalculateCoordinatesForBlocking(desiredPoint);
-            if (interactable != null && _gridController.IsPlacementValid(buildingPlan))
+            var buildingPlan = interactable.InteractableConfig.InteractableType == InteractableType.Plant ? 
+                new List<CartesianPoint>{desiredPoint}
+                : interactable.CalculateCoordinatesForBlocking(desiredPoint);
+            if (interactable != null && _gridController.IsPlacementValid(buildingPlan, config.InteractableType))
             {
                 interactable.BuildSelf(desiredPoint, shouldSave);
                 swipeHandler.enabled = false;

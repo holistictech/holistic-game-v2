@@ -60,8 +60,8 @@ namespace Utilities
             CurrentLevel = PlayerSaveManager.GetPlayerAttribute(CurrentLevelKey, 0);
             CurrentStage = PlayerSaveManager.GetPlayerAttribute(CurrentStageKey, 0);
             ChangeLevelIfNeeded();
-            //Energy = 10;
-            //Performance = 100;
+            Energy = 10;
+            Performance = 100;
         }
 
         public void ChangeCurrencyAmountByType(TaskConfig config)

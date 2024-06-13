@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using Utilities;
 using Utilities.Helpers;
 using Random = UnityEngine.Random;
+using static Utilities.Helpers.CommonFields;
 
 namespace GridSystem
 {
@@ -12,6 +13,7 @@ namespace GridSystem
     {
         private CartesianPoint _point;
         private bool _isBlocked;
+        private InteractableType _assignedType;
 
         public Grid(int xCoord, int zCoord)
         {
@@ -30,6 +32,16 @@ namespace GridSystem
         public void SetIsBlocked(bool value)
         {
             _isBlocked = value;
+        }
+
+        public void SetGridType(InteractableType type)
+        {
+            _assignedType = type;
+        }
+
+        public InteractableType GetAssignedType()
+        {
+            return _assignedType;
         }
     }
 }

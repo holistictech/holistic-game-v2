@@ -21,7 +21,6 @@ namespace Spans.Skeleton.QuestionStates
 
         private NBack.NBack _nBackController;
         private INBackStrategy _currentStrategy;
-        
         private List<Question> _spanObjects; 
         private List<Question> _currentQuestions = new List<Question>();
 
@@ -119,9 +118,7 @@ namespace Spans.Skeleton.QuestionStates
             
             DOVirtual.DelayedCall(1f, SwitchNextState);
         }
-
-
-
+        
         private void ShowMultipleImages(Question question, int index)
         {
             for (int i = 0; i < question.SpawnAmount; i++)

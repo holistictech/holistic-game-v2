@@ -2,21 +2,20 @@ using System.Collections.Generic;
 using GridSystem;
 using Scriptables;
 using UnityEngine;
-using Utilities;
 using Utilities.Helpers;
 
 namespace Interactables
 {
-    public class ConcreteBuilding : InteractableObject
+    public class Plant : InteractableObject
     {
-        public ConcreteBuilding(GridController gridController, InteractableConfig config) : base(gridController, config)
+        public Plant(GridController controller, InteractableConfig config) : base(controller, config)
         {
         }
-
+        
         public override void BuildSelf(CartesianPoint desiredPoint, bool isFirstTime)
         {
-            var points = base.CalculateCoordinatesForBlocking(desiredPoint);
-            BlockCoordinates(points, GetInteractableType());
+            //var points = base.CalculateCoordinatesForBlocking(desiredPoint);
+            BlockCoordinates(new List<CartesianPoint>{desiredPoint}, GetInteractableType());
             base.BuildSelf(desiredPoint, isFirstTime);
         }
     }

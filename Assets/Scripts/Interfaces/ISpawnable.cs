@@ -14,7 +14,7 @@ namespace Interfaces
         public abstract void SetObjectMesh();
         public abstract void SetPosition(CartesianPoint point);
         public abstract void SetScale();
-        public abstract void BlockCoordinates(List<CartesianPoint> desiredPoints);
+        public abstract void BlockCoordinates(List<CartesianPoint> desiredPoints, CommonFields.InteractableType type);
         public abstract List<CartesianPoint> CalculateCoordinatesForBlocking(CartesianPoint desiredPoint);
 
             

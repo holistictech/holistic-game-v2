@@ -29,6 +29,9 @@ namespace Factory
                 case InteractableType.Field:
                     instance.AddComponent<Field>();
                     break;
+                case InteractableType.Plant:
+                    instance.AddComponent<Plant>();
+                    break;
                 default:
                     throw new ArgumentException("No such interactable type :" + config.InteractableType);
             }
