@@ -1,1 +1,1 @@
-{"InteractableData":[{"Point":{"XCoordinate":96,"ZCoordinate":39},"Config":{"MeshId":25,"InteractableType":3,"Width":10,"Height":10,"ScaleAmount":10,"name":"Field","hideFlags":0}},{"Point":{"XCoordinate":97,"ZCoordinate":39},"Config":{"MeshId":26,"InteractableType":4,"Width":4,"Height":4,"ScaleAmount":4,"name":"TomatoPlant","hideFlags":0}}]}
+{"InteractableData":[{"Point":{"XCoordinate":89,"ZCoordinate":37},"Config":{"MeshId":25,"InteractableType":3,"Width":10,"Height":10,"ScaleAmount":10,"name":"Field","hideFlags":0}}]}

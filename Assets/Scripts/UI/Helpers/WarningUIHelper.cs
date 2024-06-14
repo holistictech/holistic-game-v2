@@ -1,4 +1,5 @@
 using System;
+using DG.Tweening;
 using Scriptables;
 using TMPro;
 using UnityEngine;
@@ -9,6 +10,8 @@ namespace UI.Helpers
 {
     public class WarningUIHelper : MonoBehaviour
     {
+        [SerializeField] private Image blackishPanel;
+        [SerializeField] private Image warningImage;
         [SerializeField] private Image warningPopup;
         [SerializeField] private Button closeButton;
         [SerializeField] private Button redirectButton;
@@ -31,7 +34,11 @@ namespace UI.Helpers
         {
             _currentConfig = config;
             ConfigureWarningField();
-            warningPopup.gameObject.SetActive(true);
+            blackishPanel.gameObject.SetActive(true);
+            warningPopup.transform.DOScale(new Vector3(1, 1, 1), 0.55f).SetEase(Ease.OutBack).OnComplete(() =>
+            {
+                warningImage.transform.DOShakeScale(0.8f, 0.2f).SetEase(Ease.OutCirc);
+            });
         }
 
         private void ConfigureWarningField()
@@ -43,7 +50,8 @@ namespace UI.Helpers
         private void DisablePopup()
         {
             ResetFields();
-            warningPopup.gameObject.SetActive(false);
+            blackishPanel.gameObject.SetActive(false);
+            warningPopup.transform.localScale = new Vector3(0, 0, 0);
         }
 
         private void ResetFields()
@@ -54,13 +62,13 @@ namespace UI.Helpers
 
         private void RedirectUser()
         {
-            DisablePopup();
             switch (_currentConfig.WarningType)
             {
                 case WarningType.TaskDependency:
                     OnRedirectToTask?.Invoke(true);
                     break;
             }
+            DisablePopup();
         }
 
         private void AddListeners()

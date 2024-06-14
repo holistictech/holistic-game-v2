@@ -18,7 +18,7 @@ namespace UI.Tasks
         [SerializeField] private Sprite[] currencies;
         [SerializeField] private Button goButton;
         [SerializeField] private TextMeshProUGUI buttonTextField;
-
+        
         private TasksPanel _taskPanelManager;
 
         private TaskConfig _taskConfig;
@@ -78,8 +78,15 @@ namespace UI.Tasks
 
         private void TryCompleteTask()
         {
-            OnTaskCompleted?.Invoke(_taskConfig);
             _taskPanelManager.DisableTaskPopup();
+            if (!_taskConfig.CanBeCompleted())
+            {
+                _taskPanelManager.TriggerWarningHelper(_taskConfig);
+            }
+            else
+            {
+                OnTaskCompleted?.Invoke(_taskConfig);
+            }
         }
 
         private void RedirectToSpan()

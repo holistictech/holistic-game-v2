@@ -19,8 +19,9 @@ namespace UI.Tasks
         [SerializeField] private TextMeshProUGUI headerField;
         [SerializeField] private Button taskButton;
         [SerializeField] private Button closeButton;
-        
+
         [Header("Functionality")] 
+        [SerializeField] private WarningUIHelper warningHelper;
         [SerializeField] private Task taskPrefab;
 
         private void OnEnable()
@@ -51,6 +52,11 @@ namespace UI.Tasks
             taskPanel.gameObject.SetActive(true);
             headerField.text = type ? "Görevler" : "Araçlar";
             InstantiateTasks(type);
+        }
+
+        public void TriggerWarningHelper(TaskConfig config)
+        {
+            warningHelper.ConfigurePopup(config);
         }
 
         public void DisableTaskPopup()

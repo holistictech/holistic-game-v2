@@ -17,7 +17,9 @@ MonoBehaviour:
   Cost: 1
   CurrencyType: 0
   WarningType: 0
-  WarningString: 
+  WarningString: "Bu g\xF6revi tamamlamak i\xE7in \xF6nce Tarla in\u015Faa et g\xF6revini
+    tamamlamal\u0131s\u0131n"
   RewardInteractable: {fileID: 11400000, guid: 11192afc01f4e2044a9445642ff0794c, type: 2}
-  Dependencies: []
-  _hasCompleted: 1
+  Dependencies:
+  - {fileID: 11400000, guid: 63f0a4d3d23720148a7b8fb4b08f20b6, type: 2}
+  _hasCompleted: 0

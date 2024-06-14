@@ -79,25 +79,16 @@ namespace Spawners
             var interactable = spawnedInstance.GetComponent<InteractableObject>();
 
             interactable.InjectFields(_gridController, config, buildingEffect, buildingSFX);
-            var buildingPlan = interactable.InteractableConfig.InteractableType == InteractableType.Plant ? 
-                new List<CartesianPoint>{desiredPoint}
+            var buildingPlan = interactable.InteractableConfig.InteractableType == InteractableType.Plant
+                ? new List<CartesianPoint> { desiredPoint }
                 : interactable.CalculateCoordinatesForBlocking(desiredPoint);
             if (interactable != null && _gridController.IsPlacementValid(buildingPlan, config.InteractableType))
             {
-                if (_currentConfig.CanBeCompleted())
+                interactable.BuildSelf(desiredPoint, shouldSave);
+                swipeHandler.enabled = false;
+                if (_currentConfig != null && _currentConfig.CurrencyType == CurrencyType.Energy)
                 {
-                    interactable.BuildSelf(desiredPoint, shouldSave);
-                    swipeHandler.enabled = false;
-                    if (_currentConfig != null && _currentConfig.CurrencyType == CurrencyType.Energy)
-                    {
-                        _currentConfig.SetHasCompleted(true);
-                    }
-                }
-                else
-                {
-                    warningHelper.ConfigurePopup(_currentConfig);
-                    _spawnedSketch.DestroyObject();
-                    Destroy(interactable.gameObject);
+                    _currentConfig.SetHasCompleted(true);
                 }
             }
             else
