@@ -41,8 +41,10 @@ namespace UI
             _uiHelper.EnableButtons(position);
         }
 
-        private void DestroyObject()
+        public void DestroyObject()
         {
+            _uiHelper.DisableButtons();
+            _uiHelper.SetSketchReference(null);
             Destroy(gameObject);
         }
 

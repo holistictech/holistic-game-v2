@@ -16,5 +16,8 @@ MonoBehaviour:
   Mission: Domates dik
   Cost: 1
   CurrencyType: 0
+  WarningType: 0
+  WarningString: 
   RewardInteractable: {fileID: 11400000, guid: 11192afc01f4e2044a9445642ff0794c, type: 2}
-  _hasCompleted: 0
+  Dependencies: []
+  _hasCompleted: 1

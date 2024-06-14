@@ -25,6 +25,12 @@ namespace Utilities.Helpers
             Performance
         }
 
+        public enum WarningType
+        {
+            TaskDependency,
+            
+        }
+
         public enum BlockSpanModes
         {
             Regular = 0,

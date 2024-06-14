@@ -1,5 +1,6 @@
 using System.Collections.Generic;
 using Interfaces;
+using Spans.NBack;
 using UI;
 using UnityEngine;
 using UnityEngine.UI;
@@ -31,7 +32,8 @@ namespace Spans.Skeleton.AnswerStates
             EnableUIElements();
             AddListeners();
             PlayTimer(_maxTime);
-            timer.DisableSliderUI();
+            if(_currentStrategy is DualNBackMode)
+                timer.DisableSliderUI();
         }
         
         public override void SwitchNextState()

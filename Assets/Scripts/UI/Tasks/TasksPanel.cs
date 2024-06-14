@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using Scriptables;
 using TMPro;
+using UI.Helpers;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
@@ -72,12 +73,14 @@ namespace UI.Tasks
         {
             //taskButton.onClick.AddListener(EnableTaskPopup);
             closeButton.onClick.AddListener(DisableTaskPopup);
+            WarningUIHelper.OnRedirectToTask += EnableTaskPopup;
         }
 
         private void RemoveListeners()
         {
             //taskButton.onClick.RemoveListener(EnableTaskPopup);
             closeButton.onClick.RemoveListener(DisableTaskPopup);
+            WarningUIHelper.OnRedirectToTask -= EnableTaskPopup;
         }
     }
 }

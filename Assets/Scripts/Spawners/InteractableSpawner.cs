@@ -5,6 +5,7 @@ using GridSystem;
 using Interactables;
 using Scriptables;
 using UI;
+using UI.Helpers;
 using UI.Tasks;
 using Unity.VisualScripting;
 using UnityEngine;
@@ -23,9 +24,12 @@ namespace Spawners
         [SerializeField] private SwipeHandler swipeHandler;
         [SerializeField] private ParticleSystem buildingEffect;
         [SerializeField] private AudioClip buildingSFX;
+
+        [SerializeField] private WarningUIHelper warningHelper;
         private GridController _gridController;
         private TaskConfig _currentConfig;
 
+        private Sketch _spawnedSketch;
         public static event Action<Sketch> OnPositionChoiceNeeded;
 
         private void OnEnable()
@@ -53,12 +57,12 @@ namespace Spawners
                 Vector3 cameraPosition = transform1.position;
                 Vector3 cameraForward = transform1.forward;
                 Vector3 middlePoint = cameraPosition + cameraForward * mainCamera.nearClipPlane;
-                var spawnedSketch = Instantiate(sketch, objectParent);
-                spawnedSketch.ConfigureObjectMesh(MeshContainer.Instance.GetMeshById(_currentConfig.RewardInteractable.MeshId));
-                spawnedSketch.transform.position = new Vector3(middlePoint.x, 0, 0);
-                spawnedSketch.ConfigureSize(_currentConfig.RewardInteractable);
+                _spawnedSketch = Instantiate(sketch, objectParent);
+                _spawnedSketch.ConfigureObjectMesh(MeshContainer.Instance.GetMeshById(_currentConfig.RewardInteractable.MeshId));
+                _spawnedSketch.transform.position = new Vector3(middlePoint.x, 0, 0);
+                _spawnedSketch.ConfigureSize(_currentConfig.RewardInteractable);
                 swipeHandler.enabled = true;
-                OnPositionChoiceNeeded?.Invoke(spawnedSketch);
+                OnPositionChoiceNeeded?.Invoke(_spawnedSketch);
             }
         }
 
@@ -80,13 +84,25 @@ namespace Spawners
                 : interactable.CalculateCoordinatesForBlocking(desiredPoint);
             if (interactable != null && _gridController.IsPlacementValid(buildingPlan, config.InteractableType))
             {
-                interactable.BuildSelf(desiredPoint, shouldSave);
-                swipeHandler.enabled = false;
-                if(_currentConfig != null && _currentConfig.CurrencyType == CurrencyType.Energy)
-                    _currentConfig.SetHasCompleted(true);
+                if (_currentConfig.CanBeCompleted())
+                {
+                    interactable.BuildSelf(desiredPoint, shouldSave);
+                    swipeHandler.enabled = false;
+                    if (_currentConfig != null && _currentConfig.CurrencyType == CurrencyType.Energy)
+                    {
+                        _currentConfig.SetHasCompleted(true);
+                    }
+                }
+                else
+                {
+                    warningHelper.ConfigurePopup(_currentConfig);
+                    _spawnedSketch.DestroyObject();
+                    Destroy(interactable.gameObject);
+                }
             }
             else
             {
+                _spawnedSketch.DestroyObject();
                 Destroy(interactable.gameObject);
                 Debug.LogError("Error while spawning building");
             }
