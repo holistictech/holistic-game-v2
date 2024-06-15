@@ -8,10 +8,10 @@ namespace Spans.Skeleton.AnswerStates
         private CorsiBlockUIHelper _corsiHelper;
         public override void Enter(SpanController controller)
         {
-            base.Enter(controller);
             if (spanController == null)
             {
                 spanController = controller;
+                base.Enter(controller);
             }
             _corsiHelper = spanController.GetHelperObject().GetComponent<CorsiBlockUIHelper>();
             maxTime = spanController.GetRoundTime();
