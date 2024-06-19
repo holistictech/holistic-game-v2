@@ -46,7 +46,7 @@ namespace Utilities
             {
                 _spawnedObject.EnableButtons(_finalPosition);
             }
-    
+
             if (Input.touchCount > 0)
             {
                 _spawnedObject.DisableButtonsWhileMoving();
@@ -57,7 +57,6 @@ namespace Utilities
                     _touchStart = touch.position;
                     _isSwiping = true;
                 }
-        
                 else if (touch.phase == TouchPhase.Ended || touch.phase == TouchPhase.Canceled)
                 {
                     _isSwiping = false;
@@ -65,28 +64,36 @@ namespace Utilities
 
                 if (_isSwiping)
                 {
-                    Vector3 touchPosition = new Vector3(touch.position.x, touch.position.y, 0);
-                    Vector3 worldPosition = Camera.main.ScreenToWorldPoint(touchPosition);
-                    Vector3 roundedPosition = new Vector3(Mathf.Round(worldPosition.x), Mathf.Round(worldPosition.y), 0f);
+                    Vector3 touchPosition = new Vector3(touch.position.x, touch.position.y, Camera.main.nearClipPlane);
+                    Ray ray = Camera.main.ScreenPointToRay(touchPosition);
+                    Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
 
-                    // Calculate the difference between current and start positions
-                    Vector2 swipeDelta = touchPosition - new Vector3(_touchStart.x, _touchStart.y, 10f);
+                    if (groundPlane.Raycast(ray, out float enter))
+                    {
+                        Vector3 worldPosition = ray.GetPoint(enter);
 
-                    // Exclude the y-component from the movement direction
-                    Vector3 movementDirection = new Vector3(swipeDelta.x, 0f, swipeDelta.y).normalized;
+                        // Calculate the difference between current and start positions
+                        Vector2 swipeDelta = touch.position - (Vector2)_touchStart;
 
-                    // Calculate the target position based on the movement direction and move speed
-                    var position = _spawnedObject.transform.position;
-                    Vector3 targetPosition = position + movementDirection * (moveSpeed * Time.deltaTime);
+                        // Convert swipe delta to world movement direction
+                        Vector3 movementDirection = new Vector3(swipeDelta.x, 0f, swipeDelta.y).normalized;
 
-                    // Update the position of the spawned object, keeping the y-axis constant
-                    position = new Vector3(targetPosition.x, position.y, targetPosition.z);
-                    _spawnedObject.transform.position = position;
-                    _finalPosition = targetPosition;
+                        // Calculate the target position based on the movement direction and move speed
+                        var position = _spawnedObject.transform.position;
+                        // Optional: Use Lerp for smoother but more responsive movement
+
+                        Vector3 targetPosition = position + movementDirection * (moveSpeed * Time.deltaTime);
+                        position = Vector3.Lerp(position, new Vector3(targetPosition.x, position.y, targetPosition.z), 0.1f);
+
+                        // Update the position of the spawned object, keeping the y-axis constant
+                        position = new Vector3(targetPosition.x, position.y, targetPosition.z);
+                        _spawnedObject.transform.position = position;
+                        _finalPosition = targetPosition;
+                    }
                 }
             }
         }
-        
+
         public Vector3 GetFinalPosition()
         {
             return _finalPosition;
@@ -96,7 +103,7 @@ namespace Utilities
         {
             return _spawnedObject != null && _spawnedObject.ButtonsEnabled();
         }
-        
+
         private bool IsInteractingWithUI()
         {
             // Check if any UI element is currently selected or active

@@ -48,4 +48,6 @@ MonoBehaviour:
   sketch: {fileID: 2037818187367105660, guid: 19dcf514b24c05f4696c290247219aec, type: 3}
   objectParent: {fileID: 0}
   swipeHandler: {fileID: 0}
-  itemConfig: {fileID: 11400000, guid: f36a9929aea01b941bdfa295d7ca9bab, type: 2}
+  buildingEffect: {fileID: 19826678, guid: 125ca82d2bcc7124898f4c63533dd880, type: 3}
+  buildingSFX: {fileID: 0}
+  warningHelper: {fileID: 0}
