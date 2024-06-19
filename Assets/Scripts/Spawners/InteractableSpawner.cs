@@ -28,7 +28,6 @@ namespace Spawners
         [SerializeField] private WarningUIHelper warningHelper;
         private GridController _gridController;
         private TaskConfig _currentConfig;
-
         private Sketch _spawnedSketch;
         public static event Action<Sketch> OnPositionChoiceNeeded;
 
@@ -75,6 +74,7 @@ namespace Spawners
 
         public void SpawnSelectedInteractable(CartesianPoint desiredPoint, InteractableConfig config, bool shouldSave)
         {
+            DisableSwipeHandler();
             var spawnedInstance = InteractableFactory.SpawnInstance(spawnable, config, objectParent);
             var interactable = spawnedInstance.GetComponent<InteractableObject>();
 
@@ -84,8 +84,9 @@ namespace Spawners
                 : interactable.CalculateCoordinatesForBlocking(desiredPoint);
             if (interactable != null && _gridController.IsPlacementValid(buildingPlan, config.InteractableType))
             {
+                if(shouldSave)
+                    _spawnedSketch.DestroyObject();
                 interactable.BuildSelf(desiredPoint, shouldSave);
-                swipeHandler.enabled = false;
                 if (_currentConfig != null && _currentConfig.CurrencyType == CurrencyType.Energy)
                 {
                     _currentConfig.SetHasCompleted(true);
@@ -93,13 +94,16 @@ namespace Spawners
             }
             else
             {
-                _spawnedSketch.DestroyObject();
+                //_spawnedSketch.DestroyObject();
+                //Debug.LogError("Error while spawning building");
                 Destroy(interactable.gameObject);
-                Debug.LogError("Error while spawning building");
+                warningHelper.ConfigurePopupForUsedSpace();
+                OnPositionChoiceNeeded?.Invoke(_spawnedSketch);
+                swipeHandler.enabled = true;
             }
         }
 
-        private void CancelPlacementProcess()
+        private void DisableSwipeHandler()
         {
             swipeHandler.enabled = false;
         }
@@ -108,7 +112,7 @@ namespace Spawners
         {
             Task.OnTaskCompleted += SpawnSketch;
             Sketch.OnPlacementConfirmed += SpawnInteractable;
-            Sketch.OnPlacementCancelled += CancelPlacementProcess;
+            Sketch.OnPlacementCancelled += DisableSwipeHandler;
             //GridSpawner.OnGridReady += InjectLogicBoard;
         }
 
@@ -116,7 +120,7 @@ namespace Spawners
         {
             Task.OnTaskCompleted -= SpawnSketch;
             Sketch.OnPlacementConfirmed -= SpawnInteractable;
-            Sketch.OnPlacementCancelled -= CancelPlacementProcess;
+            Sketch.OnPlacementCancelled -= DisableSwipeHandler;
             //GridSpawner.OnGridReady -= InjectLogicBoard;
         }
         

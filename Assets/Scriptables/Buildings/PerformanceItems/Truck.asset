@@ -16,3 +16,4 @@ MonoBehaviour:
   InteractableType: 0
   Width: 3
   Height: 4
+  ScaleAmount: 1

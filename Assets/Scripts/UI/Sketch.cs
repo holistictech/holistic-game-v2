@@ -56,7 +56,7 @@ namespace UI
         public void ConfirmPlacement()
         {
             OnPlacementConfirmed?.Invoke();
-            DestroyObject();
+            //DestroyObject();
         }
 
         public void CancelPlacement()

@@ -33,7 +33,20 @@ namespace UI.Helpers
         public void ConfigurePopup(TaskConfig config)
         {
             _currentConfig = config;
-            ConfigureWarningField();
+            _currentConfig.SetWarningString();
+            ConfigureWarningField(_currentConfig.GetWarningString());
+            AnimatePanel();
+        }
+
+        public void ConfigurePopupForUsedSpace()
+        {
+            string warning = "Bu alanda inşaa edilmiş bina mevcut. Başka bir alan seçmelisin";
+            ConfigureWarningField(warning);
+            AnimatePanel();
+        }
+
+        private void AnimatePanel()
+        {
             blackishPanel.gameObject.SetActive(true);
             warningPopup.transform.DOScale(new Vector3(1, 1, 1), 0.55f).SetEase(Ease.OutBack).OnComplete(() =>
             {
@@ -41,10 +54,9 @@ namespace UI.Helpers
             });
         }
 
-        private void ConfigureWarningField()
+        private void ConfigureWarningField(string field)
         {
-            _currentConfig.SetWarningString();
-            warningField.text = _currentConfig.GetWarningString();
+            warningField.text = field;
         }
 
         private void DisablePopup()
@@ -62,13 +74,17 @@ namespace UI.Helpers
 
         private void RedirectUser()
         {
-            switch (_currentConfig.WarningType)
-            {
-                case WarningType.TaskDependency:
-                    OnRedirectToTask?.Invoke(true);
-                    break;
-            }
             DisablePopup();
+            
+            if (_currentConfig != null)
+            {
+                switch (_currentConfig.WarningType)
+                {
+                    case WarningType.TaskDependency:
+                        OnRedirectToTask?.Invoke(true);
+                        break;
+                }
+            }
         }
 
         private void AddListeners()

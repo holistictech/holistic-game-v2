@@ -53,7 +53,6 @@ namespace UI
         private void ConfirmPlacement()
         {
             _sketchObject.ConfirmPlacement();
-            DisableButtons();
         }
 
         private void CancelPlacement()

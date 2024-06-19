@@ -83,12 +83,10 @@ namespace Utilities
                     position = new Vector3(targetPosition.x, position.y, targetPosition.z);
                     _spawnedObject.transform.position = position;
                     _finalPosition = targetPosition;
-                } 
+                }
             }
         }
-
-
-
+        
         public Vector3 GetFinalPosition()
         {
             return _finalPosition;
