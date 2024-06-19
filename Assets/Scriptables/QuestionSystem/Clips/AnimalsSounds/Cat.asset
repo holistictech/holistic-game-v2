@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Cat
   m_EditorClassIdentifier: 
   CorrectAnswerString: Kedi
+  IsAnswerStringMUST: 0
+  SpawnAmount: 1
   Clip: {fileID: 8300000, guid: 7d80c4d72a00f584b8ab143f88dc6031, type: 3}
-  ClipSprite: {fileID: 21300000, guid: 6728d17a2899df64884526442edd2c44, type: 3}
+  ClipSprite: {fileID: 21300000, guid: ee6f0ef7856e34a478f5c908274861ef, type: 3}

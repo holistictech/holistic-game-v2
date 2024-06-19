@@ -19074,8 +19074,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 813b6e97c99016946b1098dee6cf8027, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  swipeThreshold: 50
-  moveSpeed: 50
+  swipeThreshold: 0
+  moveSpeed: 20
   sketchUIHelper: {fileID: 493921204}
 --- !u!4 &1551247757
 Transform:
@@ -23058,22 +23058,6 @@ PrefabInstance:
       propertyPath: warningHelper
       value: 
       objectReference: {fileID: 1977076844}
-    - target: {fileID: 1500978507082087894, guid: aad8d3e15be67234ca70f3d2d9fe7be9, type: 3}
-      propertyPath: buildingEffect
-      value: 
-      objectReference: {fileID: 19826678, guid: 125ca82d2bcc7124898f4c63533dd880, type: 3}
-    - target: {fileID: 4893083438995325354, guid: aad8d3e15be67234ca70f3d2d9fe7be9, type: 3}
-      propertyPath: m_LocalScale.x
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4893083438995325354, guid: aad8d3e15be67234ca70f3d2d9fe7be9, type: 3}
-      propertyPath: m_LocalScale.y
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 4893083438995325354, guid: aad8d3e15be67234ca70f3d2d9fe7be9, type: 3}
-      propertyPath: m_LocalScale.z
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 4893083438995325354, guid: aad8d3e15be67234ca70f3d2d9fe7be9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0
@@ -23169,7 +23153,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8013622138607943297, guid: 0a48641fe637fcf41bdfea4308e7a95d, type: 3}
       propertyPath: m_LocalPosition.y
-      value: -12.6
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8013622138607943297, guid: 0a48641fe637fcf41bdfea4308e7a95d, type: 3}
       propertyPath: m_LocalPosition.z

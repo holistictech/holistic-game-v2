@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Horse
   m_EditorClassIdentifier: 
   CorrectAnswerString: At
+  IsAnswerStringMUST: 0
+  SpawnAmount: 1
   Clip: {fileID: 8300000, guid: aa73902ad1802fb4ebf8fda9fcc4e71c, type: 3}
-  ClipSprite: {fileID: 21300000, guid: c4d06659bc824e7409d85279c1234617, type: 3}
+  ClipSprite: {fileID: 21300000, guid: debbc6e3b608b214b84a4feabfc7a087, type: 3}

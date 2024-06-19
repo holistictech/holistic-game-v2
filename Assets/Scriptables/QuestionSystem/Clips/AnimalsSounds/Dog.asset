@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Dog
   m_EditorClassIdentifier: 
   CorrectAnswerString: "K\xF6pek"
+  IsAnswerStringMUST: 0
+  SpawnAmount: 1
   Clip: {fileID: 8300000, guid: 8e33679bdd972e24eb3bfa4629c3b77a, type: 3}
-  ClipSprite: {fileID: 21300000, guid: 6f1323482ddc42d4cb38813aea19f355, type: 3}
+  ClipSprite: {fileID: 21300000, guid: 3c035fd97890a55459e11b6f5683d9eb, type: 3}

@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Elephant
   m_EditorClassIdentifier: 
   CorrectAnswerString: Fil
+  IsAnswerStringMUST: 0
+  SpawnAmount: 1
   Clip: {fileID: 8300000, guid: fa8a38042ada7b740ba13e07a03df644, type: 3}
-  ClipSprite: {fileID: 21300000, guid: b6982a4d61b30fc43a248cdfa925161d, type: 3}
+  ClipSprite: {fileID: 21300000, guid: 5cb7ae3ba9b23654d9680d2e1518d11f, type: 3}

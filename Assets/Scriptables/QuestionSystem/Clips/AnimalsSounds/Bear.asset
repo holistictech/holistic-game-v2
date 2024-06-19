@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Bear
   m_EditorClassIdentifier: 
   CorrectAnswerString: "Ay\u0131"
+  IsAnswerStringMUST: 0
+  SpawnAmount: 1
   Clip: {fileID: 8300000, guid: 510416a0c2e3dd646a8b156f6b2047e2, type: 3}
-  ClipSprite: {fileID: 21300000, guid: 65b0156832720544492fcab910792814, type: 3}
+  ClipSprite: {fileID: 21300000, guid: 2779d6d60c0d67348ad091edbda38ddf, type: 3}

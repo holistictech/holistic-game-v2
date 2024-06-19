@@ -13,5 +13,7 @@ MonoBehaviour:
   m_Name: Lion
   m_EditorClassIdentifier: 
   CorrectAnswerString: Aslan
+  IsAnswerStringMUST: 0
+  SpawnAmount: 1
   Clip: {fileID: 8300000, guid: e55fac1ec4d6d7542a06c791591fdb9a, type: 3}
-  ClipSprite: {fileID: 21300000, guid: b94dd3cb0e6fb8c4399530914b345524, type: 3}
+  ClipSprite: {fileID: 21300000, guid: 4af80e0e255ff4447ac26f710ccb840c, type: 3}
