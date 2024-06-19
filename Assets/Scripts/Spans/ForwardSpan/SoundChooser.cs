@@ -47,7 +47,7 @@ namespace Spans.ForwardSpan
 
             for (int i = 0; i < currentDisplayedQuestions.Count; i++)
             {
-                if (currentDisplayedQuestions[i].GetCorrectSprite() != currentGivenAnswers[i].GetCorrectSprite())
+                if (currentDisplayedQuestions[i].GetQuestionItem() != currentGivenAnswers[i].GetQuestionItem())
                 {
                     IncrementFailStreak();
                     return false;
