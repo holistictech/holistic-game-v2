@@ -6,7 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3d01f5fc-4a81-4ccb-94d7-a0f07bc2bc79" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Spans/ForwardSoundChooser_AnimalSounds.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Spans/ForwardSoundChooser_AnimalSounds.prefab" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -225,7 +224,8 @@
       <workItem from="1718366224493" duration="102000" />
       <workItem from="1718366353409" duration="2671000" />
       <workItem from="1718488532827" duration="2808000" />
-      <workItem from="1718817968797" duration="2088000" />
+      <workItem from="1718817968797" duration="2285000" />
+      <workItem from="1718881535520" duration="334000" />
     </task>
     <servers />
   </component>
