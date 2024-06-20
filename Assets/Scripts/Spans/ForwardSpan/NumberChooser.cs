@@ -5,7 +5,7 @@ using Random = UnityEngine.Random;
 
 namespace Spans.ForwardSpan
 {
-    public class NumberChooser : ForwardSpanNumberDescription
+    public class NumberChooser : NumberDescription
     {
         public override List<Question> GetChoices()
         {

@@ -7,7 +7,7 @@ using UnityEngine.Serialization;
 
 namespace Spans.ForwardSpan
 {
-    public class ForwardSpanNumberDescription : SpanController
+    public class NumberDescription : SpanController
     {
         public override List<Question> GetSpanObjects()
         {

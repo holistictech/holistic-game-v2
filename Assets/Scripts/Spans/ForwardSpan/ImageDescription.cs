@@ -9,7 +9,7 @@ using Random = UnityEngine.Random;
 
 namespace Spans.ForwardSpan
 {
-    public class ForwardSpanImageDescription : SpanController
+    public class ImageDescription : SpanController
     {
         public override List<Question> GetSpanObjects()
         {

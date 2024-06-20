@@ -11,7 +11,7 @@ using Random = UnityEngine.Random;
 
 namespace Spans.CumulativeSpan
 {
-    public class CumulativeChooser : ForwardSpanImageDescription
+    public class CumulativeChooser : ImageDescription
     {
         private const int _choiceCount = 9;
         public override List<Question> GetSpanObjects()

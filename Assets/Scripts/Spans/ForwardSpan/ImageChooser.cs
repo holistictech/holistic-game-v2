@@ -5,7 +5,7 @@ using UnityEngine;
 
 namespace Spans.ForwardSpan
 {
-    public class ImageChooser : ForwardSpanImageDescription
+    public class ImageChooser : ImageDescription
     {
         public override List<Question> GetChoices()
         {
