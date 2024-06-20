@@ -72,6 +72,18 @@ namespace Spans.ForwardSpan
         {
             //@todo: change this with appropriate to game rules. 
             //maybe a comparator to check correctness percentage.
+            
+            if (currentGivenAnswers.Count == 0 || currentGivenAnswers.Count != currentDisplayedQuestions.Count)
+            {
+                IncrementFailStreak();
+                return false;
+            }
+            
+            if (isBackwards)
+            {
+                currentDisplayedQuestions.Reverse();
+            }
+            
             for (int i = 0; i < currentDisplayedQuestions.Count; i++)
             {
                 if (!currentDisplayedQuestions[i].CorrectAnswerString.Equals(currentDetectedAnswers[i], StringComparison.OrdinalIgnoreCase))
