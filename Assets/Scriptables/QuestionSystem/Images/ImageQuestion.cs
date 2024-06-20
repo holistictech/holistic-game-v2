@@ -8,6 +8,11 @@ namespace Scriptables.QuestionSystem.Images
     public class ImageQuestion : Question
     {
         public Sprite Image;
+        public override void SetQuestionItem(object item)
+        {
+            Image = (Sprite)item;
+        }
+
         public override object GetQuestionItem()
         {
             return Image;

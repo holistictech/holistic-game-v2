@@ -9,7 +9,12 @@ namespace Scriptables.QuestionSystem
     {
         public Sprite ItemSprite;
         public Sprite AlternativeColorSprite;
-        
+
+        public override void SetQuestionItem(object item)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public override object GetQuestionItem()
         {
             return ItemSprite;

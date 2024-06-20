@@ -9,6 +9,11 @@ namespace Scriptables.QuestionSystem
     {
         public int Value;
         [FormerlySerializedAs("questionClip")] public AudioClip QuestionClip;
+        public override void SetQuestionItem(object item)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public override object GetQuestionItem()
         {
             return Value;

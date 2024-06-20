@@ -53,11 +53,13 @@ namespace UI.CorsiBlockTypes
         {
             //blockImage.sprite = null;
             blockImage.color = Color.white;
+            blockButton.interactable = true;
         }
 
         protected virtual void SetSelected()
         {
             blockImage.color = highlightColor;
+            blockButton.interactable = false;
             AppendSelf(blockQuestion);
         }
 

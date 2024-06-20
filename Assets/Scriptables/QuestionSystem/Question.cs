@@ -31,7 +31,9 @@ namespace Scriptables.QuestionSystem
             return "";
         }
 
+        public abstract void SetQuestionItem(object item);
         public abstract object GetQuestionItem();
+
         public abstract object GetQuestionItemByType(CommonFields.ButtonType type);
     }
 }

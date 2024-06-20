@@ -8,6 +8,11 @@ namespace Scriptables.QuestionSystem
     public class ColorQuestion : Question
     {
         public Color QuestionColor;
+        public override void SetQuestionItem(object item)
+        {
+            QuestionColor = (Color)item;
+        }
+
         public override object GetQuestionItem()
         {
             return QuestionColor;

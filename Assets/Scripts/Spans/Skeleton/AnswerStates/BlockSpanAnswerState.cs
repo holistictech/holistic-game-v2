@@ -65,7 +65,6 @@ namespace Spans.Skeleton.AnswerStates
         public override void EnableUIElements()
         {
             _blockHelper.gameObject.SetActive(true);
-            _blockHelper.ResetCorsiBlocks();
             base.EnableUIElements();
         }
 

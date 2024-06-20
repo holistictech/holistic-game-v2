@@ -1,5 +1,6 @@
 using DG.Tweening;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace UI.CorsiBlockTypes
 {
@@ -24,6 +25,7 @@ namespace UI.CorsiBlockTypes
 
         public override void ResetUI()
         {
+            blockButton.interactable = true;
             blockImage.sprite = eggSprite;
             blockImage.color = Color.white;
         }

@@ -6,7 +6,7 @@ namespace Utilities.Helpers
 {
     public class CommonFields
     {
-        public const float ROUND_DURATION = 180f;
+        public const float ROUND_DURATION = 1800f;
         public const int DEFAULT_ROUND_INDEX = 2;
         
         [Serializable]

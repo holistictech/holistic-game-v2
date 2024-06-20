@@ -1,5 +1,6 @@
 using DG.Tweening;
 using Interfaces;
+using Scriptables.QuestionSystem;
 using Spans.BlockSpan;
 using UI.Helpers;
 using UnityEngine;
@@ -32,14 +33,26 @@ namespace UI.CorsiBlockTypes
         {
             itemImage.enabled = false;
             blockImage.color = new Color(1, 1, 1, 1);
+            blockButton.transition = Selectable.Transition.ColorTint;
+            blockButton.interactable = true;
         }
 
         protected override void SetSelected()
         {
-            var question = _currentStrategy is RegularMode ? blockQuestion : OptionPicker.GetCurrentSelection();
+            Question question; 
+            if (_currentStrategy is RegularMode)
+            {
+                question = blockQuestion;
+            }
+            else
+            {
+                question = OptionPicker.GetCurrentSelection();
+                blockQuestion.SetQuestionItem(question.GetQuestionItem());
+            }
             _currentStrategy.SetBlockSelected(this, question);
+            blockButton.transition = Selectable.Transition.None;
+            blockButton.interactable = false;
             AppendSelf(question);
-            
         }
         
         public Image GetBlockImage()

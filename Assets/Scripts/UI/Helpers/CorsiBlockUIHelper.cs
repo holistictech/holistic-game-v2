@@ -65,11 +65,17 @@ namespace UI.Helpers
         {
             foreach (var block in spawnedBlocks)
             {
-                if ((int)block.GetAssignedQuestion().GetQuestionItem() == (int)question.GetQuestionItem())
+                var assignedQuestion = block.GetAssignedQuestion();
+
+                if (assignedQuestion.GetType() == question.GetType() && 
+                    assignedQuestion.GetQuestionItem().Equals(question.GetQuestionItem()))
+                {
                     return block;
+                }
             }
             throw new Exception("Could not find target question in blocks");
         }
+
 
         public void AppendSelectedAnswers(Question question, CorsiBlock selectedBlock)
         {

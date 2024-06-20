@@ -205,7 +205,6 @@ namespace Spans.Skeleton.QuestionStates
             if (IsOneOfNBackModes)
             {
                 blockUIHelper.gameObject.SetActive(true);
-                blockUIHelper.ResetCorsiBlocks();
             }
             else
             {

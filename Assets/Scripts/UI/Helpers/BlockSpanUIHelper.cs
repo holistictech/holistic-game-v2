@@ -82,7 +82,6 @@ namespace UI.Helpers
         public void EnableGrid()
         {
             gridLayout.gameObject.SetActive(true);
-            ResetCorsiBlocks();
         }
         
         public void DisableCorsiBlocks()
@@ -91,6 +90,8 @@ namespace UI.Helpers
             {
                 block.DisableSelf();
             }
+            
+            //ResetCorsiBlocks();
         }
 
         private void InstantiatePool()

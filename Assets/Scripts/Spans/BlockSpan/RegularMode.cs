@@ -30,15 +30,15 @@ namespace Spans.BlockSpan
                 return false;
             }
             
-            var displayedItems = new HashSet<int>();
+            var displayedItems = new HashSet<object>();
             foreach (var question in displayed)
             {
-                displayedItems.Add((int)question.GetQuestionItem());
+                displayedItems.Add(question.GetQuestionItem());
             }
             
             foreach (var question in given)
             {
-                if (!displayedItems.Contains((int)question.GetQuestionItem()))
+                if (!displayedItems.Contains(question.GetQuestionItem()))
                 {
                     return false;
                 }

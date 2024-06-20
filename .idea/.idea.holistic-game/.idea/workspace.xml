@@ -4,7 +4,30 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d01f5fc-4a81-4ccb-94d7-a0f07bc2bc79" name="Changes" comment="" />
+    <list default="true" id="3d01f5fc-4a81-4ccb-94d7-a0f07bc2bc79" name="Changes" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Spans/CumulativeSoundChooser.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Spans/CumulativeSoundChooser.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Spans/ForwardSoundDescription_Numbers.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Spans/ForwardSoundDescription_Numbers.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/ClipQuestion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/ClipQuestion.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/ColorQuestion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/ColorQuestion.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/DualNBackQuestion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/DualNBackQuestion.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Images/ImageQuestion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Images/ImageQuestion.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/NBackQuestion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/NBackQuestion.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Numbers/NumberQuestion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Numbers/NumberQuestion.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Question.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Question.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/BlockSpan/ColorChooserMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/BlockSpan/ColorChooserMode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/BlockSpan/ItemChooserMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/BlockSpan/ItemChooserMode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/BlockSpan/RegularMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/BlockSpan/RegularMode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/BlockSpanAnswerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/BlockSpanAnswerState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/CorsiAnswerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/CorsiAnswerState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/NBackQuestionState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/NBackQuestionState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/CorsiBlockTypes/AdaptableBlock.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/CorsiBlockTypes/AdaptableBlock.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/CorsiBlockTypes/CorsiBlock.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/CorsiBlockTypes/CorsiBlock.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/CorsiBlockTypes/StaticCorsiBlock.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/CorsiBlockTypes/StaticCorsiBlock.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Helpers/BlockSpanUIHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Helpers/BlockSpanUIHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Helpers/CorsiBlockUIHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Helpers/CorsiBlockUIHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/Helpers/CommonFields.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/Helpers/CommonFields.cs" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -85,7 +108,7 @@
     &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
     &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.4743083&quot;,
+    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.47440946&quot;,
     &quot;do_not_show_Android_plugin_suggestion&quot;: &quot;true&quot;,
     &quot;git-widget-placeholder&quot;: &quot;main&quot;,
     &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
@@ -223,7 +246,8 @@
       <workItem from="1718366353409" duration="2671000" />
       <workItem from="1718488532827" duration="2808000" />
       <workItem from="1718817968797" duration="2285000" />
-      <workItem from="1718881535520" duration="1484000" />
+      <workItem from="1718881535520" duration="5772000" />
+      <workItem from="1718909237820" duration="412000" />
     </task>
     <servers />
   </component>
@@ -266,32 +290,6 @@
           <line>15</line>
           <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Interactables\Plant.cs" initialLine="15" containingFunctionPresentation="Method 'BuildSelf'" />
           <option name="timeStamp" value="39" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanController.cs</url>
-          <line>82</line>
-          <properties documentPath="C:\Users\ahaka\Documents\GitHub\holistic-game\Assets\Scripts\Spans\Skeleton\SpanController.cs" initialLine="82" containingFunctionPresentation="Method 'SwitchState'">
-            <startOffsets>
-              <option value="2978" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2979" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="40" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanFeedbackState.cs</url>
-          <line>67</line>
-          <properties documentPath="C:\Users\ahaka\Documents\GitHub\holistic-game\Assets\Scripts\Spans\Skeleton\SpanFeedbackState.cs" initialLine="67" containingFunctionPresentation="Method 'Enter'">
-            <startOffsets>
-              <option value="2480" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2481" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="41" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

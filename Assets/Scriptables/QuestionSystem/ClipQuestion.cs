@@ -9,6 +9,11 @@ namespace Scriptables.QuestionSystem
     {
         public AudioClip Clip;
         public Sprite ClipSprite;
+        public override void SetQuestionItem(object item)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public override object GetQuestionItem()
         {
             return Clip;

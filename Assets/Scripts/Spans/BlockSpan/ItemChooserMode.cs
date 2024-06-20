@@ -36,13 +36,20 @@ namespace Spans.BlockSpan
                 return false;
             }
             
-            for (int i = 0; i < displayed.Count; i++)
+            var displayedItems = new HashSet<object>();
+            foreach (var question in displayed)
             {
-                if ((Sprite)displayed[i].GetQuestionItem() != (Sprite)given[i].GetQuestionItem())
+                displayedItems.Add(question.GetQuestionItem());
+            }
+            
+            foreach (var question in given)
+            {
+                if (!displayedItems.Contains(question.GetQuestionItem()))
                 {
                     return false;
                 }
             }
+
             return true;
         }
 

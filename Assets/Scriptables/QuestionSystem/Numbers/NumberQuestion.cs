@@ -8,6 +8,11 @@ namespace Scriptables.QuestionSystem
     public class NumberQuestion : Question
     {
         public int Value;
+        public override void SetQuestionItem(object item)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public override object GetQuestionItem()
         {
             return Value;
