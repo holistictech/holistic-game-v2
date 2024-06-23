@@ -497,8 +497,17 @@ MonoBehaviour:
   tutorialManager: {fileID: 5317712305952169983}
   _spanNameField: {fileID: 8466859783228648739}
   timerHelper: {fileID: 4893235895707078479}
-  dummyTutorialBool: 0
+  dummyTutorialBool: 1
   colorQuestions:
+  - {fileID: 11400000, guid: ad7574d99f6a61b47943af65529d304a, type: 2}
+  - {fileID: 11400000, guid: b4f60505206dbca4a882010b2ee00ea9, type: 2}
+  - {fileID: 11400000, guid: 3fca632e2fdc8c6439497f09da2568f6, type: 2}
+  - {fileID: 11400000, guid: 57a053ff98e7d7944a15704376e022a5, type: 2}
+  - {fileID: 11400000, guid: d890b8deda6336c4f93e3ec02be8a237, type: 2}
+  - {fileID: 11400000, guid: 33c767b29da71d443a3050584b20b834, type: 2}
+  - {fileID: 11400000, guid: d594a9e90b4fa2b4c9cbb68b27961dcb, type: 2}
+  - {fileID: 11400000, guid: 9195b139085668a4fb75b0835d3a690f, type: 2}
+  - {fileID: 11400000, guid: e0d7531d6175d674589baf9f6aea7b5b, type: 2}
   - {fileID: 11400000, guid: 70e654eac59ed104da2e8b28b9430598, type: 2}
   - {fileID: 11400000, guid: 15c6f1d5dc2ac9d4c913850c94d6e706, type: 2}
   - {fileID: 11400000, guid: 5fe57dbc5bc77ce4b8926101d6a2f997, type: 2}
@@ -508,6 +517,13 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 0a2f1895ed12caa4fbbf4be0f4fd7a4f, type: 2}
   - {fileID: 11400000, guid: 5f08c41650075e243848284568adb65d, type: 2}
   - {fileID: 11400000, guid: 949cb646403105a4589b686db0c57842, type: 2}
+  - {fileID: 11400000, guid: baa8d9a0ab095f047980615800125a3b, type: 2}
+  - {fileID: 11400000, guid: 5bb72ca9c94f2834cba311e519072308, type: 2}
+  - {fileID: 11400000, guid: fc4db989609383c459584c18b971ef19, type: 2}
+  - {fileID: 11400000, guid: ebc1309319df9dc498bb56f8ef2a30ed, type: 2}
+  - {fileID: 11400000, guid: 6866df01a8796034aa6dbd759dfdffde, type: 2}
+  - {fileID: 11400000, guid: d3d344eb3bf3d7745b4ee162743a342a, type: 2}
+  - {fileID: 11400000, guid: 407554f0bb67c1c4c81eac8deef77261, type: 2}
   imageQuestions:
   - {fileID: 11400000, guid: 06ad9c9adc8a5bb4d88a3529959bf116, type: 2}
   - {fileID: 11400000, guid: 9e30e14b5a62bad4c9e0009b6c9c0fea, type: 2}

@@ -16,4 +16,4 @@ MonoBehaviour:
   IsAnswerStringMUST: 0
   SpawnAmount: 1
   QuestionColor: {r: 1, g: 0.5686275, b: 0.015686275, a: 1}
-  Index: 7
+  Index: 16
