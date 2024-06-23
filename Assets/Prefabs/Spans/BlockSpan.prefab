@@ -497,7 +497,7 @@ MonoBehaviour:
   tutorialManager: {fileID: 5317712305952169983}
   _spanNameField: {fileID: 8466859783228648739}
   timerHelper: {fileID: 4893235895707078479}
-  dummyTutorialBool: 1
+  dummyTutorialBool: 0
   colorQuestions:
   - {fileID: 11400000, guid: ad7574d99f6a61b47943af65529d304a, type: 2}
   - {fileID: 11400000, guid: b4f60505206dbca4a882010b2ee00ea9, type: 2}

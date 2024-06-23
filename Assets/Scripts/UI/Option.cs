@@ -40,7 +40,7 @@ namespace UI
             _parent = parent;
             _question = question;
             
-            if (question is ImageQuestion)
+            if (question is BlockImageQuestion)
             {
                 optionImage.sprite = (Sprite)question.GetQuestionItem();
             }

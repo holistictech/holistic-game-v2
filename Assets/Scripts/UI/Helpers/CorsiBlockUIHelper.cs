@@ -68,7 +68,7 @@ namespace UI.Helpers
             {
                 var assignedQuestion = block.GetAssignedQuestion();
 
-                if (question is ColorQuestion)
+                if (question is ColorQuestion || question is BlockImageQuestion)
                 {
                     if (assignedQuestion.GetType() == question.GetType() && 
                         assignedQuestion.GetQuestionItemByType(CommonFields.ButtonType.Color).Equals(question.GetQuestionItemByType(CommonFields.ButtonType.Color)))

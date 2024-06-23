@@ -6,6 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="3d01f5fc-4a81-4ccb-94d7-a0f07bc2bc79" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Spans/BlockSpan.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Spans/BlockSpan.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/BlockSpan/BlockSpan.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/BlockSpan/BlockSpan.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/BlockSpan/ItemChooserMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/BlockSpan/ItemChooserMode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Helpers/CorsiBlockUIHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Helpers/CorsiBlockUIHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Option.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Option.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/OptionPicker.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/OptionPicker.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -87,7 +93,7 @@
     "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
     "RunOnceActivity.OpenProjectViewOnStart": "true",
     "RunOnceActivity.ShowReadmeOnStart": "true",
-    "XThreadsFramesViewSplitterKey": "0.6666667",
+    "XThreadsFramesViewSplitterKey": "0.6674009",
     "do_not_show_Android_plugin_suggestion": "true",
     "git-widget-placeholder": "main",
     "ignore.virus.scanning.warn.message": "true",
@@ -230,7 +236,7 @@
       <workItem from="1719062769430" duration="559000" />
       <workItem from="1719063719394" duration="1042000" />
       <workItem from="1719064831700" duration="2451000" />
-      <workItem from="1719141236280" duration="6130000" />
+      <workItem from="1719141236280" duration="10780000" />
     </task>
     <servers />
   </component>
@@ -273,6 +279,58 @@
           <line>15</line>
           <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Interactables\Plant.cs" initialLine="15" containingFunctionPresentation="Method 'BuildSelf'" />
           <option name="timeStamp" value="39" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/BlockSpan/ItemChooserMode.cs</url>
+          <line>80</line>
+          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Spans\BlockSpan\ItemChooserMode.cs" initialLine="80" containingFunctionPresentation="Method 'GetCorrectQuestions'">
+            <startOffsets>
+              <option value="2964" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2965" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="53" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/BlockSpan/ItemChooserMode.cs</url>
+          <line>34</line>
+          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Spans\BlockSpan\ItemChooserMode.cs" initialLine="34" containingFunctionPresentation="Method 'CheckAnswer'">
+            <startOffsets>
+              <option value="1182" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1183" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="55" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/BlockSpan/ItemChooserMode.cs</url>
+          <line>56</line>
+          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Spans\BlockSpan\ItemChooserMode.cs" initialLine="56" containingFunctionPresentation="Method 'CheckAnswer'">
+            <startOffsets>
+              <option value="2051" />
+            </startOffsets>
+            <endOffsets>
+              <option value="2112" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="57" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/BlockSpan/BlockSpan.cs</url>
+          <line>129</line>
+          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Spans\BlockSpan\BlockSpan.cs" initialLine="110" containingFunctionPresentation="Method 'GetCurrentSpanQuestions'">
+            <startOffsets>
+              <option value="5101" />
+            </startOffsets>
+            <endOffsets>
+              <option value="5146" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="58" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

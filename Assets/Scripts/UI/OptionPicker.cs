@@ -14,7 +14,7 @@ namespace UI
 
         private List<Option> _pooledOptions = new List<Option>();
         private List<Option> _activeOptions = new List<Option>();
-        private List<Color> _activeOptionColors = new List<Color>();
+        private List<object> _activeOptionObjects = new List<object>();
         private static Option _currentSelection;
 
         private void Start()
@@ -37,12 +37,12 @@ namespace UI
             optionParent.gameObject.SetActive(true);
             foreach (var element in options)
             {
-                if (!_activeOptionColors.Contains((Color)element.GetQuestionItem()))
+                if (!_activeOptionObjects.Contains(element.GetQuestionItem()))
                 {
                     var temp = GetAvailableOption();
                     temp.ConfigureOption(element, this);
                     _activeOptions.Add(temp);
-                    _activeOptionColors.Add((Color)element.GetQuestionItem());
+                    _activeOptionObjects.Add(element.GetQuestionItem());
                 }
             }
         }
@@ -70,7 +70,7 @@ namespace UI
                 option.ResetOption();
             }
             _activeOptions.Clear();
-            _activeOptionColors.Clear();
+            _activeOptionObjects.Clear();
             optionParent.gameObject.SetActive(false);
         }
 

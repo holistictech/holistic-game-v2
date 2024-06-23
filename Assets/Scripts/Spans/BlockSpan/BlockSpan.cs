@@ -55,6 +55,20 @@ namespace Spans.BlockSpan
             List<Question> roundQuestions = new List<Question>();
             HashSet<int> usedQuestionIndices = new HashSet<int>();
             var iterations = _currentConfig.GridSize.x * _currentConfig.GridSize.y;
+            /*if (_gameMode is ColorChooserMode)
+            {
+                iterations -= 2;
+                roundQuestions.Add(allQuestions[0]);
+                roundQuestions.Add(allQuestions[1]);
+            }
+            
+            else if (_gameMode is ItemChooserMode)
+            {
+                iterations -= 3;
+                roundQuestions.Add(allQuestions[0]);
+                roundQuestions.Add(allQuestions[1]);
+                roundQuestions.Add(allQuestions[2]);
+            }
 
             for (int i = 0; i < iterations; i++)
             {
@@ -66,6 +80,11 @@ namespace Spans.BlockSpan
 
                 usedQuestionIndices.Add(randomQuestionIndex);
                 roundQuestions.Add(allQuestions[randomQuestionIndex]);
+            }*/
+            
+            for (int i = 0; i < iterations; i++)
+            {
+                roundQuestions.Add(allQuestions[i]);
             }
 
             currentSpanQuestions = roundQuestions;
@@ -85,6 +104,10 @@ namespace Spans.BlockSpan
                     }
                     return colorQuestions;
                 case BlockSpanModes.ItemChooser:
+                    foreach (var question in imageQuestions)
+                    {
+                        question.ResetSelf();
+                    }
                     return imageQuestions;
             }
 

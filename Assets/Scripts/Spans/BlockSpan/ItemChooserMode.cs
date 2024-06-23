@@ -4,6 +4,7 @@ using Interfaces;
 using Scriptables.QuestionSystem;
 using UI.CorsiBlockTypes;
 using UnityEngine;
+using Utilities.Helpers;
 
 namespace Spans.BlockSpan
 {
@@ -37,20 +38,42 @@ namespace Spans.BlockSpan
                 return false;
             }
             
-            var displayedItems = new HashSet<object>();
+            var displayedList = new List<(object sprite, int index)>();
+            var givenList = new List<(object sprite, int index)>();
+            
             foreach (var question in displayed)
             {
-                displayedItems.Add(question.GetQuestionItem());
+                var color = question.GetQuestionItem();
+                var index = (int)question.GetQuestionItemByType(CommonFields.ButtonType.Shape);
+                displayedList.Add((color, index));
             }
             
             foreach (var question in given)
             {
-                if (!displayedItems.Contains(question.GetQuestionItem()))
+                var color = question.GetQuestionItem();
+                var index = (int)question.GetQuestionItemByType(CommonFields.ButtonType.Shape);
+                givenList.Add((color, index));
+            }
+            var matchedItems = new HashSet<(object sprite, int index)>();
+            
+            foreach (var displayedItem in displayedList)
+            {
+                bool matchFound = false;
+                for (int i = 0; i < givenList.Count; i++)
+                {
+                    var givenItem = givenList[i];
+                    if (!matchedItems.Contains(givenItem) && displayedItem.sprite.Equals(givenItem.sprite) && displayedItem.index.Equals(givenItem.index))
+                    {
+                        matchFound = true;
+                        matchedItems.Add(givenItem);
+                        break;
+                    }
+                }
+                if (!matchFound)
                 {
                     return false;
                 }
             }
-
             return true;
         }
 
