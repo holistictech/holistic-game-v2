@@ -14,4 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   CorrectAnswerString: 
   IsAnswerStringMUST: 0
+  SpawnAmount: 1
   QuestionColor: {r: 0, g: 1, b: 1, a: 1}
+  Index: 2

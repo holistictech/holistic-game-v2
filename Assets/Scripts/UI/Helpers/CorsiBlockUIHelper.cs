@@ -7,6 +7,7 @@ using Spans.Skeleton.QuestionStates;
 using UI.CorsiBlockTypes;
 using UnityEngine;
 using UnityEngine.UI;
+using Utilities.Helpers;
 
 namespace UI.Helpers
 {
@@ -67,10 +68,21 @@ namespace UI.Helpers
             {
                 var assignedQuestion = block.GetAssignedQuestion();
 
-                if (assignedQuestion.GetType() == question.GetType() && 
-                    assignedQuestion.GetQuestionItem().Equals(question.GetQuestionItem()))
+                if (question is ColorQuestion)
                 {
-                    return block;
+                    if (assignedQuestion.GetType() == question.GetType() && 
+                        assignedQuestion.GetQuestionItemByType(CommonFields.ButtonType.Color).Equals(question.GetQuestionItemByType(CommonFields.ButtonType.Color)))
+                    {
+                        return block;
+                    }
+                }
+                else
+                {
+                    if (assignedQuestion.GetType() == question.GetType() && 
+                        assignedQuestion.GetQuestionItem().Equals(question.GetQuestionItem()))
+                    {
+                        return block;
+                    }
                 }
             }
             throw new Exception("Could not find target question in blocks");

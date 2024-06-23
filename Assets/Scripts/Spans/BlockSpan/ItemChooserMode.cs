@@ -9,6 +9,7 @@ namespace Spans.BlockSpan
 {
     public class ItemChooserMode : IBlockSpanStrategy
     {
+
         public void HighlightBlock(AdaptableBlock targetBlock)
         {
             var itemImage = targetBlock.GetItemImage();

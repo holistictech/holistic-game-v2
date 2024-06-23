@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Scriptables.QuestionSystem;
 using UnityEngine;
 using UnityEngine.UI;
@@ -13,6 +14,7 @@ namespace UI
 
         private List<Option> _pooledOptions = new List<Option>();
         private List<Option> _activeOptions = new List<Option>();
+        private List<Color> _activeOptionColors = new List<Color>();
         private static Option _currentSelection;
 
         private void Start()
@@ -32,14 +34,17 @@ namespace UI
 
         public void ConfigureOptions(List<Question> options)
         {
+            optionParent.gameObject.SetActive(true);
             foreach (var element in options)
             {
-                var temp = GetAvailableOption();
-                temp.ConfigureOption(element, this);
-                _activeOptions.Add(temp);
+                if (!_activeOptionColors.Contains((Color)element.GetQuestionItem()))
+                {
+                    var temp = GetAvailableOption();
+                    temp.ConfigureOption(element, this);
+                    _activeOptions.Add(temp);
+                    _activeOptionColors.Add((Color)element.GetQuestionItem());
+                }
             }
-            
-            optionParent.gameObject.SetActive(true);
         }
 
         public void SetOptionActive(Option option)
@@ -65,6 +70,7 @@ namespace UI
                 option.ResetOption();
             }
             _activeOptions.Clear();
+            _activeOptionColors.Clear();
             optionParent.gameObject.SetActive(false);
         }
 

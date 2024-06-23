@@ -53,19 +53,21 @@ namespace Spans.BlockSpan
         {
             var allQuestions = GetAllAvailableSpanObjects();
             List<Question> roundQuestions = new List<Question>();
+            HashSet<int> usedQuestionIndices = new HashSet<int>();
             var iterations = _currentConfig.GridSize.x * _currentConfig.GridSize.y;
+
             for (int i = 0; i < iterations; i++)
             {
-                var randomQuestionIndex = Random.Range(0, allQuestions.Length);
-                var randomQuestion = allQuestions[randomQuestionIndex];
-                while (roundQuestions.Contains(randomQuestion))
+                int randomQuestionIndex;
+                do
                 {
                     randomQuestionIndex = Random.Range(0, allQuestions.Length);
-                    randomQuestion = allQuestions[randomQuestionIndex];
-                }
-                
-                roundQuestions.Add(randomQuestion);
+                } while (usedQuestionIndices.Contains(randomQuestionIndex));
+
+                usedQuestionIndices.Add(randomQuestionIndex);
+                roundQuestions.Add(allQuestions[randomQuestionIndex]);
             }
+
             currentSpanQuestions = roundQuestions;
             return currentSpanQuestions;
         }
@@ -77,6 +79,10 @@ namespace Spans.BlockSpan
                 case BlockSpanModes.Regular:
                     return spanQuestions;
                 case BlockSpanModes.ColorChooser:
+                    foreach (var question in colorQuestions)
+                    {
+                        question.ResetSelf();
+                    }
                     return colorQuestions;
                 case BlockSpanModes.ItemChooser:
                     return imageQuestions;

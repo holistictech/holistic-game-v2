@@ -31,6 +31,11 @@ namespace Scriptables.QuestionSystem
             return "";
         }
 
+        public virtual void ResetSelf()
+        {
+            
+        }
+
         public abstract void SetQuestionItem(object item);
         public abstract object GetQuestionItem();
 

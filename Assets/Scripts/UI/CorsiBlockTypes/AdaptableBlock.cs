@@ -48,7 +48,9 @@ namespace UI.CorsiBlockTypes
             {
                 question = OptionPicker.GetCurrentSelection();
                 blockQuestion.SetQuestionItem(question.GetQuestionItem());
+                question = blockQuestion;
             }
+            
             _currentStrategy.SetBlockSelected(this, question);
             blockButton.transition = Selectable.Transition.None;
             blockButton.interactable = false;

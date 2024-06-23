@@ -9,6 +9,7 @@ namespace Spans.BlockSpan
 {
     public class RegularMode : IBlockSpanStrategy
     {
+
         public void HighlightBlock(AdaptableBlock targetBlock)
         {
             var blockImage = targetBlock.GetBlockImage();

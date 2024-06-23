@@ -473,7 +473,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 5a9d12d931ad7ac489339a4cf19760b4, type: 2}
   - {fileID: 11400000, guid: 989b7005ceca4b8489bfe52567fbae56, type: 2}
   - {fileID: 11400000, guid: 4e0cf6cdb572b504f99bf59abf2c3aa9, type: 2}
-  - {fileID: 11400000, guid: 8342a1a9e4602aa419c30f1ad6b08b77, type: 2}
+  - {fileID: 11400000, guid: 989b7005ceca4b8489bfe52567fbae56, type: 2}
   - {fileID: 11400000, guid: e0fc73d5139bb6140a91a4decd78312b, type: 2}
   - {fileID: 11400000, guid: 30f7d2c60754341448ca935666e64ad0, type: 2}
   - {fileID: 11400000, guid: e78a0ebcede69804da92a11251d247d3, type: 2}
@@ -493,22 +493,21 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 428ea3981d0b41e4284773bd420e8305, type: 2}
   isBackwards: 0
   isCumulative: 0
-  isNBack: 0
   states: {fileID: 11400000, guid: a130ac86c1d093e4591361b108a41817, type: 2}
   tutorialManager: {fileID: 5317712305952169983}
   _spanNameField: {fileID: 8466859783228648739}
   timerHelper: {fileID: 4893235895707078479}
   dummyTutorialBool: 0
   colorQuestions:
-  - {fileID: 11400000, guid: b6b3d4fbe657e8e4280bcc23f5ae5f84, type: 2}
-  - {fileID: 11400000, guid: 5074322d6c03c4f49a5cba9ada3655c4, type: 2}
-  - {fileID: 11400000, guid: 71946411f28abf441863e76fbd7cc2cb, type: 2}
-  - {fileID: 11400000, guid: 2a61bfa06f53ab24ab1ce57eb7d17f73, type: 2}
-  - {fileID: 11400000, guid: 346db99f75f6d2f4eb62cf0fa34c785f, type: 2}
-  - {fileID: 11400000, guid: 837a6d7fe2efe0044baab1bb9ec4631f, type: 2}
-  - {fileID: 11400000, guid: a2109ddd185b3144f8a22053b16452f6, type: 2}
-  - {fileID: 11400000, guid: 7f21496ed9b83d245af99b0ba480a720, type: 2}
-  - {fileID: 11400000, guid: d358081df5d78ff43a4a675eb762e73f, type: 2}
+  - {fileID: 11400000, guid: 70e654eac59ed104da2e8b28b9430598, type: 2}
+  - {fileID: 11400000, guid: 15c6f1d5dc2ac9d4c913850c94d6e706, type: 2}
+  - {fileID: 11400000, guid: 5fe57dbc5bc77ce4b8926101d6a2f997, type: 2}
+  - {fileID: 11400000, guid: 15011d303610fd14b853cae213ed1d2a, type: 2}
+  - {fileID: 11400000, guid: c9ac4bd9e3765a541947b0cb2e2b1195, type: 2}
+  - {fileID: 11400000, guid: c90731dda3a489d4aae183f9b785a357, type: 2}
+  - {fileID: 11400000, guid: 0a2f1895ed12caa4fbbf4be0f4fd7a4f, type: 2}
+  - {fileID: 11400000, guid: 5f08c41650075e243848284568adb65d, type: 2}
+  - {fileID: 11400000, guid: 949cb646403105a4589b686db0c57842, type: 2}
   imageQuestions:
   - {fileID: 11400000, guid: 06ad9c9adc8a5bb4d88a3529959bf116, type: 2}
   - {fileID: 11400000, guid: 9e30e14b5a62bad4c9e0009b6c9c0fea, type: 2}
