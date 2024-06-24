@@ -270,8 +270,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 419408841667814181}
-  clickClip: {fileID: 8300000, guid: 5c9f81d8625c42c41b6fe8e1f049ee5c, type: 3}
-  amount: 0.06
+  clickClip: {fileID: 8300000, guid: c52790a11a952e44db2218fc7b13f5b3, type: 3}
 --- !u!1001 &6278083297719007244
 PrefabInstance:
   m_ObjectHideFlags: 0

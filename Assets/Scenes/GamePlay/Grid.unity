@@ -9414,7 +9414,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 625902097}
-  clickClip: {fileID: 8300000, guid: 5c9f81d8625c42c41b6fe8e1f049ee5c, type: 3}
+  clickClip: {fileID: 8300000, guid: c52790a11a952e44db2218fc7b13f5b3, type: 3}
 --- !u!1 &678780472
 GameObject:
   m_ObjectHideFlags: 0
@@ -9600,7 +9600,7 @@ MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7474141742100322983, guid: 6cf43647e4797452ca8e8cc5521e6bec, type: 3}
   m_PrefabInstance: {fileID: 764378446}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 764378447}
+  m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
@@ -14914,101 +14914,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: PlayButton
       objectReference: {fileID: 0}
-    - target: {fileID: 7474141743310241160, guid: 6cf43647e4797452ca8e8cc5521e6bec, type: 3}
-      propertyPath: m_text
-      value: Oyna
-      objectReference: {fileID: 0}
-    - target: {fileID: 7474141743310241160, guid: 6cf43647e4797452ca8e8cc5521e6bec, type: 3}
-      propertyPath: m_fontSize
-      value: 106
-      objectReference: {fileID: 0}
-    - target: {fileID: 7474141743310241160, guid: 6cf43647e4797452ca8e8cc5521e6bec, type: 3}
-      propertyPath: m_fontAsset
-      value: 
-      objectReference: {fileID: 11400000, guid: 5c5ee151f9307453bad78be36b51a077, type: 2}
-    - target: {fileID: 7474141743310241160, guid: 6cf43647e4797452ca8e8cc5521e6bec, type: 3}
-      propertyPath: m_fontStyle
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7474141743310241160, guid: 6cf43647e4797452ca8e8cc5521e6bec, type: 3}
-      propertyPath: m_fontColor.b
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7474141743310241160, guid: 6cf43647e4797452ca8e8cc5521e6bec, type: 3}
-      propertyPath: m_fontColor.g
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7474141743310241160, guid: 6cf43647e4797452ca8e8cc5521e6bec, type: 3}
-      propertyPath: m_fontColor.r
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7474141743310241160, guid: 6cf43647e4797452ca8e8cc5521e6bec, type: 3}
-      propertyPath: m_fontSizeMax
-      value: 106
-      objectReference: {fileID: 0}
-    - target: {fileID: 7474141743310241160, guid: 6cf43647e4797452ca8e8cc5521e6bec, type: 3}
-      propertyPath: m_fontSizeMin
-      value: 90
-      objectReference: {fileID: 0}
-    - target: {fileID: 7474141743310241160, guid: 6cf43647e4797452ca8e8cc5521e6bec, type: 3}
-      propertyPath: m_textAlignment
-      value: 65535
-      objectReference: {fileID: 0}
-    - target: {fileID: 7474141743310241160, guid: 6cf43647e4797452ca8e8cc5521e6bec, type: 3}
-      propertyPath: m_sharedMaterial
-      value: 
-      objectReference: {fileID: 2517202264660172603, guid: 5c5ee151f9307453bad78be36b51a077, type: 2}
-    - target: {fileID: 7474141743310241160, guid: 6cf43647e4797452ca8e8cc5521e6bec, type: 3}
-      propertyPath: m_fontColor32.rgba
-      value: 4294967295
-      objectReference: {fileID: 0}
-    - target: {fileID: 7474141743310241160, guid: 6cf43647e4797452ca8e8cc5521e6bec, type: 3}
-      propertyPath: m_TextStyleHashCode
-      value: -1183493901
-      objectReference: {fileID: 0}
-    - target: {fileID: 7474141743310241160, guid: 6cf43647e4797452ca8e8cc5521e6bec, type: 3}
-      propertyPath: m_VerticalAlignment
-      value: 512
-      objectReference: {fileID: 0}
-    - target: {fileID: 7474141743310241160, guid: 6cf43647e4797452ca8e8cc5521e6bec, type: 3}
-      propertyPath: m_HorizontalAlignment
-      value: 2
-      objectReference: {fileID: 0}
-    - target: {fileID: 7474141743310241160, guid: 6cf43647e4797452ca8e8cc5521e6bec, type: 3}
-      propertyPath: m_hasFontAssetChanged
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7474141743310241160, guid: 6cf43647e4797452ca8e8cc5521e6bec, type: 3}
-      propertyPath: m_enableVertexGradient
-      value: 0
-      objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents:
-    - targetCorrespondingSourceObject: {fileID: 7474141742100322981, guid: 6cf43647e4797452ca8e8cc5521e6bec, type: 3}
-      insertIndex: -1
-      addedObject: {fileID: 764378448}
+    m_AddedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 6cf43647e4797452ca8e8cc5521e6bec, type: 3}
---- !u!1 &764378447 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 7474141742100322981, guid: 6cf43647e4797452ca8e8cc5521e6bec, type: 3}
-  m_PrefabInstance: {fileID: 764378446}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &764378448
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 764378447}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c160173fecd17a4f997cd9c88d01551, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  button: {fileID: 709096445}
-  clickClip: {fileID: 8300000, guid: 5c9f81d8625c42c41b6fe8e1f049ee5c, type: 3}
 --- !u!1 &772127438
 GameObject:
   m_ObjectHideFlags: 0
@@ -20616,7 +20526,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   button: {fileID: 1725589499}
-  clickClip: {fileID: 8300000, guid: 5c9f81d8625c42c41b6fe8e1f049ee5c, type: 3}
+  clickClip: {fileID: 8300000, guid: c52790a11a952e44db2218fc7b13f5b3, type: 3}
 --- !u!1 &1728660782
 GameObject:
   m_ObjectHideFlags: 0
