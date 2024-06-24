@@ -13,7 +13,7 @@ namespace UI
         [SerializeField] private Option optionPrefab;
 
         private List<Option> _pooledOptions = new List<Option>();
-        private List<Option> _activeOptions = new List<Option>();
+        private static List<Option> _activeOptions = new List<Option>();
         private List<object> _activeOptionObjects = new List<object>();
         private static Option _currentSelection;
 
@@ -76,6 +76,10 @@ namespace UI
 
         public static Question GetCurrentSelection()
         {
+            if (_currentSelection == null)
+            {
+                return _activeOptions[0].GetQuestion();
+            }
             return _currentSelection.GetQuestion();
         }
 

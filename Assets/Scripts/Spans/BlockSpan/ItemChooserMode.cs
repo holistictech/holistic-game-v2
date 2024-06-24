@@ -20,7 +20,7 @@ namespace Spans.BlockSpan
             itemImage.DOColor(new Color(1, 1, 1, 1), 0.3f).OnComplete(() =>
             {
                 itemImage.transform.DOPunchScale(new Vector3(.2f, .2f, .2f), .7f).SetEase(Ease.OutBack)
-                    .SetLoops(2, LoopType.Restart).OnComplete(targetBlock.ResetUI);
+                    .SetLoops(2, LoopType.Incremental).OnComplete(targetBlock.ResetUI);
             });
         }
 
