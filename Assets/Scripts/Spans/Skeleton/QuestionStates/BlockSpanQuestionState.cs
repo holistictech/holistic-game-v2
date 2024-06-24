@@ -63,11 +63,19 @@ namespace Spans.Skeleton.QuestionStates
             _currentQuestions = new List<Question>();
             for (int i = 0; i < spanQuestions.Count; i++)
             {
-                ActivateCircle(i, 1f);
+                if (_config is ColorChooserMode)
+                {
+                    ActivateCircle(i, 1f, (Color)spanQuestions[i].GetQuestionItem());
+                }
+                else
+                {
+                    ActivateCircle(i, 1f);
+                }
+                
                 blockUIHelper.HighlightTargetBlock(spanQuestions[i]);
                 currentQuestionIndex++;
                 _currentQuestions.Add(spanQuestions[i]);
-                yield return new WaitForEndOfFrame();
+                yield return new WaitForSeconds(0.01f);
                 //yield return new WaitForSeconds(2f);
             }
             

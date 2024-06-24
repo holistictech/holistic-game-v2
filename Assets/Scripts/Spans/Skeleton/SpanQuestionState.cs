@@ -103,7 +103,15 @@ namespace Spans.Skeleton
                 _activeCircles[index].ConfigureUI(duration);
             }
         }
-
+        
+        protected void ActivateCircle(int index, float duration, Color color)
+        {
+            if (_activeCircles != null && _activeCircles.Count > index)
+            {
+                _activeCircles[index].ConfigureUI(duration, color);
+            }
+        }
+        
         protected void HighlightPreviousCircle()
         {
             var circle = _activeCircles[^2];

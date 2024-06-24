@@ -22,6 +22,10 @@ namespace UI.CorsiBlockTypes
             {
                 blockImage.sprite = basketSprite;
             }
+            else
+            {
+                blockImage.sprite = null;
+            }
         }
         
         public override void AnimateSelf()

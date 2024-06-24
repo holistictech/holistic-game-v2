@@ -185,10 +185,6 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2248318883426158715}
     m_Modifications:
-    - target: {fileID: 354959882196503019, guid: 369de73d7f0c74f47a291c5bcb1e21f6, type: 3}
-      propertyPath: m_IsActive
-      value: 1
-      objectReference: {fileID: 0}
     - target: {fileID: 5056678591670876714, guid: 369de73d7f0c74f47a291c5bcb1e21f6, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -272,18 +268,6 @@ PrefabInstance:
     - target: {fileID: 6135121794128771762, guid: 369de73d7f0c74f47a291c5bcb1e21f6, type: 3}
       propertyPath: m_Name
       value: OptionPicker
-      objectReference: {fileID: 0}
-    - target: {fileID: 7665486035124579924, guid: 369de73d7f0c74f47a291c5bcb1e21f6, type: 3}
-      propertyPath: m_ChildControlWidth
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7665486035124579924, guid: 369de73d7f0c74f47a291c5bcb1e21f6, type: 3}
-      propertyPath: m_ChildControlHeight
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7665486035124579924, guid: 369de73d7f0c74f47a291c5bcb1e21f6, type: 3}
-      propertyPath: m_ChildForceExpandWidth
-      value: 1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

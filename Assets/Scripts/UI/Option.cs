@@ -14,8 +14,9 @@ namespace UI
     {
         [SerializeField] private Image optionBg;
         [SerializeField] private Button optionButton;
-        [SerializeField] private Image optionImage; 
-
+        [SerializeField] private Image optionImage;
+        [SerializeField] private Color bgColor;
+        
         private OptionPicker _parent;
         private Question _question;
 
@@ -43,6 +44,7 @@ namespace UI
             if (question is BlockImageQuestion)
             {
                 optionImage.sprite = (Sprite)question.GetQuestionItem();
+                optionBg.color = bgColor;
             }
             else if (question is ColorQuestion)
             {
@@ -71,7 +73,7 @@ namespace UI
         {
             gameObject.SetActive(false);
             optionImage.enabled = true;
-            optionBg.color = Color.white;
+            optionBg.color = bgColor;
             ScaleOption(1f);
         }
 

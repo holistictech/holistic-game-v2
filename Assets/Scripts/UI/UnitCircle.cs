@@ -11,6 +11,8 @@ namespace UI
     {
         [SerializeField] private Image circleImage;
         [SerializeField] private Color activeColor;
+
+        private Color _assignedColor = Color.white;
         
         private Tween _jump;
         
@@ -28,6 +30,12 @@ namespace UI
         {
             circleImage.DOColor(activeColor, duration).SetEase(Ease.Linear).OnComplete(ResetSelf);
         }
+        
+        public void ConfigureUI(float duration, Color color)
+        {
+            _assignedColor = color;
+            circleImage.DOColor(_assignedColor, duration).SetEase(Ease.Linear).OnComplete(ResetSelf);
+        }
 
         public void ChangeColor(Color color)
         {
@@ -36,7 +44,7 @@ namespace UI
 
         public void OnAnswerGiven()
         {
-            circleImage.color = activeColor;
+            circleImage.color = _assignedColor == Color.white ? activeColor : _assignedColor;
             ResetScale();
         }
 
@@ -73,6 +81,7 @@ namespace UI
         {
             ResetScale();
             circleImage.color = Color.white;
+            _assignedColor = Color.white;
         }
 
         private void ResetScale()
