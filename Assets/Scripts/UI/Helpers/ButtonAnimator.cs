@@ -30,7 +30,8 @@ namespace UI.Helpers
         private void OnButtonClick()
         {
             Sequence buttonSequence = DOTween.Sequence();
-            AudioManager.Instance.PlayAudioClip(clickClip);
+            if(clickClip != null)
+                AudioManager.Instance.PlayAudioClip(clickClip);
             buttonSequence.Append(button.transform.DOPunchScale(new Vector3(-_amount, -_amount, -_amount), 0.15f).SetEase(Ease.OutQuad).OnComplete(
                 () =>
                 {

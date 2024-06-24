@@ -5,8 +5,9 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3d01f5fc-4a81-4ccb-94d7-a0f07bc2bc79" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/SoundEffects/SoundEffect_Tap.wav" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/SoundEffects/SoundEffect_Tap.wav" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Assets/SoundEffects/SoundEffect_Tap.wav.meta" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Assets/SoundEffects/SoundEffect_Tap.wav.meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/States/AnswerStates/NBackAnswerState.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/States/AnswerStates/NBackAnswerState.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Helpers/ButtonAnimator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Helpers/ButtonAnimator.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -232,7 +233,7 @@
       <workItem from="1719063719394" duration="1042000" />
       <workItem from="1719064831700" duration="2451000" />
       <workItem from="1719141236280" duration="11058000" />
-      <workItem from="1719213651467" duration="8813000" />
+      <workItem from="1719213651467" duration="9785000" />
     </task>
     <servers />
   </component>
