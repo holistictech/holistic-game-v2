@@ -12,6 +12,7 @@ namespace Spans.BlockSpan
 {
     public class BlockSpan : SpanController
     {
+        [SerializeField] private bool isCombine;
         [SerializeField] private Question[] colorQuestions;
         [SerializeField] private Question[] imageQuestions;
         private List<GridConfiguration> _gridConfigs =
@@ -221,6 +222,10 @@ namespace Spans.BlockSpan
         public IBlockSpanStrategy GetCurrentStrategy()
         {
             return _gameMode;
+        }
+        public bool GetCombineStatus()
+        {
+            return isCombine;
         }
     }
 }

@@ -235,7 +235,7 @@ namespace Spans.Skeleton
             foreach (var state in states.StatePrefabs)
             {
                 var temp = Instantiate(state, transform);
-                temp.transform.SetSiblingIndex(0);
+                //temp.transform.SetSiblingIndex(0);
                 stateList.Add(temp.GetComponent<ISpanState>());
             }
         }

@@ -69,6 +69,7 @@ namespace Spans.Skeleton
             if (spanController == null)
             {
                 spanController = controller;
+                progressBarSlider.gameObject.SetActive(true);
             }
 
             EnableUIElements();

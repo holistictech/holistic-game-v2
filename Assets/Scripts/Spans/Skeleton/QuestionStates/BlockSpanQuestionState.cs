@@ -63,23 +63,34 @@ namespace Spans.Skeleton.QuestionStates
             _currentQuestions = new List<Question>();
             for (int i = 0; i < spanQuestions.Count; i++)
             {
-                if (_config is ColorChooserMode)
+                ConfigureQuestionField(i, spanQuestions[i]);
+                if (_blockSpanController.GetCombineStatus() && spanQuestions.Count > 1)
                 {
-                    ActivateCircle(i, 1f, (Color)spanQuestions[i].GetQuestionItem());
+                    yield return FadeBlocksOutAndIn();
                 }
                 else
                 {
-                    ActivateCircle(i, 1f);
+                    yield return new WaitForSeconds(0.01f);
                 }
-                
-                blockUIHelper.HighlightTargetBlock(spanQuestions[i]);
-                currentQuestionIndex++;
-                _currentQuestions.Add(spanQuestions[i]);
-                yield return new WaitForSeconds(0.01f);
-                //yield return new WaitForSeconds(2f);
             }
             
             DOVirtual.DelayedCall(1f, SwitchNextState);
+        }
+
+        private void ConfigureQuestionField(int index, Question question)
+        {
+            if (_config is ColorChooserMode)
+            {
+                ActivateCircle(index, 1f, (Color)question.GetQuestionItem());
+            }
+            else
+            {
+                ActivateCircle(index, 1f);
+            }
+                
+            blockUIHelper.HighlightTargetBlock(question);
+            currentQuestionIndex++;
+            _currentQuestions.Add(question);
         }
 
         public override void SwitchNextState()
@@ -102,6 +113,17 @@ namespace Spans.Skeleton.QuestionStates
             {
                 base.SwitchNextState();
             }
+        }
+
+        private IEnumerator FadeBlocksOutAndIn()
+        {
+            yield return new WaitForSeconds(1f);
+            
+            blockUIHelper.gameObject.SetActive(false);
+            yield return new WaitForSeconds(0.5f); // Wait for the block to be hidden
+
+            blockUIHelper.gameObject.SetActive(true);
+            yield return new WaitForSeconds(0.5f); // Wait for the block to be shown and highlighted
         }
         
         private void ConfigureDisplayedQuestions()

@@ -1,6 +1,9 @@
+using DG.Tweening;
+using TMPro;
 using UI;
 using UI.Helpers;
 using UnityEngine;
+using UnityEngine.UI;
 using Utilities;
 using Utilities.Helpers;
 
@@ -9,11 +12,16 @@ namespace Spans.Skeleton.AnswerStates
     public class BlockSpanAnswerState : SpanAnswerState
     {
         [SerializeField] private OptionPicker optionPicker;
+        [SerializeField] private Image combineBanner;
+        [SerializeField] private TextMeshProUGUI combineField;
+
+        private BlockSpan.BlockSpan _blockSpanController;
         private CorsiBlockUIHelper _blockHelper;
         public override void Enter(SpanController controller)
         {
             if (spanController == null)
             {
+                _blockSpanController = controller.GetComponent<BlockSpan.BlockSpan>();
                 base.Enter(controller);
             }
             
@@ -25,12 +33,14 @@ namespace Spans.Skeleton.AnswerStates
                 ConfigureOptionPicker();
             PlayTimer(maxTime);
         }
-        
+
+        private bool _canDisplayBanner;
         private void ConfigureBlockHelper()
         {
             var circles = spanController.GetActiveCircles();
             _blockHelper.SetActiveCircles(circles);
             _blockHelper.ConfigureInput(true);
+            if(circles.Count > 1) _canDisplayBanner = true;
         }
 
         private void ConfigureOptionPicker()
@@ -41,12 +51,33 @@ namespace Spans.Skeleton.AnswerStates
 
         protected override void PlayTimer(float duration)
         {
-            timer.StartTimer(duration, SwitchNextState);
+            if (_blockSpanController.GetCombineStatus() && _canDisplayBanner)
+            {
+                Sequence combineSequence = DOTween.Sequence();
+                combineSequence.Append(combineBanner.transform.DOScaleX(1f, 0.5f).SetEase(Ease.OutCirc).OnComplete(() =>
+                {
+                    combineField.gameObject.SetActive(true);
+                }));
+                combineSequence.Append(combineField.transform.DOPunchScale(new Vector3(0.15f, 0.15f, 0.15f), 0.5f).OnComplete(
+                    () =>
+                    {
+                        combineField.gameObject.SetActive(false);
+                    }));
+                combineSequence.Append(combineBanner.transform.DOScaleX(0f, 0.5f).SetEase(Ease.InCirc).OnComplete(() =>
+                {
+                    timer.StartTimer(duration, SwitchNextState);
+                }));
+            }
+            else
+            {
+                timer.StartTimer(duration, SwitchNextState);
+            }
         }
         
         public override void Exit()
         {
             base.Exit();
+            _canDisplayBanner = false;
             _blockHelper.DisableUnitCircles();
             DisableUIElements();
         }
