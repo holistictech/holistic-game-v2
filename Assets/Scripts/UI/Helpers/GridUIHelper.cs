@@ -21,6 +21,7 @@ namespace UI.Helpers
         private List<UnitCircle> _activeUnitCircles;
 
         private int _answerIndex = 0;
+        private int _requiredAnswerCount = 0;
         public static event Action OnRoundFinished;
 
         private void Start()
@@ -45,6 +46,7 @@ namespace UI.Helpers
 
         public void SetActiveCircles(List<UnitCircle> circles)
         {
+            _requiredAnswerCount = circles.Count;
             _activeUnitCircles = circles;
         }
 
@@ -82,10 +84,17 @@ namespace UI.Helpers
 
         public void SelectChoice(Question question, Choice selected)
         {
-            _givenAnswers.Add(question);
-            _selectedChoices.Add(selected);
-            _answerState.OnAnswerGiven();
-            UpdateAndAnimateUnitCircle(true);
+            if (_givenAnswers.Count < _requiredAnswerCount)
+            {
+                _givenAnswers.Add(question);
+                _selectedChoices.Add(selected);
+                _answerState.OnAnswerGiven();
+                UpdateAndAnimateUnitCircle(true);
+            }
+            else
+            {
+                selected.ResetUI();
+            }
         }
 
         public void RevokeLastSelection()

@@ -91,9 +91,16 @@ namespace UI.Helpers
 
         public void AppendSelectedAnswers(Question question, CorsiBlock selectedBlock)
         {
-            selectedBlocks.Add(selectedBlock);
-            selectedAnswers.Add(question);
-            UpdateAndAnimateUnitCircle(true);
+            if (selectedAnswers.Count < _activeCircles.Count)
+            {
+                selectedBlocks.Add(selectedBlock);
+                selectedAnswers.Add(question);
+                UpdateAndAnimateUnitCircle(true);
+            }
+            else
+            {
+                selectedBlock.ResetUI();
+            }
         }
 
         public void RevokeLastSelection()
