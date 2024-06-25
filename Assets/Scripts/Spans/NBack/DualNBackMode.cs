@@ -21,10 +21,11 @@ namespace Spans.NBack
         private CorsiBlockUIHelper _blockUIHelper;
         private const NBackModes GameMode = NBackModes.DualNBack;
         private AudioClip _lastPlayedClip;
-        
+        private int _roundCount;
         public DualNBackMode(NBack controller)
         {
             _controller = controller;
+            _roundCount = 0;
         }
 
         public void InjectQuestionState(NBackQuestionState questionState)
@@ -64,8 +65,16 @@ namespace Spans.NBack
 
         public List<Question> GetQuestionByCount(List<Question> questions, int count)
         {
+            if (_roundCount == 19)
+            {
+                _controller.EndSpan();
+                return new List<Question>();
+            }
+            
+            
             SetCorrectType();
             _chosenTypes.Clear();
+            _roundCount++;
             var questionStack = _controller.GetCurrentStack();
             var alternativeQuestions = GetModeQuestions();
             List<Question> roundQuestions = new List<Question>();

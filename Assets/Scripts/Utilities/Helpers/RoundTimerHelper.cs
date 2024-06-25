@@ -23,5 +23,13 @@ namespace Utilities
             }
             _spanController.SetSpanCompleted();
         }
+
+        public void StopTimer()
+        {
+            if (_timer != null)
+            {
+                StopCoroutine(_timer);
+            }
+        }
     }
 }

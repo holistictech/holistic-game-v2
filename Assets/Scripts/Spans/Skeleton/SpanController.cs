@@ -102,6 +102,7 @@ namespace Spans.Skeleton
 
         public void EndSpan()
         {
+            timerHelper.StopTimer();
             gameObject.SetActive(false);
             OnSpanFinished?.Invoke(currentRoundIndex);
         }
