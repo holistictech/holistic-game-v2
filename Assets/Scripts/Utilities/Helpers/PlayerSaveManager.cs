@@ -23,6 +23,10 @@ namespace Utilities
             {
                 PlayerPrefs.SetString(key, ((DateTime)(object)value).ToString("o"));
             }
+            else if (typeof(T).IsEnum)
+            {
+                PlayerPrefs.SetInt(key, Convert.ToInt32(value));
+            }
             else
             {
                 throw new ArgumentException("Unsupported parameter type");
@@ -50,6 +54,12 @@ namespace Utilities
             {
                 string dateTimeString = PlayerPrefs.GetString(key, defaultValue.ToString());
                 return (T)(object)DateTime.Parse(dateTimeString, null, System.Globalization.DateTimeStyles.RoundtripKind);
+            }
+            
+            if (typeof(T).IsEnum)
+            {
+                int intValue = PlayerPrefs.GetInt(key, Convert.ToInt32(defaultValue));
+                return (T)(object)intValue;
             }
             
             throw new ArgumentException("Unsupported parameter type");

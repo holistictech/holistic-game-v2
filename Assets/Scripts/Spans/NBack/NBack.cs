@@ -7,6 +7,7 @@ using Spans.Skeleton;
 using UnityEngine;
 using Utilities;
 using Utilities.Helpers;
+using static Utilities.Helpers.CommonFields;
 
 namespace Spans.NBack
 {
@@ -15,11 +16,21 @@ namespace Spans.NBack
         [SerializeField] private List<Question> alternativeObjectImages;
         [SerializeField] private List<Question> nBackQuestions;
         [SerializeField] private List<Question> dualNBackQuestions;
-        [SerializeField] private CommonFields.NBackModes _testMode; 
+        [SerializeField] private NBackModes _testMode; 
             
-        private Dictionary<CommonFields.NBackModes, List<Question>> _modeQuestionDictionary;
+        private Dictionary<NBackModes, List<Question>> _modeQuestionDictionary;
+        private List<NBackModes> _gameModes = new List<NBackModes>()
+        {
+            NBackModes.IsIdentical,
+            NBackModes.ColorOrShape,
+            NBackModes.ColorShapeOrCount,
+            NBackModes.NBack,
+            NBackModes.DualNBack
+        };
+
+        private const string ModeSaveKey = "NBackNextMode"; 
         private Queue<Question> _questionStack;
-        private CommonFields.ButtonType _identicalShown;
+        private ButtonType _identicalShown;
         private INBackStrategy _currentStrategy;
         private bool _isInitial;
         private bool _isCorrect;
@@ -30,33 +41,57 @@ namespace Spans.NBack
             _isInitial = true;
             _questionStack = new Queue<Question>();
             _modeQuestionDictionary =
-                new Dictionary<CommonFields.NBackModes, List<Question>>()
+                new Dictionary<NBackModes, List<Question>>()
                 {
-                    { CommonFields.NBackModes.IsIdentical, GetAllAvailableSpanObjects().ToList() },
-                    { CommonFields.NBackModes.ColorOrShape, alternativeObjectImages },
-                    { CommonFields.NBackModes.ColorShapeOrCount, alternativeObjectImages },
-                    { CommonFields.NBackModes.NBack, nBackQuestions },
-                    { CommonFields.NBackModes.DualNBack, dualNBackQuestions },
+                    { NBackModes.IsIdentical, GetAllAvailableSpanObjects().ToList() },
+                    { NBackModes.ColorOrShape, alternativeObjectImages },
+                    { NBackModes.ColorShapeOrCount, alternativeObjectImages },
+                    { NBackModes.NBack, nBackQuestions },
+                    { NBackModes.DualNBack, dualNBackQuestions },
                 };
+
+            _testMode = PlayerSaveManager.GetPlayerAttribute(ModeSaveKey, NBackModes.IsIdentical);
 
             switch (_testMode)
             {
-                case CommonFields.NBackModes.IsIdentical:
+                case NBackModes.IsIdentical:
                     _currentStrategy = new IsIdenticalMode(this);
                     break;
-                case CommonFields.NBackModes.ColorOrShape:
+                case NBackModes.ColorOrShape:
                     _currentStrategy = new ShapeOrColorMode(this);
                     break;
-                case CommonFields.NBackModes.ColorShapeOrCount:
+                case NBackModes.ColorShapeOrCount:
                     _currentStrategy = new ShapeColorOrCountMode(this);
                     break;
-                case CommonFields.NBackModes.NBack:
+                case NBackModes.NBack:
                     _currentStrategy = new NBackMode(this);
                     break;
-                case CommonFields.NBackModes.DualNBack:
+                case NBackModes.DualNBack:
                     _currentStrategy = new DualNBackMode(this);
                     break;
             }
+        }
+        
+        public override void EndSpan()
+        {
+            float successRate = ((float)StatisticsHelper.GetTrueCount() / StatisticsHelper.GetTotalQuestionCount()) * 100;
+            TryUpdateGameModeForNextSpan(successRate);
+            base.EndSpan();
+        }
+
+        private void TryUpdateGameModeForNextSpan(float rate)
+        {
+            var nextModeEnum = NBackModes.IsIdentical;
+            var index = _gameModes.IndexOf(_currentStrategy.GetModeEnum());
+            if (rate <= 70 && index > 0)
+            {
+                nextModeEnum = _gameModes[index - 1];
+            }else if (rate >= 80 && index < _gameModes.Count - 1)
+            {
+                nextModeEnum = _gameModes[index + 1];
+            }
+            
+            PlayerSaveManager.SavePlayerAttribute(nextModeEnum, ModeSaveKey);
         }
         
         protected override void StartTimer()

@@ -129,6 +129,11 @@ namespace Spans.NBack
             return _buttonIndexes;
         }
 
+        public NBackModes GetModeEnum()
+        {
+            return GameMode;
+        }
+
         private bool ShouldBeSame()
         {
             return Random.Range(0, 2) == 0;

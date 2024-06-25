@@ -100,7 +100,7 @@ namespace Spans.Skeleton
             }
         }
 
-        public void EndSpan()
+        public virtual void EndSpan()
         {
             timerHelper.StopTimer();
             gameObject.SetActive(false);

@@ -127,5 +127,10 @@ namespace Spans.NBack
         {
             return _buttonIndexes;
         }
+
+        public NBackModes GetModeEnum()
+        {
+            return GameMode;
+        }
     }
 }

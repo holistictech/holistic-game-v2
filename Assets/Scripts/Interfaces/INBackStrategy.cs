@@ -22,6 +22,7 @@ namespace Interfaces
         public bool IsSwitchable();
 
         public int[] GetModeIndexes();
+        public CommonFields.NBackModes GetModeEnum(); 
         public void EnableButtons(Button[] allButtons)
         {
             var indexes = GetModeIndexes();

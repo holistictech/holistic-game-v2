@@ -7,6 +7,7 @@ using Spans.ForwardSpan;
 using Spans.Skeleton;
 using UnityEngine;
 using Utilities;
+using Utilities.Helpers;
 using Random = UnityEngine.Random;
 
 namespace Spans.CumulativeSpan

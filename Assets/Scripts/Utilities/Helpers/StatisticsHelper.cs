@@ -1,11 +1,10 @@
-namespace Utilities
+namespace Utilities.Helpers
 {
     public static class StatisticsHelper
     {
         private static int _displayedQuestionCount;
         private static int _trueCount;
-
-
+        
         public static void IncrementTrueCount()
         {
             _trueCount++;
