@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using Scriptables.QuestionSystem;
 using Scriptables.Tutorial;
+using Spans.CumulativeSpan;
 using UI.Helpers;
 using UnityEngine;
 using UnityEngine.UI;
@@ -51,6 +52,7 @@ namespace Spans.Skeleton.AnswerStates
             var choices = spanController.GetChoices();
             var unitCircles = spanController.GetActiveCircles();
             gridHelper.SetActiveCircles(unitCircles);
+            gridHelper.SetStartingIndex(spanController.GetStartingUnitIndex());
             gridHelper.ConfigureChoices(choices, this);
         }
 

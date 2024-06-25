@@ -50,6 +50,11 @@ namespace UI.Helpers
             _activeUnitCircles = circles;
         }
 
+        public void SetStartingIndex(int index)
+        {
+            _answerIndex = index;
+        }
+
         public List<Question> GetGivenAnswers()
         {
             return _givenAnswers;

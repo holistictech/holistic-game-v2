@@ -339,6 +339,11 @@ namespace Spans.Skeleton
             }
         }
 
+        public virtual int GetStartingUnitIndex()
+        {
+            return 0;
+        }
+
         public bool GetBackwardStatus()
         {
             return isBackwards;

@@ -11,6 +11,7 @@ using UI;
 using UnityEngine;
 using UnityEngine.UI;
 using Utilities;
+using Utilities.Helpers;
 
 namespace Spans.Skeleton.QuestionStates
 {
@@ -33,7 +34,7 @@ namespace Spans.Skeleton.QuestionStates
             }
             _spanObjects = spanController.GetSpanObjects();
             EnableUIElements();
-            SetCircleUI(spanController.GetRoundIndex());
+            SetCircleUI(spanController is RunningSpan ? _spanObjects.Count : spanController.GetRoundIndex());
             if (spanController.GetTutorialStatus())
             {
                 TryShowStateTutorial();
@@ -126,13 +127,17 @@ namespace Spans.Skeleton.QuestionStates
                     break;
                 }
                 var question = _spanObjects[currentQuestionIndex];
+                
                 AudioClip clip = (AudioClip)question.GetQuestionItem();
+                questionBox.GetComponentInChildren<TextMeshProUGUI>().text = $"{question.GetCorrectText()}";
                 AudioManager.Instance.PlayAudioClip(clip);
                 ActivateCircle(currentQuestionIndex, 1f);
                 _currentQuestions.Add(question);
                 currentQuestionIndex++;
-                yield return new WaitForSeconds(clip.length + 1f);
-            } 
+                yield return new WaitForSeconds(1f);
+                questionBox.GetComponentInChildren<TextMeshProUGUI>().text = "";
+                yield return new WaitForSeconds(clip.length);
+            }
             
             DOVirtual.DelayedCall(1f, SwitchNextState);
         }

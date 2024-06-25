@@ -21,7 +21,7 @@ namespace Scriptables.QuestionSystem
 
         public override object GetQuestionItemByType(CommonFields.ButtonType type)
         {
-            throw new System.NotImplementedException();
+            return CorrectAnswerString;
         }
 
         public override Sprite GetCorrectSprite()
