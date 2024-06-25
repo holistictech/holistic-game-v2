@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: 10_Clip
   m_EditorClassIdentifier: 
   CorrectAnswerString: 10
-  IsAnswerStringMUST: 1
+  IsAnswerStringMUST: 0
+  SpawnAmount: 1
   Clip: {fileID: 8300000, guid: de8251733d803134ebd45ccef754c634, type: 3}
   ClipSprite: {fileID: 0}

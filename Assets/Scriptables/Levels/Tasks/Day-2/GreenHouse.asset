@@ -16,5 +16,8 @@ MonoBehaviour:
   Mission: "Sera in\u015Faa et"
   Cost: 3
   CurrencyType: 0
-  RewardInteractable: {fileID: 0}
+  WarningType: 0
+  WarningString: 
+  RewardInteractable: {fileID: 11400000, guid: 8bfaef2be50843d41987c66f992069a0, type: 2}
+  Dependencies: []
   _hasCompleted: 0

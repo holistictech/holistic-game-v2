@@ -16,5 +16,8 @@ MonoBehaviour:
   Mission: "Yem deposu in\u015Faa et"
   Cost: 2
   CurrencyType: 0
-  RewardInteractable: {fileID: 0}
+  WarningType: 0
+  WarningString: 
+  RewardInteractable: {fileID: 11400000, guid: 490f9267e6985d64bbe51fcdf33ee083, type: 2}
+  Dependencies: []
   _hasCompleted: 0

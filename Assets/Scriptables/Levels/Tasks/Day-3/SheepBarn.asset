@@ -16,5 +16,8 @@ MonoBehaviour:
   Mission: "Koyun ah\u0131r\u0131 in\u015Faa et"
   Cost: 3
   CurrencyType: 0
-  RewardInteractable: {fileID: 0}
+  WarningType: 0
+  WarningString: 
+  RewardInteractable: {fileID: 11400000, guid: 7ebdeed99538ef54c98198b32bad1894, type: 2}
+  Dependencies: []
   _hasCompleted: 0

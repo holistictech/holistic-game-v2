@@ -16,5 +16,8 @@ MonoBehaviour:
   Mission: "\u0130\u015F\xE7iler i\xE7in bisiklet al"
   Cost: 1
   CurrencyType: 0
-  RewardInteractable: {fileID: 0}
+  WarningType: 0
+  WarningString: 
+  RewardInteractable: {fileID: 11400000, guid: 5a27fc49084cbd24a936f14bb188ca5e, type: 2}
+  Dependencies: []
   _hasCompleted: 0

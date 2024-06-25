@@ -16,5 +16,8 @@ MonoBehaviour:
   Mission: "B\xFCy\xFCk k\xFCmesi in\u015Faa et"
   Cost: 3
   CurrencyType: 0
-  RewardInteractable: {fileID: 0}
+  WarningType: 0
+  WarningString: 
+  RewardInteractable: {fileID: 11400000, guid: b52c2d3783568a14693fc1b54812d865, type: 2}
+  Dependencies: []
   _hasCompleted: 0

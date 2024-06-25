@@ -16,5 +16,8 @@ MonoBehaviour:
   Mission: Saman deposu kur
   Cost: 2
   CurrencyType: 0
-  RewardInteractable: {fileID: 0}
+  WarningType: 0
+  WarningString: 
+  RewardInteractable: {fileID: 11400000, guid: a1074a2ae657ab9498c7261f6aed7d5c, type: 2}
+  Dependencies: []
   _hasCompleted: 0

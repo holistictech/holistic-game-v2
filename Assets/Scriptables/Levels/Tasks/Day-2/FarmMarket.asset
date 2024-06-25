@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TaskSprite: {fileID: 0}
   Mission: "\xC7iftlik marketini in\u015Faa et"
-  Cost: 0
+  Cost: 1
   CurrencyType: 0
-  RewardInteractable: {fileID: 0}
+  WarningType: 0
+  WarningString: 
+  RewardInteractable: {fileID: 11400000, guid: d4a2a9dcb5633804998e0b69f92e8cf9, type: 2}
+  Dependencies: []
   _hasCompleted: 0

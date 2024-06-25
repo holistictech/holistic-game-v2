@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TaskSprite: {fileID: 0}
   Mission: "K\xFCmes i\xE7in tavuk al"
-  Cost: 1
+  Cost: 2
   CurrencyType: 0
-  RewardInteractable: {fileID: 0}
+  WarningType: 0
+  WarningString: 
+  RewardInteractable: {fileID: 11400000, guid: 4a3e22310e003304590da9ec91cbe196, type: 2}
+  Dependencies: []
   _hasCompleted: 0

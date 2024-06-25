@@ -5,23 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3d01f5fc-4a81-4ccb-94d7-a0f07bc2bc79" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/States/QuestionStates/CorsiQuestionState.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/States/QuestionStates/CorsiQuestionState.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/States/QuestionStates/MovingCorsiQuestionState.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/States/QuestionStates/MovingCorsiQuestionState.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Spans/QuestionState/MovingBlockParent.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Spans/QuestionState/MovingBlockParent.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Spans/QuestionState/MovingCorsiBlock.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Spans/QuestionState/MovingCorsiBlock.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/StateHolders/ForwardCorsiStates.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/StateHolders/ForwardCorsiStates.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/StateHolders/MovingCorsiStates.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/StateHolders/MovingCorsiStates.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/CorsiSpan/CorsiSpan.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/CorsiSpan/CorsiSpan.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/NBack/NBack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/NBack/NBack.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/CorsiAnswerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/CorsiAnswerState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/FeedbackState/NBackFeedbackState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/FeedbackState/NBackFeedbackState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/CorsiBlockTypes/CorsiBlock.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/CorsiBlockTypes/CorsiBlock.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/CorsiBlockTypes/MovingCorsiBlock.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/CorsiBlockTypes/MovingCorsiBlock.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Helpers/CorsiBlockUIHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Helpers/CorsiBlockUIHelper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Helpers/MainUIHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Helpers/MainUIHelper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/InputHandlers/CameraMover.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/InputHandlers/CameraMover.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/TagManager.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/Day-2/Chicken.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/Day-2/Chicken.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/Day-2/CowBarn.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/Day-2/CowBarn.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/Day-2/Cycle.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/Day-2/Cycle.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/Day-2/FarmMarket.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/Day-2/FarmMarket.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/Day-2/GreenHouse.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/Day-2/GreenHouse.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/Day-3/BiggerChickenCoop.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/Day-3/BiggerChickenCoop.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/Day-3/FeedStore.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/Day-3/FeedStore.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/Day-3/Hayloft.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/Day-3/Hayloft.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/Day-3/SheepBarn.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/Day-3/SheepBarn.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/HolyFarm.json" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -252,7 +245,7 @@
       <workItem from="1719141236280" duration="11058000" />
       <workItem from="1719213651467" duration="10070000" />
       <workItem from="1719239081862" duration="14572000" />
-      <workItem from="1719316279075" duration="4527000" />
+      <workItem from="1719316279075" duration="5120000" />
     </task>
     <servers />
   </component>

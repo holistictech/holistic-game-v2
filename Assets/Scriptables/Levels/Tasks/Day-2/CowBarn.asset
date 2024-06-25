@@ -14,7 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   TaskSprite: {fileID: 0}
   Mission: "\u0130nek ah\u0131r\u0131 in\u015Faa et"
-  Cost: 0
+  Cost: 3
   CurrencyType: 0
-  RewardInteractable: {fileID: 0}
+  WarningType: 0
+  WarningString: 
+  RewardInteractable: {fileID: 11400000, guid: d74a064c8248aff44a87a5edffc084fa, type: 2}
+  Dependencies: []
   _hasCompleted: 0
