@@ -54,7 +54,21 @@ namespace UI.CorsiBlockTypes
         {
             if (_canChangeDirection)
             {
-                ChooseNewDirection();
+                if (other.gameObject.CompareTag("UpBorder") || other.gameObject.CompareTag("DownBorder"))
+                {
+                    _moveVector = new Vector2(_moveVector.x, -_moveVector.y);
+                }
+            
+                if (other.gameObject.CompareTag("RightBorder") || other.gameObject.CompareTag("LeftBorder"))
+                {
+                    _moveVector = new Vector2(-_moveVector.x, _moveVector.y);
+                }
+
+                if (other.gameObject.CompareTag("Fish"))
+                {
+                    ChooseNewDirection();
+                }
+                
                 StartCoroutine(CooldownDirectionChange());
             }
         }
@@ -63,15 +77,38 @@ namespace UI.CorsiBlockTypes
         {
             if (_canChangeDirection)
             {
-                ChooseNewDirection();
+                if (other.gameObject.CompareTag("UpBorder") || other.gameObject.CompareTag("DownBorder"))
+                {
+                    _moveVector = new Vector2(_moveVector.x, -_moveVector.y);
+                }
+            
+                if (other.gameObject.CompareTag("RightBorder") || other.gameObject.CompareTag("LeftBorder"))
+                {
+                    _moveVector = new Vector2(-_moveVector.x, _moveVector.y);
+                }
+
+                if (other.gameObject.CompareTag("Fish"))
+                {
+                    ChooseNewDirection();
+                }
+                
                 StartCoroutine(CooldownDirectionChange());
             }
         }
 
         private void OnCollisionEnter2D(Collision2D other)
         {
-            if (_canChangeDirection)
+            if (other.gameObject.CompareTag("UpBorder") || other.gameObject.CompareTag("DownBorder"))
             {
+                _moveVector = new Vector2(_moveVector.x, -_moveVector.y);
+            }
+            
+            if (other.gameObject.CompareTag("RightBorder") || other.gameObject.CompareTag("LeftBorder"))
+            {
+                _moveVector = new Vector2(-_moveVector.x, _moveVector.y);
+            }
+            
+            /*
                 RectTransform otherRectTransform = other.gameObject.GetComponent<RectTransform>();
                 Vector2 otherPosition = otherRectTransform.anchoredPosition;
                 Vector2 thisPosition = rectTransform.anchoredPosition;
@@ -80,22 +117,19 @@ namespace UI.CorsiBlockTypes
                 {
                     UpdateLastDirection(Direction.Right);
                 }
-                else if (otherPosition.x > thisPosition.x)
+                else if (otherPosition.x >= thisPosition.x)
                 {
                     UpdateLastDirection(Direction.Left);
                 }
-                else if (otherPosition.y < thisPosition.y)
+                else if (otherPosition.y <= thisPosition.y)
                 {
                     UpdateLastDirection(Direction.Up);
                 }
                 else
                 {
                     UpdateLastDirection(Direction.Down);
-                }
-                StartCoroutine(CooldownDirectionChange());
-            }
+                }*/
         }
-
 
         private void ChooseNewDirection()
         {
@@ -111,34 +145,10 @@ namespace UI.CorsiBlockTypes
             _movement = StartCoroutine(MoveSelf());
         }
 
-        private void RotateBlockByDirection()
-        {
-            Vector3 rotation = Vector3.zero;
-            switch (_lastDirection)
-            {
-                case Direction.Right:
-                    rotation = new Vector3(0f, 180f, 0f);
-                    break;
-                case Direction.Left:
-                    rotation = new Vector3(0f, 0f, 0f);
-                    break;
-                case Direction.Up:
-                    rotation = new Vector3(0f, 90f, 0f);
-                    break;
-                case Direction.Down:
-                    rotation = new Vector3(0f, 270f, 0f);
-                    break;
-            }
-            Debug.Log("Rotation: " + rotation);
-            transform.localRotation = Quaternion.Euler(rotation);
-            //rigidBody.MoveRotation(Quaternion.Euler(rotation));
-        }
-
         private void UpdateLastDirection(Direction direction)
         {
             _lastDirection = direction;
             _moveVector = DirectionVectors[_lastDirection];
-            //RotateBlockByDirection();
         }
 
         private IEnumerator CooldownDirectionChange()

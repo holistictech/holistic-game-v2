@@ -39,6 +39,7 @@ namespace UI.Helpers
             for (int i = 0; i < spanQuestions.Count; i++)
             {
                 spawnedBlocks[i].ConfigureSelf(spanQuestions[i], this);
+                spawnedBlocks[i].SetParentTransform(blockParent.GetComponent<RectTransform>());
                 spawnedBlocks[i].MakeBlockMove();
             }
         }

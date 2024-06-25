@@ -14,6 +14,7 @@ namespace UI.CorsiBlockTypes
         [SerializeField] protected Button blockButton;
         [SerializeField] protected Color highlightColor;
         private CorsiBlockUIHelper _blockHelper;
+        protected RectTransform parentRectTransform;
         protected Question blockQuestion;
 
         private void OnEnable()
@@ -42,6 +43,11 @@ namespace UI.CorsiBlockTypes
         public virtual void MakeBlockMove()
         {
             
+        }
+
+        public virtual void SetParentTransform(RectTransform parent)
+        {
+            parentRectTransform = parent;
         }
 
         public virtual IEnumerator MoveSelf()

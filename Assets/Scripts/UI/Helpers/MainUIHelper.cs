@@ -47,10 +47,6 @@ namespace UI.Helpers
 
         private void EnableSpanChooser()
         {
-            /*var index = Random.Range(0, spans.Count);
-            var span = spans[0];
-            _activeSpan = Instantiate(span, transform);
-            _activeSpan.gameObject.SetActive(true);*/
             selectionPopup.gameObject.SetActive(true);
             //PlayNextSpan();
         }
@@ -65,10 +61,12 @@ namespace UI.Helpers
             _activeSpan = Instantiate(span, transform);
             _activeSpan.gameObject.SetActive(true);
             selectionPopup.gameObject.SetActive(false);
+            Camera.main.gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
         }
 
         private void DestroyActiveSpan(int earnedPerformance)
         {
+            Camera.main.gameObject.transform.rotation = Quaternion.Euler(new Vector3(30, 45, 0));
             Destroy(_activeSpan.gameObject);
             trailHelper.AnimateCurrencyIncrease(currencyHelper, 1, () =>
             {

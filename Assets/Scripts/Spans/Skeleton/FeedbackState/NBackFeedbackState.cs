@@ -15,7 +15,7 @@ namespace Spans.Skeleton.FeedbackState
         {
             if (spanController == null)
             {
-                _nBackController = controller.GetComponent<NBack.NBack>();
+                _nBackController = controller is NBack.NBack ? controller.GetComponent<NBack.NBack>() : null;
                 base.Enter(controller);
                 //spanController = controller;
             }
@@ -30,7 +30,7 @@ namespace Spans.Skeleton.FeedbackState
         
         protected override void PlayEffects()
         {
-            if (_nBackController.IsEmptyRound())
+            if (_nBackController!= null && _nBackController.IsEmptyRound())
             {
                 SwitchNextState();    
             }

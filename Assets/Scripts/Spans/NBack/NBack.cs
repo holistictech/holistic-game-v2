@@ -16,7 +16,7 @@ namespace Spans.NBack
         [SerializeField] private List<Question> alternativeObjectImages;
         [SerializeField] private List<Question> nBackQuestions;
         [SerializeField] private List<Question> dualNBackQuestions;
-        [SerializeField] private NBackModes _testMode; 
+        private NBackModes _testMode; 
             
         private Dictionary<NBackModes, List<Question>> _modeQuestionDictionary;
         private List<NBackModes> _gameModes = new List<NBackModes>()

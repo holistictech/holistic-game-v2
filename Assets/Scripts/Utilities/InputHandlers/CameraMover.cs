@@ -1,11 +1,8 @@
-using System;
-using Scriptables;
 using Spawners;
 using UI;
 using UnityEngine;
-using UnityEngine.Serialization;
 
-namespace Utilities
+namespace Utilities.InputHandlers
 {
     public class CameraMover : MonoBehaviour
     {

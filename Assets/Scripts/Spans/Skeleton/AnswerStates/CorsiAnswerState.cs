@@ -62,7 +62,7 @@ namespace Spans.Skeleton.AnswerStates
 
         public override void DisableUIElements()
         {
-            _corsiHelper.gameObject.SetActive(false);
+            //_corsiHelper.gameObject.SetActive(false);
             _corsiHelper.ResetCorsiBlocks();
             base.DisableUIElements();
         }

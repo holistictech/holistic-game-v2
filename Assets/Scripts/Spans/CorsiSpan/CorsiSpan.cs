@@ -44,6 +44,27 @@ namespace Spans.CorsiSpan
             
             return allQuestions.ToList();
         }
+        
+        public override void SwitchState()
+        {
+            if (isSpanFinished)
+            {
+                Debug.Log("this is finished");
+                stateContext.Transition(stateList[^1]);
+                return;
+            }
+            
+            var index = stateList.IndexOf(stateContext.CurrentState);
+            if (index < stateList.Count - 2)
+            {
+                ISpanState nextState = stateList[index+1];
+                stateContext.Transition(nextState);
+            }
+            else
+            {
+                stateContext.Transition(stateList[1]); // to turn back to question state for NBack scenarios.
+            }
+        }
 
         public override bool IsAnswerCorrect()
         {
