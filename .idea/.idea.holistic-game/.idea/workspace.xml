@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="3d01f5fc-4a81-4ccb-94d7-a0f07bc2bc79" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/States/AnswerStates/BlockSpanAnswerState.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/States/AnswerStates/BlockSpanAnswerState.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/BlockSpanAnswerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/BlockSpanAnswerState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanAnswerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanAnswerState.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,6 +46,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/CumulativeSpan/CumulativeChooser.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/CumulativeSpan/RunningSpan.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/ForwardSpan/SoundChooser.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/Helpers/SpanHintHelper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/NBack/DualNBackMode.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/NBack/NBack.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/NBack/NBackMode.cs" root0="FORCE_HIGHLIGHTING" />
@@ -239,6 +241,7 @@
       <workItem from="1719213651467" duration="10070000" />
       <workItem from="1719239081862" duration="14572000" />
       <workItem from="1719316279075" duration="6126000" />
+      <workItem from="1719386699393" duration="1839000" />
     </task>
     <servers />
   </component>
@@ -320,45 +323,6 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="57" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/UI/CorsiBlockTypes/MovingCorsiBlock.cs</url>
-          <line>99</line>
-          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\UI\CorsiBlockTypes\MovingCorsiBlock.cs" initialLine="71" containingFunctionPresentation="Method 'OnCollisionEnter2D'">
-            <startOffsets>
-              <option value="3390" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3391" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="58" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/UI/CorsiBlockTypes/MovingCorsiBlock.cs</url>
-          <line>53</line>
-          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\UI\CorsiBlockTypes\MovingCorsiBlock.cs" initialLine="53" containingFunctionPresentation="Method 'OnTriggerEnter2D'">
-            <startOffsets>
-              <option value="1768" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1769" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="59" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/UI/CorsiBlockTypes/MovingCorsiBlock.cs</url>
-          <line>76</line>
-          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\UI\CorsiBlockTypes\MovingCorsiBlock.cs" initialLine="62" containingFunctionPresentation="Method 'OnTriggerStay2D'">
-            <startOffsets>
-              <option value="2577" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2578" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="60" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

@@ -5,6 +5,7 @@ using System.Linq;
 using DG.Tweening;
 using Samples.Whisper;
 using Scriptables.Tutorial;
+using Spans.Helpers;
 using TMPro;
 using UI.Helpers;
 using UnityEngine;
@@ -17,6 +18,7 @@ namespace Spans.Skeleton
     {
         [SerializeField] private List<TutorialStep> _steps;
         [SerializeField] protected TimerHelper timer;
+        [SerializeField] protected SpanHintHelper hintHelper;
         [SerializeField] protected Button confirmButton;
         [SerializeField] protected Button revertButton;
         [SerializeField] protected AudioClip confirmClip;

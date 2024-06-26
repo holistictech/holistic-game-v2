@@ -12,8 +12,6 @@ namespace Spans.Skeleton.AnswerStates
     public class BlockSpanAnswerState : SpanAnswerState
     {
         [SerializeField] private OptionPicker optionPicker;
-        [SerializeField] private Image combineBanner;
-        [SerializeField] private TextMeshProUGUI combineField;
 
         private BlockSpan.BlockSpan _blockSpanController;
         private CorsiBlockUIHelper _blockHelper;
@@ -53,20 +51,11 @@ namespace Spans.Skeleton.AnswerStates
         {
             if (_blockSpanController.GetCombineStatus() && _canDisplayBanner)
             {
-                Sequence combineSequence = DOTween.Sequence();
-                combineSequence.Append(combineBanner.transform.DOScaleX(1f, 0.5f).SetEase(Ease.OutCirc).OnComplete(() =>
-                {
-                    combineField.gameObject.SetActive(true);
-                }));
-                combineSequence.Append(combineField.transform.DOPunchScale(new Vector3(0.15f, 0.15f, 0.15f), 0.5f).OnComplete(
-                    () =>
-                    {
-                        combineField.gameObject.SetActive(false);
-                    }));
-                combineSequence.Append(combineBanner.transform.DOScaleX(0f, 0.5f).SetEase(Ease.InCirc).OnComplete(() =>
+                hintHelper.SetFieldText("Gördüklerini birleştir!");
+                hintHelper.AnimateBanner(() =>
                 {
                     timer.StartTimer(duration, SwitchNextState);
-                }));
+                });
             }
             else
             {
