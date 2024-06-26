@@ -75,8 +75,8 @@ namespace UI.CorsiBlockTypes
 
         private void OnTriggerStay2D(Collider2D other)
         {
-            if (_canChangeDirection)
-            {
+            //if (_canChangeDirection)
+            //{
                 if (other.gameObject.CompareTag("UpBorder") || other.gameObject.CompareTag("DownBorder"))
                 {
                     _moveVector = new Vector2(_moveVector.x, -_moveVector.y);
@@ -92,8 +92,8 @@ namespace UI.CorsiBlockTypes
                     ChooseNewDirection();
                 }
                 
-                StartCoroutine(CooldownDirectionChange());
-            }
+              //  StartCoroutine(CooldownDirectionChange());
+            //}
         }
 
         private void OnCollisionEnter2D(Collision2D other)
