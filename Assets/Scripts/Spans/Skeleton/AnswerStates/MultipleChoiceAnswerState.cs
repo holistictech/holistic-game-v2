@@ -198,6 +198,11 @@ namespace Spans.Skeleton.AnswerStates
             gridHelper.RevokeLastSelection();
         }
 
+        public int GetUnitIndexUpdateAmount()
+        {
+            return spanController is NumberExercise ? 2 : 1;
+        }
+
         /*public override void AddListeners()
         { 
             revertButton.onClick.AddListener(RevertLastAnswer);

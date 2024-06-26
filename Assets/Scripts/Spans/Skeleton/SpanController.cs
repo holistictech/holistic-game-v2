@@ -36,7 +36,7 @@ namespace Spans.Skeleton
         protected List<string> currentDetectedAnswers;
         protected List<Question> currentGivenAnswers = new List<Question>();
         private const int _neededStreakCount = 4;
-        private bool _hasLeveledUp;
+        protected bool hasLeveledUp;
         protected bool isSpanFinished;
         
         protected SpanEventBus spanEventBus;
@@ -160,7 +160,7 @@ namespace Spans.Skeleton
             currentDetectedAnswers = detected;
         }
 
-        public void SetSelectedAnswers(List<Question> given)
+        public virtual void SetSelectedAnswers(List<Question> given)
         {
             currentGivenAnswers = given;
         }
@@ -177,9 +177,9 @@ namespace Spans.Skeleton
 
         public virtual int GetRoundIndex()
         {
-            if (_hasLeveledUp)
+            if (hasLeveledUp)
             {
-                _hasLeveledUp = false;
+                hasLeveledUp = false;
                 return currentRoundIndex - 1;
             }
             else
@@ -188,20 +188,21 @@ namespace Spans.Skeleton
             }
         }
 
-        private void IncrementRoundIndex()
+        protected virtual void IncrementRoundIndex()
         {
-            _hasLeveledUp = true;
+            hasLeveledUp = true;
             currentRoundIndex++;
         }
 
-        private void DecrementRoundIndex()
+        protected virtual void DecrementRoundIndex()
         {
-            if(currentRoundIndex > CommonFields.DEFAULT_ROUND_INDEX)
+            currentRoundIndex = Mathf.Max(CommonFields.DEFAULT_ROUND_INDEX, currentRoundIndex -1);
+            /*if(currentRoundIndex > CommonFields.DEFAULT_ROUND_INDEX)
                 currentRoundIndex--;
             else
             {
                 currentRoundIndex = CommonFields.DEFAULT_ROUND_INDEX;
-            }
+            }*/
         }
 
         protected virtual void IncrementSuccessStreak()
@@ -216,7 +217,7 @@ namespace Spans.Skeleton
             }
             else
             {
-                _hasLeveledUp = false;
+                hasLeveledUp = false;
             }
         }
 

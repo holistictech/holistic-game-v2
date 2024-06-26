@@ -142,7 +142,6 @@ namespace Spans.Skeleton.QuestionStates
             DOVirtual.DelayedCall(1f, SwitchNextState);
         }
         
-
         public override void Exit()
         {
             if (displayingQuestions != null)

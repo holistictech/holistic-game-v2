@@ -134,7 +134,7 @@ namespace UI.Helpers
             if (toggle)
             {
                 _activeUnitCircles[_answerIndex].OnAnswerGiven();
-                _answerIndex++;
+                _answerIndex += _answerState.GetUnitIndexUpdateAmount();
                 if (_answerIndex >= _activeUnitCircles.Count) return;
                 _activeUnitCircles[_answerIndex].AnimateCircle();
             }
@@ -142,7 +142,7 @@ namespace UI.Helpers
             {
                 if(_answerIndex < _activeUnitCircles.Count)
                     _activeUnitCircles[_answerIndex].OnAnswerRevoked();
-                _answerIndex--;
+                _answerIndex -= _answerState.GetUnitIndexUpdateAmount();;
                 _activeUnitCircles[_answerIndex].OnAnswerRevoked();
                 _activeUnitCircles[_answerIndex].AnimateCircle();
             }

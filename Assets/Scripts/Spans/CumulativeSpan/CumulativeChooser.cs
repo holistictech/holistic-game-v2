@@ -14,7 +14,7 @@ namespace Spans.CumulativeSpan
 {
     public class CumulativeChooser : ImageDescription
     {
-        private const int _choiceCount = 9;
+        protected int choiceCount = 9;
         public override List<Question> GetSpanObjects()
         {
             List<Question> roundQuestions = new List<Question>();
@@ -44,7 +44,7 @@ namespace Spans.CumulativeSpan
         {
             var imageQuestions = base.GetAllAvailableSpanObjects();
             List<Question> choices = new List<Question>(currentSpanQuestions);
-            var iterations = _choiceCount - choices.Count;
+            var iterations = choiceCount - choices.Count;
             
             for (int i = 0; i < iterations; i++)
             {
