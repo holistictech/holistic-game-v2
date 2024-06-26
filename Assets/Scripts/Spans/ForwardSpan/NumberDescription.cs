@@ -19,7 +19,7 @@ namespace Spans.ForwardSpan
             return currentRoundIndex * 3;
         }
         
-        protected List<Question> PickNumbers(int count)
+        protected virtual List<Question> PickNumbers(int count)
         {
             List<Question> pickedNumbers = new List<Question>();
             HashSet<int> pickedIndices = new HashSet<int>();

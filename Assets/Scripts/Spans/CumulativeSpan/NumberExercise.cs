@@ -11,13 +11,29 @@ namespace Spans.CumulativeSpan
     {
         public override List<Question> GetSpanObjects()
         {
-            return PickNumbers(1);
+            return PickNumbers(currentRoundIndex / 2);
+        }
+        
+        protected override List<Question> PickNumbers(int count)
+        {
+            List<Question> pickedQuestions = new List<Question>();
+            var numberQuestions = GetAllAvailableSpanObjects();
+
+            var randomIndex = Random.Range(0, numberQuestions.Length);
+            while (currentSpanQuestions.Contains(numberQuestions[randomIndex]))
+            {
+                randomIndex = Random.Range(0, numberQuestions.Length);
+            }
+            pickedQuestions.Add(numberQuestions[randomIndex]);
+            currentSpanQuestions.Add(numberQuestions[randomIndex]);
+
+            return pickedQuestions;
         }
         
         public override List<Question> GetChoices()
         {
             var numberQuestions = GetAllAvailableSpanObjects();
-            int choiceCount = currentRoundIndex;
+            int choiceCount = 9 - currentRoundIndex / 2;
             /*if (currentRoundIndex >= 4)
             {
                 choiceCount = 9 - currentRoundIndex;
@@ -68,11 +84,19 @@ namespace Spans.CumulativeSpan
                 if (currentDisplayedQuestions.Contains(t))
                 {
                     IncrementFailStreak();
+                    ClearLogicLists();
                     return false;
                 }
             }
             IncrementSuccessStreak();
+            ClearLogicLists();
             return true;
+        }
+
+        private void ClearLogicLists()
+        {
+            currentGivenAnswers.Clear();
+            currentDisplayedQuestions.Clear();
         }
         
         public override void SetCurrentDisplayedQuestions(List<Question> questions)

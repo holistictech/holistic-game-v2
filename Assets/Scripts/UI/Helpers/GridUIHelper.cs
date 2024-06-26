@@ -63,7 +63,7 @@ namespace UI.Helpers
         private void SpawnChoicePool()
         {
             _choicePool = new List<Choice>();
-            for (int i = 0; i < 9; i++)
+            for (int i = 0; i < 25; i++)
             {
                 var temp = Instantiate(choicePrefab, gridParent.transform);
                 _choicePool.Add(temp);
@@ -115,7 +115,7 @@ namespace UI.Helpers
         {
             if (isCumulative)
             {
-                gridParent.constraint = GridLayoutGroup.Constraint.FixedRowCount;
+                gridParent.constraint = GridLayoutGroup.Constraint.FixedColumnCount;
                 gridParent.constraintCount = 3;
             }
             else if (index == 2)
