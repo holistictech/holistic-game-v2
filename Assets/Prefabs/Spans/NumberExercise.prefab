@@ -494,7 +494,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 428ea3981d0b41e4284773bd420e8305, type: 2}
   isBackwards: 0
   isCumulative: 1
-  states: {fileID: 11400000, guid: 5ebf71650ec0b544e939eeca3eb79c4a, type: 2}
+  states: {fileID: 11400000, guid: 879b0365f05b72745abcfbb87cd06f6f, type: 2}
   tutorialManager: {fileID: 5317712305952169983}
   _spanNameField: {fileID: 8243098352082445945}
   timerHelper: {fileID: 7256291826367197107}

@@ -15,7 +15,7 @@ namespace Spans.Skeleton.QuestionStates
         [SerializeField] private Image questionFieldParent;
         [SerializeField] private Image questionBox;
         
-        private List<Question> _spanObjects; 
+        private List<Question> _spanObjects = new List<Question>(); 
         private List<Question> _currentQuestions = new List<Question>();
 
         public override void Enter(SpanController controller)
@@ -30,7 +30,8 @@ namespace Spans.Skeleton.QuestionStates
                 _spanObjects = spanController.GetSpanObjects();
                 currentQuestionIndex = 0;
             }
-            
+
+            EnableUIElements();
             SetCircleUI(spanController.GetRoundIndex());
             ShowQuestion();
         }
@@ -47,7 +48,6 @@ namespace Spans.Skeleton.QuestionStates
         {
             //for (int i = 0; i < spanController.GetRoundIndex(); i++)
             //{
-                
                 var question = _spanObjects[currentQuestionIndex];
                 questionBox.GetComponentInChildren<TextMeshProUGUI>().text = $"{question.GetQuestionItem()}";
                 ActivateCircle(currentQuestionIndex == 0 ? currentQuestionIndex : currentQuestionIndex + 1, 1f);

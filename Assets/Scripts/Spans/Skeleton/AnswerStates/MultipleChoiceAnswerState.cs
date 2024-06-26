@@ -203,6 +203,11 @@ namespace Spans.Skeleton.AnswerStates
             return spanController is NumberExercise ? 2 : 1;
         }
 
+        public bool CanAnimateNextCircle()
+        {
+            return spanController is not NumberExercise;
+        }
+
         /*public override void AddListeners()
         { 
             revertButton.onClick.AddListener(RevertLastAnswer);

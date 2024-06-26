@@ -19,14 +19,17 @@ namespace Spans.CumulativeSpan
             List<Question> pickedQuestions = new List<Question>();
             var numberQuestions = GetAllAvailableSpanObjects();
 
-            var randomIndex = Random.Range(0, numberQuestions.Length);
-            while (currentSpanQuestions.Contains(numberQuestions[randomIndex]))
+            for (int i = 0; i < count; i++)
             {
-                randomIndex = Random.Range(0, numberQuestions.Length);
+                var randomIndex = Random.Range(0, numberQuestions.Length);
+                while (currentSpanQuestions.Contains(numberQuestions[randomIndex]))
+                {
+                    randomIndex = Random.Range(0, numberQuestions.Length);
+                }
+                pickedQuestions.Add(numberQuestions[randomIndex]);
+                currentSpanQuestions.Add(numberQuestions[randomIndex]);
             }
-            pickedQuestions.Add(numberQuestions[randomIndex]);
-            currentSpanQuestions.Add(numberQuestions[randomIndex]);
-
+            
             return pickedQuestions;
         }
         
@@ -65,7 +68,7 @@ namespace Spans.CumulativeSpan
             }
             
             var index = stateList.IndexOf(stateContext.CurrentState);
-            if (index <= stateList.Count - 3)
+            if (index < stateList.Count - 3)
             {
                 ISpanState nextState = stateList[index+1];
                 stateContext.Transition(nextState);
@@ -97,6 +100,7 @@ namespace Spans.CumulativeSpan
         {
             currentGivenAnswers.Clear();
             currentDisplayedQuestions.Clear();
+            _unitIndex = 1;
         }
         
         public override void SetCurrentDisplayedQuestions(List<Question> questions)
@@ -119,10 +123,13 @@ namespace Spans.CumulativeSpan
         {
             currentRoundIndex = Mathf.Max(CommonFields.DEFAULT_ROUND_INDEX, currentRoundIndex -2);
         }
-        
+
+        private int _unitIndex = 1;
         public override int GetStartingUnitIndex()
         {
-            return 1;
+            var temp = _unitIndex;
+            _unitIndex += 2;
+            return temp;
         }
     }
 }

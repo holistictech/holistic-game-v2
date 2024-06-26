@@ -136,7 +136,8 @@ namespace UI.Helpers
                 _activeUnitCircles[_answerIndex].OnAnswerGiven();
                 _answerIndex += _answerState.GetUnitIndexUpdateAmount();
                 if (_answerIndex >= _activeUnitCircles.Count) return;
-                _activeUnitCircles[_answerIndex].AnimateCircle();
+                if(_answerState.CanAnimateNextCircle())
+                    _activeUnitCircles[_answerIndex].AnimateCircle();
             }
             else
             {
@@ -144,7 +145,8 @@ namespace UI.Helpers
                     _activeUnitCircles[_answerIndex].OnAnswerRevoked();
                 _answerIndex -= _answerState.GetUnitIndexUpdateAmount();;
                 _activeUnitCircles[_answerIndex].OnAnswerRevoked();
-                _activeUnitCircles[_answerIndex].AnimateCircle();
+                if(_answerState.CanAnimateNextCircle())
+                    _activeUnitCircles[_answerIndex].AnimateCircle();
             }
         }
         
@@ -180,7 +182,7 @@ namespace UI.Helpers
         {
             for (int i = 0; i < _choicePool.Count; i++)
             {
-                if (!_choicePool[i].isActiveAndEnabled)
+                if (!_choicePool[i].gameObject.activeSelf)
                 {
                     return _choicePool[i];
                 }
