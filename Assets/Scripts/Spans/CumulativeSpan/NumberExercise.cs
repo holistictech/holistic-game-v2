@@ -36,14 +36,17 @@ namespace Spans.CumulativeSpan
         public override List<Question> GetChoices()
         {
             var numberQuestions = GetAllAvailableSpanObjects();
-            int choiceCount = 9 - currentRoundIndex / 2;
+            int choiceCount = GetChoiceCount();
             /*if (currentRoundIndex >= 4)
             {
                 choiceCount = 9 - currentRoundIndex;
             }*/
-            List<Question> choices = new List<Question>(GetCurrentDisplayedQuestions());
             
-            for (int i = 0; i < choiceCount; i++)
+            var combined = new List<Question>(currentDisplayedQuestions);
+            combined.AddRange(currentGivenAnswers);
+            List<Question> choices = new List<Question>(combined);
+            var startIndex = combined.Count;
+            for (int i = startIndex; i < choiceCount; i++)
             {
                 var index = Random.Range(0, numberQuestions.Length);
                 var question = numberQuestions[index];
@@ -94,6 +97,24 @@ namespace Spans.CumulativeSpan
             IncrementSuccessStreak();
             ClearLogicLists();
             return true;
+        }
+
+        private int GetChoiceCount()
+        {
+            var index = currentRoundIndex / 2;
+            switch (index)
+            {
+                case 1:
+                    return 6;
+                case 2:
+                    return 9;
+                case 3:
+                    return 12;
+                case 4:
+                    return 16;
+                default:
+                    return 20;
+            }
         }
 
         private void ClearLogicLists()

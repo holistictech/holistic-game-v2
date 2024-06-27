@@ -63,7 +63,7 @@ namespace UI.Helpers
         private void SpawnChoicePool()
         {
             _choicePool = new List<Choice>();
-            for (int i = 0; i < 25; i++)
+            for (int i = 0; i < 35; i++)
             {
                 var temp = Instantiate(choicePrefab, gridParent.transform);
                 _choicePool.Add(temp);
