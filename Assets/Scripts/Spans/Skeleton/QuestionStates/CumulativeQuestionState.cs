@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using DG.Tweening;
 using Scriptables.QuestionSystem;
 using Scriptables.Tutorial;
+using Spans.Helpers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -11,6 +12,7 @@ namespace Spans.Skeleton.QuestionStates
 {
     public class CumulativeQuestionState : SpanQuestionState
     {
+        [SerializeField] private SpanHintHelper hintHelper;
         [SerializeField] private List<TutorialStep> steps;
         [SerializeField] private Image questionFieldParent;
         [SerializeField] private Image questionBox;
@@ -42,8 +44,6 @@ namespace Spans.Skeleton.QuestionStates
             displayingQuestions = StartCoroutine(ShowNumbers());
         }
         
-        
-        private bool _isInitial;
         private IEnumerator ShowNumbers()
         {
             //for (int i = 0; i < spanController.GetRoundIndex(); i++)
@@ -56,10 +56,9 @@ namespace Spans.Skeleton.QuestionStates
                 currentQuestionIndex++;
                 yield return new WaitForSeconds(1f);
                 questionBox.GetComponentInChildren<TextMeshProUGUI>().text = $"";
-                yield return new WaitForSeconds(1f);
             //}
             
-            DOVirtual.DelayedCall(1f, SwitchNextState);
+            SwitchNextState();
         }
         
         public override void Exit()
@@ -75,11 +74,27 @@ namespace Spans.Skeleton.QuestionStates
         {
             spanController.SetCurrentDisplayedQuestions(_currentQuestions);
         }
-        
+
+        private bool _isInitial = true;
         public override void SwitchNextState()
         {
-            DisableUIElements();
             ConfigureDisplayedQuestions();
+            DisableUIElements();
+            if (_isInitial)
+            {
+                _isInitial = false;
+                hintHelper.SetFieldText("Seçilmeyen sayılardan birini seç!");
+                hintHelper.AnimateBanner(() =>
+                {
+                    spanController.SwitchState();
+                });
+            }
+            else
+            {
+                spanController.SwitchState();
+            }
+            
+            /*DisableUIElements();
             if (spanController.GetBackwardStatus())
             {
                 RotateCircles(-180, () =>
@@ -90,7 +105,7 @@ namespace Spans.Skeleton.QuestionStates
             else
             {
                 spanController.SwitchState();
-            }
+            }*/
         }
         
         public override void EnableUIElements()

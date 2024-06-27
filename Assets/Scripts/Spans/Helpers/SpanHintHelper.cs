@@ -23,10 +23,13 @@ namespace Spans.Helpers
             {
                 combineField.gameObject.SetActive(true);
             }));
-            combineSequence.Append(combineField.transform.DOPunchScale(new Vector3(0.15f, 0.15f, 0.15f), 0.5f).OnComplete(
+            combineSequence.Append(combineField.transform.DOPunchScale(new Vector3(0.02f, 0.02f, 0.02f), 0.5f).OnComplete(
                 () =>
                 {
-                    combineField.gameObject.SetActive(false);
+                    DOVirtual.DelayedCall(1.5f, () =>
+                    {
+                        combineField.gameObject.SetActive(false);
+                    });
                 }));
             combineSequence.Append(combineBanner.transform.DOScaleX(0f, 0.5f).SetEase(Ease.InCirc).OnComplete(() =>
             {

@@ -6,8 +6,10 @@
   <component name="ChangeListManager">
     <list default="true" id="3d01f5fc-4a81-4ccb-94d7-a0f07bc2bc79" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/CumulativeSpan/NumberExercise.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/CumulativeSpan/NumberExercise.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Helpers/GridUIHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Helpers/GridUIHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/States/QuestionStates/CumulativeQuestionState.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/States/QuestionStates/CumulativeQuestionState.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Spans/AnswerState/HintHelper.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Spans/AnswerState/HintHelper.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Helpers/SpanHintHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Helpers/SpanHintHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/CumulativeQuestionState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/CumulativeQuestionState.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -244,7 +246,7 @@
       <workItem from="1719239081862" duration="14572000" />
       <workItem from="1719316279075" duration="6126000" />
       <workItem from="1719386699393" duration="11318000" />
-      <workItem from="1719476577851" duration="1083000" />
+      <workItem from="1719476577851" duration="2217000" />
     </task>
     <servers />
   </component>
@@ -330,13 +332,13 @@
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <condition expression="currentQuestionIndex != 0" language="C#" />
           <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/CumulativeQuestionState.cs</url>
-          <line>52</line>
+          <line>54</line>
           <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Spans\Skeleton\QuestionStates\CumulativeQuestionState.cs" initialLine="52" containingFunctionPresentation="Method 'ShowNumbers'">
             <startOffsets>
-              <option value="1733" />
+              <option value="1814" />
             </startOffsets>
             <endOffsets>
-              <option value="1829" />
+              <option value="1910" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="67" />
