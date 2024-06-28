@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using DG.Tweening;
 using Samples.Whisper;
 using TMPro;
@@ -64,14 +65,14 @@ namespace Spans.Skeleton.AnswerStates
 
         private void AnimateRecordRing()
         {
-            recordRing.transform.DOScale(new Vector3(1.5f, 1.5f, 1.5f), 0.5f).SetEase(Ease.Linear)
+            recordRing.transform.DOScale(new Vector3(1.5f, 1.5f, 1.5f), 1f).SetEase(Ease.Linear)
                 .SetLoops(-1, LoopType.Restart);
         }
 
         private async void StopRecording()
         {
             string detectedAnswer = await speechRecognition.EndRecording();
-            List<string> answerList = detectedAnswer.Split(" ").ToList();
+            List<string> answerList = Regex.Split(detectedAnswer, @"[ ,]+").ToList();
             spanController.SetDetectedAnswers(answerList);
             answerPopup.gameObject.SetActive(true);
             givenAnswerField.text = $"{detectedAnswer}";
@@ -98,8 +99,10 @@ namespace Spans.Skeleton.AnswerStates
         {
             micButton.gameObject.SetActive(false);
             answerPopup.gameObject.SetActive(false);
+            recordRing.DOKill();
             recordRing.gameObject.SetActive(false);
             givenAnswerField.text = "";
+            givenAnswerField.gameObject.SetActive(false);
             base.DisableUIElements();
         }
 

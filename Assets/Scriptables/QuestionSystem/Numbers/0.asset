@@ -12,5 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4b70438f4df65f488a02ff4a534d3d6, type: 3}
   m_Name: 0
   m_EditorClassIdentifier: 
-  CorrectAnswer: "s\u0131f\u0131r"
+  CorrectAnswerString: "S\u0131f\u0131r"
+  CorrectAnswers:
+  - 0
+  - "s\u0131f\u0131r"
+  IsAnswerStringMUST: 0
+  SpawnAmount: 1
   Value: 0

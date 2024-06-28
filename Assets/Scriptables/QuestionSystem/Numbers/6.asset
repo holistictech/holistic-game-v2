@@ -12,5 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4b70438f4df65f488a02ff4a534d3d6, type: 3}
   m_Name: 6
   m_EditorClassIdentifier: 
-  CorrectAnswer: "alt\u0131"
+  CorrectAnswerString: "Alt\u0131"
+  CorrectAnswers:
+  - 6
+  - "alt\u0131"
+  IsAnswerStringMUST: 0
+  SpawnAmount: 1
   Value: 6

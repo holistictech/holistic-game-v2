@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 576094c64b81ec044884d4ae3e5eaa4c, type: 3}
   m_Name: Apricot
   m_EditorClassIdentifier: 
-  CorrectAnswerString: 
+  CorrectAnswerString: "Kay\u0131s\u0131"
   IsAnswerStringMUST: 0
+  SpawnAmount: 1
   Image: {fileID: 21300000, guid: a6382cdfbeb2f3c44893b3c4da03d7d6, type: 3}

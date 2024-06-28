@@ -8,6 +8,7 @@ namespace Scriptables.QuestionSystem
     public abstract class Question : ScriptableObject
     {
         public string CorrectAnswerString;
+        public string[] CorrectAnswers;
         public bool IsAnswerStringMUST; 
         private bool _hasSelected = false;
         public int SpawnAmount = 1;

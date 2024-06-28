@@ -12,6 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4b70438f4df65f488a02ff4a534d3d6, type: 3}
   m_Name: 10
   m_EditorClassIdentifier: 
-  CorrectAnswerString: 
+  CorrectAnswerString: On
+  CorrectAnswers:
+  - 10
+  - on
   IsAnswerStringMUST: 0
+  SpawnAmount: 1
   Value: 10

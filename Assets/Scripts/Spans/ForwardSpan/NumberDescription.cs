@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Scriptables.QuestionSystem;
 using Spans.Skeleton;
 using UnityEngine;
@@ -86,7 +87,8 @@ namespace Spans.ForwardSpan
             
             for (int i = 0; i < currentDisplayedQuestions.Count; i++)
             {
-                if (!currentDisplayedQuestions[i].CorrectAnswerString.Equals(currentDetectedAnswers[i], StringComparison.OrdinalIgnoreCase))
+                var answer = currentDetectedAnswers[i].ToLower();
+                if (!currentDisplayedQuestions[i].CorrectAnswers.Contains(answer))
                 {
                     IncrementFailStreak();
                     return false;

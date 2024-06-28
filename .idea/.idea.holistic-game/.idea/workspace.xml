@@ -6,10 +6,26 @@
   <component name="ChangeListManager">
     <list default="true" id="3d01f5fc-4a81-4ccb-94d7-a0f07bc2bc79" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/States/QuestionStates/CumulativeQuestionState.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/States/QuestionStates/CumulativeQuestionState.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Spans/AnswerState/HintHelper.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Spans/AnswerState/HintHelper.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Helpers/SpanHintHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Helpers/SpanHintHelper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/CumulativeQuestionState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/CumulativeQuestionState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Materials/Building.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Materials/Building.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/My Farm/Materials/maintexture.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My Farm/Materials/maintexture.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/States/AnswerStates/VoiceAnswerState.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/States/AnswerStates/VoiceAnswerState.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GamePlay/Grid.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GamePlay/Grid.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Images/Apricot.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Images/Apricot.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Numbers/0.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Numbers/0.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Numbers/1.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Numbers/1.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Numbers/10.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Numbers/10.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Numbers/11.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Numbers/11.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Numbers/2.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Numbers/2.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Numbers/3.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Numbers/3.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Numbers/4.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Numbers/4.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Numbers/5.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Numbers/5.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Numbers/6.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Numbers/6.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Numbers/7.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Numbers/7.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Numbers/8.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Numbers/8.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Numbers/9.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Numbers/9.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Question.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Question.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/ForwardSpan/NumberDescription.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/ForwardSpan/NumberDescription.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/VoiceAnswerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/VoiceAnswerState.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -83,6 +99,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Utilities/PermissionRequester.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.srcnalt.openai-unity@f7f501c076/Runtime/OpenAIApi.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.ugui@1.0.0/Runtime/UI/Core/Layout/GridLayoutGroup.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.visualscripting@1.9.1/Editor/VisualScripting.Core/Inspection/InspectorBlock.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.visualscripting@1.9.1/Runtime/VisualScripting.Core/Events/EventBus.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="ProjectColorInfo">{
@@ -145,10 +162,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="203508">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="203508" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -246,7 +263,8 @@
       <workItem from="1719239081862" duration="14572000" />
       <workItem from="1719316279075" duration="6126000" />
       <workItem from="1719386699393" duration="11318000" />
-      <workItem from="1719476577851" duration="2217000" />
+      <workItem from="1719476577851" duration="3883000" />
+      <workItem from="1719569414722" duration="2959000" />
     </task>
     <servers />
   </component>
@@ -332,13 +350,13 @@
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <condition expression="currentQuestionIndex != 0" language="C#" />
           <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/CumulativeQuestionState.cs</url>
-          <line>54</line>
+          <line>52</line>
           <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Spans\Skeleton\QuestionStates\CumulativeQuestionState.cs" initialLine="52" containingFunctionPresentation="Method 'ShowNumbers'">
             <startOffsets>
-              <option value="1814" />
+              <option value="1772" />
             </startOffsets>
             <endOffsets>
-              <option value="1910" />
+              <option value="1868" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="67" />

@@ -12,5 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c4b70438f4df65f488a02ff4a534d3d6, type: 3}
   m_Name: 3
   m_EditorClassIdentifier: 
-  CorrectAnswer: "\xFC\xE7"
+  CorrectAnswerString: "\xDC\xE7"
+  CorrectAnswers:
+  - 3
+  - "\xFC\xE7"
+  IsAnswerStringMUST: 0
+  SpawnAmount: 1
   Value: 3
