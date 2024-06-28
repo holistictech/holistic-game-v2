@@ -15,5 +15,9 @@ MonoBehaviour:
   TaskSprite: {fileID: 0}
   Mission: "Tavuk k\xFCmesi in\u015Faa et"
   Cost: 5
+  CurrencyType: 0
+  WarningType: 0
+  WarningString: 
   RewardInteractable: {fileID: 11400000, guid: 6a31ab0e318804d4c92e013a1511bc30, type: 2}
+  Dependencies: []
   _hasCompleted: 0

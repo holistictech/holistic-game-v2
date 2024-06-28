@@ -12,11 +12,11 @@ namespace Interactables
         {
         }
         
-        public override void BuildSelf(CartesianPoint desiredPoint, bool isFirstTime)
+        public override void BuildSelf(CartesianPoint desiredPoint, bool isFirstTime, float delay)
         {
             var points = base.CalculateCoordinatesForBlocking(desiredPoint);
             BlockCoordinates(points, GetInteractableType());
-            base.BuildSelf(desiredPoint, isFirstTime);
+            base.BuildSelf(desiredPoint, isFirstTime, delay);
         }
     }
 }

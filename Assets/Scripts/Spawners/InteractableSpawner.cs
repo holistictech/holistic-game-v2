@@ -78,15 +78,19 @@ namespace Spawners
             var spawnedInstance = InteractableFactory.SpawnInstance(spawnable, config, objectParent);
             var interactable = spawnedInstance.GetComponent<InteractableObject>();
 
-            interactable.InjectFields(_gridController, config, buildingEffect, buildingSFX);
+            interactable.InjectFields(_gridController, config);
             var buildingPlan = interactable.InteractableConfig.InteractableType == InteractableType.Plant
                 ? new List<CartesianPoint> { desiredPoint }
                 : interactable.CalculateCoordinatesForBlocking(desiredPoint);
             if (interactable != null && _gridController.IsPlacementValid(buildingPlan, config.InteractableType))
             {
-                if(shouldSave)
+                if (shouldSave)
+                {
                     _spawnedSketch.DestroyObject();
-                interactable.BuildSelf(desiredPoint, shouldSave);
+                    PlayBuildingEffect(desiredPoint);
+
+                }
+                interactable.BuildSelf(desiredPoint, shouldSave, buildingEffect.main.duration - 2f);
                 if (_currentConfig != null && _currentConfig.CurrencyType == CurrencyType.Energy)
                 {
                     _currentConfig.SetHasCompleted(true);
@@ -94,13 +98,19 @@ namespace Spawners
             }
             else
             {
-                //_spawnedSketch.DestroyObject();
-                //Debug.LogError("Error while spawning building");
                 Destroy(interactable.gameObject);
                 warningHelper.ConfigurePopupForUsedSpace();
                 OnPositionChoiceNeeded?.Invoke(_spawnedSketch);
                 swipeHandler.enabled = true;
             }
+        }
+
+        private void PlayBuildingEffect(CartesianPoint target)
+        {
+            buildingEffect.transform.localPosition = new Vector3(target.GetXCoordinate(), 3f,
+                target.GetYCoordinate());
+            buildingEffect.gameObject.SetActive(true);
+            buildingEffect.Play();
         }
 
         private void DisableSwipeHandler()

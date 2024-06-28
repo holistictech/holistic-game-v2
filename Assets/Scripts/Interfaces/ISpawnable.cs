@@ -9,8 +9,8 @@ namespace Interfaces
 {
     public interface ISpawnable
     {
-        public abstract void InjectFields(GridController controller, InteractableConfig config, ParticleSystem effect, AudioClip clip);
-        public abstract void BuildSelf(CartesianPoint desiredPoint, bool isFirstTime);
+        public abstract void InjectFields(GridController controller, InteractableConfig config);
+        public abstract void BuildSelf(CartesianPoint desiredPoint, bool isFirstTime, float delay);
         public abstract void SetObjectMesh();
         public abstract void SetPosition(CartesianPoint point);
         public abstract void SetScale();

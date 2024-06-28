@@ -15,9 +15,6 @@ namespace Interactables
     [Serializable]
     public class InteractableObject : MonoBehaviour, ISpawnable
     {
-        private ParticleSystem _buildingDust;
-        private ParticleSystem _dust;
-        private AudioClip _buildingSFX;
         private MeshFilter _objectMeshFilter;
         private MeshRenderer _meshRenderer;
         private GridController _gridController;
@@ -33,29 +30,26 @@ namespace Interactables
             _interactableConfig = config;
         }
 
-        public void InjectFields(GridController controller, InteractableConfig config, ParticleSystem effect, AudioClip clip)
+        public void InjectFields(GridController controller, InteractableConfig config)
         {
             _gridController = controller;
             _interactableConfig = config;
-            _buildingDust = effect;
-            _dust = effect;
-            _buildingSFX = clip;
         }
 
-        public virtual void BuildSelf(CartesianPoint desiredPoint, bool isFirstTime)
+        public virtual void BuildSelf(CartesianPoint desiredPoint, bool isFirstTime, float delay)
         {
             SetObjectMesh();
             SetPosition(desiredPoint);
-            SetScale();
             _data = new InteractableData(_interactableConfig, desiredPoint);
             if (isFirstTime)
             {
-                AnimateBuilding();
+                AnimateBuilding(delay);
                 _gridController.AppendSpawnedInteractables(_data);
             }
             else
             {
                 _meshRenderer.enabled = true;
+                SetScale();
             }
         }
 
@@ -86,34 +80,22 @@ namespace Interactables
             _objectMeshFilter.mesh = MeshContainer.Instance.GetMeshById(_interactableConfig.MeshId);
         }
 
-        public void AnimateBuilding()
+        public void AnimateBuilding(float delay)
         {
-            SpawnBuildingEffect();
-            _dust.Play();
-            AudioManager.Instance.PlayAudioClip(_buildingSFX);
-            DOVirtual.DelayedCall(_buildingDust.main.duration - 2f, () =>
+            DOVirtual.DelayedCall(delay, () =>
             {
                 transform.localScale = new Vector3(_interactableConfig.ScaleAmount, 0, _interactableConfig.ScaleAmount);
                 _meshRenderer.enabled = true;
                 Sequence mySequence = DOTween.Sequence();
                 mySequence.Append(transform.DOShakeScale(0.75f, 0.3f));
-                mySequence.Join(transform.DOScaleY(_interactableConfig.ScaleAmount, .75f).SetEase(Ease.OutQuart));
-
+                mySequence.Join(transform.DOScaleY(_interactableConfig.ScaleAmount, .75f).SetEase(Ease.OutQuart).OnComplete(
+                    SetScale));
             });
         }
 
         public InteractableType GetInteractableType()
         {
             return _interactableConfig.InteractableType;
-        }
-
-        private void SpawnBuildingEffect()
-        {
-            _dust = Instantiate(_buildingDust, transform);
-            var localPosition = _dust.transform.localPosition;
-            localPosition = new Vector3(localPosition.x,
-                localPosition.y + 1f, localPosition.z);
-            _dust.transform.localPosition = localPosition;
         }
 
         public void SetPosition(CartesianPoint point)

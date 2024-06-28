@@ -15,5 +15,9 @@ MonoBehaviour:
   TaskSprite: {fileID: 0}
   Mission: "\xC7iftlik evini in\u015Faa et"
   Cost: 2
+  CurrencyType: 0
+  WarningType: 0
+  WarningString: 
   RewardInteractable: {fileID: 11400000, guid: f36a9929aea01b941bdfa295d7ca9bab, type: 2}
-  _hasCompleted: 0
+  Dependencies: []
+  _hasCompleted: 1

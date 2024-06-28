@@ -15,5 +15,9 @@ MonoBehaviour:
   TaskSprite: {fileID: 0}
   Mission: "Ah\u0131r in\u015Faa et"
   Cost: 5
+  CurrencyType: 0
+  WarningType: 0
+  WarningString: 
   RewardInteractable: {fileID: 11400000, guid: bcd9afd009a057d45984edf831668461, type: 2}
+  Dependencies: []
   _hasCompleted: 0

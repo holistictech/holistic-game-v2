@@ -19504,6 +19504,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gameLevels:
   - {fileID: 11400000, guid: 7815b9e5a5f909640b362086340a68bd, type: 2}
+  - {fileID: 11400000, guid: b012e9bad5fab194da3204c532056921, type: 2}
+  - {fileID: 11400000, guid: 2769865b428574d4e947d126c309159d, type: 2}
   performanceItems:
   - {fileID: 11400000, guid: c71b037628400924099624b583c1ffcc, type: 2}
   - {fileID: 11400000, guid: efc592f4b31068f448568a4054a390ff, type: 2}
@@ -19927,7 +19929,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swipeThreshold: 0
-  moveSpeed: 20
+  moveSpeed: 120
   sketchUIHelper: {fileID: 493921204}
 --- !u!4 &1551247757
 Transform:
