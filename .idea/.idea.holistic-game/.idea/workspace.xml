@@ -4,30 +4,7 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="3d01f5fc-4a81-4ccb-94d7-a0f07bc2bc79" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Prefabs/Environment/Dust/BuildingDust.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Prefabs/Environment/Dust/BuildingDust.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Spans/BackwardNumberDescription.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Spans/BackwardNumberDescription.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Spawnables/InteractableObject.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Spawnables/InteractableObject.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Spawnables/InteractableSpawner.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Spawnables/InteractableSpawner.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GamePlay/Grid.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GamePlay/Grid.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/Day-1/Barn.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/Day-1/Barn.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/Day-1/Coop.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/Day-1/Coop.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/Day-1/FarmHouse.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/Day-1/FarmHouse.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/Day-1/Field.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/Day-1/Field.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/Day-1/TomatoPlant.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/Day-1/TomatoPlant.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/Day-1/WaterTank.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/Day-1/WaterTank.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/Day-1/WheatStorage.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/Levels/Tasks/Day-1/WheatStorage.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interactables/Animal.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interactables/Animal.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interactables/BarnBuilding.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interactables/BarnBuilding.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interactables/ConcreteBuilding.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interactables/ConcreteBuilding.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interactables/Field.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interactables/Field.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interactables/InteractableObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interactables/InteractableObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interactables/Plant.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interactables/Plant.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interfaces/ISpawnable.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interfaces/ISpawnable.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spawners/InteractableSpawner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spawners/InteractableSpawner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/InputHandlers/SwipeHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/InputHandlers/SwipeHandler.cs" afterDir="false" />
-    </list>
+    <list default="true" id="3d01f5fc-4a81-4ccb-94d7-a0f07bc2bc79" name="Changes" comment="" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -265,7 +242,7 @@
       <workItem from="1719316279075" duration="6126000" />
       <workItem from="1719386699393" duration="11318000" />
       <workItem from="1719476577851" duration="3883000" />
-      <workItem from="1719569414722" duration="9529000" />
+      <workItem from="1719569414722" duration="10124000" />
     </task>
     <servers />
   </component>

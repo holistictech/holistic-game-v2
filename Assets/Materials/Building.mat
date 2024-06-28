@@ -12,13 +12,13 @@ Material:
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords:
-  - DR_CEL_EXTRA_ON
+  - DR_OUTLINE_ON
+  - DR_OUTLINE_SMOOTH_NORMALS
   - DR_RIM_ON
-  - DR_SPECULAR_ON
-  - _CELPRIMARYMODE_SINGLE
+  - _CELPRIMARYMODE_STEPS
   - _DETAILMAPBLENDINGMODE_MULTIPLY
   - _GRADIENTSPACE_WORLD
-  - _OUTLINESPACE_SCREEN
+  - _OUTLINESPACE_OBJECT
   - _TEXTUREBLENDINGMODE_ADD
   m_InvalidKeywords:
   - _UNITYSHADOWMODE_NONE
@@ -28,8 +28,7 @@ Material:
   m_CustomRenderQueue: 2000
   stringTagMap:
     RenderType: Opaque
-  disabledShaderPasses:
-  - SRPDEFAULTUNLIT
+  disabledShaderPasses: []
   m_LockedProperties: _SelfShadingSizeExtra
   m_SavedProperties:
     serializedVersion: 3
@@ -172,10 +171,10 @@ Material:
     - _CameraDistanceFadeClose: 0
     - _CameraDistanceFadeFar: 10
     - _CameraDistanceImpact: 0
-    - _CelExtraEnabled: 1
+    - _CelExtraEnabled: 0
     - _CelNumSteps: 7
     - _CelPrimaryEnabled: 0
-    - _CelPrimaryMode: 1
+    - _CelPrimaryMode: 2
     - _ColorMode: 0
     - _CrestSharpness: 0.1
     - _CrestSize: 0.1
@@ -196,8 +195,8 @@ Material:
     - _FlatRimAmount: 0.5
     - _FlatRimEdgeSmoothness: 1
     - _FlatRimEnabled: 1
-    - _FlatRimLightAlign: 0.517
-    - _FlatRimSize: 0.249
+    - _FlatRimLightAlign: 0.812
+    - _FlatRimSize: 0.248
     - _FlatShadowsEnabled: 1
     - _FlatSmoothness: 0.362
     - _FlatSpecularEdgeSmoothness: 1
@@ -244,11 +243,11 @@ Material:
     - _NumLayersCount: 1
     - _OcclusionStrength: 1
     - _Opaque: 0
-    - _OutlineDepthOffset: 0
-    - _OutlineEnabled: 0
+    - _OutlineDepthOffset: 0.06
+    - _OutlineEnabled: 1
     - _OutlineScale: 1
-    - _OutlineSpace: 0
-    - _OutlineWidth: 1
+    - _OutlineSpace: 1
+    - _OutlineWidth: 30
     - _OverrideLightmapDir: 0
     - _OverrideShadows: 1
     - _OverrideShadowsEnabled: 1
@@ -275,7 +274,7 @@ Material:
     - _Smoothness2: 0.5
     - _Smoothness3: 0.5
     - _SmoothnessTextureChannel: 0
-    - _SpecularEnabled: 1
+    - _SpecularEnabled: 0
     - _SpecularHighlights: 1
     - _SrcBlend: 1
     - _Surface: 0
@@ -290,7 +289,7 @@ Material:
     - _UvFadeX: 0.1
     - _UvFadeY: 0.1
     - _VertexColorsEnabled: 0
-    - _VertexExtrusionSmoothNormals: 0
+    - _VertexExtrusionSmoothNormals: 1
     - _WaterClearness: 0.3
     - _WaterDepth: 5
     - _WaveAmplitude: 0.25
@@ -301,7 +300,7 @@ Material:
     - _WaveSpeed: 0.5
     - _ZWrite: 1
     m_Colors:
-    - _BaseColor: {r: 1, g: 1, b: 1, a: 1}
+    - _BaseColor: {r: 0.34117648, g: 0.34117648, b: 0.34117648, a: 1}
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _Color1: {r: 0, g: 0.7, b: 0.74, a: 0}
     - _Color2: {r: 0.97, g: 0.67, b: 0.51, a: 0}
@@ -310,7 +309,7 @@ Material:
     - _ColorDim: {r: 0, g: 1, b: 0.92592597, a: 1}
     - _ColorDimCurve: {r: 0.85, g: 0.85, b: 0.85, a: 0.85}
     - _ColorDimExtra: {r: 1, g: 0.6862745, b: 0, a: 1}
-    - _ColorDimSteps: {r: 0.29690358, g: 0.38679248, b: 0.24265754, a: 0.85}
+    - _ColorDimSteps: {r: 0, g: 0, b: 0, a: 0.85}
     - _ColorGradient: {r: 0.20568848, g: 0.19090424, b: 0.6226415, a: 1}
     - _ColorSecondary: {r: 1, g: 0.55879205, b: 0, a: 1}
     - _ColorShadow: {r: 0.5, g: 0.5, b: 0.5, a: 1}
@@ -320,12 +319,12 @@ Material:
     - _DetailMapColor: {r: 1, g: 1, b: 1, a: 1}
     - _Direction: {r: 0, g: 1, b: 0, a: 0}
     - _EmissionColor: {r: 3.4113994, g: 0.4344707, b: 0.4344707, a: 1}
-    - _FlatRimColor: {r: 0.028301895, g: 0.022828415, b: 0.022828415, a: 1}
+    - _FlatRimColor: {r: 0.036889452, g: 0.026241222, b: 0.026241222, a: 1}
     - _FlatSpecularColor: {r: 1, g: 0, b: 0.027451038, a: 1}
     - _FoamColor: {r: 1, g: 1, b: 1, a: 1}
     - _LightmapDirection: {r: 0, g: 1, b: 0, a: 0}
     - _NoiseScale1: {r: 1, g: 1, b: 0, a: 0}
     - _NoiseScale2: {r: 1, g: 1, b: 0, a: 0}
-    - _OutlineColor: {r: 1, g: 1, b: 1, a: 1}
+    - _OutlineColor: {r: 0, g: 0, b: 0, a: 1}
     - _UnityShadowColor: {r: 0.65, g: 0.65, b: 0.65, a: 1}
   m_BuildTextureStacks: []
