@@ -51,6 +51,8 @@ namespace Interactables
                 _meshRenderer.enabled = true;
                 SetScale();
             }
+            
+            gameObject.isStatic = !isFirstTime;
         }
 
         public void BlockCoordinates(List<CartesianPoint> desiredPoints, InteractableType type)

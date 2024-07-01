@@ -40,8 +40,7 @@ namespace Spans.Skeleton
         protected bool isSpanFinished;
         
         protected SpanEventBus spanEventBus;
-        private GameObject _helperObject;
-        private List<GameObject> _tutorialHelpers = new List<GameObject>();
+        private GameObject _helperObject; private List<GameObject> _tutorialHelpers = new List<GameObject>();
 
         public static event Action<int> OnSpanFinished;
         private void SetSpanField()
