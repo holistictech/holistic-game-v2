@@ -25,7 +25,7 @@ namespace Spans.Skeleton
         [SerializeField] protected RoundTimerHelper timerHelper;
         [SerializeField] private bool dummyTutorialBool;
         protected List<UnitCircle> activeUnitCircles = new List<UnitCircle>();
-        protected List<ISpanState> stateList = new List<ISpanState>();
+        protected readonly List<ISpanState> stateList = new List<ISpanState>();
         protected SpanStateContext stateContext;
         protected int currentRoundIndex = CommonFields.DEFAULT_ROUND_INDEX;
         protected int currentSuccessStreak;
@@ -197,12 +197,6 @@ namespace Spans.Skeleton
         protected virtual void DecrementRoundIndex()
         {
             currentRoundIndex = Mathf.Max(CommonFields.DEFAULT_ROUND_INDEX, currentRoundIndex -1);
-            /*if(currentRoundIndex > CommonFields.DEFAULT_ROUND_INDEX)
-                currentRoundIndex--;
-            else
-            {
-                currentRoundIndex = CommonFields.DEFAULT_ROUND_INDEX;
-            }*/
         }
 
         protected virtual void IncrementSuccessStreak()

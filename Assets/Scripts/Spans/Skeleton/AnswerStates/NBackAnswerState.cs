@@ -45,10 +45,10 @@ namespace Spans.Skeleton.AnswerStates
         {
             var type = (CommonFields.ButtonType)index;
             _currentStrategy.AppendChosenButtonType(type);
-            /*if (_currentStrategy.IsSwitchable())
+            if (_currentStrategy.IsSwitchable())
             {
                 SwitchNextState();
-            }*/
+            }
         }
         
         public override void Exit()
