@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using Scriptables.QuestionSystem;
@@ -104,7 +105,7 @@ namespace Spans.CumulativeSpan
 
             if (isBackwards)
             {
-                currentDisplayedQuestions.Reverse();
+                listToBeChecked = ReverseDisplayedQuestions();
             }
 
             for (int i = 0; i < listToBeChecked.Count; i++)
@@ -127,6 +128,28 @@ namespace Spans.CumulativeSpan
         {
             currentDisplayedQuestions.AddRange(questions);
         }
+
+        private bool _isInitial = true;
+
+        private List<Question> ReverseDisplayedQuestions()
+        {
+            if (_isInitial)
+            {
+                currentDisplayedQuestions.Reverse();
+                _isInitial = false;
+            }
+            else
+            {
+                // Get the last given question
+                var lastGiven = currentDisplayedQuestions[^1];
+                currentDisplayedQuestions.RemoveAt(currentDisplayedQuestions.Count - 1);
+                //currentDisplayedQuestions.Reverse();
+                currentDisplayedQuestions.Insert(0, lastGiven);
+            }
+
+            return currentDisplayedQuestions;
+        }
+
 
         protected override void IncrementFailStreak()
         {
