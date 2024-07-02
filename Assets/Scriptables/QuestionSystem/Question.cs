@@ -39,6 +39,7 @@ namespace Scriptables.QuestionSystem
 
         public abstract void SetQuestionItem(object item);
         public abstract object GetQuestionItem();
+        public abstract bool IsEqual(Question question);
 
         public abstract object GetQuestionItemByType(CommonFields.ButtonType type);
     }

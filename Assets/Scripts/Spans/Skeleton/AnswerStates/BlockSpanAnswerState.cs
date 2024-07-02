@@ -13,17 +13,24 @@ namespace Spans.Skeleton.AnswerStates
     {
         [SerializeField] private OptionPicker optionPicker;
 
-        private BlockSpan.BlockSpan _blockSpanController;
+        private Block.BlockSpan _blockSpanController;
         private CorsiBlockUIHelper _blockHelper;
         public override void Enter(SpanController controller)
         {
             if (spanController == null)
             {
-                _blockSpanController = controller.GetComponent<BlockSpan.BlockSpan>();
+                _blockSpanController = controller.GetComponent<Block.BlockSpan>();
                 base.Enter(controller);
             }
-            
-            _blockHelper = spanController.GetHelperObject().GetComponent<BlockSpanUIHelper>();
+
+            if (spanController is Block.BlockSpan)
+            {
+                _blockHelper = spanController.GetHelperObject().GetComponent<BlockSpanUIHelper>();
+            }
+            else
+            {
+                _blockHelper = spanController.GetHelperObject().GetComponent<CorsiBlockUIHelper>();
+            }
             maxTime = spanController.GetRoundTime();
             EnableUIElements();
             ConfigureBlockHelper();
@@ -49,7 +56,7 @@ namespace Spans.Skeleton.AnswerStates
 
         protected override void PlayTimer(float duration)
         {
-            if (_blockSpanController.GetCombineStatus() && _canDisplayBanner)
+            if (_blockSpanController != null && _blockSpanController.GetCombineStatus() && _canDisplayBanner)
             {
                 hintHelper.SetFieldText("Gördüklerini birleştir!");
                 hintHelper.AnimateBanner(() =>

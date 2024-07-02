@@ -20,6 +20,11 @@ namespace Scriptables.QuestionSystem
             return ItemSprite;
         }
 
+        public override bool IsEqual(Question question)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public override object GetQuestionItemByType(CommonFields.ButtonType type)
         {
             return type == CommonFields.ButtonType.Color ? AlternativeColorSprite : ItemSprite;

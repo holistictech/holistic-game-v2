@@ -19,6 +19,11 @@ namespace Scriptables.QuestionSystem
             return Clip;
         }
 
+        public override bool IsEqual(Question question)
+        {
+            return (AudioClip)question.GetQuestionItem() == Clip;
+        }
+
         public override object GetQuestionItemByType(CommonFields.ButtonType type)
         {
             return CorrectAnswerString;

@@ -20,7 +20,12 @@ namespace Scriptables.QuestionSystem
         {
             return Sprite;
         }
-        
+
+        public override bool IsEqual(Question question)
+        {
+            throw new System.NotImplementedException();
+        }
+
         private bool _isInitial = true;
 
         public override void ResetSelf()

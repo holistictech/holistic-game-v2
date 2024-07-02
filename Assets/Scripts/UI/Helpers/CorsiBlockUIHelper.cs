@@ -67,7 +67,7 @@ namespace UI.Helpers
         {
             foreach (var block in spawnedBlocks)
             {
-                var assignedQuestion = block.GetAssignedQuestion();
+                var assignedQuestion = block.GetAssignedQuestion();  
 
                 if (question is ColorQuestion || question is BlockImageQuestion)
                 {

@@ -18,6 +18,11 @@ namespace Scriptables.QuestionSystem.Images
             return Image;
         }
 
+        public override bool IsEqual(Question question)
+        {
+            throw new System.NotImplementedException();
+        }
+
         public override object GetQuestionItemByType(CommonFields.ButtonType type)
         {
             throw new System.NotImplementedException();

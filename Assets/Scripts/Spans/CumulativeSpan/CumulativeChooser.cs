@@ -14,16 +14,30 @@ namespace Spans.CumulativeSpan
 {
     public class CumulativeChooser : ImageDescription
     {
+        [SerializeField] private bool isNoteExercise;
         protected int choiceCount = 9;
         public override List<Question> GetSpanObjects()
         {
             List<Question> roundQuestions = new List<Question>();
-            for (int i = 0; i < currentRoundIndex - currentSpanQuestions.Count; i++)
+            if (!isNoteExercise)
             {
-                roundQuestions.Add(GetUnusedQuestion());
+                for (int i = 0; i < currentRoundIndex - currentSpanQuestions.Count; i++)
+                {
+                    roundQuestions.Add(GetUnusedQuestion());
+                }
+                currentSpanQuestions.AddRange(roundQuestions);
             }
+            else
+            {
+                var allQuestions = GetAllAvailableSpanObjects();
+                for (int i = 0; i < 4; i++)
+                {
+                    roundQuestions.Add(allQuestions[i]);
+                }
 
-            currentSpanQuestions.AddRange(roundQuestions);
+                currentSpanQuestions = roundQuestions;
+            }
+            
             return currentSpanQuestions;
         }
         
@@ -39,6 +53,24 @@ namespace Spans.CumulativeSpan
             return imageQuestions[randomIndex];
         }
         
+        public override List<Question> GetCurrentSpanQuestions()
+        {
+            if (!isNoteExercise)
+            {
+                return base.GetCurrentSpanQuestions();
+            }
+            
+            var allQuestions = currentSpanQuestions;
+            List<Question> corrects = new List<Question>();
+            for (int i = 0; i < currentRoundIndex - currentDisplayedQuestions.Count; i++)
+            {
+                var randomIndex = Random.Range(0, allQuestions.Count);
+                var tempQuestion = allQuestions[randomIndex];
+                corrects.Add(tempQuestion);
+            }
+            
+            return corrects;
+        }
 
         public override List<Question> GetChoices()
         {
@@ -63,31 +95,30 @@ namespace Spans.CumulativeSpan
         
         public override bool IsAnswerCorrect()
         {
-            if (currentGivenAnswers.Count == 0 || currentGivenAnswers.Count != currentSpanQuestions.Count)
+            var listToBeChecked = isNoteExercise ? currentDisplayedQuestions : currentSpanQuestions;
+            if (currentGivenAnswers.Count == 0 || currentGivenAnswers.Count != listToBeChecked.Count)
             {
                 IncrementFailStreak();
                 return false;
             }
-            
-            for (int i = 0; i < currentSpanQuestions.Count; i++)
+
+            if (isBackwards)
             {
-                if (currentSpanQuestions[i] is NumberQuestion)
+                currentDisplayedQuestions.Reverse();
+            }
+
+            for (int i = 0; i < listToBeChecked.Count; i++)
+            {
+                Question questionItem = listToBeChecked[i];
+                Question answerItem = currentGivenAnswers[i];
+
+                if (!questionItem.IsEqual(answerItem))
                 {
-                    if ((int)currentSpanQuestions[i].GetQuestionItem() != (int)currentGivenAnswers[i].GetQuestionItem())
-                    {
-                        IncrementFailStreak();
-                        return false;
-                    }
-                }
-                else if (currentSpanQuestions[i] is ImageQuestion)
-                {
-                    if ((Sprite)currentSpanQuestions[i].GetQuestionItem() != (Sprite)currentGivenAnswers[i].GetQuestionItem())
-                    {
-                        IncrementFailStreak();
-                        return false;
-                    }
+                    IncrementFailStreak();
+                    return false;
                 }
             }
+
             IncrementSuccessStreak();
             return true;
         }

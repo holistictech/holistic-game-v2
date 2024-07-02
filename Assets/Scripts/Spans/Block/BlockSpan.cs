@@ -1,14 +1,13 @@
 using System.Collections.Generic;
-using System.Linq;
 using Interfaces;
 using Scriptables.QuestionSystem;
+using Spans.BlockSpan;
 using Spans.Skeleton;
 using UnityEngine;
-using Utilities;
 using Utilities.Helpers;
 using static Utilities.Helpers.CommonFields;
 
-namespace Spans.BlockSpan
+namespace Spans.Block
 {
     public class BlockSpan : SpanController
     {
@@ -56,32 +55,6 @@ namespace Spans.BlockSpan
             List<Question> roundQuestions = new List<Question>();
             HashSet<int> usedQuestionIndices = new HashSet<int>();
             var iterations = _currentConfig.GridSize.x * _currentConfig.GridSize.y;
-            /*if (_gameMode is ColorChooserMode)
-            {
-                iterations -= 2;
-                roundQuestions.Add(allQuestions[0]);
-                roundQuestions.Add(allQuestions[1]);
-            }
-            
-            else if (_gameMode is ItemChooserMode)
-            {
-                iterations -= 3;
-                roundQuestions.Add(allQuestions[0]);
-                roundQuestions.Add(allQuestions[1]);
-                roundQuestions.Add(allQuestions[2]);
-            }
-
-            for (int i = 0; i < iterations; i++)
-            {
-                int randomQuestionIndex;
-                do
-                {
-                    randomQuestionIndex = Random.Range(0, allQuestions.Length);
-                } while (usedQuestionIndices.Contains(randomQuestionIndex));
-
-                usedQuestionIndices.Add(randomQuestionIndex);
-                roundQuestions.Add(allQuestions[randomQuestionIndex]);
-            }*/
             
             for (int i = 0; i < iterations; i++)
             {
