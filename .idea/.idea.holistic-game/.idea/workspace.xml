@@ -6,8 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="3d01f5fc-4a81-4ccb-94d7-a0f07bc2bc79" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GamePlay/Grid.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GamePlay/Grid.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/CumulativeSpan/CumulativeChooser.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/CumulativeSpan/CumulativeChooser.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -18,17 +16,15 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7b734737a66f436f994a07cfef64cb1a20a00/29/17449727/ContactPoint2D.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7b734737a66f436f994a07cfef64cb1a20a00/59/c5c81632/Rigidbody2D.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/834b2ded5dad441e8c7a4287897d63c746ac00/51/75e86bcd/ThrowHelper.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/9920ff0c944845d7b9f9a61ef1478edc94bc00/59/31ff7f93/SerializedObject.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/b1fe495152fd4f0180f79e56e3bccacc173e00/02/a707db6f/MonoBehaviour.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scriptables/InteractableConfig.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scriptables/Level.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/BlockImageQuestion.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/ClipQuestion.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/ClipQuestion.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/ColorQuestion.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/DualNBackQuestion.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Images/ImageQuestion.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/NBackQuestion.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scriptables/StateHolder.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scriptables/TaskConfig.cs" root0="FORCE_HIGHLIGHTING" />
@@ -37,7 +33,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interactables/ConcreteBuilding.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interactables/Field.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interactables/Plant.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interfaces/IBlockSpanStrategy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interfaces/IBlockSpanStrategy.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/CorsiSpan/CorsiSpan.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/CumulativeSpan/CumulativeChooser.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/CumulativeSpan/NumberExercise.cs" root0="FORCE_HIGHLIGHTING" />
@@ -45,7 +41,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/ForwardSpan/SoundChooser.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/Helpers/SpanHintHelper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/NBack/DualNBackMode.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/NBack/NBack.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/NBack/NBack.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/NBack/NBackMode.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/CorsiAnswerState.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/MultipleChoiceAnswerState.cs" root0="FORCE_HIGHLIGHTING" />
@@ -62,6 +58,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spawners/InteractableSpawner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Choice.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/CorsiBlockTypes/AdaptableBlock.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/CorsiBlockTypes/CorsiBlock.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Helpers/BlockSpanUIHelper.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Helpers/ButtonAnimator.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/UI/Helpers/CorsiBlockUIHelper.cs" root0="FORCE_HIGHLIGHTING" />
@@ -108,9 +105,9 @@
   },
   &quot;keyToStringList&quot;: {
     &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\User\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\User\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\User\\AppData\\Local\\Symbols\\src&quot;
+      &quot;C:\\Users\\ahaka\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\ahaka\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\ahaka\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
 }</component>
@@ -245,6 +242,8 @@
       <workItem from="1719476577851" duration="3883000" />
       <workItem from="1719569414722" duration="11098000" />
       <workItem from="1719823267471" duration="2427000" />
+      <workItem from="1720009984648" duration="421000" />
+      <workItem from="1720014658650" duration="402000" />
     </task>
     <servers />
   </component>
@@ -285,81 +284,39 @@
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/BlockSpan/ItemChooserMode.cs</url>
           <line>80</line>
-          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Spans\BlockSpan\ItemChooserMode.cs" initialLine="80" containingFunctionPresentation="Method 'GetCorrectQuestions'">
-            <startOffsets>
-              <option value="2968" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2969" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Spans\BlockSpan\ItemChooserMode.cs" initialLine="80" containingFunctionPresentation="Method 'GetCorrectQuestions'" />
           <option name="timeStamp" value="53" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/BlockSpan/ItemChooserMode.cs</url>
           <line>34</line>
-          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Spans\BlockSpan\ItemChooserMode.cs" initialLine="34" containingFunctionPresentation="Method 'CheckAnswer'">
-            <startOffsets>
-              <option value="1186" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1187" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Spans\BlockSpan\ItemChooserMode.cs" initialLine="34" containingFunctionPresentation="Method 'CheckAnswer'" />
           <option name="timeStamp" value="55" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/BlockSpan/ItemChooserMode.cs</url>
           <line>56</line>
-          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Spans\BlockSpan\ItemChooserMode.cs" initialLine="56" containingFunctionPresentation="Method 'CheckAnswer'">
-            <startOffsets>
-              <option value="2055" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2116" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Spans\BlockSpan\ItemChooserMode.cs" initialLine="56" containingFunctionPresentation="Method 'CheckAnswer'" />
           <option name="timeStamp" value="57" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <condition expression="currentQuestionIndex != 0" language="C#" />
           <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/CumulativeQuestionState.cs</url>
           <line>52</line>
-          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Spans\Skeleton\QuestionStates\CumulativeQuestionState.cs" initialLine="52" containingFunctionPresentation="Method 'ShowNumbers'">
-            <startOffsets>
-              <option value="1772" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1868" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Spans\Skeleton\QuestionStates\CumulativeQuestionState.cs" initialLine="52" containingFunctionPresentation="Method 'ShowNumbers'" />
           <option name="timeStamp" value="67" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <condition expression="currentRoundIndex == 4" language="C#" />
           <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/CumulativeSpan/NumberExercise.cs</url>
           <line>36</line>
-          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Spans\CumulativeSpan\NumberExercise.cs" initialLine="36" containingFunctionPresentation="Method 'GetChoices'">
-            <startOffsets>
-              <option value="1207" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1208" />
-            </endOffsets>
-          </properties>
+          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Spans\CumulativeSpan\NumberExercise.cs" initialLine="36" containingFunctionPresentation="Method 'GetChoices'" />
           <option name="timeStamp" value="72" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/CumulativeSpan/CumulativeChooser.cs</url>
-          <line>97</line>
-          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Spans\CumulativeSpan\CumulativeChooser.cs" initialLine="96" containingFunctionPresentation="Method 'IsAnswerCorrect'">
-            <startOffsets>
-              <option value="3325" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3326" />
-            </endOffsets>
-          </properties>
+          <line>152</line>
+          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Spans\CumulativeSpan\CumulativeChooser.cs" initialLine="96" containingFunctionPresentation="Method 'IsAnswerCorrect'" />
           <option name="timeStamp" value="76" />
         </line-breakpoint>
       </breakpoints>

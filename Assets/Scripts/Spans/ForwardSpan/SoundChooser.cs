@@ -6,6 +6,17 @@ namespace Spans.ForwardSpan
 {
     public class SoundChooser : ForwardSpanVoiceDescription
     {
+        public override List<Question> GetSpanObjects()
+        {
+            List<Question> shuffledSprites = new List<Question>(GetAllAvailableSpanObjects());
+            
+            foreach (var item in shuffledSprites)
+            {
+                item.IsAnswerStringMUST = false;
+            }
+            return GetRandomClips();
+        }
+        
         public override List<Question> GetChoices()
         {
             var allClips = base.GetAllAvailableSpanObjects();

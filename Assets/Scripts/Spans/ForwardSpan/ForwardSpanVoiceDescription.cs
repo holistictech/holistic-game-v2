@@ -10,6 +10,12 @@ namespace Spans.ForwardSpan
     {
         public override List<Question> GetSpanObjects()
         {
+            List<Question> shuffledSprites = new List<Question>(GetAllAvailableSpanObjects());
+            
+            foreach (var item in shuffledSprites)
+            {
+                item.IsAnswerStringMUST = true;
+            }
             return GetRandomClips();
         }
         
@@ -18,9 +24,10 @@ namespace Spans.ForwardSpan
             return currentRoundIndex * 3 + 2;
         }
 
-        private List<Question> GetRandomClips()
+        protected List<Question> GetRandomClips()
         {
             List<Question> shuffledSprites = new List<Question>(GetAllAvailableSpanObjects());
+            
             for (int i = 0; i < shuffledSprites.Count; i++)
             {
                 int randomIndex = Random.Range(i, shuffledSprites.Count);
