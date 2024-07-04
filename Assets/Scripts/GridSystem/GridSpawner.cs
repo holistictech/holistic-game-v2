@@ -59,12 +59,12 @@ namespace GridSystem
             {
                 var config = ScriptableObject.CreateInstance<InteractableConfig>();
                 config = item.Config;
-                interactables.Add(new InteractableData(config, item.Point));
+                interactables.Add(new InteractableData(config, item.Point, item.GetRotation()));
             }
 
             foreach (var itemData in interactables)
             {
-                _spawner.SpawnSelectedInteractable(itemData.Point, itemData.Config, false);
+                _spawner.SpawnSelectedInteractable(itemData.Point, itemData.Config, false, itemData.GetRotation());
             }
         }
 

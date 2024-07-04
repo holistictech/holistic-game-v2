@@ -84,7 +84,12 @@ namespace Utilities.InputHandlers
         {
             _isPlacing = false;
         }
-
+        
+        private void EnableCameraMovement(Quaternion rotation)
+        {
+            _isPlacing = false;
+        }
+        
         private void AddListeners()
         {
             Sketch.OnPlacementConfirmed += EnableCameraMovement;

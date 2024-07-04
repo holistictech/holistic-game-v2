@@ -36,11 +36,12 @@ namespace Interactables
             _interactableConfig = config;
         }
 
-        public virtual void BuildSelf(CartesianPoint desiredPoint, bool isFirstTime, float delay)
+        public virtual void BuildSelf(CartesianPoint desiredPoint, bool isFirstTime, float delay, Quaternion rotation)
         {
             SetObjectMesh();
             SetPosition(desiredPoint);
-            _data = new InteractableData(_interactableConfig, desiredPoint);
+            transform.rotation = rotation;
+            _data = new InteractableData(_interactableConfig, desiredPoint, rotation);
             if (isFirstTime)
             {
                 AnimateBuilding(delay);
@@ -112,17 +113,34 @@ namespace Interactables
         }
     }
 
-    [Serializable]
+    [System.Serializable]
     public class InteractableData
     {
         public CartesianPoint Point;
         public InteractableConfig Config;
-    
-        public InteractableData(InteractableConfig config, CartesianPoint point)
+        public float x;
+        public float y;
+        public float z;
+        public float w;
+        
+        public InteractableData(InteractableConfig config, CartesianPoint point, Quaternion rotation)
         {
             Config = config;
             Point = point;
+            SetRotation(rotation);
         }
         
+        public void SetRotation(Quaternion rotation)
+        {
+            x = rotation.x;
+            y = rotation.y;
+            z = rotation.z;
+            w = rotation.w;
+        }
+        
+        public Quaternion GetRotation()
+        {
+            return new Quaternion(x, y, z, w);
+        }
     }
 }

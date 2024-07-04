@@ -9,6 +9,7 @@ namespace UI
     public class SketchUIHelper : MonoBehaviour
     {
         [SerializeField] private Button confirmButton;
+        [SerializeField] private Button rotateButton;
         [SerializeField] private Button cancelButton;
         
         private Sketch _sketchObject;
@@ -27,10 +28,12 @@ namespace UI
         {
             confirmButton.gameObject.SetActive(false);
             cancelButton.gameObject.SetActive(false);
-            confirmButton.transition = Selectable.Transition.None;
+            rotateButton.gameObject.SetActive(false);
+            /*confirmButton.transition = Selectable.Transition.None;
             cancelButton.transition = Selectable.Transition.None;
+            rotateButton.transition = Selectable.Transition.None;
             confirmButton.interactable = false;
-            cancelButton.interactable = false;
+            cancelButton.interactable = false;*/
         }
 
         public void EnableButtons(Vector3 position)
@@ -39,8 +42,10 @@ namespace UI
             cancelButton.transition = Selectable.Transition.ColorTint;
             confirmButton.interactable = true;
             cancelButton.interactable = true;
+            rotateButton.interactable = _sketchObject.GetRotatableStatus();
             confirmButton.gameObject.SetActive(true);
             cancelButton.gameObject.SetActive(true);
+            rotateButton.gameObject.SetActive(_sketchObject.GetRotatableStatus());
             
             transform.GetComponent<RectTransform>().anchoredPosition = new Vector2(position.x, position.z);
         }
@@ -61,6 +66,11 @@ namespace UI
             DisableButtons();
         }
 
+        private void RotateSketch()
+        {
+            _sketchObject.RotateSelf();
+        }
+
         public bool ButtonEnabled()
         {
             return confirmButton.isActiveAndEnabled;
@@ -70,12 +80,14 @@ namespace UI
         {
             confirmButton.onClick.AddListener(ConfirmPlacement);
             cancelButton.onClick.AddListener(CancelPlacement);
+            rotateButton.onClick.AddListener(RotateSketch);
         }
 
         private void RemoveListeners()
         {
             confirmButton.onClick.RemoveListener(ConfirmPlacement);
             cancelButton.onClick.RemoveListener(CancelPlacement);
+            rotateButton.onClick.RemoveListener(RotateSketch);
         }
     }
 }

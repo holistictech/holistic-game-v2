@@ -21,3 +21,4 @@ MonoBehaviour:
   RewardInteractable: {fileID: 11400000, guid: 6a31ab0e318804d4c92e013a1511bc30, type: 2}
   Dependencies: []
   _hasCompleted: 0
+  Rotatable: 0

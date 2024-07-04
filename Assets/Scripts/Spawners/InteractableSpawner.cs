@@ -57,7 +57,7 @@ namespace Spawners
                 Vector3 cameraForward = transform1.forward;
                 Vector3 middlePoint = cameraPosition + cameraForward * mainCamera.nearClipPlane;
                 _spawnedSketch = Instantiate(sketch, objectParent);
-                _spawnedSketch.ConfigureObjectMesh(MeshContainer.Instance.GetMeshById(_currentConfig.RewardInteractable.MeshId));
+                _spawnedSketch.ConfigureObjectMesh(MeshContainer.Instance.GetMeshById(_currentConfig.RewardInteractable.MeshId), _currentConfig.Rotatable);
                 _spawnedSketch.transform.position = new Vector3(middlePoint.x, 0, 0);
                 _spawnedSketch.ConfigureSize(_currentConfig.RewardInteractable);
                 swipeHandler.enabled = true;
@@ -65,14 +65,14 @@ namespace Spawners
             }
         }
 
-        private void SpawnInteractable()
+        private void SpawnInteractable(Quaternion rotation)
         {
             var finalPos = swipeHandler.GetFinalPosition();
-            SpawnSelectedInteractable(new CartesianPoint((int)finalPos.x, (int)finalPos.z), _currentConfig.RewardInteractable, true);
+            SpawnSelectedInteractable(new CartesianPoint((int)finalPos.x, (int)finalPos.z), _currentConfig.RewardInteractable, true, rotation);
             PlayerInventory.Instance.ChangeCurrencyAmountByType(_currentConfig);
         }
 
-        public void SpawnSelectedInteractable(CartesianPoint desiredPoint, InteractableConfig config, bool shouldSave)
+        public void SpawnSelectedInteractable(CartesianPoint desiredPoint, InteractableConfig config, bool shouldSave, Quaternion rotation)
         {
             DisableSwipeHandler();
             var spawnedInstance = InteractableFactory.SpawnInstance(spawnable, config, objectParent);
@@ -90,7 +90,7 @@ namespace Spawners
                     PlayBuildingEffect(desiredPoint);
 
                 }
-                interactable.BuildSelf(desiredPoint, shouldSave, buildingEffect.main.duration - 2f);
+                interactable.BuildSelf(desiredPoint, shouldSave, buildingEffect.main.duration - 2f, rotation);
                 if (_currentConfig != null && _currentConfig.CurrencyType == CurrencyType.Energy)
                 {
                     _currentConfig.SetHasCompleted(true);

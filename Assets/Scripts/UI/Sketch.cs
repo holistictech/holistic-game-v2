@@ -9,14 +9,16 @@ namespace UI
     {
         [SerializeField] private MeshFilter meshFilter;
         private SketchUIHelper _uiHelper;
+        private bool _rotatable;
 
-        public static event Action OnPlacementConfirmed;
+        public static event Action<Quaternion> OnPlacementConfirmed;
         public static event Action OnPlacementCancelled;
         
 
-        public void ConfigureObjectMesh(Mesh mesh)
+        public void ConfigureObjectMesh(Mesh mesh, bool rotatable)
         {
             meshFilter.mesh = mesh;
+            _rotatable = rotatable;
         }
 
         public void ConfigureSize(InteractableConfig config)
@@ -30,6 +32,14 @@ namespace UI
             _uiHelper = uiHelper;
             _uiHelper.SetSketchReference(this);
         }
+
+        public void RotateSelf()
+        {
+            var currentRotation = transform.rotation.eulerAngles;
+            var newYRotation = currentRotation.y + 90f;
+            transform.rotation = Quaternion.Euler(currentRotation.x, newYRotation % 360, currentRotation.z);
+        }
+
 
         public void DisableButtonsWhileMoving()
         {
@@ -53,9 +63,14 @@ namespace UI
             return _uiHelper.ButtonEnabled();
         }
 
+        public bool GetRotatableStatus()
+        {
+            return _rotatable;
+        }
+
         public void ConfirmPlacement()
         {
-            OnPlacementConfirmed?.Invoke();
+            OnPlacementConfirmed?.Invoke(transform.rotation);
             //DestroyObject();
         }
 

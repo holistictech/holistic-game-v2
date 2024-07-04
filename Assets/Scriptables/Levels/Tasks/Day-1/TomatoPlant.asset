@@ -23,3 +23,4 @@ MonoBehaviour:
   Dependencies:
   - {fileID: 11400000, guid: 63f0a4d3d23720148a7b8fb4b08f20b6, type: 2}
   _hasCompleted: 0
+  Rotatable: 0

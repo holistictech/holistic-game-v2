@@ -18,6 +18,7 @@ namespace Scriptables
         public InteractableConfig RewardInteractable;
         public List<TaskConfig> Dependencies;
         public bool _hasCompleted;
+        public bool Rotatable;
         
         public void SetHasCompleted(bool toggle)
         {
