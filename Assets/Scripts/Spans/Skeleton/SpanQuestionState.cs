@@ -19,7 +19,7 @@ namespace Spans.Skeleton
         private List<UnitCircle> _spawnedUnitPool;
         private List<UnitCircle> _activeCircles;
         protected int currentQuestionIndex;
-        protected SpanEventBus spanEventBus;
+        protected EventBus eventBus;
         protected SpanController spanController;
         protected Coroutine displayingQuestions;
         
@@ -33,8 +33,8 @@ namespace Spans.Skeleton
             if (spanController == null)
             {
                 spanController = controller;
-                spanEventBus = spanController.GetEventBus();
-                spanEventBus.Register<RoundResetEvent>(OnRoundReset);
+                eventBus = spanController.GetEventBus();
+                eventBus.Register<RoundResetEvent>(OnRoundReset);
             }
             EnableUIElements();
             
@@ -167,7 +167,7 @@ namespace Spans.Skeleton
 
         public virtual void OnDestroy()
         {
-            spanEventBus.Unregister<RoundResetEvent>(OnRoundReset);
+            eventBus.Unregister<RoundResetEvent>(OnRoundReset);
         }
 
         private void OnRoundReset(RoundResetEvent reset)

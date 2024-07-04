@@ -24,7 +24,7 @@ namespace UI.Tasks
         private TaskConfig _taskConfig;
 
         public static event Action<TaskConfig> OnTaskCompleted;
-        public static event Action OnSpanRequested;
+        //public static event Action OnSpanRequested;
 
         private void OnEnable()
         {
@@ -91,8 +91,9 @@ namespace UI.Tasks
 
         private void RedirectToSpan()
         {
-            _taskPanelManager.DisableTaskPopup();
-            OnSpanRequested?.Invoke();
+            _taskPanelManager.RequestSpan();
+            //OnSpanRequested?.Invoke();
+            //_taskPanelManager.DisableTaskPopup();
         }
 
         private void AddListeners()

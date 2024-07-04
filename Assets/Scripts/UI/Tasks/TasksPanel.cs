@@ -2,6 +2,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using Scriptables;
+using Spans.Skeleton;
 using TMPro;
 using UI.Helpers;
 using UnityEngine;
@@ -23,7 +24,8 @@ namespace UI.Tasks
         [Header("Functionality")] 
         [SerializeField] private WarningUIHelper warningHelper;
         [SerializeField] private Task taskPrefab;
-
+        private EventBus _eventBus;
+        
         private void OnEnable()
         {
             AddListeners();
@@ -64,6 +66,12 @@ namespace UI.Tasks
             taskButton.gameObject.SetActive(true);
             taskPanel.gameObject.SetActive(false);
             DestroyTasks();
+        }
+
+        public void RequestSpan()
+        {
+            DisableTaskPopup();
+            _eventBus.Trigger(new SpanRequestedEvent());
         }
 
         private void DestroyTasks()

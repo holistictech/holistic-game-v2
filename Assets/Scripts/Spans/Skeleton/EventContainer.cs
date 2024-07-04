@@ -5,8 +5,13 @@ using Utilities.Helpers;
 
 namespace Spans.Skeleton
 {
-    public class SpanEventContainer : MonoBehaviour
+    public class EventContainer : MonoBehaviour
     {
+    }
+
+    public class SpanRequestedEvent
+    {
+        
     }
 
     public class RoundResetEvent

@@ -39,7 +39,7 @@ namespace Spans.Skeleton
         protected bool hasLeveledUp;
         protected bool isSpanFinished;
         
-        protected SpanEventBus spanEventBus;
+        protected EventBus eventBus;
         private GameObject _helperObject; private List<GameObject> _tutorialHelpers = new List<GameObject>();
 
         public static event Action<int> OnSpanFinished;
@@ -63,7 +63,7 @@ namespace Spans.Skeleton
             currentRoundIndex = PlayerSaveManager.GetPlayerAttribute(gameObject.name, 2);
             StartTimer();
             stateContext = new SpanStateContext(this);
-            spanEventBus = new SpanEventBus();
+            eventBus = new EventBus();
             SetSpanField();
             ResetQuestionStatus();
             InstantiateGameStates();
@@ -257,9 +257,9 @@ namespace Spans.Skeleton
                 _helperObject = helper;
         }
 
-        public SpanEventBus GetEventBus()
+        public EventBus GetEventBus()
         {
-            return spanEventBus;
+            return eventBus;
         }
 
         public GameObject GetHelperObject()

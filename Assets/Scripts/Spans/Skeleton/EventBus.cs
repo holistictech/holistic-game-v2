@@ -3,7 +3,7 @@ using System.Collections.Generic;
 
 namespace Spans.Skeleton
 {
-    public class SpanEventBus
+    public class EventBus
     {
         private Dictionary<Type, List<Action<object>>> _eventListeners = new Dictionary<Type, List<Action<object>>>();
 

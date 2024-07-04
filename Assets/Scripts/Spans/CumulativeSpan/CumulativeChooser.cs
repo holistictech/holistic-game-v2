@@ -157,7 +157,7 @@ namespace Spans.CumulativeSpan
             currentDisplayedQuestions.Clear();
             activeUnitCircles.Clear();
             ResetRoundIndex();
-            spanEventBus.Trigger(new RoundResetEvent());
+            eventBus.Trigger(new RoundResetEvent());
         }
 
         protected override void IncrementSuccessStreak()

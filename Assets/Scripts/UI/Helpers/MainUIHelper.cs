@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using DG.Tweening;
 using Spans.Skeleton;
@@ -21,6 +22,13 @@ namespace UI.Helpers
         [SerializeField] private DayDoneUIHelper dayCompletedPopup;
 
         private GameObject _activeSpan;
+        private EventBus _eventBus;
+
+        private void Awake()
+        {
+            //@todo: change this to dependency injection. Do not declare it here.
+            _eventBus = new EventBus();
+        }
 
         private void OnEnable()
         {
@@ -34,7 +42,7 @@ namespace UI.Helpers
             RemoveListeners();
         }
 
-        private void PlayNextSpan()
+        private void PlayNextSpan(SpanRequestedEvent request)
         {
             if (PlayerInventory.Instance.HasDayCompleted())
             {
@@ -49,7 +57,7 @@ namespace UI.Helpers
         private void EnableSpanChooser()
         {
             selectionPopup.gameObject.SetActive(true);
-            //PlayNextSpan();
+            //PlayNextSpan(new SpanRequestedEvent());
         }
 
         private void DisableSpanChooser()
@@ -89,7 +97,8 @@ namespace UI.Helpers
         {
             playButton.onClick.AddListener(EnableSpanChooser);
             closeButton.onClick.AddListener(DisableSpanChooser);
-            Task.OnSpanRequested += EnableSpanChooser;
+            //Task.OnSpanRequested += EnableSpanChooser;
+            _eventBus.Register<SpanRequestedEvent>(PlayNextSpan);
             SpanController.OnSpanFinished += DestroyActiveSpan;
         }
 
@@ -97,7 +106,8 @@ namespace UI.Helpers
         {
             playButton.onClick.RemoveListener(EnableSpanChooser);
             closeButton.onClick.RemoveListener(DisableSpanChooser);
-            Task.OnSpanRequested -= EnableSpanChooser;
+            //Task.OnSpanRequested -= EnableSpanChooser;
+            _eventBus.Unregister<SpanRequestedEvent>(PlayNextSpan);
             SpanController.OnSpanFinished += DestroyActiveSpan;
         }
     }
