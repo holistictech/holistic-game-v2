@@ -1,4 +1,5 @@
 using System.Collections.Generic;
+using DG.Tweening;
 using Spans.Skeleton;
 using UI.Tasks;
 using UnityEngine;
@@ -66,17 +67,20 @@ namespace UI.Helpers
 
         private void DestroyActiveSpan(int earnedPerformance)
         {
-            Camera.main.gameObject.transform.rotation = Quaternion.Euler(new Vector3(30, 45, 0));
             Destroy(_activeSpan.gameObject);
-            trailHelper.AnimateCurrencyIncrease(currencyHelper, 1, () =>
+            Camera.main.gameObject.transform.rotation = Quaternion.Euler(new Vector3(30, 45, 0));
+            DOVirtual.DelayedCall(0.3f, () =>
             {
-                PlayerInventory.Instance.ChangeEnergyAmount(1);
-                PlayerInventory.Instance.IncrementCurrentStage();
-                currencyHelper.UpdateCurrencyField();
-                trailHelper.AnimateCurrencyIncrease(performanceHelper, earnedPerformance, () =>
+                trailHelper.AnimateCurrencyIncrease(currencyHelper, 1, () =>
                 {
-                    PlayerInventory.Instance.ChangePerformanceAmount(earnedPerformance);
-                    performanceHelper.UpdateCurrencyField();
+                    PlayerInventory.Instance.ChangeEnergyAmount(1);
+                    PlayerInventory.Instance.IncrementCurrentStage();
+                    currencyHelper.UpdateCurrencyField();
+                    trailHelper.AnimateCurrencyIncrease(performanceHelper, earnedPerformance, () =>
+                    {
+                        PlayerInventory.Instance.ChangePerformanceAmount(earnedPerformance);
+                        performanceHelper.UpdateCurrencyField();
+                    });
                 });
             });
         }

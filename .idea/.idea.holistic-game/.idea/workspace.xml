@@ -5,14 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3d01f5fc-4a81-4ccb-94d7-a0f07bc2bc79" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/BlockImageQuestion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/BlockImageQuestion.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/ColorQuestion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/ColorQuestion.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/DualNBackQuestion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/DualNBackQuestion.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Images/ImageQuestion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Images/ImageQuestion.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/NBackQuestion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/NBackQuestion.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Numbers/NumberQuestion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Numbers/NumberQuestion.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/CommonQuestionState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/CommonQuestionState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Choice.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Choice.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Helpers/CurrencyTrailHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Helpers/CurrencyTrailHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Helpers/MainUIHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Helpers/MainUIHelper.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -251,7 +245,7 @@
       <workItem from="1719823267471" duration="2427000" />
       <workItem from="1720009984648" duration="421000" />
       <workItem from="1720014658650" duration="402000" />
-      <workItem from="1720079925766" duration="476000" />
+      <workItem from="1720079925766" duration="932000" />
     </task>
     <servers />
   </component>

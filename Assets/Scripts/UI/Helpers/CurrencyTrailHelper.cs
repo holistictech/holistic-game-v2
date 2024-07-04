@@ -53,12 +53,12 @@ namespace UI.Helpers
                 Transform trailTransform = _trailObjects[currentIndex].transform;
 
                 Sequence animSequence = DOTween.Sequence();
-                animSequence.AppendInterval(0.03f * currentIndex);
-                animSequence.Append(trailTransform.DOJump(_currentTarget.position, 6, 1, 0.8f).SetEase(Ease.OutQuad));
-                animSequence.Join(trailTransform.DOScale(new Vector3(0.5f, 0.5f, 0.5f), 0.8f));
+                animSequence.AppendInterval(0.1f);
+                animSequence.Append(trailTransform.DOJump(_currentTarget.position, 6, 1, 0.6f).SetEase(Ease.OutQuad));
+                animSequence.Join(trailTransform.DOScale(new Vector3(0.5f, 0.5f, 0.5f), 0.4f));
                 animSequence.AppendCallback(() =>
                 {
-                    _currentTarget.transform.DOShakeScale(0.35f, 0.7f);
+                    _currentTarget.transform.DOShakeScale(0.2f, 0.5f);
                 });
 
                 masterSequence.Append(animSequence);
