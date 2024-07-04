@@ -7,10 +7,10 @@ namespace Utilities.InputHandlers
     public class CameraMover : MonoBehaviour
     {
         [SerializeField] private RectTransform[] uiElements;
-        [SerializeField] private float moveSpeed; 
+        [SerializeField] private float moveSpeed;
         [SerializeField] private float boundaryPaddingX;
         [SerializeField] private float boundaryPaddingZ;
-        private float _minX, _maxX, _minZ, _maxZ;
+        private float _minX = -25f, _maxX = 90f, _minZ = -15f, _maxZ = 40f;
         
         private Vector3 _touchStart;
         private bool _isSwiping;
@@ -28,11 +28,12 @@ namespace Utilities.InputHandlers
 
         private void Start()
         {
-            var position = transform.position;
-            _minX = position.x - boundaryPaddingX;
-            _maxX = position.x + boundaryPaddingX;
-            _minZ = position.z - boundaryPaddingZ;
-            _maxZ = position.z + boundaryPaddingZ;
+            // The boundaries are now hardcoded, so this can be removed
+            // var position = transform.position;
+            // _minX = position.x - boundaryPaddingX;
+            // _maxX = position.x + boundaryPaddingX;
+            // _minZ = position.z - boundaryPaddingZ;
+            // _maxZ = position.z + boundaryPaddingZ;
         }
 
         private void Update()
@@ -46,7 +47,7 @@ namespace Utilities.InputHandlers
                 {
                     _touchStart = touch.position;
                     _isSwiping = true;
-                    
+
                     foreach (RectTransform uiElement in uiElements)
                     {
                         if (RectTransformUtility.RectangleContainsScreenPoint(uiElement, touch.position))
@@ -66,7 +67,7 @@ namespace Utilities.InputHandlers
                 {
                     Vector2 direction = (Input.mousePosition - _touchStart).normalized;
 
-                    Vector3 targetPosition = transform.position - new Vector3(direction.x, 0 , direction.y) * (moveSpeed * Time.deltaTime);
+                    Vector3 targetPosition = transform.position - new Vector3(direction.x, 0, direction.y) * (moveSpeed * Time.deltaTime);
                     targetPosition.x = Mathf.Clamp(targetPosition.x, _minX, _maxX);
                     targetPosition.z = Mathf.Clamp(targetPosition.z, _minZ, _maxZ);
                     transform.position = targetPosition;

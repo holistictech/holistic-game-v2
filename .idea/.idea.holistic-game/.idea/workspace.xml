@@ -5,8 +5,13 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3d01f5fc-4a81-4ccb-94d7-a0f07bc2bc79" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Helpers/CurrencyTrailHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Helpers/CurrencyTrailHelper.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Helpers/MainUIHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Helpers/MainUIHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Stars/star_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Stars/star_ADD.mat" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Prefabs/Environment/Fog/Grey/FogCalmGrey.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Prefabs/Environment/Fog/Grey/FogCalmGrey.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/My Farm/Demo/Prefabs/Farm_objects/3_plank_3.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My Farm/Demo/Prefabs/Farm_objects/3_plank_3.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/My Farm/Demo/Prefabs/Farm_objects/cross_fence_4.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My Farm/Demo/Prefabs/Farm_objects/cross_fence_4.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GamePlay/Grid.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GamePlay/Grid.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/InputHandlers/CameraMover.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/InputHandlers/CameraMover.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -245,7 +250,7 @@
       <workItem from="1719823267471" duration="2427000" />
       <workItem from="1720009984648" duration="421000" />
       <workItem from="1720014658650" duration="402000" />
-      <workItem from="1720079925766" duration="932000" />
+      <workItem from="1720079925766" duration="3118000" />
     </task>
     <servers />
   </component>
