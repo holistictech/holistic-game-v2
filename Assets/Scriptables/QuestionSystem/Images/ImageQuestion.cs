@@ -20,7 +20,7 @@ namespace Scriptables.QuestionSystem.Images
 
         public override bool IsEqual(Question question)
         {
-            throw new System.NotImplementedException();
+            return Image == (Sprite)question.GetQuestionItem();
         }
 
         public override object GetQuestionItemByType(CommonFields.ButtonType type)

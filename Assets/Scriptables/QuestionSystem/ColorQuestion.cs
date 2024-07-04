@@ -23,7 +23,7 @@ namespace Scriptables.QuestionSystem
 
         public override bool IsEqual(Question question)
         {
-            throw new System.NotImplementedException();
+            return QuestionColor == (Color)question.GetQuestionItem();
         }
 
         private bool _isInitial = true;

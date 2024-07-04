@@ -8,7 +8,7 @@ namespace Scriptables.QuestionSystem
     public class DualNBackQuestion : Question
     {
         public int Value;
-        [FormerlySerializedAs("questionClip")] public AudioClip QuestionClip;
+        public AudioClip QuestionClip;
         public override void SetQuestionItem(object item)
         {
             throw new System.NotImplementedException();
@@ -21,7 +21,7 @@ namespace Scriptables.QuestionSystem
 
         public override bool IsEqual(Question question)
         {
-            throw new System.NotImplementedException();
+            return QuestionClip == (AudioClip)question.GetQuestionItem();
         }
 
         public override object GetQuestionItemByType(CommonFields.ButtonType type)

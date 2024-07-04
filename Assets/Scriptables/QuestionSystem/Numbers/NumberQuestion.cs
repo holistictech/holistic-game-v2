@@ -1,8 +1,7 @@
 using UnityEngine;
-using Utilities;
 using Utilities.Helpers;
 
-namespace Scriptables.QuestionSystem
+namespace Scriptables.QuestionSystem.Numbers
 {
     [CreateAssetMenu(fileName = "Question", menuName = "Question/Number")]
     public class NumberQuestion : Question
@@ -20,7 +19,7 @@ namespace Scriptables.QuestionSystem
 
         public override bool IsEqual(Question question)
         {
-            throw new System.NotImplementedException();
+            return Value == (int)question.GetQuestionItem();
         }
 
         public override object GetQuestionItemByType(CommonFields.ButtonType type)

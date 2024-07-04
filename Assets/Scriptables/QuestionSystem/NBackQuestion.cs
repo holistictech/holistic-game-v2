@@ -22,7 +22,7 @@ namespace Scriptables.QuestionSystem
 
         public override bool IsEqual(Question question)
         {
-            throw new System.NotImplementedException();
+            return ItemSprite == (Sprite)question.GetQuestionItem();
         }
 
         public override object GetQuestionItemByType(CommonFields.ButtonType type)

@@ -23,7 +23,7 @@ namespace Scriptables.QuestionSystem
 
         public override bool IsEqual(Question question)
         {
-            throw new System.NotImplementedException();
+            return Index == (int)question.GetQuestionItemByType(CommonFields.ButtonType.Count);
         }
 
         private bool _isInitial = true;
