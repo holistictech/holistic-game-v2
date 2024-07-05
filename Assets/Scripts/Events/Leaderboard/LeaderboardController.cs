@@ -32,7 +32,7 @@ namespace Events.Leaderboard
 
         private void EnableLeaderboard()
         {
-            EventBus.Instance.Trigger(new ToggleSwipeInput(true));
+            EventBus.Instance.Trigger(new ToggleSwipeInput(false));
             leaderboardView.ActivateLeaderboard(_leaderboardModel.GetCurrentLeaderboard());
             //_eventBus.Trigger(new ToggleSwipeInput(false));
         }
@@ -46,7 +46,7 @@ namespace Events.Leaderboard
         {
             leaderboardView.DisableLeaderboard();
             //_eventBus.Trigger(new ToggleSwipeInput(true));
-            EventBus.Instance.Trigger(new ToggleSwipeInput(false));
+            EventBus.Instance.Trigger(new ToggleSwipeInput(true));
         }
 
         private void RedirectUserToSpan()

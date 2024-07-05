@@ -1,3 +1,5 @@
+using System;
+using Spans.Skeleton;
 using Spawners;
 using UI;
 using UnityEngine;
@@ -15,6 +17,11 @@ namespace Utilities.InputHandlers
         private Vector3 _touchStart;
         private bool _isSwiping;
         private bool _isPlacing;
+
+        private void Awake()
+        {
+            EventBus.Instance.Register<ToggleSwipeInput>(ToggleSwipe);
+        }
 
         private void OnEnable()
         {
@@ -90,6 +97,12 @@ namespace Utilities.InputHandlers
             _isPlacing = false;
         }
         
+        private void ToggleSwipe(ToggleSwipeInput input)
+        {
+            Debug.Log($"Swipe input toggled: {input.Toggle}");
+            enabled = input.Toggle;
+        }
+        
         private void AddListeners()
         {
             Sketch.OnPlacementConfirmed += EnableCameraMovement;
@@ -102,6 +115,11 @@ namespace Utilities.InputHandlers
             Sketch.OnPlacementConfirmed -= EnableCameraMovement;
             Sketch.OnPlacementCancelled -= EnableCameraMovement;
             InteractableSpawner.OnPositionChoiceNeeded -= DisableCameraMovement;
+        }
+
+        private void OnDestroy()
+        {
+            EventBus.Instance.Unregister<ToggleSwipeInput>(ToggleSwipe);
         }
     }
 }
