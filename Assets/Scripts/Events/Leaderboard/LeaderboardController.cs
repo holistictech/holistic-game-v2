@@ -14,7 +14,6 @@ namespace Events.Leaderboard
         [SerializeField] private LeaderboardView leaderboardView;
 
         private LeaderboardModel _leaderboardModel;
-        private EventBus _eventBus;
 
         private void Start()
         {
@@ -33,7 +32,9 @@ namespace Events.Leaderboard
 
         private void EnableLeaderboard()
         {
+            EventBus.Instance.Trigger(new ToggleSwipeInput(true));
             leaderboardView.ActivateLeaderboard(_leaderboardModel.GetCurrentLeaderboard());
+            //_eventBus.Trigger(new ToggleSwipeInput(false));
         }
 
         private LeaderboardUserModel[] GetLeaderboard()
@@ -44,11 +45,14 @@ namespace Events.Leaderboard
         private void DisableLeaderboard()
         {
             leaderboardView.DisableLeaderboard();
+            //_eventBus.Trigger(new ToggleSwipeInput(true));
+            EventBus.Instance.Trigger(new ToggleSwipeInput(false));
         }
 
         private void RedirectUserToSpan()
         {
-            _eventBus.Trigger(new SpanRequestedEvent());
+            //_eventBus.Trigger(new SpanRequestedEvent());
+            EventBus.Instance.Trigger(new SpanRequestedEvent());
         }
         
         private void AddListeners()

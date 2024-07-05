@@ -8,6 +8,7 @@ namespace Events.Leaderboard
     {
         [SerializeField] private RectTransform scrollParent;
         [SerializeField] private GameObject leaderboardPanel;
+        [SerializeField] private GameObject blackishPanel;
         [SerializeField] private LeaderboardEntry entryPrefab;
 
         private List<LeaderboardEntry> _pooledEntries = new List<LeaderboardEntry>();
@@ -21,8 +22,9 @@ namespace Events.Leaderboard
 
         public void ActivateLeaderboard(LeaderboardUserModel[] users)
         {
-            if (leaderboardPanel.gameObject.activeSelf) return;
+            if (blackishPanel.gameObject.activeSelf) return;
             leaderboardPanel.gameObject.SetActive(true);
+            blackishPanel.gameObject.SetActive(true);
             foreach (var user in users)
             {
                 var tempEntry = GetAvailableEntry();
@@ -33,6 +35,8 @@ namespace Events.Leaderboard
 
         public void DisableLeaderboard()
         {
+            blackishPanel.gameObject.SetActive(false);
+            leaderboardPanel.gameObject.SetActive(false);
             foreach (var element in _activeEntries)
             {
                 element.ResetSelf();

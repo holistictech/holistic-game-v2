@@ -22,13 +22,6 @@ namespace UI.Helpers
         [SerializeField] private DayDoneUIHelper dayCompletedPopup;
 
         private GameObject _activeSpan;
-        private EventBus _eventBus;
-
-        private void Awake()
-        {
-            //@todo: change this to dependency injection. Do not declare it here.
-            _eventBus = new EventBus();
-        }
 
         private void OnEnable()
         {
@@ -97,8 +90,7 @@ namespace UI.Helpers
         {
             playButton.onClick.AddListener(EnableSpanChooser);
             closeButton.onClick.AddListener(DisableSpanChooser);
-            //Task.OnSpanRequested += EnableSpanChooser;
-            _eventBus.Register<SpanRequestedEvent>(PlayNextSpan);
+            EventBus.Instance.Register<SpanRequestedEvent>(PlayNextSpan);
             SpanController.OnSpanFinished += DestroyActiveSpan;
         }
 
@@ -106,8 +98,7 @@ namespace UI.Helpers
         {
             playButton.onClick.RemoveListener(EnableSpanChooser);
             closeButton.onClick.RemoveListener(DisableSpanChooser);
-            //Task.OnSpanRequested -= EnableSpanChooser;
-            _eventBus.Unregister<SpanRequestedEvent>(PlayNextSpan);
+            EventBus.Instance.Unregister<SpanRequestedEvent>(PlayNextSpan);
             SpanController.OnSpanFinished += DestroyActiveSpan;
         }
     }

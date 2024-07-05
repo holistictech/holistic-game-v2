@@ -24,7 +24,6 @@ namespace UI.Tasks
         [Header("Functionality")] 
         [SerializeField] private WarningUIHelper warningHelper;
         [SerializeField] private Task taskPrefab;
-        private EventBus _eventBus;
         
         private void OnEnable()
         {
@@ -71,7 +70,7 @@ namespace UI.Tasks
         public void RequestSpan()
         {
             DisableTaskPopup();
-            _eventBus.Trigger(new SpanRequestedEvent());
+            EventBus.Instance.Trigger(new SpanRequestedEvent());
         }
 
         private void DestroyTasks()
