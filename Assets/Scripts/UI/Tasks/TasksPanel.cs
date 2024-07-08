@@ -49,6 +49,7 @@ namespace UI.Tasks
         public void EnableTaskPopup(bool type)
         {
             if (taskPanel.activeSelf) return;
+            EventBus.Instance.Trigger(new ToggleSwipeInput(false));
             taskButton.gameObject.SetActive(false);
             taskPanel.gameObject.SetActive(true);
             headerField.text = type ? "Görevler" : "Araçlar";
@@ -62,6 +63,7 @@ namespace UI.Tasks
 
         public void DisableTaskPopup()
         {
+            EventBus.Instance.Trigger(new ToggleSwipeInput(true));
             taskButton.gameObject.SetActive(true);
             taskPanel.gameObject.SetActive(false);
             DestroyTasks();

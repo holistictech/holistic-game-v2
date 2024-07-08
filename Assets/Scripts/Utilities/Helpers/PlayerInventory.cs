@@ -12,6 +12,8 @@ namespace Utilities
         [SerializeField] private Level[] gameLevels;
         [SerializeField] private TaskConfig[] performanceItems; 
         private static PlayerInventory _instance;
+
+        public string Username = "LocalUser";
         
         private string EnergyKey = "EnergyKey";
         public int Energy { get; private set; }

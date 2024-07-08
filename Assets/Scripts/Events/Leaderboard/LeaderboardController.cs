@@ -1,7 +1,10 @@
 using System;
+using System.Collections.Generic;
+using System.IO;
 using Spans.Skeleton;
 using UnityEngine;
 using UnityEngine.UI;
+using Utilities;
 
 namespace Events.Leaderboard
 {
@@ -17,7 +20,7 @@ namespace Events.Leaderboard
 
         private void Start()
         {
-            _leaderboardModel = new LeaderboardModel(GetLeaderboard());
+            _leaderboardModel = new LeaderboardModel();
         }
 
         private void OnEnable()
@@ -34,24 +37,16 @@ namespace Events.Leaderboard
         {
             EventBus.Instance.Trigger(new ToggleSwipeInput(false));
             leaderboardView.ActivateLeaderboard(_leaderboardModel.GetCurrentLeaderboard());
-            //_eventBus.Trigger(new ToggleSwipeInput(false));
-        }
-
-        private LeaderboardUserModel[] GetLeaderboard()
-        {
-            return new LeaderboardUserModel[] { };
         }
 
         private void DisableLeaderboard()
         {
             leaderboardView.DisableLeaderboard();
-            //_eventBus.Trigger(new ToggleSwipeInput(true));
             EventBus.Instance.Trigger(new ToggleSwipeInput(true));
         }
 
         private void RedirectUserToSpan()
         {
-            //_eventBus.Trigger(new SpanRequestedEvent());
             EventBus.Instance.Trigger(new SpanRequestedEvent());
         }
         
