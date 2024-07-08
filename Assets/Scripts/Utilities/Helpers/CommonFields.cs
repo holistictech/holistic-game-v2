@@ -60,6 +60,12 @@ namespace Utilities.Helpers
             DualNBack
         }
 
+        public enum ComplexModes
+        {
+            SoundAndNumberChooser,
+            
+        }
+
         public enum Direction
         {
             Up = 0,

@@ -6,16 +6,7 @@
   <component name="ChangeListManager">
     <list default="true" id="3d01f5fc-4a81-4ccb-94d7-a0f07bc2bc79" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Leaderboard/Leaderboard.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Leaderboard/Leaderboard.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Leaderboard/LeaderboardEntry.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Leaderboard/LeaderboardEntry.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GamePlay/Grid.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GamePlay/Grid.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Events/Leaderboard/LeaderboardController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Events/Leaderboard/LeaderboardController.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Events/Leaderboard/LeaderboardEntry.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Events/Leaderboard/LeaderboardEntry.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Events/Leaderboard/LeaderboardModel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Events/Leaderboard/LeaderboardModel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Events/Leaderboard/LeaderboardView.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Events/Leaderboard/LeaderboardView.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Tasks/TasksPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Tasks/TasksPanel.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/Helpers/PlayerInventory.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/Helpers/PlayerInventory.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/Helpers/CommonFields.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/Helpers/CommonFields.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -45,7 +36,10 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interactables/ConcreteBuilding.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interactables/Field.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interactables/Plant.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interfaces/IBlockSpanStrategy.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interfaces/IBlockSpanStrategy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interfaces/IComplexSpanStrategy.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/ComplexSoundChooserMode.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/ComplexSpan.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/CorsiSpan/CorsiSpan.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/CumulativeSpan/CumulativeChooser.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/CumulativeSpan/NumberExercise.cs" root0="FORCE_HIGHLIGHTING" />
@@ -258,7 +252,7 @@
       <workItem from="1720079925766" duration="5735000" />
       <workItem from="1720101221685" duration="3004000" />
       <workItem from="1720183082887" duration="5988000" />
-      <workItem from="1720422395922" duration="2862000" />
+      <workItem from="1720422395922" duration="5732000" />
     </task>
     <servers />
   </component>
