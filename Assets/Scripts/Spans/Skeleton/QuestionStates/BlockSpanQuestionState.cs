@@ -34,7 +34,7 @@ namespace Spans.Skeleton.QuestionStates
                 _blockSpanController = controller.GetComponent<Block.BlockSpan>();
                 base.Enter(controller);
                 spanController.SetHelperObject(blockUIHelper.gameObject);
-                eventBus.Register<BlockSpanGridSizeEvent>(UpdateHelperIndex);
+                EventBus.Instance.Register<BlockSpanGridSizeEvent>(UpdateHelperIndex);
             }
 
             _config = _blockSpanController.GetCurrentStrategy();
@@ -148,7 +148,7 @@ namespace Spans.Skeleton.QuestionStates
         
         public override void OnDestroy()
         {
-            eventBus.Unregister<BlockSpanGridSizeEvent>(UpdateHelperIndex);
+            EventBus.Instance.Unregister<BlockSpanGridSizeEvent>(UpdateHelperIndex);
         }
     }
 }

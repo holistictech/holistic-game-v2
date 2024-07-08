@@ -1,7 +1,5 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
-using DG.Tweening;
 using Scriptables.QuestionSystem;
 using Scriptables.Tutorial;
 using Spans.CumulativeSpan;
@@ -12,7 +10,7 @@ using Utilities;
 
 namespace Spans.Skeleton.AnswerStates
 {
-    public class MultipleChoiceAnswerState : SpanAnswerState
+    public class ComplexAnswerState : MultipleChoiceAnswerState
     {
         [SerializeField] private List<TutorialStep> gridStep;
         [SerializeField] private GridUIHelper gridHelper;
@@ -41,7 +39,6 @@ namespace Spans.Skeleton.AnswerStates
             }
             else
             {
-                //TryShowHelpers();
                 PlayTimer(_maxTime);
             }
         }
@@ -80,73 +77,6 @@ namespace Spans.Skeleton.AnswerStates
                 StopCoroutine(_tutorialHighlight);
             }
         }
-
-        private void TryShowHelpers()
-        {
-            if (!spanController.IsHelperTutorialNeeded())
-            {
-                PlayTimer(_maxTime);
-                return;
-            }
-            
-            timer.EnableSelf();
-            List<GameObject> secondPart = new List<GameObject>()
-            {
-                timer.gameObject,
-                revertButton.gameObject,
-                confirmButton.gameObject
-            };
-            var secondPartDict = new Dictionary<GameObject, TutorialStep>().CreateFromLists(secondPart, GetTutorialSteps());
-            spanController.TriggerStateTutorial(secondPartDict, true,() =>
-            {
-                //PlayTimer(_maxTime);
-            });
-        }
-        
-        public override void TryShowStateTutorial()
-        {
-            List<GameObject> firstPart = new List<GameObject>()
-            {
-                gridHelper.gameObject,
-            };
-            var dictionary = new Dictionary<GameObject, TutorialStep>().CreateFromLists(firstPart, GetGridStep());
-            spanController.TriggerStateTutorial(dictionary, false, () =>
-            {
-                //_spanController.TriggerTutorialField("Şimdi sıra sende!");
-                _tutorialHighlight = StartCoroutine(HighlightObjectsForTutorial());
-            });
-        }
-
-        private int _highlightIndex = 0;
-        private int _lastIndex = -1;
-        private bool _waitInput;
-        private IEnumerator HighlightObjectsForTutorial()
-        {
-            List<Question> currentQuestions = spanController.GetCurrentDisplayedQuestions();
-            while (_highlightIndex < currentQuestions.Count)
-            {
-                if (_highlightIndex != _lastIndex)
-                {
-                    var targetRect = GetAppropriateChoice(currentQuestions[_highlightIndex]);
-                    spanController.HighlightTarget(targetRect, gridHelper.GetComponent<RectTransform>(), true, 170f);
-                    _lastIndex = _highlightIndex;
-                    _waitInput = true;
-                    yield return new WaitUntil(() => !_waitInput);
-                }
-            }
-            AudioManager.Instance.PlayAudioClip(confirmClip);
-            spanController.HighlightTarget(confirmButton.GetComponent<RectTransform>(), GetComponent<RectTransform>(), true, 150f);
-        }
-
-        private RectTransform GetAppropriateChoice(Question question)
-        {
-            return gridHelper.GetAppropriateChoice(question);
-        }
-
-        private List<TutorialStep> GetGridStep()
-        {
-            return gridStep;
-        }
         
         public override void EnableUIElements()
         {
@@ -184,28 +114,9 @@ namespace Spans.Skeleton.AnswerStates
             gridHelper.DisableSpawnedChoices();
         }
 
-        public void OnAnswerGiven()
-        {
-            if (spanController.GetTutorialStatus())
-            {
-                _highlightIndex++;
-                _waitInput = false;
-            }
-        }
-
         public override void RevertLastAnswer()
         {
             gridHelper.RevokeLastSelection();
-        }
-
-        public int GetUnitIndexUpdateAmount()
-        {
-            return spanController is NumberExercise ? 2 : 1;
-        }
-
-        public bool CanAnimateNextCircle()
-        {
-            return spanController is not NumberExercise;
         }
     }
 }

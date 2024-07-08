@@ -22,7 +22,6 @@ namespace Spans.Skeleton
         [SerializeField] protected Button confirmButton;
         [SerializeField] protected Button revertButton;
         [SerializeField] protected AudioClip confirmClip;
-        protected EventBus eventBus;
         protected SpanController spanController;
         protected float maxTime;
         public virtual void Enter(SpanController controller)
@@ -30,7 +29,6 @@ namespace Spans.Skeleton
             if (spanController == null)
             {
                 spanController = controller;
-                eventBus = spanController.GetEventBus();
             }
             AddListeners();
         }

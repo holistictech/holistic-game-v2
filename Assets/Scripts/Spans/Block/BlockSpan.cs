@@ -168,7 +168,7 @@ namespace Spans.Block
         {
             var size = _currentConfig.GridSize.x * _currentConfig.GridSize.y;
             _questionCount = (int)Mathf.Floor(size/3);
-            eventBus.Trigger(new BlockSpanGridSizeEvent(_currentConfig, _questionCount, _gameMode));
+            EventBus.Instance.Trigger(new BlockSpanGridSizeEvent(_currentConfig, _questionCount, _gameMode));
         }
 
         private void SetGameMode(BlockSpanModes mode)

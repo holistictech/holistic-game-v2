@@ -36,6 +36,53 @@ namespace Spans.ComplexSpan
             return _currentMode.GetModeChoices();
         }
         
+        public override float GetRoundTime()
+        {
+            return currentRoundIndex * 3 + 2;
+        }
+        
+        public override void SwitchState()
+        {
+            if (isSpanFinished)
+            {
+                Debug.Log("this is finished");
+                stateContext.Transition(stateList[^1]);
+                return;
+            }
+            
+            var index = stateList.IndexOf(stateContext.CurrentState);
+            if (index < stateList.Count - 2)
+            {
+                ISpanState nextState = stateList[index+1];
+                stateContext.Transition(nextState);
+            }
+            else
+            {
+                //stateContext.Transition(_currentMode.IsAnsweringMainQuestions() ? stateList[2] : stateList[1]); // to turn back to question state.
+                stateContext.Transition(stateList[1]);
+            }
+        }
+        
+        public override bool IsAnswerCorrect()
+        {
+            var result = _currentMode.CheckAnswer(currentGivenAnswers);
+            if (result)
+            {
+                IncrementSuccessStreak();
+            }
+            else
+            {
+                IncrementFailStreak();
+            }
+
+            return result;
+        }
+
+        public IComplexSpanStrategy GetCurrentStrategy()
+        {
+            return _currentMode;
+        }
+        
         private Tuple<List<Question>, List<Question>> GetModeQuestions()
         {
             return new Tuple<List<Question>, List<Question>>(clipQuestions, numberQuestions);
