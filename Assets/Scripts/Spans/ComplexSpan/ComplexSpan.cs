@@ -15,6 +15,7 @@ namespace Spans.ComplexSpan
 
         private CommonFields.ComplexModes _currentModeEnum;
         private IComplexSpanStrategy _currentMode;
+        private bool _isMainSpanNeeded;
 
         protected override void Start()
         {
@@ -66,16 +67,31 @@ namespace Spans.ComplexSpan
         public override bool IsAnswerCorrect()
         {
             var result = _currentMode.CheckAnswer(currentGivenAnswers);
-            if (result)
+            if (_isMainSpanNeeded)
             {
-                IncrementSuccessStreak();
-            }
-            else
-            {
-                IncrementFailStreak();
+                if (result)
+                {
+                    IncrementSuccessStreak();
+                }
+                else
+                {
+                    IncrementFailStreak();
+                }
+                
+                SetMainSpanNeeded(false);
             }
 
             return result;
+        }
+
+        public void SetMainSpanNeeded(bool toggle)
+        {
+            _isMainSpanNeeded = toggle;
+        }
+
+        public bool GetIsMainSpanNeeded()
+        {
+            return _isMainSpanNeeded;
         }
 
         public IComplexSpanStrategy GetCurrentStrategy()

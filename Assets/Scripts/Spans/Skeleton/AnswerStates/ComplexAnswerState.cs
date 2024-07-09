@@ -12,9 +12,7 @@ namespace Spans.Skeleton.AnswerStates
 {
     public class ComplexAnswerState : MultipleChoiceAnswerState
     {
-        [SerializeField] private List<TutorialStep> gridStep;
-        [SerializeField] private GridUIHelper gridHelper;
-        [SerializeField] private GridLayoutGroup gridLayoutGroup;
+        private ComplexSpan.ComplexSpan _complexSpan;
         
         private Coroutine _timer;
         private Coroutine _tutorialHighlight;
@@ -24,7 +22,9 @@ namespace Spans.Skeleton.AnswerStates
         {
             if (spanController == null)
             {
+                _complexSpan = controller.GetComponent<ComplexSpan.ComplexSpan>();
                 spanController = controller;
+                //base.Enter(controller);
             }
 
             _maxTime = spanController.GetRoundTime();
@@ -39,84 +39,28 @@ namespace Spans.Skeleton.AnswerStates
             }
             else
             {
-                PlayTimer(_maxTime);
-            }
-        }
-
-        private void SetChoiceUI()
-        {
-            gridHelper.SetConstraintCount(spanController.GetRoundIndex(), spanController.GetCumulativeStatus());
-            var choices = spanController.GetChoices();
-            var unitCircles = spanController.GetActiveCircles();
-            gridHelper.SetActiveCircles(unitCircles);
-            gridHelper.SetStartingIndex(spanController.GetStartingUnitIndex());
-            gridHelper.ConfigureChoices(choices, this);
-        }
-
-        protected override void PlayTimer(float duration)
-        {
-            timer.StartTimer(duration, SwitchNextState);
-        }
-
-        public override void SwitchNextState()
-        {
-            if (spanController.GetTutorialStatus())
-            {
-                spanController.ClearTutorialHighlights();
-            }
-            spanController.SetSelectedAnswers(gridHelper.GetGivenAnswers());
-            spanController.SwitchState();
-        }
-
-        public override void Exit()
-        {
-            DisableUIElements();
-            RemoveListeners();
-            if (_tutorialHighlight != null)
-            {
-                StopCoroutine(_tutorialHighlight);
+                if (_complexSpan.GetIsMainSpanNeeded())
+                {
+                    hintHelper.SetFieldText("Hangi hayvan seslerini duymuştun?");
+                    hintHelper.AnimateBanner(() =>
+                    {
+                        PlayTimer(_maxTime);
+                    });
+                }
+                else
+                {
+                    PlayTimer(_maxTime);
+                }
             }
         }
         
-        public override void EnableUIElements()
+        protected override void SetChoiceUI()
         {
-            base.EnableUIElements();
-            gridLayoutGroup.gameObject.SetActive(true);
-            confirmButton.gameObject.SetActive(true);
-            revertButton.gameObject.SetActive(true);
-            timer.EnableSelf();
-        }
-
-        public override void DisableUIElements()
-        {
-            base.DisableUIElements();
-            gridLayoutGroup.gameObject.SetActive(false);
-            confirmButton.gameObject.SetActive(false);
-            revertButton.gameObject.SetActive(spanController.GetTutorialStatus());
-            if (spanController.GetTutorialStatus())
+            if (_complexSpan.GetIsMainSpanNeeded())
             {
-                timer.EnableSelf();
-                spanController.SetTutorialHelperObjects(new List<GameObject>
-                {
-                    timer.gameObject,
-                    revertButton.gameObject,
-                });
+                Debug.Log("Needed");
             }
-            else
-            {
-                timer.StopTimer();
-            }
-            DisableSpawnedChoices();
-        }
-
-        private void DisableSpawnedChoices()
-        {
-            gridHelper.DisableSpawnedChoices();
-        }
-
-        public override void RevertLastAnswer()
-        {
-            gridHelper.RevokeLastSelection();
+            base.SetChoiceUI();
         }
     }
 }

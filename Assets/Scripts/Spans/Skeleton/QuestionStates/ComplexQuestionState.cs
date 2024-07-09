@@ -56,24 +56,28 @@ namespace Spans.Skeleton.QuestionStates
         {
             _currentQuestions = new List<Question>();
 
-            if (currentQuestionIndex + _currentStrategy.GetFixedQuestionCount() > _spanObjects.Count)
+            if (currentQuestionIndex >= _spanObjects.Count)
             {
-                _spanObjects = spanController.GetSpanObjects();
+                //_spanObjects = spanController.GetSpanObjects();
                 currentQuestionIndex = 0;
+                _complexSpan.SetMainSpanNeeded(true);
+                SwitchNextState();
             }
-
-            var question = _spanObjects[currentQuestionIndex];
-            if (question is NumberQuestion)
+            else
             {
-                displayingQuestions = StartCoroutine(ShowNumber(currentQuestionIndex));
-            }
-            else if (question is ImageQuestion)
-            {
-                displayingQuestions = StartCoroutine(ShowImage(question, 0));
-            }
-            else if (question is ClipQuestion)
-            {
-                displayingQuestions = StartCoroutine(PlayClip(question, 0));
+                var question = _spanObjects[currentQuestionIndex];
+                if (question is NumberQuestion)
+                {
+                    displayingQuestions = StartCoroutine(ShowNumber(currentQuestionIndex));
+                }
+                else if (question is ImageQuestion)
+                {
+                    displayingQuestions = StartCoroutine(ShowImage(question, 0, 1));
+                }
+                else if (question is ClipQuestion)
+                {
+                    displayingQuestions = StartCoroutine(PlayClip(question, 0));
+                }
             }
         }
 
@@ -95,15 +99,18 @@ namespace Spans.Skeleton.QuestionStates
             SwitchNextState();
         }
 
-        private IEnumerator ShowImage(Question question, int index)
+        private IEnumerator ShowImage(Question question, int index, int count)
         {
-            questionBox.sprite = (Sprite)question.GetQuestionItem();
-            questionBox.enabled = true;
-            ActivateCircle(index, 1f);
-            _currentQuestions.Add(question);
-            currentQuestionIndex++;
-            yield return new WaitForSeconds(1f);
-            questionBox.enabled = false;
+            for (int i = 0; i < count; i ++)
+            {
+                questionBox.sprite = (Sprite)question.GetQuestionItem();
+                questionBox.enabled = true;
+                ActivateCircle(index, 1f);
+                _currentQuestions.Add(question);
+                currentQuestionIndex++;
+                yield return new WaitForSeconds(1f);
+                questionBox.enabled = false;
+            }
             
             SwitchNextState();
         }
@@ -111,16 +118,22 @@ namespace Spans.Skeleton.QuestionStates
         private IEnumerator PlayClip(Question question, int index)
         {
             AudioClip clip = (AudioClip)question.GetQuestionItem();
+            ConfigureClipField(question, index);
+            yield return new WaitForSeconds(1f);
+            questionBox.GetComponentInChildren<TextMeshProUGUI>().text = "";
+            yield return new WaitForSeconds(clip.length);
+
+            SwitchNextState();
+        }
+
+        private void ConfigureClipField(Question question, int index)
+        {
+            AudioClip clip = (AudioClip)question.GetQuestionItem();
             questionBox.GetComponentInChildren<TextMeshProUGUI>().text = $"{question.GetCorrectText()}";
             AudioManager.Instance.PlayAudioClip(clip);
             ActivateCircle(index, 1f);
             _currentQuestions.Add(question);
             currentQuestionIndex++;
-            yield return new WaitForSeconds(1f);
-            questionBox.GetComponentInChildren<TextMeshProUGUI>().text = "";
-            yield return new WaitForSeconds(clip.length);
-            
-            SwitchNextState();
         }
 
         public override void Exit()

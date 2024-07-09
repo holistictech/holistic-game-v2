@@ -46,7 +46,7 @@ namespace Spans.Skeleton.AnswerStates
             }
         }
 
-        private void SetChoiceUI()
+        protected virtual void SetChoiceUI()
         {
             gridHelper.SetConstraintCount(spanController.GetRoundIndex(), spanController.GetCumulativeStatus());
             var choices = spanController.GetChoices();

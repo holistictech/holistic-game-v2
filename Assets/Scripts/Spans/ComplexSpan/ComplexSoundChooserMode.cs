@@ -47,7 +47,9 @@ namespace Spans.ComplexSpan
             List<Question> corrects = new List<Question>();
             for (int i = 0; i < iterations; i++)
             {
-                corrects.Add(GetRandomQuestion(_clipQuestions, _correctClipQuestions));
+                var question = GetRandomQuestion(_clipQuestions, _correctClipQuestions);
+                _correctClipQuestions.Add(question);
+                corrects.Add(question);
                 corrects.AddRange(GetNumberQuestions());
             }
             
@@ -88,8 +90,8 @@ namespace Spans.ComplexSpan
                     }
                     
                     _roundCounter++;
-                    _isAnsweringClip = false;
                     _answerStateToggle = true;
+                    _isAnsweringClip = false;
                 }
             }
             
@@ -98,21 +100,7 @@ namespace Spans.ComplexSpan
 
         public bool CheckAnswer(List<Question> given)
         {
-            List<Question> displayed = _controller.GetCurrentDisplayedQuestions();
-            /*if (_isInitial)
-            {
-                displayed = _correctClipQuestions;
-                _isInitial = false;
-                _roundCounter = 0;
-            }
-            else
-            {
-                if (_roundCounter < _iterations)
-                {
-                    displayed = _numberSpans[_roundCounter];
-                    _roundCounter++;
-                }
-            }*/
+            List<Question> displayed = _controller.GetIsMainSpanNeeded() ? _correctClipQuestions : _controller.GetCurrentDisplayedQuestions();
 
             if (displayed.Count != given.Count) return false;
             for (int i = 0; i < displayed.Count; i++)
@@ -128,38 +116,65 @@ namespace Spans.ComplexSpan
 
         private Question GetRandomQuestion(List<Question> reference, List<Question> corrects)
         {
-            var question = reference[Random.Range(0, reference.Count)];
-            while (corrects.Contains(question))
+            int maxAttempts = reference.Count * 2;
+            int attempts = 0;
+
+            Question question = reference[Random.Range(0, reference.Count)];
+            while (corrects.Contains(question) && attempts < maxAttempts)
             {
                 question = reference[Random.Range(0, reference.Count)];
+                attempts++;
             }
-            corrects.Add(question);
+
+            if (attempts >= maxAttempts)
+            {
+                Debug.LogWarning("GetRandomQuestion: Maximum attempts reached, returning last picked question.");
+            }
+
             return question;
         }
 
         private List<Question> GetNumberQuestions()
         {
             List<Question> numbers = new List<Question>();
+            HashSet<Question> addedQuestions = new HashSet<Question>();
+            int maxAttempts = _numberQuestions.Count * 2;
+
             for (int i = 0; i < 2; i++)
             {
-                var question = _numberQuestions[Random.Range(0, _numberQuestions.Count)];
-                while (_correctClipQuestions.Contains(question))
+                int attempts = 0;
+                Question question = _numberQuestions[Random.Range(0, _numberQuestions.Count)];
+                while ((_numberSpans.ContainsKey(_iterationCount) && _numberSpans[_iterationCount].Contains(question) || addedQuestions.Contains(question)) && attempts < maxAttempts)
                 {
                     question = _numberQuestions[Random.Range(0, _numberQuestions.Count)];
+                    attempts++;
                 }
-                if(_numberSpans.ContainsKey(_iterationCount))
+
+                if (attempts >= maxAttempts)
+                {
+                    Debug.LogWarning("GetNumberQuestions: Maximum attempts reached, adding last picked question.");
+                }
+
+                if (_numberSpans.ContainsKey(_iterationCount))
                 {
                     _numberSpans[_iterationCount].Add(question);
                 }
                 else
                 {
-                    _numberSpans.Add(_iterationCount, new List<Question>{question});
+                    _numberSpans.Add(_iterationCount, new List<Question> { question });
                 }
-                
+
+                addedQuestions.Add(question);
                 numbers.Add(question);
             }
+
             _iterationCount++;
             return numbers;
+        }
+
+        public List<Question> GetCorrectMainQuestions()
+        {
+            return _correctClipQuestions;
         }
     }
 }
