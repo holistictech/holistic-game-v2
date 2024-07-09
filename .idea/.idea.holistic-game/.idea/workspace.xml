@@ -6,11 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="3d01f5fc-4a81-4ccb-94d7-a0f07bc2bc79" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Spans/BackwardNumberDescription - 2.2.1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Spans/BackwardNumberDescription - 2.2.1.prefab" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interfaces/IComplexSpanStrategy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interfaces/IComplexSpanStrategy.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/ComplexSoundChooserMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/ComplexSoundChooserMode.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/ComplexSpan.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/ComplexSpan.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/ComplexAnswerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/ComplexAnswerState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/ComplexQuestionState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/ComplexQuestionState.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -267,7 +265,7 @@
       <workItem from="1720444680842" duration="440000" />
       <workItem from="1720445582501" duration="299000" />
       <workItem from="1720446034681" duration="2646000" />
-      <workItem from="1720512444168" duration="5107000" />
+      <workItem from="1720512444168" duration="6485000" />
     </task>
     <servers />
   </component>
@@ -377,19 +375,6 @@
           <option name="timeStamp" value="95" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/ComplexAnswerState.cs</url>
-          <line>42</line>
-          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Spans\Skeleton\AnswerStates\ComplexAnswerState.cs" initialLine="42" containingFunctionPresentation="Method 'Enter'">
-            <startOffsets>
-              <option value="1245" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1246" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="97" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/ComplexSpan.cs</url>
           <line>73</line>
           <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Spans\ComplexSpan\ComplexSpan.cs" initialLine="73" containingFunctionPresentation="Method 'IsAnswerCorrect'">
@@ -407,10 +392,10 @@
           <line>60</line>
           <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Spans\Skeleton\QuestionStates\ComplexQuestionState.cs" initialLine="60" containingFunctionPresentation="Method 'ShowQuestion'">
             <startOffsets>
-              <option value="1917" />
+              <option value="1910" />
             </startOffsets>
             <endOffsets>
-              <option value="1918" />
+              <option value="1911" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="100" />

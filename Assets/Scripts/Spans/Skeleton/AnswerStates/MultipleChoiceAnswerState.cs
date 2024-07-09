@@ -20,7 +20,6 @@ namespace Spans.Skeleton.AnswerStates
         
         private Coroutine _timer;
         private Coroutine _tutorialHighlight;
-        private float _maxTime;
         
         public override void Enter(SpanController controller)
         {
@@ -29,7 +28,7 @@ namespace Spans.Skeleton.AnswerStates
                 spanController = controller;
             }
 
-            _maxTime = spanController.GetRoundTime();
+            maxTime = spanController.GetRoundTime();
             AddListeners();
             EnableUIElements();
             SetChoiceUI();
@@ -42,7 +41,7 @@ namespace Spans.Skeleton.AnswerStates
             else
             {
                 //TryShowHelpers();
-                PlayTimer(_maxTime);
+                PlayTimer(maxTime);
             }
         }
 
@@ -85,7 +84,7 @@ namespace Spans.Skeleton.AnswerStates
         {
             if (!spanController.IsHelperTutorialNeeded())
             {
-                PlayTimer(_maxTime);
+                PlayTimer(maxTime);
                 return;
             }
             

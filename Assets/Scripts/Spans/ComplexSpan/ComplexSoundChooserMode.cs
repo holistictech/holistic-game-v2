@@ -35,9 +35,9 @@ namespace Spans.ComplexSpan
             questionState.GetQuestionField().gameObject.SetActive(true);
         }
 
-        public int GetFixedQuestionCount()
+        public int GetCircleCount()
         {
-            return 3;
+            return _answerStateToggle && _roundCounter < _iterations ? 1 : 2;
         }
 
         public List<Question> GetCorrectQuestions(int iterations)
@@ -96,6 +96,7 @@ namespace Spans.ComplexSpan
                 }
             }
             
+            choices.Shuffle();
             return choices;
         }
 
@@ -176,6 +177,11 @@ namespace Spans.ComplexSpan
         public List<Question> GetCorrectMainQuestions()
         {
             return _correctClipQuestions;
+        }
+
+        public int GetUnitIndex()
+        {
+            return 0;
         }
     }
 }

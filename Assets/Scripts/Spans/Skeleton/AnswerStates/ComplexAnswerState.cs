@@ -16,7 +16,6 @@ namespace Spans.Skeleton.AnswerStates
         
         private Coroutine _timer;
         private Coroutine _tutorialHighlight;
-        private float _maxTime;
         
         public override void Enter(SpanController controller)
         {
@@ -27,7 +26,7 @@ namespace Spans.Skeleton.AnswerStates
                 //base.Enter(controller);
             }
 
-            _maxTime = spanController.GetRoundTime();
+            maxTime = spanController.GetRoundTime();
             AddListeners();
             EnableUIElements();
             SetChoiceUI();
@@ -44,12 +43,12 @@ namespace Spans.Skeleton.AnswerStates
                     hintHelper.SetFieldText("Sırasıyla hangi hayvan seslerini duymuştun?");
                     hintHelper.AnimateBanner(() =>
                     {
-                        PlayTimer(_maxTime);
+                        PlayTimer(maxTime);
                     });
                 }
                 else
                 {
-                    PlayTimer(_maxTime);
+                    PlayTimer(maxTime);
                 }
             }
         }

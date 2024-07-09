@@ -39,7 +39,7 @@ namespace Spans.Skeleton.QuestionStates
             _currentStrategy = _complexSpan.GetCurrentStrategy();
             _currentStrategy.EnableRequiredModeElements(this);
             EnableUIElements();
-            SetCircleUI(_currentStrategy.GetFixedQuestionCount());
+            SetCircleUI(_currentStrategy.GetCircleCount());
             if (spanController.GetTutorialStatus())
             {
                 TryShowStateTutorial();
@@ -92,11 +92,13 @@ namespace Spans.Skeleton.QuestionStates
         private IEnumerator ShowNumber(int index)
         {
             var target = index + 2;
+            var counter = 0;
             for (int i = index; i < target; i++)
             {
                 var question = _spanObjects[i];
                 questionBox.GetComponentInChildren<TextMeshProUGUI>().text = $"{question.GetQuestionItem()}";
-                ActivateCircle(i, 1f);
+                ActivateCircle(counter, 1f);
+                counter++;
                 questionBox.enabled = false;
                 _currentQuestions.Add(question);
                 currentQuestionIndex++;

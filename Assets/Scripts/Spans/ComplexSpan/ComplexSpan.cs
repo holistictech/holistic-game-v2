@@ -87,6 +87,11 @@ namespace Spans.ComplexSpan
             return result;
         }
 
+        public override int GetStartingUnitIndex()
+        {
+            return _currentMode.GetUnitIndex();
+        }
+
         public void SetMainSpanNeeded(bool toggle)
         {
             _isMainSpanNeeded = toggle;
