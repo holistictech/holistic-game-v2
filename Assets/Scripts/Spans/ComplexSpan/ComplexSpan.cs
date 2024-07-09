@@ -57,9 +57,12 @@ namespace Spans.ComplexSpan
                 ISpanState nextState = stateList[index+1];
                 stateContext.Transition(nextState);
             }
+            else if (_isMainSpanNeeded)
+            {
+                stateContext.Transition(stateList[2]);
+            }
             else
             {
-                //stateContext.Transition(_currentMode.IsAnsweringMainQuestions() ? stateList[2] : stateList[1]); // to turn back to question state.
                 stateContext.Transition(stateList[1]);
             }
         }

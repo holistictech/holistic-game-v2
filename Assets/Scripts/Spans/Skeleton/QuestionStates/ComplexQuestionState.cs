@@ -52,32 +52,40 @@ namespace Spans.Skeleton.QuestionStates
             StatisticsHelper.IncrementDisplayedQuestionCount();
         }
 
+        private bool _hasMainPlayed;
         public override void ShowQuestion()
         {
             _currentQuestions = new List<Question>();
 
             if (currentQuestionIndex >= _spanObjects.Count)
             {
-                //_spanObjects = spanController.GetSpanObjects();
-                currentQuestionIndex = 0;
-                _complexSpan.SetMainSpanNeeded(true);
-                SwitchNextState();
+                if (_complexSpan.GetIsMainSpanNeeded() || _hasMainPlayed)
+                {
+                    _spanObjects = spanController.GetSpanObjects();
+                    currentQuestionIndex = 0;
+                    _hasMainPlayed = false;
+                }
+                else
+                {
+                    _complexSpan.SetMainSpanNeeded(true);
+                    _hasMainPlayed = true;
+                    SwitchNextState();
+                    return;
+                }
             }
-            else
+
+            var question = _spanObjects[currentQuestionIndex];
+            if (question is NumberQuestion)
             {
-                var question = _spanObjects[currentQuestionIndex];
-                if (question is NumberQuestion)
-                {
-                    displayingQuestions = StartCoroutine(ShowNumber(currentQuestionIndex));
-                }
-                else if (question is ImageQuestion)
-                {
-                    displayingQuestions = StartCoroutine(ShowImage(question, 0, 1));
-                }
-                else if (question is ClipQuestion)
-                {
-                    displayingQuestions = StartCoroutine(PlayClip(question, 0));
-                }
+                displayingQuestions = StartCoroutine(ShowNumber(currentQuestionIndex));
+            }
+            else if (question is ImageQuestion)
+            {
+                displayingQuestions = StartCoroutine(ShowImage(question, 0, 1));
+            }
+            else if (question is ClipQuestion)
+            {
+                displayingQuestions = StartCoroutine(PlayClip(question, 0));
             }
         }
 

@@ -41,7 +41,7 @@ namespace Spans.Skeleton.AnswerStates
             {
                 if (_complexSpan.GetIsMainSpanNeeded())
                 {
-                    hintHelper.SetFieldText("Hangi hayvan seslerini duymuştun?");
+                    hintHelper.SetFieldText("Sırasıyla hangi hayvan seslerini duymuştun?");
                     hintHelper.AnimateBanner(() =>
                     {
                         PlayTimer(_maxTime);
@@ -56,11 +56,11 @@ namespace Spans.Skeleton.AnswerStates
         
         protected override void SetChoiceUI()
         {
+            base.SetChoiceUI();
             if (_complexSpan.GetIsMainSpanNeeded())
             {
                 Debug.Log("Needed");
             }
-            base.SetChoiceUI();
         }
     }
 }

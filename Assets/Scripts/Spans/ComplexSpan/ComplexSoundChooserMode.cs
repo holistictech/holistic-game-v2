@@ -18,7 +18,6 @@ namespace Spans.ComplexSpan
         
         private int _iterations = 0;
         private int _iterationCount = 0;
-        private bool _isAnsweringClip;
         
         public void InjectController(ComplexSpan controller)
         {
@@ -44,6 +43,7 @@ namespace Spans.ComplexSpan
         public List<Question> GetCorrectQuestions(int iterations)
         {
             _iterations = iterations;
+            ResetLogicFields();
             List<Question> corrects = new List<Question>();
             for (int i = 0; i < iterations; i++)
             {
@@ -56,9 +56,13 @@ namespace Spans.ComplexSpan
             return corrects;
         }
 
-        public bool IsAnsweringMainQuestions()
+        private void ResetLogicFields()
         {
-            return _isAnsweringClip;
+            _correctClipQuestions.Clear();
+            _numberSpans.Clear();
+            _roundCounter = 0;
+            _iterationCount = 0;
+            _answerStateToggle = true;
         }
 
         private int _roundCounter = 0;
@@ -76,7 +80,6 @@ namespace Spans.ComplexSpan
                 }
 
                 _answerStateToggle = false;
-                _isAnsweringClip = true;
             }
             else
             {
@@ -88,10 +91,8 @@ namespace Spans.ComplexSpan
                         var question = GetRandomQuestion(_numberQuestions, _numberSpans[_roundCounter]);
                         choices.Add(question);
                     }
-                    
                     _roundCounter++;
                     _answerStateToggle = true;
-                    _isAnsweringClip = false;
                 }
             }
             

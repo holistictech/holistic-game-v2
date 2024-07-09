@@ -12,7 +12,6 @@ namespace Interfaces
         public void EnableRequiredModeElements(ComplexQuestionState questionState);
         public int GetFixedQuestionCount();
         public List<Question> GetCorrectQuestions(int iterations);
-        public bool IsAnsweringMainQuestions();
         public List<Question> GetModeChoices();
         public List<Question> GetCorrectMainQuestions();
         public bool CheckAnswer(List<Question> given);
