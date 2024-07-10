@@ -1,8 +1,10 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using Interfaces;
 using Scriptables.QuestionSystem;
 using Scriptables.Tutorial;
+using Spans.ComplexSpan;
 using Spans.CumulativeSpan;
 using UI.Helpers;
 using UnityEngine;
@@ -15,6 +17,7 @@ namespace Spans.Skeleton.AnswerStates
     public class ComplexAnswerState : MultipleChoiceAnswerState
     {
         [SerializeField] private List<Button> modeButtons;
+        [SerializeField] private Questioner questioner; 
         private ComplexSpan.ComplexSpan _complexSpan;
         private IComplexSpanStrategy _currentStrategy;
         
@@ -27,15 +30,32 @@ namespace Spans.Skeleton.AnswerStates
             {
                 _complexSpan = controller.GetComponent<ComplexSpan.ComplexSpan>();
                 spanController = controller;
-                //base.Enter(controller);
             }
 
             _currentStrategy = _complexSpan.GetCurrentStrategy();
-
             maxTime = spanController.GetRoundTime();
             AddListeners();
             EnableUIElements();
-            SetChoiceUI();
+            
+            _currentStrategy.InjectAnswerState(this);
+            _currentStrategy.ShowQuestion(questioner, _currentStrategy.GetModeChoices(), () =>
+            {
+               PlayTimer(maxTime); 
+            });
+            
+            
+            /*if (_currentStrategy is PerceptionRecognitionStrategy)
+            {
+                _currentStrategy.InjectAnswerState(this);
+                _currentStrategy.ShowQuestion(questioner, _currentStrategy.GetModeChoices(), () =>
+                {
+                    PlayTimer(maxTime);
+                });
+            }
+            else
+            {
+                SetChoiceUI();
+            }
             
             if (spanController.GetTutorialStatus())
             {
@@ -44,36 +64,25 @@ namespace Spans.Skeleton.AnswerStates
             }
             else
             {
-                /*if (_complexSpan.GetIsMainSpanNeeded())
-                {
-                    hintHelper.SetFieldText("Sırasıyla hangi hayvan seslerini duymuştun?");
-                    hintHelper.AnimateBanner(() =>
-                    {
-                        PlayTimer(maxTime);
-                    });
-                }
-                else
-                {
-                    PlayTimer(maxTime);
-                }*/
-                
                 PlayTimer(maxTime);
-            }
-        }
-        
-        protected override void SetChoiceUI()
-        {
-            base.SetChoiceUI();
-            if (_complexSpan.GetIsMainSpanNeeded())
-            {
-                Debug.Log("Needed");
-            }
+            }*/
         }
 
+        public void TriggerHintHelper(string hint, Action onComplete)
+        {
+            hintHelper.SetFieldText(hint);
+            hintHelper.AnimateBanner(() =>
+            {
+                onComplete?.Invoke();
+            });
+        }
+        
         private void OnButtonClick(int index)
         {
+            modeButtons.ForEach(x => x.gameObject.SetActive(false));
             var chosenType = (CommonFields.ButtonType)index;
             _currentStrategy.AppendChoice(chosenType);
+            SwitchNextState();
         }
 
         public List<Button> GetButtons()
@@ -83,11 +92,18 @@ namespace Spans.Skeleton.AnswerStates
         
         public override void EnableUIElements()
         {
-            base.EnableUIElements();
+            //base.EnableUIElements();
+            /*gridLayoutGroup.gameObject.SetActive(true);
+            confirmButton.gameObject.SetActive(true);
+            revertButton.gameObject.SetActive(true);*/
+            timer.EnableSelf();
+        }
+
+        public void EnableGridField()
+        {
             gridLayoutGroup.gameObject.SetActive(true);
             confirmButton.gameObject.SetActive(true);
             revertButton.gameObject.SetActive(true);
-            timer.EnableSelf();
         }
     }
 }

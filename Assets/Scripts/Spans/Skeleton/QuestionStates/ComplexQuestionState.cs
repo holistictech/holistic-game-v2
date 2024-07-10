@@ -6,8 +6,10 @@ using Scriptables.QuestionSystem;
 using Scriptables.QuestionSystem.Images;
 using Scriptables.QuestionSystem.Numbers;
 using Scriptables.Tutorial;
+using Spans.ComplexSpan;
 using Spans.CumulativeSpan;
 using TMPro;
+using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.UI;
 using Utilities;
@@ -20,6 +22,7 @@ namespace Spans.Skeleton.QuestionStates
         [SerializeField] private List<TutorialStep> steps;
         [SerializeField] private Image questionFieldParent;
         [SerializeField] private Image questionBox;
+        [SerializeField] private Questioner questioner;
 
         private List<Question> _spanObjects;
         private List<Question> _currentQuestions = new List<Question>();
@@ -57,36 +60,63 @@ namespace Spans.Skeleton.QuestionStates
         {
             _currentQuestions = new List<Question>();
 
-            if (currentQuestionIndex >= _spanObjects.Count)
+            if (_currentStrategy is PerceptionRecognitionStrategy)
             {
-                if (_complexSpan.GetIsMainSpanNeeded() || _hasMainPlayed)
-                {
-                    _spanObjects = spanController.GetSpanObjects();
-                    currentQuestionIndex = 0;
-                    _hasMainPlayed = false;
-                }
-                else
-                {
-                    _complexSpan.SetMainSpanNeeded(true);
-                    _hasMainPlayed = true;
-                    SwitchNextState();
-                    return;
-                }
+                displayingQuestions = StartCoroutine(ShowQuestionsByType(_spanObjects));
             }
+            else
+            {
+                if (currentQuestionIndex >= _spanObjects.Count)
+                {
+                    if (_complexSpan.GetIsMainSpanNeeded() || _hasMainPlayed)
+                    {
+                        _spanObjects = spanController.GetSpanObjects();
+                        currentQuestionIndex = 0;
+                        _hasMainPlayed = false;
+                    }
+                    else
+                    {
+                        _complexSpan.SetMainSpanNeeded(true);
+                        _hasMainPlayed = true;
+                        SwitchNextState();
+                        return;
+                    }
+                }
 
-            var question = _spanObjects[currentQuestionIndex];
-            if (question is NumberQuestion)
-            {
-                displayingQuestions = StartCoroutine(ShowNumber(currentQuestionIndex));
+                var question = _spanObjects[currentQuestionIndex];
+                if (question is NumberQuestion)
+                {
+                    displayingQuestions = StartCoroutine(ShowNumber(currentQuestionIndex));
+                }
+                else if (question is ImageQuestion)
+                {
+                    displayingQuestions = StartCoroutine(ShowImage(question, 0, 1));
+                }
+                else if (question is ClipQuestion)
+                {
+                    displayingQuestions = StartCoroutine(PlayClip(question, 0));
+                }
             }
-            else if (question is ImageQuestion)
+        }
+
+        private IEnumerator ShowQuestionsByType(List<Question> questions)
+        {
+            for (int i = 0; i < questions.Count; i++)
             {
-                displayingQuestions = StartCoroutine(ShowImage(question, 0, 1));
+                var question = questions[i];
+                if (question is ImageQuestion)
+                {
+                    ConfigureImageField(question, i);
+                }
+                else if(question is ClipQuestion)
+                {
+                    ConfigureClipField(question, i);
+                }
+                yield return new WaitForSeconds(1f);
+                questionBox.enabled = false;
             }
-            else if (question is ClipQuestion)
-            {
-                displayingQuestions = StartCoroutine(PlayClip(question, 0));
-            }
+            
+            SwitchNextState();
         }
 
         private IEnumerator ShowNumber(int index)
@@ -113,11 +143,7 @@ namespace Spans.Skeleton.QuestionStates
         {
             for (int i = 0; i < count; i ++)
             {
-                questionBox.sprite = (Sprite)question.GetQuestionItem();
-                questionBox.enabled = true;
-                ActivateCircle(index, 1f);
-                _currentQuestions.Add(question);
-                currentQuestionIndex++;
+                ConfigureImageField(question, i);
                 yield return new WaitForSeconds(1f);
                 questionBox.enabled = false;
             }
@@ -134,6 +160,15 @@ namespace Spans.Skeleton.QuestionStates
             yield return new WaitForSeconds(clip.length);
 
             SwitchNextState();
+        }
+
+        private void ConfigureImageField(Question question, int index)
+        {
+            questionBox.sprite = (Sprite)question.GetQuestionItem();
+            questionBox.enabled = true;
+            ActivateCircle(index, 1f);
+            _currentQuestions.Add(question);
+            currentQuestionIndex++;
         }
 
         private void ConfigureClipField(Question question, int index)

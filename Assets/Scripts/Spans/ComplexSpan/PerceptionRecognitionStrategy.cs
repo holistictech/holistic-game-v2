@@ -1,11 +1,12 @@
+using System;
 using System.Collections.Generic;
 using Interfaces;
 using Scriptables.QuestionSystem;
 using Scriptables.QuestionSystem.Images;
 using Spans.Skeleton.AnswerStates;
 using Spans.Skeleton.QuestionStates;
-using UnityEngine;
 using Utilities.Helpers;
+using Random = UnityEngine.Random;
 
 namespace Spans.ComplexSpan
 {
@@ -16,6 +17,11 @@ namespace Spans.ComplexSpan
         private List<Question> _currentQuestions = new List<Question>();
         private List<Question> _choices = new List<Question>();
         private List<CommonFields.ButtonType> _chosenButtonTypes = new List<CommonFields.ButtonType>();
+
+        private ComplexQuestionState _questionState;
+        private ComplexAnswerState _answerState;
+        
+        private int _round = 0;
         public void InjectController(ComplexSpan controller)
         {
             _controller = controller;
@@ -37,10 +43,21 @@ namespace Spans.ComplexSpan
             questionState.GetQuestionField().gameObject.SetActive(true);
         }
         
-        public void EnableRequiredModeElements(ComplexAnswerState answerState)
+        public void InjectAnswerState(ComplexAnswerState answerState)
         {
-            var buttons = answerState.GetButtons();
-            buttons.ForEach(x => x.gameObject.SetActive(true));
+            _answerState = answerState;
+        }
+        
+        
+        public void ShowQuestion(Questioner questioner, List<Question> questions, Action onComplete)
+        {
+            var itemToDisplay = questions[_round];
+            questioner.ShowQuestion(itemToDisplay, () =>
+            {
+                var buttons = _answerState.GetButtons();
+                buttons.ForEach(x => x.gameObject.SetActive(true));
+                onComplete?.Invoke();
+            });
         }
 
         public int GetCircleCount()
@@ -50,6 +67,8 @@ namespace Spans.ComplexSpan
 
         public List<Question> GetCorrectQuestions(int iterations)
         {
+            _currentQuestions = new List<Question>();
+            
             for (int i = 0; i < iterations; i++)
             {
                 var question = _modeQuestions[Random.Range(0, _modeQuestions.Count)];
@@ -102,13 +121,12 @@ namespace Spans.ComplexSpan
         {
             return Random.Range(0, 2) == 0;
         }
-
-        private int _round = 0;
-
+        
         public bool CheckAnswer(List<Question> given)
         {
             if (_round >= _choices.Count || _round >= _chosenButtonTypes.Count)
             {
+                _round = 0;
                 return false;
             }
 
@@ -134,8 +152,7 @@ namespace Spans.ComplexSpan
 
             return false;
         }
-
-
+        
         public int GetUnitIndex()
         {
             return 0;

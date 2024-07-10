@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Interfaces;
 using Scriptables.QuestionSystem;
@@ -5,6 +6,7 @@ using Spans.Skeleton.AnswerStates;
 using Spans.Skeleton.QuestionStates;
 using UnityEngine;
 using Utilities.Helpers;
+using Random = UnityEngine.Random;
 
 namespace Spans.ComplexSpan
 {
@@ -13,13 +15,15 @@ namespace Spans.ComplexSpan
         private ComplexSpan _controller;
         private List<Question> _clipQuestions;
         private List<Question> _numberQuestions;
-
+        private ComplexAnswerState _answerState;
+        
         private List<Question> _correctClipQuestions = new List<Question>();
         private List<Question> _correctNumberQuestions = new List<Question>();
         private Dictionary<int, List<Question>> _numberSpans = new Dictionary<int, List<Question>>();
         
         private int _iterations = 0;
         private int _iterationCount = 0;
+        
         
         public void InjectController(ComplexSpan controller)
         {
@@ -42,9 +46,19 @@ namespace Spans.ComplexSpan
             questionState.GetQuestionField().gameObject.SetActive(true);
         }
 
-        public void EnableRequiredModeElements(ComplexAnswerState answerState)
+        public void InjectAnswerState(ComplexAnswerState answerState)
         {
-            answerState.EnableUIElements();
+            _answerState = answerState;
+            answerState.EnableGridField();
+        }
+
+        public void ShowQuestion(Questioner questioner, List<Question> questions, Action onComplete)
+        {
+            _answerState.SetChoiceUI();
+            _answerState.TriggerHintHelper("Sırasıyla hangi hayvanları duymuştun?", () =>
+            {
+                onComplete?.Invoke();
+            });
         }
 
         public int GetCircleCount()

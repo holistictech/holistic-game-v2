@@ -8,11 +8,10 @@
       <change beforePath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interfaces/IComplexSpanStrategy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interfaces/IComplexSpanStrategy.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/ComplexSoundChooserMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/ComplexSoundChooserMode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/ComplexSpan.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/ComplexSpan.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/NBack/NBack.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/NBack/NBack.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/PerceptionRecognitionStrategy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/PerceptionRecognitionStrategy.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/ComplexAnswerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/ComplexAnswerState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/MultipleChoiceAnswerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/MultipleChoiceAnswerState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/Helpers/CommonFields.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/Helpers/CommonFields.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/ComplexQuestionState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/ComplexQuestionState.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -47,6 +46,7 @@
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Interfaces/IComplexSpanStrategy.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/ComplexSoundChooserMode.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/ComplexSpan.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/Questioner.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/CorsiSpan/CorsiSpan.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/CumulativeSpan/CumulativeChooser.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/Scripts/Spans/CumulativeSpan/NumberExercise.cs" root0="FORCE_HIGHLIGHTING" />
@@ -267,7 +267,7 @@
       <workItem from="1720445582501" duration="299000" />
       <workItem from="1720446034681" duration="2646000" />
       <workItem from="1720512444168" duration="7780000" />
-      <workItem from="1720598788824" duration="2694000" />
+      <workItem from="1720598788824" duration="5437000" />
     </task>
     <servers />
   </component>
@@ -388,19 +388,6 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="99" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/ComplexQuestionState.cs</url>
-          <line>60</line>
-          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Spans\Skeleton\QuestionStates\ComplexQuestionState.cs" initialLine="60" containingFunctionPresentation="Method 'ShowQuestion'">
-            <startOffsets>
-              <option value="1910" />
-            </startOffsets>
-            <endOffsets>
-              <option value="1911" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="100" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

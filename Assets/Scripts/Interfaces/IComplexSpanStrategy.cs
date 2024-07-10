@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using Scriptables.QuestionSystem;
 using Spans.ComplexSpan;
@@ -13,7 +14,8 @@ namespace Interfaces
         public int GetStartingRoundIndex();
         public void InjectModeQuestions(List<Question> mainQuestions, List<Question> helperQuestions);
         public void EnableRequiredModeElements(ComplexQuestionState questionState);
-        public void EnableRequiredModeElements(ComplexAnswerState answerState);
+        public void InjectAnswerState(ComplexAnswerState answerState);
+        public void ShowQuestion(Questioner questioner, List<Question> questions, Action onComplete);
         public int GetCircleCount();
         public List<Question> GetCorrectQuestions(int iterations);
         public List<Question> GetModeChoices();
