@@ -56,6 +56,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   _steps: []
   timer: {fileID: 4447996048511822422}
+  hintHelper: {fileID: 0}
   confirmButton: {fileID: 4200861930125296401}
   revertButton: {fileID: 8630966795538606114}
   confirmClip: {fileID: 8300000, guid: 5c0c172fcbdc1634a8cf18d9fb0c65ad, type: 3}
@@ -434,6 +435,22 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 2248318883426158715}
     m_Modifications:
+    - target: {fileID: 1401622851295835437, guid: 6f883dfd358de9b4d813950617ae4fb1, type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1401622851295835437, guid: 6f883dfd358de9b4d813950617ae4fb1, type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 1401622851295835437, guid: 6f883dfd358de9b4d813950617ae4fb1, type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: 722.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 1401622851295835437, guid: 6f883dfd358de9b4d813950617ae4fb1, type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: -270
+      objectReference: {fileID: 0}
     - target: {fileID: 1778181089104065506, guid: 6f883dfd358de9b4d813950617ae4fb1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -450,6 +467,10 @@ PrefabInstance:
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
       objectReference: {fileID: 3140034473035802096}
+    - target: {fileID: 4200868327920890822, guid: 6f883dfd358de9b4d813950617ae4fb1, type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 4993706848057767176, guid: 6f883dfd358de9b4d813950617ae4fb1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 

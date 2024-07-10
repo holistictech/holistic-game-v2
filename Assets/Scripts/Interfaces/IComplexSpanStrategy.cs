@@ -15,7 +15,7 @@ namespace Interfaces
         public void InjectModeQuestions(List<Question> mainQuestions, List<Question> helperQuestions);
         public void EnableRequiredModeElements(ComplexQuestionState questionState);
         public void InjectAnswerState(ComplexAnswerState answerState);
-        public void ShowQuestion(Questioner questioner, List<Question> questions, Action onComplete);
+        public void ShowQuestion(Questioner questioner, Action onComplete);
         public int GetCircleCount();
         public List<Question> GetCorrectQuestions(int iterations);
         public List<Question> GetModeChoices();

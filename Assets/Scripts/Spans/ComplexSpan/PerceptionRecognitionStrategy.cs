@@ -49,9 +49,13 @@ namespace Spans.ComplexSpan
         }
         
         
-        public void ShowQuestion(Questioner questioner, List<Question> questions, Action onComplete)
+        public void ShowQuestion(Questioner questioner, Action onComplete)
         {
-            var itemToDisplay = questions[_round];
+            if (_choices == null || _choices.Count == 0)
+            {
+                GetModeChoices();
+            }
+            var itemToDisplay = _choices[_round];
             questioner.ShowQuestion(itemToDisplay, () =>
             {
                 var buttons = _answerState.GetButtons();
@@ -62,7 +66,7 @@ namespace Spans.ComplexSpan
 
         public int GetCircleCount()
         {
-            return _controller.GetCurrentDisplayedQuestions().Count;
+            return _currentQuestions.Count;
         }
 
         public List<Question> GetCorrectQuestions(int iterations)
@@ -72,7 +76,7 @@ namespace Spans.ComplexSpan
             for (int i = 0; i < iterations; i++)
             {
                 var question = _modeQuestions[Random.Range(0, _modeQuestions.Count)];
-                while (_modeQuestions.Contains(question))
+                while (_currentQuestions.Contains(question))
                 {
                     question = _modeQuestions[Random.Range(0, _modeQuestions.Count)];
                 }
@@ -115,6 +119,7 @@ namespace Spans.ComplexSpan
         public void AppendChoice(CommonFields.ButtonType type)
         {
             _chosenButtonTypes.Add(type);
+            
         }
 
         private bool IsLucky()
@@ -124,15 +129,15 @@ namespace Spans.ComplexSpan
         
         public bool CheckAnswer(List<Question> given)
         {
-            if (_round >= _choices.Count || _round >= _chosenButtonTypes.Count)
-            {
-                _round = 0;
-                return false;
-            }
-
             var displayed = _choices[_round];
             var choice = _chosenButtonTypes[_round];
             _round++;
+
+            if (_round == _choices.Count)
+            {
+                _controller.SetMainSpanNeeded(true);
+                _round = 0;
+            }
             
             if (_currentQuestions.Contains(displayed))
             {

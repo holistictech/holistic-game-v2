@@ -145,7 +145,7 @@ GameObject:
   - component: {fileID: 8953210684643047250}
   - component: {fileID: 3320918137206607641}
   m_Layer: 5
-  m_Name: NBackFeedbackState
+  m_Name: FastFeedbackState
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

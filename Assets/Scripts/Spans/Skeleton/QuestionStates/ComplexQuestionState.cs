@@ -56,13 +56,22 @@ namespace Spans.Skeleton.QuestionStates
         }
 
         private bool _hasMainPlayed;
+        private bool _hasDisplayed;
         public override void ShowQuestion()
         {
             _currentQuestions = new List<Question>();
 
             if (_currentStrategy is PerceptionRecognitionStrategy)
             {
-                displayingQuestions = StartCoroutine(ShowQuestionsByType(_spanObjects));
+                if (_hasDisplayed)
+                {
+                    SwitchNextState();
+                }
+                else
+                {
+                    displayingQuestions = StartCoroutine(ShowQuestionsByType(_spanObjects));
+                    _hasDisplayed = true;
+                }
             }
             else
             {
@@ -114,6 +123,7 @@ namespace Spans.Skeleton.QuestionStates
                 }
                 yield return new WaitForSeconds(1f);
                 questionBox.enabled = false;
+                yield return new WaitForSeconds(1f);
             }
             
             SwitchNextState();

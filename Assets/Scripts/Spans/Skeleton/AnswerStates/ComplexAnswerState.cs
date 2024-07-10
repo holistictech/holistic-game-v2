@@ -38,7 +38,7 @@ namespace Spans.Skeleton.AnswerStates
             EnableUIElements();
             
             _currentStrategy.InjectAnswerState(this);
-            _currentStrategy.ShowQuestion(questioner, _currentStrategy.GetModeChoices(), () =>
+            _currentStrategy.ShowQuestion(questioner, () =>
             {
                PlayTimer(maxTime); 
             });
@@ -77,7 +77,7 @@ namespace Spans.Skeleton.AnswerStates
             });
         }
         
-        private void OnButtonClick(int index)
+        public void OnButtonClick(int index)
         {
             modeButtons.ForEach(x => x.gameObject.SetActive(false));
             var chosenType = (CommonFields.ButtonType)index;

@@ -13,6 +13,7 @@ namespace Spans.ComplexSpan
 {
     public class Questioner : MonoBehaviour
     {
+        [SerializeField] private GameObject parent;
         [SerializeField] private Image questionBox;
 
         public IEnumerator ShowQuestionsByType(List<Question> questions, Action onComplete)
@@ -37,12 +38,12 @@ namespace Spans.ComplexSpan
 
         public void ShowQuestion(Question question, Action onComplete)
         {
-            gameObject.SetActive(true);
+            parent.SetActive(true);
             ConfigureImageField(question);
             DOVirtual.DelayedCall(1f, () =>
             {
                 questionBox.enabled = false;
-                gameObject.SetActive(false);
+                parent.SetActive(false);
                 onComplete?.Invoke();
             });
         }

@@ -1,5 +1,6 @@
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using Interfaces;
 using Scriptables.QuestionSystem;
 using Spans.Skeleton;
@@ -17,15 +18,24 @@ namespace Spans.ComplexSpan
         private IComplexSpanStrategy _currentMode;
         private bool _isMainSpanNeeded;
 
+        private Dictionary<CommonFields.ComplexModes, Tuple<List<Question>, List<Question>>> _modeQuestions;
         protected override void Start()
         {
-            _currentMode = new ComplexSoundChooserMode();
-            _currentModeEnum = CommonFields.ComplexModes.SoundAndNumberChooser;
+            _modeQuestions = new Dictionary<CommonFields.ComplexModes, Tuple<List<Question>, List<Question>>>()
+            {
+                {
+                    CommonFields.ComplexModes.SoundAndNumberChooser,
+                    new Tuple<List<Question>, List<Question>>(clipQuestions, numberQuestions)
+                },
+                { CommonFields.ComplexModes.PerceptionRecognition, new Tuple<List<Question>, List<Question>>(spanQuestions.ToList(), clipQuestions) },
+            };
+            _currentMode = new PerceptionRecognitionStrategy();
+            _currentModeEnum = CommonFields.ComplexModes.PerceptionRecognition;
             _currentMode.InjectController(this);
-            currentRoundIndex = _currentMode.GetStartingRoundIndex();
             var modeQuestions = GetModeQuestions();
             _currentMode.InjectModeQuestions(modeQuestions.Item1, modeQuestions.Item2);
             base.Start();
+            currentRoundIndex = _currentMode.GetStartingRoundIndex();
         }
         
         public override List<Question> GetSpanObjects()
@@ -110,7 +120,7 @@ namespace Spans.ComplexSpan
         
         private Tuple<List<Question>, List<Question>> GetModeQuestions()
         {
-            return new Tuple<List<Question>, List<Question>>(clipQuestions, numberQuestions);
+            return _modeQuestions[_currentModeEnum];
         }
     }
 }

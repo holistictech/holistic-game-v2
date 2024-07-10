@@ -52,7 +52,7 @@ namespace Spans.ComplexSpan
             answerState.EnableGridField();
         }
 
-        public void ShowQuestion(Questioner questioner, List<Question> questions, Action onComplete)
+        public void ShowQuestion(Questioner questioner, Action onComplete)
         {
             _answerState.SetChoiceUI();
             _answerState.TriggerHintHelper("Sırasıyla hangi hayvanları duymuştun?", () =>

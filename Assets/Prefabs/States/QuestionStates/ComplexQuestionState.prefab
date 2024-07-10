@@ -56,6 +56,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 74a5475a67497d94fba80b7f2921f8fd, type: 2}
   questionFieldParent: {fileID: 8100135639205710447}
   questionBox: {fileID: 8373753712324026652}
+  questioner: {fileID: 0}
 --- !u!1001 &2826876559702020979
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -282,7 +283,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 6939642943807859237, guid: eacc5905aacaaff439ffb7e8c538dd44, type: 3}
       propertyPath: m_AnchoredPosition.y
-      value: 102
+      value: -68
       objectReference: {fileID: 0}
     - target: {fileID: 6939642943807859237, guid: eacc5905aacaaff439ffb7e8c538dd44, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
