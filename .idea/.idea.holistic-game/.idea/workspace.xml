@@ -6,18 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="3d01f5fc-4a81-4ccb-94d7-a0f07bc2bc79" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Spans/ComplexSpan - 7.1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Spans/ComplexSpan - 7.1.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/States/AnswerStates/ComplexAnswerState.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/States/AnswerStates/ComplexAnswerState.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/States/AnswerStates/NBackAnswerState.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/States/AnswerStates/NBackAnswerState.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/States/NBackFeedbackState.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/States/NBackFeedbackState.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/States/QuestionStates/ComplexQuestionState.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/States/QuestionStates/ComplexQuestionState.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Spans/QuestionState/Questioner.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Spans/QuestionState/Questioner.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/StateHolders/ComplexSpanStates.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/StateHolders/ComplexSpanStates.asset" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/ComplexSpan.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/ComplexSpan.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/PerceptionRecognitionStrategy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/PerceptionRecognitionStrategy.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/Questioner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/Questioner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/ComplexAnswerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/ComplexAnswerState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/ComplexQuestionState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/ComplexQuestionState.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -276,7 +267,7 @@
       <workItem from="1720512444168" duration="7780000" />
       <workItem from="1720598788824" duration="6300000" />
       <workItem from="1720610201170" duration="327000" />
-      <workItem from="1720610693769" duration="1121000" />
+      <workItem from="1720610693769" duration="3290000" />
     </task>
     <servers />
   </component>
@@ -371,19 +362,6 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="90" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/PerceptionRecognitionStrategy.cs</url>
-          <line>68</line>
-          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Spans\ComplexSpan\PerceptionRecognitionStrategy.cs" initialLine="68" containingFunctionPresentation="Method 'GetCorrectQuestions'">
-            <startOffsets>
-              <option value="2242" />
-            </startOffsets>
-            <endOffsets>
-              <option value="2243" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="100" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/ComplexQuestionState.cs</url>

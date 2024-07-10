@@ -39,7 +39,15 @@ namespace Spans.ComplexSpan
         public void ShowQuestion(Question question, Action onComplete)
         {
             parent.SetActive(true);
-            ConfigureImageField(question);
+            if (question is ImageQuestion)
+            {
+                ConfigureImageField(question);
+            }
+            else if (question is ClipQuestion)
+            {
+                ConfigureClipField(question);
+            }
+            
             DOVirtual.DelayedCall(1f, () =>
             {
                 questionBox.enabled = false;

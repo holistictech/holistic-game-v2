@@ -48,13 +48,14 @@ namespace Spans.ComplexSpan
             _answerState = answerState;
         }
         
-        
         public void ShowQuestion(Questioner questioner, Action onComplete)
         {
             if (_choices == null || _choices.Count == 0)
             {
-                GetModeChoices();
+                _choices = GetModeChoices();
+                _controller.SetRecursion(true);
             }
+            
             var itemToDisplay = _choices[_round];
             questioner.ShowQuestion(itemToDisplay, () =>
             {
@@ -71,7 +72,7 @@ namespace Spans.ComplexSpan
 
         public List<Question> GetCorrectQuestions(int iterations)
         {
-            _currentQuestions = new List<Question>();
+            ResetLogicFields();
             
             for (int i = 0; i < iterations; i++)
             {
@@ -86,6 +87,14 @@ namespace Spans.ComplexSpan
             
             _currentQuestions.Shuffle();
             return _currentQuestions;
+        }
+
+        private void ResetLogicFields()
+        {
+            _currentQuestions.Clear();
+            _choices.Clear();
+            _controller.SetRecursion(false);
+            _chosenButtonTypes.Clear();
         }
 
         public List<Question> GetModeChoices()
@@ -119,7 +128,6 @@ namespace Spans.ComplexSpan
         public void AppendChoice(CommonFields.ButtonType type)
         {
             _chosenButtonTypes.Add(type);
-            
         }
 
         private bool IsLucky()
@@ -135,8 +143,8 @@ namespace Spans.ComplexSpan
 
             if (_round == _choices.Count)
             {
-                _controller.SetMainSpanNeeded(true);
                 _round = 0;
+                _controller.SetRecursion(false);
             }
             
             if (_currentQuestions.Contains(displayed))

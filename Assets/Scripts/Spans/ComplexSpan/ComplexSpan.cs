@@ -17,6 +17,7 @@ namespace Spans.ComplexSpan
         private CommonFields.ComplexModes _currentModeEnum;
         private IComplexSpanStrategy _currentMode;
         private bool _isMainSpanNeeded;
+        private bool _isRecursiveAnswerStateNeeded;
 
         private Dictionary<CommonFields.ComplexModes, Tuple<List<Question>, List<Question>>> _modeQuestions;
         protected override void Start()
@@ -68,7 +69,7 @@ namespace Spans.ComplexSpan
                 ISpanState nextState = stateList[index+1];
                 stateContext.Transition(nextState);
             }
-            else if (_isMainSpanNeeded)
+            else if (_isMainSpanNeeded || _isRecursiveAnswerStateNeeded)
             {
                 stateContext.Transition(stateList[2]);
             }
@@ -111,6 +112,16 @@ namespace Spans.ComplexSpan
         public bool GetIsMainSpanNeeded()
         {
             return _isMainSpanNeeded;
+        }
+
+        public void SetRecursion(bool toggle)
+        {
+            _isRecursiveAnswerStateNeeded = toggle;
+        }
+
+        public bool GetRecursion()
+        {
+            return _isRecursiveAnswerStateNeeded;
         }
 
         public IComplexSpanStrategy GetCurrentStrategy()

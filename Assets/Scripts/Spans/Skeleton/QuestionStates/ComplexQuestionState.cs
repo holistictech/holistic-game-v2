@@ -56,22 +56,14 @@ namespace Spans.Skeleton.QuestionStates
         }
 
         private bool _hasMainPlayed;
-        private bool _hasDisplayed;
         public override void ShowQuestion()
         {
             _currentQuestions = new List<Question>();
 
             if (_currentStrategy is PerceptionRecognitionStrategy)
             {
-                if (_hasDisplayed)
-                {
-                    SwitchNextState();
-                }
-                else
-                {
-                    displayingQuestions = StartCoroutine(ShowQuestionsByType(_spanObjects));
-                    _hasDisplayed = true;
-                }
+                _spanObjects = spanController.GetSpanObjects();
+                displayingQuestions = StartCoroutine(ShowQuestionsByType(_spanObjects));
             }
             else
             {
