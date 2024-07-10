@@ -63,7 +63,8 @@ namespace Spans.Skeleton.QuestionStates
             if (_currentStrategy is PerceptionRecognitionStrategy)
             {
                 _spanObjects = spanController.GetSpanObjects();
-                displayingQuestions = StartCoroutine(ShowQuestionsByType(_spanObjects));
+                _currentStrategy.ShowQuestionStateQuestion(questioner);
+                //displayingQuestions = StartCoroutine(ShowQuestionsByType(_spanObjects));
             }
             else
             {
@@ -87,7 +88,7 @@ namespace Spans.Skeleton.QuestionStates
                 var question = _spanObjects[currentQuestionIndex];
                 if (question is NumberQuestion)
                 {
-                    displayingQuestions = StartCoroutine(ShowNumber(currentQuestionIndex));
+                    displayingQuestions = StartCoroutine(ShowNumbers(currentQuestionIndex));
                 }
                 else if (question is ImageQuestion)
                 {
@@ -121,7 +122,7 @@ namespace Spans.Skeleton.QuestionStates
             SwitchNextState();
         }
 
-        private IEnumerator ShowNumber(int index)
+        private IEnumerator ShowNumbers(int index)
         {
             var target = index + 2;
             var counter = 0;

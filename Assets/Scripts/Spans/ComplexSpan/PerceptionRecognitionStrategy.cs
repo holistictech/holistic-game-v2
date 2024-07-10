@@ -47,8 +47,18 @@ namespace Spans.ComplexSpan
         {
             _answerState = answerState;
         }
-        
-        public void ShowQuestion(Questioner questioner, Action onComplete)
+
+        public void ShowQuestionStateQuestion(Questioner questioner)
+        {
+            questioner.PlayCoroutine(_currentQuestions, this);
+        }
+
+        public void HandleOnComplete()
+        {
+            _questionState.SwitchNextState();
+        }
+
+        public void ShowAnswerStateQuestion(Questioner questioner, Action onComplete)
         {
             if (_choices == null || _choices.Count == 0)
             {

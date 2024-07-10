@@ -38,34 +38,10 @@ namespace Spans.Skeleton.AnswerStates
             EnableUIElements();
             
             _currentStrategy.InjectAnswerState(this);
-            _currentStrategy.ShowQuestion(questioner, () =>
+            _currentStrategy.ShowAnswerStateQuestion(questioner, () =>
             {
                PlayTimer(maxTime); 
             });
-            
-            
-            /*if (_currentStrategy is PerceptionRecognitionStrategy)
-            {
-                _currentStrategy.InjectAnswerState(this);
-                _currentStrategy.ShowQuestion(questioner, _currentStrategy.GetModeChoices(), () =>
-                {
-                    PlayTimer(maxTime);
-                });
-            }
-            else
-            {
-                SetChoiceUI();
-            }
-            
-            if (spanController.GetTutorialStatus())
-            {
-                timer.EnableSelf();
-                TryShowStateTutorial();
-            }
-            else
-            {
-                PlayTimer(maxTime);
-            }*/
         }
 
         public void TriggerHintHelper(string hint, Action onComplete)
@@ -92,10 +68,6 @@ namespace Spans.Skeleton.AnswerStates
         
         public override void EnableUIElements()
         {
-            //base.EnableUIElements();
-            /*gridLayoutGroup.gameObject.SetActive(true);
-            confirmButton.gameObject.SetActive(true);
-            revertButton.gameObject.SetActive(true);*/
             timer.EnableSelf();
         }
 

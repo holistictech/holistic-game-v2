@@ -24,7 +24,6 @@ namespace Spans.ComplexSpan
         private int _iterations = 0;
         private int _iterationCount = 0;
         
-        
         public void InjectController(ComplexSpan controller)
         {
             _controller = controller;
@@ -52,13 +51,30 @@ namespace Spans.ComplexSpan
             answerState.EnableGridField();
         }
 
-        public void ShowQuestion(Questioner questioner, Action onComplete)
+        public void ShowQuestionStateQuestion(Questioner questioner)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void HandleOnComplete()
+        {
+            throw new NotImplementedException();
+        }
+
+        public void ShowAnswerStateQuestion(Questioner questioner, Action onComplete)
         {
             _answerState.SetChoiceUI();
-            _answerState.TriggerHintHelper("Sırasıyla hangi hayvanları duymuştun?", () =>
+            if(_controller.GetIsMainSpanNeeded())
+            {
+                _answerState.TriggerHintHelper("Sırasıyla hangi hayvanları duymuştun?", () =>
+                {
+                    onComplete?.Invoke();
+                });
+            }
+            else
             {
                 onComplete?.Invoke();
-            });
+            }
         }
 
         public int GetCircleCount()

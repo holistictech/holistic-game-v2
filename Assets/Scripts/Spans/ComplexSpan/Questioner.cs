@@ -2,6 +2,7 @@ using System;
 using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Interfaces;
 using Scriptables.QuestionSystem;
 using Scriptables.QuestionSystem.Images;
 using TMPro;
@@ -16,7 +17,14 @@ namespace Spans.ComplexSpan
         [SerializeField] private GameObject parent;
         [SerializeField] private Image questionBox;
 
-        public IEnumerator ShowQuestionsByType(List<Question> questions, Action onComplete)
+        private Coroutine _displayingQuestions;
+
+        public void PlayCoroutine(List<Question> questions, IComplexSpanStrategy strategy)
+        {
+            _displayingQuestions = StartCoroutine(ShowQuestionsByType(questions, strategy.HandleOnComplete));
+        }
+        
+        private IEnumerator ShowQuestionsByType(List<Question> questions, Action onComplete)
         {
             for (int i = 0; i < questions.Count; i++)
             {
@@ -35,8 +43,8 @@ namespace Spans.ComplexSpan
             
             onComplete?.Invoke();
         }
-
-        public void ShowQuestion(Question question, Action onComplete)
+        
+        public void ShowQuestion(Question question, Action onComplete = null)
         {
             parent.SetActive(true);
             if (question is ImageQuestion)

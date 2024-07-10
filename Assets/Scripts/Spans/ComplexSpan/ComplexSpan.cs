@@ -30,8 +30,9 @@ namespace Spans.ComplexSpan
                 },
                 { CommonFields.ComplexModes.PerceptionRecognition, new Tuple<List<Question>, List<Question>>(spanQuestions.ToList(), clipQuestions) },
             };
-            _currentMode = new PerceptionRecognitionStrategy();
-            _currentModeEnum = CommonFields.ComplexModes.PerceptionRecognition;
+            
+            _currentMode = new ComplexSoundChooserMode();
+            _currentModeEnum = CommonFields.ComplexModes.SoundAndNumberChooser;
             _currentMode.InjectController(this);
             var modeQuestions = GetModeQuestions();
             _currentMode.InjectModeQuestions(modeQuestions.Item1, modeQuestions.Item2);
