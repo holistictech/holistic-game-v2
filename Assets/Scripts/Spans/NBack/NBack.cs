@@ -121,12 +121,6 @@ namespace Spans.NBack
         {
             return 2.5f;
         }
-
-        private void TryUpdateStrategy()
-        {
-            //@todo: update mechanism
-            
-        }
         
         public override void SwitchState()
         {

@@ -22,6 +22,7 @@ namespace Spans.ComplexSpan
             _currentMode = new ComplexSoundChooserMode();
             _currentModeEnum = CommonFields.ComplexModes.SoundAndNumberChooser;
             _currentMode.InjectController(this);
+            currentRoundIndex = _currentMode.GetStartingRoundIndex();
             var modeQuestions = GetModeQuestions();
             _currentMode.InjectModeQuestions(modeQuestions.Item1, modeQuestions.Item2);
             base.Start();

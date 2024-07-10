@@ -1,8 +1,10 @@
 using System.Collections.Generic;
 using Interfaces;
 using Scriptables.QuestionSystem;
+using Spans.Skeleton.AnswerStates;
 using Spans.Skeleton.QuestionStates;
 using UnityEngine;
+using Utilities.Helpers;
 
 namespace Spans.ComplexSpan
 {
@@ -24,6 +26,11 @@ namespace Spans.ComplexSpan
             _controller = controller;
         }
 
+        public int GetStartingRoundIndex()
+        {
+            return 2;
+        }
+
         public void InjectModeQuestions(List<Question> mainQuestions, List<Question> helperQuestions)
         {
             _clipQuestions = mainQuestions;
@@ -33,6 +40,11 @@ namespace Spans.ComplexSpan
         public void EnableRequiredModeElements(ComplexQuestionState questionState)
         {
             questionState.GetQuestionField().gameObject.SetActive(true);
+        }
+
+        public void EnableRequiredModeElements(ComplexAnswerState answerState)
+        {
+            answerState.EnableUIElements();
         }
 
         public int GetCircleCount()
@@ -98,6 +110,11 @@ namespace Spans.ComplexSpan
             
             choices.Shuffle();
             return choices;
+        }
+
+        public void AppendChoice(CommonFields.ButtonType type)
+        {
+            throw new System.NotImplementedException();
         }
 
         public bool CheckAnswer(List<Question> given)
@@ -172,11 +189,6 @@ namespace Spans.ComplexSpan
 
             _iterationCount++;
             return numbers;
-        }
-
-        public List<Question> GetCorrectMainQuestions()
-        {
-            return _correctClipQuestions;
         }
 
         public int GetUnitIndex()

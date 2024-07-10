@@ -48,6 +48,9 @@ namespace Utilities.Helpers
             Position,
             Sound,
             SoundAndPosition,
+            Saw,
+            Heard,
+            SawNorHeard,
             Null
         }
 
@@ -63,6 +66,7 @@ namespace Utilities.Helpers
         public enum ComplexModes
         {
             SoundAndNumberChooser,
+            PerceptionRecognition
             
         }
 

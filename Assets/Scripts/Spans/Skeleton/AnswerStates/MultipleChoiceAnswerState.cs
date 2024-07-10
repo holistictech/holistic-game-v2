@@ -16,7 +16,7 @@ namespace Spans.Skeleton.AnswerStates
     {
         [SerializeField] private List<TutorialStep> gridStep;
         [SerializeField] private GridUIHelper gridHelper;
-        [SerializeField] private GridLayoutGroup gridLayoutGroup;
+        [SerializeField] protected GridLayoutGroup gridLayoutGroup;
         
         private Coroutine _timer;
         private Coroutine _tutorialHighlight;

@@ -1,19 +1,23 @@
 using System.Collections.Generic;
 using Scriptables.QuestionSystem;
 using Spans.ComplexSpan;
+using Spans.Skeleton.AnswerStates;
 using Spans.Skeleton.QuestionStates;
+using Utilities.Helpers;
 
 namespace Interfaces
 {
     public interface IComplexSpanStrategy
     {
         public void InjectController(ComplexSpan controller);
+        public int GetStartingRoundIndex();
         public void InjectModeQuestions(List<Question> mainQuestions, List<Question> helperQuestions);
         public void EnableRequiredModeElements(ComplexQuestionState questionState);
+        public void EnableRequiredModeElements(ComplexAnswerState answerState);
         public int GetCircleCount();
         public List<Question> GetCorrectQuestions(int iterations);
         public List<Question> GetModeChoices();
-        public List<Question> GetCorrectMainQuestions();
+        public void AppendChoice(CommonFields.ButtonType type);
         public bool CheckAnswer(List<Question> given);
         public int GetUnitIndex();
     }
