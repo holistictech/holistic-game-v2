@@ -13,7 +13,7 @@ namespace Interfaces
         public void InjectController(ComplexSpan controller);
         public int GetStartingRoundIndex();
         public void InjectModeQuestions(List<Question> mainQuestions, List<Question> helperQuestions);
-        public void EnableRequiredModeElements(ComplexQuestionState questionState);
+        public void InjectQuestionState(ComplexQuestionState questionState);
         public void InjectAnswerState(ComplexAnswerState answerState);
         public void ShowQuestionStateQuestion(Questioner questioner);
         public void HandleOnComplete();

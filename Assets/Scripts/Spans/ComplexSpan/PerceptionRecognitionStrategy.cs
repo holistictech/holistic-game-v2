@@ -38,9 +38,9 @@ namespace Spans.ComplexSpan
             _modeQuestions.AddRange(helperQuestions);
         }
 
-        public void EnableRequiredModeElements(ComplexQuestionState questionState)
+        public void InjectQuestionState(ComplexQuestionState questionState)
         {
-            questionState.GetQuestionField().gameObject.SetActive(true);
+            _questionState = questionState;
         }
         
         public void InjectAnswerState(ComplexAnswerState answerState)
@@ -82,6 +82,11 @@ namespace Spans.ComplexSpan
 
         public List<Question> GetCorrectQuestions(int iterations)
         {
+            if (_controller.GetRecursion())
+            {
+                return _currentQuestions;
+            }
+            
             ResetLogicFields();
             
             for (int i = 0; i < iterations; i++)

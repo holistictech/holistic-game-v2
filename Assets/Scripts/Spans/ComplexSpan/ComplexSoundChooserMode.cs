@@ -15,10 +15,12 @@ namespace Spans.ComplexSpan
         private ComplexSpan _controller;
         private List<Question> _clipQuestions;
         private List<Question> _numberQuestions;
+        private ComplexQuestionState _questionState;
         private ComplexAnswerState _answerState;
         
         private List<Question> _correctClipQuestions = new List<Question>();
         private List<Question> _correctNumberQuestions = new List<Question>();
+        private List<Question> _currentQuestions = new List<Question>();
         private Dictionary<int, List<Question>> _numberSpans = new Dictionary<int, List<Question>>();
         
         private int _iterations = 0;
@@ -40,9 +42,9 @@ namespace Spans.ComplexSpan
             _numberQuestions = helperQuestions;
         }
 
-        public void EnableRequiredModeElements(ComplexQuestionState questionState)
+        public void InjectQuestionState(ComplexQuestionState questionState)
         {
-            questionState.GetQuestionField().gameObject.SetActive(true);
+            _questionState = questionState;
         }
 
         public void InjectAnswerState(ComplexAnswerState answerState)
@@ -51,14 +53,45 @@ namespace Spans.ComplexSpan
             answerState.EnableGridField();
         }
 
+        private int _currentQuestionIndex;
+        private bool _hasMainPlayed;
+        private List<Question> _questionsToBeDisplayed;
         public void ShowQuestionStateQuestion(Questioner questioner)
         {
-            throw new NotImplementedException();
+            if (_currentQuestionIndex >= _currentQuestions.Count)
+            {
+                if (_controller.GetIsMainSpanNeeded() || _hasMainPlayed)
+                {
+                    _controller.GetSpanObjects();
+                    _currentQuestionIndex = 0;
+                    _hasMainPlayed = false;
+                }
+                else
+                {
+                    _controller.SetMainSpanNeeded(true);
+                    _hasMainPlayed = true;
+                    _questionState.SwitchNextState();
+                }
+            }
+
+            _questionsToBeDisplayed = new List<Question> { };
+
+            if (_playClipToggle)
+            {
+                _questionsToBeDisplayed.Add(_currentQuestions[_currentQuestionIndex]);
+            }
+            else
+            {
+                _questionsToBeDisplayed.AddRange(_numberSpans[_roundCounter]);
+            }
+
+            _currentQuestionIndex += _questionsToBeDisplayed.Count;
+            questioner.PlayCoroutine(_questionsToBeDisplayed, this);
         }
 
         public void HandleOnComplete()
         {
-            throw new NotImplementedException();
+            _questionState.SwitchNextState();
         }
 
         public void ShowAnswerStateQuestion(Questioner questioner, Action onComplete)
@@ -79,7 +112,7 @@ namespace Spans.ComplexSpan
 
         public int GetCircleCount()
         {
-            return _answerStateToggle && _roundCounter < _iterations ? 1 : 2;
+            return _playClipToggle && _roundCounter < _iterations ? 1 : 2;
         }
 
         public List<Question> GetCorrectQuestions(int iterations)
@@ -94,7 +127,8 @@ namespace Spans.ComplexSpan
                 corrects.Add(question);
                 corrects.AddRange(GetNumberQuestions());
             }
-            
+
+            _currentQuestions = corrects;
             return corrects;
         }
 
@@ -104,15 +138,15 @@ namespace Spans.ComplexSpan
             _numberSpans.Clear();
             _roundCounter = 0;
             _iterationCount = 0;
-            _answerStateToggle = true;
+            _playClipToggle = true;
         }
 
         private int _roundCounter = 0;
-        private bool _answerStateToggle = true;
+        private bool _playClipToggle = true;
         public List<Question> GetModeChoices()
         {
             List<Question> choices = new List<Question>();
-            if (_answerStateToggle)
+            if (_playClipToggle)
             {
                 choices.AddRange(_correctClipQuestions);
                 var iterations = _correctClipQuestions.Count;
@@ -121,7 +155,7 @@ namespace Spans.ComplexSpan
                     choices.Add(GetRandomQuestion(_clipQuestions, _correctClipQuestions));
                 }
 
-                _answerStateToggle = false;
+                _playClipToggle = false;
             }
             else
             {
@@ -134,7 +168,7 @@ namespace Spans.ComplexSpan
                         choices.Add(question);
                     }
                     _roundCounter++;
-                    _answerStateToggle = true;
+                    _playClipToggle = true;
                 }
             }
             
@@ -149,7 +183,7 @@ namespace Spans.ComplexSpan
 
         public bool CheckAnswer(List<Question> given)
         {
-            List<Question> displayed = _controller.GetIsMainSpanNeeded() ? _correctClipQuestions : _controller.GetCurrentDisplayedQuestions();
+            List<Question> displayed = _controller.GetIsMainSpanNeeded() ? _correctClipQuestions : _questionsToBeDisplayed;
 
             if (displayed.Count != given.Count) return false;
             for (int i = 0; i < displayed.Count; i++)

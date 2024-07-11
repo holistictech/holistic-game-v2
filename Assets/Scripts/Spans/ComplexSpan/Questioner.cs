@@ -5,6 +5,7 @@ using DG.Tweening;
 using Interfaces;
 using Scriptables.QuestionSystem;
 using Scriptables.QuestionSystem.Images;
+using Scriptables.QuestionSystem.Numbers;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -16,7 +17,6 @@ namespace Spans.ComplexSpan
     {
         [SerializeField] private GameObject parent;
         [SerializeField] private Image questionBox;
-
         private Coroutine _displayingQuestions;
 
         public void PlayCoroutine(List<Question> questions, IComplexSpanStrategy strategy)
@@ -26,6 +26,7 @@ namespace Spans.ComplexSpan
         
         private IEnumerator ShowQuestionsByType(List<Question> questions, Action onComplete)
         {
+            parent.gameObject.SetActive(true);
             for (int i = 0; i < questions.Count; i++)
             {
                 var question = questions[i];
@@ -37,8 +38,14 @@ namespace Spans.ComplexSpan
                 {
                     ConfigureClipField(question);
                 }
+                else if (question is NumberQuestion)
+                {
+                    ConfigureNumberField(question);
+                }
+                
                 yield return new WaitForSeconds(1f);
-                questionBox.enabled = false;
+                questionBox.sprite = null;
+                questionBox.GetComponentInChildren<TextMeshProUGUI>().text = "";
             }
             
             onComplete?.Invoke();
@@ -46,7 +53,7 @@ namespace Spans.ComplexSpan
         
         public void ShowQuestion(Question question, Action onComplete = null)
         {
-            parent.SetActive(true);
+            parent.gameObject.SetActive(true);
             if (question is ImageQuestion)
             {
                 ConfigureImageField(question);
@@ -55,11 +62,15 @@ namespace Spans.ComplexSpan
             {
                 ConfigureClipField(question);
             }
+            else if (question is NumberQuestion)
+            {
+                ConfigureNumberField(question);
+            }
             
             DOVirtual.DelayedCall(1f, () =>
             {
                 questionBox.enabled = false;
-                parent.SetActive(false);
+                parent.gameObject.SetActive(false);
                 onComplete?.Invoke();
             });
         }
@@ -68,6 +79,12 @@ namespace Spans.ComplexSpan
         {
             questionBox.sprite = (Sprite)question.GetQuestionItem();
             questionBox.enabled = true;
+        }
+
+        private void ConfigureNumberField(Question question)
+        {
+            questionBox.GetComponentInChildren<TextMeshProUGUI>().text = $"{question.GetQuestionItem()}";
+            questionBox.enabled = false;
         }
 
         private void ConfigureClipField(Question question)
