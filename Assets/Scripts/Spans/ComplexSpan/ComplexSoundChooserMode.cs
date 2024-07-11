@@ -86,7 +86,7 @@ namespace Spans.ComplexSpan
             }
 
             _currentQuestionIndex += _questionsToBeDisplayed.Count;
-            questioner.PlayCoroutine(_questionsToBeDisplayed, this);
+            questioner.PlayCoroutine(_questionsToBeDisplayed, this, _questionState);
         }
 
         public void HandleOnComplete()

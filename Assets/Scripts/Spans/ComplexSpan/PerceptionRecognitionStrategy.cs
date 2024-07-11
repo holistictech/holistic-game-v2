@@ -50,7 +50,7 @@ namespace Spans.ComplexSpan
 
         public void ShowQuestionStateQuestion(Questioner questioner)
         {
-            questioner.PlayCoroutine(_currentQuestions, this);
+            questioner.PlayCoroutine(_currentQuestions, this, _questionState);
         }
 
         public void HandleOnComplete()

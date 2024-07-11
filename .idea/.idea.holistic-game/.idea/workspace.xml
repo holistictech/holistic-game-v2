@@ -6,13 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="3d01f5fc-4a81-4ccb-94d7-a0f07bc2bc79" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/States/QuestionStates/ComplexQuestionState.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/States/QuestionStates/ComplexQuestionState.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/UI/Spans/QuestionState/Questioner.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/UI/Spans/QuestionState/Questioner.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Interfaces/IComplexSpanStrategy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Interfaces/IComplexSpanStrategy.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/ComplexSoundChooserMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/ComplexSoundChooserMode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/ComplexSpan.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/ComplexSpan.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/PerceptionRecognitionStrategy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/PerceptionRecognitionStrategy.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/Questioner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/Questioner.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/ComplexQuestionState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/ComplexQuestionState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanQuestionState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanQuestionState.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -274,7 +272,7 @@
       <workItem from="1720598788824" duration="6300000" />
       <workItem from="1720610201170" duration="327000" />
       <workItem from="1720610693769" duration="5172000" />
-      <workItem from="1720683679120" duration="2685000" />
+      <workItem from="1720683679120" duration="3805000" />
     </task>
     <servers />
   </component>

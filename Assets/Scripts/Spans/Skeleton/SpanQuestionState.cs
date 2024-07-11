@@ -94,7 +94,7 @@ namespace Spans.Skeleton
             }
         }
 
-        protected void ActivateCircle(int index, float duration)
+        public void ActivateCircle(int index, float duration)
         {
             if (_activeCircles != null && _activeCircles.Count > index)
             {

@@ -6,6 +6,7 @@ using Interfaces;
 using Scriptables.QuestionSystem;
 using Scriptables.QuestionSystem.Images;
 using Scriptables.QuestionSystem.Numbers;
+using Spans.Skeleton;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -15,12 +16,14 @@ namespace Spans.ComplexSpan
 {
     public class Questioner : MonoBehaviour
     {
+        [SerializeField] private SpanQuestionState _questionState;
         [SerializeField] private GameObject parent;
         [SerializeField] private Image questionBox;
         private Coroutine _displayingQuestions;
 
-        public void PlayCoroutine(List<Question> questions, IComplexSpanStrategy strategy)
+        public void PlayCoroutine(List<Question> questions, IComplexSpanStrategy strategy, SpanQuestionState questionState)
         {
+            _questionState = questionState;
             _displayingQuestions = StartCoroutine(ShowQuestionsByType(questions, strategy.HandleOnComplete));
         }
         
@@ -30,6 +33,7 @@ namespace Spans.ComplexSpan
             for (int i = 0; i < questions.Count; i++)
             {
                 var question = questions[i];
+                _questionState.ActivateCircle(i, 1f);
                 if (question is ImageQuestion)
                 {
                     ConfigureImageField(question);
@@ -45,6 +49,7 @@ namespace Spans.ComplexSpan
                 
                 yield return new WaitForSeconds(1f);
                 questionBox.sprite = null;
+                questionBox.enabled = false;
                 questionBox.GetComponentInChildren<TextMeshProUGUI>().text = "";
             }
             
