@@ -66,8 +66,8 @@ namespace Utilities.Helpers
         public enum ComplexModes
         {
             SoundAndNumberChooser,
-            PerceptionRecognition
-            
+            PerceptionRecognition,
+            BlockSpanAndNumbers,
         }
 
         public enum Direction

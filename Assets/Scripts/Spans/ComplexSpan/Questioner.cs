@@ -8,6 +8,7 @@ using Scriptables.QuestionSystem.Images;
 using Scriptables.QuestionSystem.Numbers;
 using Spans.Skeleton;
 using TMPro;
+using UI.Helpers;
 using UnityEngine;
 using UnityEngine.UI;
 using Utilities;
@@ -16,7 +17,8 @@ namespace Spans.ComplexSpan
 {
     public class Questioner : MonoBehaviour
     {
-        [SerializeField] private SpanQuestionState _questionState;
+        private SpanQuestionState _questionState;
+        private CorsiBlockUIHelper _gridHelper;
         [SerializeField] private GameObject parent;
         [SerializeField] private Image questionBox;
         private Coroutine _displayingQuestions;
@@ -25,6 +27,26 @@ namespace Spans.ComplexSpan
         {
             _questionState = questionState;
             _displayingQuestions = StartCoroutine(ShowQuestionsByType(questions, strategy.HandleOnComplete));
+        }
+
+        public void PlayBlockSpanRoutine(List<Question> questions, IComplexSpanStrategy strategy, CorsiBlockUIHelper grid)
+        {
+            _gridHelper = grid;
+            _displayingQuestions = StartCoroutine(ShowBlockSpanQuestions(questions, strategy.HandleOnComplete));
+        }
+
+        private IEnumerator ShowBlockSpanQuestions(List<Question> questions, Action onComplete)
+        {
+            parent.gameObject.SetActive(true);
+            for (int i = 0; i < questions.Count; i++)
+            {
+                var question = questions[i];
+                _gridHelper.HighlightTargetBlock(question);
+                _questionState.ActivateCircle(i, 1f);
+                yield return new WaitForSeconds(1f);
+            }
+            
+            onComplete?.Invoke();
         }
         
         private IEnumerator ShowQuestionsByType(List<Question> questions, Action onComplete)

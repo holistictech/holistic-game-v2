@@ -9,6 +9,7 @@ using Scriptables.Tutorial;
 using Spans.ComplexSpan;
 using Spans.CumulativeSpan;
 using TMPro;
+using UI.Helpers;
 using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.UI;
@@ -21,9 +22,9 @@ namespace Spans.Skeleton.QuestionStates
     {
         [SerializeField] private List<TutorialStep> steps;
         [SerializeField] private Questioner questioner;
+        [SerializeField] private CorsiBlockUIHelper blockUIHelper;
 
         private List<Question> _spanObjects;
-        private List<Question> _currentQuestions = new List<Question>();
 
         private ComplexSpan.ComplexSpan _complexSpan;
         private IComplexSpanStrategy _currentStrategy;
@@ -56,8 +57,6 @@ namespace Spans.Skeleton.QuestionStates
         private bool _hasMainPlayed;
         public override void ShowQuestion()
         {
-            _currentQuestions = new List<Question>();
-
             if (_currentStrategy is PerceptionRecognitionStrategy)
             {
                 _spanObjects = spanController.GetSpanObjects();
@@ -76,6 +75,11 @@ namespace Spans.Skeleton.QuestionStates
             }
 
             ResetPreviousCircles();
+        }
+
+        public CorsiBlockUIHelper GetGridHelper()
+        {
+            return blockUIHelper;
         }
 
         public override void SwitchNextState()
