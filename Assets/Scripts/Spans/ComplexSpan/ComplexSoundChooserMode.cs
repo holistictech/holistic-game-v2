@@ -51,6 +51,7 @@ namespace Spans.ComplexSpan
         {
             _answerState = answerState;
             answerState.EnableGridField();
+            answerState.EnableButtons();
         }
 
         private int _currentQuestionIndex;
@@ -86,6 +87,7 @@ namespace Spans.ComplexSpan
             }
 
             _currentQuestionIndex += _questionsToBeDisplayed.Count;
+            questioner.InjectQuestionState(_questionState);
             questioner.PlayCoroutine(_questionsToBeDisplayed, this, _questionState);
         }
 

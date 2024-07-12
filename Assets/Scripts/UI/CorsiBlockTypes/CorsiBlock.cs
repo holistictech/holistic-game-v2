@@ -64,7 +64,7 @@ namespace UI.CorsiBlockTypes
 
         protected virtual void SetSelected()
         {
-            blockImage.DOColor(highlightColor, .2f).SetEase(Ease.Flash).OnComplete(ResetUI);
+            blockImage.DOColor(highlightColor, .2f).SetEase(Ease.Flash);
             //blockImage.color = highlightColor;
             //blockButton.interactable = false;
             AppendSelf(blockQuestion);

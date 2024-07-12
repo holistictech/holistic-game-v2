@@ -50,6 +50,7 @@ namespace Spans.ComplexSpan
 
         public void ShowQuestionStateQuestion(Questioner questioner)
         {
+            questioner.InjectQuestionState(_questionState);
             questioner.PlayCoroutine(_currentQuestions, this, _questionState);
         }
 

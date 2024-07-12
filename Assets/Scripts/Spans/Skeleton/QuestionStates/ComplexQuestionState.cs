@@ -61,7 +61,7 @@ namespace Spans.Skeleton.QuestionStates
             {
                 _spanObjects = spanController.GetSpanObjects();
                 _currentStrategy.ShowQuestionStateQuestion(questioner);
-            }else if (_currentStrategy is ComplexSoundChooserMode)
+            }else if (_currentStrategy is ComplexSoundChooserMode || _currentStrategy is BlockAndNumberSpanStrategy)
             {
                 _currentStrategy.ShowQuestionStateQuestion(questioner);
             }

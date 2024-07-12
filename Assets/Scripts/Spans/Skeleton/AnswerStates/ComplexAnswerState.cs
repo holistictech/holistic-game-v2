@@ -74,6 +74,10 @@ namespace Spans.Skeleton.AnswerStates
         public void EnableGridField()
         {
             gridLayoutGroup.gameObject.SetActive(true);
+        }
+
+        public void EnableButtons()
+        {
             confirmButton.gameObject.SetActive(true);
             revertButton.gameObject.SetActive(true);
         }

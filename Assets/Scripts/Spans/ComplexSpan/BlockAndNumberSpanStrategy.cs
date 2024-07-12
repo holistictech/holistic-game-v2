@@ -4,6 +4,7 @@ using Interfaces;
 using Scriptables.QuestionSystem;
 using Spans.Skeleton.AnswerStates;
 using Spans.Skeleton.QuestionStates;
+using UI.Helpers;
 using UnityEngine;
 using Utilities.Helpers;
 using Random = System.Random;
@@ -18,6 +19,8 @@ namespace Spans.ComplexSpan
         private List<Question> _modeQuestions = new List<Question>();
         private List<Question> _currentQuestions = new List<Question>();
         private List<Question> _currentNumberQuestions = new List<Question>();
+        private CorsiBlockUIHelper _blockGrid;
+        
         public void InjectController(ComplexSpan controller)
         {
             _controller = controller;
@@ -25,7 +28,7 @@ namespace Spans.ComplexSpan
 
         public int GetStartingRoundIndex()
         {
-            throw new NotImplementedException();
+            return 2;
         }
 
         public void InjectModeQuestions(List<Question> mainQuestions, List<Question> helperQuestions)
@@ -37,19 +40,46 @@ namespace Spans.ComplexSpan
         public void InjectQuestionState(ComplexQuestionState questionState)
         {
             _questionState = questionState;
-            var blockGrid = _questionState.GetGridHelper();
-            blockGrid.GetCorsiBlocks();
-            blockGrid.AssignQuestions(_modeQuestions);
+            _blockGrid = _questionState.GetGridHelper();
+            _blockGrid.GetCorsiBlocks();
+            _blockGrid.AssignQuestions(_modeQuestions);
         }
 
         public void InjectAnswerState(ComplexAnswerState answerState)
         {
             _answerState = answerState;
+            _answerState.EnableButtons();
+            var circles = _controller.GetActiveCircles();
+            _blockGrid.SetActiveCircles(circles);
+            _blockGrid.ConfigureInput(true);
         }
 
         private bool _blocksDisplayed;
         private int _currentQuestionIndex = 0;
         public void ShowQuestionStateQuestion(Questioner questioner)
+        {
+            if (SetModeState()) return;
+            
+            _blockGrid = _questionState.GetGridHelper();
+            questioner.InjectQuestionState(_questionState);
+            var count = 0;
+            if (_blocksDisplayed)
+            {
+                count = 1;
+                _blocksDisplayed = false;
+                questioner.PlayCoroutine(_currentQuestions.GetRange(_currentQuestionIndex, 1), this, _questionState);
+            }
+            else
+            {
+                count = 3;
+                _blocksDisplayed = true;
+                questioner.PlayBlockSpanRoutine(_currentQuestions.GetRange(_currentQuestionIndex, count), this, _blockGrid);
+            }
+            
+            _currentQuestionIndex += count;
+        }
+
+        private bool SetModeState()
         {
             if (_currentQuestionIndex >= _currentQuestions.Count)
             {
@@ -62,31 +92,16 @@ namespace Spans.ComplexSpan
                 {
                     _controller.SetMainSpanNeeded(true);
                     _questionState.SwitchNextState();
-                    return;
+                    return true;
                 }
             }
-            
-            var blockGrid = _questionState.GetGridHelper();
-            var count = 0;
-            if (_blocksDisplayed)
-            {
-                count = 1;
-                _blocksDisplayed = false;
-            }
-            else
-            {
-                count = 3;
-                _blocksDisplayed = true;
-            }
-            
-            questioner.PlayBlockSpanRoutine(_currentQuestions.GetRange(_currentQuestionIndex, count), this, blockGrid);
-            _currentQuestionIndex += count;
-            blockGrid.ResetCorsiBlocks();
-            blockGrid.gameObject.SetActive(false);
+
+            return false;
         }
 
         public void HandleOnComplete()
         {
+            _blockGrid.gameObject.SetActive(false);
             _questionState.SwitchNextState();
         }
 
@@ -166,6 +181,7 @@ namespace Spans.ComplexSpan
 
         public bool CheckAnswer(List<Question> given)
         {
+            _blockGrid.gameObject.SetActive(false);
             if (_blocksDisplayed)
             {
                 var spanQuestions = _currentQuestions.GetRange(_currentQuestionIndex - 3, 3);

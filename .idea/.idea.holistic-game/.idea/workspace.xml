@@ -6,9 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="3d01f5fc-4a81-4ccb-94d7-a0f07bc2bc79" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/States/QuestionStates/ComplexQuestionState.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/States/QuestionStates/ComplexQuestionState.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/BlockAndNumberSpanStrategy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/BlockAndNumberSpanStrategy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/ComplexSoundChooserMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/ComplexSoundChooserMode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/ComplexSpan.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/ComplexSpan.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/PerceptionRecognitionStrategy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/PerceptionRecognitionStrategy.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/Questioner.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/Questioner.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/ComplexAnswerState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/AnswerStates/ComplexAnswerState.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/ComplexQuestionState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/ComplexQuestionState.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/Helpers/CommonFields.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/Helpers/CommonFields.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/CorsiBlockTypes/CorsiBlock.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/CorsiBlockTypes/CorsiBlock.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -150,10 +156,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="33548">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="33548" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -270,7 +276,7 @@
       <workItem from="1720610201170" duration="327000" />
       <workItem from="1720610693769" duration="5172000" />
       <workItem from="1720683679120" duration="5978000" />
-      <workItem from="1720769111297" duration="2995000" />
+      <workItem from="1720769111297" duration="6149000" />
     </task>
     <servers />
   </component>
@@ -355,16 +361,42 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/ComplexSoundChooserMode.cs</url>
-          <line>59</line>
+          <line>60</line>
           <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Spans\ComplexSpan\ComplexSoundChooserMode.cs" initialLine="59" containingFunctionPresentation="Method 'ShowQuestionStateQuestion'">
             <startOffsets>
-              <option value="1976" />
+              <option value="2017" />
             </startOffsets>
             <endOffsets>
-              <option value="1977" />
+              <option value="2018" />
             </endOffsets>
           </properties>
           <option name="timeStamp" value="81" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/UI/CorsiBlockTypes/CorsiBlock.cs</url>
+          <line>65</line>
+          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\UI\CorsiBlockTypes\CorsiBlock.cs" initialLine="65" containingFunctionPresentation="Method 'SetSelected'">
+            <startOffsets>
+              <option value="1675" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1676" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="83" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/UI/Helpers/CorsiBlockUIHelper.cs</url>
+          <line>93</line>
+          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\UI\Helpers\CorsiBlockUIHelper.cs" initialLine="93" containingFunctionPresentation="Method 'AppendSelectedAnswers'">
+            <startOffsets>
+              <option value="3251" />
+            </startOffsets>
+            <endOffsets>
+              <option value="3252" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="84" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

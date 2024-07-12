@@ -29,10 +29,11 @@ namespace Spans.ComplexSpan
                     new Tuple<List<Question>, List<Question>>(clipQuestions, numberQuestions)
                 },
                 { CommonFields.ComplexModes.PerceptionRecognition, new Tuple<List<Question>, List<Question>>(spanQuestions.ToList(), clipQuestions) },
+                { CommonFields.ComplexModes.BlockSpanAndNumbers, new Tuple<List<Question>, List<Question>>(numberQuestions, new List<Question>()) },
             };
             
-            _currentMode = new PerceptionRecognitionStrategy();
-            _currentModeEnum = CommonFields.ComplexModes.PerceptionRecognition;
+            _currentMode = new BlockAndNumberSpanStrategy();
+            _currentModeEnum = CommonFields.ComplexModes.BlockSpanAndNumbers;
             _currentMode.InjectController(this);
             var modeQuestions = GetModeQuestions();
             _currentMode.InjectModeQuestions(modeQuestions.Item1, modeQuestions.Item2);
