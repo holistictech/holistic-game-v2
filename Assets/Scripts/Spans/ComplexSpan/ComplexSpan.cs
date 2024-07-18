@@ -73,12 +73,22 @@ namespace Spans.ComplexSpan
             }
             else if (_isMainSpanNeeded || _isRecursiveAnswerStateNeeded)
             {
-                stateContext.Transition(stateList[2]);
+                SwitchToAnswerState();
             }
             else
             {
-                stateContext.Transition(stateList[1]);
+                SwitchToQuestionState();
             }
+        }
+
+        public void SwitchToQuestionState()
+        {
+            stateContext.Transition(stateList[1]);
+        }
+
+        public void SwitchToAnswerState()
+        {
+            stateContext.Transition(stateList[2]);
         }
         
         public override bool IsAnswerCorrect()
@@ -94,7 +104,8 @@ namespace Spans.ComplexSpan
                 {
                     IncrementFailStreak();
                 }
-                
+
+                _currentMode.GetCorrectQuestions(currentRoundIndex);
                 SetMainSpanNeeded(false);
             }
 

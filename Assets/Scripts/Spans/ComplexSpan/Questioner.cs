@@ -37,6 +37,7 @@ namespace Spans.ComplexSpan
         public void PlayBlockSpanRoutine(List<Question> questions, IComplexSpanStrategy strategy, CorsiBlockUIHelper grid)
         {
             parent.gameObject.SetActive(false);
+            grid.gameObject.SetActive(true);
             _gridHelper = grid;
             _displayingQuestions = StartCoroutine(ShowBlockSpanQuestions(questions, strategy.HandleOnComplete));
         }
@@ -52,6 +53,7 @@ namespace Spans.ComplexSpan
             }
             
             onComplete?.Invoke();
+            parent.gameObject.SetActive(false);
         }
         
         private IEnumerator ShowQuestionsByType(List<Question> questions, Action onComplete)
@@ -81,6 +83,7 @@ namespace Spans.ComplexSpan
             }
             
             onComplete?.Invoke();
+            parent.gameObject.SetActive(false);
         }
         
         public void ShowQuestion(Question question, Action onComplete = null)

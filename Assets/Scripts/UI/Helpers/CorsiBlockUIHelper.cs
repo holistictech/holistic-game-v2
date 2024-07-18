@@ -22,6 +22,7 @@ namespace UI.Helpers
 
         public void SetActiveCircles(List<UnitCircle> circles)
         {
+            _answerIndex = 0;
             _activeCircles = circles;
             _activeCircles[_answerIndex].AnimateCircle();
         }

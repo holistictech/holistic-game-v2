@@ -31,6 +31,7 @@ namespace UI.Helpers
 
         public void ConfigureChoices(List<Question> questions, MultipleChoiceAnswerState answerState)
         {
+            gridParent.gameObject.SetActive(true);
             _answerState = answerState;
             _givenAnswers.Clear();
             foreach (var question in questions)
@@ -162,7 +163,6 @@ namespace UI.Helpers
             }
 
             throw new ArgumentException("Could not find such question in spawned choices");
-            return null;
         }
         
         public void DisableSpawnedChoices()
@@ -189,7 +189,6 @@ namespace UI.Helpers
             }
 
             throw new Exception("No available choice. Need to spawn");
-            return null;
         }
     }
 }

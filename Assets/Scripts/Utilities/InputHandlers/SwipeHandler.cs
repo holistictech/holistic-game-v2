@@ -21,8 +21,6 @@ namespace Utilities
         private Vector3 _finalPosition;
         private bool _isSwiping;
 
-        public static event Action<Vector3> OnLocationSelected;
-
         private void OnEnable()
         {
             AddListeners();

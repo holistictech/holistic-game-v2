@@ -20,7 +20,6 @@ namespace Spans.Skeleton.AnswerStates
         [SerializeField] private Questioner questioner; 
         private ComplexSpan.ComplexSpan _complexSpan;
         private IComplexSpanStrategy _currentStrategy;
-        
         private Coroutine _timer;
         private Coroutine _tutorialHighlight;
         

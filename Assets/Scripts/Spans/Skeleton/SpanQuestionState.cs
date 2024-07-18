@@ -127,15 +127,6 @@ namespace Spans.Skeleton
             _activeCircles.Clear();
         }
 
-        protected void DisableCirclesByAmount(int amount)
-        {
-            for (int i = 0; i < amount; i++)
-            {
-                _activeCircles[i].DisableCircle();
-                _activeCircles.Remove(_activeCircles[i]);
-            }
-        }
-
         private UnitCircle GetAvailableUnitCircle()
         {
             foreach (var circle in _spawnedUnitPool)
@@ -147,7 +138,6 @@ namespace Spans.Skeleton
             }
 
             throw new Exception("No available unit circle");
-            return null;
         }
 
         protected void RotateCircles(int endValue, Action onComplete)

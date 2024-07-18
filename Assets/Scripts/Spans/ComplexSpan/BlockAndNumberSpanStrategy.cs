@@ -101,6 +101,7 @@ namespace Spans.ComplexSpan
 
         public void HandleOnComplete()
         {
+            _blockGrid.ResetCorsiBlocks();
             _blockGrid.gameObject.SetActive(false);
             _questionState.SwitchNextState();
         }
@@ -127,7 +128,6 @@ namespace Spans.ComplexSpan
                 {
                     _answerState.SwitchNextState();
                 }
-                
             }
         }
 
@@ -140,14 +140,15 @@ namespace Spans.ComplexSpan
         {
             for (int i = 0; i < iterations; i++)
             {
+                var iterationQuestions = new List<Question>();
                 for (int j = 0; j < 4; j++)
                 {
                     var randomQuestion = _modeQuestions[UnityEngine.Random.Range(0, _modeQuestions.Count)];
-                    while (_currentQuestions.Contains(randomQuestion))
+                    while (iterationQuestions.Contains(randomQuestion))
                     {
                         randomQuestion = _modeQuestions[UnityEngine.Random.Range(0, _modeQuestions.Count)];
                     }
-                
+                    iterationQuestions.Add(randomQuestion);
                     _currentQuestions.Add(randomQuestion);
                 }
                 
@@ -184,6 +185,7 @@ namespace Spans.ComplexSpan
             _blockGrid.gameObject.SetActive(false);
             if (_blocksDisplayed)
             {
+                given = _blockGrid.GetGivenAnswers();
                 var spanQuestions = _currentQuestions.GetRange(_currentQuestionIndex - 3, 3);
                 if (spanQuestions.Count != given.Count) return false;
                 for (int i = 0; i < spanQuestions.Count; i++)

@@ -29,7 +29,6 @@ namespace Spans.Skeleton.AnswerStates
             }
 
             maxTime = spanController.GetRoundTime();
-            AddListeners();
             EnableUIElements();
             SetChoiceUI();
             
@@ -73,7 +72,6 @@ namespace Spans.Skeleton.AnswerStates
         public override void Exit()
         {
             DisableUIElements();
-            RemoveListeners();
             if (_tutorialHighlight != null)
             {
                 StopCoroutine(_tutorialHighlight);
@@ -151,8 +149,6 @@ namespace Spans.Skeleton.AnswerStates
         {
             base.EnableUIElements();
             gridLayoutGroup.gameObject.SetActive(true);
-            confirmButton.gameObject.SetActive(true);
-            revertButton.gameObject.SetActive(true);
             timer.EnableSelf();
         }
 
@@ -160,7 +156,6 @@ namespace Spans.Skeleton.AnswerStates
         {
             base.DisableUIElements();
             gridLayoutGroup.gameObject.SetActive(false);
-            confirmButton.gameObject.SetActive(false);
             revertButton.gameObject.SetActive(spanController.GetTutorialStatus());
             if (spanController.GetTutorialStatus())
             {

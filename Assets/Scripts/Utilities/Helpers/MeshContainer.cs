@@ -58,7 +58,6 @@ namespace Utilities
             else
             {
                 throw new Exception("ID could not be found :" + id);
-                return new Mesh();
             }
         }
     }
