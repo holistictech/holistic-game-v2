@@ -183,9 +183,9 @@ namespace Spans.Skeleton.QuestionStates
         
         public override void Exit()
         {
+            _coroutineRunning = false;
             if (displayingQuestions != null)
             { 
-                _coroutineRunning = false;
                 StopCoroutine(displayingQuestions);
                 displayingQuestions = null;
             }

@@ -124,7 +124,7 @@ namespace Spans.NBack
             }
             
             _controller.UpdateCurrentStack(questionStack);
-            return roundQuestions;
+            return questionStack.ToList();
         }
 
         public void SetCorrectType()
