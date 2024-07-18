@@ -16,7 +16,7 @@ namespace Spans.NBack
         [SerializeField] private List<Question> alternativeObjectImages;
         [SerializeField] private List<Question> nBackQuestions;
         [SerializeField] private List<Question> dualNBackQuestions;
-        private NBackModes _testMode; 
+        [SerializeField] private NBackModes _testMode; 
             
         private Dictionary<NBackModes, List<Question>> _modeQuestionDictionary;
         private List<NBackModes> _gameModes = new List<NBackModes>()
@@ -50,7 +50,7 @@ namespace Spans.NBack
                     { NBackModes.DualNBack, dualNBackQuestions },
                 };
 
-            _testMode = PlayerSaveManager.GetPlayerAttribute(ModeSaveKey, NBackModes.IsIdentical);
+            //_testMode = PlayerSaveManager.GetPlayerAttribute(ModeSaveKey, NBackModes.IsIdentical);
 
             switch (_testMode)
             {
@@ -75,7 +75,7 @@ namespace Spans.NBack
         public override void EndSpan()
         {
             float successRate = ((float)StatisticsHelper.GetTrueCount() / StatisticsHelper.GetTotalQuestionCount()) * 100;
-            TryUpdateGameModeForNextSpan(successRate);
+            //TryUpdateGameModeForNextSpan(successRate);
             base.EndSpan();
         }
 

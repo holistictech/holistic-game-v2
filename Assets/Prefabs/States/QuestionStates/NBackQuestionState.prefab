@@ -298,6 +298,26 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 6811287773304904936, guid: eacc5905aacaaff439ffb7e8c538dd44, type: 3}
+      propertyPath: m_ChildScaleWidth
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6811287773304904936, guid: eacc5905aacaaff439ffb7e8c538dd44, type: 3}
+      propertyPath: m_ChildScaleHeight
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6811287773304904936, guid: eacc5905aacaaff439ffb7e8c538dd44, type: 3}
+      propertyPath: m_ChildControlWidth
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6811287773304904936, guid: eacc5905aacaaff439ffb7e8c538dd44, type: 3}
+      propertyPath: m_ChildControlHeight
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6811287773304904936, guid: eacc5905aacaaff439ffb7e8c538dd44, type: 3}
+      propertyPath: m_ChildForceExpandWidth
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6939642943807859237, guid: eacc5905aacaaff439ffb7e8c538dd44, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5

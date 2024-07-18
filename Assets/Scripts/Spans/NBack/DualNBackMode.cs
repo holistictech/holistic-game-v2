@@ -98,7 +98,7 @@ namespace Spans.NBack
 
         private Question GetFirstQuestion(int count, Queue<Question> questionStack, List<Question> alternativeQuestions)
         {
-            if (count == 2)
+            if(questionStack.Count == 0 ||count == 2)
             {
                 return alternativeQuestions[Random.Range(0, alternativeQuestions.Count)];
             }
