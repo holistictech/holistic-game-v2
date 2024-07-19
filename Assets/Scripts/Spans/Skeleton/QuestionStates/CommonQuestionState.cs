@@ -130,7 +130,8 @@ namespace Spans.Skeleton.QuestionStates
                 var question = _spanObjects[currentQuestionIndex];
                 
                 AudioClip clip = (AudioClip)question.GetQuestionItem();
-                //questionBox.GetComponentInChildren<TextMeshProUGUI>().text = $"{question.GetCorrectText()}";
+                if(spanController is RunningSpan)
+                    questionBox.GetComponentInChildren<TextMeshProUGUI>().text = $"{question.GetCorrectText()}";
                 AudioManager.Instance.PlayAudioClip(clip);
                 ActivateCircle(currentQuestionIndex, 1f);
                 _currentQuestions.Add(question);

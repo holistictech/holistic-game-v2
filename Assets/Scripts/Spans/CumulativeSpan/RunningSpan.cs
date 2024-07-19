@@ -12,7 +12,7 @@ namespace Spans.CumulativeSpan
         private int _startingUnitIndex = 0;
         public override List<Question> GetSpanObjects()
         {
-            int random = UnityEngine.Random.Range(Mathf.Min(currentRoundIndex, MaxFetchCount + 1), Mathf.Max(currentRoundIndex, MaxFetchCount + 1));
+            int random = UnityEngine.Random.Range(Mathf.Min(currentRoundIndex+1, MaxFetchCount + 1), Mathf.Max(currentRoundIndex+1, MaxFetchCount + 1));
             return PickNumbers(random);
         }
         
