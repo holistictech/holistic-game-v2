@@ -10,10 +10,10 @@ namespace Spans.ForwardSpan
         {
             List<Question> shuffledSprites = new List<Question>(GetAllAvailableSpanObjects());
             
-            foreach (var item in shuffledSprites)
+            /*foreach (var item in shuffledSprites)
             {
                 item.IsAnswerStringMUST = false;
-            }
+            }*/
             return GetRandomClips();
         }
         

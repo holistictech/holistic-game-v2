@@ -6,10 +6,19 @@
   <component name="ChangeListManager">
     <list default="true" id="3d01f5fc-4a81-4ccb-94d7-a0f07bc2bc79" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Spans/NBack - Pure NBack - 6.5.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Spans/NBack - Pure NBack - 6.5.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/States/QuestionStates/NBackQuestionState.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/States/QuestionStates/NBackQuestionState.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/NBack/NBackMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/NBack/NBackMode.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/NBackQuestionState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/NBackQuestionState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/Spans/ForwardSoundChooser_Numbers - 1.3.1.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/Spans/ForwardSoundChooser_Numbers - 1.3.1.prefab" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GamePlay/Grid.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GamePlay/Grid.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Clips/Numbers/10_Clip.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Clips/Numbers/10_Clip.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Clips/Numbers/11_Clip.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Clips/Numbers/11_Clip.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Clips/Numbers/1_Clip.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Clips/Numbers/1_Clip.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Clips/Numbers/2_Clip.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Clips/Numbers/2_Clip.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Clips/Numbers/3_Clip.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Clips/Numbers/3_Clip.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Clips/Numbers/4_Clip.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Clips/Numbers/4_Clip.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Clips/Numbers/5_Clip.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Clips/Numbers/5_Clip.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Clips/Numbers/6_Clip.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Clips/Numbers/6_Clip.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Clips/Numbers/7_Clip.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Clips/Numbers/7_Clip.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Clips/Numbers/8_Clip.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Clips/Numbers/8_Clip.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Clips/Numbers/9_Clip.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/Clips/Numbers/9_Clip.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -286,7 +295,7 @@
       <workItem from="1720769111297" duration="6149000" />
       <workItem from="1721204445259" duration="7911000" />
       <workItem from="1721220044776" duration="4024000" />
-      <workItem from="1721288287808" duration="7393000" />
+      <workItem from="1721288287808" duration="8271000" />
     </task>
     <servers />
   </component>
@@ -498,6 +507,19 @@
             </endOffsets>
           </properties>
           <option name="timeStamp" value="124" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="DotNet Breakpoints">
+          <url>file://$PROJECT_DIR$/Assets/Scripts/UI/Choice.cs</url>
+          <line>52</line>
+          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\UI\Choice.cs" initialLine="52" containingFunctionPresentation="Method 'SetChoice'">
+            <startOffsets>
+              <option value="1530" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1531" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="125" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
