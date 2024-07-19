@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 7421276757806570065}
   - component: {fileID: 5460723127599799996}
   - component: {fileID: 1532497710113319918}
+  - component: {fileID: 6102205441607847647}
   m_Layer: 5
   m_Name: StaticCorsiBlock
   m_TagString: Untagged
@@ -140,6 +141,20 @@ MonoBehaviour:
   eggSprite: {fileID: 21300000, guid: e990e32f5693ea04db3aeb43b0203925, type: 3}
   chickSprite: {fileID: 21300000, guid: 56142312d1cc1d7459819c8d29f32270, type: 3}
   dustEffect: {fileID: 7487971788030602657}
+--- !u!114 &6102205441607847647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1136080154781702747}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c160173fecd17a4f997cd9c88d01551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  button: {fileID: 5460723127599799996}
+  clickClip: {fileID: 8300000, guid: c52790a11a952e44db2218fc7b13f5b3, type: 3}
 --- !u!1001 &7487971788012038191
 PrefabInstance:
   m_ObjectHideFlags: 0
