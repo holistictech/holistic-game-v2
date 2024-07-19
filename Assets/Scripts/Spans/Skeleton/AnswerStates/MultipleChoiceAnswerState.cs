@@ -25,7 +25,7 @@ namespace Spans.Skeleton.AnswerStates
         {
             if (spanController == null)
             {
-                spanController = controller;
+                base.Enter(controller);
             }
 
             maxTime = spanController.GetRoundTime();
