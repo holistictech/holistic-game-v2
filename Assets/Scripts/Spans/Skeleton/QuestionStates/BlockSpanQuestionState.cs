@@ -101,7 +101,7 @@ namespace Spans.Skeleton.QuestionStates
                 StopCoroutine(displayingQuestions);
             }
             DisableUIElements();
-            ConfigureDisplayedQuestions();
+            //ConfigureDisplayedQuestions();
             
             if (spanController.GetBackwardStatus())
             {

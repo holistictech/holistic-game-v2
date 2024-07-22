@@ -37,6 +37,11 @@ namespace Scriptables.QuestionSystem
             }
         }
         
+        public override void SetQuestionItemByType(CommonFields.ButtonType type, object value)
+        {
+            Index = (int)value;
+        }
+        
         public override object GetQuestionItemByType(CommonFields.ButtonType type)
         {
             return Index;

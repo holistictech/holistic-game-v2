@@ -3,8 +3,10 @@ using Interfaces;
 using Scriptables.QuestionSystem;
 using Spans.BlockSpan;
 using UI.Helpers;
+using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.UI;
+using Utilities.Helpers;
 
 namespace UI.CorsiBlockTypes
 {
@@ -48,11 +50,17 @@ namespace UI.CorsiBlockTypes
             {
                 question = blockQuestion;
             }
-            else
+            else if(_currentStrategy is ColorChooserMode)
             {
                 question = OptionPicker.GetCurrentSelection();
                 blockQuestion.SetQuestionItem(question.GetQuestionItem());
                 question = blockQuestion;
+            }
+            else
+            {
+                question = ScriptableObject.CreateInstance<BlockImageQuestion>();
+                question.SetQuestionItem(OptionPicker.GetCurrentSelection().GetQuestionItem());
+                question.SetQuestionItemByType(CommonFields.ButtonType.Count, (int)blockQuestion.GetQuestionItemByType(CommonFields.ButtonType.Count));
             }
             
             _currentStrategy.SetBlockSelected(this, question);

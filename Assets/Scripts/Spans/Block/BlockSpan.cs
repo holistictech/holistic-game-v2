@@ -90,17 +90,7 @@ namespace Spans.Block
         
         public override List<Question> GetCurrentSpanQuestions()
         {
-            List<Question> currentQuestions = new List<Question>();
-            switch (_currentConfig.Mode)
-            {
-                case BlockSpanModes.Regular:
-                    currentQuestions = _gameMode.GetCorrectQuestions(currentSpanQuestions, _questionCount);
-                    break;
-                case BlockSpanModes.ColorChooser: case BlockSpanModes.ItemChooser:
-                    currentQuestions = _gameMode.GetCorrectQuestions(currentSpanQuestions, _questionCount);
-                    break;
-            }
-
+            List<Question> currentQuestions = _gameMode.GetCorrectQuestions(currentSpanQuestions, _questionCount);
             currentDisplayedQuestions = currentQuestions;
             return currentQuestions;
         }
