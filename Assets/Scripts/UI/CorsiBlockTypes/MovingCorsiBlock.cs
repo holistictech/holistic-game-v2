@@ -29,7 +29,7 @@ namespace UI.CorsiBlockTypes
             rigidBody = GetComponent<Rigidbody2D>();
             rectTransform = GetComponent<RectTransform>();
         }
-        
+
         public override void MakeBlockMove()
         {
             _canChangeDirection = true;
@@ -37,8 +37,9 @@ namespace UI.CorsiBlockTypes
             _moveVector = DirectionVectors[_lastDirection];
             _movement = StartCoroutine(MoveSelf());
         }
-        
+
         public float moveSpeed = .1f;
+
         public override IEnumerator MoveSelf()
         {
             while (true)
@@ -46,7 +47,7 @@ namespace UI.CorsiBlockTypes
                 var position = rigidBody.position;
                 position += _moveVector * (moveSpeed * Time.deltaTime);
                 rigidBody.MovePosition(position);
-                yield return null;
+                yield return new WaitForEndOfFrame();
             }
         }
 
@@ -58,7 +59,7 @@ namespace UI.CorsiBlockTypes
                 {
                     _moveVector = new Vector2(_moveVector.x, -_moveVector.y);
                 }
-            
+
                 if (other.gameObject.CompareTag("RightBorder") || other.gameObject.CompareTag("LeftBorder"))
                 {
                     _moveVector = new Vector2(-_moveVector.x, _moveVector.y);
@@ -68,32 +69,27 @@ namespace UI.CorsiBlockTypes
                 {
                     ChooseNewDirection();
                 }
-                
+
                 StartCoroutine(CooldownDirectionChange());
             }
         }
 
         private void OnTriggerStay2D(Collider2D other)
         {
-            //if (_canChangeDirection)
-            //{
-                if (other.gameObject.CompareTag("UpBorder") || other.gameObject.CompareTag("DownBorder"))
-                {
-                    _moveVector = new Vector2(_moveVector.x, -_moveVector.y);
-                }
-            
-                if (other.gameObject.CompareTag("RightBorder") || other.gameObject.CompareTag("LeftBorder"))
-                {
-                    _moveVector = new Vector2(-_moveVector.x, _moveVector.y);
-                }
+            if (other.gameObject.CompareTag("UpBorder") || other.gameObject.CompareTag("DownBorder"))
+            {
+                _moveVector = new Vector2(_moveVector.x, -_moveVector.y);
+            }
 
-                if (other.gameObject.CompareTag("Fish"))
-                {
-                    ChooseNewDirection();
-                }
-                
-              //  StartCoroutine(CooldownDirectionChange());
-            //}
+            if (other.gameObject.CompareTag("RightBorder") || other.gameObject.CompareTag("LeftBorder"))
+            {
+                _moveVector = new Vector2(-_moveVector.x, _moveVector.y);
+            }
+
+            if (other.gameObject.CompareTag("Fish"))
+            {
+                ChooseNewDirection();
+            }
         }
 
         private void OnCollisionEnter2D(Collision2D other)
@@ -102,38 +98,16 @@ namespace UI.CorsiBlockTypes
             {
                 _moveVector = new Vector2(_moveVector.x, -_moveVector.y);
             }
-            
+
             if (other.gameObject.CompareTag("RightBorder") || other.gameObject.CompareTag("LeftBorder"))
             {
                 _moveVector = new Vector2(-_moveVector.x, _moveVector.y);
             }
-            
-            /*
-                RectTransform otherRectTransform = other.gameObject.GetComponent<RectTransform>();
-                Vector2 otherPosition = otherRectTransform.anchoredPosition;
-                Vector2 thisPosition = rectTransform.anchoredPosition;
-
-                if (otherPosition.x < thisPosition.x)
-                {
-                    UpdateLastDirection(Direction.Right);
-                }
-                else if (otherPosition.x >= thisPosition.x)
-                {
-                    UpdateLastDirection(Direction.Left);
-                }
-                else if (otherPosition.y <= thisPosition.y)
-                {
-                    UpdateLastDirection(Direction.Up);
-                }
-                else
-                {
-                    UpdateLastDirection(Direction.Down);
-                }*/
         }
 
         private void ChooseNewDirection()
         {
-            if(_movement != null)
+            if (_movement != null)
                 StopCoroutine(_movement);
             var direction = (Direction)Random.Range(0, 4);
             while (direction == _lastDirection)

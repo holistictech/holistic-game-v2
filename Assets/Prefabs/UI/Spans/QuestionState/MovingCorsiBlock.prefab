@@ -143,7 +143,7 @@ MonoBehaviour:
   blockCollider: {fileID: 6860052424875810183}
   rigidBody: {fileID: 4591212128738644032}
   rectTransform: {fileID: 751416415697146483}
-  moveSpeed: 0.3
+  moveSpeed: 0.15
 --- !u!61 &6860052424875810183
 BoxCollider2D:
   m_ObjectHideFlags: 0
