@@ -41,7 +41,7 @@ namespace Utilities
         {
             if (IsInteractingWithUI()) return;
 
-            if (!ButtonsEnabled() && Input.touchCount == 0)
+            if (!ButtonsEnabled() && Input.touchCount == 0 && _spawnedObject != null)
             {
                 _spawnedObject.EnableButtons(_finalPosition);
             }
