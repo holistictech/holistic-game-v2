@@ -93,6 +93,8 @@ namespace Spans.NBack
             }
 
             _controller.UpdateCurrentStack(questionStack);
+            
+            Debug.Log($"Returned round question count {roundQuestions.Count}");
             return questionStack.ToList();
         }
 
@@ -110,7 +112,7 @@ namespace Spans.NBack
         {
             List<Question> roundQuestions = new List<Question>();
             _lastPlayedClip = (AudioClip)first.GetQuestionItemByType(ButtonType.Sound);
-
+            Debug.Log($"Chosen type {_correctType.ToString()}");
             switch (_correctType)
             {
                 case ButtonType.Position:
@@ -155,6 +157,9 @@ namespace Spans.NBack
                 case ButtonType.Null:
                     var question = GetCompletelyRandomQuestion(first);
                     roundQuestions.Add(question);
+                    break;
+                default:
+                    Debug.LogError("THERE IS A CRUICAL ERROR");
                     break;
             }
 

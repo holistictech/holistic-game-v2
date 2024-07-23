@@ -150,10 +150,13 @@ namespace Spans.Skeleton.QuestionStates
         
         private IEnumerator IterateBlocks()
         {
+            Debug.Log($"Span objects size {_spanObjects.Count}");
             var start = _initialDisplay ? 0 : 1;
             _initialDisplay = false;
+            //Debug.Log($"Start index is {start}");
             for (int i = start; i < _spanObjects.Count; i++)
             {
+                Debug.Log($"Highlighting index {i}");
                 ActivateCircle(i, 0.5f);
                 blockUIHelper.HighlightTargetBlock(_spanObjects[i]);
                 if (IsDualNBack)

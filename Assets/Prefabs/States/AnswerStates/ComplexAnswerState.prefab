@@ -338,7 +338,7 @@ MonoBehaviour:
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 10
+          m_IntArgument: 11
           m_FloatArgument: 0
           m_StringArgument: 
           m_BoolArgument: 0
@@ -920,7 +920,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3172776595327691042, guid: 6f883dfd358de9b4d813950617ae4fb1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 8
+      value: 9
       objectReference: {fileID: 0}
     - target: {fileID: 4200868327920890822, guid: 6f883dfd358de9b4d813950617ae4fb1, type: 3}
       propertyPath: m_IsActive
@@ -952,7 +952,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5050815543998798562, guid: 6f883dfd358de9b4d813950617ae4fb1, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Arguments.m_IntArgument
-      value: 9
+      value: 10
       objectReference: {fileID: 0}
     - target: {fileID: 5598336602221585844, guid: 6f883dfd358de9b4d813950617ae4fb1, type: 3}
       propertyPath: m_AnchorMax.y

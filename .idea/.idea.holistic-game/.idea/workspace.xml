@@ -6,9 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="3d01f5fc-4a81-4ccb-94d7-a0f07bc2bc79" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/GamePlay/Grid.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GamePlay/Grid.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/CumulativeSpan/RunningSpan.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/CumulativeSpan/RunningSpan.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/CommonQuestionState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/CommonQuestionState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/NBack/DualNBackMode.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/NBack/DualNBackMode.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/NBackQuestionState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/NBackQuestionState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/Helpers/CommonFields.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/Helpers/CommonFields.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -109,32 +109,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "ASKED_ADD_EXTERNAL_FILES": "true",
-    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "XThreadsFramesViewSplitterKey": "0.8755981",
-    "do_not_show_Android_plugin_suggestion": "true",
-    "git-widget-placeholder": "main",
-    "ignore.virus.scanning.warn.message": "true",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
+    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.6182432&quot;,
+    &quot;do_not_show_Android_plugin_suggestion&quot;: &quot;true&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
+    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   },
-  "keyToStringList": {
-    "rider.external.source.directories": [
-      "C:\\Users\\ahaka\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
-      "C:\\Users\\ahaka\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
-      "C:\\Users\\ahaka\\AppData\\Local\\Symbols\\src"
+  &quot;keyToStringList&quot;: {
+    &quot;rider.external.source.directories&quot;: [
+      &quot;C:\\Users\\User\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache&quot;,
+      &quot;C:\\Users\\User\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache&quot;,
+      &quot;C:\\Users\\User\\AppData\\Local\\Symbols\\src&quot;
     ]
   }
-}]]></component>
+}</component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.11f1\Editor\Unity.exe" />
@@ -287,6 +287,8 @@
       <workItem from="1721220044776" duration="4024000" />
       <workItem from="1721288287808" duration="8271000" />
       <workItem from="1721374431226" duration="1557000" />
+      <workItem from="1721723143450" duration="4455000" />
+      <workItem from="1721731251121" duration="378000" />
     </task>
     <servers />
   </component>
@@ -400,27 +402,16 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/NBackQuestionState.cs</url>
-          <line>155</line>
-          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Spans\Skeleton\QuestionStates\NBackQuestionState.cs" initialLine="155" containingFunctionPresentation="Method 'IterateBlocks'" />
-          <option name="timeStamp" value="120" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/NBackQuestionState.cs</url>
           <line>49</line>
-          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Spans\Skeleton\QuestionStates\NBackQuestionState.cs" initialLine="49" containingFunctionPresentation="Method 'Enter'" />
-          <option name="timeStamp" value="121" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/NBackQuestionState.cs</url>
-          <line>61</line>
-          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Spans\Skeleton\QuestionStates\NBackQuestionState.cs" initialLine="61" containingFunctionPresentation="Method 'ShowQuestion'" />
-          <option name="timeStamp" value="123" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/NBackQuestionState.cs</url>
-          <line>151</line>
-          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Spans\Skeleton\QuestionStates\NBackQuestionState.cs" initialLine="151" containingFunctionPresentation="Method 'IterateBlocks'" />
-          <option name="timeStamp" value="124" />
+          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Spans\Skeleton\QuestionStates\NBackQuestionState.cs" initialLine="49" containingFunctionPresentation="Method 'Enter'">
+            <startOffsets>
+              <option value="1616" />
+            </startOffsets>
+            <endOffsets>
+              <option value="1663" />
+            </endOffsets>
+          </properties>
+          <option name="timeStamp" value="129" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

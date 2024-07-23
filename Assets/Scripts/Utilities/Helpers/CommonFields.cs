@@ -48,10 +48,10 @@ namespace Utilities.Helpers
             Position,
             Sound,
             SoundAndPosition,
+            Null,
             Saw,
             Heard,
             SawNorHeard,
-            Null
         }
 
         public enum NBackModes
