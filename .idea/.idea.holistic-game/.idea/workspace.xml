@@ -5,13 +5,8 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="3d01f5fc-4a81-4ccb-94d7-a0f07bc2bc79" name="Changes" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/lightray1_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Basics/lightray1_ADD.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Magic/magic_line_ADD.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Epic Toon FX/Materials/Misc/Magic/magic_line_ADD.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/My Farm/Demo/Scenes/FullMap.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/My Farm/Demo/Scenes/FullMap.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/GamePlay/Grid.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GamePlay/Grid.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Utilities/InputHandlers/SwipeHandler.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Utilities/InputHandlers/SwipeHandler.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/HolyFarm.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Helpers/MainUIHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Helpers/MainUIHelper.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />

@@ -17,6 +17,7 @@ namespace UI.Helpers
         [SerializeField] private CurrencyUIHelper currencyHelper;
         [SerializeField] private CurrencyUIHelper performanceHelper;
         [SerializeField] private List<GameObject> spans;
+        [SerializeField] private GameObject worldParent;
         [SerializeField] private Image selectionPopup;
         [SerializeField] private Button closeButton;
         [SerializeField] private DayDoneUIHelper dayCompletedPopup;
@@ -64,10 +65,12 @@ namespace UI.Helpers
             _activeSpan.gameObject.SetActive(true);
             selectionPopup.gameObject.SetActive(false);
             Camera.main.gameObject.transform.rotation = Quaternion.Euler(new Vector3(0, 0, 0));
+            worldParent.gameObject.SetActive(false);
         }
 
         private void DestroyActiveSpan(int earnedPerformance)
         {
+            worldParent.gameObject.SetActive(true);
             Destroy(_activeSpan.gameObject);
             Camera.main.gameObject.transform.rotation = Quaternion.Euler(new Vector3(30, 45, 0));
             DOVirtual.DelayedCall(0.3f, () =>
