@@ -16559,27 +16559,27 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3033823584894925787, guid: 4e7655f1b85330342ad6a578fd6c38ae, type: 3}
       propertyPath: m_LocalRotation.w
-      value: 1
+      value: 0.8754261
       objectReference: {fileID: 0}
     - target: {fileID: 3033823584894925787, guid: 4e7655f1b85330342ad6a578fd6c38ae, type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: 0.40821788
       objectReference: {fileID: 0}
     - target: {fileID: 3033823584894925787, guid: 4e7655f1b85330342ad6a578fd6c38ae, type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0.23456968
       objectReference: {fileID: 0}
     - target: {fileID: 3033823584894925787, guid: 4e7655f1b85330342ad6a578fd6c38ae, type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: 0.10938163
       objectReference: {fileID: 0}
     - target: {fileID: 3033823584894925787, guid: 4e7655f1b85330342ad6a578fd6c38ae, type: 3}
       propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
+      value: 50
       objectReference: {fileID: 0}
     - target: {fileID: 3033823584894925787, guid: 4e7655f1b85330342ad6a578fd6c38ae, type: 3}
       propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
+      value: -30
       objectReference: {fileID: 0}
     - target: {fileID: 3033823584894925787, guid: 4e7655f1b85330342ad6a578fd6c38ae, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
@@ -16610,24 +16610,28 @@ PrefabInstance:
       value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3846791004608822465, guid: 4e7655f1b85330342ad6a578fd6c38ae, type: 3}
+      propertyPath: m_Shadows.m_Type
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 3846791004608822465, guid: 4e7655f1b85330342ad6a578fd6c38ae, type: 3}
       propertyPath: m_Shadows.m_Strength
-      value: 0.15
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 3846791004608822465, guid: 4e7655f1b85330342ad6a578fd6c38ae, type: 3}
       propertyPath: m_BoundingSphereOverride.w
-      value: 1.7937e-41
+      value: 1e-45
       objectReference: {fileID: 0}
     - target: {fileID: 3846791004608822465, guid: 4e7655f1b85330342ad6a578fd6c38ae, type: 3}
       propertyPath: m_BoundingSphereOverride.x
-      value: 1.02e-43
+      value: -1.1591077e-32
       objectReference: {fileID: 0}
     - target: {fileID: 3846791004608822465, guid: 4e7655f1b85330342ad6a578fd6c38ae, type: 3}
       propertyPath: m_BoundingSphereOverride.y
-      value: 2.2e-44
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 3846791004608822465, guid: 4e7655f1b85330342ad6a578fd6c38ae, type: 3}
       propertyPath: m_BoundingSphereOverride.z
-      value: 1.07166e-40
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
