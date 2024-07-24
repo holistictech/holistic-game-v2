@@ -5,7 +5,6 @@ using Spawners;
 using UI;
 using UnityEngine;
 using UnityEngine.EventSystems;
-using UnityEngine.UIElements;
 
 namespace Utilities
 {
@@ -14,10 +13,11 @@ namespace Utilities
         [SerializeField] private float swipeThreshold;
         [SerializeField] private float moveSpeed;
         [SerializeField] private SketchUIHelper sketchUIHelper;
-        
+
         private Vector2 _swipeStartPosition;
         private Sketch _spawnedObject;
         private Vector3 _touchStart;
+        private Vector3 _lastTouchPosition;
         private Vector3 _finalPosition;
         private bool _isSwiping;
 
@@ -53,6 +53,7 @@ namespace Utilities
                 if (touch.phase == TouchPhase.Began)
                 {
                     _touchStart = touch.position;
+                    _lastTouchPosition = touch.position;
                     _isSwiping = true;
                     _spawnedObject.DisableButtonsWhileMoving();
                 }
@@ -63,14 +64,14 @@ namespace Utilities
 
                 if (_isSwiping)
                 {
-                    Vector2 swipeDelta = touch.position - (Vector2)_touchStart;
+                    Vector2 swipeDelta = touch.position - (Vector2)_lastTouchPosition;
                     Vector3 movementDirection = new Vector3(swipeDelta.x, 0f, swipeDelta.y).normalized;
                     Vector3 targetPosition = _spawnedObject.transform.position + movementDirection * (moveSpeed * Time.deltaTime);
                     _spawnedObject.transform.position = targetPosition;
                     _finalPosition = targetPosition;
 
-                    // Update _touchStart to the current touch position for more responsive swiping
-                    _touchStart = touch.position;
+                    // Update _lastTouchPosition to the current touch position for more responsive swiping
+                    _lastTouchPosition = touch.position;
                 }
             }
         }

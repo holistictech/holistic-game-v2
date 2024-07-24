@@ -18620,7 +18620,7 @@ MonoBehaviour:
   uiElements:
   - {fileID: 401950442}
   - {fileID: 181412887}
-  moveSpeed: 50
+  moveSpeed: 35
   boundaryPaddingX: -25
   boundaryPaddingZ: 40
 --- !u!114 &1061204082
@@ -22619,7 +22619,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   swipeThreshold: 0
-  moveSpeed: 120
+  moveSpeed: 27.5
   sketchUIHelper: {fileID: 493921204}
 --- !u!4 &1551247757
 Transform:
@@ -42860,7 +42860,7 @@ MonoBehaviour:
   - {fileID: 8242588130389079751, guid: 2ac72f81d413fba40b7f45df6a976928, type: 3}
   - {fileID: 8242588130389079751, guid: 5e22a11223f13714c8d1efd4daf9bc56, type: 3}
   - {fileID: 8242588130389079751, guid: cd821be2d8a1d104f940f5f1cb6f2438, type: 3}
-  worldParent: {fileID: 0}
+  worldParent: {fileID: 36847217}
   selectionPopup: {fileID: 1935806478}
   closeButton: {fileID: 1777478222}
   dayCompletedPopup: {fileID: 1724532261}

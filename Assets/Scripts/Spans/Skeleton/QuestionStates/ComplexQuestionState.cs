@@ -10,7 +10,6 @@ using Spans.ComplexSpan;
 using Spans.CumulativeSpan;
 using TMPro;
 using UI.Helpers;
-using UnityEditor.Search;
 using UnityEngine;
 using UnityEngine.UI;
 using Utilities;

@@ -72,7 +72,7 @@ namespace Utilities.InputHandlers
 
                 if (_isSwiping)
                 {
-                    Vector2 direction = (Input.mousePosition - _touchStart).normalized;
+                    Vector2 direction = (Input.GetTouch(Input.touchCount -1).position - (Vector2)_touchStart).normalized;
 
                     Vector3 targetPosition = transform.position - new Vector3(direction.x, 0, direction.y) * (moveSpeed * Time.deltaTime);
                     targetPosition.x = Mathf.Clamp(targetPosition.x, _minX, _maxX);

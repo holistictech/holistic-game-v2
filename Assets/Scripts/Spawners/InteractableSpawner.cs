@@ -4,6 +4,7 @@ using Factory;
 using GridSystem;
 using Interactables;
 using Scriptables;
+using Spans.Skeleton;
 using UI;
 using UI.Helpers;
 using UI.Tasks;
@@ -13,6 +14,7 @@ using UnityEngine.Serialization;
 using Utilities;
 using Utilities.Helpers;
 using static Utilities.Helpers.CommonFields;
+using EventBus = Spans.Skeleton.EventBus;
 
 namespace Spawners
 {
@@ -40,7 +42,7 @@ namespace Spawners
         {
             RemoveListeners();
         }
-        
+
         public void InjectLogicBoard(GridController controller)
         {
             _gridController = controller;
@@ -52,27 +54,42 @@ namespace Spawners
             var mainCamera = Camera.main;
             if (mainCamera != null)
             {
-                var transform1 = mainCamera.transform;
-                Vector3 cameraPosition = transform1.position;
-                Vector3 cameraForward = transform1.forward;
-                Vector3 middlePoint = cameraPosition + cameraForward * mainCamera.nearClipPlane;
-                _spawnedSketch = Instantiate(sketch, objectParent);
-                _spawnedSketch.ConfigureObjectMesh(MeshContainer.Instance.GetMeshById(_currentConfig.RewardInteractable.MeshId), _currentConfig.Rotatable);
-                _spawnedSketch.transform.position = new Vector3(middlePoint.x, 0, 0);
-                _spawnedSketch.ConfigureSize(_currentConfig.RewardInteractable);
-                swipeHandler.enabled = true;
-                OnPositionChoiceNeeded?.Invoke(_spawnedSketch);
+                // Convert screen center to ray
+                Ray ray = mainCamera.ScreenPointToRay(new Vector3(Screen.width / 2f, Screen.height / 2f, 0f));
+
+                // Use a plane at Y = 0 (ground plane)
+                Plane groundPlane = new Plane(Vector3.up, Vector3.zero);
+
+                // Find where the ray intersects the ground plane
+                if (groundPlane.Raycast(ray, out float distance))
+                {
+                    Vector3 worldCenter = ray.GetPoint(distance);
+
+                    // Instantiate and configure the sketch object
+                    _spawnedSketch = Instantiate(sketch, objectParent);
+                    _spawnedSketch.ConfigureObjectMesh(
+                        MeshContainer.Instance.GetMeshById(_currentConfig.RewardInteractable.MeshId),
+                        _currentConfig.Rotatable);
+                    _spawnedSketch.transform.position = worldCenter;
+                    _spawnedSketch.ConfigureSize(_currentConfig.RewardInteractable);
+
+                    // Enable swipe handling and invoke event
+                    swipeHandler.enabled = true;
+                    OnPositionChoiceNeeded?.Invoke(_spawnedSketch);
+                }
             }
         }
 
         private void SpawnInteractable(Quaternion rotation)
         {
             var finalPos = swipeHandler.GetFinalPosition();
-            SpawnSelectedInteractable(new CartesianPoint((int)finalPos.x, (int)finalPos.z), _currentConfig.RewardInteractable, true, rotation);
+            SpawnSelectedInteractable(new CartesianPoint((int)finalPos.x, (int)finalPos.z),
+                _currentConfig.RewardInteractable, true, rotation);
             PlayerInventory.Instance.ChangeCurrencyAmountByType(_currentConfig);
         }
 
-        public void SpawnSelectedInteractable(CartesianPoint desiredPoint, InteractableConfig config, bool shouldSave, Quaternion rotation)
+        public void SpawnSelectedInteractable(CartesianPoint desiredPoint, InteractableConfig config, bool shouldSave,
+            Quaternion rotation)
         {
             DisableSwipeHandler();
             var spawnedInstance = InteractableFactory.SpawnInstance(spawnable, config, objectParent);
@@ -88,13 +105,15 @@ namespace Spawners
                 {
                     _spawnedSketch.DestroyObject();
                     PlayBuildingEffect(desiredPoint);
-
                 }
+
                 interactable.BuildSelf(desiredPoint, shouldSave, buildingEffect.main.duration - 2f, rotation);
                 if (_currentConfig != null && _currentConfig.CurrencyType == CurrencyType.Energy)
                 {
                     _currentConfig.SetHasCompleted(true);
                 }
+
+                EventBus.Instance.Trigger(new ToggleSwipeInput(true));
             }
             else
             {
@@ -133,6 +152,5 @@ namespace Spawners
             Sketch.OnPlacementCancelled -= DisableSwipeHandler;
             //GridSpawner.OnGridReady -= InjectLogicBoard;
         }
-        
     }
 }
