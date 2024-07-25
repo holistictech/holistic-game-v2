@@ -20,5 +20,5 @@ MonoBehaviour:
   WarningString: 
   RewardInteractable: {fileID: 11400000, guid: f36a9929aea01b941bdfa295d7ca9bab, type: 2}
   Dependencies: []
-  _hasCompleted: 0
+  _hasCompleted: 1
   Rotatable: 1

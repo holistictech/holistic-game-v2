@@ -89,6 +89,11 @@ namespace UI.Tasks
             }
         }
 
+        public Button GetButtonForTutorial()
+        {
+            return goButton;
+        }
+
         private void RedirectToSpan()
         {
             _taskPanelManager.RequestSpan();

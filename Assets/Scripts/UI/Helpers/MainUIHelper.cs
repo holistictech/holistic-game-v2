@@ -1,7 +1,11 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
+using Interfaces;
+using Scriptables.Tutorial;
 using Spans.Skeleton;
+using Tutorial;
 using UI.Tasks;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -16,7 +20,6 @@ namespace UI.Helpers
         [SerializeField] private Button playButton;
         [SerializeField] private CurrencyUIHelper currencyHelper;
         [SerializeField] private CurrencyUIHelper performanceHelper;
-        [SerializeField] private List<GameObject> spans;
         [SerializeField] private GameObject worldParent;
         [SerializeField] private Image selectionPopup;
         [SerializeField] private Button closeButton;
@@ -103,6 +106,16 @@ namespace UI.Helpers
             closeButton.onClick.RemoveListener(DisableSpanChooser);
             EventBus.Instance.Unregister<SpanRequestedEvent>(PlayNextSpan);
             SpanController.OnSpanFinished += DestroyActiveSpan;
+        }
+
+        public void TryShowTutorial()
+        {
+            throw new NotImplementedException();
+        }
+
+        public IEnumerator WaitInput()
+        {
+            throw new NotImplementedException();
         }
     }
 }

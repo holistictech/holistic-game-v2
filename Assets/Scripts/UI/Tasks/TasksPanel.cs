@@ -1,9 +1,13 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
+using Interfaces;
 using Scriptables;
+using Scriptables.Tutorial;
 using Spans.Skeleton;
 using TMPro;
+using Tutorial;
 using UI.Helpers;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -12,7 +16,7 @@ using Utilities;
 
 namespace UI.Tasks
 {
-    public class TasksPanel : MonoBehaviour
+    public class TasksPanel : MonoBehaviour, ITutorialElement
     {
         [Header("UI Attributes")] 
         [SerializeField] private RectTransform taskContent;
@@ -24,10 +28,22 @@ namespace UI.Tasks
         [Header("Functionality")] 
         [SerializeField] private WarningUIHelper warningHelper;
         [SerializeField] private Task taskPrefab;
+        [SerializeField] private TutorialManager tutorialManager;
+        [SerializeField] private List<TutorialStep> tutorialSteps;
+        [SerializeField] private List<GameObject> tutorialObjects;
+        [SerializeField] private TutorialStep taskStepConfig;
+        private string _tutorialKey = "TaskPanel";
+        private ITutorialElement _tutorialElement;
+
+        private List<Task> _spawnedTasks = new List<Task>();
         
         private void OnEnable()
         {
             AddListeners();
+            _tutorialElement = this;
+            var highlightDictionary =
+                new Dictionary<GameObject, TutorialStep>().CreateFromLists(tutorialObjects, tutorialSteps);
+            TryShowTutorial(highlightDictionary, taskButton.GetComponent<RectTransform>());
         }
 
         private void OnDisable()
@@ -42,6 +58,7 @@ namespace UI.Tasks
             foreach (var task in tasks)
             {
                 var temp = Instantiate(taskPrefab, taskContent);
+                _spawnedTasks.Add(temp);
                 temp.ConfigureUI(task, this);
             }
         }
@@ -54,6 +71,16 @@ namespace UI.Tasks
             taskPanel.gameObject.SetActive(true);
             headerField.text = type ? "Görevler" : "Araçlar";
             InstantiateTasks(type);
+            if (_waitInput)
+            {
+                StopCoroutine(_waitingInput);
+                PlayerSaveManager.SavePlayerAttribute(1, _tutorialKey);
+                _waitInput = false;
+                List<GameObject> goButton = new List<GameObject>() { _spawnedTasks[0].GetButtonForTutorial().gameObject};
+                List<TutorialStep> goStep = new List<TutorialStep>() { taskStepConfig };
+                var goHighlight = new Dictionary<GameObject, TutorialStep>().CreateFromLists(goButton, goStep);
+                TryShowTutorial(goHighlight, _spawnedTasks[0].GetButtonForTutorial().GetComponent<RectTransform>());
+            }
         }
 
         public void TriggerWarningHelper(TaskConfig config)
@@ -66,6 +93,7 @@ namespace UI.Tasks
             EventBus.Instance.Trigger(new ToggleSwipeInput(true));
             taskButton.gameObject.SetActive(true);
             taskPanel.gameObject.SetActive(false);
+            _spawnedTasks.Clear();
             DestroyTasks();
         }
 
@@ -82,6 +110,26 @@ namespace UI.Tasks
             {
                 Destroy(task.gameObject);
             }
+        }
+        
+        private bool _waitInput;
+        private Coroutine _waitingInput;
+        public void TryShowTutorial(Dictionary<GameObject, TutorialStep> highlights, RectTransform finalHighlight)
+        {
+            if (!_tutorialElement.CanShowStep(_tutorialKey)) return;
+
+            var highlightDictionary = highlights;
+            tutorialManager.ActivateStateTutorial(highlightDictionary, true, () =>
+            {
+                _waitInput = true;
+                _waitingInput = StartCoroutine(WaitInput(finalHighlight));
+            });
+        }
+
+        public IEnumerator WaitInput(RectTransform finalHighlight)
+        {
+            tutorialManager.HighlightTutorialObject(finalHighlight, finalHighlight.transform.parent.GetComponent<RectTransform>(), 170, true);
+            yield return new WaitUntil(() => !_waitInput);
         }
 
         private void AddListeners()
