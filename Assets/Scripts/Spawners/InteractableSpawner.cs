@@ -119,8 +119,9 @@ namespace Spawners
             {
                 Destroy(interactable.gameObject);
                 warningHelper.ConfigurePopupForUsedSpace();
-                OnPositionChoiceNeeded?.Invoke(_spawnedSketch);
                 swipeHandler.enabled = true;
+                EventBus.Instance.Trigger(new ToggleSwipeInput(false));
+                OnPositionChoiceNeeded?.Invoke(_spawnedSketch);
             }
         }
 
