@@ -243,7 +243,7 @@ Material:
     - _NumLayersCount: 1
     - _OcclusionStrength: 1
     - _Opaque: 0
-    - _OutlineDepthOffset: 0.06
+    - _OutlineDepthOffset: 0.01
     - _OutlineEnabled: 1
     - _OutlineScale: 1
     - _OutlineSpace: 1

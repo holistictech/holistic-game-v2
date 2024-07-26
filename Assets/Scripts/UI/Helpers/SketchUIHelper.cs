@@ -68,7 +68,8 @@ namespace UI.Helpers
         
         private void ConfirmPlacement()
         {
-            _tutorialManager.ClearHighlights();
+            if(_tutorialManager != null)
+                _tutorialManager.ClearHighlights();
             _sketchObject.ConfirmPlacement();
         }
 
