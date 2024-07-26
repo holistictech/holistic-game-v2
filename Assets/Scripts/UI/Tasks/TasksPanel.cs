@@ -23,6 +23,7 @@ namespace UI.Tasks
         [SerializeField] private GameObject taskPanel;
         [SerializeField] private TextMeshProUGUI headerField;
         [SerializeField] private Button taskButton;
+        [SerializeField] private Button marketButton;
         [SerializeField] private Button closeButton;
 
         [Header("Functionality")] 
@@ -145,11 +146,19 @@ namespace UI.Tasks
             tutorialManager.ClearHighlights();
         }
 
+        private void ToggleButtons(ToggleUIEvent eventData)
+        {
+            bool value = eventData.Toggle;
+            taskButton.gameObject.SetActive(value);
+            marketButton.gameObject.SetActive(value);
+        }
+
         private void AddListeners()
         {
             //taskButton.onClick.AddListener(EnableTaskPopup);
             closeButton.onClick.AddListener(DisableTaskPopup);
             WarningUIHelper.OnRedirectToTask += EnableTaskPopup;
+            EventBus.Instance.Register<ToggleUIEvent>(ToggleButtons);
         }
 
         private void RemoveListeners()
@@ -157,6 +166,7 @@ namespace UI.Tasks
             //taskButton.onClick.RemoveListener(EnableTaskPopup);
             closeButton.onClick.RemoveListener(DisableTaskPopup);
             WarningUIHelper.OnRedirectToTask -= EnableTaskPopup;
+            EventBus.Instance.Unregister<ToggleUIEvent>(ToggleButtons);
         }
     }
 }

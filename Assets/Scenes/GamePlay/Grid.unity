@@ -10427,6 +10427,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 4387764071788071285, guid: 2115356550d47864c8d731b78866fc2a, type: 3}
   m_PrefabInstance: {fileID: 4728287453517074242}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &625902097 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 4387764071788071282, guid: 2115356550d47864c8d731b78866fc2a, type: 3}
+  m_PrefabInstance: {fileID: 4728287453517074242}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1001 &626350173
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -50775,6 +50786,10 @@ PrefabInstance:
       propertyPath: taskButton
       value: 
       objectReference: {fileID: 6155714286268228441}
+    - target: {fileID: 3508583731487256687, guid: 8ae4fe136c60345409db2c2e34da5dbf, type: 3}
+      propertyPath: marketButton
+      value: 
+      objectReference: {fileID: 625902097}
     - target: {fileID: 3508583731487256687, guid: 8ae4fe136c60345409db2c2e34da5dbf, type: 3}
       propertyPath: warningHelper
       value: 

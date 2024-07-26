@@ -78,7 +78,12 @@ namespace Utilities.InputHandlers
                     targetPosition.x = Mathf.Clamp(targetPosition.x, _minX, _maxX);
                     targetPosition.z = Mathf.Clamp(targetPosition.z, _minZ, _maxZ);
                     transform.position = targetPosition;
+                    EventBus.Instance.Trigger(new ToggleUIEvent(false));
                 }
+            }
+            else
+            {
+                EventBus.Instance.Trigger(new ToggleUIEvent(true));
             }
         }
 

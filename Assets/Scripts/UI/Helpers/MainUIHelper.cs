@@ -92,11 +92,20 @@ namespace UI.Helpers
             });
         }
 
+        private void ToggleButtons(ToggleUIEvent eventData)
+        {
+            bool value = eventData.Toggle;
+            playButton.gameObject.SetActive(value);
+            currencyHelper.gameObject.SetActive(value);
+            performanceHelper.gameObject.SetActive(value);
+        }
+
         private void AddListeners()
         {
             playButton.onClick.AddListener(EnableSpanChooser);
             closeButton.onClick.AddListener(DisableSpanChooser);
             EventBus.Instance.Register<SpanRequestedEvent>(PlayNextSpan);
+            EventBus.Instance.Register<ToggleUIEvent>(ToggleButtons);
             SpanController.OnSpanFinished += DestroyActiveSpan;
         }
 
@@ -105,6 +114,7 @@ namespace UI.Helpers
             playButton.onClick.RemoveListener(EnableSpanChooser);
             closeButton.onClick.RemoveListener(DisableSpanChooser);
             EventBus.Instance.Unregister<SpanRequestedEvent>(PlayNextSpan);
+            EventBus.Instance.Unregister<ToggleUIEvent>(ToggleButtons);
             SpanController.OnSpanFinished += DestroyActiveSpan;
         }
 

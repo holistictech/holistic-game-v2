@@ -9,6 +9,16 @@ namespace Spans.Skeleton
     {
     }
 
+    public class ToggleUIEvent
+    {
+        public bool Toggle;
+
+        public ToggleUIEvent(bool toggle)
+        {
+            Toggle = toggle;
+        }
+    }
+
     public class ToggleSwipeInput
     {
         public bool Toggle;
