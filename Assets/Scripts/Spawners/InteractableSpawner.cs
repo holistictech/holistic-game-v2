@@ -5,6 +5,7 @@ using GridSystem;
 using Interactables;
 using Scriptables;
 using Spans.Skeleton;
+using Tutorial;
 using UI;
 using UI.Helpers;
 using UI.Tasks;
@@ -20,6 +21,7 @@ namespace Spawners
 {
     public class InteractableSpawner : MonoBehaviour
     {
+        [SerializeField] private TutorialManager tutorialManager;
         [SerializeField] private GameObject spawnable;
         [SerializeField] private Sketch sketch;
         [SerializeField] private Transform objectParent;
@@ -70,6 +72,7 @@ namespace Spawners
                     _spawnedSketch.ConfigureObjectMesh(
                         MeshContainer.Instance.GetMeshById(_currentConfig.RewardInteractable.MeshId),
                         _currentConfig.Rotatable);
+                    _spawnedSketch.InjectTutorialManager(tutorialManager);
                     _spawnedSketch.transform.position = worldCenter;
                     _spawnedSketch.ConfigureSize(_currentConfig.RewardInteractable);
 

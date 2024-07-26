@@ -66,24 +66,25 @@ namespace UI.Tasks
                 _spawnedTasks.Add(temp);
                 temp.ConfigureUI(task, this);
             }
+            
         }
 
         public void EnableTaskPopup(bool type)
         {
             if (taskPanel.activeSelf) return;
             EventBus.Instance.Trigger(new ToggleSwipeInput(false));
-            taskButton.gameObject.SetActive(false);
+            //taskButton.gameObject.SetActive(false);
             taskPanel.gameObject.SetActive(true);
             headerField.text = type ? "Görevler" : "Araçlar";
             InstantiateTasks(type);
             if (_waitInput)
             {
-                StopCoroutine(_waitingInput);
-                _waitInput = false;
+                closeButton.interactable = false;
+                ResetCoroutine();
                 List<GameObject> goButton = new List<GameObject>() { _spawnedTasks[0].gameObject};
                 List<TutorialStep> goStep = new List<TutorialStep>() { taskStepConfig };
                 var goHighlight = new Dictionary<GameObject, TutorialStep>().CreateFromLists(goButton, goStep);
-                TryShowTutorial(goHighlight, transform.GetComponent<RectTransform>(), -170);
+                TryShowTutorial(goHighlight, GetComponent<RectTransform>(), -130);
                 PlayerSaveManager.SavePlayerAttribute(1, _tutorialKey);
             }
         }
@@ -122,20 +123,26 @@ namespace UI.Tasks
         public void TryShowTutorial(Dictionary<GameObject, TutorialStep> highlights, RectTransform finalHighlight, float offset)
         {
             if (!_tutorialElement.CanShowStep(_tutorialKey)) return;
-
-            var highlightDictionary = highlights;
-            _waitInput = true;
-            _waitingInput = StartCoroutine(WaitInput(finalHighlight, offset));
-            /*tutorialManager.ActivateStateTutorial(highlightDictionary, true, () =>
+            
+            tutorialManager.ActivateStateTutorial(highlights, true, () =>
             {
-                
-            });*/
+                _waitInput = true;
+                _waitingInput = StartCoroutine(WaitInput(finalHighlight, offset));
+            }, false);
         }
 
         public IEnumerator WaitInput(RectTransform finalHighlight, float offset)
         {
-            tutorialManager.HighlightTutorialObject(finalHighlight, finalHighlight.transform.parent.GetComponent<RectTransform>(), offset, true);
+            tutorialManager.AnimateSpawnedHand();
             yield return new WaitUntil(() => !_waitInput);
+            closeButton.interactable = true;
+        }
+
+        private void ResetCoroutine()
+        {
+            StopCoroutine(_waitingInput);
+            _waitInput = false;
+            tutorialManager.ClearHighlights();
         }
 
         private void AddListeners()

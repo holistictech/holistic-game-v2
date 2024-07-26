@@ -1,17 +1,27 @@
 using System;
-using Unity.VisualScripting;
+using System.Collections;
+using System.Collections.Generic;
+using Interfaces;
+using Scriptables.Tutorial;
+using Tutorial;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using Utilities;
 
-namespace UI
+namespace UI.Helpers
 {
-    public class SketchUIHelper : MonoBehaviour
+    public class SketchUIHelper : MonoBehaviour, ITutorialElement
     {
+        [SerializeField] private List<GameObject> highlightObjects;
+        [SerializeField] private List<TutorialStep> tutorialSteps;
         [SerializeField] private Button confirmButton;
         [SerializeField] private Button rotateButton;
         [SerializeField] private Button cancelButton;
-        
+
+        private TutorialManager _tutorialManager; 
+        private ITutorialElement _tutorialElement;
+        private string _tutorialKey = "PlacementTutorial";
         private Sketch _sketchObject;
 
         private void OnEnable()
@@ -29,11 +39,6 @@ namespace UI
             confirmButton.gameObject.SetActive(false);
             cancelButton.gameObject.SetActive(false);
             rotateButton.gameObject.SetActive(false);
-            /*confirmButton.transition = Selectable.Transition.None;
-            cancelButton.transition = Selectable.Transition.None;
-            rotateButton.transition = Selectable.Transition.None;
-            confirmButton.interactable = false;
-            cancelButton.interactable = false;*/
         }
 
         public void EnableButtons(Vector3 position)
@@ -50,13 +55,20 @@ namespace UI
             transform.GetComponent<RectTransform>().anchoredPosition = new Vector2(position.x, position.z);
         }
 
+        public void GetTutorialManager()
+        {
+            _tutorialManager = _sketchObject.GetTutorialManager();
+        }
+
         public void SetSketchReference(Sketch sketch)
         {
             _sketchObject = sketch;
+            ConfigureTutorial();
         }
         
         private void ConfirmPlacement()
         {
+            _tutorialManager.ClearHighlights();
             _sketchObject.ConfirmPlacement();
         }
 
@@ -74,6 +86,28 @@ namespace UI
         public bool ButtonEnabled()
         {
             return confirmButton.isActiveAndEnabled;
+        }
+
+        private void ConfigureTutorial()
+        {
+            _tutorialElement = this;
+            if (!_tutorialElement.CanShowStep(_tutorialKey)) return;
+            GetTutorialManager();
+            var dictionary = new Dictionary<GameObject, TutorialStep>().CreateFromLists(highlightObjects, tutorialSteps);
+            TryShowTutorial(dictionary, confirmButton.GetComponent<RectTransform>(), 0);
+        }
+        
+        public void TryShowTutorial(Dictionary<GameObject, TutorialStep> highlights, RectTransform finalHighlight, float offset)
+        {
+            _tutorialManager.ActivateStateTutorial(highlights, false, () =>
+            {
+                _tutorialElement.SetStepCompleted(_tutorialKey);
+            });
+        }
+
+        public IEnumerator WaitInput(RectTransform finalHighlight, float offset)
+        {
+            throw new NotImplementedException();
         }
         
         private void AddListeners()

@@ -1,5 +1,7 @@
 using System;
 using Scriptables;
+using Tutorial;
+using UI.Helpers;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -10,6 +12,7 @@ namespace UI
         [SerializeField] private MeshFilter meshFilter;
         private SketchUIHelper _uiHelper;
         private bool _rotatable;
+        private TutorialManager _tutorialManager;
 
         public static event Action<Quaternion> OnPlacementConfirmed;
         public static event Action OnPlacementCancelled;
@@ -31,6 +34,17 @@ namespace UI
         {
             _uiHelper = uiHelper;
             _uiHelper.SetSketchReference(this);
+        }
+
+        public void InjectTutorialManager(TutorialManager manager)
+        {
+            _tutorialManager = manager;
+            //_uiHelper.InjectTutorialManager(manager);
+        }
+
+        public TutorialManager GetTutorialManager()
+        {
+            return _tutorialManager;
         }
 
         public void RotateSelf()

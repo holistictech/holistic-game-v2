@@ -4417,11 +4417,11 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2336626543051429397, guid: a972e2a52519c1e43b042c645a75a1a2, type: 3}
       propertyPath: m_SizeDelta.x
-      value: 100
+      value: 500
       objectReference: {fileID: 0}
     - target: {fileID: 2336626543051429397, guid: a972e2a52519c1e43b042c645a75a1a2, type: 3}
       propertyPath: m_SizeDelta.y
-      value: 100
+      value: 120
       objectReference: {fileID: 0}
     - target: {fileID: 2336626543051429397, guid: a972e2a52519c1e43b042c645a75a1a2, type: 3}
       propertyPath: m_LocalPosition.x
@@ -44831,6 +44831,10 @@ PrefabInstance:
       propertyPath: warningHelper
       value: 
       objectReference: {fileID: 1977076844}
+    - target: {fileID: 1500978507082087894, guid: aad8d3e15be67234ca70f3d2d9fe7be9, type: 3}
+      propertyPath: tutorialManager
+      value: 
+      objectReference: {fileID: 2135509761}
     - target: {fileID: 4893083438995325354, guid: aad8d3e15be67234ca70f3d2d9fe7be9, type: 3}
       propertyPath: m_LocalPosition.x
       value: 0

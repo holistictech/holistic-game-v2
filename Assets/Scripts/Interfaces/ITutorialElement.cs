@@ -15,5 +15,10 @@ namespace Interfaces
         {
             return PlayerSaveManager.GetPlayerAttribute(tutorialKey, 0) == 0;
         }
+
+        public void SetStepCompleted(string tutorialKey)
+        {
+            PlayerSaveManager.SavePlayerAttribute(1, tutorialKey);
+        }
     }
 }

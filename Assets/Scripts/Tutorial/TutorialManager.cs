@@ -25,17 +25,17 @@ namespace Tutorial
         private string _currentTutorialKey;
         
         
-        public void ActivateStateTutorial(Dictionary<GameObject, TutorialStep> steps, bool needHand, Action onComplete)
+        public void ActivateStateTutorial(Dictionary<GameObject, TutorialStep> steps, bool needHand, Action onComplete, bool shouldClear = true)
         {
             tutorialPanel.gameObject.SetActive(true);
             StartCoroutine(DisplayTutorialSteps(steps, needHand, () =>
             {
                 tutorialPanel.gameObject.SetActive(false);
                 onComplete?.Invoke();
-            }));
+            }, shouldClear));
         }
 
-        public IEnumerator DisplayTutorialSteps(Dictionary<GameObject, TutorialStep> steps, bool needHand, Action onComplete)
+        public IEnumerator DisplayTutorialSteps(Dictionary<GameObject, TutorialStep> steps, bool needHand, Action onComplete, bool shouldClear = true)
         {
             foreach (KeyValuePair<GameObject, TutorialStep> step in steps)
             {
@@ -67,7 +67,8 @@ namespace Tutorial
                     yield return new WaitForSeconds(3f);
                 }
                 
-                ClearHighlights();
+                if(shouldClear)
+                    ClearHighlights();
             }
             
             onComplete?.Invoke();
@@ -106,10 +107,28 @@ namespace Tutorial
             highlight.DOScale(1.2f, 0.5f).SetLoops(-1, LoopType.Yoyo);
         }
 
-        private void PositionHighlightToTarget(RectTransform highlightTransform, RectTransform target, float offset = 0)
+        public void AnimateSpawnedHand()
+        {
+            if (_spawnedHand == null) return;
+            AnimateHighlight(_spawnedHand.GetComponent<RectTransform>());
+        }
+
+        /*private void PositionHighlightToTarget(RectTransform highlightTransform, RectTransform target, float offset = 0)
         {
             var anchoredPosition = target.anchoredPosition;
             highlightTransform.anchoredPosition = new Vector2(anchoredPosition.x - offset, anchoredPosition.y - offset/2);
+            highlightTransform.anchorMin = target.anchorMin;
+            highlightTransform.anchorMax = target.anchorMax;
+            highlightTransform.sizeDelta = target.sizeDelta;
+            highlightTransform.pivot = target.pivot;
+        }*/
+        
+        private void PositionHighlightToTarget(RectTransform highlightTransform, RectTransform target, float offset = 0)
+        {
+            Vector2 viewportPoint = RectTransformUtility.WorldToScreenPoint(Camera.main, target.position);
+            RectTransformUtility.ScreenPointToLocalPointInRectangle(tutorialParent, viewportPoint, Camera.main, out Vector2 localPoint);
+
+            highlightTransform.localPosition = localPoint - new Vector2(offset, offset / 2);
             highlightTransform.anchorMin = target.anchorMin;
             highlightTransform.anchorMax = target.anchorMax;
             highlightTransform.sizeDelta = target.sizeDelta;
