@@ -47,7 +47,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   meshFilter: {fileID: 8313506197430759427}
-  uiHelper: {fileID: 1471845262948641152, guid: a972e2a52519c1e43b042c645a75a1a2, type: 3}
 --- !u!33 &8313506197430759427
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -76,7 +75,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: 4970176c3a60ad84498af6dfb5cf9e03, type: 2}
+  - {fileID: 2100000, guid: d60d29fc9c9180a41a47b9ca4c7185a9, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
