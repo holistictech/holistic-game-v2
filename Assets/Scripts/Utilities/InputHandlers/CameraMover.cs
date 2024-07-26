@@ -3,6 +3,7 @@ using Spans.Skeleton;
 using Spawners;
 using UI;
 using UnityEngine;
+using UnityEngine.EventSystems;
 
 namespace Utilities.InputHandlers
 {
@@ -46,6 +47,7 @@ namespace Utilities.InputHandlers
         private void Update()
         {
             if (_isPlacing) return;
+            if (IsInteractingWithUI()) return;
             if (Input.touchCount > 0)
             {
                 Touch touch = Input.GetTouch(0);
@@ -90,6 +92,12 @@ namespace Utilities.InputHandlers
         private void DisableCameraMovement(Sketch config)
         {
             _isPlacing = true;
+        }
+        
+        private bool IsInteractingWithUI()
+        {
+            // Check if any UI element is currently selected or active
+            return EventSystem.current != null && EventSystem.current.currentSelectedGameObject != null;
         }
 
         private void EnableCameraMovement()
