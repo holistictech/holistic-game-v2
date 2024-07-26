@@ -8,8 +8,8 @@ namespace Interfaces
 {
     public interface ITutorialElement
     {
-        public void TryShowTutorial(Dictionary<GameObject, TutorialStep> highlights, RectTransform finalHighlight);
-        public IEnumerator WaitInput(RectTransform finalHighlight);
+        public void TryShowTutorial(Dictionary<GameObject, TutorialStep> highlights, RectTransform finalHighlight, float offset);
+        public IEnumerator WaitInput(RectTransform finalHighlight, float offset);
 
         public bool CanShowStep(string tutorialKey)
         {

@@ -40,15 +40,20 @@ namespace UI.Tasks
         private void OnEnable()
         {
             AddListeners();
-            _tutorialElement = this;
-            var highlightDictionary =
-                new Dictionary<GameObject, TutorialStep>().CreateFromLists(tutorialObjects, tutorialSteps);
-            TryShowTutorial(highlightDictionary, taskButton.GetComponent<RectTransform>());
+            
         }
 
         private void OnDisable()
         {
             RemoveListeners();
+        }
+
+        private void Start()
+        {
+            _tutorialElement = this;
+            var highlightDictionary =
+                new Dictionary<GameObject, TutorialStep>().CreateFromLists(tutorialObjects, tutorialSteps);
+            TryShowTutorial(highlightDictionary, taskButton.GetComponent<RectTransform>(), 170);
         }
 
         private void InstantiateTasks(bool type)
@@ -74,12 +79,12 @@ namespace UI.Tasks
             if (_waitInput)
             {
                 StopCoroutine(_waitingInput);
-                PlayerSaveManager.SavePlayerAttribute(1, _tutorialKey);
                 _waitInput = false;
-                List<GameObject> goButton = new List<GameObject>() { _spawnedTasks[0].GetButtonForTutorial().gameObject};
+                List<GameObject> goButton = new List<GameObject>() { _spawnedTasks[0].gameObject};
                 List<TutorialStep> goStep = new List<TutorialStep>() { taskStepConfig };
                 var goHighlight = new Dictionary<GameObject, TutorialStep>().CreateFromLists(goButton, goStep);
-                TryShowTutorial(goHighlight, _spawnedTasks[0].GetButtonForTutorial().GetComponent<RectTransform>());
+                TryShowTutorial(goHighlight, transform.GetComponent<RectTransform>(), -170);
+                PlayerSaveManager.SavePlayerAttribute(1, _tutorialKey);
             }
         }
 
@@ -114,21 +119,22 @@ namespace UI.Tasks
         
         private bool _waitInput;
         private Coroutine _waitingInput;
-        public void TryShowTutorial(Dictionary<GameObject, TutorialStep> highlights, RectTransform finalHighlight)
+        public void TryShowTutorial(Dictionary<GameObject, TutorialStep> highlights, RectTransform finalHighlight, float offset)
         {
             if (!_tutorialElement.CanShowStep(_tutorialKey)) return;
 
             var highlightDictionary = highlights;
-            tutorialManager.ActivateStateTutorial(highlightDictionary, true, () =>
+            _waitInput = true;
+            _waitingInput = StartCoroutine(WaitInput(finalHighlight, offset));
+            /*tutorialManager.ActivateStateTutorial(highlightDictionary, true, () =>
             {
-                _waitInput = true;
-                _waitingInput = StartCoroutine(WaitInput(finalHighlight));
-            });
+                
+            });*/
         }
 
-        public IEnumerator WaitInput(RectTransform finalHighlight)
+        public IEnumerator WaitInput(RectTransform finalHighlight, float offset)
         {
-            tutorialManager.HighlightTutorialObject(finalHighlight, finalHighlight.transform.parent.GetComponent<RectTransform>(), 170, true);
+            tutorialManager.HighlightTutorialObject(finalHighlight, finalHighlight.transform.parent.GetComponent<RectTransform>(), offset, true);
             yield return new WaitUntil(() => !_waitInput);
         }
 
