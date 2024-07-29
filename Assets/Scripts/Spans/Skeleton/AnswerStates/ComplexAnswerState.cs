@@ -29,11 +29,11 @@ namespace Spans.Skeleton.AnswerStates
             {
                 _complexSpan = controller.GetComponent<ComplexSpan.ComplexSpan>();
                 spanController = controller;
+                AddListeners();
             }
 
             _currentStrategy = _complexSpan.GetCurrentStrategy();
             maxTime = spanController.GetRoundTime();
-            AddListeners();
             EnableUIElements();
             
             _currentStrategy.InjectAnswerState(this);

@@ -331,6 +331,11 @@ namespace Spans.Skeleton
         {
             return 0;
         }
+        
+        public virtual bool IsEmptyRound()
+        {
+            return false;
+        }
 
         public bool GetBackwardStatus()
         {

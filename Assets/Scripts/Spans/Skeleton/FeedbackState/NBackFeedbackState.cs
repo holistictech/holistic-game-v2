@@ -9,15 +9,11 @@ namespace Spans.Skeleton.FeedbackState
         [SerializeField] private AudioClip correctClip;
         [SerializeField] private AudioClip wrongClip;
 
-        private NBack.NBack _nBackController;
-
         public override void Enter(SpanController controller)
         {
             if (spanController == null)
             {
-                _nBackController = controller is NBack.NBack ? controller.GetComponent<NBack.NBack>() : null;
                 base.Enter(controller);
-                //spanController = controller;
             }
             else
             {
@@ -30,9 +26,10 @@ namespace Spans.Skeleton.FeedbackState
         
         protected override void PlayEffects()
         {
-            if (_nBackController!= null && _nBackController.IsEmptyRound())
+            if (spanController.IsEmptyRound())
             {
-                SwitchNextState();    
+                SwitchNextState();
+                Debug.Log("Switching from feedback state without checking answer is correct or not");
             }
             else
             {

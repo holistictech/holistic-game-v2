@@ -158,7 +158,7 @@ namespace Spans.NBack
             return _isCorrect;
         }
 
-        public bool IsEmptyRound()
+        public override bool IsEmptyRound()
         {
             return _currentStrategy.IsEmptyRound();
         }

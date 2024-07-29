@@ -56,10 +56,33 @@ namespace Spans.ComplexSpan
 
         private bool _blocksDisplayed;
         private int _currentQuestionIndex = 0;
+        private bool _shouldPass = true;
         public void ShowQuestionStateQuestion(Questioner questioner)
         {
-            if (SetModeState()) return;
-            
+            if (_currentQuestionIndex >= _currentQuestions.Count)
+            {
+                if (_shouldPass)
+                {
+                    _questionState.SwitchNextState();
+                    _controller.SetMainSpanNeeded(true);
+                    _shouldPass = false;
+                    return;
+
+                }
+
+                if (_shouldPass) return;
+                _controller.GetSpanObjects();
+                _currentQuestionIndex = 0;
+                ShowQuestions(questioner);
+            }
+            else
+            {
+                ShowQuestions(questioner);
+            }
+        }
+
+        private void ShowQuestions(Questioner questioner)
+        {
             _blockGrid = _questionState.GetGridHelper();
             questioner.InjectQuestionState(_questionState);
             var count = 0;
@@ -76,27 +99,9 @@ namespace Spans.ComplexSpan
                 questioner.PlayBlockSpanRoutine(_currentQuestions.GetRange(_currentQuestionIndex, count), this, _blockGrid);
             }
             
+            Debug.Log($"Showed {count} questions in block display turn {_blocksDisplayed}");
+            
             _currentQuestionIndex += count;
-        }
-
-        private bool SetModeState()
-        {
-            if (_currentQuestionIndex >= _currentQuestions.Count)
-            {
-                if (_controller.GetIsMainSpanNeeded())
-                {
-                    _controller.GetSpanObjects();
-                    _currentQuestionIndex = 0;
-                }
-                else
-                {
-                    _controller.SetMainSpanNeeded(true);
-                    _questionState.SwitchNextState();
-                    return true;
-                }
-            }
-
-            return false;
         }
 
         public void HandleOnComplete()
@@ -211,6 +216,11 @@ namespace Spans.ComplexSpan
 
                 return true;
             }
+        }
+
+        public bool ShouldSwitchDirectly()
+        {
+            return _currentQuestionIndex < _currentQuestions.Count;
         }
 
         public int GetUnitIndex()

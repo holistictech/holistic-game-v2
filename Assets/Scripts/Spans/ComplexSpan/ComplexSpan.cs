@@ -32,8 +32,8 @@ namespace Spans.ComplexSpan
                 { CommonFields.ComplexModes.BlockSpanAndNumbers, new Tuple<List<Question>, List<Question>>(numberQuestions, new List<Question>()) },
             };
             
-            _currentMode = new ComplexSoundChooserMode();
-            _currentModeEnum = CommonFields.ComplexModes.SoundAndNumberChooser;
+            _currentMode = new BlockAndNumberSpanStrategy();
+            _currentModeEnum = CommonFields.ComplexModes.BlockSpanAndNumbers;
             _currentMode.InjectController(this);
             var modeQuestions = GetModeQuestions();
             _currentMode.InjectModeQuestions(modeQuestions.Item1, modeQuestions.Item2);
@@ -89,6 +89,11 @@ namespace Spans.ComplexSpan
         public void SwitchToAnswerState()
         {
             stateContext.Transition(stateList[2]);
+        }
+
+        public override bool IsEmptyRound()
+        {
+            return GetIsMainSpanNeeded();
         }
         
         public override bool IsAnswerCorrect()
