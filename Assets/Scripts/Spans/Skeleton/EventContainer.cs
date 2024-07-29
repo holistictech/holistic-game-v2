@@ -9,11 +9,11 @@ namespace Spans.Skeleton
     {
     }
 
-    public class ToggleUIEvent
+    public class ToggleUIEventButtons
     {
         public bool Toggle;
 
-        public ToggleUIEvent(bool toggle)
+        public ToggleUIEventButtons(bool toggle)
         {
             Toggle = toggle;
         }

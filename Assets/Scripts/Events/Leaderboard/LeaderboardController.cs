@@ -50,7 +50,7 @@ namespace Events.Leaderboard
             EventBus.Instance.Trigger(new SpanRequestedEvent());
         }
 
-        private void ToggleButton(ToggleUIEvent eventData)
+        private void ToggleButton(ToggleUIEventButtons eventButtonsData)
         {
             //leaderboardEventButton.gameObject.SetActive(eventData.Toggle);
         }
@@ -60,7 +60,7 @@ namespace Events.Leaderboard
             leaderboardEventButton.onClick.AddListener(EnableLeaderboard);
             closeButton.onClick.AddListener(DisableLeaderboard);
             playButton.onClick.AddListener(RedirectUserToSpan);
-            EventBus.Instance.Register<ToggleUIEvent>(ToggleButton);
+            EventBus.Instance.Register<ToggleUIEventButtons>(ToggleButton);
         }
 
         private void RemoveListeners()
@@ -68,7 +68,7 @@ namespace Events.Leaderboard
             leaderboardEventButton.onClick.RemoveListener(EnableLeaderboard);
             closeButton.onClick.RemoveListener(DisableLeaderboard);
             playButton.onClick.RemoveListener(RedirectUserToSpan);
-            EventBus.Instance.Unregister<ToggleUIEvent>(ToggleButton);
+            EventBus.Instance.Unregister<ToggleUIEventButtons>(ToggleButton);
         }
     }
 }

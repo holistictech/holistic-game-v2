@@ -146,7 +146,7 @@ namespace UI.Tasks
             tutorialManager.ClearHighlights();
         }
 
-        private void ToggleButtons(ToggleUIEvent eventData)
+        private void ToggleButtons(ToggleUIEventButtons eventButtonsData)
         {
             //bool value = eventData.Toggle;
             //taskButton.gameObject.SetActive(value);
@@ -158,7 +158,7 @@ namespace UI.Tasks
             //taskButton.onClick.AddListener(EnableTaskPopup);
             closeButton.onClick.AddListener(DisableTaskPopup);
             WarningUIHelper.OnRedirectToTask += EnableTaskPopup;
-            EventBus.Instance.Register<ToggleUIEvent>(ToggleButtons);
+            EventBus.Instance.Register<ToggleUIEventButtons>(ToggleButtons);
         }
 
         private void RemoveListeners()
@@ -166,7 +166,7 @@ namespace UI.Tasks
             //taskButton.onClick.RemoveListener(EnableTaskPopup);
             closeButton.onClick.RemoveListener(DisableTaskPopup);
             WarningUIHelper.OnRedirectToTask -= EnableTaskPopup;
-            EventBus.Instance.Unregister<ToggleUIEvent>(ToggleButtons);
+            EventBus.Instance.Unregister<ToggleUIEventButtons>(ToggleButtons);
         }
     }
 }

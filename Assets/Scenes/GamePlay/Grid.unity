@@ -18413,7 +18413,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c160173fecd17a4f997cd9c88d01551, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveVector: {x: -250, y: 0, z: 0}
+  moveVector: {x: -300, y: 0, z: 0}
   button: {fileID: 0}
   clickClip: {fileID: 0}
 --- !u!1001 &1029809761
@@ -37204,7 +37204,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c160173fecd17a4f997cd9c88d01551, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  moveVector: {x: -250, y: 0, z: 0}
+  moveVector: {x: -300, y: 0, z: 0}
   button: {fileID: 0}
   clickClip: {fileID: 0}
 --- !u!1001 &1730556915

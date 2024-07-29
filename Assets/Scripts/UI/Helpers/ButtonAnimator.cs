@@ -16,7 +16,10 @@ namespace UI.Helpers
         [Header("Button Click")]
         [SerializeField] private Button button;
         [SerializeField] private AudioClip clickClip;
+        
+        
         private readonly float _amount = 0.08f;
+        private Vector3 initialPosition;
         
         private void OnEnable()
         {
@@ -31,18 +34,15 @@ namespace UI.Helpers
         private void OnValidate()
         {
             button = GetComponent<Button>();
+            initialPosition = transform.localPosition;
         }
 
-        private void AnimateButtonForSwiping(ToggleUIEvent eventData)
+        private void AnimateButtonForSwiping(ToggleUIEventButtons eventButtonsData)
         {
-            var localPos = transform.localPosition; 
-            var finalPos = eventData.Toggle
-                ? localPos
-                : localPos + moveVector; 
-            transform.DOLocalMove(finalPos, 0.35f).SetEase(Ease.OutBack).OnComplete(() =>
-            {
-                moveVector *= -1;
-            });
+            var finalPos = eventButtonsData.Toggle
+                ? initialPosition
+                : initialPosition + moveVector; 
+            transform.DOLocalMove(finalPos, 0.85f).SetEase(Ease.OutBack);
         }
 
         private void OnButtonClick()
@@ -59,14 +59,16 @@ namespace UI.Helpers
 
         private void AddListeners()
         {
-            button.onClick.AddListener(OnButtonClick);
-            EventBus.Instance.Register<ToggleUIEvent>(AnimateButtonForSwiping);
+            if(button != null)
+                button.onClick.AddListener(OnButtonClick);
+            EventBus.Instance.Register<ToggleUIEventButtons>(AnimateButtonForSwiping);
         }
 
         private void RemoveListeners()
         {
-            button.onClick.RemoveListener(OnButtonClick);
-            EventBus.Instance.Unregister<ToggleUIEvent>(AnimateButtonForSwiping);
+            if(button != null)
+                button.onClick.RemoveListener(OnButtonClick);
+            EventBus.Instance.Unregister<ToggleUIEventButtons>(AnimateButtonForSwiping);
         }
     }
 }

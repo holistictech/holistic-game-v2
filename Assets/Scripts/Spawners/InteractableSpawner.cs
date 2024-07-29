@@ -52,6 +52,7 @@ namespace Spawners
 
         private void SpawnSketch(TaskConfig config)
         {
+            EventBus.Instance.Trigger(new ToggleUIEventButtons(false));
             _currentConfig = config;
             var mainCamera = Camera.main;
             if (mainCamera != null)
@@ -107,6 +108,7 @@ namespace Spawners
                 if (shouldSave)
                 {
                     _spawnedSketch.DestroyObject();
+                    EventBus.Instance.Trigger(new ToggleUIEventButtons(true));
                     PlayBuildingEffect(desiredPoint);
                 }
 
