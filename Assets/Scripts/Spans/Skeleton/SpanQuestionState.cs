@@ -34,7 +34,7 @@ namespace Spans.Skeleton
                 spanController = controller;
                 EventBus.Instance.Register<RoundResetEvent>(OnRoundReset);
             }
-            EnableUIElements();
+            //EnableUIElements();
             
         }
 

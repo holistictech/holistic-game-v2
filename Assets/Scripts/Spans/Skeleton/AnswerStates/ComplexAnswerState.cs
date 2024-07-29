@@ -25,6 +25,7 @@ namespace Spans.Skeleton.AnswerStates
         
         public override void Enter(SpanController controller)
         {
+            Debug.Log("Got in complex answer state");
             if (spanController == null)
             {
                 _complexSpan = controller.GetComponent<ComplexSpan.ComplexSpan>();
@@ -54,10 +55,25 @@ namespace Spans.Skeleton.AnswerStates
         
         public void OnButtonClick(int index)
         {
+            if (_currentStrategy is BlockAndNumberSpanStrategy) return;
             modeButtons.ForEach(x => x.gameObject.SetActive(false));
             var chosenType = (CommonFields.ButtonType)index;
             _currentStrategy.AppendChoice(chosenType);
             SwitchNextState();
+        }
+        
+        public override void Exit()
+        {
+            DisableUIElements();
+        }
+
+        public override void DisableUIElements()
+        {
+            confirmButton.gameObject.SetActive(false);
+            revertButton.gameObject.SetActive(false);
+            gridLayoutGroup.gameObject.SetActive(false);
+            timer.StopTimer();
+            DisableSpawnedChoices();
         }
 
         public List<Button> GetButtons()

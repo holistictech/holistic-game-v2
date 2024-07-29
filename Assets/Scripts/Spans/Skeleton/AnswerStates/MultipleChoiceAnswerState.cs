@@ -23,6 +23,7 @@ namespace Spans.Skeleton.AnswerStates
         
         public override void Enter(SpanController controller)
         {
+            Debug.Log("Got in multiple choice state");
             if (spanController == null)
             {
                 base.Enter(controller);
@@ -65,6 +66,7 @@ namespace Spans.Skeleton.AnswerStates
             {
                 spanController.ClearTutorialHighlights();
             }
+            timer.StopTimer();
             spanController.SetSelectedAnswers(gridHelper.GetGivenAnswers());
             spanController.SwitchState();
         }
@@ -156,7 +158,7 @@ namespace Spans.Skeleton.AnswerStates
         {
             base.DisableUIElements();
             gridLayoutGroup.gameObject.SetActive(false);
-            revertButton.gameObject.SetActive(spanController.GetTutorialStatus());
+            //revertButton.gameObject.SetActive(spanController.GetTutorialStatus());
             if (spanController.GetTutorialStatus())
             {
                 timer.EnableSelf();
@@ -173,7 +175,7 @@ namespace Spans.Skeleton.AnswerStates
             DisableSpawnedChoices();
         }
 
-        private void DisableSpawnedChoices()
+        protected void DisableSpawnedChoices()
         {
             gridHelper.DisableSpawnedChoices();
         }

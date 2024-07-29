@@ -57,8 +57,7 @@ namespace GridSystem
             var interactables = new List<InteractableData>();
             foreach (var item in data.InteractableData)
             {
-                var config = ScriptableObject.CreateInstance<InteractableConfig>();
-                config = item.Config;
+                var config = item.Config;
                 interactables.Add(new InteractableData(config, item.Point, item.GetRotation()));
             }
 

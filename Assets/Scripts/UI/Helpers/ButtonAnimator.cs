@@ -21,12 +21,12 @@ namespace UI.Helpers
         private readonly float _amount = 0.08f;
         private Vector3 initialPosition;
         
-        private void OnEnable()
+        private void Awake()
         {
             AddListeners();
         }
 
-        private void OnDisable()
+        private void OnDestroy()
         {
             RemoveListeners();
         }

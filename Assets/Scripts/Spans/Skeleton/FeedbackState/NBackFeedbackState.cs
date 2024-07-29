@@ -11,6 +11,7 @@ namespace Spans.Skeleton.FeedbackState
 
         public override void Enter(SpanController controller)
         {
+            Debug.Log("got in feedback state");
             if (spanController == null)
             {
                 base.Enter(controller);

@@ -25,7 +25,6 @@ namespace Utilities
             }
             else
             {
-                Debug.LogWarning("Save file not found: " + filePath);
                 return new FarmData();
             }
         }

@@ -26,11 +26,12 @@ namespace Spans.Skeleton
         protected float maxTime;
         public virtual void Enter(SpanController controller)
         {
+            Debug.Log("Got in answer state");
             if (spanController == null)
             {
                 spanController = controller;
+                AddListeners();
             }
-            AddListeners();
         }
 
         public virtual void Exit()

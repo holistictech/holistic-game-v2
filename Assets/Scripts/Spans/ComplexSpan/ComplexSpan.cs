@@ -71,10 +71,10 @@ namespace Spans.ComplexSpan
                 ISpanState nextState = stateList[index+1];
                 stateContext.Transition(nextState);
             }
-            else if (_isMainSpanNeeded || _isRecursiveAnswerStateNeeded)
+            /*else if (_isMainSpanNeeded || _isRecursiveAnswerStateNeeded)
             {
                 SwitchToAnswerState();
-            }
+            }*/
             else
             {
                 SwitchToQuestionState();
@@ -93,7 +93,7 @@ namespace Spans.ComplexSpan
 
         public override bool IsEmptyRound()
         {
-            return GetIsMainSpanNeeded();
+            return !GetIsMainSpanNeeded();
         }
         
         public override bool IsAnswerCorrect()

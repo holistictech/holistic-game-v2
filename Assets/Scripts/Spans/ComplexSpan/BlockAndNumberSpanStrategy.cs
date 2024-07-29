@@ -59,24 +59,32 @@ namespace Spans.ComplexSpan
         private bool _shouldPass = true;
         public void ShowQuestionStateQuestion(Questioner questioner)
         {
+            Debug.Log("Got in question state in strategy");
             if (_currentQuestionIndex >= _currentQuestions.Count)
             {
+                Debug.Log("main span may be needed");
                 if (_shouldPass)
                 {
-                    _questionState.SwitchNextState();
-                    _controller.SetMainSpanNeeded(true);
+                    Debug.Log("main span");
+                    if(!_controller.GetIsMainSpanNeeded())
+                        _controller.SetMainSpanNeeded(true);
                     _shouldPass = false;
+                    _controller.SwitchState();
                     return;
 
                 }
 
                 if (_shouldPass) return;
+                _shouldPass = true;
                 _controller.GetSpanObjects();
                 _currentQuestionIndex = 0;
+                _controller.SetMainSpanNeeded(false);
+                Debug.Log("already show main span");
                 ShowQuestions(questioner);
             }
             else
             {
+                Debug.Log("main span is not needed");
                 ShowQuestions(questioner);
             }
         }
@@ -90,12 +98,14 @@ namespace Spans.ComplexSpan
             {
                 count = 1;
                 _blocksDisplayed = false;
+                _blockGrid.gameObject.SetActive(false);
                 questioner.PlayCoroutine(_currentQuestions.GetRange(_currentQuestionIndex, 1), this, _questionState);
             }
             else
             {
                 count = 3;
                 _blocksDisplayed = true;
+                _blockGrid.gameObject.SetActive(true);
                 questioner.PlayBlockSpanRoutine(_currentQuestions.GetRange(_currentQuestionIndex, count), this, _blockGrid);
             }
             
@@ -131,7 +141,7 @@ namespace Spans.ComplexSpan
                 }
                 else
                 {
-                    _answerState.SwitchNextState();
+                    _controller.SwitchState();
                 }
             }
         }
@@ -188,6 +198,7 @@ namespace Spans.ComplexSpan
         public bool CheckAnswer(List<Question> given)
         {
             _blockGrid.gameObject.SetActive(false);
+            _controller.SetMainSpanNeeded(false);
             if (_blocksDisplayed)
             {
                 given = _blockGrid.GetGivenAnswers();

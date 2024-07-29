@@ -67,7 +67,7 @@ namespace Events.Leaderboard
             TextAsset csvFile = Resources.Load<TextAsset>($"dummyLeaderboard");
             if (csvFile == null)
             {
-                Debug.LogError("CSV file not found");
+                //Debug.LogError("CSV file not found");
                 return users;
             }
 

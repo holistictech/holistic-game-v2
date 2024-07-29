@@ -1,18 +1,10 @@
-using System.Collections;
 using System.Collections.Generic;
-using DG.Tweening;
 using Interfaces;
 using Scriptables.QuestionSystem;
-using Scriptables.QuestionSystem.Images;
-using Scriptables.QuestionSystem.Numbers;
 using Scriptables.Tutorial;
 using Spans.ComplexSpan;
-using Spans.CumulativeSpan;
-using TMPro;
 using UI.Helpers;
 using UnityEngine;
-using UnityEngine.UI;
-using Utilities;
 using Utilities.Helpers;
 
 namespace Spans.Skeleton.QuestionStates
@@ -30,6 +22,7 @@ namespace Spans.Skeleton.QuestionStates
 
         public override void Enter(SpanController controller)
         {
+            Debug.Log("Got in complex question state");
             if (spanController == null)
             {
                 _complexSpan = controller.GetComponent<ComplexSpan.ComplexSpan>();
