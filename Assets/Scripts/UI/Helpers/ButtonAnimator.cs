@@ -10,7 +10,8 @@ namespace UI.Helpers
 {
     public class ButtonAnimator : MonoBehaviour
     {
-        [Header("Animation Attributes")] 
+        [Header("Animation Attributes")]
+        [SerializeField] private bool animatable;
         [SerializeField] private Vector3 moveVector;
         
         [Header("Button Click")]
@@ -61,14 +62,16 @@ namespace UI.Helpers
         {
             if(button != null)
                 button.onClick.AddListener(OnButtonClick);
-            EventBus.Instance.Register<ToggleUIEventButtons>(AnimateButtonForSwiping);
+            if(animatable)
+                EventBus.Instance.Register<ToggleUIEventButtons>(AnimateButtonForSwiping);
         }
 
         private void RemoveListeners()
         {
             if(button != null)
                 button.onClick.RemoveListener(OnButtonClick);
-            EventBus.Instance.Unregister<ToggleUIEventButtons>(AnimateButtonForSwiping);
+            if(animatable)
+                EventBus.Instance.Unregister<ToggleUIEventButtons>(AnimateButtonForSwiping);
         }
     }
 }

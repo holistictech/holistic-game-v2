@@ -77,7 +77,6 @@ namespace Spans.ComplexSpan
                 if (_shouldPass) return;
                 _shouldPass = true;
                 _controller.GetSpanObjects();
-                _currentQuestionIndex = 0;
                 _controller.SetMainSpanNeeded(false);
                 Debug.Log("already show main span");
                 ShowQuestions(questioner);
@@ -153,6 +152,9 @@ namespace Spans.ComplexSpan
 
         public List<Question> GetCorrectQuestions(int iterations)
         {
+            _currentQuestions.Clear();
+            _currentNumberQuestions.Clear();
+            _currentQuestionIndex = 0;
             for (int i = 0; i < iterations; i++)
             {
                 var iterationQuestions = new List<Question>();
