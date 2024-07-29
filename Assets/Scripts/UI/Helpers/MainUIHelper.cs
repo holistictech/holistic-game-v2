@@ -94,10 +94,10 @@ namespace UI.Helpers
 
         private void ToggleButtons(ToggleUIEvent eventData)
         {
-            bool value = eventData.Toggle;
-            playButton.gameObject.SetActive(value);
-            currencyHelper.gameObject.SetActive(value);
-            performanceHelper.gameObject.SetActive(value);
+            //bool value = eventData.Toggle;
+            //playButton.gameObject.SetActive(value);
+            //currencyHelper.gameObject.SetActive(value);
+            //performanceHelper.gameObject.SetActive(value);
         }
 
         private void AddListeners()

@@ -15888,6 +15888,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 181412887}
     m_Modifications:
+    - target: {fileID: 2529107661885278627, guid: 6cf43647e4797452ca8e8cc5521e6bec, type: 3}
+      propertyPath: moveVector.y
+      value: -450
+      objectReference: {fileID: 0}
     - target: {fileID: 7474141742100322980, guid: 6cf43647e4797452ca8e8cc5521e6bec, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -18353,6 +18357,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1029330568}
   - component: {fileID: 1029330569}
+  - component: {fileID: 1029330570}
   m_Layer: 5
   m_Name: PerformanceField
   m_TagString: Untagged
@@ -18396,6 +18401,21 @@ MonoBehaviour:
   currencySprite: {fileID: 21300000, guid: 6d034811652a84633bc8c63d22ce5574, type: 3}
   currencyCountField: {fileID: 1181008999}
   currencyType: 1
+--- !u!114 &1029330570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1029330567}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c160173fecd17a4f997cd9c88d01551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveVector: {x: -250, y: 0, z: 0}
+  button: {fileID: 0}
+  clickClip: {fileID: 0}
 --- !u!1001 &1029809761
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -37128,6 +37148,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1728660783}
   - component: {fileID: 1728660784}
+  - component: {fileID: 1728660785}
   m_Layer: 5
   m_Name: EnergyField
   m_TagString: Untagged
@@ -37171,6 +37192,21 @@ MonoBehaviour:
   currencySprite: {fileID: 21300000, guid: 8865df1114fa24fed914687ef9ce0ce8, type: 3}
   currencyCountField: {fileID: 1985587121}
   currencyType: 0
+--- !u!114 &1728660785
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1728660782}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c160173fecd17a4f997cd9c88d01551, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  moveVector: {x: -250, y: 0, z: 0}
+  button: {fileID: 0}
+  clickClip: {fileID: 0}
 --- !u!1001 &1730556915
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -52800,6 +52836,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 108970263}
     m_Modifications:
+    - target: {fileID: 2258185803359195615, guid: 2115356550d47864c8d731b78866fc2a, type: 3}
+      propertyPath: moveVector.x
+      value: 250
+      objectReference: {fileID: 0}
     - target: {fileID: 4387764071788071282, guid: 2115356550d47864c8d731b78866fc2a, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.data[0].m_Target
       value: 
@@ -52951,6 +52991,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 108970263}
     m_Modifications:
+    - target: {fileID: 1596389609843773132, guid: 00b62b7aac6eead42b38957cd78d6d62, type: 3}
+      propertyPath: moveVector.x
+      value: 250
+      objectReference: {fileID: 0}
     - target: {fileID: 1746575287217549332, guid: 00b62b7aac6eead42b38957cd78d6d62, type: 3}
       propertyPath: m_Name
       value: TasksButton
@@ -54029,6 +54073,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1792500511}
     m_Modifications:
+    - target: {fileID: 1269318652750276853, guid: 3ce20f4bbef1665488451e1b6a4f915f, type: 3}
+      propertyPath: moveVector.x
+      value: -290
+      objectReference: {fileID: 0}
     - target: {fileID: 7123167985578202846, guid: 3ce20f4bbef1665488451e1b6a4f915f, type: 3}
       propertyPath: m_Name
       value: LeaderboardButton

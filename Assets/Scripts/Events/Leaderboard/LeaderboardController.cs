@@ -52,7 +52,7 @@ namespace Events.Leaderboard
 
         private void ToggleButton(ToggleUIEvent eventData)
         {
-            leaderboardEventButton.gameObject.SetActive(eventData.Toggle);
+            //leaderboardEventButton.gameObject.SetActive(eventData.Toggle);
         }
         
         private void AddListeners()

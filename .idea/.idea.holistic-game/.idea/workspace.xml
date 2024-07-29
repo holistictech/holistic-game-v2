@@ -6,9 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="3d01f5fc-4a81-4ccb-94d7-a0f07bc2bc79" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Epic Toon FX/Upgrade/ETFX URP Upgrade (2020.3.45f1).unitypackage.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/Scenes/GamePlay/Grid.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scenes/GamePlay/Grid.unity" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Events/Leaderboard/LeaderboardController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Events/Leaderboard/LeaderboardController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Helpers/ButtonAnimator.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Helpers/ButtonAnimator.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Helpers/MainUIHelper.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Helpers/MainUIHelper.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Tasks/TasksPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Tasks/TasksPanel.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -97,32 +100,32 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent">{
-  &quot;keyToString&quot;: {
-    &quot;ASKED_ADD_EXTERNAL_FILES&quot;: &quot;true&quot;,
-    &quot;Attach to Unity Editor.Attach to Unity Editor.executor&quot;: &quot;Debug&quot;,
-    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
-    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
-    &quot;XThreadsFramesViewSplitterKey&quot;: &quot;0.6182432&quot;,
-    &quot;do_not_show_Android_plugin_suggestion&quot;: &quot;true&quot;,
-    &quot;git-widget-placeholder&quot;: &quot;main&quot;,
-    &quot;ignore.virus.scanning.warn.message&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
-    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
-    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
-    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
-    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
-    &quot;settings.editor.selected.configurable&quot;: &quot;preferences.sourceCode.C#&quot;,
-    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "ASKED_ADD_EXTERNAL_FILES": "true",
+    "Attach to Unity Editor.Attach to Unity Editor.executor": "Debug",
+    "RunOnceActivity.OpenProjectViewOnStart": "true",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "XThreadsFramesViewSplitterKey": "0.6182432",
+    "do_not_show_Android_plugin_suggestion": "true",
+    "git-widget-placeholder": "main",
+    "ignore.virus.scanning.warn.message": "true",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "settings.editor.selected.configurable": "preferences.sourceCode.C#",
+    "vue.rearranger.settings.migration": "true"
   },
-  &quot;keyToStringList&quot;: {
-    &quot;rider.external.source.directories&quot;: [
-      &quot;C:\\Users\\User\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache&quot;,
-      &quot;C:\\Users\\User\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache&quot;,
-      &quot;C:\\Users\\User\\AppData\\Local\\Symbols\\src&quot;
+  "keyToStringList": {
+    "rider.external.source.directories": [
+      "C:\\Users\\ahaka\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\DecompilerCache",
+      "C:\\Users\\ahaka\\AppData\\Roaming\\JetBrains\\Rider2023.3\\resharper-host\\SourcesCache",
+      "C:\\Users\\ahaka\\AppData\\Local\\Symbols\\src"
     ]
   }
-}</component>
+}]]></component>
   <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
     <configuration name="Start Unity" type="RunUnityExe" factoryName="Unity Executable">
       <option name="EXE_PATH" value="C:\Program Files\Unity\Hub\Editor\2022.3.11f1\Editor\Unity.exe" />
@@ -150,10 +153,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="39160">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" value="39160" />
+      <option name="pid" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -283,6 +286,7 @@
       <workItem from="1721895323271" duration="7066000" />
       <workItem from="1721910250634" duration="4752000" />
       <workItem from="1721977892859" duration="7451000" />
+      <workItem from="1722237577181" duration="1697000" />
     </task>
     <servers />
   </component>
@@ -389,29 +393,9 @@
           <option name="timeStamp" value="129" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
-          <url>file://$PROJECT_DIR$/Assets/Scripts/UI/Helpers/SketchUIHelper.cs</url>
-          <line>103</line>
-          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\UI\Helpers\SketchUIHelper.cs" initialLine="102" containingFunctionPresentation="Lambda expression inside Method 'TryShowTutorial'">
-            <startOffsets>
-              <option value="3376" />
-            </startOffsets>
-            <endOffsets>
-              <option value="3377" />
-            </endOffsets>
-          </properties>
-          <option name="timeStamp" value="138" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Tutorial/TutorialManager.cs</url>
-          <line>126</line>
-          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Tutorial\TutorialManager.cs" initialLine="126" containingFunctionPresentation="Method 'PositionHighlightToTarget'">
-            <startOffsets>
-              <option value="5122" />
-            </startOffsets>
-            <endOffsets>
-              <option value="5123" />
-            </endOffsets>
-          </properties>
+          <line>145</line>
+          <properties documentPath="D:\UnityProjects\holistic-game\Assets\Scripts\Tutorial\TutorialManager.cs" initialLine="126" containingFunctionPresentation="Method 'PositionHighlightToTarget'" />
           <option name="timeStamp" value="140" />
         </line-breakpoint>
       </breakpoints>

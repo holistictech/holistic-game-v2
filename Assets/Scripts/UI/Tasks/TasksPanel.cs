@@ -148,9 +148,9 @@ namespace UI.Tasks
 
         private void ToggleButtons(ToggleUIEvent eventData)
         {
-            bool value = eventData.Toggle;
-            taskButton.gameObject.SetActive(value);
-            marketButton.gameObject.SetActive(value);
+            //bool value = eventData.Toggle;
+            //taskButton.gameObject.SetActive(value);
+            //marketButton.gameObject.SetActive(value);
         }
 
         private void AddListeners()

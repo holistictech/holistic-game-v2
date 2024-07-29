@@ -1,13 +1,19 @@
 using System;
 using DG.Tweening;
+using Spans.Skeleton;
 using UnityEngine;
 using UnityEngine.UI;
 using Utilities;
+using static Utilities.Helpers.CommonFields;
 
 namespace UI.Helpers
 {
     public class ButtonAnimator : MonoBehaviour
     {
+        [Header("Animation Attributes")] 
+        [SerializeField] private Vector3 moveVector;
+        
+        [Header("Button Click")]
         [SerializeField] private Button button;
         [SerializeField] private AudioClip clickClip;
         private readonly float _amount = 0.08f;
@@ -27,6 +33,18 @@ namespace UI.Helpers
             button = GetComponent<Button>();
         }
 
+        private void AnimateButtonForSwiping(ToggleUIEvent eventData)
+        {
+            var localPos = transform.localPosition; 
+            var finalPos = eventData.Toggle
+                ? localPos
+                : localPos + moveVector; 
+            transform.DOLocalMove(finalPos, 0.35f).SetEase(Ease.OutBack).OnComplete(() =>
+            {
+                moveVector *= -1;
+            });
+        }
+
         private void OnButtonClick()
         {
             Sequence buttonSequence = DOTween.Sequence();
@@ -42,11 +60,13 @@ namespace UI.Helpers
         private void AddListeners()
         {
             button.onClick.AddListener(OnButtonClick);
+            EventBus.Instance.Register<ToggleUIEvent>(AnimateButtonForSwiping);
         }
 
         private void RemoveListeners()
         {
             button.onClick.RemoveListener(OnButtonClick);
+            EventBus.Instance.Unregister<ToggleUIEvent>(AnimateButtonForSwiping);
         }
     }
 }
