@@ -15889,6 +15889,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 181412887}
     m_Modifications:
     - target: {fileID: 2529107661885278627, guid: 6cf43647e4797452ca8e8cc5521e6bec, type: 3}
+      propertyPath: animatable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2529107661885278627, guid: 6cf43647e4797452ca8e8cc5521e6bec, type: 3}
       propertyPath: moveVector.y
       value: -450
       objectReference: {fileID: 0}
@@ -18413,6 +18417,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c160173fecd17a4f997cd9c88d01551, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animatable: 1
   moveVector: {x: -300, y: 0, z: 0}
   button: {fileID: 0}
   clickClip: {fileID: 0}
@@ -37204,6 +37209,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4c160173fecd17a4f997cd9c88d01551, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animatable: 1
   moveVector: {x: -300, y: 0, z: 0}
   button: {fileID: 0}
   clickClip: {fileID: 0}
@@ -51844,6 +51850,10 @@ PrefabInstance:
       value: 
       objectReference: {fileID: 625902097}
     - target: {fileID: 3508583731487256687, guid: 8ae4fe136c60345409db2c2e34da5dbf, type: 3}
+      propertyPath: swipeHandler
+      value: 
+      objectReference: {fileID: 1551247756}
+    - target: {fileID: 3508583731487256687, guid: 8ae4fe136c60345409db2c2e34da5dbf, type: 3}
       propertyPath: warningHelper
       value: 
       objectReference: {fileID: 1977076844}
@@ -52837,6 +52847,10 @@ PrefabInstance:
     m_TransformParent: {fileID: 108970263}
     m_Modifications:
     - target: {fileID: 2258185803359195615, guid: 2115356550d47864c8d731b78866fc2a, type: 3}
+      propertyPath: animatable
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2258185803359195615, guid: 2115356550d47864c8d731b78866fc2a, type: 3}
       propertyPath: moveVector.x
       value: 250
       objectReference: {fileID: 0}
@@ -52991,6 +53005,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 108970263}
     m_Modifications:
+    - target: {fileID: 1596389609843773132, guid: 00b62b7aac6eead42b38957cd78d6d62, type: 3}
+      propertyPath: animatable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1596389609843773132, guid: 00b62b7aac6eead42b38957cd78d6d62, type: 3}
       propertyPath: moveVector.x
       value: 250
@@ -54073,6 +54091,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1792500511}
     m_Modifications:
+    - target: {fileID: 1269318652750276853, guid: 3ce20f4bbef1665488451e1b6a4f915f, type: 3}
+      propertyPath: animatable
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1269318652750276853, guid: 3ce20f4bbef1665488451e1b6a4f915f, type: 3}
       propertyPath: moveVector.x
       value: -290

@@ -26,7 +26,7 @@ namespace UI.Tasks
         [SerializeField] private Button marketButton;
         [SerializeField] private Button closeButton;
 
-        [Header("Functionality")] 
+        [Header("Functionality")]
         [SerializeField] private WarningUIHelper warningHelper;
         [SerializeField] private Task taskPrefab;
         [SerializeField] private TutorialManager tutorialManager;
