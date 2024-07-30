@@ -1,13 +1,12 @@
 using Firebase;
 using Firebase.Extensions;
 using UnityEngine;
-using Firebase.Extensions;
 
-namespace Utilities
+namespace Utilities.Notification
 {
     public class FirebaseValidator : MonoBehaviour
     {
-        private FirebaseApp app;
+        private FirebaseApp _app;
         void Start()
         {
             FirebaseApp.CheckAndFixDependenciesAsync().ContinueWithOnMainThread(task => {
@@ -15,7 +14,8 @@ namespace Utilities
                 if (dependencyStatus == DependencyStatus.Available) {
                     // Create and hold a reference to your FirebaseApp,
                     // where app is a Firebase.FirebaseApp property of your application class.
-                    app = FirebaseApp.DefaultInstance;
+                    _app = FirebaseApp.DefaultInstance;
+                    Debug.Log($"Firebase init : {_app.Options.ProjectId}");
                     // Set a flag here to indicate whether Firebase is ready to use by your app.
                 } else {
                     Debug.LogError(System.String.Format(

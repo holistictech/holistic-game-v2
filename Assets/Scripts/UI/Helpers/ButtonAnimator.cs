@@ -42,7 +42,8 @@ namespace UI.Helpers
         {
             var finalPos = eventButtonsData.Toggle
                 ? initialPosition
-                : initialPosition + moveVector; 
+                : initialPosition + moveVector;
+            if(finalPos == transform.localPosition) return;
             transform.DOLocalMove(finalPos, 0.85f).SetEase(Ease.OutBack);
         }
 

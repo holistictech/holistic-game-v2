@@ -44,6 +44,7 @@ namespace Utilities.InputHandlers
             // _maxZ = position.z + boundaryPaddingZ;
         }
 
+        private bool _lastEventValue;
         private void Update()
         {
             if (_isPlacing) return;
@@ -80,12 +81,20 @@ namespace Utilities.InputHandlers
                     targetPosition.x = Mathf.Clamp(targetPosition.x, _minX, _maxX);
                     targetPosition.z = Mathf.Clamp(targetPosition.z, _minZ, _maxZ);
                     transform.position = targetPosition;
-                    EventBus.Instance.Trigger(new ToggleUIEventButtons(false));
+                    if (_lastEventValue)
+                    {
+                        EventBus.Instance.Trigger(new ToggleUIEventButtons(false));
+                        _lastEventValue = false;
+                    }
                 }
             }
             else
             {
-                EventBus.Instance.Trigger(new ToggleUIEventButtons(true));
+                if (!_lastEventValue)
+                {
+                    EventBus.Instance.Trigger(new ToggleUIEventButtons(true));
+                    _lastEventValue = true;
+                }
             }
         }
 
