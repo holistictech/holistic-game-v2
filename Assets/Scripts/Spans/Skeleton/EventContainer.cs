@@ -9,6 +9,16 @@ namespace Spans.Skeleton
     {
     }
 
+    public class TutorialEvent
+    {
+        public bool HasFinished;
+
+        public TutorialEvent(bool finished)
+        {
+            HasFinished = finished;
+        }
+    }
+
     public class ToggleUIEventButtons
     {
         public bool Toggle;

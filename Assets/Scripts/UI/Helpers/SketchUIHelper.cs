@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Interfaces;
 using Scriptables.Tutorial;
+using Spans.Skeleton;
 using Tutorial;
 using UnityEngine;
 using UnityEngine.Serialization;
@@ -110,12 +111,21 @@ namespace UI.Helpers
         {
             throw new NotImplementedException();
         }
+
+        private void ToggleButtons(TutorialEvent eventData)
+        {
+            var value = eventData.HasFinished;
+            confirmButton.interactable = value;
+            cancelButton.interactable = value;
+            rotateButton.interactable = value;
+        }
         
         private void AddListeners()
         {
             confirmButton.onClick.AddListener(ConfirmPlacement);
             cancelButton.onClick.AddListener(CancelPlacement);
             rotateButton.onClick.AddListener(RotateSketch);
+            EventBus.Instance.Register<TutorialEvent>(ToggleButtons);
         }
 
         private void RemoveListeners()
@@ -123,6 +133,7 @@ namespace UI.Helpers
             confirmButton.onClick.RemoveListener(ConfirmPlacement);
             cancelButton.onClick.RemoveListener(CancelPlacement);
             rotateButton.onClick.RemoveListener(RotateSketch);
+            EventBus.Instance.Unregister<TutorialEvent>(ToggleButtons);
         }
     }
 }

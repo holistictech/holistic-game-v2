@@ -52,6 +52,8 @@ namespace UI.Tasks
         private void Start()
         {
             _tutorialElement = this;
+            if (!_tutorialElement.CanShowStep(_tutorialKey)) return;
+            EventBus.Instance.Trigger(new TutorialEvent(false));
             var highlightDictionary =
                 new Dictionary<GameObject, TutorialStep>().CreateFromLists(tutorialObjects, tutorialSteps);
             TryShowTutorial(highlightDictionary, taskButton.GetComponent<RectTransform>(), 170);
@@ -86,6 +88,7 @@ namespace UI.Tasks
                 List<TutorialStep> goStep = new List<TutorialStep>() { taskStepConfig };
                 var goHighlight = new Dictionary<GameObject, TutorialStep>().CreateFromLists(goButton, goStep);
                 TryShowTutorial(goHighlight, GetComponent<RectTransform>(), -130);
+                EventBus.Instance.Trigger(new TutorialEvent(true));
                 PlayerSaveManager.SavePlayerAttribute(1, _tutorialKey);
             }
         }
@@ -123,8 +126,6 @@ namespace UI.Tasks
         private Coroutine _waitingInput;
         public void TryShowTutorial(Dictionary<GameObject, TutorialStep> highlights, RectTransform finalHighlight, float offset)
         {
-            if (!_tutorialElement.CanShowStep(_tutorialKey)) return;
-            
             tutorialManager.ActivateStateTutorial(highlights, true, () =>
             {
                 _waitInput = true;
@@ -146,27 +147,16 @@ namespace UI.Tasks
             tutorialManager.ClearHighlights();
         }
 
-        private void ToggleButtons(ToggleUIEventButtons eventButtonsData)
-        {
-            //bool value = eventData.Toggle;
-            //taskButton.gameObject.SetActive(value);
-            //marketButton.gameObject.SetActive(value);
-        }
-
         private void AddListeners()
         {
-            //taskButton.onClick.AddListener(EnableTaskPopup);
             closeButton.onClick.AddListener(DisableTaskPopup);
             WarningUIHelper.OnRedirectToTask += EnableTaskPopup;
-            EventBus.Instance.Register<ToggleUIEventButtons>(ToggleButtons);
         }
 
         private void RemoveListeners()
         {
-            //taskButton.onClick.RemoveListener(EnableTaskPopup);
             closeButton.onClick.RemoveListener(DisableTaskPopup);
             WarningUIHelper.OnRedirectToTask -= EnableTaskPopup;
-            EventBus.Instance.Unregister<ToggleUIEventButtons>(ToggleButtons);
         }
     }
 }

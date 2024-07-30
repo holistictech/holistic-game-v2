@@ -21,6 +21,7 @@ namespace Utilities
         private Vector3 _lastTouchPosition;
         private Vector3 _finalPosition;
         private bool _isSwiping;
+        private bool _swipeBlocked;
 
         private void OnEnable()
         {
@@ -40,7 +41,7 @@ namespace Utilities
 
         private void Update()
         {
-            if (IsInteractingWithUI()) return;
+            if (IsInteractingWithUI() || _swipeBlocked) return;
 
             if (!ButtonsEnabled() && Input.touchCount == 0 && _spawnedObject != null)
             {
@@ -77,6 +78,11 @@ namespace Utilities
             }
         }
 
+        private void ToggleSwipe(TutorialEvent eventData)
+        {
+            _swipeBlocked = !eventData.HasFinished;
+        }
+
         public Vector3 GetFinalPosition()
         {
             return _finalPosition;
@@ -96,11 +102,13 @@ namespace Utilities
         private void AddListeners()
         {
             InteractableSpawner.OnPositionChoiceNeeded += FocusSpawnedObject;
+            EventBus.Instance.Register<TutorialEvent>(ToggleSwipe);
         }
 
         private void RemoveListeners()
         {
             InteractableSpawner.OnPositionChoiceNeeded -= FocusSpawnedObject;
+            EventBus.Instance.Unregister<TutorialEvent>(ToggleSwipe);
         }
     }
 }
