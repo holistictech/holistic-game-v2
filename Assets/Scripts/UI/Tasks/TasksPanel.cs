@@ -53,11 +53,13 @@ namespace UI.Tasks
         {
             if (!eventData.HasFinished) return;
             _tutorialElement = this;
+            taskButton.interactable = false;
+            taskButton.transition = Selectable.Transition.None;
             if (!_tutorialElement.CanShowStep(_tutorialKey)) return;
             EventBus.Instance.Trigger(new TutorialEvent(false));
             var highlightDictionary =
                 new Dictionary<GameObject, TutorialStep>().CreateFromLists(tutorialObjects, tutorialSteps);
-            TryShowTutorial(highlightDictionary, taskButton.GetComponent<RectTransform>(), 170);
+            TryShowTutorial(highlightDictionary, taskButton.GetComponent<RectTransform>(), 0);
         }
 
         private void InstantiateTasks(bool type)
@@ -137,6 +139,8 @@ namespace UI.Tasks
         public IEnumerator WaitInput(RectTransform finalHighlight, float offset)
         {
             tutorialManager.AnimateSpawnedHand();
+            taskButton.interactable = true;
+            taskButton.transition = Selectable.Transition.ColorTint;
             yield return new WaitUntil(() => !_waitInput);
             closeButton.interactable = true;
         }

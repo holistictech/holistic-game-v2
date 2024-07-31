@@ -42,6 +42,12 @@ namespace UI.Helpers
             rotateButton.gameObject.SetActive(false);
         }
 
+        private void ToggleButtonsForTutorial(bool toggle)
+        {
+            confirmButton.interactable = toggle;
+            cancelButton.interactable = toggle;
+            rotateButton.interactable = toggle;
+        }
         public void EnableButtons(Vector3 position)
         {
             confirmButton.transition = Selectable.Transition.ColorTint;
@@ -94,6 +100,7 @@ namespace UI.Helpers
         {
             _tutorialElement = this;
             if (!_tutorialElement.CanShowStep(_tutorialKey)) return;
+            ToggleButtonsForTutorial(false);
             GetTutorialManager();
             var dictionary = new Dictionary<GameObject, TutorialStep>().CreateFromLists(highlightObjects, tutorialSteps);
             TryShowTutorial(dictionary, confirmButton.GetComponent<RectTransform>(), 0);
@@ -104,6 +111,7 @@ namespace UI.Helpers
             _tutorialManager.ActivateStateTutorial(highlights, false, () =>
             {
                 _tutorialElement.SetStepCompleted(_tutorialKey);
+                ToggleButtonsForTutorial(true);
             });
         }
 
