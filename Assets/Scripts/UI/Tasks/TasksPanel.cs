@@ -49,8 +49,9 @@ namespace UI.Tasks
             RemoveListeners();
         }
 
-        private void Start()
+        private void TriggerTutorial(GameLoadingEvent eventData)
         {
+            if (!eventData.HasFinished) return;
             _tutorialElement = this;
             if (!_tutorialElement.CanShowStep(_tutorialKey)) return;
             EventBus.Instance.Trigger(new TutorialEvent(false));
@@ -151,12 +152,14 @@ namespace UI.Tasks
         {
             closeButton.onClick.AddListener(DisableTaskPopup);
             WarningUIHelper.OnRedirectToTask += EnableTaskPopup;
+            EventBus.Instance.Register<GameLoadingEvent>(TriggerTutorial);
         }
 
         private void RemoveListeners()
         {
             closeButton.onClick.RemoveListener(DisableTaskPopup);
             WarningUIHelper.OnRedirectToTask -= EnableTaskPopup;
+            EventBus.Instance.Unregister<GameLoadingEvent>(TriggerTutorial);
         }
     }
 }

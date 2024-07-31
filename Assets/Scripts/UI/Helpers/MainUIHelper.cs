@@ -1,21 +1,15 @@
-using System;
-using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
-using Interfaces;
-using Scriptables.Tutorial;
 using Spans.Skeleton;
-using Tutorial;
-using UI.Tasks;
 using UnityEngine;
-using UnityEngine.Serialization;
 using UnityEngine.UI;
 using Utilities;
+using Utilities.Helpers;
 
 namespace UI.Helpers
 {
     public class MainUIHelper : MonoBehaviour
     {
+        [SerializeField] private LoadingScreen loadingScreen;
         [SerializeField] private CurrencyTrailHelper trailHelper;
         [SerializeField] private Button playButton;
         [SerializeField] private CurrencyUIHelper currencyHelper;
@@ -92,11 +86,18 @@ namespace UI.Helpers
             });
         }
 
+        private void TriggerLoadingScreen(GameLoadingEvent eventData)
+        {
+            Debug.Log("Event triggered with: " + eventData.HasFinished);
+            loadingScreen.ConfigureScreen(eventData.HasFinished);
+        }
+
         private void AddListeners()
         {
             playButton.onClick.AddListener(EnableSpanChooser);
             closeButton.onClick.AddListener(DisableSpanChooser);
             EventBus.Instance.Register<SpanRequestedEvent>(PlayNextSpan);
+            EventBus.Instance.Register<GameLoadingEvent>(TriggerLoadingScreen);
             SpanController.OnSpanFinished += DestroyActiveSpan;
         }
 
@@ -105,6 +106,7 @@ namespace UI.Helpers
             playButton.onClick.RemoveListener(EnableSpanChooser);
             closeButton.onClick.RemoveListener(DisableSpanChooser);
             EventBus.Instance.Unregister<SpanRequestedEvent>(PlayNextSpan);
+            EventBus.Instance.Unregister<GameLoadingEvent>(TriggerLoadingScreen);
             SpanController.OnSpanFinished += DestroyActiveSpan;
         }
     }

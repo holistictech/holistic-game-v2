@@ -1,10 +1,10 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using Interactables;
-using Scriptables;
+using Spans.Skeleton;
 using Spawners;
 using UnityEngine;
-using UnityEngine.Serialization;
 using Utilities;
 
 namespace GridSystem
@@ -21,18 +21,15 @@ namespace GridSystem
 
         public static event Action<GridController> OnGridReady;
 
-        private void Awake()
+        private void Start()
         {
-            SpawnGrids();
+            StartCoroutine(SpawnGridsAsync());
         }
 
-        private void OnDestroy()
+        private IEnumerator SpawnGridsAsync()
         {
-            
-        }
-        
-        private void SpawnGrids()
-        {
+            EventBus.Instance.Trigger(new GameLoadingEvent(false));
+
             Grid[,] board = new Grid[width, height];
             for (int z = 0; z < height; z++)
             {
@@ -41,19 +38,23 @@ namespace GridSystem
                     Grid tempGrid = new Grid(x, z);
                     board[x, z] = tempGrid;
                 }
+                
+                yield return new WaitForEndOfFrame();  // Yield control back to the main thread
             }
 
+            EventBus.Instance.Trigger(new GameLoadingEvent(true));
             _gridController = new GridController(board);
             _spawner.InjectLogicBoard(_gridController);
-            //DistributeLogicBoard();
+
+            // DistributeLogicBoard();
             TryLoadInteractables();
+            
         }
 
         private void TryLoadInteractables()
         {
             var data = SaveLoadManager.TryLoadFarm();
             _gridController.SetExistingFarmData(data);
-            //var interactables = new List<InteractableData>(data.InteractableData);
             var interactables = new List<InteractableData>();
             foreach (var item in data.InteractableData)
             {

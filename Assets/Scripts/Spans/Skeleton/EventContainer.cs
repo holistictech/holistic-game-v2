@@ -9,6 +9,16 @@ namespace Spans.Skeleton
     {
     }
 
+    public class GameLoadingEvent
+    {
+        public bool HasFinished;
+
+        public GameLoadingEvent(bool finished)
+        {
+            HasFinished = finished;
+        }
+    }
+
     public class TutorialEvent
     {
         public bool HasFinished;
