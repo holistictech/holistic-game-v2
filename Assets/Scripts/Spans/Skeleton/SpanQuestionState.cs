@@ -70,7 +70,7 @@ namespace Spans.Skeleton
         {
         }
         
-        protected void SetCircleUI(int count)
+        public void SetCircleUI(int count)
         {
             for (int i = 0; i < count; i++)
             {
@@ -117,7 +117,7 @@ namespace Spans.Skeleton
                 circle.ChangeColor(Color.green);
         }
 
-        protected void ResetPreviousCircles()
+        public void ResetPreviousCircles()
         {
             foreach (var circle in _activeCircles)
             {

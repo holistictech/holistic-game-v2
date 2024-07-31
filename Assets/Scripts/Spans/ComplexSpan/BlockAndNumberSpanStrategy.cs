@@ -66,8 +66,11 @@ namespace Spans.ComplexSpan
                 if (_shouldPass)
                 {
                     Debug.Log("main span");
-                    if(!_controller.GetIsMainSpanNeeded())
+                    if (!_controller.GetIsMainSpanNeeded())
+                    {
                         _controller.SetMainSpanNeeded(true);
+                        Debug.Log($"current number questions count and round index are: {_currentNumberQuestions.Count} {_controller.GetRoundIndex()}");
+                    }
                     _shouldPass = false;
                     _controller.SwitchState();
                     return;
@@ -136,6 +139,7 @@ namespace Spans.ComplexSpan
                 {
                     var blockGrid = _questionState.GetGridHelper();
                     blockGrid.gameObject.SetActive(true);
+                    _answerState.ConfigureUnitCircles();
                     onComplete?.Invoke();
                 }
                 else
@@ -147,6 +151,7 @@ namespace Spans.ComplexSpan
 
         public int GetCircleCount()
         {
+            if (_currentQuestionIndex >= _currentQuestions.Count) return _controller.GetRoundIndex();
             return _blocksDisplayed ? 1 : 3;
         }
 

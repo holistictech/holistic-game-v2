@@ -33,6 +33,7 @@ namespace Spans.Skeleton.QuestionStates
             _currentStrategy = _complexSpan.GetCurrentStrategy();
             _currentStrategy.InjectQuestionState(this);
             EnableUIElements();
+            ResetPreviousCircles();
             SetCircleUI(_currentStrategy.GetCircleCount());
             if (spanController.GetTutorialStatus())
             {

@@ -61,6 +61,13 @@ namespace Spans.Skeleton.AnswerStates
             _currentStrategy.AppendChoice(chosenType);
             SwitchNextState();
         }
+
+        public void ConfigureUnitCircles()
+        {
+            var unitCircles = spanController.GetActiveCircles();
+            gridHelper.SetActiveCircles(unitCircles);
+            gridHelper.SetStartingIndex(spanController.GetStartingUnitIndex());
+        }
         
         public override void Exit()
         {

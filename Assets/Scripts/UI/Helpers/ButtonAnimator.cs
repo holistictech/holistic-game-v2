@@ -40,11 +40,12 @@ namespace UI.Helpers
 
         private void AnimateButtonForSwiping(ToggleUIEventButtons eventButtonsData)
         {
+            gameObject.SetActive(eventButtonsData.Toggle);
+            /*
             var finalPos = eventButtonsData.Toggle
                 ? initialPosition
                 : initialPosition + moveVector;
-            if(finalPos == transform.localPosition) return;
-            transform.DOLocalMove(finalPos, 0.85f).SetEase(Ease.OutBack);
+            transform.DOLocalMove(finalPos, 0.85f).SetEase(Ease.OutBack);*/
         }
 
         private void OnButtonClick()

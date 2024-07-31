@@ -34,16 +34,6 @@ namespace Utilities.InputHandlers
             RemoveListeners();
         }
 
-        private void Start()
-        {
-            // The boundaries are now hardcoded, so this can be removed
-            // var position = transform.position;
-            // _minX = position.x - boundaryPaddingX;
-            // _maxX = position.x + boundaryPaddingX;
-            // _minZ = position.z - boundaryPaddingZ;
-            // _maxZ = position.z + boundaryPaddingZ;
-        }
-
         private bool _lastEventValue;
         private void Update()
         {
@@ -83,6 +73,7 @@ namespace Utilities.InputHandlers
                     transform.position = targetPosition;
                     if (_lastEventValue)
                     {
+                        Debug.Log("event trigger");
                         EventBus.Instance.Trigger(new ToggleUIEventButtons(false));
                         _lastEventValue = false;
                     }

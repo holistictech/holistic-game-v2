@@ -15,7 +15,7 @@ namespace Spans.Skeleton.AnswerStates
     public class MultipleChoiceAnswerState : SpanAnswerState
     {
         [SerializeField] private List<TutorialStep> gridStep;
-        [SerializeField] private GridUIHelper gridHelper;
+        [SerializeField] protected GridUIHelper gridHelper;
         [SerializeField] protected GridLayoutGroup gridLayoutGroup;
         
         private Coroutine _timer;
