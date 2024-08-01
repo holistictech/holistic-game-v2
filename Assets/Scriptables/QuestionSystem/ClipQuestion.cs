@@ -21,7 +21,7 @@ namespace Scriptables.QuestionSystem
 
         public override bool IsEqual(Question question)
         {
-            return (AudioClip)question.GetQuestionItem() == Clip;
+            return question.GetQuestionItem().Equals(Clip);
         }
 
         public override object GetQuestionItemByType(CommonFields.ButtonType type)
