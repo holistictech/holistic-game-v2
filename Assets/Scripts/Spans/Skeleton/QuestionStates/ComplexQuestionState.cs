@@ -34,7 +34,6 @@ namespace Spans.Skeleton.QuestionStates
             _currentStrategy.InjectQuestionState(this);
             EnableUIElements();
             ResetPreviousCircles();
-            SetCircleUI(_currentStrategy.GetCircleCount());
             if (spanController.GetTutorialStatus())
             {
                 TryShowStateTutorial();
@@ -43,6 +42,7 @@ namespace Spans.Skeleton.QuestionStates
             {
                 ShowQuestion();
             }
+            SetCircleUI(_currentStrategy.GetCircleCount());
 
             StatisticsHelper.IncrementDisplayedQuestionCount();
         }

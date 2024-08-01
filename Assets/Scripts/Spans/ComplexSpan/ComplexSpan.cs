@@ -104,13 +104,13 @@ namespace Spans.ComplexSpan
                 if (result)
                 {
                     IncrementSuccessStreak();
+                    
                 }
                 else
                 {
                     IncrementFailStreak();
                 }
 
-                _currentMode.GetCorrectQuestions(currentRoundIndex);
                 SetMainSpanNeeded(false);
             }
 

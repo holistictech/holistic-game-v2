@@ -6,11 +6,12 @@
   <component name="ChangeListManager">
     <list default="true" id="3d01f5fc-4a81-4ccb-94d7-a0f07bc2bc79" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.holistic-game/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Plugins/Android/FirebaseCrashlytics.androidlib/res/values/crashlytics_build_id.xml" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Plugins/Android/FirebaseCrashlytics.androidlib/res/values/crashlytics_build_id.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Prefabs/States/QuestionStates/XylophoneQuestionState.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Prefabs/States/QuestionStates/XylophoneQuestionState.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/ClipQuestion.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scriptables/QuestionSystem/ClipQuestion.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/TextMesh Pro/Resources/Fonts &amp; Materials/LiberationSans SDF - Fallback.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/BlockAndNumberSpanStrategy.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/BlockAndNumberSpanStrategy.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/ComplexSpan.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/ComplexSpan.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/FeedbackState/NBackFeedbackState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/FeedbackState/NBackFeedbackState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/ComplexQuestionState.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/QuestionStates/ComplexQuestionState.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanController.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/Spans/Skeleton/SpanController.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Scripts/UI/Tasks/TasksPanel.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/Scripts/UI/Tasks/TasksPanel.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -156,10 +157,10 @@
       </option>
       <method v="2" />
     </configuration>
-    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost" ignored-value-for-modified-check="11464">
       <option name="allowRunningInParallel" value="false" />
       <option name="listenPortForConnections" value="false" />
-      <option name="pid" />
+      <option name="pid" value="11464" />
       <option name="projectPathOnTarget" />
       <option name="selectedOptions">
         <list />
@@ -296,7 +297,7 @@
       <workItem from="1722341933441" duration="2672000" />
       <workItem from="1722413165492" duration="2635000" />
       <workItem from="1722423164634" duration="6592000" />
-      <workItem from="1722497860307" duration="1331000" />
+      <workItem from="1722497860307" duration="5280000" />
     </task>
     <servers />
   </component>
@@ -386,16 +387,16 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="DotNet Breakpoints">
           <url>file://$PROJECT_DIR$/Assets/Scripts/Spans/ComplexSpan/BlockAndNumberSpanStrategy.cs</url>
-          <line>63</line>
-          <properties documentPath="C:\Users\ahaka\Documents\GitHub\holistic-game\Assets\Scripts\Spans\ComplexSpan\BlockAndNumberSpanStrategy.cs" initialLine="63" containingFunctionPresentation="Method 'ShowQuestionStateQuestion'">
+          <line>94</line>
+          <properties documentPath="C:\Users\ahaka\Documents\GitHub\holistic-game\Assets\Scripts\Spans\ComplexSpan\BlockAndNumberSpanStrategy.cs" initialLine="94" containingFunctionPresentation="Method 'ShowQuestions'">
             <startOffsets>
-              <option value="2189" />
+              <option value="3320" />
             </startOffsets>
             <endOffsets>
-              <option value="2190" />
+              <option value="3321" />
             </endOffsets>
           </properties>
-          <option name="timeStamp" value="143" />
+          <option name="timeStamp" value="149" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>

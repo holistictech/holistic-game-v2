@@ -79,7 +79,7 @@ namespace Spans.ComplexSpan
 
                 if (_shouldPass) return;
                 _shouldPass = true;
-                _controller.GetSpanObjects();
+                _currentQuestions = _controller.GetSpanObjects();
                 _controller.SetMainSpanNeeded(false);
                 Debug.Log("already show main span");
                 ShowQuestions(questioner);
@@ -120,7 +120,7 @@ namespace Spans.ComplexSpan
         {
             _blockGrid.ResetCorsiBlocks();
             _blockGrid.gameObject.SetActive(false);
-            _questionState.SwitchNextState();
+            _controller.SwitchState();
         }
 
         public void ShowAnswerStateQuestion(Questioner questioner, Action onComplete)
@@ -152,11 +152,12 @@ namespace Spans.ComplexSpan
         public int GetCircleCount()
         {
             if (_currentQuestionIndex >= _currentQuestions.Count) return _controller.GetRoundIndex();
-            return _blocksDisplayed ? 1 : 3;
+            return _blocksDisplayed ? 3 : 1;
         }
 
         public List<Question> GetCorrectQuestions(int iterations)
         {
+            Debug.Log("[QUESTION] question reload has been requested");
             _currentQuestions.Clear();
             _currentNumberQuestions.Clear();
             _currentQuestionIndex = 0;
@@ -205,7 +206,6 @@ namespace Spans.ComplexSpan
         public bool CheckAnswer(List<Question> given)
         {
             _blockGrid.gameObject.SetActive(false);
-            _controller.SetMainSpanNeeded(false);
             if (_blocksDisplayed)
             {
                 given = _blockGrid.GetGivenAnswers();

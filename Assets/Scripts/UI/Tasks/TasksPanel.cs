@@ -55,7 +55,12 @@ namespace UI.Tasks
             _tutorialElement = this;
             taskButton.interactable = false;
             taskButton.transition = Selectable.Transition.None;
-            if (!_tutorialElement.CanShowStep(_tutorialKey)) return;
+            if (!_tutorialElement.CanShowStep(_tutorialKey))
+            {
+                taskButton.interactable = true;
+                taskButton.transition = Selectable.Transition.ColorTint;
+                return;
+            }
             EventBus.Instance.Trigger(new TutorialEvent(false));
             var highlightDictionary =
                 new Dictionary<GameObject, TutorialStep>().CreateFromLists(tutorialObjects, tutorialSteps);

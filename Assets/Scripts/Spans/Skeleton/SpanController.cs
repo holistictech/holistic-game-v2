@@ -201,9 +201,11 @@ namespace Spans.Skeleton
             StatisticsHelper.IncrementTrueCount();
             currentSuccessStreak++;
             currentFailStreak = 0;
+            Debug.Log("[SUCCESS] streak has increased to: " + currentSuccessStreak);
             if (currentSuccessStreak == _neededStreakCount)
             {
                 IncrementRoundIndex();
+                Debug.Log("[SUCCESS] round index has increased to: " + currentRoundIndex);
                 currentSuccessStreak = 0;
             }
             else

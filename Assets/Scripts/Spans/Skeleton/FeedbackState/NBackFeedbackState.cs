@@ -34,6 +34,7 @@ namespace Spans.Skeleton.FeedbackState
             }
             else
             {
+                Debug.Log("main span answer check");
                 if (spanController.IsAnswerCorrect())
                 {
                     AudioManager.Instance.PlayAudioClip(correctClip);
