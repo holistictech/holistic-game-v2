@@ -31,6 +31,7 @@ namespace Spans.ComplexSpan
 
         public void PlayCoroutine(List<Question> questions, IComplexSpanStrategy strategy, SpanQuestionState questionState)
         {
+            
             _displayingQuestions = StartCoroutine(ShowQuestionsByType(questions, strategy.HandleOnComplete));
         }
 

@@ -199,11 +199,6 @@ namespace Spans.ComplexSpan
             return true;
         }
 
-        public bool ShouldSwitchDirectly()
-        {
-            throw new NotImplementedException();
-        }
-
         private Question GetRandomQuestion(List<Question> reference, List<Question> corrects)
         {
             int maxAttempts = reference.Count * 2;

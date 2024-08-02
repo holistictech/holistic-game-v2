@@ -181,12 +181,7 @@ namespace Spans.ComplexSpan
 
             return false;
         }
-
-        public bool ShouldSwitchDirectly()
-        {
-            throw new NotImplementedException();
-        }
-
+        
         public int GetUnitIndex()
         {
             return 0;

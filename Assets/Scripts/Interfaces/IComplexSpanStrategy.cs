@@ -23,7 +23,6 @@ namespace Interfaces
         public List<Question> GetModeChoices();
         public void AppendChoice(CommonFields.ButtonType type);
         public bool CheckAnswer(List<Question> given);
-        public bool ShouldSwitchDirectly();
         public int GetUnitIndex();
     }
 }

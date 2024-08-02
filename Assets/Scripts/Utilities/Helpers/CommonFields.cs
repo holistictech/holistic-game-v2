@@ -68,6 +68,8 @@ namespace Utilities.Helpers
             SoundAndNumberChooser,
             PerceptionRecognition,
             BlockSpanAndNumbers,
+            ChooseClass,
+            
         }
 
         public enum Direction
