@@ -531,6 +531,23 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 4e9aa210280b2114faf22241298a9c27, type: 2}
   - {fileID: 11400000, guid: c1006429572901b498849b03a3a97899, type: 2}
   - {fileID: 11400000, guid: f04eaca9e9893984096ee394ab0b5f35, type: 2}
+  classQuestions:
+  - {fileID: 11400000, guid: 14cbc549a95a2394ab4647543d5ac1f4, type: 2}
+  - {fileID: 11400000, guid: b8ebfa393f3ce574b8125b8a3601da56, type: 2}
+  - {fileID: 11400000, guid: 71c3034beaec4c443a06efa229b3886a, type: 2}
+  - {fileID: 11400000, guid: 25941a0004fe6c9489c5b461eb956587, type: 2}
+  - {fileID: 11400000, guid: 9ee8078b902f1b54292b01ae5cc0e8f9, type: 2}
+  - {fileID: 11400000, guid: 9dd0bb9790a46ee44bec173fd5be0f11, type: 2}
+  - {fileID: 11400000, guid: 030041b57f9590a4ab447e1a8780f7d7, type: 2}
+  - {fileID: 11400000, guid: 29c1e0adb9a5f8942ab1b5359f593e70, type: 2}
+  - {fileID: 11400000, guid: 9b10b573564f17b40b5fc702b0a33d10, type: 2}
+  - {fileID: 11400000, guid: 34a03212e18f2dd489e94c7d224b36b0, type: 2}
+  - {fileID: 11400000, guid: 06ad9c9adc8a5bb4d88a3529959bf116, type: 2}
+  - {fileID: 11400000, guid: 41b934c2dc939584d9f5582620588eee, type: 2}
+  choiceList:
+  - {fileID: 11400000, guid: ee2a132f16797434fa09931c5dcdbe49, type: 2}
+  - {fileID: 11400000, guid: a4add4348d9297c40b3cb2d4216ded68, type: 2}
+  - {fileID: 11400000, guid: 360edc35d1001744bad561254b946754, type: 2}
 --- !u!1 &8840831442161132576
 GameObject:
   m_ObjectHideFlags: 0

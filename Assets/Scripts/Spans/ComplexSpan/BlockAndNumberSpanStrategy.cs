@@ -152,7 +152,7 @@ namespace Spans.ComplexSpan
         public int GetCircleCount()
         {
             if (_currentQuestionIndex >= _currentQuestions.Count) return _controller.GetRoundIndex();
-            return _blocksDisplayed ? 3 : 1;
+            return _blocksDisplayed ? 1 : 3;
         }
 
         public List<Question> GetCorrectQuestions(int iterations)

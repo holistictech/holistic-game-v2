@@ -34,6 +34,7 @@ namespace Spans.Skeleton.QuestionStates
             _currentStrategy.InjectQuestionState(this);
             EnableUIElements();
             ResetPreviousCircles();
+            SetCircleUI(_currentStrategy.GetCircleCount());
             if (spanController.GetTutorialStatus())
             {
                 TryShowStateTutorial();
@@ -42,7 +43,7 @@ namespace Spans.Skeleton.QuestionStates
             {
                 ShowQuestion();
             }
-            SetCircleUI(_currentStrategy.GetCircleCount());
+            
 
             StatisticsHelper.IncrementDisplayedQuestionCount();
         }
@@ -54,7 +55,7 @@ namespace Spans.Skeleton.QuestionStates
             {
                 _spanObjects = spanController.GetSpanObjects();
                 _currentStrategy.ShowQuestionStateQuestion(questioner);
-            }else if (_currentStrategy is ComplexSoundChooserMode || _currentStrategy is BlockAndNumberSpanStrategy)
+            }else
             {
                 _currentStrategy.ShowQuestionStateQuestion(questioner);
             }

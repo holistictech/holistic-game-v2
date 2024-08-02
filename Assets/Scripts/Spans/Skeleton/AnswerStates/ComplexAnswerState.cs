@@ -55,7 +55,7 @@ namespace Spans.Skeleton.AnswerStates
         
         public void OnButtonClick(int index)
         {
-            if (_currentStrategy is BlockAndNumberSpanStrategy) return;
+            if (_currentStrategy is not PerceptionRecognitionStrategy) return;
             modeButtons.ForEach(x => x.gameObject.SetActive(false));
             var chosenType = (CommonFields.ButtonType)index;
             _currentStrategy.AppendChoice(chosenType);

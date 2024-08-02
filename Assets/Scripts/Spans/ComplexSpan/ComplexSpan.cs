@@ -13,6 +13,9 @@ namespace Spans.ComplexSpan
     {
         [SerializeField] private List<Question> numberQuestions;
         [SerializeField] private List<Question> clipQuestions;
+        
+        [Header("Choose Class (7.4)")]
+        [SerializeField] private List<Question> classQuestions;
         [SerializeField] private List<Question> choiceList; //Specific to class chooser mode.
 
         private CommonFields.ComplexModes _currentModeEnum;
@@ -31,7 +34,7 @@ namespace Spans.ComplexSpan
                 },
                 { CommonFields.ComplexModes.PerceptionRecognition, new Tuple<List<Question>, List<Question>>(spanQuestions.ToList(), clipQuestions) },
                 { CommonFields.ComplexModes.BlockSpanAndNumbers, new Tuple<List<Question>, List<Question>>(numberQuestions, new List<Question>()) },
-                { CommonFields.ComplexModes.ChooseClass, new Tuple<List<Question>, List<Question>>(spanQuestions.ToList(), choiceList) },
+                { CommonFields.ComplexModes.ChooseClass, new Tuple<List<Question>, List<Question>>(classQuestions, choiceList) },
             };
             
             _currentMode = new BlockAndNumberSpanStrategy();

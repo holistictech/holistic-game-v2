@@ -38,18 +38,13 @@ namespace Spans.ComplexSpan
             _modeQuestions = mainQuestions;
             _helperChoices = helperQuestions;
             
-            if (mainQuestions.Count != helperQuestions.Count)
-            {
-                Debug.LogError("Question list sizes are different!");
-            }
-            
             for (int i = 0; i < mainQuestions.Count; i++)
             {
                 if (_classifiedQuestionDictionary.ContainsKey(mainQuestions[i]))
                 {
                     Debug.LogError($"Duplicate key found: {mainQuestions[i].name}");
                 }
-                _classifiedQuestionDictionary.Add(mainQuestions[i] , helperQuestions[i]);
+                _classifiedQuestionDictionary.Add(mainQuestions[i] , helperQuestions[i%3]);
             }
         }
 
@@ -61,6 +56,7 @@ namespace Spans.ComplexSpan
         public void InjectAnswerState(ComplexAnswerState answerState)
         {
             _answerState = answerState;
+            _answerState.EnableButtons();
         }
 
         private bool _isInitial = true;
@@ -81,7 +77,6 @@ namespace Spans.ComplexSpan
                 if (_isInitial) return;
                 _isInitial = true;
                 _controller.GetSpanObjects();
-                _controller.SetMainSpanNeeded(false);
                 ShowQuestions(questioner);
             }
             else
@@ -93,11 +88,12 @@ namespace Spans.ComplexSpan
         private void ShowQuestions(Questioner questioner)
         {
             questioner.PlayCoroutine(new List<Question>{_currentQuestions[_currentRoundIndex]}, this, _questionState);
+            _currentRoundIndex++;
         }
 
         public void HandleOnComplete()
         {
-            _controller.SwitchState();
+            _questionState.SwitchNextState();
         }
 
         public void ShowAnswerStateQuestion(Questioner questioner, Action onComplete)
@@ -118,11 +114,12 @@ namespace Spans.ComplexSpan
 
         public int GetCircleCount()
         {
-            return _controller.GetIsMainSpanNeeded() ? _controller.GetRoundIndex() : 1;
+            return _currentRoundIndex >= _currentQuestions.Count ? _controller.GetRoundIndex() : 1;
         }
 
         public List<Question> GetCorrectQuestions(int iterations)
         {
+            Debug.Log("Getting mode questions");
             _currentQuestions.Clear();
             _currentRoundDictionary.Clear();
             _currentRoundIndex = 0;
@@ -149,7 +146,7 @@ namespace Spans.ComplexSpan
                     Debug.LogError("selected random question does not exist in main dictionary");
                 }
             }
-
+            Debug.Log($"mode questions ready {_currentQuestions.Count}");
             return _currentQuestions;
         }
 
