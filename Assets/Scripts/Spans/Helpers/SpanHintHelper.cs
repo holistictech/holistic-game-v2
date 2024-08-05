@@ -19,7 +19,7 @@ namespace Spans.Helpers
         public void AnimateBanner(Action onComplete)
         {
             Sequence combineSequence = DOTween.Sequence();
-            combineSequence.Append(combineBanner.transform.DOScaleX(1f, 0.5f).SetEase(Ease.OutCirc).OnComplete(() =>
+            combineSequence.Append(combineBanner.transform.DOScaleX(1f, .7f).SetEase(Ease.OutCirc).OnComplete(() =>
             {
                 combineField.gameObject.SetActive(true);
             }));
@@ -31,7 +31,7 @@ namespace Spans.Helpers
                         combineField.gameObject.SetActive(false);
                     });
                 }));
-            combineSequence.Append(combineBanner.transform.DOScaleX(0f, 0.5f).SetEase(Ease.InCirc).OnComplete(() =>
+            combineSequence.Append(combineBanner.transform.DOScaleX(0f, .7f).SetEase(Ease.InCirc).OnComplete(() =>
             {
                 onComplete?.Invoke();
             }));

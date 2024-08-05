@@ -45,8 +45,24 @@ namespace Spans.ComplexSpan
             _answerState = answerState;
         }
 
+        private bool _roundFlag = false;
         public void ShowQuestionStateQuestion(Questioner questioner)
         {
+            if (_haveShownClips)
+            {
+                _roundFlag = true;
+                HandleOnComplete();
+                return;
+            }
+
+            if (_roundFlag)
+            {
+                _roundFlag = false;
+                _controller.GetSpanObjects();
+            }
+            
+            ConfigureQuestions(true);
+            questioner.InjectQuestionState(_questionState);
             questioner.PlayCoroutine(_currentQuestions, this, _questionState);
         }
 
@@ -59,6 +75,8 @@ namespace Spans.ComplexSpan
         public void ShowAnswerStateQuestion(Questioner questioner, Action onComplete)
         {
             _controller.SetMainSpanNeeded(true);
+            _answerState.ConfigureUnitCircles();
+            _answerState.EnableButtons();
             if (!_haveShownClips)
             {
                 ConfigureQuestions(false);
@@ -73,15 +91,17 @@ namespace Spans.ComplexSpan
                 ConfigureQuestions(true);
                 _answerState.TriggerHintHelper("Sırasıyla hangi sayıları görmüştün?", () =>
                 {
-                    _haveShownClips = true;
+                    _haveShownClips = false;
                     onComplete?.Invoke();
                 });
             }
+            
+            _answerState.SetChoiceUI();
         }
 
         private void ConfigureQuestions(bool ruleToggle)
         {
-            foreach (var element in _currentQuestions)
+            foreach (var element in _modeQuestions)
             {
                 element.IsAnswerStringMUST = ruleToggle;
             }
@@ -89,7 +109,7 @@ namespace Spans.ComplexSpan
 
         public int GetCircleCount()
         {
-            return _currentQuestions.Count;
+            return _controller.GetRoundIndex();
         }
 
         private int tempIndex = 0;
@@ -97,6 +117,7 @@ namespace Spans.ComplexSpan
         {
             _currentQuestions.Clear();
             _currentQuestions = GetRandomQuestions(iterations);
+            
             /*switch (tempIndex)
             {
                 case 0:
@@ -120,7 +141,7 @@ namespace Spans.ComplexSpan
                     _currentQuestions.AddRange(GetRandomQuestions(iterations));
                     break;
             }*/
-
+            _currentQuestions.Shuffle();
             return _currentQuestions;
         }
 
@@ -158,7 +179,7 @@ namespace Spans.ComplexSpan
 
                 choices.Add(question);
             }
-
+            choices.Shuffle();
             return choices;
         }
 
