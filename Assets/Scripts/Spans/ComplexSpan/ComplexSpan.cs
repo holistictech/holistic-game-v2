@@ -18,6 +18,9 @@ namespace Spans.ComplexSpan
         [SerializeField] private List<Question> classQuestions;
         [SerializeField] private List<Question> choiceList; //Specific to class chooser mode.
 
+        [Header("Complex Number Chooser (7.6)")]
+        [SerializeField] private List<Question> complexClipQuestions;
+
         private CommonFields.ComplexModes _currentModeEnum;
         private IComplexSpanStrategy _currentMode;
         private bool _isMainSpanNeeded;
@@ -37,6 +40,7 @@ namespace Spans.ComplexSpan
                 { CommonFields.ComplexModes.PerceptionRecognition, new Tuple<List<Question>, List<Question>>(spanQuestions.ToList(), clipQuestions) },
                 { CommonFields.ComplexModes.BlockSpanAndNumbers, new Tuple<List<Question>, List<Question>>(numberQuestions, new List<Question>()) },
                 { CommonFields.ComplexModes.ChooseClass, new Tuple<List<Question>, List<Question>>(classQuestions, choiceList) },
+                { CommonFields.ComplexModes.NumberAndAnimalChooser, new Tuple<List<Question>, List<Question>>(complexClipQuestions, new List<Question>()) },
             };
 
             SetSpanMode();
@@ -68,6 +72,10 @@ namespace Spans.ComplexSpan
                 case CommonFields.ComplexModes.ChooseClass:
                     _currentMode = new ChooseClassMode();
                     _currentModeEnum = CommonFields.ComplexModes.ChooseClass;
+                    break;
+                case CommonFields.ComplexModes.NumberAndAnimalChooser:
+                    _currentMode = new ComplexNumberChooserMode();
+                    _currentModeEnum = CommonFields.ComplexModes.NumberAndAnimalChooser;
                     break;
                     default:
                         Debug.LogError("No such span mode");

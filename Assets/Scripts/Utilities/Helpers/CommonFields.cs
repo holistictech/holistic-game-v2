@@ -69,6 +69,7 @@ namespace Utilities.Helpers
             PerceptionRecognition,
             BlockSpanAndNumbers,
             ChooseClass,
+            NumberAndAnimalChooser,
             
         }
 

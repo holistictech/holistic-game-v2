@@ -126,6 +126,7 @@ namespace Spans.ComplexSpan
         {
             AudioClip clip = (AudioClip)question.GetQuestionItem();
             questionBox.GetComponentInChildren<TextMeshProUGUI>().text = $"{question.GetCorrectText()}";
+            questionBox.sprite = question.GetCorrectSprite();
             AudioManager.Instance.PlayAudioClip(clip);
         }
     }
