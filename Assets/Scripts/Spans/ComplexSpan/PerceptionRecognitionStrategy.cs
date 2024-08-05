@@ -5,6 +5,7 @@ using Scriptables.QuestionSystem;
 using Scriptables.QuestionSystem.Images;
 using Spans.Skeleton.AnswerStates;
 using Spans.Skeleton.QuestionStates;
+using UnityEngine;
 using Utilities.Helpers;
 using Random = UnityEngine.Random;
 
@@ -50,6 +51,13 @@ namespace Spans.ComplexSpan
 
         public void ShowQuestionStateQuestion(Questioner questioner)
         {
+            if (_round == _currentQuestions.Count)
+            {
+                _round = 0;
+                _controller.SetRecursion(false);
+                _controller.GetSpanObjects();
+            }
+            
             questioner.InjectQuestionState(_questionState);
             questioner.PlayCoroutine(_currentQuestions, this, _questionState);
         }
@@ -67,7 +75,18 @@ namespace Spans.ComplexSpan
                 _controller.SetRecursion(true);
             }
             
+            if (_round == _choices.Count)
+            {
+                _round = 0;
+                _controller.SetRecursion(false);
+                _controller.GetSpanObjects();
+                _controller.SwitchToQuestionState();
+                return;
+            }
+            
+            _controller.SetMainSpanNeeded(true);
             var itemToDisplay = _choices[_round];
+            questioner.InjectQuestionState(_questionState);
             questioner.ShowQuestion(itemToDisplay, () =>
             {
                 var buttons = _answerState.GetButtons();
@@ -83,13 +102,7 @@ namespace Spans.ComplexSpan
 
         public List<Question> GetCorrectQuestions(int iterations)
         {
-            if (_controller.GetRecursion())
-            {
-                return _currentQuestions;
-            }
-            
             ResetLogicFields();
-            
             for (int i = 0; i < iterations; i++)
             {
                 var question = _modeQuestions[Random.Range(0, _modeQuestions.Count)];
@@ -156,12 +169,6 @@ namespace Spans.ComplexSpan
             var displayed = _choices[_round];
             var choice = _chosenButtonTypes[_round];
             _round++;
-
-            if (_round == _choices.Count)
-            {
-                _round = 0;
-                _controller.SetRecursion(false);
-            }
             
             if (_currentQuestions.Contains(displayed))
             {

@@ -23,6 +23,8 @@ namespace Spans.ComplexSpan
         private bool _isMainSpanNeeded;
         private bool _isRecursiveAnswerStateNeeded;
 
+        [SerializeField] private CommonFields.ComplexModes spanMode;
+
         private Dictionary<CommonFields.ComplexModes, Tuple<List<Question>, List<Question>>> _modeQuestions;
         protected override void Start()
         {
@@ -36,14 +38,41 @@ namespace Spans.ComplexSpan
                 { CommonFields.ComplexModes.BlockSpanAndNumbers, new Tuple<List<Question>, List<Question>>(numberQuestions, new List<Question>()) },
                 { CommonFields.ComplexModes.ChooseClass, new Tuple<List<Question>, List<Question>>(classQuestions, choiceList) },
             };
-            
-            _currentMode = new BlockAndNumberSpanStrategy();
-            _currentModeEnum = CommonFields.ComplexModes.BlockSpanAndNumbers;
+
+            SetSpanMode();
+            //_currentMode = new BlockAndNumberSpanStrategy();
+            //_currentModeEnum = CommonFields.ComplexModes.BlockSpanAndNumbers;
             _currentMode.InjectController(this);
             var modeQuestions = GetModeQuestions();
             _currentMode.InjectModeQuestions(modeQuestions.Item1, modeQuestions.Item2);
             base.Start();
             currentRoundIndex = _currentMode.GetStartingRoundIndex();
+        }
+
+        private void SetSpanMode()
+        {
+            switch (spanMode)
+            {
+                case CommonFields.ComplexModes.SoundAndNumberChooser:
+                    _currentMode = new ComplexSoundChooserMode();
+                    _currentModeEnum = CommonFields.ComplexModes.SoundAndNumberChooser;
+                    break;
+                case CommonFields.ComplexModes.PerceptionRecognition:
+                    _currentMode = new PerceptionRecognitionStrategy();
+                    _currentModeEnum = CommonFields.ComplexModes.PerceptionRecognition;
+                    break;
+                case CommonFields.ComplexModes.BlockSpanAndNumbers:
+                    _currentMode = new BlockAndNumberSpanStrategy();
+                    _currentModeEnum = CommonFields.ComplexModes.BlockSpanAndNumbers;
+                    break;
+                case CommonFields.ComplexModes.ChooseClass:
+                    _currentMode = new ChooseClassMode();
+                    _currentModeEnum = CommonFields.ComplexModes.ChooseClass;
+                    break;
+                    default:
+                        Debug.LogError("No such span mode");
+                    break;
+            }
         }
         
         public override List<Question> GetSpanObjects()
@@ -76,10 +105,10 @@ namespace Spans.ComplexSpan
                 ISpanState nextState = stateList[index+1];
                 stateContext.Transition(nextState);
             }
-            /*else if (_isMainSpanNeeded || _isRecursiveAnswerStateNeeded)
+            else if (GetRecursion())
             {
                 SwitchToAnswerState();
-            }*/
+            }
             else
             {
                 SwitchToQuestionState();

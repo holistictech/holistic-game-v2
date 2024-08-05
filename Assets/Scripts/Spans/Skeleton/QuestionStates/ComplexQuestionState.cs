@@ -51,14 +51,16 @@ namespace Spans.Skeleton.QuestionStates
         private bool _hasMainPlayed;
         public override void ShowQuestion()
         {
-            if (_currentStrategy is PerceptionRecognitionStrategy)
+            /*if (_currentStrategy is PerceptionRecognitionStrategy)
             {
                 _spanObjects = spanController.GetSpanObjects();
                 _currentStrategy.ShowQuestionStateQuestion(questioner);
             }else
             {
                 _currentStrategy.ShowQuestionStateQuestion(questioner);
-            }
+            }*/
+            
+            _currentStrategy.ShowQuestionStateQuestion(questioner);
         }
 
         public override void Exit()
