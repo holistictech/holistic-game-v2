@@ -24,7 +24,6 @@ namespace Spans.ComplexSpan
         private List<Question> _currentQuestions;
         private Dictionary<Question, Question> _classifiedQuestions = new Dictionary<Question, Question>();
         
-        
         public void InjectController(ComplexSpan controller)
         {
             _controller = controller;
@@ -96,6 +95,8 @@ namespace Spans.ComplexSpan
 
         public void ShowAnswerStateQuestion(Questioner questioner, Action onComplete)
         {
+            _answerState.ConfigureUnitCircles();
+            _answerState.EnableButtons();
             onComplete?.Invoke();
         }
 

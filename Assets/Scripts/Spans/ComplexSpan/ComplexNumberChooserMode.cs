@@ -111,36 +111,11 @@ namespace Spans.ComplexSpan
         {
             return _controller.GetRoundIndex();
         }
-
-        private int tempIndex = 0;
+        
         public List<Question> GetCorrectQuestions(int iterations)
         {
             _currentQuestions.Clear();
             _currentQuestions = GetRandomQuestions(iterations);
-            
-            /*switch (tempIndex)
-            {
-                case 0:
-                    var index = Random.Range(0, _modeQuestions.Count);
-                    var question = _modeQuestions[index];
-                    _currentQuestions.Add(question);
-                    _currentQuestions.Add(question);
-                    _currentQuestions.Add(question);
-                    tempIndex++;
-                    break;
-                case 1:
-                    index = Random.Range(0, _modeQuestions.Count);
-                    question = _modeQuestions[index];
-                    var next = _modeQuestions[^1];
-                    _currentQuestions.Add(question);
-                    _currentQuestions.Add(question);
-                    _currentQuestions.Add(next);
-                    tempIndex++;
-                    break;
-                default:
-                    _currentQuestions.AddRange(GetRandomQuestions(iterations));
-                    break;
-            }*/
             _currentQuestions.Shuffle();
             return _currentQuestions;
         }
