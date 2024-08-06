@@ -18,8 +18,11 @@ namespace Spans.ComplexSpan
         [SerializeField] private List<Question> classQuestions;
         [SerializeField] private List<Question> choiceList; //Specific to class chooser mode.
 
-        [Header("Complex Number Chooser (7.6)")]
+        [Header("Complex Number Chooser (7.6 - 7.7)")]
         [SerializeField] private List<Question> complexClipQuestions;
+
+        [Header("Complex Shape and Sound Match (7.7)")]
+        [SerializeField] private List<Question> classifiedList;
 
         private CommonFields.ComplexModes _currentModeEnum;
         private IComplexSpanStrategy _currentMode;
@@ -41,6 +44,7 @@ namespace Spans.ComplexSpan
                 { CommonFields.ComplexModes.BlockSpanAndNumbers, new Tuple<List<Question>, List<Question>>(numberQuestions, new List<Question>()) },
                 { CommonFields.ComplexModes.ChooseClass, new Tuple<List<Question>, List<Question>>(classQuestions, choiceList) },
                 { CommonFields.ComplexModes.NumberAndAnimalChooser, new Tuple<List<Question>, List<Question>>(complexClipQuestions, new List<Question>()) },
+                { CommonFields.ComplexModes.MatchSoundWithShape, new Tuple<List<Question>, List<Question>>(complexClipQuestions, classifiedList) },
             };
 
             SetSpanMode();
@@ -74,6 +78,10 @@ namespace Spans.ComplexSpan
                 case CommonFields.ComplexModes.NumberAndAnimalChooser:
                     _currentMode = new ComplexNumberChooserMode();
                     _currentModeEnum = CommonFields.ComplexModes.NumberAndAnimalChooser;
+                    break;
+                case CommonFields.ComplexModes.MatchSoundWithShape:
+                    _currentMode = new MatchSoundWithShapeMode();
+                    _currentModeEnum = CommonFields.ComplexModes.MatchSoundWithShape;
                     break;
                     default:
                         Debug.LogError("No such span mode");

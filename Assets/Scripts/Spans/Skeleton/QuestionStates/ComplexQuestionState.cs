@@ -3,6 +3,7 @@ using Interfaces;
 using Scriptables.QuestionSystem;
 using Scriptables.Tutorial;
 using Spans.ComplexSpan;
+using Spans.Helpers;
 using UI.Helpers;
 using UnityEngine;
 using Utilities.Helpers;
@@ -14,6 +15,7 @@ namespace Spans.Skeleton.QuestionStates
         [SerializeField] private List<TutorialStep> steps;
         [SerializeField] private Questioner questioner;
         [SerializeField] private CorsiBlockUIHelper blockUIHelper;
+        [SerializeField] private SpanHintHelper hinthelper;
 
         private List<Question> _spanObjects;
 
@@ -72,12 +74,18 @@ namespace Spans.Skeleton.QuestionStates
 
             ResetPreviousCircles();
         }
+        
+        public SpanHintHelper GetHintHelper()
+        {
+            return hinthelper;
+        }
+        
 
         public CorsiBlockUIHelper GetGridHelper()
         {
             return blockUIHelper;
         }
-
+        
         public override void SwitchNextState()
         {
             DisableUIElements();
