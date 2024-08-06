@@ -44,8 +44,6 @@ namespace Spans.ComplexSpan
             };
 
             SetSpanMode();
-            //_currentMode = new BlockAndNumberSpanStrategy();
-            //_currentModeEnum = CommonFields.ComplexModes.BlockSpanAndNumbers;
             _currentMode.InjectController(this);
             var modeQuestions = GetModeQuestions();
             _currentMode.InjectModeQuestions(modeQuestions.Item1, modeQuestions.Item2);

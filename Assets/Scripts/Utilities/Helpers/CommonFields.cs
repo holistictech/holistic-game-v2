@@ -70,6 +70,7 @@ namespace Utilities.Helpers
             BlockSpanAndNumbers,
             ChooseClass,
             NumberAndAnimalChooser,
+            MatchSoundWithShape
             
         }
 
