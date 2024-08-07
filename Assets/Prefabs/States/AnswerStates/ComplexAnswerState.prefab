@@ -394,6 +394,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   gridParent: {fileID: 3852416867757628982}
   choicePrefab: {fileID: 7698170080985097280, guid: d1d268f3c8fd23f4e9fa33daf813df34, type: 3}
+  complexChoicePrefab: {fileID: 1923430121368590418, guid: 40dd7d171effa4b4dbf461ab7e46c955, type: 3}
 --- !u!1001 &1429932420621324459
 PrefabInstance:
   m_ObjectHideFlags: 0

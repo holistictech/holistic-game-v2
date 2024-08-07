@@ -1,4 +1,6 @@
 using System;
+using System.Collections.Generic;
+using System.Linq;
 using Scriptables.QuestionSystem;
 using Scriptables.QuestionSystem.Images;
 using Scriptables.QuestionSystem.Numbers;
@@ -12,13 +14,13 @@ namespace UI
 {
     public class Choice : MonoBehaviour
     {
-        [SerializeField] private Button choice;
-        [SerializeField] private Image choiceImage;
-        [SerializeField] private TextMeshProUGUI choiceValue;
-        [SerializeField] private Sprite numberChoiceSprite;
+        [SerializeField] protected Button choice;
+        [SerializeField] protected Image choiceImage;
+        [SerializeField] protected TextMeshProUGUI choiceValue;
+        [SerializeField] protected Sprite numberChoiceSprite;
         
-        private GridUIHelper _gridHelper;
-        private Question _question;
+        protected GridUIHelper gridHelper;
+        protected Question question;
         private void OnEnable()
         {
             AddListeners();
@@ -29,30 +31,30 @@ namespace UI
             RemoveListeners();
         }
 
-        public void ConfigureUI(Question question, GridUIHelper gridHelper)
+        public virtual void ConfigureUI(Question que, GridUIHelper grid)
         {
-            _gridHelper = gridHelper;
-            _question = question;
+            gridHelper = grid;
+            question = que;
             SetChoice();
         }
 
-        private void SetChoice()
+        protected virtual void SetChoice()
         {
-            if (_question is NumberQuestion)
+            if (question is NumberQuestion)
             {
-                choiceValue.text = $"{_question.GetQuestionItem()}";
+                choiceValue.text = $"{question.GetQuestionItem()}";
                 choiceImage.sprite = numberChoiceSprite;
                 choiceImage.type = Image.Type.Sliced;
             }
-            else if (_question is ImageQuestion)
+            else if (question is ImageQuestion)
             {
-                choiceImage.sprite = (Sprite)_question.GetQuestionItem();
+                choiceImage.sprite = (Sprite)question.GetQuestionItem();
                 choiceImage.type = Image.Type.Simple;
             }
-            else if (_question is ClipQuestion)
+            else if (question is ClipQuestion)
             {
-                var sprite = _question.GetCorrectSprite();
-                choiceValue.text = $"{_question.GetCorrectText()}";
+                var sprite = question.GetCorrectSprite();
+                choiceValue.text = $"{question.GetCorrectText()}";
                 choiceImage.sprite = sprite == null ? numberChoiceSprite : sprite;
             }
 
@@ -61,7 +63,7 @@ namespace UI
 
         public Question GetAssignedQuestionConfig()
         {
-            return _question;
+            return question;
         }
 
         public void DisableSelf()
@@ -70,7 +72,7 @@ namespace UI
             gameObject.SetActive(false);
         }
 
-        private void EnableSelf()
+        protected void EnableSelf()
         {
             gameObject.SetActive(true);
         }
@@ -80,10 +82,10 @@ namespace UI
             choice.interactable = true;
         }
 
-        private void SetIsSelected()
+        protected virtual void SetIsSelected()
         {
             //choice.interactable = false;
-            _gridHelper.SelectChoice(_question, this);
+            gridHelper.SelectChoice(question, this);
         }
 
         private void AddListeners()

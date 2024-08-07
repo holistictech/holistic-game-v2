@@ -70,8 +70,8 @@ namespace Utilities.Helpers
             BlockSpanAndNumbers,
             ChooseClass,
             NumberAndAnimalChooser,
-            MatchSoundWithShape
-            
+            MatchSoundWithShape,
+            CombineElements
         }
 
         public enum Direction

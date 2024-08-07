@@ -12,8 +12,10 @@ namespace UI.Helpers
     {
         [SerializeField] private GridLayoutGroup gridParent;
         [SerializeField] private Choice choicePrefab;
+        [SerializeField] private ComplexChoice complexChoicePrefab;
 
         private List<Choice> _choicePool;
+        private List<ComplexChoice> _complexChoicePool;
         private MultipleChoiceAnswerState _answerState;
         private List<Question> _givenAnswers = new List<Question>();
         private List<Choice> _activeChoices = new List<Choice>();
@@ -36,7 +38,8 @@ namespace UI.Helpers
             _givenAnswers.Clear();
             foreach (var question in questions)
             {
-                var available = GetAvailableChoice();
+                Choice available = null;
+                available = question is ComplexShapeQuestion ? GetAvailableComplexChoice() : GetAvailableChoice();
                 available.ConfigureUI(question, this);
                 _activeChoices.Add(available);
             }
@@ -64,10 +67,17 @@ namespace UI.Helpers
         private void SpawnChoicePool()
         {
             _choicePool = new List<Choice>();
+            _complexChoicePool = new List<ComplexChoice>();
             for (int i = 0; i < 35; i++)
             {
                 var temp = Instantiate(choicePrefab, gridParent.transform);
                 _choicePool.Add(temp);
+            }
+            
+            for (int i = 0; i < 10; i++)
+            {
+                var temp = Instantiate(complexChoicePrefab, gridParent.transform);
+                _complexChoicePool.Add(temp);
             }
         }
         
@@ -189,6 +199,19 @@ namespace UI.Helpers
             }
 
             throw new Exception("No available choice. Need to spawn");
+        }
+
+        private ComplexChoice GetAvailableComplexChoice()
+        {
+            for (int i = 0; i < _complexChoicePool.Count; i++)
+            {
+                if (!_complexChoicePool[i].gameObject.activeSelf)
+                {
+                    return _complexChoicePool[i];
+                }
+            }
+
+            throw new Exception("No available complex choice. Need to spawn");
         }
     }
 }

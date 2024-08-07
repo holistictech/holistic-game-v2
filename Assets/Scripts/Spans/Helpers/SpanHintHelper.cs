@@ -59,16 +59,6 @@ namespace Spans.Helpers
         private Coroutine _displayingRules;
         public void PopulateHintGrid(Dictionary<Question, Question> classes, Action onComplete)
         {
-            /*foreach (KeyValuePair<Question, Question> tuple in classes)
-            {
-                var tempImage = GetAvailableImage();
-                tempImage.sprite = tuple.Key.GetCorrectSprite();
-                tempImage.gameObject.SetActive(true);
-                tempImage = GetAvailableImage();
-                tempImage.sprite = (Sprite)tuple.Value.GetQuestionItem();
-                tempImage.gameObject.SetActive(true);
-            }*/
-
             _displayingRules = StartCoroutine(DisplaySpanRule(classes, () =>
             {
                 onComplete?.Invoke();

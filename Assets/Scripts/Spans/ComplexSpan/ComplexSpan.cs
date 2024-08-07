@@ -24,6 +24,9 @@ namespace Spans.ComplexSpan
         [Header("Complex Shape and Sound Match (7.5)")]
         [SerializeField] private List<Question> classifiedList;
 
+        [Header("Combine Three (7.7)")] 
+        [SerializeField] private List<Question> complexShapeQuestions;
+
         private CommonFields.ComplexModes _currentModeEnum;
         private IComplexSpanStrategy _currentMode;
         private bool _isMainSpanNeeded;
@@ -45,6 +48,7 @@ namespace Spans.ComplexSpan
                 { CommonFields.ComplexModes.ChooseClass, new Tuple<List<Question>, List<Question>>(classQuestions, choiceList) },
                 { CommonFields.ComplexModes.NumberAndAnimalChooser, new Tuple<List<Question>, List<Question>>(complexClipQuestions, new List<Question>()) },
                 { CommonFields.ComplexModes.MatchSoundWithShape, new Tuple<List<Question>, List<Question>>(complexClipQuestions, classifiedList) },
+                { CommonFields.ComplexModes.CombineElements, new Tuple<List<Question>, List<Question>>(complexShapeQuestions, new List<Question>()) },
             };
 
             SetSpanMode();
@@ -82,6 +86,10 @@ namespace Spans.ComplexSpan
                 case CommonFields.ComplexModes.MatchSoundWithShape:
                     _currentMode = new MatchSoundWithShapeMode();
                     _currentModeEnum = CommonFields.ComplexModes.MatchSoundWithShape;
+                    break;
+                case CommonFields.ComplexModes.CombineElements:
+                    _currentMode = new CombineElementsMode();
+                    _currentModeEnum = CommonFields.ComplexModes.CombineElements;
                     break;
                     default:
                         Debug.LogError("No such span mode");

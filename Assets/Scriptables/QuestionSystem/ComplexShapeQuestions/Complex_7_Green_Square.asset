@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0ba78a53c2798284da592ca36981851e, type: 3}
+  m_Name: Complex_7_Green_Square
+  m_EditorClassIdentifier: 
+  CorrectAnswerString: 
+  CorrectAnswers: []
+  IsAnswerStringMUST: 0
+  SpawnAmount: 1
+  QuestionColor: {r: 0.30081883, g: 0.9811321, b: 0.3028476, a: 0}
+  Index: 7
+  Shape: {fileID: 21300000, guid: d1a0d27fd9ca243a3bc19b634f445807, type: 3}

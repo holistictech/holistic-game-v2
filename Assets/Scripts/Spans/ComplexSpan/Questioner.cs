@@ -1,6 +1,7 @@
 using System;
 using System.Collections;
 using System.Collections.Generic;
+using System.Numerics;
 using DG.Tweening;
 using Interfaces;
 using Scriptables.QuestionSystem;
@@ -32,6 +33,11 @@ namespace Spans.ComplexSpan
         public void PlayCoroutine(List<Question> questions, IComplexSpanStrategy strategy, SpanQuestionState questionState)
         {
             _displayingQuestions = StartCoroutine(ShowQuestionsByType(questions, strategy.HandleOnComplete));
+        }
+
+        public void PlayComplexShapeCoroutine(List<ComplexShapeQuestion> questions, IComplexSpanStrategy strategy, SpanQuestionState questionState)
+        {
+            _displayingQuestions = StartCoroutine(ShowComplexQuestion(questions, strategy.HandleOnComplete));
         }
 
         public void PlayBlockSpanRoutine(List<Question> questions, IComplexSpanStrategy strategy, CorsiBlockUIHelper grid)
@@ -85,6 +91,23 @@ namespace Spans.ComplexSpan
             onComplete?.Invoke();
             parent.gameObject.SetActive(false);
         }
+
+        private IEnumerator ShowComplexQuestion(List<ComplexShapeQuestion> questions, Action onComplete)
+        {
+            parent.gameObject.SetActive(true);
+            for (int i = 0; i < questions.Count; i++)
+            {
+                var question = questions[i];
+                _questionState.ActivateCircle(i, 1f);
+                ConfigureComplexNumberField(question);
+                yield return new WaitForSeconds(1f);
+                ConfigureComplexColorField(question);
+                yield return new WaitForSeconds(1f);
+                ConfigureComplexShapeField(question);
+                yield return new WaitForSeconds(1f);
+            }
+            onComplete?.Invoke();
+        }
         
         public void ShowQuestion(Question question, Action onComplete = null)
         {
@@ -116,6 +139,25 @@ namespace Spans.ComplexSpan
             questionBox.enabled = true;
         }
 
+        private void ConfigureComplexColorField(ComplexShapeQuestion question)
+        {
+            questionBox.color = question.QuestionColor;
+            questionBox.enabled = true;
+        }
+        
+        private void ConfigureComplexShapeField(ComplexShapeQuestion question)
+        {
+            questionBox.sprite = question.Shape;
+            questionBox.enabled = true;
+        }
+        
+        private void ConfigureComplexNumberField(ComplexShapeQuestion question)
+        {
+            questionBox.GetComponentInChildren<TextMeshProUGUI>().text = $"{question.Index}";
+            questionBox.enabled = false;
+        }
+        
+        
         private void ConfigureNumberField(Question question)
         {
             questionBox.GetComponentInChildren<TextMeshProUGUI>().text = $"{question.GetQuestionItem()}";
