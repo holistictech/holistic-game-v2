@@ -66,7 +66,7 @@ namespace UI
             return question;
         }
 
-        public void DisableSelf()
+        public virtual void DisableSelf()
         {
             ResetUI();
             gameObject.SetActive(false);
@@ -77,12 +77,12 @@ namespace UI
             gameObject.SetActive(true);
         }
 
-        public void ResetUI()
+        public virtual void ResetUI()
         {
             choice.interactable = true;
         }
 
-        protected virtual void SetIsSelected()
+        protected void SetIsSelected()
         {
             //choice.interactable = false;
             gridHelper.SelectChoice(question, this);

@@ -182,6 +182,11 @@ namespace UI.Helpers
             {
                 spawnedChoice.DisableSelf();
             }
+            
+            foreach (var spawnedChoice in _complexChoicePool)
+            {
+                spawnedChoice.DisableSelf();
+            }
 
             _answerIndex = 0;
             _activeChoices.Clear();

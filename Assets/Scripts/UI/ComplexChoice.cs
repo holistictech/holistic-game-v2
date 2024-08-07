@@ -17,6 +17,7 @@ namespace UI
             gridHelper = grid;
             question = que;
             _question = (ComplexShapeQuestion)question;
+            SetChoice();
         }
 
         protected override void SetChoice()
@@ -27,9 +28,20 @@ namespace UI
             EnableSelf();
         }
         
-        protected override void SetIsSelected()
+        public override void DisableSelf()
         {
-            gridHelper.SelectChoice(_question, this);
+            ResetUI();
+            gameObject.SetActive(false);
+        }
+        
+        public override void ResetUI()
+        {
+            choice.interactable = true;
+            question = null;
+            _question = null;
+            choiceImage.sprite = null;
+            choiceImage.color = Color.white;
+            choiceValue.text = "";
         }
     }
 }

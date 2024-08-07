@@ -26,7 +26,7 @@ namespace Spans.ComplexSpan
 
         public int GetStartingRoundIndex()
         {
-            return 3;
+            return 2;
         }
 
         public void InjectModeQuestions(List<Question> mainQuestions, List<Question> helperQuestions)
@@ -45,10 +45,16 @@ namespace Spans.ComplexSpan
             _answerState = answerState;
         }
 
+        private bool _isInitial = true;
         public void ShowQuestionStateQuestion(Questioner questioner)
         {
+            if (!_isInitial)
+            {
+                _controller.GetSpanObjects();
+            }
             questioner.InjectQuestionState(_questionState);
             questioner.PlayComplexShapeCoroutine(new List<ComplexShapeQuestion>(){_currentQuestion}, this, _questionState);
+            _isInitial = false;
         }
 
         public void HandleOnComplete()
@@ -71,11 +77,11 @@ namespace Spans.ComplexSpan
 
         public List<Question> GetCorrectQuestions(int iterations)
         {
+            _controller.SetMainSpanNeeded(true);
             List<Question> variation = new List<Question>();
             var tempQuestion = _modeQuestions[Random.Range(0, _modeQuestions.Count)];
             _currentQuestion = (ComplexShapeQuestion)tempQuestion;
             variation.Add(tempQuestion);
-
             return variation;
         }
 

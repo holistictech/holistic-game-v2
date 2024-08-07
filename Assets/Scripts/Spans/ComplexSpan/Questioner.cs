@@ -101,11 +101,17 @@ namespace Spans.ComplexSpan
                 _questionState.ActivateCircle(i, 1f);
                 ConfigureComplexNumberField(question);
                 yield return new WaitForSeconds(1f);
-                ConfigureComplexColorField(question);
-                yield return new WaitForSeconds(1f);
                 ConfigureComplexShapeField(question);
                 yield return new WaitForSeconds(1f);
+                ConfigureComplexColorField(question);
+                yield return new WaitForSeconds(1f);
             }
+            
+            parent.gameObject.SetActive(false);
+            questionBox.sprite = null;
+            questionBox.enabled = false;
+            questionBox.color = Color.white;
+            questionBox.GetComponentInChildren<TextMeshProUGUI>().text = "";
             onComplete?.Invoke();
         }
         
@@ -142,12 +148,14 @@ namespace Spans.ComplexSpan
         private void ConfigureComplexColorField(ComplexShapeQuestion question)
         {
             questionBox.color = question.QuestionColor;
+            questionBox.GetComponentInChildren<TextMeshProUGUI>().text = "";
             questionBox.enabled = true;
         }
         
         private void ConfigureComplexShapeField(ComplexShapeQuestion question)
         {
             questionBox.sprite = question.Shape;
+            questionBox.GetComponentInChildren<TextMeshProUGUI>().text = "";
             questionBox.enabled = true;
         }
         
@@ -156,7 +164,6 @@ namespace Spans.ComplexSpan
             questionBox.GetComponentInChildren<TextMeshProUGUI>().text = $"{question.Index}";
             questionBox.enabled = false;
         }
-        
         
         private void ConfigureNumberField(Question question)
         {
