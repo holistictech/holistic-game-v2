@@ -82,7 +82,7 @@ namespace UI
 
         private void SetIsSelected()
         {
-            choice.interactable = false;
+            //choice.interactable = false;
             _gridHelper.SelectChoice(_question, this);
         }
 

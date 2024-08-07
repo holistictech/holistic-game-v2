@@ -592,9 +592,25 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4165255877413243479, guid: 5c931f3c6bb4b4f44b431af61cbc513e, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 5063369132636937138, guid: 5c931f3c6bb4b4f44b431af61cbc513e, type: 3}
       propertyPath: m_Name
       value: RuleDisplayer
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345442482016752295, guid: 5c931f3c6bb4b4f44b431af61cbc513e, type: 3}
+      propertyPath: m_CellSize.x
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345442482016752295, guid: 5c931f3c6bb4b4f44b431af61cbc513e, type: 3}
+      propertyPath: m_CellSize.y
+      value: 250
+      objectReference: {fileID: 0}
+    - target: {fileID: 5345442482016752295, guid: 5c931f3c6bb4b4f44b431af61cbc513e, type: 3}
+      propertyPath: m_ConstraintCount
+      value: 2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []

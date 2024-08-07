@@ -16,4 +16,4 @@ MonoBehaviour:
   CorrectAnswers: []
   IsAnswerStringMUST: 0
   SpawnAmount: 1
-  Image: {fileID: 0}
+  Image: {fileID: 21300000, guid: ef337475efc8f47e0a137be142ee61c3, type: 3}

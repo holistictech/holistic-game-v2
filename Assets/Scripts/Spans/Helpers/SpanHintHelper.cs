@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using DG.Tweening;
 using Scriptables.QuestionSystem;
@@ -6,6 +7,7 @@ using TMPro;
 using UnityEngine;
 using UnityEngine.Serialization;
 using UnityEngine.UI;
+using Utilities;
 
 namespace Spans.Helpers
 {
@@ -49,30 +51,58 @@ namespace Spans.Helpers
             DOVirtual.DelayedCall(delay, () =>
             {
                 ResetFields();
-                gameObject.SetActive(false);
+                hintBanner.gameObject.SetActive(false);
                 onComplete?.Invoke();
             });
         }
 
+        private Coroutine _displayingRules;
         public void PopulateHintGrid(Dictionary<Question, Question> classes, Action onComplete)
         {
-            foreach (KeyValuePair<Question, Question> tuple in classes)
+            /*foreach (KeyValuePair<Question, Question> tuple in classes)
             {
                 var tempImage = GetAvailableImage();
-                tempImage.sprite = (Sprite)tuple.Key.GetQuestionItem();
+                tempImage.sprite = tuple.Key.GetCorrectSprite();
+                tempImage.gameObject.SetActive(true);
                 tempImage = GetAvailableImage();
                 tempImage.sprite = (Sprite)tuple.Value.GetQuestionItem();
-            }
-            
-            EnableHintBanner(classes.Count, () =>
+                tempImage.gameObject.SetActive(true);
+            }*/
+
+            _displayingRules = StartCoroutine(DisplaySpanRule(classes, () =>
             {
                 onComplete?.Invoke();
-            });
+            }));
+        }
+
+        private IEnumerator DisplaySpanRule(Dictionary<Question, Question> classes, Action onComplete)
+        {
+            hintBanner.gameObject.SetActive(true);
+            foreach (KeyValuePair<Question, Question> tuple in classes)
+            {
+                AudioManager.Instance.PlayAudioClip((AudioClip)tuple.Key.GetQuestionItem());
+                var tempImage = GetAvailableImage();
+                tempImage.sprite = (Sprite)tuple.Value.GetQuestionItem();
+                tempImage.gameObject.SetActive(true);
+
+                yield return new WaitForSeconds(1.5f);
+                tempImage.gameObject.SetActive(false);
+            }
+            
+            ResetFields();
+            hintBanner.gameObject.SetActive(false);
+            onComplete?.Invoke();
         }
 
         private Image GetAvailableImage()
         {
-            return _pooledImages.Find(x => !x.gameObject.activeSelf);
+            foreach (var element in _pooledImages)
+            {
+                if (!element.gameObject.activeSelf)
+                    return element;
+            }
+
+            throw new Exception("No suitable pooled hint image found");
         }
 
         private void ResetFields()
@@ -86,7 +116,7 @@ namespace Spans.Helpers
         
         public void PoolImagesOnNeed()
         {
-            for (int i = 0; i < 10; i++)
+            for (int i = 0; i < 5; i++)
             {
                 var temp = Instantiate(imagePrefab, gridLayout.transform);
                 _pooledImages.Add(temp);

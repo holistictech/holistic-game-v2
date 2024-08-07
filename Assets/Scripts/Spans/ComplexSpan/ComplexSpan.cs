@@ -18,10 +18,10 @@ namespace Spans.ComplexSpan
         [SerializeField] private List<Question> classQuestions;
         [SerializeField] private List<Question> choiceList; //Specific to class chooser mode.
 
-        [Header("Complex Number Chooser (7.6 - 7.7)")]
+        [Header("Complex Number Chooser (7.5 - 7.6)")]
         [SerializeField] private List<Question> complexClipQuestions;
 
-        [Header("Complex Shape and Sound Match (7.7)")]
+        [Header("Complex Shape and Sound Match (7.5)")]
         [SerializeField] private List<Question> classifiedList;
 
         private CommonFields.ComplexModes _currentModeEnum;

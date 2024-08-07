@@ -19,9 +19,9 @@ namespace Spans.ComplexSpan
         private ComplexAnswerState _answerState;
         private SpanHintHelper _hintHelper;
 
-        private List<Question> _mainQuestions;
-        private List<Question> _helperQuestions;
-        private List<Question> _currentQuestions;
+        private List<Question> _mainQuestions = new List<Question>();
+        private List<Question> _helperQuestions = new List<Question>();
+        private List<Question> _currentQuestions = new List<Question>();
         private Dictionary<Question, Question> _classifiedQuestions = new Dictionary<Question, Question>();
         
         public void InjectController(ComplexSpan controller)
@@ -43,7 +43,7 @@ namespace Spans.ComplexSpan
             }
             
             _mainQuestions.AddRange(mainQuestions);
-            helperQuestions.AddRange(_helperQuestions);
+            _helperQuestions.AddRange(helperQuestions);
             for (int i = 0; i < _mainQuestions.Count; i++)
             {
                 var mainQuestion = _mainQuestions[i];
@@ -69,10 +69,26 @@ namespace Spans.ComplexSpan
         }
 
         private bool _hintNeeded = true;
+        private bool _isInitial = true;
         public void ShowQuestionStateQuestion(Questioner questioner)
         {
+            if (!_isInitial)
+            {
+                _controller.GetSpanObjects();
+            }
+            else
+            {
+                _hintHelper.PoolImagesOnNeed();
+            }
+            
             questioner.InjectQuestionState(_questionState);
-            if (_hintNeeded)
+            _hintHelper.PopulateHintGrid(_classifiedQuestions.Take(_currentQuestions.Count).ToDictionary(pair => pair.Key, pair => pair.Value),
+                () =>
+                {
+                    _isInitial = false;
+                    questioner.PlayCoroutine(_currentQuestions, this, _questionState);
+                });
+            /*if (_hintNeeded)
             {
                 _hintNeeded = false;
                 _hintHelper.PoolImagesOnNeed();
@@ -85,7 +101,7 @@ namespace Spans.ComplexSpan
             else
             {
                 questioner.PlayCoroutine(_currentQuestions, this, _questionState);
-            }
+            }*/
         }
 
         public void HandleOnComplete()
@@ -95,6 +111,7 @@ namespace Spans.ComplexSpan
 
         public void ShowAnswerStateQuestion(Questioner questioner, Action onComplete)
         {
+            _answerState.SetChoiceUI();
             _answerState.ConfigureUnitCircles();
             _answerState.EnableButtons();
             onComplete?.Invoke();
@@ -119,7 +136,7 @@ namespace Spans.ComplexSpan
             switch (_tempIndex)
             {
                 case 0:
-                    var index = Random.Range(0, _mainQuestions.Count);
+                    var index = Random.Range(0, _controller.GetRoundIndex());
                     var question = _mainQuestions[index];
                     _currentQuestions.Add(question);
                     _currentQuestions.Add(question);
@@ -127,9 +144,9 @@ namespace Spans.ComplexSpan
                     _tempIndex++;
                     break;
                 case 1:
-                    index = Random.Range(0, _mainQuestions.Count);
+                    index = Random.Range(0, _controller.GetRoundIndex());
                     question = _mainQuestions[index];
-                    var next = _mainQuestions[^1];
+                    var next = _mainQuestions[_controller.GetRoundIndex()-1];
                     _currentQuestions.Add(question);
                     _currentQuestions.Add(question);
                     _currentQuestions.Add(next);
@@ -168,7 +185,9 @@ namespace Spans.ComplexSpan
 
         public List<Question> GetModeChoices()
         {
-            return _helperQuestions.GetRange(0, _currentQuestions.Count);
+            var choices = _helperQuestions.GetRange(0, _currentQuestions.Count);
+            choices.Shuffle();
+            return choices;
         }
 
         public void AppendChoice(CommonFields.ButtonType type)
