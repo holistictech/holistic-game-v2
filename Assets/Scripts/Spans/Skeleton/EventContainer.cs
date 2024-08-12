@@ -54,6 +54,11 @@ namespace Spans.Skeleton
         
     }
 
+    public class SpanCompletedEvent
+    {
+        
+    }
+
     public class RoundResetEvent
     {
         

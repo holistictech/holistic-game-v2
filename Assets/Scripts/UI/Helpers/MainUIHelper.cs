@@ -81,6 +81,7 @@ namespace UI.Helpers
                     {
                         PlayerInventory.Instance.ChangePerformanceAmount(earnedPerformance);
                         performanceHelper.UpdateCurrencyField();
+                        EventBus.Instance.Trigger(new SpanCompletedEvent());
                     });
                 });
             });

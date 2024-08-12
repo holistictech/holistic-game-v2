@@ -36,7 +36,14 @@ namespace Events.Leaderboard
         private void EnableLeaderboard()
         {
             EventBus.Instance.Trigger(new ToggleSwipeInput(false));
-            leaderboardView.ActivateLeaderboard(_leaderboardModel.GetCurrentLeaderboard());
+            leaderboardView.ActivateLeaderboard(_leaderboardModel.GetCurrentLeaderboard(), this);
+        }
+        
+        private void HandleOnSpanCompleted(SpanCompletedEvent eventData)
+        {
+            _leaderboardModel.ConfigureLeaderboard();
+            EnableLeaderboard();
+            leaderboardView.AnimateLocalEntryToRank(_leaderboardModel.GetCurrentRank());
         }
 
         private void DisableLeaderboard()
@@ -55,6 +62,7 @@ namespace Events.Leaderboard
             leaderboardEventButton.onClick.AddListener(EnableLeaderboard);
             closeButton.onClick.AddListener(DisableLeaderboard);
             playButton.onClick.AddListener(RedirectUserToSpan);
+            EventBus.Instance.Register<SpanCompletedEvent>(HandleOnSpanCompleted);
         }
 
         private void RemoveListeners()
@@ -62,6 +70,7 @@ namespace Events.Leaderboard
             leaderboardEventButton.onClick.RemoveListener(EnableLeaderboard);
             closeButton.onClick.RemoveListener(DisableLeaderboard);
             playButton.onClick.RemoveListener(RedirectUserToSpan);
+            EventBus.Instance.Unregister<SpanCompletedEvent>(HandleOnSpanCompleted);
         }
     }
 }

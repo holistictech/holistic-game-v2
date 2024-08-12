@@ -8,58 +8,77 @@ namespace Events.Leaderboard
     public class LeaderboardModel
     {
         private List<LeaderboardUserModel> _leaderboard;
-        private LeaderboardUserModel _currentLocalEntry;
-        private int _currentIndex = 100;
-        private int _rankIncrease = 0;
         
+        
+        
+        private LeaderboardUserModel _currentLocalEntry;
+        private int _userPreviousRank = 99;
+        private int _userCurrentRank;
+        private int _rankIncrease = 0;
+
         public LeaderboardModel()
         {
             _leaderboard = GetLeaderboard();
+        }
+
+        public void ConfigureLeaderboard()
+        {
             _currentLocalEntry = new LeaderboardUserModel(PlayerInventory.Instance.Username,
                 PlayerInventory.Instance.Performance, true);
-            AddLocalUserToLeaderboard(_currentLocalEntry);
-            _currentIndex = _leaderboard.FindIndex(user => user == _currentLocalEntry);
+            DecideLocalUserRank();
+            DecideRankIncrease();
+            SetLowerUsersScore();
+            SetUpperUsersScore();
+            InsertUserToLeaderboard(_userPreviousRank);
         }
 
-        private void CalculateRankIncrease()
+        private void DecideLocalUserRank()
         {
-            var score = PlayerInventory.Instance.Performance;
-            var counter = 0;
-            for (int i = _currentIndex; i > 0; i--)
+            _userPreviousRank = Random.Range(70, 95);
+        }
+
+        private void DecideRankIncrease()
+        {
+            _rankIncrease = Random.Range(1, 5);
+        }
+
+        private void SetLowerUsersScore()
+        {
+            _userCurrentRank = _userPreviousRank - _rankIncrease;
+            for (int i = _userCurrentRank + 1; i < _leaderboard.Count; i++)
             {
-                if (score >= _leaderboard[i].Score)
-                {
-                    counter++;
-                }
+                _leaderboard[i].Score = PlayerInventory.Instance.Performance - 2;
             }
-
-            _rankIncrease = counter;
         }
-        
-        public void UpdateLeaderboard()
+
+        private void SetUpperUsersScore()
         {
-            _leaderboard.Remove(_currentLocalEntry);
-            AddLocalUserToLeaderboard(new LeaderboardUserModel(PlayerInventory.Instance.Username, PlayerInventory.Instance.Performance, true));
+            for (int i = _userCurrentRank - 1; i >= 0; i--)
+            {
+                _leaderboard[i].Score = PlayerInventory.Instance.Performance + 10;
+            }
+        }
+
+        public int GetPreviousRank()
+        {
+            return _userPreviousRank;
+        }
+
+        public int GetCurrentRank()
+        {
+            return _userCurrentRank;
         }
 
         public List<LeaderboardUserModel> GetCurrentLeaderboard()
         {
             return _leaderboard;
         }
-        
-        private void AddLocalUserToLeaderboard(LeaderboardUserModel localUser)
+
+        private void InsertUserToLeaderboard(int rank)
         {
-            int index = _leaderboard.FindIndex(user => user.Score < localUser.Score);
-            if (index == -1)
-            {
-                _leaderboard.Add(localUser);
-            }
-            else
-            {
-                _leaderboard.Insert(index, localUser);
-            }
+            _leaderboard[rank] = _currentLocalEntry;
         }
-        
+
         private List<LeaderboardUserModel> GetLeaderboard()
         {
             List<LeaderboardUserModel> users = new List<LeaderboardUserModel>();
@@ -74,7 +93,7 @@ namespace Events.Leaderboard
             StringReader reader = new StringReader(csvFile.text);
             string line;
             bool headerSkipped = false;
-        
+
             while ((line = reader.ReadLine()) != null)
             {
                 // Skip the header
@@ -93,10 +112,11 @@ namespace Events.Leaderboard
                     users.Add(new LeaderboardUserModel(username, score, isLocal));
                 }
             }
+
             return users;
         }
     }
-    
+
     public class LeaderboardUserModel
     {
         internal string Username;
