@@ -11,9 +11,7 @@ namespace Utilities.InputHandlers
     {
         [SerializeField] private RectTransform[] uiElements;
         [SerializeField] private float moveSpeed;
-        [SerializeField] private float boundaryPaddingX;
-        [SerializeField] private float boundaryPaddingZ;
-        private float _minX = -25f, _maxX = 90f, _minZ = -15f, _maxZ = 40f;
+        private float _minX = -90f, _maxX = 20f, _minZ = -170f, _maxZ = -65f;
         
         private Vector3 _touchStart;
         private bool _isSwiping;

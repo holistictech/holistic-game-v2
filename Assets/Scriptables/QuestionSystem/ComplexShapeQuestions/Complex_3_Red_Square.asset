@@ -16,6 +16,6 @@ MonoBehaviour:
   CorrectAnswers: []
   IsAnswerStringMUST: 0
   SpawnAmount: 1
-  QuestionColor: {r: 0.98039216, g: 0.43460283, b: 0.30196077, a: 0}
+  QuestionColor: {r: 0.98039216, g: 0.43460283, b: 0.30196077, a: 1}
   Index: 3
   Shape: {fileID: 21300000, guid: d1a0d27fd9ca243a3bc19b634f445807, type: 3}
