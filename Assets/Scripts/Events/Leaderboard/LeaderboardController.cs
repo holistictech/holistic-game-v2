@@ -36,6 +36,8 @@ namespace Events.Leaderboard
         private void EnableLeaderboard()
         {
             EventBus.Instance.Trigger(new ToggleSwipeInput(false));
+            if (_leaderboardModel == null)
+                _leaderboardModel = new LeaderboardModel();
             leaderboardView.ActivateLeaderboard(_leaderboardModel.GetCurrentLeaderboard(), this);
         }
         

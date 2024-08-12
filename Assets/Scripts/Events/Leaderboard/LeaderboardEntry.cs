@@ -20,7 +20,7 @@ namespace Events.Leaderboard
             avatar.sprite = GetRandomSprite();
             SetRankField(rank);
             usernameField.text = user.Username;
-            scoreField.text = "100";
+            scoreField.text = $"{user.Score}";
             _isLocalUser = user.IsLocal;
         }
 

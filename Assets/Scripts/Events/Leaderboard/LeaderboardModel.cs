@@ -19,6 +19,11 @@ namespace Events.Leaderboard
         public LeaderboardModel()
         {
             _leaderboard = GetLeaderboard();
+
+            foreach (var element in _leaderboard)
+            {
+                Debug.Log($"Leaderboard user: {element.Username}");
+            }
         }
 
         public void ConfigureLeaderboard()
@@ -47,7 +52,8 @@ namespace Events.Leaderboard
             _userCurrentRank = _userPreviousRank - _rankIncrease;
             for (int i = _userCurrentRank + 1; i < _leaderboard.Count; i++)
             {
-                _leaderboard[i].Score = PlayerInventory.Instance.Performance - 2;
+                var value = PlayerInventory.Instance.Performance - 2;
+                _leaderboard[i].Score =  value >= 0 ? value : 1;
             }
         }
 
@@ -57,11 +63,6 @@ namespace Events.Leaderboard
             {
                 _leaderboard[i].Score = PlayerInventory.Instance.Performance + 10;
             }
-        }
-
-        public int GetPreviousRank()
-        {
-            return _userPreviousRank;
         }
 
         public int GetCurrentRank()
@@ -83,7 +84,7 @@ namespace Events.Leaderboard
         {
             List<LeaderboardUserModel> users = new List<LeaderboardUserModel>();
 
-            TextAsset csvFile = Resources.Load<TextAsset>($"dummyLeaderboard");
+            TextAsset csvFile = Resources.Load<TextAsset>($"dummy_leaderboard");
             if (csvFile == null)
             {
                 //Debug.LogError("CSV file not found");
@@ -106,10 +107,9 @@ namespace Events.Leaderboard
                 string[] values = line.Split(',');
                 if (values.Length == 2)
                 {
+                    Debug.Log("Length match");
                     string username = values[0];
-                    int score = int.Parse(values[1]);
-                    bool isLocal = bool.Parse(values[2]);
-                    users.Add(new LeaderboardUserModel(username, score, isLocal));
+                    users.Add(new LeaderboardUserModel(username, 0, false));
                 }
             }
 

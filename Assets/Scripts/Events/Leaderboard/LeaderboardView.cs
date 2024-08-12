@@ -20,7 +20,7 @@ namespace Events.Leaderboard
 
         private readonly List<LeaderboardEntry> _pooledEntries = new List<LeaderboardEntry>();
         private readonly Queue<LeaderboardEntry> _activeEntries = new Queue<LeaderboardEntry>();
-        private List<LeaderboardEntry> _leaderboard = new List<LeaderboardEntry>();
+        private readonly List<LeaderboardEntry> _leaderboard = new List<LeaderboardEntry>();
         private readonly int _poolAmount = 100;
         private int _topIndex = 0;
         private float _lastScrollPos;
@@ -129,12 +129,14 @@ namespace Events.Leaderboard
                 var user = users[i];
                 var tempEntry = GetAvailableEntry();
                 tempEntry.ConfigureEntry(user, i);
+                tempEntry.gameObject.SetActive(true);
                 if (user.IsLocal)
                 {
+                    userFakeEntry.ConfigureEntry(user, i);
                     _userRank = i;
                 }
                 _activeEntries.Enqueue(tempEntry);
-                _leaderboard[i] = tempEntry;
+                _leaderboard.Add(tempEntry);
             }
             
             SetViewToLocalUser();
@@ -148,7 +150,7 @@ namespace Events.Leaderboard
         public void AnimateLocalEntryToRank(int newRank)
         {
             var targetValue = (float)newRank / 100;
-            userFakeEntry.gameObject.SetActive(true);
+            //userFakeEntry.gameObject.SetActive(true);
             DOTween.To(() => scrollRect.verticalScrollbar.value, 
                 x => scrollRect.verticalScrollbar.value = x, 
                 targetValue, 
@@ -156,9 +158,10 @@ namespace Events.Leaderboard
 
             DOVirtual.DelayedCall(0.5f, () =>
             {
-                _users[newRank] = _users[_userRank];
+                (_users[newRank], _users[_userRank]) = (_users[_userRank], _users[newRank]);
                 _leaderboard[newRank].ConfigureEntry(_users[newRank], newRank);
-                userFakeEntry.gameObject.SetActive(false);
+                _leaderboard[_userRank].ConfigureEntry(_users[_userRank], _userRank);
+                //userFakeEntry.gameObject.SetActive(false);
             });
         }
 
@@ -179,6 +182,7 @@ namespace Events.Leaderboard
             for (int i = 0; i < _poolAmount; i++)
             {
                 var tempEntry = Instantiate(entryPrefab, scrollParent);
+                tempEntry.gameObject.SetActive(false);
                 _pooledEntries.Add(tempEntry);
             }
             
